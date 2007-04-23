@@ -43,10 +43,6 @@
     <Compile Include="Task.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Documentation\BusinessRequirements.doc" />
-    <None Include="Documentation\VisionStatement.doc" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\LazyCure.Interfaces\LazyCure.Interfaces.csproj">
       <Project>{61117267-380A-4D4B-8228-29F4CB193E44}</Project>
       <Name>LazyCure.Interfaces</Name>
