@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace LifeIdea.LazyCure
+namespace LifeIdea.LazyCure.Core
 {
     class RunTimeSystem: ITimeSystem
     {
