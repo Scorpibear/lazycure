@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using LifeIdea.LazyCure.Interfaces;
+using System.Diagnostics;
 
 namespace LifeIdea.LazyCure.UI
 {
@@ -89,7 +90,7 @@ namespace LifeIdea.LazyCure.UI
 
         private void miOnline_Click(object sender, EventArgs e)
         {
-
+            Process.Start("http://lifeidea.org/lazycure/");
         }
     }
 }
