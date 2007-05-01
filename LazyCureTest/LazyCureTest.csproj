@@ -54,9 +54,10 @@
       <Project>{61117267-380A-4D4B-8228-29F4CB193E44}</Project>
       <Name>LazyCure.Interfaces</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="ReadMe.txt" />
+    <ProjectReference Include="..\LazyCure.UI\LazyCure.UI.csproj">
+      <Project>{B919C7EB-8DC6-42E3-AD2A-A078A72738F1}</Project>
+      <Name>LazyCure.UI</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -69,6 +70,6 @@
   <PropertyGroup>
     <PreBuildEvent>
     </PreBuildEvent>
-    <PostBuildEvent>nunit-console.exe /wait LazyCureTest.exe</PostBuildEvent>
+    <PostBuildEvent>nunit-console.exe LazyCureTest.exe</PostBuildEvent>
   </PropertyGroup>
 </Project>
