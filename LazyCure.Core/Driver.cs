@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using LifeIdea.LazyCure.Interfaces;
+using System.IO;
 
 namespace LifeIdea.LazyCure.Core
 {
@@ -11,6 +12,7 @@ namespace LifeIdea.LazyCure.Core
         private ITimeSystem timeSystem;
 
         public string FirstActivityName = "starting LazyCure";
+        public string TimeLogsFolder;
      
         public Driver(ITimeSystem timeSystem)
         {
@@ -37,5 +39,11 @@ namespace LifeIdea.LazyCure.Core
         }
         
         #endregion
+
+        public void SaveTimeLog()
+        {
+            Directory.CreateDirectory(TimeLogsFolder);
+            File.CreateText(TimeLogsFolder+@"\"+timeSystem.Now.ToString("yyyy-MM-dd")+".timelog");
+        }
     }
 }
