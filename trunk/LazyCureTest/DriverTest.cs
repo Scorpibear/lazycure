@@ -4,6 +4,7 @@ using System.Text;
 using NUnit.Framework;
 using NMock2;
 using LifeIdea.LazyCure.Interfaces;
+using System.IO;
 
 namespace LifeIdea.LazyCure.Core
 {
@@ -66,6 +67,25 @@ namespace LifeIdea.LazyCure.Core
         {
             driver.SwitchTo("task2");
             Assert.AreEqual(driver.FirstActivityName, driver.PreviousActivity.Name);
+        }
+        [Test]
+        public void SaveTimeLog()
+        {
+            string folder = @"c:\temp\LazyCure\test\TimeLogs";
+            string filename = folder + @"\2007-11-18.timelog";
+            if (Directory.Exists(folder))
+            {
+                Directory.Delete(folder, true);
+            }
+
+            ITimeSystem mockTimeSystem = mocks.NewMock<ITimeSystem>();
+            Stub.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(DateTime.Parse("2007-11-18 5:00:00")));
+
+            driver = new Driver(mockTimeSystem);
+            driver.TimeLogsFolder = folder;
+            driver.SaveTimeLog();
+
+            Assert.Contains(filename,Directory.GetFiles(folder));
         }
     }
 }
