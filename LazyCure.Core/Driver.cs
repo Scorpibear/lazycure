@@ -37,7 +37,13 @@ namespace LifeIdea.LazyCure.Core
             currentActivity = new Activity(nextActivity, timeSystem);
             return currentActivity;
         }
-        
+
+        public void FinishActivity(string finishedActivity, string nextActivity)
+        {
+            SwitchTo(nextActivity);
+            previousActivity.Name = finishedActivity;
+        }
+
         #endregion
 
         public void SaveTimeLog()
@@ -45,5 +51,7 @@ namespace LifeIdea.LazyCure.Core
             Directory.CreateDirectory(TimeLogsFolder);
             File.CreateText(TimeLogsFolder+@"\"+timeSystem.Now.ToString("yyyy-MM-dd")+".timelog");
         }
+
+
     }
 }

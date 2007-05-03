@@ -87,5 +87,22 @@ namespace LifeIdea.LazyCure.Core
 
             Assert.Contains(filename,Directory.GetFiles(folder));
         }
+        [Test]
+        public void FinishActivity()
+        {
+            string finishedActivity = "prev";
+            string currentActivity = "next";
+            driver.FinishActivity(finishedActivity,currentActivity);
+            Assert.AreEqual(finishedActivity, driver.PreviousActivity.Name,"previous check");
+            Assert.AreEqual(currentActivity, driver.CurrentActivity.Name,"current check");
+        }
+        [Test]
+        public void FinishedActivityReusesCurrentActivity()
+        {
+            IActivity currentActivity = driver.CurrentActivity;
+            driver.FinishActivity("prev","next");
+            Assert.AreSame(currentActivity, driver.PreviousActivity,"last current now is previous");
+            Assert.AreNotSame(driver.PreviousActivity, driver.CurrentActivity,"current and previous different");
+        }
     }
 }

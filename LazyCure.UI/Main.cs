@@ -41,7 +41,7 @@ namespace LifeIdea.LazyCure.UI
         private void switchButton_Click(object sender, EventArgs e)
         {
             string nextActivity = "(specify what you are doing)";
-            lazyCure.SwitchTo(nextActivity);
+            lazyCure.FinishActivity(this.currentActivity.Text,nextActivity);
             this.currentActivity.Text = nextActivity;
             UpdateActivityStartTime();
             timeLogView.UpdateData();
