@@ -11,7 +11,7 @@ namespace LifeIdea.LazyCure.Core
         private TimeSpan duration;
         private DateTime startTime;
 
-        public string Name{get{return name;}}
+        public string Name { get { return name; } set { name = value; } }
         public DateTime StartTime{get{return startTime;}set{startTime=value;}}
         public TimeSpan Duration
         {

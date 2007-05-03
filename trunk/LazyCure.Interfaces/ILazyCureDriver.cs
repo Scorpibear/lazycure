@@ -9,5 +9,6 @@ namespace LifeIdea.LazyCure.Interfaces
         IActivity SwitchTo(string nextTaskName);
         IActivity CurrentActivity { get;}
         IActivity PreviousActivity { get;}
+        void FinishActivity(string finishedActivity, string nextActivity);
     }
 }
