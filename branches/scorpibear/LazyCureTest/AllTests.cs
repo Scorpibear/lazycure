@@ -63,6 +63,22 @@ namespace LifeIdea.LazyCure.Core
             Activity activity = new Activity("activity",mockTimeSystem);
             activity.Stop();
             Assert.AreEqual(TimeSpan.Parse("12:34:56"), activity.Duration);
+            mocks.VerifyAllExpectationsHaveBeenMet();
+        }
+        [Test]
+        public void LogTest()
+        {
+            Exception ex = new Exception("message");
+            ex.Source = "LogTest";
+            IWriter mockWriter = mocks.NewMock<IWriter>();
+            Log.StreamWriter = mockWriter;
+            using (mocks.Ordered)
+            {
+                Expect.Once.On(mockWriter).Method("WriteLine").With(ex.Message);
+                Expect.Once.On(mockWriter).Method("WriteLine").With(ex.Source);
+            }
+            Log.Exception(ex);
+            mocks.VerifyAllExpectationsHaveBeenMet();
         }
         
     }

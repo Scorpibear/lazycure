@@ -41,7 +41,6 @@
     <Compile Include="AboutBox.Designer.cs">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="Format.cs" />
     <Compile Include="ISummaryView.cs" />
     <Compile Include="ITimeLogView.cs" />
     <Compile Include="Main.cs">

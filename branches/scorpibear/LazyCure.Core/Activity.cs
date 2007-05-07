@@ -54,7 +54,12 @@ namespace LifeIdea.LazyCure.Core
         public Boolean IsRunning = true;
         public override string ToString()
         {
-            return name+startTime+Duration;
+            string s = "<Records>" +
+               "<Activity>"+Name+"</Activity>" + 
+               "<Begin>"+Format.Time(StartTime)+"</Begin>"+
+               "<Duration>"+Format.Duration(Duration)+"</Duration>"+
+               "</Records>";
+            return s;
         }
 
         internal static Activity After(Activity previous, string name)

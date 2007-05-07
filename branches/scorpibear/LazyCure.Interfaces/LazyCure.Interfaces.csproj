@@ -33,6 +33,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Format.cs" />
     <Compile Include="IActivity.cs" />
     <Compile Include="ILazyCureDriver.cs" />
     <Compile Include="INameable.cs" />

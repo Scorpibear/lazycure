@@ -8,23 +8,22 @@ namespace LifeIdea.LazyCure.Core
 {
     public class Driver : ILazyCureDriver
     {
-        private Activity currentActivity,previousActivity=null;
         private ITimeSystem timeSystem;
+        private TimeLog timeLog;
 
-        public const string FirstActivityName = "starting LazyCure";
+        public static string FirstActivityName = "starting LazyCure";
         public string TimeLogsFolder;
-        public string LastError;
-     
+
         public Driver(ITimeSystem timeSystem)
         {
             this.timeSystem = timeSystem;
-            currentActivity = new Activity(FirstActivityName, timeSystem);
+            timeLog = new TimeLog(timeSystem,FirstActivityName);
         }
         public Driver() : this(new RunTimeSystem()) { }
 
         #region ILazyCureDriver Members
-        public IActivity CurrentActivity { get { return currentActivity; } }
-        public IActivity PreviousActivity { get { return previousActivity; } }
+        public IActivity CurrentActivity { get { return timeLog.CurrentActivity; } }
+        public IActivity PreviousActivity { get { return timeLog.PreviousActivity; } }
         /// <summary>
         /// switch from one activity to another
         /// </summary>
@@ -32,16 +31,12 @@ namespace LifeIdea.LazyCure.Core
         /// <returns>activity after switching</returns>
         public IActivity SwitchTo(string nextActivity)
         {
-            currentActivity.Stop();
-            previousActivity = currentActivity;
-            currentActivity = Activity.After(previousActivity,nextActivity);
-            return currentActivity;
+            return timeLog.SwitchTo(nextActivity);
         }
 
         public void FinishActivity(string finishedActivity, string nextActivity)
         {
-            SwitchTo(nextActivity);
-            previousActivity.Name = finishedActivity;
+            timeLog.FinishActivity(finishedActivity, nextActivity);
         }
 
         #endregion
@@ -49,23 +44,20 @@ namespace LifeIdea.LazyCure.Core
         public bool SaveTimeLog()
         {
             StreamWriter stream = null;
-            Boolean isSaved = false;
             try
             {
                 Directory.CreateDirectory(TimeLogsFolder);
+                stream = File.CreateText(TimeLogsFolder + @"\" + CurrentActivity.StartTime.ToString("yyyy-MM-dd") + ".timelog");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return isSaved;
+                Log.Exception(ex);
+                return false;
             }
-                stream = File.CreateText(TimeLogsFolder + @"\" + currentActivity.StartTime.ToString("yyyy-MM-dd") + ".timelog");
-                stream.Write(currentActivity.ToString());
-                isSaved = true;
-                if(stream!=null)
-                    stream.Close();
-            return isSaved;
+            timeLog.Save(stream);
+            stream.Close();
+            return true;
+
         }
-
-
     }
 }
