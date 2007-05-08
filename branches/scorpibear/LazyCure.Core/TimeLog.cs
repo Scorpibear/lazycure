@@ -27,12 +27,12 @@ namespace LifeIdea.LazyCure.Core
             SwitchTo(nextActivity);
             previousActivity.Name = finishedActivity;
         }
-        public void Save(StreamWriter stream)
+        public void Save(TextWriter writer)
         {
-            stream.WriteLine("<?xml version=\"1.0\" standalone=\"yes\"?>");
-            stream.WriteLine("<LazyCureData>");
-            stream.WriteLine(currentActivity.ToString());
-            stream.WriteLine("</LazyCureData>");
+            writer.WriteLine("<?xml version=\"1.0\" standalone=\"yes\"?>");
+            writer.WriteLine("<LazyCureData>");
+            writer.WriteLine(currentActivity.ToString());
+            writer.WriteLine("</LazyCureData>");
         }
     }
 }
