@@ -16,7 +16,17 @@ namespace LifeIdea.LazyCure
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Main(new Driver()));
+            Driver driver = new Driver();
+            try
+            {
+                LazyCureSettings settings = new LazyCureSettings();
+                driver.TimeLogsFolder = settings.TimeLogsFolder;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error while reading application settings", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            Application.Run(new Main(driver));
         }
     }
 }

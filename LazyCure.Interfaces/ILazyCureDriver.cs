@@ -10,5 +10,7 @@ namespace LifeIdea.LazyCure.Interfaces
         IActivity CurrentActivity { get;}
         IActivity PreviousActivity { get;}
         void FinishActivity(string finishedActivity, string nextActivity);
+
+        bool SaveTimeLog();
     }
 }

@@ -49,5 +49,37 @@ namespace LifeIdea.LazyCure.Core
             Task task = new Task("task1");
             Assert.AreEqual("task1", task.Name);
         }
+        [Test]
+        public void ActivityDurationAfterStop()
+        {
+            DateTime startTime = DateTime.Parse("2007-08-29 0:00:00");
+            DateTime endTime = DateTime.Parse("2007-08-29 12:34:56");
+            ITimeSystem mockTimeSystem = mocks.NewMock<ITimeSystem>();
+            using (mocks.Ordered)
+            {
+                Expect.Once.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(startTime));
+                Expect.Once.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(endTime));
+            }
+            Activity activity = new Activity("activity",mockTimeSystem);
+            activity.Stop();
+            Assert.AreEqual(TimeSpan.Parse("12:34:56"), activity.Duration);
+            mocks.VerifyAllExpectationsHaveBeenMet();
+        }
+        [Test]
+        public void LogTest()
+        {
+            Exception ex = new Exception("message");
+            ex.Source = "LogTest";
+            IWriter mockWriter = mocks.NewMock<IWriter>();
+            Log.StreamWriter = mockWriter;
+            using (mocks.Ordered)
+            {
+                Expect.Once.On(mockWriter).Method("WriteLine").With(ex.Message);
+                Expect.Once.On(mockWriter).Method("WriteLine").With(ex.Source);
+            }
+            Log.Exception(ex);
+            mocks.VerifyAllExpectationsHaveBeenMet();
+        }
+        
     }
 }

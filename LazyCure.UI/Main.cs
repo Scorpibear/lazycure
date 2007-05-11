@@ -92,5 +92,22 @@ namespace LifeIdea.LazyCure.UI
         {
             Process.Start("http://lifeidea.org/lazycure/");
         }
+
+        private void Main_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            
+        }
+
+        private void Main_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!lazyCure.SaveTimeLog())
+            {
+                DialogResult result = MessageBox.Show("Time Log could not be saved. Exit from LazyCure anyway?", "Could not save time log", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                if (result == DialogResult.Yes)
+                    return;
+                else
+                    e.Cancel = true;
+            }
+        }
     }
 }

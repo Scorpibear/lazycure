@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace LifeIdea.LazyCure.UI
+namespace LifeIdea.LazyCure.Interfaces
 {
-    class Format
+    public class Format
     {
         /// <summary>
         /// Returns string representing timeSpan in format [dd:]hh:mm:ss
@@ -14,6 +14,8 @@ namespace LifeIdea.LazyCure.UI
         public static string Duration(TimeSpan timeSpan)
         {
             string str = timeSpan.ToString();
+            if (str.StartsWith("0"))
+                str=str.Remove(0,1);
             if(str.Contains("."))
                 return str.Substring(0, str.LastIndexOf('.'));
             else
