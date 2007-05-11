@@ -43,6 +43,7 @@
     <Compile Include="AllTests.cs" />
     <Compile Include="DriverTest.cs" />
     <Compile Include="MainTest.cs" />
+    <Compile Include="MockWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TimeLogCheckEndTimeTest.cs" />
     <Compile Include="TimeLogOtherTest.cs" />

@@ -80,7 +80,18 @@ namespace LifeIdea.LazyCure.Core
             Assert.AreSame(currentActivity, timeLog.PreviousActivity, "last current now is previous");
             Assert.AreNotSame(timeLog.PreviousActivity, timeLog.CurrentActivity, "current and previous different");
         }
-        
+        [Test]
+        public void SaveThreeActivities()
+        {
+            timeLog.SwitchTo("second");
+            timeLog.SwitchTo("third");
+            MockWriter mockWriter = new MockWriter();
+            timeLog.Save(mockWriter);
+            Console.WriteLine(mockWriter.Content);
+            Assert.IsTrue(mockWriter.Content.Contains("first"),"first");
+            Assert.IsTrue(mockWriter.Content.Contains("second"),"second");
+            Assert.IsTrue(mockWriter.Content.Contains("third"), "third");
+        }
     
         
     }

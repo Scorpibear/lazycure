@@ -25,7 +25,7 @@ namespace LifeIdea.LazyCure {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("/TimeLogs")]
+        [global::System.Configuration.DefaultSettingValueAttribute("d:\\Programs\\LazyCure\\TimeLogs")]
         public string TimeLogsFolder {
             get {
                 return ((string)(this["TimeLogsFolder"]));
