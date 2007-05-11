@@ -8,22 +8,22 @@ namespace LifeIdea.LazyCure.Core
 {
     public class Driver : ILazyCureDriver
     {
-        private Activity currentActivity,previousActivity;
         private ITimeSystem timeSystem;
+        private TimeLog timeLog;
 
-        public string FirstActivityName = "starting LazyCure";
+        public static string FirstActivityName = "starting LazyCure";
         public string TimeLogsFolder;
-     
+
         public Driver(ITimeSystem timeSystem)
         {
             this.timeSystem = timeSystem;
-            SwitchTo(FirstActivityName);
+            timeLog = new TimeLog(timeSystem,FirstActivityName);
         }
         public Driver() : this(new RunTimeSystem()) { }
 
         #region ILazyCureDriver Members
-        public IActivity CurrentActivity { get { return currentActivity; } }
-        public IActivity PreviousActivity { get { return previousActivity; } }
+        public IActivity CurrentActivity { get { return timeLog.CurrentActivity; } }
+        public IActivity PreviousActivity { get { return timeLog.PreviousActivity; } }
         /// <summary>
         /// switch from one activity to another
         /// </summary>
@@ -31,27 +31,33 @@ namespace LifeIdea.LazyCure.Core
         /// <returns>activity after switching</returns>
         public IActivity SwitchTo(string nextActivity)
         {
-            if (currentActivity != null)
-                currentActivity.Stop();
-            previousActivity = currentActivity;
-            currentActivity = new Activity(nextActivity, timeSystem);
-            return currentActivity;
+            return timeLog.SwitchTo(nextActivity);
         }
 
         public void FinishActivity(string finishedActivity, string nextActivity)
         {
-            SwitchTo(nextActivity);
-            previousActivity.Name = finishedActivity;
+            timeLog.FinishActivity(finishedActivity, nextActivity);
         }
 
         #endregion
 
-        public void SaveTimeLog()
+        public bool SaveTimeLog()
         {
-            Directory.CreateDirectory(TimeLogsFolder);
-            File.CreateText(TimeLogsFolder+@"\"+timeSystem.Now.ToString("yyyy-MM-dd")+".timelog");
+            StreamWriter stream = null;
+            try
+            {
+                Directory.CreateDirectory(TimeLogsFolder);
+                stream = File.CreateText(TimeLogsFolder + @"\" + CurrentActivity.StartTime.ToString("yyyy-MM-dd") + ".timelog");
+            }
+            catch (Exception ex)
+            {
+                Log.Exception(ex);
+                return false;
+            }
+            timeLog.Save(stream);
+            stream.Close();
+            return true;
+
         }
-
-
     }
 }

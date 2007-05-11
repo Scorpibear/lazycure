@@ -31,10 +31,16 @@ namespace LifeIdea.LazyCure.Core
         {
             this.name = name;
             this.timeSystem = timeSystem;
-            StartTime = timeSystem.Now;
+            this.startTime = timeSystem.Now;
         }
         public Activity(string name):this(name,new RunTimeSystem()) { }
-        
+        private Activity(string name, Activity previous)
+        {
+            this.name = name;
+            this.timeSystem = previous.timeSystem;
+            this.startTime = previous.startTime + previous.duration;
+        }
+
         public void Stop()
         {
             RecalculateDuration();
@@ -46,5 +52,19 @@ namespace LifeIdea.LazyCure.Core
             duration = timeSystem.Now - StartTime;
         }
         public Boolean IsRunning = true;
+        public override string ToString()
+        {
+            string s = "<Records>" +
+               "<Activity>"+Name+"</Activity>" + 
+               "<Begin>"+Format.Time(StartTime)+"</Begin>"+
+               "<Duration>"+Format.Duration(Duration)+"</Duration>"+
+               "</Records>";
+            return s;
+        }
+
+        internal static Activity After(Activity previous, string name)
+        {
+            return new Activity(name,previous);
+        }
     }
 }
