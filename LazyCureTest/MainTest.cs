@@ -12,7 +12,7 @@ namespace LifeIdea.LazyCure.UI
     public class MainTest
     {
         [Test]
-        public void Test()
+        public void MinimizeBoxExists()
         {
             Mockery mocks = new Mockery();
             ILazyCureDriver mockDriver = mocks.NewMock<ILazyCureDriver>();
@@ -21,6 +21,7 @@ namespace LifeIdea.LazyCure.UI
             Stub.On(mockActivity).GetProperty("StartTime").Will(Return.Value(new DateTime()));
             Stub.On(mockDriver).GetProperty("CurrentActivity").Will(Return.Value(mockActivity));
             Main form = new Main(mockDriver);
+            Assert.IsTrue(form.MinimizeBox);
         }
     }
 }

@@ -115,5 +115,10 @@ namespace LifeIdea.LazyCure.UI
             if (!lazyCure.SaveTimeLog())
                 MessageBox.Show("Time log has not been saved!", "Saving  error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
+
+        private void notifyIcon_DoubleClick(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Normal;
+        }
     }
 }
