@@ -50,6 +50,7 @@ namespace LifeIdea.LazyCure.UI
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
+            this.miSave = new System.Windows.Forms.ToolStripMenuItem();
             this.statusBar.SuspendLayout();
             this.nowYou.SuspendLayout();
             this.menu.SuspendLayout();
@@ -153,6 +154,7 @@ namespace LifeIdea.LazyCure.UI
             // miFile
             // 
             this.miFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.miSave,
             this.miExit});
             this.miFile.Name = "miFile";
             this.miFile.Size = new System.Drawing.Size(35, 20);
@@ -161,7 +163,7 @@ namespace LifeIdea.LazyCure.UI
             // miExit
             // 
             this.miExit.Name = "miExit";
-            this.miExit.Size = new System.Drawing.Size(103, 22);
+            this.miExit.Size = new System.Drawing.Size(152, 22);
             this.miExit.Text = "E&xit";
             this.miExit.Click += new System.EventHandler(this.miExit_Click);
             // 
@@ -180,7 +182,7 @@ namespace LifeIdea.LazyCure.UI
             this.miSummary});
             this.showMenu.Name = "contextMenu";
             this.showMenu.OwnerItem = this.miShow;
-            this.showMenu.Size = new System.Drawing.Size(186, 70);
+            this.showMenu.Size = new System.Drawing.Size(175, 70);
             // 
             // miActivityDetails
             // 
@@ -188,21 +190,21 @@ namespace LifeIdea.LazyCure.UI
             this.miActivityDetails.CheckOnClick = true;
             this.miActivityDetails.CheckState = System.Windows.Forms.CheckState.Checked;
             this.miActivityDetails.Name = "miActivityDetails";
-            this.miActivityDetails.Size = new System.Drawing.Size(185, 22);
+            this.miActivityDetails.Size = new System.Drawing.Size(174, 22);
             this.miActivityDetails.Text = "Show &Activity Details";
             this.miActivityDetails.Click += new System.EventHandler(this.miActivityDetails_Click);
             // 
             // miTimeLog
             // 
             this.miTimeLog.Name = "miTimeLog";
-            this.miTimeLog.Size = new System.Drawing.Size(185, 22);
+            this.miTimeLog.Size = new System.Drawing.Size(174, 22);
             this.miTimeLog.Text = "Show &Time Log";
             this.miTimeLog.Click += new System.EventHandler(this.showTimeLog_Click);
             // 
             // miSummary
             // 
             this.miSummary.Name = "miSummary";
-            this.miSummary.Size = new System.Drawing.Size(185, 22);
+            this.miSummary.Size = new System.Drawing.Size(174, 22);
             this.miSummary.Text = "Show &Summary";
             this.miSummary.Click += new System.EventHandler(this.miShowSummary_Click);
             // 
@@ -218,14 +220,14 @@ namespace LifeIdea.LazyCure.UI
             // miOnline
             // 
             this.miOnline.Name = "miOnline";
-            this.miOnline.Size = new System.Drawing.Size(163, 22);
+            this.miOnline.Size = new System.Drawing.Size(152, 22);
             this.miOnline.Text = "LazyCure &Online";
             this.miOnline.Click += new System.EventHandler(this.miOnline_Click);
             // 
             // miAbout
             // 
             this.miAbout.Name = "miAbout";
-            this.miAbout.Size = new System.Drawing.Size(163, 22);
+            this.miAbout.Size = new System.Drawing.Size(152, 22);
             this.miAbout.Text = "&About LazyCure";
             this.miAbout.Click += new System.EventHandler(this.miAbout_Click);
             // 
@@ -254,6 +256,14 @@ namespace LifeIdea.LazyCure.UI
             // toolStripContainer1.TopToolStripPanel
             // 
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.menu);
+            // 
+            // miSave
+            // 
+            this.miSave.Name = "miSave";
+            this.miSave.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.miSave.Size = new System.Drawing.Size(152, 22);
+            this.miSave.Text = "&Save";
+            this.miSave.Click += new System.EventHandler(this.miSave_Click);
             // 
             // Main
             // 
@@ -314,5 +324,6 @@ namespace LifeIdea.LazyCure.UI
         private System.Windows.Forms.ToolStripMenuItem miTimeLog;
         private System.Windows.Forms.ToolStripMenuItem miSummary;
         private System.Windows.Forms.ToolStripContainer toolStripContainer1;
+        private System.Windows.Forms.ToolStripMenuItem miSave;
     }
 }
