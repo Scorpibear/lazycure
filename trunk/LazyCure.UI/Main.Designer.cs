@@ -29,6 +29,7 @@ namespace LifeIdea.LazyCure.UI
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.currentActivity = new System.Windows.Forms.ComboBox();
             this.switchButton = new System.Windows.Forms.Button();
             this.statusBar = new System.Windows.Forms.StatusStrip();
@@ -38,6 +39,7 @@ namespace LifeIdea.LazyCure.UI
             this.nowYou = new System.Windows.Forms.GroupBox();
             this.menu = new System.Windows.Forms.MenuStrip();
             this.miFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.miSave = new System.Windows.Forms.ToolStripMenuItem();
             this.miExit = new System.Windows.Forms.ToolStripMenuItem();
             this.miShow = new System.Windows.Forms.ToolStripMenuItem();
             this.showMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -50,7 +52,7 @@ namespace LifeIdea.LazyCure.UI
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
-            this.miSave = new System.Windows.Forms.ToolStripMenuItem();
+            this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.statusBar.SuspendLayout();
             this.nowYou.SuspendLayout();
             this.menu.SuspendLayout();
@@ -160,10 +162,18 @@ namespace LifeIdea.LazyCure.UI
             this.miFile.Size = new System.Drawing.Size(35, 20);
             this.miFile.Text = "&File";
             // 
+            // miSave
+            // 
+            this.miSave.Name = "miSave";
+            this.miSave.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.miSave.Size = new System.Drawing.Size(136, 22);
+            this.miSave.Text = "&Save";
+            this.miSave.Click += new System.EventHandler(this.miSave_Click);
+            // 
             // miExit
             // 
             this.miExit.Name = "miExit";
-            this.miExit.Size = new System.Drawing.Size(152, 22);
+            this.miExit.Size = new System.Drawing.Size(136, 22);
             this.miExit.Text = "E&xit";
             this.miExit.Click += new System.EventHandler(this.miExit_Click);
             // 
@@ -257,13 +267,12 @@ namespace LifeIdea.LazyCure.UI
             // 
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.menu);
             // 
-            // miSave
+            // notifyIcon
             // 
-            this.miSave.Name = "miSave";
-            this.miSave.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.miSave.Size = new System.Drawing.Size(152, 22);
-            this.miSave.Text = "&Save";
-            this.miSave.Click += new System.EventHandler(this.miSave_Click);
+            this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
+            this.notifyIcon.Text = "LazyCure";
+            this.notifyIcon.Visible = true;
+            this.notifyIcon.DoubleClick += new System.EventHandler(this.notifyIcon_DoubleClick);
             // 
             // Main
             // 
@@ -275,8 +284,8 @@ namespace LifeIdea.LazyCure.UI
             this.ContextMenuStrip = this.showMenu;
             this.Controls.Add(this.toolStripContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(300, 107);
             this.Name = "Main";
             this.Text = "Main";
@@ -325,5 +334,6 @@ namespace LifeIdea.LazyCure.UI
         private System.Windows.Forms.ToolStripMenuItem miSummary;
         private System.Windows.Forms.ToolStripContainer toolStripContainer1;
         private System.Windows.Forms.ToolStripMenuItem miSave;
+        private System.Windows.Forms.NotifyIcon notifyIcon;
     }
 }
