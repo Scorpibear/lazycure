@@ -109,5 +109,11 @@ namespace LifeIdea.LazyCure.UI
                     e.Cancel = true;
             }
         }
+
+        private void miSave_Click(object sender, EventArgs e)
+        {
+            if (!lazyCure.SaveTimeLog())
+                MessageBox.Show("Time log has not been saved!", "Saving  error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
     }
 }

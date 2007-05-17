@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("LazyCure31Test")]
+[assembly: AssemblyTitle("LazyCureTest")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("EPAM Systems")]
-[assembly: AssemblyProduct("LazyCure31Test")]
-[assembly: AssemblyCopyright("Copyright © EPAM Systems 2007")]
+[assembly: AssemblyCompany("LifeIdea.org")]
+[assembly: AssemblyProduct("LazyCureTest")]
+[assembly: AssemblyCopyright("Open source")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
