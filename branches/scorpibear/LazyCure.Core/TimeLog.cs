@@ -34,40 +34,20 @@ namespace LifeIdea.LazyCure.Core
             activitiesSummary = new DataTable("ActivitiesSummary");
             activitiesSummary.Columns.Add("Activity");
             activitiesSummary.Columns.Add("Spent", Type.GetType("System.TimeSpan"));
+            data.RowChanged += new DataRowChangeEventHandler(data_RowChanged);
         }
+
         public IActivity SwitchTo(string nextActivity)
         {
             currentActivity.Stop();
-            // UpdateData
+
             data.Rows.Add(currentActivity.Name, currentActivity.StartTime, currentActivity.Duration);
             
-            // UpdateSummary
-            UpdateSummary();
-
             previousActivity = currentActivity;
             currentActivity = Activity.After(previousActivity, nextActivity);
             activitiesList.Add(currentActivity);
 
             return currentActivity;
-        }
-
-        private void UpdateSummary()
-        {
-            int iRowIndex;
-            bool isCounted = false;
-            for (iRowIndex = 0; iRowIndex < activitiesSummary.Rows.Count; iRowIndex++)
-            {
-                if ((string)activitiesSummary.Rows[iRowIndex]["Activity"] == currentActivity.Name)
-                {
-                    TimeSpan currentDuration = (TimeSpan)activitiesSummary.Rows[iRowIndex]["Spent"];
-                    activitiesSummary.Rows[iRowIndex]["Spent"] = currentDuration + currentActivity.Duration;
-                    isCounted = true;
-                }
-            }
-            if (!isCounted)
-            {
-                activitiesSummary.Rows.Add(currentActivity.Name, currentActivity.Duration);
-            }
         }
         public void FinishActivity(string finishedActivity, string nextActivity)
         {
@@ -81,6 +61,28 @@ namespace LifeIdea.LazyCure.Core
             foreach (IActivity activity in activitiesList)
                 writer.WriteLine(activity.ToString());
             writer.WriteLine("</LazyCureData>");
+        }
+        private void data_RowChanged(object sender, DataRowChangeEventArgs e)
+        {
+            activitiesSummary.Clear();
+            foreach(DataRow theRow in data.Rows)
+            {
+                bool isRowAdded = false;
+                for (int iRowIndex = 0; iRowIndex < activitiesSummary.Rows.Count; iRowIndex++)
+                {
+                    if ((string)activitiesSummary.Rows[iRowIndex]["Activity"] == (string)theRow["Activity"])
+                    {
+                        TimeSpan currentDuration = (TimeSpan)activitiesSummary.Rows[iRowIndex]["Spent"];
+                        activitiesSummary.Rows[iRowIndex]["Spent"] = currentDuration + (TimeSpan)theRow["Duration"];
+                        isRowAdded = true;
+                        break;
+                    }
+                }
+                if (!isRowAdded)
+                {
+                    activitiesSummary.Rows.Add(theRow["Activity"], theRow["Duration"]);
+                }
+            }
         }
     }
 }

@@ -83,7 +83,6 @@ namespace LifeIdea.LazyCure.UI
             // Duration
             // 
             this.Duration.DataPropertyName = "Duration";
-            dataGridViewCellStyle2.Format = "T";
             dataGridViewCellStyle2.NullValue = null;
             this.Duration.DefaultCellStyle = dataGridViewCellStyle2;
             this.Duration.HeaderText = "Duration";

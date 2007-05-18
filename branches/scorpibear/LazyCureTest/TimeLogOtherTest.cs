@@ -118,7 +118,7 @@ namespace LifeIdea.LazyCure.Core
                 Expect.Once.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(DateTime.Parse("2007-11-18 5:00:00")));
                 Expect.Once.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(DateTime.Parse("2007-11-18 6:23:45")));
             }
-            TimeLog timeLog = new TimeLog(mockTimeSystem, "first");
+            timeLog = new TimeLog(mockTimeSystem, "first");
             timeLog.SwitchTo("second");
             DataTable summary = timeLog.ActivitiesSummary;
             DataRow firstRow = summary.Rows[0];
@@ -166,6 +166,13 @@ namespace LifeIdea.LazyCure.Core
             Assert.AreEqual(1, summary.Rows.Count, "rows count");
             Assert.AreEqual(firstRow["Activity"], "first");
             Assert.AreEqual(firstRow["Spent"], TimeSpan.Parse("0:10:00"));
+        }
+        [Test]
+        public void SummaryChangedAfterDataTableChange()
+        {
+            timeLog.SwitchTo("second");
+            timeLog.Data.Rows[0]["Activity"] = "aaa";
+            Assert.AreEqual("aaa",timeLog.ActivitiesSummary.Rows[0]["Activity"]);
         }
     }
 }
