@@ -27,10 +27,12 @@ namespace LifeIdea.LazyCure.Core
             currentActivity = new Activity(firstActivityName, timeSystem);
             activitiesList.Add(currentActivity);
             data = new DataTable("TimeLog");
-            data.Columns.Add("Activity");
-            data.Columns.Add("Start", Type.GetType("System.DateTime"));
-            data.Columns.Add("Duration", Type.GetType("System.TimeSpan"));
+
+            DataColumn startCol = data.Columns.Add("Start", Type.GetType("System.DateTime"));
+            DataColumn activityCol = data.Columns.Add("Activity");
+            DataColumn durationCol = data.Columns.Add("Duration", Type.GetType("System.TimeSpan"));
             //data.Columns.Add("End", Type.GetType("System.DateTime"),"Start+Duration");
+
             activitiesSummary = new DataTable("ActivitiesSummary");
             activitiesSummary.Columns.Add("Activity");
             activitiesSummary.Columns.Add("Spent", Type.GetType("System.TimeSpan"));
@@ -40,8 +42,11 @@ namespace LifeIdea.LazyCure.Core
         public IActivity SwitchTo(string nextActivity)
         {
             currentActivity.Stop();
-
-            data.Rows.Add(currentActivity.Name, currentActivity.StartTime, currentActivity.Duration);
+            DataRow newRow = data.NewRow();
+            newRow["Activity"] = currentActivity.Name;
+            newRow["Start"] = currentActivity.StartTime;
+            newRow["Duration"] = currentActivity.Duration;
+            data.Rows.Add(newRow);
             
             previousActivity = currentActivity;
             currentActivity = Activity.After(previousActivity, nextActivity);

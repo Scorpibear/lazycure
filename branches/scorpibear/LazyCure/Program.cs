@@ -4,6 +4,7 @@ using System.Text;
 using System.Windows.Forms;
 using LifeIdea.LazyCure.Core;
 using LifeIdea.LazyCure.UI;
+using System.Globalization;
 
 
 
@@ -14,6 +15,9 @@ namespace LifeIdea.LazyCure
         [STAThread]
         static void Main(string[] args)
         {
+            CultureInfo info = new CultureInfo(Application.CurrentCulture.LCID);
+            info.DateTimeFormat.LongTimePattern = "H:mm:ss";
+            Application.CurrentCulture = info;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Driver driver = new Driver();

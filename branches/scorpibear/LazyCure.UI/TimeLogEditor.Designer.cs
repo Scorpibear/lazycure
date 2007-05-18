@@ -30,6 +30,7 @@ namespace LifeIdea.LazyCure.UI
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TimeLogEditor));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.timeLogView = new System.Windows.Forms.DataGridView();
@@ -48,15 +49,10 @@ namespace LifeIdea.LazyCure.UI
             this.Activity,
             this.Duration,
             this.End});
-            this.timeLogView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.timeLogView.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.timeLogView.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.timeLogView, "timeLogView");
             this.timeLogView.Name = "timeLogView";
-            this.timeLogView.RowHeadersWidth = 32;
             dataGridViewCellStyle4.NullValue = null;
             this.timeLogView.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.timeLogView.Size = new System.Drawing.Size(397, 343);
-            this.timeLogView.TabIndex = 0;
             this.timeLogView.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.timeLogView_CellValidating);
             this.timeLogView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.timeLogView_CellValueChanged);
             this.timeLogView.KeyUp += new System.Windows.Forms.KeyEventHandler(this.timeLogView_KeyUp);
@@ -67,53 +63,46 @@ namespace LifeIdea.LazyCure.UI
             dataGridViewCellStyle1.Format = "T";
             dataGridViewCellStyle1.NullValue = null;
             this.Start.DefaultCellStyle = dataGridViewCellStyle1;
-            this.Start.HeaderText = "Start";
+            resources.ApplyResources(this.Start, "Start");
             this.Start.Name = "Start";
             this.Start.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Start.Width = 50;
             // 
             // Activity
             // 
             this.Activity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Activity.DataPropertyName = "Activity";
-            this.Activity.HeaderText = "Activity";
+            resources.ApplyResources(this.Activity, "Activity");
             this.Activity.Name = "Activity";
             this.Activity.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // Duration
             // 
             this.Duration.DataPropertyName = "Duration";
+            dataGridViewCellStyle2.Format = "T";
             dataGridViewCellStyle2.NullValue = null;
             this.Duration.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Duration.HeaderText = "Duration";
+            resources.ApplyResources(this.Duration, "Duration");
             this.Duration.Name = "Duration";
             this.Duration.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Duration.Width = 50;
             // 
             // End
             // 
             this.End.DataPropertyName = "End";
             dataGridViewCellStyle3.Format = "T";
             this.End.DefaultCellStyle = dataGridViewCellStyle3;
-            this.End.HeaderText = "End";
+            resources.ApplyResources(this.End, "End");
             this.End.Name = "End";
             this.End.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.End.Width = 50;
             // 
             // TimeLogEditor
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(397, 343);
             this.Controls.Add(this.timeLogView);
-            this.MaximumSize = new System.Drawing.Size(1600, 1200);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(24, 34);
             this.Name = "TimeLogEditor";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "Time Log";
             this.TopMost = true;
             ((System.ComponentModel.ISupportInitialize)(this.timeLogView)).EndInit();
             this.ResumeLayout(false);

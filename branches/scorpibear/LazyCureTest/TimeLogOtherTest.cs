@@ -174,5 +174,12 @@ namespace LifeIdea.LazyCure.Core
             timeLog.Data.Rows[0]["Activity"] = "aaa";
             Assert.AreEqual("aaa",timeLog.ActivitiesSummary.Rows[0]["Activity"]);
         }
+        [Test]
+        public void ColumnsOrder()
+        {
+            Assert.AreEqual(0, timeLog.Data.Columns["Start"].Ordinal);
+            Assert.AreEqual(1, timeLog.Data.Columns["Activity"].Ordinal);
+            Assert.AreEqual(2, timeLog.Data.Columns["Duration"].Ordinal);
+        }
     }
 }
