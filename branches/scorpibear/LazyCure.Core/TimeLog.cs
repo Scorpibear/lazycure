@@ -31,14 +31,14 @@ namespace LifeIdea.LazyCure.Core
             DataColumn startCol = data.Columns.Add("Start", Type.GetType("System.DateTime"));
             DataColumn activityCol = data.Columns.Add("Activity");
             DataColumn durationCol = data.Columns.Add("Duration", Type.GetType("System.TimeSpan"));
-            //data.Columns.Add("End", Type.GetType("System.DateTime"),"Start+Duration");
-
+            DataColumn endCol = data.Columns.Add("End", Type.GetType("System.DateTime"));
+            DataView dataView = new DataView(data);
             activitiesSummary = new DataTable("ActivitiesSummary");
             activitiesSummary.Columns.Add("Activity");
             activitiesSummary.Columns.Add("Spent", Type.GetType("System.TimeSpan"));
             data.RowChanged += new DataRowChangeEventHandler(data_RowChanged);
+            data.ColumnChanging += new DataColumnChangeEventHandler(data_ColumnChanging);
         }
-
         public IActivity SwitchTo(string nextActivity)
         {
             currentActivity.Stop();
@@ -75,7 +75,9 @@ namespace LifeIdea.LazyCure.Core
                 bool isRowAdded = false;
                 for (int iRowIndex = 0; iRowIndex < activitiesSummary.Rows.Count; iRowIndex++)
                 {
-                    if ((string)activitiesSummary.Rows[iRowIndex]["Activity"] == (string)theRow["Activity"])
+                    if (((string)activitiesSummary.Rows[iRowIndex]["Activity"] == (string)theRow["Activity"]) &&
+                        activitiesSummary.Rows[iRowIndex]["Spent"].GetType()!= Type.GetType("System.DBNull")
+                        )
                     {
                         TimeSpan currentDuration = (TimeSpan)activitiesSummary.Rows[iRowIndex]["Spent"];
                         activitiesSummary.Rows[iRowIndex]["Spent"] = currentDuration + (TimeSpan)theRow["Duration"];
@@ -87,6 +89,25 @@ namespace LifeIdea.LazyCure.Core
                 {
                     activitiesSummary.Rows.Add(theRow["Activity"], theRow["Duration"]);
                 }
+            }
+        }
+        private void data_ColumnChanging(object sender, DataColumnChangeEventArgs e)
+        {
+            if ((e.Column.ColumnName == "Start" || e.Column.ColumnName == "Duration") &&
+                e.Row["Duration"].GetType() != Type.GetType("System.DBNull") &&
+                e.Row["Start"].GetType() != Type.GetType("System.DBNull")
+                )
+            {
+                e.Row["End"] = ((DateTime)(e.Row["Start"])) + ((TimeSpan)(e.Row["Duration"]));
+                return;
+            }
+            if ((e.Column.ColumnName == "Start" || e.Column.ColumnName == "End") &&
+                e.Row["Start"].GetType() != Type.GetType("System.DBNull") &&
+                e.Row["End"].GetType() != Type.GetType("System.DBNull")
+                )
+            {
+                e.Row["Duration"] = (DateTime)e.Row["End"] - (DateTime)e.Row["Start"];
+                return;
             }
         }
     }

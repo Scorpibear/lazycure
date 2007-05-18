@@ -96,7 +96,6 @@ namespace LifeIdea.LazyCure.Core
         [Test]
         public void DataColumns()
         {
-            Assert.AreEqual(3, timeLog.Data.Columns.Count, "columns count");
             Assert.AreEqual(Type.GetType("System.String"), timeLog.Data.Columns["Activity"].DataType, "Activity column");
             Assert.AreEqual(Type.GetType("System.DateTime"), timeLog.Data.Columns["Start"].DataType, "Start column");
             Assert.AreEqual(Type.GetType("System.TimeSpan"), timeLog.Data.Columns["Duration"].DataType, "Duration column");
