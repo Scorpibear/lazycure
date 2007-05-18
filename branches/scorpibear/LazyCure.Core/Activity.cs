@@ -44,7 +44,16 @@ namespace LifeIdea.LazyCure.Core
         public void Stop()
         {
             RecalculateDuration();
+            RoundDuration();
             IsRunning = false;
+        }
+
+        private void RoundDuration()
+        {
+            if (duration.Milliseconds < 500)
+                duration = new TimeSpan(0, 0, 0, (int)duration.TotalSeconds);
+            else
+                duration = new TimeSpan(0, 0, 0, (int)duration.TotalSeconds+1);
         }
 
         private void RecalculateDuration()

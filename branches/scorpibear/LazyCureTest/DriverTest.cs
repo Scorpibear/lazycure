@@ -5,6 +5,7 @@ using NUnit.Framework;
 using NMock2;
 using LifeIdea.LazyCure.Interfaces;
 using System.IO;
+using System.Data;
 
 namespace LifeIdea.LazyCure.Core
 {

@@ -4,6 +4,7 @@ using System.Text;
 using NUnit.Framework;
 using NMock2;
 using LifeIdea.LazyCure.Interfaces;
+using System.Data;
 
 namespace LifeIdea.LazyCure.Core
 {
@@ -54,6 +55,16 @@ namespace LifeIdea.LazyCure.Core
             foreach (string s in sExpectedContent)
                 Assert.IsTrue(mockWriter.Content.Contains(s), s);
             mocks.VerifyAllExpectationsHaveBeenMet();
+        }
+        [Test]
+        public void DataSimpleRecord()
+        {
+            timeLog.SwitchTo("second");
+            DataRow firstRow = timeLog.Data.Rows[0];
+            Assert.AreEqual("first", firstRow["Activity"]);
+            Assert.AreEqual(startTime, firstRow["Start"]);
+            Assert.AreEqual(endTime - startTime, firstRow["Duration"]);
+            //Assert.AreEqual(endTime, firstRow["End"]);
         }
     }
 }

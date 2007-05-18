@@ -51,12 +51,14 @@ namespace LifeIdea.LazyCure.UI
             // Activity
             // 
             this.Activity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Activity.DataPropertyName = "Activity";
             this.Activity.HeaderText = "Activity";
             this.Activity.Name = "Activity";
             this.Activity.ReadOnly = true;
             // 
             // Spent
             // 
+            this.Spent.DataPropertyName = "Spent";
             this.Spent.HeaderText = "Spent";
             this.Spent.Name = "Spent";
             this.Spent.ReadOnly = true;
@@ -64,6 +66,7 @@ namespace LifeIdea.LazyCure.UI
             // 
             // Task
             // 
+            this.Task.DataPropertyName = "Task";
             this.Task.HeaderText = "Task";
             this.Task.Name = "Task";
             this.Task.ReadOnly = true;

@@ -66,6 +66,32 @@ namespace LifeIdea.LazyCure.Core
             mocks.VerifyAllExpectationsHaveBeenMet();
         }
         [Test]
+        public void MillisecondsAreTruncated()
+        {
+            ITimeSystem mockTimeSystem = mocks.NewMock<ITimeSystem>();
+            using (mocks.Ordered)
+            {
+                Expect.Once.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(DateTime.Parse("2007-11-18 5:00:00")));
+                Expect.Once.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(DateTime.Parse("2007-11-18 5:07:00.123456")));
+            }
+            Activity activity = new Activity("activity", mockTimeSystem);
+            activity.Stop();
+            Assert.AreEqual(TimeSpan.Parse("0:07:00"), activity.Duration);
+        }
+        [Test]
+        public void MillisecondsAreRounded()
+        {
+            ITimeSystem mockTimeSystem = mocks.NewMock<ITimeSystem>();
+            using (mocks.Ordered)
+            {
+                Expect.Once.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(DateTime.Parse("2007-11-18 5:00:00")));
+                Expect.Once.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(DateTime.Parse("2007-11-18 5:07:00.5")));
+            }
+            Activity activity = new Activity("activity", mockTimeSystem);
+            activity.Stop();
+            Assert.AreEqual(TimeSpan.Parse("0:07:01"), activity.Duration);
+        }
+        [Test]
         public void LogTest()
         {
             Exception ex = new Exception("message");

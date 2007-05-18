@@ -23,8 +23,8 @@ namespace LifeIdea.LazyCure.UI
             timer.Start();
             this.currentActivity.Text = lazyCure.CurrentActivity.Name;
             UpdateActivityStartTime();
-            timeLogView = new TimeLog(lazyCure);
-            summaryView = new Summary();
+            timeLogView = new TimeLogEditor(lazyCure);
+            summaryView = new Summary(lazyCure);
             aboutBox = new AboutBox();
         }
 
@@ -44,7 +44,6 @@ namespace LifeIdea.LazyCure.UI
             lazyCure.FinishActivity(this.currentActivity.Text,nextActivity);
             this.currentActivity.Text = nextActivity;
             UpdateActivityStartTime();
-            timeLogView.UpdateData();
             currentActivity.SelectAll();
         }
 
