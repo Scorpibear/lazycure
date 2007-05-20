@@ -20,6 +20,8 @@ namespace LifeIdea.LazyCure.UI
             Stub.On(mockActivity).GetProperty("Name");
             Stub.On(mockActivity).GetProperty("StartTime").Will(Return.Value(new DateTime()));
             Stub.On(mockDriver).GetProperty("CurrentActivity").Will(Return.Value(mockActivity));
+            Stub.On(mockDriver).GetProperty("TimeLogData");
+            Stub.On(mockDriver).GetProperty("ActivitiesSummaryData");
             Main form = new Main(mockDriver);
             Assert.IsTrue(form.MinimizeBox);
         }
