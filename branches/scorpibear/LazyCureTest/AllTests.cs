@@ -96,12 +96,12 @@ namespace LifeIdea.LazyCure.Core
         {
             Exception ex = new Exception("message");
             ex.Source = "LogTest";
-            IWriter mockWriter = mocks.NewMock<IWriter>();
-            Log.StreamWriter = mockWriter;
+            
+            Log.Writer = mocks.NewMock<IWriter>();
             using (mocks.Ordered)
             {
-                Expect.Once.On(mockWriter).Method("WriteLine").With(ex.Message);
-                Expect.Once.On(mockWriter).Method("WriteLine").With(ex.Source);
+                Expect.Once.On(Log.Writer).Method("WriteLine").With(ex.Message);
+                Expect.Once.On(Log.Writer).Method("WriteLine").With(ex.Source);
             }
             Log.Exception(ex);
             mocks.VerifyAllExpectationsHaveBeenMet();

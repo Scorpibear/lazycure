@@ -38,7 +38,6 @@ namespace LifeIdea.LazyCure.Core
         {
             MockWriter mockWriter = new MockWriter();
             timeLog.Save(mockWriter);
-            Console.WriteLine(mockWriter.Content);
             Assert.IsTrue(mockWriter.Content.Contains("first"), "activity");
             Assert.IsTrue(mockWriter.Content.Contains("5:00:00"), "start");
             Assert.IsTrue(mockWriter.Content.Contains("0:06:43"), "duration");
@@ -64,7 +63,7 @@ namespace LifeIdea.LazyCure.Core
             Assert.AreEqual("first", firstRow["Activity"]);
             Assert.AreEqual(startTime, firstRow["Start"]);
             Assert.AreEqual(endTime - startTime, firstRow["Duration"]);
-            //Assert.AreEqual(endTime, firstRow["End"]);
+            Assert.AreEqual(endTime, firstRow["End"]);
         }
     }
 }

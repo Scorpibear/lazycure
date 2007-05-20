@@ -15,6 +15,7 @@ namespace LifeIdea.LazyCure
         [STAThread]
         static void Main(string[] args)
         {
+            Log.TextWriter = System.IO.File.AppendText(Application.StartupPath + @"\LazyCure.log");
             CultureInfo info = new CultureInfo(Application.CurrentCulture.LCID);
             info.DateTimeFormat.LongTimePattern = "H:mm:ss";
             Application.CurrentCulture = info;

@@ -67,16 +67,52 @@ namespace LifeIdea.LazyCure.Core
                 writer.WriteLine(activity.ToString());
             writer.WriteLine("</LazyCureData>");
         }
+
         private void data_RowChanged(object sender, DataRowChangeEventArgs e)
         {
+            CalculateActivitiesSummary();
+            //CalculateTimeValues(e);
+        }
+        private bool isChanging = false;
+        private void data_ColumnChanging(object sender, DataColumnChangeEventArgs e)
+        {
+            if (isChanging)
+                return;
+            isChanging = true;
+            switch (e.Column.ColumnName)
+            {
+                case "Start":
+                    if (HasValues(e.ProposedValue, e.Row["Duration"]))
+                        e.Row["End"] = (DateTime)e.ProposedValue + (TimeSpan)e.Row["Duration"];
+                    else if (HasValues(e.Row["End"], e.ProposedValue))
+                        e.Row["Duration"] = (DateTime)e.Row["End"] - (DateTime)e.ProposedValue;
+                    break;
+                case "Duration":
+                    if (HasValues(e.Row["Start"], e.ProposedValue))
+                        e.Row["End"] = (DateTime)e.Row["Start"] + (TimeSpan)e.ProposedValue;
+                    else if (HasValues(e.ProposedValue, e.Row["End"]))
+                        e.Row["Start"] = (DateTime)e.Row["End"] - (TimeSpan)e.ProposedValue;
+                    break;
+                case "End":
+                    if (HasValues(e.Row["Start"], e.ProposedValue))
+                        e.Row["Duration"] = (DateTime)e.ProposedValue - (DateTime)e.Row["Start"];
+                    else if (HasValues(e.Row["Duration"], e.ProposedValue))
+                        e.Row["Start"] = (DateTime)e.ProposedValue - (TimeSpan)e.Row["Duration"];
+                    break;
+            }
+            isChanging = false;
+
+        }
+        private void CalculateActivitiesSummary()
+        {
             activitiesSummary.Clear();
-            foreach(DataRow theRow in data.Rows)
+            foreach (DataRow theRow in data.Rows)
             {
                 bool isRowAdded = false;
                 for (int iRowIndex = 0; iRowIndex < activitiesSummary.Rows.Count; iRowIndex++)
                 {
                     if (((string)activitiesSummary.Rows[iRowIndex]["Activity"] == (string)theRow["Activity"]) &&
-                        activitiesSummary.Rows[iRowIndex]["Spent"].GetType()!= Type.GetType("System.DBNull")
+                        activitiesSummary.Rows[iRowIndex]["Spent"].GetType() != Type.GetType("System.DBNull")
                         )
                     {
                         TimeSpan currentDuration = (TimeSpan)activitiesSummary.Rows[iRowIndex]["Spent"];
@@ -91,24 +127,33 @@ namespace LifeIdea.LazyCure.Core
                 }
             }
         }
-        private void data_ColumnChanging(object sender, DataColumnChangeEventArgs e)
+        /*
+        private static void CalculateTimeValues(DataRowChangeEventArgs e)
         {
-            if ((e.Column.ColumnName == "Start" || e.Column.ColumnName == "Duration") &&
-                e.Row["Duration"].GetType() != Type.GetType("System.DBNull") &&
-                e.Row["Start"].GetType() != Type.GetType("System.DBNull")
-                )
+            if (e.Action == DataRowAction.Add)
             {
-                e.Row["End"] = ((DateTime)(e.Row["Start"])) + ((TimeSpan)(e.Row["Duration"]));
-                return;
+                if (HasValues(e.Row["Duration"], e.Row["Start"]))
+                {
+                    DateTime endTime = (DateTime)e.Row["Start"] + (TimeSpan)e.Row["Duration"];
+                    e.Row["End"] = endTime;
+                    return;
+                }
+                if (HasValues(e.Row["Start"], e.Row["End"]))
+                {
+                    e.Row["Duration"] = (DateTime)e.Row["End"] - (DateTime)e.Row["Start"];
+                    return;
+                }
+                if (HasValues(e.Row["Duration"], e.Row["End"]))
+                {
+                    e.Row["Start"] = (DateTime)e.Row["End"] - (TimeSpan)e.Row["Duration"];
+                    return;
+                }
             }
-            if ((e.Column.ColumnName == "Start" || e.Column.ColumnName == "End") &&
-                e.Row["Start"].GetType() != Type.GetType("System.DBNull") &&
-                e.Row["End"].GetType() != Type.GetType("System.DBNull")
-                )
-            {
-                e.Row["Duration"] = (DateTime)e.Row["End"] - (DateTime)e.Row["Start"];
-                return;
-            }
+        }
+         * */
+        private static bool HasValues(object a, object b)
+        {
+            return !(Convert.IsDBNull(a) || Convert.IsDBNull(b));
         }
     }
 }
