@@ -61,11 +61,11 @@
     <Compile Include="Summary.Designer.cs">
       <DependentUpon>Summary.cs</DependentUpon>
     </Compile>
-    <Compile Include="TimeLog.cs">
+    <Compile Include="TimeLogEditor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TimeLog.Designer.cs">
-      <DependentUpon>TimeLog.cs</DependentUpon>
+    <Compile Include="TimeLogEditor.Designer.cs">
+      <DependentUpon>TimeLogEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="View.cs">
       <SubType>Form</SubType>
@@ -89,9 +89,9 @@
       <SubType>Designer</SubType>
       <DependentUpon>Summary.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TimeLog.resx">
+    <EmbeddedResource Include="TimeLogEditor.resx">
       <SubType>Designer</SubType>
-      <DependentUpon>TimeLog.cs</DependentUpon>
+      <DependentUpon>TimeLogEditor.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

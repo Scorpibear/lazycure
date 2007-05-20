@@ -5,6 +5,7 @@ using NUnit.Framework;
 using NMock2;
 using LifeIdea.LazyCure.Interfaces;
 using System.IO;
+using System.Data;
 
 namespace LifeIdea.LazyCure.Core
 {
@@ -19,7 +20,7 @@ namespace LifeIdea.LazyCure.Core
         {
             driver = new Driver();
             mocks = new Mockery();
-            Log.StreamWriter = new ConsoleWriter();
+            Log.Writer = new ConsoleWriter();
         }
         [Test]
         public void SaveTimeLog()
