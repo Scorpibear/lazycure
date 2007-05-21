@@ -15,7 +15,9 @@ namespace LifeIdea.LazyCure
         [STAThread]
         static void Main(string[] args)
         {
-            Log.TextWriter = System.IO.File.AppendText(Application.StartupPath + @"\LazyCure.log");
+            string logPath = Application.StartupPath + @"\LazyCure.log";
+            System.IO.TextWriter logWriter = new System.IO.StreamWriter(System.IO.File.Open(logPath, System.IO.FileMode.Append, System.IO.FileAccess.Write, System.IO.FileShare.Write));
+            Log.TextWriter = logWriter;
             CultureInfo info = new CultureInfo(Application.CurrentCulture.LCID);
             info.DateTimeFormat.LongTimePattern = "H:mm:ss";
             Application.CurrentCulture = info;
@@ -32,6 +34,7 @@ namespace LifeIdea.LazyCure
                 MessageBox.Show(ex.Message, "Error while reading application settings", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             Application.Run(new Main(driver));
+            logWriter.Close();
         }
     }
 }
