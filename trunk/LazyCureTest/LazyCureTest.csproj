@@ -74,6 +74,6 @@
   <PropertyGroup>
     <PreBuildEvent>
     </PreBuildEvent>
-    <PostBuildEvent>nunit-console.exe LazyCureTest.exe</PostBuildEvent>
+    <PostBuildEvent>nunit LazyCureTest.exe /run</PostBuildEvent>
   </PropertyGroup>
 </Project>
