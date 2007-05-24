@@ -13,7 +13,6 @@ namespace LifeIdea.LazyCure.Core
     public class TimeLog
     {
         private Activity currentActivity, previousActivity = null;
-        private List<IActivity> activitiesList = new List<IActivity>();
         private DataTable activitiesSummary;
         private DataTable data;
 
@@ -21,18 +20,17 @@ namespace LifeIdea.LazyCure.Core
         public IActivity PreviousActivity { get { return previousActivity; } }
         public DataTable ActivitiesSummary { get { return activitiesSummary; } }
         public DataTable Data { get { return data; } }
-
         public TimeLog(ITimeSystem timeSystem, string firstActivityName)
         {
             currentActivity = new Activity(firstActivityName, timeSystem);
-            activitiesList.Add(currentActivity);
+
             data = new DataTable("TimeLog");
 
             DataColumn startCol = data.Columns.Add("Start", Type.GetType("System.DateTime"));
             DataColumn activityCol = data.Columns.Add("Activity");
             DataColumn durationCol = data.Columns.Add("Duration", Type.GetType("System.TimeSpan"));
             DataColumn endCol = data.Columns.Add("End", Type.GetType("System.DateTime"));
-            DataView dataView = new DataView(data);
+
             activitiesSummary = new DataTable("ActivitiesSummary");
             activitiesSummary.Columns.Add("Activity");
             activitiesSummary.Columns.Add("Spent", Type.GetType("System.TimeSpan"));
@@ -42,6 +40,7 @@ namespace LifeIdea.LazyCure.Core
         public IActivity SwitchTo(string nextActivity)
         {
             currentActivity.Stop();
+
             DataRow newRow = data.NewRow();
             newRow["Activity"] = currentActivity.Name;
             newRow["Start"] = currentActivity.StartTime;
@@ -50,8 +49,6 @@ namespace LifeIdea.LazyCure.Core
             
             previousActivity = currentActivity;
             currentActivity = Activity.After(previousActivity, nextActivity);
-            activitiesList.Add(currentActivity);
-
             return currentActivity;
         }
         public void FinishActivity(string finishedActivity, string nextActivity)
@@ -63,9 +60,17 @@ namespace LifeIdea.LazyCure.Core
         {
             writer.WriteLine("<?xml version=\"1.0\" standalone=\"yes\"?>");
             writer.WriteLine("<LazyCureData>");
-            foreach (IActivity activity in activitiesList)
+            foreach (DataRow row in data.Rows)
+            {
+                Activity activity = new Activity(
+                    (string)row["Activity"],
+                    (DateTime)row["Start"],
+                    (TimeSpan)row["Duration"]
+                    );
                 writer.WriteLine(activity.ToString());
+            }
             writer.WriteLine("</LazyCureData>");
+
         }
 
         private void data_RowChanged(object sender, DataRowChangeEventArgs e)

@@ -14,13 +14,12 @@ namespace LifeIdea.LazyCure.Core
     {
         Driver driver;
         private Mockery mocks;
-        class ConsoleWriter : IWriter { public void WriteLine(string s) { Console.WriteLine(s); } }
         [SetUp]
         public void SetUp()
         {
             driver = new Driver();
             mocks = new Mockery();
-            Log.Writer = new ConsoleWriter();
+            Log.TextWriter = new MockWriter();
         }
         [Test]
         public void SaveTimeLog()
@@ -64,12 +63,13 @@ namespace LifeIdea.LazyCure.Core
                 Expect.Once.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(startTime));
                 Expect.Once.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(endTime));
             }
-            Driver.FirstActivityName = "arrangement";
             driver = new Driver(mockTimeSystem);
+            driver.FinishActivity("arrangement","second");
             driver.TimeLogsFolder = folder;
             Assert.IsTrue(driver.SaveTimeLog());
             StreamReader stream = File.OpenText(filename);
             string sRealContent = stream.ReadToEnd();
+            Console.WriteLine(sRealContent);
             stream.Close();
             foreach (string s in sExpectedContent)
                 Assert.IsTrue(sRealContent.Contains(s),s);

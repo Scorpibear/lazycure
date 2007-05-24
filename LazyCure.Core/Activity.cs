@@ -9,10 +9,10 @@ namespace LifeIdea.LazyCure.Core
     {
         private string name;
         private TimeSpan duration;
-        private DateTime startTime;
+        private DateTime start;
 
         public string Name { get { return name; } set { name = value; } }
-        public DateTime StartTime{get{return startTime;}set{startTime=value;}}
+        public DateTime StartTime{get{return start;}set{start=value;}}
         public TimeSpan Duration
         {
             get
@@ -31,14 +31,21 @@ namespace LifeIdea.LazyCure.Core
         {
             this.name = name;
             this.timeSystem = timeSystem;
-            this.startTime = timeSystem.Now;
+            this.start = timeSystem.Now;
         }
         public Activity(string name):this(name,new RunTimeSystem()) { }
+        public Activity(string name, DateTime start, TimeSpan duration)
+        {
+            this.name = name;
+            this.start = start;
+            this.duration = duration;
+            IsRunning = false;
+        }
         private Activity(string name, Activity previous)
         {
             this.name = name;
             this.timeSystem = previous.timeSystem;
-            this.startTime = previous.startTime + previous.duration;
+            this.start = previous.start + previous.duration;
         }
 
         public void Stop()

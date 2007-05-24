@@ -37,6 +37,7 @@ namespace LifeIdea.LazyCure.Core
         public void TestTimeLogContentAfterSave()
         {
             MockWriter mockWriter = new MockWriter();
+            timeLog.SwitchTo("second");
             timeLog.Save(mockWriter);
             Assert.IsTrue(mockWriter.Content.Contains("first"), "activity");
             Assert.IsTrue(mockWriter.Content.Contains("5:00:00"), "start");
@@ -50,6 +51,7 @@ namespace LifeIdea.LazyCure.Core
                 "<Activity>first</Activity>","<Begin>5:00:00</Begin>","<Duration>0:06:43</Duration>",
                 "</Records>","</LazyCureData>"};
             MockWriter mockWriter = new MockWriter();
+            timeLog.SwitchTo("second");
             timeLog.Save(mockWriter);
             foreach (string s in sExpectedContent)
                 Assert.IsTrue(mockWriter.Content.Contains(s), s);
