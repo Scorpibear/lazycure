@@ -4,6 +4,7 @@ using System.Text;
 using System.IO;
 using LifeIdea.LazyCure.Interfaces;
 using System.Data;
+using System.Xml;
 
 namespace LifeIdea.LazyCure.Core
 {
@@ -41,11 +42,7 @@ namespace LifeIdea.LazyCure.Core
         {
             currentActivity.Stop();
 
-            DataRow newRow = data.NewRow();
-            newRow["Activity"] = currentActivity.Name;
-            newRow["Start"] = currentActivity.StartTime;
-            newRow["Duration"] = currentActivity.Duration;
-            data.Rows.Add(newRow);
+            AddNewRow(currentActivity.Name, currentActivity.StartTime, currentActivity.Duration);
             
             previousActivity = currentActivity;
             currentActivity = Activity.After(previousActivity, nextActivity);
@@ -73,6 +70,43 @@ namespace LifeIdea.LazyCure.Core
 
         }
 
+        internal void Load(string filename)
+        {
+            XmlDocument document = new XmlDocument();
+            document.Load(filename);
+            Console.WriteLine(document.DocumentElement.ChildNodes.Count);
+            foreach (XmlNode node in document.DocumentElement.ChildNodes)
+            {
+                DateTime start = new DateTime();
+                TimeSpan duration = new TimeSpan();
+                string name = null;
+                foreach (XmlNode parameter in node.ChildNodes)
+                {
+                    switch (parameter.Name)
+                    {
+                        case "Begin":
+                            start = DateTime.Parse(parameter.InnerText);
+                            break;
+                        case "Duration":
+                            duration = TimeSpan.Parse(parameter.InnerText);
+                            break;
+                        case "Activity":
+                            name = parameter.InnerText;
+                            break;
+                    }
+                }
+                AddNewRow(name, start, duration);
+            }
+        }
+
+        private void AddNewRow(string name, DateTime start, TimeSpan duration)
+        {
+            DataRow row = data.NewRow();
+            row["Activity"] = name;
+            row["Start"] = start;
+            row["Duration"] = duration;
+            data.Rows.Add(row);
+        }
         private void data_RowChanged(object sender, DataRowChangeEventArgs e)
         {
             CalculateActivitiesSummary();
@@ -160,5 +194,6 @@ namespace LifeIdea.LazyCure.Core
         {
             return !(Convert.IsDBNull(a) || Convert.IsDBNull(b));
         }
+
     }
 }

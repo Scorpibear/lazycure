@@ -33,6 +33,7 @@ namespace LifeIdea.LazyCure
             {
                 MessageBox.Show(ex.Message, "Error while reading application settings", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+            driver.LoadTimeLog(DateTime.Now);
             Application.Run(new Main(driver));
             logWriter.Close();
         }
