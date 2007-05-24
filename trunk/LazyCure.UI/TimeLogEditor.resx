@@ -232,6 +232,6 @@
     <value>TimeLogEditor</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>LifeIdea.LazyCure.UI.View, LazyCure.UI, Version=3.1.0.3, Culture=neutral, PublicKeyToken=null</value>
+    <value>LifeIdea.LazyCure.UI.View, LazyCure.UI, Version=3.1.0.5, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

@@ -86,6 +86,8 @@ namespace LifeIdea.LazyCure.Core
         {
             timeLog.SwitchTo("second");
             timeLog.SwitchTo("third");
+            // this should not be saved, as it is not completed.
+            timeLog.SwitchTo("fourth");
             MockWriter mockWriter = new MockWriter();
             timeLog.Save(mockWriter);
             Assert.IsTrue(mockWriter.Content.Contains("first"),"first");
@@ -262,6 +264,15 @@ namespace LifeIdea.LazyCure.Core
             timeLog.Data.Rows.Add(theRow);
             timeLog.Data.Rows[0]["End"] = DateTime.Parse("16:12:34");
             Assert.AreEqual(TimeSpan.Parse("01:12:34"), timeLog.Data.Rows[0]["Duration"]);
+        }
+        [Test]
+        public void ChangesSaved()
+        {
+            timeLog.SwitchTo("second");
+            timeLog.Data.Rows[0]["Activity"] = "changed";
+            MockWriter mockWriter = new MockWriter();
+            timeLog.Save(mockWriter);
+            Assert.IsTrue(mockWriter.Content.Contains("changed"));
         }
     }
 }
