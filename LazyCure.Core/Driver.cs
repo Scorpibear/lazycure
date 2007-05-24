@@ -50,7 +50,7 @@ namespace LifeIdea.LazyCure.Core
             try
             {
                 Directory.CreateDirectory(TimeLogsFolder);
-                stream = File.CreateText(TimeLogsFolder + @"\" + CurrentActivity.StartTime.ToString("yyyy-MM-dd") + ".timelog");
+                stream = File.CreateText(GetTimeLogFileNameByDate(CurrentActivity.StartTime));
             }
             catch (Exception ex)
             {
@@ -60,6 +60,30 @@ namespace LifeIdea.LazyCure.Core
             timeLog.Save(stream);
             stream.Close();
             return true;
+        }
+        public bool LoadTimeLog(DateTime date)
+        {
+            string filename = GetTimeLogFileNameByDate(date);
+            try
+            {
+                if (File.Exists(filename))
+                {
+                    timeLog.Load(filename);
+                    return true;
+                }
+                else
+                    return false;
+            }
+            catch (Exception ex)
+            {
+                Log.Exception(ex);
+                return false;
+            }
+        }
+
+        private string GetTimeLogFileNameByDate(DateTime date)
+        {
+            return TimeLogsFolder + @"\" + date.ToString("yyyy-MM-dd") + ".timelog";
         }
     }
 }
