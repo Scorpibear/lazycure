@@ -1,4 +1,4 @@
-VisualStudio 8.0 and NUnit 2.0 have to be installed in order to perform developing activities. 'bin' folder of NUnit 2.0 have to be added to 'PATH' environment variable.
+VisualStudio 8.0 and NUnit 2.4 have to be installed in order to perform developing activities. 'bin' folder of NUnit 2.4 have to be added to 'PATH' environment variable.
 
 Rules for developers:
 1. Bug. Assign a bug to yourself before introducing any code changes.
