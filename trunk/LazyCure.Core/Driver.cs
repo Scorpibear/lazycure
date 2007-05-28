@@ -37,11 +37,11 @@ namespace LifeIdea.LazyCure.Core
             IActivity nextActivity = timeLog.SwitchTo(nextActivityName);
             return nextActivity;
         }
-
         public void FinishActivity(string finishedActivity, string nextActivity)
         {
             timeLog.FinishActivity(finishedActivity, nextActivity);
         }
+        public string TimeLogDate { get { return timeLog.Day.ToString("yyyy-MM-dd"); } }
         #endregion
 
         public bool SaveTimeLog()
@@ -68,7 +68,7 @@ namespace LifeIdea.LazyCure.Core
             {
                 if (File.Exists(filename))
                 {
-                    timeLog.Load(filename);
+                    timeLog.Load(filename,date);
                     return true;
                 }
                 else
