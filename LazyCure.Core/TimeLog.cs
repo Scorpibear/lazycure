@@ -16,14 +16,17 @@ namespace LifeIdea.LazyCure.Core
         private Activity currentActivity, previousActivity = null;
         private DataTable activitiesSummary;
         private DataTable data;
+        private DateTime day;
 
         public IActivity CurrentActivity { get { return currentActivity; } }
         public IActivity PreviousActivity { get { return previousActivity; } }
         public DataTable ActivitiesSummary { get { return activitiesSummary; } }
         public DataTable Data { get { return data; } }
+        public DateTime Day { get { return day; } }
         public TimeLog(ITimeSystem timeSystem, string firstActivityName)
         {
             currentActivity = new Activity(firstActivityName, timeSystem);
+            day = currentActivity.StartTime;
 
             data = new DataTable("TimeLog");
 
@@ -70,7 +73,7 @@ namespace LifeIdea.LazyCure.Core
 
         }
 
-        internal void Load(string filename)
+        internal void Load(string filename, DateTime day)
         {
             XmlDocument document = new XmlDocument();
             document.Load(filename);
@@ -97,6 +100,7 @@ namespace LifeIdea.LazyCure.Core
                 }
                 AddNewRow(name, start, duration);
             }
+            this.day = day;
         }
 
         private void AddNewRow(string name, DateTime start, TimeSpan duration)

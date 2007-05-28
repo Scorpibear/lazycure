@@ -13,5 +13,6 @@ namespace LifeIdea.LazyCure.Interfaces
         object TimeLogData { get;}
         void FinishActivity(string finishedActivity, string nextActivity);
         bool SaveTimeLog();
+        string TimeLogDate { get;}
     }
 }

@@ -96,6 +96,7 @@ namespace LifeIdea.LazyCure.Core
             Assert.AreEqual("changed", row["Activity"],"activity name match");
             Assert.AreEqual(DateTime.Parse("14:35:02"), row["Start"], "start match");
             Assert.AreEqual(TimeSpan.Parse("0:00:07"), row["Duration"], "duration match");
+            Assert.AreEqual(date.ToString("yyyy-MM-dd"), driver.TimeLogDate, "current day changed");
         }
         [Test]
         public void LoadTwoActivites()
@@ -148,6 +149,11 @@ namespace LifeIdea.LazyCure.Core
             writer.Close();
             driver.TimeLogsFolder = folder;
             Assert.IsFalse(driver.LoadTimeLog(date));
+        }
+        [Test]
+        public void TimeLogDate()
+        {
+            Assert.AreEqual(DateTime.Now.ToString("yyyy-MM-dd"), driver.TimeLogDate);
         }
     }
 }

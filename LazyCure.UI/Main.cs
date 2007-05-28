@@ -21,13 +21,19 @@ namespace LifeIdea.LazyCure.UI
             InitializeComponent();
             this.lazyCure = driver;
             timer.Start();
+            SetCaption();
             this.currentActivity.Text = lazyCure.CurrentActivity.Name;
             UpdateActivityStartTime();
             timeLogView = new TimeLogEditor(lazyCure);
             summaryView = new Summary(lazyCure);
             aboutBox = new AboutBox();
         }
-
+        private void SetCaption()
+        {
+            string[] versionNumbers = Application.ProductVersion.Split('.');
+            this.Text = String.Format("{0} - {1} {2}.{3}",lazyCure.TimeLogDate,Application.ProductName,
+                versionNumbers[0],versionNumbers[1]);
+        }
         private void UpdateActivityStartTime()
         {
             this.activityStartTime.Text = Format.Time(lazyCure.CurrentActivity.StartTime);
