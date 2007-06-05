@@ -8,7 +8,8 @@ using LifeIdea.LazyCure.Interfaces;
 
 namespace LifeIdea.LazyCure.UI
 {
-    [TestFixture]
+    //too slow for running every build. Run after introducing changes in Main
+    //[TestFixture]
     public class MainTest
     {
         private Main form;

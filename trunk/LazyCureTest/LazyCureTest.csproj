@@ -43,8 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActivityTest.cs" />
     <Compile Include="AllTests.cs" />
     <Compile Include="DriverTest.cs" />
+    <Compile Include="LiveActivityTest.cs" />
     <Compile Include="MainTest.cs" />
     <Compile Include="MockWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

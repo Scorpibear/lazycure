@@ -13,19 +13,43 @@ namespace LifeIdea.LazyCure.Core
     /// </summary>
     public class TimeLog
     {
-        private Activity currentActivity, previousActivity = null;
+        private LiveActivity currentActivity, previousActivity = null;
         private DataTable activitiesSummary;
         private DataTable data;
         private DateTime day;
 
         public IActivity CurrentActivity { get { return currentActivity; } }
-        public IActivity PreviousActivity { get { return previousActivity; } }
         public DataTable ActivitiesSummary { get { return activitiesSummary; } }
         public DataTable Data { get { return data; } }
         public DateTime Day { get { return day; } }
+        public List<IActivity> Activities
+        {
+            get
+            {
+                List<IActivity> activities = new List<IActivity>();
+                foreach (DataRow row in data.Rows)
+                {
+                    IActivity activity = new Activity(
+                        (string)row["Activity"],
+                        (DateTime)row["Start"],
+                        (TimeSpan)row["Duration"]
+                        );
+                    activities.Add(activity);
+                }
+                return activities;
+            }
+            set
+            {
+                data.Clear();
+                foreach (IActivity activity in value)
+                {
+                    AddNewActivity(activity.Name, activity.StartTime, activity.Duration);
+                }
+            }
+        }
         public TimeLog(ITimeSystem timeSystem, string firstActivityName)
         {
-            currentActivity = new Activity(firstActivityName, timeSystem);
+            currentActivity = new LiveActivity(firstActivityName, timeSystem);
             day = currentActivity.StartTime;
 
             data = new DataTable("TimeLog");
@@ -45,10 +69,10 @@ namespace LifeIdea.LazyCure.Core
         {
             currentActivity.Stop();
 
-            AddNewRow(currentActivity.Name, currentActivity.StartTime, currentActivity.Duration);
+            AddNewActivity(currentActivity.Name, currentActivity.StartTime, currentActivity.Duration);
             
             previousActivity = currentActivity;
-            currentActivity = Activity.After(previousActivity, nextActivity);
+            currentActivity = LiveActivity.After(previousActivity, nextActivity);
             return currentActivity;
         }
         public void FinishActivity(string finishedActivity, string nextActivity)
@@ -73,11 +97,11 @@ namespace LifeIdea.LazyCure.Core
 
         }
 
-        internal void Load(string filename, DateTime day)
+        public void Load(string filename)
         {
             XmlDocument document = new XmlDocument();
             document.Load(filename);
-            Console.WriteLine(document.DocumentElement.ChildNodes.Count);
+            Data.Clear();
             foreach (XmlNode node in document.DocumentElement.ChildNodes)
             {
                 DateTime start = new DateTime();
@@ -98,12 +122,12 @@ namespace LifeIdea.LazyCure.Core
                             break;
                     }
                 }
-                AddNewRow(name, start, duration);
+                AddNewActivity(name, start, duration);
             }
-            this.day = day;
+            this.day = DateTime.Parse(new FileInfo(filename).Name.Split('.')[0]);;
         }
 
-        private void AddNewRow(string name, DateTime start, TimeSpan duration)
+        private void AddNewActivity(string name, DateTime start, TimeSpan duration)
         {
             DataRow row = data.NewRow();
             row["Activity"] = name;

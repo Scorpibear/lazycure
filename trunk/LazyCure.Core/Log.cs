@@ -24,7 +24,11 @@ namespace LifeIdea.LazyCure.Core
         public static void Exception(Exception ex)
         {
             Writer.WriteLine(ex.Message);
-            Writer.WriteLine(ex.Source);
+            Writer.WriteLine(ex.StackTrace);
+        }
+        public static void Error(string text)
+        {
+            Writer.WriteLine(text);
         }
     }
     

@@ -8,11 +8,14 @@ namespace LifeIdea.LazyCure.Interfaces
     {
         IActivity SwitchTo(string nextTaskName);
         IActivity CurrentActivity { get;}
-        IActivity PreviousActivity { get;}
         object ActivitiesSummaryData{get;}
         object TimeLogData { get;}
         void FinishActivity(string finishedActivity, string nextActivity);
         bool SaveTimeLog();
+        bool SaveTimeLog(string filename);
         string TimeLogDate { get;}
+
+        bool LoadTimeLog(string filename);
+        string TimeLogsFolder { get;}
     }
 }

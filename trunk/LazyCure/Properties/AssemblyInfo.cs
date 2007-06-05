@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("LazyCure")]
-[assembly: AssemblyDescription("Tool for tracking and improving personal efficiency")]
+[assembly: AssemblyDescription("Tool for easy time logging, time analysis, calculation and improving personal efficiency. First version of LazyCure was issued in November 2003 by Mikhail Subach (aka Scorpibear).")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("LifeIdea.org")]
 [assembly: AssemblyProduct("LazyCure")]
-[assembly: AssemblyCopyright("Copyright © LifeIdea.org 2003-2007")]
+[assembly: AssemblyCopyright("Free Open Source under GNU Public license")]
 [assembly: AssemblyTrademark("LazyCure")]
 [assembly: AssemblyCulture("")]
 

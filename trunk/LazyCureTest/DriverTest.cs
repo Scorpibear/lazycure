@@ -14,12 +14,14 @@ namespace LifeIdea.LazyCure.Core
     {
         Driver driver;
         private Mockery mocks;
+        private MockWriter mockWriter;
         [SetUp]
         public void SetUp()
         {
             driver = new Driver();
             mocks = new Mockery();
-            Log.TextWriter = new MockWriter();
+            mockWriter = new MockWriter();
+            Log.TextWriter = mockWriter;
         }
         [Test]
         public void SaveTimeLog()
@@ -36,15 +38,37 @@ namespace LifeIdea.LazyCure.Core
 
             driver = new Driver(mockTimeSystem);
             driver.TimeLogsFolder = folder;
+        
+            if (driver.SaveTimeLog())
+                Assert.Contains(filename, Directory.GetFiles(folder));
+            else
+                Assert.Fail(mockWriter.Content);
+        }
+        [Test]
+        public void SaveTimeLogSpecifyFileName()
+        {
+            string folder = @"c:\temp\LazyCure\test\TimeLogs";
+            string filename = folder + @"\2007-11-17.timelog";
+            if (Directory.Exists(folder))
+            {
+                Directory.Delete(folder, true);
+            }
+            ITimeSystem mockTimeSystem = mocks.NewMock<ITimeSystem>();
+            Stub.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(DateTime.Parse("2007-11-18 5:00:00")));
 
-            Assert.IsTrue(driver.SaveTimeLog());
-            Assert.Contains(filename,Directory.GetFiles(folder));
+            driver = new Driver(mockTimeSystem);
+
+            if (driver.SaveTimeLog(filename))
+                Assert.Contains(filename, Directory.GetFiles(folder));
+            else
+                Assert.Fail(mockWriter.Content);
         }
         [Test]
         public void NullTimeLogs()
         {
             driver.TimeLogsFolder = "";
             Assert.IsFalse(driver.SaveTimeLog());
+            Assert.AreEqual("TimeLogsFolder is not specified", mockWriter.Content);
         }
 
         [Test]
@@ -87,6 +111,8 @@ namespace LifeIdea.LazyCure.Core
             string filename = folder + @"\2126-11-18.timelog";
             if (File.Exists(filename))
                 File.Delete(filename);
+            if (!Directory.Exists(folder))
+                Directory.CreateDirectory(folder);
             StreamWriter writer = File.CreateText(filename);
             writer.Write(sContent);
             writer.Close();
@@ -97,6 +123,30 @@ namespace LifeIdea.LazyCure.Core
             Assert.AreEqual(DateTime.Parse("14:35:02"), row["Start"], "start match");
             Assert.AreEqual(TimeSpan.Parse("0:00:07"), row["Duration"], "duration match");
             Assert.AreEqual(date.ToString("yyyy-MM-dd"), driver.TimeLogDate, "current day changed");
+        }
+        [Test]
+        public void LoadSpecifiedTimeLog()
+        {
+            string sContent = "<?xml version=\"1.0\" standalone=\"yes\"?><LazyCureData><Records>" +
+                "<Activity>changed</Activity><Begin>14:35:02</Begin><Duration>0:00:07</Duration>" +
+                "</Records></LazyCureData>";
+                        
+            FileInfo fileInfo = new FileInfo(@"c:\temp\LazyCure\test\TimeLogs\2126-11-18.timelog");
+            fileInfo.Directory.Create();
+            StreamWriter writer = fileInfo.CreateText();
+            writer.Write(sContent);
+            writer.Close();
+            driver.FinishActivity("should be removed after load","next");
+            if (driver.LoadTimeLog(fileInfo.FullName))
+            {
+                DataRow row = (driver.TimeLogData as DataTable).Rows[0];
+                Assert.AreEqual("changed", row["Activity"], "activity name match");
+                Assert.AreEqual(DateTime.Parse("14:35:02"), row["Start"], "start match");
+                Assert.AreEqual(TimeSpan.Parse("0:00:07"), row["Duration"], "duration match");
+                Assert.AreEqual("2126-11-18", driver.TimeLogDate, "current day changed");
+            }
+            else
+                Assert.Fail(mockWriter.Content);
         }
         [Test]
         public void LoadTwoActivites()
@@ -114,6 +164,8 @@ namespace LifeIdea.LazyCure.Core
             string filename = folder + @"\2025-12-31.timelog";
             if (File.Exists(filename))
                 File.Delete(filename);
+            if (!Directory.Exists(folder))
+                Directory.CreateDirectory(folder);
             StreamWriter writer = File.CreateText(filename);
             writer.Write(sContent);
             writer.Close();
@@ -144,6 +196,8 @@ namespace LifeIdea.LazyCure.Core
             string filename = folder + @"\2126-11-18.timelog";
             if (File.Exists(filename))
                 File.Delete(filename);
+            if (!Directory.Exists(folder))
+                Directory.CreateDirectory(folder);
             StreamWriter writer = File.CreateText(filename);
             writer.Write(sBrokenContent);
             writer.Close();
@@ -154,6 +208,23 @@ namespace LifeIdea.LazyCure.Core
         public void TimeLogDate()
         {
             Assert.AreEqual(DateTime.Now.ToString("yyyy-MM-dd"), driver.TimeLogDate);
+        }
+        [Test]
+        public void CurrentActivityDuration()
+        {
+            DateTime startTime = DateTime.Parse("5:00:00");
+            TimeSpan duration = TimeSpan.FromMinutes(15);
+            DateTime endTime = startTime + duration;
+
+            ITimeSystem mockTimeSystem = mocks.NewMock<ITimeSystem>();
+
+            using (mocks.Ordered)
+            {
+                Expect.Once.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(startTime));
+                Expect.Once.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(endTime));
+            }
+            driver = new Driver(mockTimeSystem);
+            Assert.AreEqual(duration, driver.CurrentActivity.Duration);
         }
     }
 }
