@@ -43,43 +43,20 @@ namespace LifeIdea.LazyCure.Core
             Assert.AreEqual(startTime, timeLog.CurrentActivity.StartTime);
         }
         [Test]
-        public void CurrentActivityDuration()
-        {
-            TimeSpan duration = TimeSpan.FromMinutes(15);
-            DateTime endTime = startTime + duration;
-
-            ITimeSystem mockTimeSystem = mocks.NewMock<ITimeSystem>();
-
-            using (mocks.Ordered)
-            {
-                Expect.Once.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(startTime));
-                Expect.Once.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(endTime));
-            }
-            TimeLog timeLog = new TimeLog(mockTimeSystem,"first");
-            Assert.AreEqual(duration, timeLog.CurrentActivity.Duration);
-        }
-        [Test]
-        public void ReturnsPreviousActivity()
-        {
-            timeLog.SwitchTo("task2");
-            Assert.AreEqual("first", timeLog.PreviousActivity.Name);
-        }
-        [Test]
         public void FinishActivity()
         {
             string finishedActivity = "prev";
             string currentActivity = "next";
             timeLog.FinishActivity(finishedActivity, currentActivity);
-            Assert.AreEqual(finishedActivity, timeLog.PreviousActivity.Name, "previous check");
+            Assert.AreEqual(finishedActivity, timeLog.Activities[0].Name, "previous check");
             Assert.AreEqual(currentActivity, timeLog.CurrentActivity.Name, "current check");
         }
         [Test]
-        public void FinishedActivityReusesCurrentActivity()
+        public void CurrentActivityDiffersFromFinished()
         {
             IActivity currentActivity = timeLog.CurrentActivity;
             timeLog.FinishActivity("prev", "next");
-            Assert.AreSame(currentActivity, timeLog.PreviousActivity, "last current now is previous");
-            Assert.AreNotSame(timeLog.PreviousActivity, timeLog.CurrentActivity, "current and previous different");
+            Assert.AreNotSame(timeLog.Activities[0], timeLog.CurrentActivity, "current and previous different");
         }
         [Test]
         public void SaveThreeActivities()

@@ -11,9 +11,10 @@ namespace LifeIdea.LazyCure.Core
     {
         private ITimeSystem timeSystem;
         private TimeLog timeLog;
+        private string timeLogsFolder;
 
         public static string FirstActivityName = "starting LazyCure";
-        public string TimeLogsFolder;
+        public string TimeLogsFolder { get { return timeLogsFolder; } set { timeLogsFolder = value; } }
 
         public Driver(ITimeSystem timeSystem)
         {
@@ -24,7 +25,6 @@ namespace LifeIdea.LazyCure.Core
 
         #region ILazyCureDriver Members
         public IActivity CurrentActivity { get { return timeLog.CurrentActivity; } }
-        public IActivity PreviousActivity { get { return timeLog.PreviousActivity; } }
         public object ActivitiesSummaryData { get { return timeLog.ActivitiesSummary; } }
         public object TimeLogData { get { return timeLog.Data; } }
         /// <summary>
@@ -42,15 +42,46 @@ namespace LifeIdea.LazyCure.Core
             timeLog.FinishActivity(finishedActivity, nextActivity);
         }
         public string TimeLogDate { get { return timeLog.Day.ToString("yyyy-MM-dd"); } }
+        public bool LoadTimeLog(string filename)
+        {
+            try
+            {
+                if (File.Exists(filename))
+                {
+                    timeLog.Load(filename);
+                    return true;
+                }
+                else
+                {
+                    Log.Error("Specified file does not exist");
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Exception(ex);
+                return false;
+            }
+        }
         #endregion
 
         public bool SaveTimeLog()
         {
+            if (timeLogsFolder == "")
+            {
+                Log.Error("TimeLogsFolder is not specified");
+                return false;
+            }
+            return SaveTimeLog(GetTimeLogFileNameByDate(timeLog.Day));
+        }
+        public bool SaveTimeLog(string filename)
+        {
             StreamWriter stream = null;
             try
             {
-                Directory.CreateDirectory(TimeLogsFolder);
-                stream = File.CreateText(GetTimeLogFileNameByDate(CurrentActivity.StartTime));
+                FileInfo fileInfo = new FileInfo(filename);
+                fileInfo.Directory.Create();
+                stream = fileInfo.CreateText();
             }
             catch (Exception ex)
             {
@@ -64,21 +95,7 @@ namespace LifeIdea.LazyCure.Core
         public bool LoadTimeLog(DateTime date)
         {
             string filename = GetTimeLogFileNameByDate(date);
-            try
-            {
-                if (File.Exists(filename))
-                {
-                    timeLog.Load(filename,date);
-                    return true;
-                }
-                else
-                    return false;
-            }
-            catch (Exception ex)
-            {
-                Log.Exception(ex);
-                return false;
-            }
+            return LoadTimeLog(filename);
         }
 
         private string GetTimeLogFileNameByDate(DateTime date)

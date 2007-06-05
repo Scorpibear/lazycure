@@ -13,20 +13,15 @@ namespace LifeIdea.LazyCure.UI
     public partial class Main : Form
     {
         ILazyCureDriver lazyCure;
-        ITimeLogView timeLogView;
-        ISummaryView summaryView;
-        AboutBox aboutBox;
         public Main(ILazyCureDriver driver)
         {
             InitializeComponent();
             this.lazyCure = driver;
+            Dialogs.LazyCureDriver = driver;
             timer.Start();
             SetCaption();
             this.currentActivity.Text = lazyCure.CurrentActivity.Name;
             UpdateActivityStartTime();
-            timeLogView = new TimeLogEditor(lazyCure);
-            summaryView = new Summary(lazyCure);
-            aboutBox = new AboutBox();
         }
         private void SetCaption()
         {
@@ -41,7 +36,7 @@ namespace LifeIdea.LazyCure.UI
 
         private void showTimeLog_Click(object sender, EventArgs e)
         {
-            timeLogView.Show();
+            Dialogs.TimeLog.Show();
         }
 
         private void switchButton_Click(object sender, EventArgs e)
@@ -66,7 +61,7 @@ namespace LifeIdea.LazyCure.UI
 
         private void miShowSummary_Click(object sender, EventArgs e)
         {
-            summaryView.Show();
+            Dialogs.Summary.Show();
         }
 
         private void miActivityDetails_Click(object sender, EventArgs e)
@@ -90,7 +85,7 @@ namespace LifeIdea.LazyCure.UI
 
         private void miAbout_Click(object sender, EventArgs e)
         {
-            aboutBox.Show();
+            Dialogs.About.Show();
         }
 
         private void miOnline_Click(object sender, EventArgs e)
@@ -123,6 +118,26 @@ namespace LifeIdea.LazyCure.UI
         private void notifyIcon_DoubleClick(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Normal;
+        }
+
+        private void miOpen_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openDialog = Dialogs.Open;
+            DialogResult result = openDialog.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                lazyCure.LoadTimeLog(openDialog.FileName);
+                SetCaption();
+            }
+        }
+        
+        private void miSaveAs_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveDialog = Dialogs.Save;
+            if (saveDialog.ShowDialog() == DialogResult.OK)
+            {
+                lazyCure.SaveTimeLog(saveDialog.FileName);
+            }
         }
     }
 }
