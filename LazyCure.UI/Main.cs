@@ -12,7 +12,9 @@ namespace LifeIdea.LazyCure.UI
 {
     public partial class Main : Form
     {
-        ILazyCureDriver lazyCure;
+        private ILazyCureDriver lazyCure;
+        private string nextActivity = "(specify what you are doing)";
+
         public Main(ILazyCureDriver driver)
         {
             InitializeComponent();
@@ -20,7 +22,7 @@ namespace LifeIdea.LazyCure.UI
             Dialogs.LazyCureDriver = driver;
             timer.Start();
             SetCaption();
-            this.currentActivity.Text = lazyCure.CurrentActivity.Name;
+            UpdateCurrentActivity();
             UpdateActivityStartTime();
         }
         private void SetCaption()
@@ -41,11 +43,17 @@ namespace LifeIdea.LazyCure.UI
 
         private void switchButton_Click(object sender, EventArgs e)
         {
-            string nextActivity = "(specify what you are doing)";
             lazyCure.FinishActivity(this.currentActivity.Text,nextActivity);
-            this.currentActivity.Text = nextActivity;
+            UpdateCurrentActivity();
             UpdateActivityStartTime();
             currentActivity.SelectAll();
+        }
+
+        private void UpdateCurrentActivity()
+        {
+            currentActivity.Text = nextActivity;
+            currentActivity.Items.Clear();
+            currentActivity.Items.AddRange(lazyCure.LatestActivities);
         }
 
         private void timer_Tick(object sender, EventArgs e)

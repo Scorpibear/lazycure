@@ -59,19 +59,6 @@ namespace LifeIdea.LazyCure.Core
             Assert.AreNotSame(timeLog.Activities[0], timeLog.CurrentActivity, "current and previous different");
         }
         [Test]
-        public void SaveThreeActivities()
-        {
-            timeLog.SwitchTo("second");
-            timeLog.SwitchTo("third");
-            // this should not be saved, as it is not completed.
-            timeLog.SwitchTo("fourth");
-            MockWriter mockWriter = new MockWriter();
-            timeLog.Save(mockWriter);
-            Assert.IsTrue(mockWriter.Content.Contains("first"),"first");
-            Assert.IsTrue(mockWriter.Content.Contains("second"),"second");
-            Assert.IsTrue(mockWriter.Content.Contains("third"), "third");
-        }
-        [Test]
         public void DataColumns()
         {
             Assert.AreEqual(Type.GetType("System.String"), timeLog.Data.Columns["Activity"].DataType, "Activity column");

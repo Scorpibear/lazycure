@@ -24,6 +24,8 @@ namespace LifeIdea.LazyCure
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Driver driver = new Driver();
+            string historyFilename = Application.StartupPath + @"\history.txt";
+            driver.LoadHistory(historyFilename);
             try
             {
                 LazyCureSettings settings = new LazyCureSettings();
@@ -35,6 +37,7 @@ namespace LifeIdea.LazyCure
             }
             driver.LoadTimeLog(DateTime.Now);
             Application.Run(new Main(driver));
+            driver.SaveHistory(historyFilename);
             logWriter.Close();
         }
     }
