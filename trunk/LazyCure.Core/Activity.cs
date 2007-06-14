@@ -26,12 +26,7 @@ namespace LifeIdea.LazyCure.Core
         public DateTime StartTime {get { return start; } set { start=value; } }
         public override string ToString()
         {
-            string s = "<Records>" +
-               "<Activity>"+Name+"</Activity>" + 
-               "<Begin>"+Format.Time(StartTime)+"</Begin>"+
-               "<Duration>"+Format.Duration(Duration)+"</Duration>"+
-               "</Records>";
-            return s;
+            return Serializer.ActivityToString(this);
         }
     }
 }

@@ -12,6 +12,7 @@ namespace LifeIdea.LazyCure.Core
         private ITimeSystem timeSystem;
         private TimeLog timeLog;
         private string timeLogsFolder;
+        private History history;
 
         public static string FirstActivityName = "starting LazyCure";
         public string TimeLogsFolder { get { return timeLogsFolder; } set { timeLogsFolder = value; } }
@@ -20,26 +21,26 @@ namespace LifeIdea.LazyCure.Core
         {
             this.timeSystem = timeSystem;
             timeLog = new TimeLog(timeSystem, FirstActivityName);
+            history = new History();
         }
         public Driver() : this(new RunTimeSystem()) { }
-
+        public void LoadHistory(string filename)
+        {
+            history.Load(filename);
+        }
+        public void SaveHistory(string filename)
+        {
+            history.Save(filename);
+        }
         #region ILazyCureDriver Members
+
         public IActivity CurrentActivity { get { return timeLog.CurrentActivity; } }
         public object ActivitiesSummaryData { get { return timeLog.ActivitiesSummary; } }
         public object TimeLogData { get { return timeLog.Data; } }
-        /// <summary>
-        /// switch from one activity to another
-        /// </summary>
-        /// <param name="nextActivity">name of next activity</param>
-        /// <returns>activity after switching</returns>
-        public IActivity SwitchTo(string nextActivityName)
-        {
-            IActivity nextActivity = timeLog.SwitchTo(nextActivityName);
-            return nextActivity;
-        }
         public void FinishActivity(string finishedActivity, string nextActivity)
         {
             timeLog.FinishActivity(finishedActivity, nextActivity);
+            history.AddActivity(finishedActivity);
         }
         public string TimeLogDate { get { return timeLog.Day.ToString("yyyy-MM-dd"); } }
         public bool LoadTimeLog(string filename)
@@ -63,8 +64,10 @@ namespace LifeIdea.LazyCure.Core
                 return false;
             }
         }
-        #endregion
-
+        public string[] LatestActivities
+        {
+            get { return history.LatestActivities; }
+        }
         public bool SaveTimeLog()
         {
             if (timeLogsFolder == "")
@@ -97,6 +100,8 @@ namespace LifeIdea.LazyCure.Core
             string filename = GetTimeLogFileNameByDate(date);
             return LoadTimeLog(filename);
         }
+
+        #endregion
 
         private string GetTimeLogFileNameByDate(DateTime date)
         {

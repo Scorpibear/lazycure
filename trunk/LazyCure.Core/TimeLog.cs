@@ -11,7 +11,7 @@ namespace LifeIdea.LazyCure.Core
     /// <summary>
     /// Store information about activities
     /// </summary>
-    public class TimeLog
+    public class TimeLog:ITimeLog
     {
         private LiveActivity currentActivity, previousActivity = null;
         private DataTable activitiesSummary;
@@ -82,19 +82,7 @@ namespace LifeIdea.LazyCure.Core
         }
         public void Save(TextWriter writer)
         {
-            writer.WriteLine("<?xml version=\"1.0\" standalone=\"yes\"?>");
-            writer.WriteLine("<LazyCureData>");
-            foreach (DataRow row in data.Rows)
-            {
-                Activity activity = new Activity(
-                    (string)row["Activity"],
-                    (DateTime)row["Start"],
-                    (TimeSpan)row["Duration"]
-                    );
-                writer.WriteLine(activity.ToString());
-            }
-            writer.WriteLine("</LazyCureData>");
-
+            writer.WriteLine(Serializer.TimeLogToString(this));
         }
 
         public void Load(string filename)

@@ -42,6 +42,7 @@ namespace LifeIdea.LazyCure.UI
             this.miOpen = new System.Windows.Forms.ToolStripMenuItem();
             this.miSave = new System.Windows.Forms.ToolStripMenuItem();
             this.miSaveAs = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.miExit = new System.Windows.Forms.ToolStripMenuItem();
             this.miShow = new System.Windows.Forms.ToolStripMenuItem();
             this.showMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -51,13 +52,12 @@ namespace LifeIdea.LazyCure.UI
             this.miHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.miOnline = new System.Windows.Forms.ToolStripMenuItem();
             this.miAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.miContextShow = new System.Windows.Forms.ToolStripMenuItem();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.miContextShow = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.statusBar.SuspendLayout();
             this.nowYou.SuspendLayout();
             this.menu.SuspendLayout();
@@ -71,6 +71,7 @@ namespace LifeIdea.LazyCure.UI
             // 
             // currentActivity
             // 
+            this.currentActivity.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.currentActivity.BackColor = System.Drawing.SystemColors.Window;
             this.currentActivity.ForeColor = System.Drawing.SystemColors.ControlText;
             this.currentActivity.FormattingEnabled = true;
@@ -194,6 +195,11 @@ namespace LifeIdea.LazyCure.UI
             this.miSaveAs.Text = "Save &As...";
             this.miSaveAs.Click += new System.EventHandler(this.miSaveAs_Click);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(160, 6);
+            // 
             // miExit
             // 
             this.miExit.Name = "miExit";
@@ -215,6 +221,7 @@ namespace LifeIdea.LazyCure.UI
             this.miTimeLog,
             this.miSummary});
             this.showMenu.Name = "contextMenu";
+            this.showMenu.OwnerItem = this.miContextShow;
             this.showMenu.Size = new System.Drawing.Size(157, 70);
             // 
             // miActivityDetails
@@ -264,6 +271,13 @@ namespace LifeIdea.LazyCure.UI
             this.miAbout.Text = "&About LazyCure";
             this.miAbout.Click += new System.EventHandler(this.miAbout_Click);
             // 
+            // miContextShow
+            // 
+            this.miContextShow.DropDown = this.showMenu;
+            this.miContextShow.Name = "miContextShow";
+            this.miContextShow.Size = new System.Drawing.Size(111, 22);
+            this.miContextShow.Text = "Show";
+            // 
             // timer
             // 
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
@@ -303,18 +317,6 @@ namespace LifeIdea.LazyCure.UI
             this.miContextShow});
             this.contextMenu.Name = "contextMenu";
             this.contextMenu.Size = new System.Drawing.Size(112, 26);
-            // 
-            // miContextShow
-            // 
-            this.miContextShow.DropDown = this.showMenu;
-            this.miContextShow.Name = "miContextShow";
-            this.miContextShow.Size = new System.Drawing.Size(111, 22);
-            this.miContextShow.Text = "Show";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(160, 6);
             // 
             // Main
             // 

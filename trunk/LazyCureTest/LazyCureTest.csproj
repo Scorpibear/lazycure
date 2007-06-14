@@ -45,11 +45,14 @@
   <ItemGroup>
     <Compile Include="ActivityTest.cs" />
     <Compile Include="AllTests.cs" />
+    <Compile Include="HistoryTest.cs" />
     <Compile Include="DriverTest.cs" />
     <Compile Include="LiveActivityTest.cs" />
+    <Compile Include="LogTest.cs" />
     <Compile Include="MainTest.cs" />
     <Compile Include="MockWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SerializerTest.cs" />
     <Compile Include="TimeLogCheckEndTimeTest.cs" />
     <Compile Include="TimeLogOtherTest.cs" />
   </ItemGroup>

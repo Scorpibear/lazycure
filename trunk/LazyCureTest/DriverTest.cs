@@ -70,36 +70,6 @@ namespace LifeIdea.LazyCure.Core
             Assert.IsFalse(driver.SaveTimeLog());
             Assert.AreEqual("TimeLogsFolder is not specified", mockWriter.Content);
         }
-
-        [Test]
-        public void SaveTimeLogXmlStructure()
-        {
-            string folder = @"c:\temp\LazyCure\test\TimeLogs";
-            string filename = folder + @"\2015-09-26.timelog";
-            string[] sExpectedContent = {"<?xml version=", "<LazyCureData>", "<Records>",
-                "<Activity>arrangement</Activity>","<Begin>9:07:13</Begin>","<Duration>0:04:40</Duration>",
-                "</Records>","</LazyCureData>"};
-            DateTime startTime = DateTime.Parse("2015-09-26 9:07:13");
-            DateTime endTime = DateTime.Parse("2015-09-26 9:11:53");
-            ITimeSystem mockTimeSystem = mocks.NewMock<ITimeSystem>();
-            using (mocks.Ordered)
-            {
-                Expect.Once.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(startTime));
-                Expect.Once.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(endTime));
-            }
-            driver = new Driver(mockTimeSystem);
-            driver.FinishActivity("arrangement","second");
-            driver.TimeLogsFolder = folder;
-            Assert.IsTrue(driver.SaveTimeLog());
-            StreamReader stream = File.OpenText(filename);
-            string sRealContent = stream.ReadToEnd();
-            Console.WriteLine(sRealContent);
-            stream.Close();
-            foreach (string s in sExpectedContent)
-                Assert.IsTrue(sRealContent.Contains(s),s);
-            mocks.VerifyAllExpectationsHaveBeenMet();
-        }
-
         [Test]
         public void LoadTimeLog()
         {
@@ -225,6 +195,22 @@ namespace LifeIdea.LazyCure.Core
             }
             driver = new Driver(mockTimeSystem);
             Assert.AreEqual(duration, driver.CurrentActivity.Duration);
+        }
+        [Test]
+        public void LatestActivities()
+        {
+            driver.FinishActivity("latest", "next");
+
+            Assert.Contains("latest", driver.LatestActivities);
+        }
+        [Test]
+        public void HistoryReused()
+        {
+            driver.FinishActivity("saved", "next");
+            driver.SaveHistory(@"c:\temp\history.txt");
+            driver = new Driver();
+            driver.LoadHistory(@"c:\temp\history.txt");
+            Assert.Contains("saved", driver.LatestActivities);
         }
     }
 }

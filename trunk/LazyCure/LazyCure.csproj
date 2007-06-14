@@ -10,6 +10,7 @@
     <RootNamespace>LifeIdea.LazyCure</RootNamespace>
     <AssemblyName>LazyCure</AssemblyName>
     <StartupObject>LifeIdea.LazyCure.Program</StartupObject>
+    <ApplicationIcon>LazyCure.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -66,6 +67,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="LazyCure.ico" />
     <Content Include="readme.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

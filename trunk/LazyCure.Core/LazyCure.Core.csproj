@@ -36,6 +36,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Activity.cs" />
+    <Compile Include="History.cs" />
+    <Compile Include="ITimeLog.cs" />
     <Compile Include="LiveActivity.cs" />
     <Compile Include="Driver.cs" />
     <Compile Include="ITimeSystem.cs" />
@@ -43,6 +45,7 @@
     <Compile Include="Log.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RunTimeSystem.cs" />
+    <Compile Include="Serializer.cs" />
     <Compile Include="Task.cs" />
     <Compile Include="TimeLog.cs" />
   </ItemGroup>

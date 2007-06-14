@@ -8,7 +8,7 @@ using LifeIdea.LazyCure.Interfaces;
 
 namespace LifeIdea.LazyCure.UI
 {
-    //too slow for running every build. Run after introducing changes in Main
+    //does not work
     //[TestFixture]
     public class MainTest
     {
@@ -25,6 +25,7 @@ namespace LifeIdea.LazyCure.UI
             Stub.On(mockDriver).GetProperty("TimeLogData");
             Stub.On(mockDriver).GetProperty("ActivitiesSummaryData");
             Stub.On(mockDriver).GetProperty("TimeLogDate").Will(Return.Value("2126-11-18"));
+            Stub.On(mockDriver).GetProperty("LatestActivities").Will(Return.Value(new string[] { }));
             form = new Main(mockDriver);
         }
         [Test]
