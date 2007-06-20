@@ -27,11 +27,14 @@ namespace LifeIdea.LazyCure.UI
         }
         private void timeLogView_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
-            if (e.ColumnIndex == timeLogView.Columns["Start"].Index)
-            {
-                MessageBox.Show(timeLogView, "'Start Time' column could not be empty. Please, enter correct time value between 0:00:00 and 23:59:59.", "Value in 'Start Time' column in not correct");
-                e.Cancel = true;
-            }
+            if (e.ColumnIndex!=timeLogView.Columns["Activity"].Index)
+                ShowTimeNotValidMessage(timeLogView.Columns[e.ColumnIndex].Name);
+        }
+        private void ShowTimeNotValidMessage(string column)
+        {
+            MessageBox.Show(timeLogView,
+                    "Please, enter correct time value between 0:00:00 and 23:59:59",
+                    String.Format("Value in '{0}' column in not correct",column), MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
