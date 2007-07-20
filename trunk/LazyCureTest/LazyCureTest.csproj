@@ -69,6 +69,13 @@
       <Project>{B919C7EB-8DC6-42E3-AD2A-A078A72738F1}</Project>
       <Name>LazyCure.UI</Name>
     </ProjectReference>
+    <ProjectReference Include="..\LazyCure\LazyCure.csproj">
+      <Project>{F86EDBE5-26FD-47E3-94AF-CB602737E7B7}</Project>
+      <Name>LazyCure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Core\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

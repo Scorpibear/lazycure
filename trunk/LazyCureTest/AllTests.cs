@@ -24,5 +24,17 @@ namespace LifeIdea.LazyCure.Core
             
             Assert.AreEqual("task1", task.Name);
         }
+        [Test]
+        public void TimeLogFolderDefaultSetting()
+        {
+            LazyCureSettings setting = new LazyCureSettings();
+            Assert.AreEqual(@"d:\Programs\LazyCure\TimeLogs", setting.TimeLogsFolder);
+        }
+        [Test]
+        public void SaveAfterDoneDefaultSetting()
+        {
+            LazyCureSettings setting = new LazyCureSettings();
+            Assert.AreEqual(true, setting.SaveAfterDone);
+        }
     }
 }

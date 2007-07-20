@@ -12,9 +12,10 @@ namespace LifeIdea.LazyCure.Core
         private ITimeSystem timeSystem;
         private TimeLog timeLog;
         private string timeLogsFolder;
-        private History history;
+        private readonly History history;
 
         public static string FirstActivityName = "starting LazyCure";
+        public bool SaveAfterDone=true;
         public string TimeLogsFolder { get { return timeLogsFolder; } set { timeLogsFolder = value; } }
 
         public Driver(ITimeSystem timeSystem)
@@ -41,6 +42,8 @@ namespace LifeIdea.LazyCure.Core
         {
             timeLog.FinishActivity(finishedActivity, nextActivity);
             history.AddActivity(finishedActivity);
+            if(SaveAfterDone)
+                SaveTimeLog();
         }
         public string TimeLogDate { get { return timeLog.Day.ToString("yyyy-MM-dd"); } }
         public bool LoadTimeLog(string filename)
