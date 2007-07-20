@@ -30,6 +30,7 @@ namespace LifeIdea.LazyCure
             {
                 LazyCureSettings settings = new LazyCureSettings();
                 driver.TimeLogsFolder = settings.TimeLogsFolder;
+                driver.SaveAfterDone = settings.SaveAfterDone;
             }
             catch (Exception ex)
             {

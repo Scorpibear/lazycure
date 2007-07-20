@@ -36,5 +36,13 @@ namespace LifeIdea.LazyCure.UI
                     "Please, enter correct time value between 0:00:00 and 23:59:59",
                     String.Format("Value in '{0}' column in not correct",column), MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        private void TimeLogEditor_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible == false)
+            {
+                lazyCure.SaveTimeLog();
+            }
+        }
     }
 }

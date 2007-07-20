@@ -37,6 +37,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ILazyCure.cs" />
+    <Compile Include="LazyCureSettings.cs" />
     <Compile Include="LazyCureSettings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
