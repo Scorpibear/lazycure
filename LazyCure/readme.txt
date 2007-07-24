@@ -8,6 +8,6 @@ Installation Notes:
 
 Upgrade Notes:
 1. Replaces previous version of dll's and LazyCure.exe with new versions.
-2. Change 'TimeLogsFolder' setting value to path were your timelogs are stored in LazyCure.exe.config
+2. Open LazyCure.exe.config and change 'TimeLogsFolder' setting value to path were your timelogs are stored.
 
 Visit us at http://lifeidea.org/lazycure/
