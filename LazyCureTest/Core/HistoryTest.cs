@@ -12,6 +12,7 @@ namespace LifeIdea.LazyCure.Core
         public void SetUp()
         {
             history = new History();
+            Log.TextWriter = new MockWriter();
         }
         [TearDown]
         public void TearDown()
@@ -75,7 +76,7 @@ namespace LifeIdea.LazyCure.Core
         [Test]
         public void LoadDuplicates()
         {
-            StreamWriter writer = System.IO.File.CreateText(@"c:\temp\history.txt");
+            StreamWriter writer = File.CreateText(@"c:\temp\history.txt");
             writer.WriteLine("duplicate");
             writer.WriteLine("duplicate");
             writer.Close();
@@ -107,6 +108,17 @@ namespace LifeIdea.LazyCure.Core
             history = new History();
             history.Load(@"c:\temp\history.txt");
             Assert.AreEqual(new string[] { "saved2", "saved" }, history.LatestActivities);
+        }
+        [Test]
+        public void LoadLimit()
+        {
+            StreamWriter writer = File.CreateText("31.txt");
+            for (int i = 0; i < 30;i++ )
+                writer.WriteLine(i);
+            writer.WriteLine("BUG!");
+            writer.Close();
+            history.Load("31.txt");
+            Assert.IsFalse(history.ContainsActivity("BUG!"));
         }
     }
 }
