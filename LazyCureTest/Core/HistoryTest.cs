@@ -113,12 +113,21 @@ namespace LifeIdea.LazyCure.Core
         public void LoadLimit()
         {
             StreamWriter writer = File.CreateText("31.txt");
-            for (int i = 0; i < 30;i++ )
+            for (int i = 1; i <= 31;i++ )
                 writer.WriteLine(i);
-            writer.WriteLine("BUG!");
             writer.Close();
             history.Load("31.txt");
-            Assert.IsFalse(history.ContainsActivity("BUG!"));
+            Assert.IsTrue(history.ContainsActivity("30"));
+            Assert.IsFalse(history.ContainsActivity("31"));
+        }
+        [Test]
+        public void LimitActivitiesWhileAdd()
+        {
+            for (int i = 30; i >= 1; i--)
+                history.AddActivity(i.ToString());
+            history.AddActivity("test");
+            Assert.IsTrue(history.ContainsActivity("29"));
+            Assert.IsFalse(history.ContainsActivity("30"));
         }
     }
 }
