@@ -28,12 +28,15 @@ namespace LifeIdea.LazyCure.Core
                 List<IActivity> activities = new List<IActivity>();
                 foreach (DataRow row in data.Rows)
                 {
-                    IActivity activity = new Activity(
-                        (string)row["Activity"],
-                        (DateTime)row["Start"],
-                        (TimeSpan)row["Duration"]
-                        );
-                    activities.Add(activity);
+                    if (row["Duration"] != DBNull.Value)
+                    {
+                        IActivity activity = new Activity(
+                            (string) row["Activity"],
+                            (DateTime) row["Start"],
+                            (TimeSpan) row["Duration"]
+                            );
+                        activities.Add(activity);
+                    }
                 }
                 return activities;
             }
@@ -54,7 +57,9 @@ namespace LifeIdea.LazyCure.Core
             data = new DataTable("TimeLog");
 
             DataColumn startCol = data.Columns.Add("Start", Type.GetType("System.DateTime"));
+            startCol.AllowDBNull = false;
             DataColumn activityCol = data.Columns.Add("Activity");
+            activityCol.AllowDBNull = false;
             DataColumn durationCol = data.Columns.Add("Duration", Type.GetType("System.TimeSpan"));
             DataColumn endCol = data.Columns.Add("End", Type.GetType("System.DateTime"));
 

@@ -33,8 +33,7 @@ namespace LifeIdea.LazyCure.Core
                 data.InnerXml += ActivityToString(activity);
             return xml;
         }
-
-        internal static object TimeLogToString(ITimeLog timeLog)
+        internal static string TimeLogToString(ITimeLog timeLog)
         {
             return TimeLogToXml(timeLog).OuterXml;
         }

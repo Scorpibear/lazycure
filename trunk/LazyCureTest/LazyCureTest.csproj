@@ -55,7 +55,7 @@
     <Compile Include="Core\SerializerTest.cs" />
     <Compile Include="Core\TaskTest.cs" />
     <Compile Include="Core\TimeLogCheckEndTimeTest.cs" />
-    <Compile Include="Core\TimeLogOtherTest.cs" />
+    <Compile Include="Core\TimeLogTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LazyCure.Core\LazyCure.Core.csproj">
