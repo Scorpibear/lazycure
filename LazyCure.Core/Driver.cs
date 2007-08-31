@@ -45,22 +45,13 @@ namespace LifeIdea.LazyCure.Core
         public string TimeLogDate { get { return timeLog.Day.ToString("yyyy-MM-dd"); } }
         public bool LoadTimeLog(string filename)
         {
-            try
+            if (File.Exists(filename))
             {
-                if (File.Exists(filename))
-                {
-                    timeLog.Load(filename);
-                    return true;
-                }
-                else
-                {
-                    Log.Error("Specified file does not exist");
-                    return false;
-                }
+                timeLog.Load(filename);
+                return true;
             }
-            catch (Exception ex)
+            else
             {
-                Log.Exception(ex);
                 return false;
             }
         }

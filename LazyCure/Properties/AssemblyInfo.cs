@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("LifeIdea.org")]
 [assembly: AssemblyProduct("LazyCure")]
-[assembly: AssemblyCopyright("Free Open Source under GNU Lesser General Public License")]
+[assembly: AssemblyCopyright("Copyright © LifeIdea.org 2003-2007")]
 [assembly: AssemblyTrademark("LazyCure")]
 [assembly: AssemblyCulture("")]
 
@@ -28,5 +28,5 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("3.1.0.13")]
-[assembly: AssemblyFileVersion("3.1.0.13")]
+[assembly: AssemblyVersion("3.1.0.14")]
+[assembly: AssemblyFileVersion("3.1.0.14")]
