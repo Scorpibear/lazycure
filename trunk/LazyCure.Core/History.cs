@@ -14,6 +14,8 @@ namespace LifeIdea.LazyCure.Core
         {
             activities.Remove(activity);
             activities.Insert(0, activity);
+            if (activities.Count > MaxActivities)
+                activities.RemoveAt(MaxActivities);
         }
         public bool Load(string filename)
         {
@@ -34,7 +36,6 @@ namespace LifeIdea.LazyCure.Core
                                 break;
                         }
                     }
-                    
                 }
                 reader.Close();
                 return true;
