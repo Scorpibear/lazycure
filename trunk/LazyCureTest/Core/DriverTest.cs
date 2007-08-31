@@ -12,9 +12,9 @@ namespace LifeIdea.LazyCure.Core
         Driver driver;
         Mockery mocks;
         MockWriter mockWriter;
-        static string folder = @"c:\temp\LazyCure\test\TimeLogs";
+        const string folder = @"c:\temp\LazyCure\test\TimeLogs";
         static readonly string strDate = "2126-11-18";
-        string filename = folder + "\\"+strDate+".timelog";
+        readonly string filename = folder + "\\"+strDate+".timelog";
         DateTime date = DateTime.Parse(strDate);
 
         [SetUp]
@@ -25,18 +25,7 @@ namespace LifeIdea.LazyCure.Core
             mockWriter = new MockWriter();
             Log.TextWriter = mockWriter;
         }
-        public void PrepareFolder()
-        {
-            if (Directory.Exists(folder))
-            {
-                Directory.Delete(folder, true);
-            }
-
-            ITimeSystem mockTimeSystem = mocks.NewMock<ITimeSystem>();
-            Stub.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(DateTime.Parse(strDate+" 5:00:00")));
-
-            driver = new Driver(mockTimeSystem);
-        }
+        
         [Test]
         public void SaveTimeLog()
         {
@@ -147,18 +136,16 @@ namespace LifeIdea.LazyCure.Core
         [Test]
         public void LoadBrokenXml()
         {
-            string sBrokenContent = "<?xml version=\"1.0\" standalone=\"yes\"?><LazyCureData><Records>" +
-                "<Activity>changed<Activity><Begin>14:35:02</Begin><Duration>0:00:07</Duration>" +
-                "</Records></LazyCureData>";
-            if (File.Exists(filename))
-                File.Delete(filename);
-            if (!Directory.Exists(folder))
-                Directory.CreateDirectory(folder);
-            StreamWriter writer = File.CreateText(filename);
-            writer.Write(sBrokenContent);
-            writer.Close();
-            driver.TimeLogsFolder = folder;
-            Assert.IsFalse(driver.LoadTimeLog(date));
+            File.AppendAllText("broken.timelog", "incorrect xml content");
+            try
+            {
+                driver.LoadTimeLog("broken.timelog");
+            }
+            catch (Exception)
+            {
+                return;
+            }
+            Assert.Fail("LoadTimeLog does not raise an exception for broken timelog");
         }
         [Test]
         public void TimeLogDate()
@@ -224,6 +211,19 @@ namespace LifeIdea.LazyCure.Core
             driver.FinishActivity("should not be saved", "next");
 
             Assert.AreEqual(false,Directory.Exists(folder),"Existence of folder with timelog");
+        }
+
+        private void PrepareFolder()
+        {
+            if (Directory.Exists(folder))
+            {
+                Directory.Delete(folder, true);
+            }
+
+            ITimeSystem mockTimeSystem = mocks.NewMock<ITimeSystem>();
+            Stub.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(DateTime.Parse(strDate + " 5:00:00")));
+
+            driver = new Driver(mockTimeSystem);
         }
     }
 }

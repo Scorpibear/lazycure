@@ -6,8 +6,7 @@ using LifeIdea.LazyCure.Interfaces;
 
 namespace LifeIdea.LazyCure.UI
 {
-    //does not work
-    //[TestFixture]
+    [TestFixture]
     public class MainTest
     {
         private Main form;

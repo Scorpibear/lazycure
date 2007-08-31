@@ -1,6 +1,6 @@
 using System.Text;
 
-namespace LifeIdea.LazyCure.Core
+namespace LifeIdea.LazyCure
 {
     internal class MockWriter : System.IO.TextWriter
     {
