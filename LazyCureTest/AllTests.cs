@@ -1,8 +1,5 @@
-using System;
 using NUnit.Framework;
 using NMock2;
-using System.Xml;
-using LifeIdea.LazyCure.Interfaces;
 
 namespace LifeIdea.LazyCure.Core
 {
