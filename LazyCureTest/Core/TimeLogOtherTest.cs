@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using NUnit.Framework;
 using NMock2;
 using LifeIdea.LazyCure.Interfaces;

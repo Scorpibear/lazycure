@@ -1,7 +1,7 @@
 using NUnit.Framework;
 using NMock2;
 
-namespace LifeIdea.LazyCure.Core
+namespace LifeIdea.LazyCure
 {
     [TestFixture]
     public class AllTests: Mockery
@@ -13,13 +13,6 @@ namespace LifeIdea.LazyCure.Core
         public void TearDown()
         {
             this.VerifyAllExpectationsHaveBeenMet();
-        }
-        [Test]
-        public void TaskName()
-        {
-            Task task = new Task("task1");
-            
-            Assert.AreEqual("task1", task.Name);
         }
         [Test]
         public void TimeLogFolderDefaultSetting()
