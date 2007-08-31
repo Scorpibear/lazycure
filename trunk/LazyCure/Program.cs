@@ -33,9 +33,10 @@ namespace LifeIdea.LazyCure
                 driver.LoadHistory(historyFilename);
                 try
                 {
-                    LazyCureSettings settings = new LazyCureSettings();
+                    LazyCureSettings settings = LazyCureSettings.Default;
                     driver.TimeLogsFolder = settings.TimeLogsFolder;
                     driver.SaveAfterDone = settings.SaveAfterDone;
+                    History.MaxActivities = settings.MaxActivitiesInHistory;
                 }
                 catch (Exception ex)
                 {

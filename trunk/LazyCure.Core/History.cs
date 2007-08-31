@@ -6,32 +6,35 @@ namespace LifeIdea.LazyCure.Core
 {
     public class History
     {
-        private List<string> activities = new List<string>();
+        private readonly List<string> activities = new List<string>();
+        public static int MaxActivities = 30;
 
         public string[] LatestActivities { get { return activities.ToArray(); } }
-
         public void AddActivity(string activity)
         {
             activities.Remove(activity);
             activities.Insert(0, activity);
         }
-
         public bool Load(string filename)
         {
             if (File.Exists(filename))
             {
                 StreamReader reader = File.OpenText(filename);
-                string line;
-                while (true)
+                while(true)
                 {
-                    line = reader.ReadLine();
+                    string line = reader.ReadLine();
                     if (line == null)
                         break;
                     else
                     {
                         if (!activities.Contains(line))
+                        {
                             activities.Add(line);
+                            if (activities.Count == MaxActivities)
+                                break;
+                        }
                     }
+                    
                 }
                 reader.Close();
                 return true;
@@ -39,7 +42,6 @@ namespace LifeIdea.LazyCure.Core
             return false;
 
         }
-
         public bool Save(string filename)
         {
             StreamWriter writer = null;
@@ -62,6 +64,10 @@ namespace LifeIdea.LazyCure.Core
                     writer.Close();
             }
             return true;
+        }
+        public bool ContainsActivity(string activityName)
+        {
+            return activities.Contains(activityName);
         }
     }
 }

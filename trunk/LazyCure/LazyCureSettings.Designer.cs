@@ -46,5 +46,17 @@ namespace LifeIdea.LazyCure {
                 this["SaveAfterDone"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("30")]
+        public int MaxActivitiesInHistory {
+            get {
+                return ((int)(this["MaxActivitiesInHistory"]));
+            }
+            set {
+                this["MaxActivitiesInHistory"] = value;
+            }
+        }
     }
 }
