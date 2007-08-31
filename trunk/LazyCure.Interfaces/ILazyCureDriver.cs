@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Collections;
-
 namespace LifeIdea.LazyCure.Interfaces
 {
     public interface ILazyCureDriver

@@ -1,9 +1,6 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
 using LifeIdea.LazyCure.Interfaces;
 using System.IO;
-using System.Data;
 
 namespace LifeIdea.LazyCure.Core
 {
