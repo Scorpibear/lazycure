@@ -6,79 +6,75 @@ using System.Diagnostics;
 
 namespace LifeIdea.LazyCure.UI
 {
-    public partial class Main : Form
+    public partial class Main : Form, IMainForm
     {
-        private ILazyCureDriver lazyCure;
-        private string nextActivity = "(specify what you are doing)";
-        private TimeLogEditor timeLogEditor;
+        private readonly ILazyCureDriver lazyCure;
+        private readonly string nextActivity = "(specify what you are doing)";
 
         public Main(ILazyCureDriver driver)
         {
             InitializeComponent();
             this.lazyCure = driver;
+            Dialogs.MainForm = this;
             Dialogs.LazyCureDriver = driver;
             timer.Start();
             SetCaption();
             UpdateCurrentActivity();
             UpdateActivityStartTime();
         }
+        public void Summary_VisibleChanged()
+        {
+            miSummary.Checked = Dialogs.Summary.Visible;
+        }
+        public void TimeLogEditor_VisibleChanged()
+        {
+            miTimeLog.Checked = Dialogs.TimeLog.Visible;
+        }
         private void SetCaption()
         {
             string[] versionNumbers = Application.ProductVersion.Split('.');
-            this.Text = String.Format("{0} - {1} {2}.{3}",lazyCure.TimeLogDate,Application.ProductName,
-                versionNumbers[0],versionNumbers[1]);
+            this.Text = String.Format("{0} - {1} {2}.{3}", lazyCure.TimeLogDate, Application.ProductName,
+                versionNumbers[0], versionNumbers[1]);
         }
         private void UpdateActivityStartTime()
         {
             this.activityStartTime.Text = Format.Time(lazyCure.CurrentActivity.StartTime);
         }
-
         private void showTimeLog_Click(object sender, EventArgs e)
         {
-            Dialogs.TimeLog.Show();
+            Dialogs.TimeLog.Visible = miTimeLog.Checked;
         }
-
+        private void miShowSummary_Click(object sender, EventArgs e)
+        {
+            Dialogs.Summary.Visible = miSummary.Checked;
+        }
         private void switchButton_Click(object sender, EventArgs e)
         {
             Dialogs.CancelEditTimeLog();
-            lazyCure.FinishActivity(this.currentActivity.Text,nextActivity);
+            lazyCure.FinishActivity(this.currentActivity.Text, nextActivity);
             UpdateCurrentActivity();
             UpdateActivityStartTime();
             currentActivity.SelectAll();
         }
-
         private void UpdateCurrentActivity()
         {
             currentActivity.Text = nextActivity;
             currentActivity.Items.Clear();
             currentActivity.Items.AddRange(lazyCure.LatestActivities);
         }
-
         private void timer_Tick(object sender, EventArgs e)
         {
             this.activityDuration.Text = Format.Duration(lazyCure.CurrentActivity.Duration);
             this.currentTime.Text = Format.Time(DateTime.Now);
         }
-
-        private void activityStartTime_TextChanged(object sender, EventArgs e)
-        {
-            lazyCure.CurrentActivity.StartTime = DateTime.Parse(this.activityStartTime.Text);
-        }
-
-        private void miShowSummary_Click(object sender, EventArgs e)
-        {
-            Dialogs.Summary.Show();
-        }
-
         private void miActivityDetails_Click(object sender, EventArgs e)
         {
             statusBar.Visible = miActivityDetails.Checked;
             if (statusBar.Visible)
                 this.Size = new Size(300, 128);
             else
-                this.Size = new Size(300, 128-statusBar.Height);
+                this.Size = new Size(300, 128 - statusBar.Height);
         }
-
         private void Main_Activated(object sender, EventArgs e)
         {
             this.currentActivity.Focus();
@@ -88,22 +84,18 @@ namespace LifeIdea.LazyCure.UI
         {
             this.Close();
         }
-
         private void miAbout_Click(object sender, EventArgs e)
         {
             Dialogs.About.Show();
         }
-
         private void miOnline_Click(object sender, EventArgs e)
         {
             Process.Start("http://lifeidea.org/lazycure/");
         }
-
         private void Main_FormClosed(object sender, FormClosedEventArgs e)
         {
-            
-        }
 
+        }
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (!lazyCure.SaveTimeLog())
@@ -120,12 +112,10 @@ namespace LifeIdea.LazyCure.UI
             if (!lazyCure.SaveTimeLog())
                 MessageBox.Show("Time log has not been saved!", "Saving  error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
-
         private void notifyIcon_DoubleClick(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Normal;
         }
-
         private void miOpen_Click(object sender, EventArgs e)
         {
             OpenFileDialog openDialog = Dialogs.Open;
@@ -136,7 +126,6 @@ namespace LifeIdea.LazyCure.UI
                 SetCaption();
             }
         }
-        
         private void miSaveAs_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveDialog = Dialogs.Save;

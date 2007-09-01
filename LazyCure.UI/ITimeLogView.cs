@@ -4,5 +4,6 @@ namespace LifeIdea.LazyCure.UI
     {
         void CancelEdit();
         void Show();
+        bool Visible { get; set; }
     }
 }

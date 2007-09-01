@@ -82,6 +82,7 @@ namespace LifeIdea.LazyCure.UI
             this.Name = "Summary";
             this.Text = "Summary";
             this.TopMost = true;
+            this.VisibleChanged += new System.EventHandler(this.Summary_VisibleChanged);
             ((System.ComponentModel.ISupportInitialize)(this.activitiesSummary)).EndInit();
             this.ResumeLayout(false);
 

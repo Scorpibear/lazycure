@@ -6,7 +6,7 @@ namespace LifeIdea.LazyCure.UI
     {
         public View()
         {
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.View_FormClosing);
+            this.FormClosing += this.View_FormClosing;
         }
         protected void View_FormClosing(object sender, FormClosingEventArgs e)
         {

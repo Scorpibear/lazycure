@@ -7,11 +7,14 @@ namespace LifeIdea.LazyCure.UI
     internal partial class TimeLogEditor : View,ITimeLogView
     {
         private ILazyCureDriver lazyCure;
-        public TimeLogEditor(ILazyCureDriver lazyCure)
+        private IMainForm mainForm;
+
+        public TimeLogEditor(ILazyCureDriver lazyCure, IMainForm mainForm)
         {
             InitializeComponent();
             this.lazyCure = lazyCure;
-            this.timeLogView.DataSource = lazyCure.TimeLogData;
+            timeLogView.DataSource = lazyCure.TimeLogData;
+            this.mainForm = mainForm;
         }
         public void CancelEdit()
         {
@@ -41,6 +44,8 @@ namespace LifeIdea.LazyCure.UI
             {
                 lazyCure.SaveTimeLog();
             }
+            if(mainForm!=null)
+                mainForm.TimeLogEditor_VisibleChanged();
         }
    }
 }
