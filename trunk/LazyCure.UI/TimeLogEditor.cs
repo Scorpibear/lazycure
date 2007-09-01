@@ -22,22 +22,25 @@ namespace LifeIdea.LazyCure.UI
         }
         private void timeLogView_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
-            if (e.ColumnIndex!=timeLogView.Columns["Activity"].Index)
+            if (e.ColumnIndex != timeLogView.Columns["Activity"].Index)
                 ShowTimeNotValidMessage(timeLogView.Columns[e.ColumnIndex].Name);
         }
         private void ShowTimeNotValidMessage(string column)
         {
             MessageBox.Show(timeLogView,
                     "Please, enter correct time value between 0:00:00 and 23:59:59",
-                    String.Format("Value in '{0}' column in not correct",column), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    String.Format("Value in '{0}' column is not correct",column), MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
         private void TimeLogEditor_VisibleChanged(object sender, EventArgs e)
         {
-            if (this.Visible == false)
+            if (Visible == false)
             {
                 lazyCure.SaveTimeLog();
             }
         }
-    }
+        private void timeLogView_RowLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            timeLogView.CancelEdit();
+        }
+   }
 }
