@@ -10,6 +10,7 @@ namespace LifeIdea.LazyCure.UI
     {
         private ILazyCureDriver lazyCure;
         private string nextActivity = "(specify what you are doing)";
+        private TimeLogEditor timeLogEditor;
 
         public Main(ILazyCureDriver driver)
         {
@@ -39,6 +40,7 @@ namespace LifeIdea.LazyCure.UI
 
         private void switchButton_Click(object sender, EventArgs e)
         {
+            Dialogs.CancelEditTimeLog();
             lazyCure.FinishActivity(this.currentActivity.Text,nextActivity);
             UpdateCurrentActivity();
             UpdateActivityStartTime();
