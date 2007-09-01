@@ -64,6 +64,11 @@ namespace LifeIdea.LazyCure.UI
                 return about;
             }
         }
+        internal static void CancelEditTimeLog()
+        {
+            if (timeLog != null)
+                timeLog.CancelEdit();
+        }
         private static void InitiateFileDialog(FileDialog fileDialog)
         {
             if (LazyCureDriver != null)

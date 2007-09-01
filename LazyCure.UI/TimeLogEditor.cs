@@ -13,6 +13,10 @@ namespace LifeIdea.LazyCure.UI
             this.lazyCure = lazyCure;
             this.timeLogView.DataSource = lazyCure.TimeLogData;
         }
+        public void CancelEdit()
+        {
+            timeLogView.CancelEdit();
+        }
         private void timeLogView_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -37,10 +41,6 @@ namespace LifeIdea.LazyCure.UI
             {
                 lazyCure.SaveTimeLog();
             }
-        }
-        private void timeLogView_RowLeave(object sender, DataGridViewCellEventArgs e)
-        {
-            timeLogView.CancelEdit();
         }
    }
 }
