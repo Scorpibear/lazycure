@@ -12,7 +12,8 @@ namespace LifeIdea.LazyCure.UI
         private static AboutBox about = null;
         
         internal static ILazyCureDriver LazyCureDriver = null;
-        
+        internal static IMainForm MainForm = null;
+
         internal static OpenFileDialog Open
         {
             get
@@ -42,7 +43,7 @@ namespace LifeIdea.LazyCure.UI
             get
             {
                 if (timeLog == null)
-                    timeLog = new TimeLogEditor(LazyCureDriver);
+                    timeLog = new TimeLogEditor(LazyCureDriver,MainForm);
                 return timeLog;
             }
         }
@@ -51,7 +52,9 @@ namespace LifeIdea.LazyCure.UI
             get
             {
                 if (summary == null)
-                    summary = new Summary(LazyCureDriver);
+                {
+                    summary = new Summary(LazyCureDriver,MainForm);
+                }
                 return summary;
             }
         }

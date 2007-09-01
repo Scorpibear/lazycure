@@ -49,10 +49,10 @@ namespace LifeIdea.LazyCure.UI
             this.miActivityDetails = new System.Windows.Forms.ToolStripMenuItem();
             this.miTimeLog = new System.Windows.Forms.ToolStripMenuItem();
             this.miSummary = new System.Windows.Forms.ToolStripMenuItem();
-            this.miContextShow = new System.Windows.Forms.ToolStripMenuItem();
             this.miHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.miOnline = new System.Windows.Forms.ToolStripMenuItem();
             this.miAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.miContextShow = new System.Windows.Forms.ToolStripMenuItem();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
@@ -223,7 +223,7 @@ namespace LifeIdea.LazyCure.UI
             this.miSummary});
             this.showMenu.Name = "contextMenu";
             this.showMenu.OwnerItem = this.miShow;
-            this.showMenu.Size = new System.Drawing.Size(157, 70);
+            this.showMenu.Size = new System.Drawing.Size(157, 92);
             // 
             // miActivityDetails
             // 
@@ -237,6 +237,7 @@ namespace LifeIdea.LazyCure.UI
             // 
             // miTimeLog
             // 
+            this.miTimeLog.CheckOnClick = true;
             this.miTimeLog.Name = "miTimeLog";
             this.miTimeLog.Size = new System.Drawing.Size(156, 22);
             this.miTimeLog.Text = "&Time Log";
@@ -244,17 +245,11 @@ namespace LifeIdea.LazyCure.UI
             // 
             // miSummary
             // 
+            this.miSummary.CheckOnClick = true;
             this.miSummary.Name = "miSummary";
             this.miSummary.Size = new System.Drawing.Size(156, 22);
             this.miSummary.Text = "&Summary";
             this.miSummary.Click += new System.EventHandler(this.miShowSummary_Click);
-            // 
-            // miContextShow
-            // 
-            this.miContextShow.DropDown = this.showMenu;
-            this.miContextShow.Name = "miContextShow";
-            this.miContextShow.Size = new System.Drawing.Size(111, 22);
-            this.miContextShow.Text = "Show";
             // 
             // miHelp
             // 
@@ -278,6 +273,13 @@ namespace LifeIdea.LazyCure.UI
             this.miAbout.Size = new System.Drawing.Size(163, 22);
             this.miAbout.Text = "&About LazyCure";
             this.miAbout.Click += new System.EventHandler(this.miAbout_Click);
+            // 
+            // miContextShow
+            // 
+            this.miContextShow.DropDown = this.showMenu;
+            this.miContextShow.Name = "miContextShow";
+            this.miContextShow.Size = new System.Drawing.Size(111, 22);
+            this.miContextShow.Text = "Show";
             // 
             // timer
             // 
