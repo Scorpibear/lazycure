@@ -255,5 +255,15 @@ namespace LifeIdea.LazyCure.Core
             timeLog.Data.Rows[0]["End"] = DBNull.Value;
             Assert.IsEmpty(timeLog.Activities);
         }
+        [Test]
+        public void CalcDurationAtTheEndOfDay()
+        {
+            DataRow row = timeLog.Data.NewRow();
+            row["Start"] = DateTime.Parse("23:00:00");
+            row["Activity"] = "activity";
+            row["End"] = DateTime.Parse("0:00:00");
+            timeLog.Data.Rows.Add(row);
+            Assert.AreEqual(TimeSpan.Parse("1:00:00"),timeLog.Activities[0].Duration);
+        }
     }
 }

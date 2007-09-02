@@ -13,8 +13,8 @@ namespace LifeIdea.LazyCure.Core
     public class TimeLog:ITimeLog
     {
         private LiveActivity currentActivity, previousActivity = null;
-        private DataTable activitiesSummary;
-        private DataTable data;
+        private readonly DataTable activitiesSummary;
+        private readonly DataTable data;
         private DateTime day;
 
         public IActivity CurrentActivity { get { return currentActivity; } }
@@ -66,8 +66,8 @@ namespace LifeIdea.LazyCure.Core
             activitiesSummary = new DataTable("ActivitiesSummary");
             activitiesSummary.Columns.Add("Activity");
             activitiesSummary.Columns.Add("Spent", Type.GetType("System.TimeSpan"));
-            data.RowChanged += new DataRowChangeEventHandler(data_RowChanged);
-            data.ColumnChanging += new DataColumnChangeEventHandler(data_ColumnChanging);
+            data.RowChanged += data_RowChanged;
+            data.ColumnChanging += data_ColumnChanging;
         }
         public IActivity SwitchTo(string nextActivity)
         {
@@ -130,7 +130,6 @@ namespace LifeIdea.LazyCure.Core
         private void data_RowChanged(object sender, DataRowChangeEventArgs e)
         {
             CalculateActivitiesSummary();
-            //CalculateTimeValues(e);
         }
         private bool isChanging = false;
         private void data_ColumnChanging(object sender, DataColumnChangeEventArgs e)
@@ -154,7 +153,13 @@ namespace LifeIdea.LazyCure.Core
                     break;
                 case "End":
                     if (HasValues(e.Row["Start"], e.ProposedValue))
-                        e.Row["Duration"] = (DateTime)e.ProposedValue - (DateTime)e.Row["Start"];
+                    {
+                        DateTime end = (DateTime)e.ProposedValue;
+                        DateTime start = (DateTime) e.Row["Start"];
+                        if (start > end)
+                            end = end + TimeSpan.FromDays(1);
+                        e.Row["Duration"] = end - start;
+                    }
                     else if (HasValues(e.Row["Duration"], e.ProposedValue))
                         e.Row["Start"] = (DateTime)e.ProposedValue - (TimeSpan)e.Row["Duration"];
                     break;
@@ -186,34 +191,9 @@ namespace LifeIdea.LazyCure.Core
                 }
             }
         }
-        /*
-        private static void CalculateTimeValues(DataRowChangeEventArgs e)
-        {
-            if (e.Action == DataRowAction.Add)
-            {
-                if (HasValues(e.Row["Duration"], e.Row["Start"]))
-                {
-                    DateTime endTime = (DateTime)e.Row["Start"] + (TimeSpan)e.Row["Duration"];
-                    e.Row["End"] = endTime;
-                    return;
-                }
-                if (HasValues(e.Row["Start"], e.Row["End"]))
-                {
-                    e.Row["Duration"] = (DateTime)e.Row["End"] - (DateTime)e.Row["Start"];
-                    return;
-                }
-                if (HasValues(e.Row["Duration"], e.Row["End"]))
-                {
-                    e.Row["Start"] = (DateTime)e.Row["End"] - (TimeSpan)e.Row["Duration"];
-                    return;
-                }
-            }
-        }
-         * */
         private static bool HasValues(object a, object b)
         {
             return !(Convert.IsDBNull(a) || Convert.IsDBNull(b));
         }
-
     }
 }
