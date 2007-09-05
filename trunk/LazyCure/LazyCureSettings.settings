@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="TimeLogsFolder" Type="System.String" Scope="User">
-      <Value Profile="(Default)">d:\Programs\LazyCure\TimeLogs</Value>
+      <Value Profile="(Default)">.\TimeLogs</Value>
     </Setting>
     <Setting Name="SaveAfterDone" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>

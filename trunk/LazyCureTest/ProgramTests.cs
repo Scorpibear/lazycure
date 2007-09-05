@@ -11,7 +11,7 @@ namespace LifeIdea.LazyCure
         [Test]
         public void TimeLogsFolderDefaultSetting()
         {
-            AreEqual(@"d:\Programs\LazyCure\TimeLogs", LazyCureSettings.Default.TimeLogsFolder);
+            AreEqual(@".\TimeLogs", LazyCureSettings.Default.TimeLogsFolder);
         }
         [Test]
         public void SaveAfterDoneDefaultSetting()
