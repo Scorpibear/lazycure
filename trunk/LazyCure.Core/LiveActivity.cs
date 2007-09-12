@@ -10,13 +10,8 @@ namespace LifeIdea.LazyCure.Core
             {
                 if (IsRunning)
                     RecalculateDuration();
-                return duration;
+                return RoundedDuration;
             }
-            /*
-            set
-            {
-                duration = value;
-            }*/
         }
         public ITimeSystem timeSystem;
         public Boolean IsRunning = true;
@@ -29,25 +24,28 @@ namespace LifeIdea.LazyCure.Core
         public void Stop()
         {
             RecalculateDuration();
-            RoundDuration();
             IsRunning = false;
         }
+        public static LiveActivity After(LiveActivity previous, string name)
+        {
+            return new LiveActivity(name, previous);
+        }
+
         private LiveActivity(string name, LiveActivity previous)
         {
             this.name = name;
             this.timeSystem = previous.timeSystem;
             this.start = previous.start + previous.duration;
         }
-        internal static LiveActivity After(LiveActivity previous, string name)
+        private TimeSpan RoundedDuration
         {
-            return new LiveActivity(name, previous);
-        }
-        private void RoundDuration()
-        {
-            if (duration.Milliseconds < 500)
-                duration = new TimeSpan(0, 0, 0, (int)duration.TotalSeconds);
-            else
-                duration = new TimeSpan(0, 0, 0, (int)duration.TotalSeconds+1);
+            get
+            {
+                if (duration.Milliseconds < 500)
+                    return new TimeSpan(0, 0, 0, (int) duration.TotalSeconds);
+                else
+                    return new TimeSpan(0, 0, 0, (int) duration.TotalSeconds + 1);
+            }
         }
         private void RecalculateDuration()
         {
