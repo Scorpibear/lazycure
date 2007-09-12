@@ -61,5 +61,22 @@ namespace LifeIdea.LazyCure.Core
             activity.Stop();
             Assert.AreEqual(TimeSpan.Parse("0:07:01"), activity.Duration);
         }
+        [Test]
+        public void ThereIsNoNegativeDuration()
+        {
+            using (mocks.Ordered)
+            {
+                Expect.Once.On(mockTimeSystem).GetProperty("Now").Will(
+                    Return.Value(DateTime.Parse("2111-11-11 5:00:00")));
+                Expect.Once.On(mockTimeSystem).GetProperty("Now").Will(
+                    Return.Value(DateTime.Parse("2111-11-11 5:00:00.6")));
+                Expect.Once.On(mockTimeSystem).GetProperty("Now").Will(
+                    Return.Value(DateTime.Parse("2111-11-11 5:00:00.7")));
+            }
+            activity = new LiveActivity("first",mockTimeSystem);
+            activity.Stop();
+            activity = LiveActivity.After(activity, "second");
+            Assert.AreEqual(TimeSpan.Parse("0:00:00"),activity.Duration);
+        }
     }
 }

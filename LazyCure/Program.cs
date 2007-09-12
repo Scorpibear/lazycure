@@ -12,16 +12,15 @@ namespace LifeIdea.LazyCure
     public class Program
     {
         [STAThread]
-        static void Main(string[] args)
+        static void Main()
         {
             const string askToFix = "\r\n\r\nPlease, fix the error and start LazyCure again. Sorry for inconveniences.";
             try
             {
                 string logPath = Application.StartupPath + @"\LazyCure.log";
-                System.IO.TextWriter logWriter =
-                    new System.IO.StreamWriter(
-                        System.IO.File.Open(logPath, System.IO.FileMode.Append, System.IO.FileAccess.Write,
-                                            System.IO.FileShare.Write));
+                TextWriter logWriter =
+                    new StreamWriter(
+                        File.Open(logPath, FileMode.Append, FileAccess.Write, FileShare.Write));
                 Log.TextWriter = logWriter;
                 CultureInfo info = new CultureInfo(Application.CurrentCulture.LCID);
                 info.DateTimeFormat.LongTimePattern = "H:mm:ss";
