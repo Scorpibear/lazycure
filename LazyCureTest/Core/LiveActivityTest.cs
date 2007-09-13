@@ -7,7 +7,7 @@ namespace LifeIdea.LazyCure.Core
     [TestFixture]
     public class LiveActivityTest
     {
-        private Mockery mocks = new Mockery();
+        private readonly Mockery mocks = new Mockery();
         private readonly DateTime startTime = DateTime.Parse("2007-08-29 0:00:00");
         private ITimeSystem mockTimeSystem;
         private LiveActivity activity;
@@ -77,6 +77,13 @@ namespace LifeIdea.LazyCure.Core
             activity.Stop();
             activity = LiveActivity.After(activity, "second");
             Assert.AreEqual(TimeSpan.Parse("0:00:00"),activity.Duration);
+        }
+        [Test]
+        public void StartTimeIsRounded()
+        {
+            Expect.Once.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(DateTime.Parse("2111-11-11 5:00:00.5")));
+            activity = new LiveActivity("activity", mockTimeSystem);
+            Assert.AreEqual(DateTime.Parse("2111-11-11 5:00:01"), activity.StartTime);
         }
     }
 }

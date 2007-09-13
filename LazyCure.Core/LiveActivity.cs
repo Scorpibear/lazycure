@@ -2,8 +2,20 @@ using System;
 
 namespace LifeIdea.LazyCure.Core
 {
-    public class LiveActivity:ActivityBase
+    public class LiveActivity : ActivityBase
     {
+        public ITimeSystem timeSystem;
+        public Boolean IsRunning = true;
+        public override DateTime StartTime
+        {
+            get
+            {
+                if (start.Millisecond < 500)
+                    return new DateTime(start.Year, start.Month, start.Day, start.Hour, start.Minute, start.Second);
+                else
+                    return new DateTime(start.Year, start.Month, start.Day, start.Hour, start.Minute, start.Second + 1);
+            }
+        }
         public override TimeSpan Duration
         {
             get
@@ -13,8 +25,7 @@ namespace LifeIdea.LazyCure.Core
                 return RoundedDuration;
             }
         }
-        public ITimeSystem timeSystem;
-        public Boolean IsRunning = true;
+
         public LiveActivity(string name, ITimeSystem timeSystem)
         {
             this.name = name;
@@ -42,9 +53,9 @@ namespace LifeIdea.LazyCure.Core
             get
             {
                 if (duration.Milliseconds < 500)
-                    return new TimeSpan(0, 0, 0, (int) duration.TotalSeconds);
+                    return new TimeSpan(0, 0, 0, (int)duration.TotalSeconds);
                 else
-                    return new TimeSpan(0, 0, 0, (int) duration.TotalSeconds + 1);
+                    return new TimeSpan(0, 0, 0, (int)duration.TotalSeconds + 1);
             }
         }
         private void RecalculateDuration()
