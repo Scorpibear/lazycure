@@ -8,7 +8,7 @@ using LifeIdea.LazyCure.Interfaces;
 namespace LifeIdea.LazyCure.Core
 {
     [TestFixture]
-    public class SerializerTest:Mockery
+    public class SerializerTest : Mockery
     {
         private IActivity activity;
         private ITimeLog mockTimeLog;
@@ -43,7 +43,7 @@ namespace LifeIdea.LazyCure.Core
             XmlNode xml = Serializer.ActivityToXml(activity);
 
             Assert.AreEqual("reading", xml["Records"]["Activity"].InnerText);
-            Assert.AreEqual("5:00:00", xml["Records"]["Begin"].InnerText);
+            Assert.AreEqual("5:00:00", xml["Records"]["Start"].InnerText);
             Assert.AreEqual("1:23:45", xml["Records"]["Duration"].InnerText);
         }
         // not finished
@@ -77,10 +77,18 @@ namespace LifeIdea.LazyCure.Core
         public void TimeLogXmlHeader()
         {
             Stub.On(mockTimeLog).GetProperty("Activities").Will(Return.Value(new List<IActivity>()));
-            
+
             XmlDocument xml = (XmlDocument)Serializer.TimeLogToXml(mockTimeLog);
 
             Assert.AreEqual("<?xml version=\"1.0\" standalone=\"yes\"?>", xml.FirstChild.OuterXml);
+        }
+        [Test]
+        public void SpecifyLazyCureVersionInTimeLog()
+        {
+            List<IActivity> activities = new List<IActivity>();
+            Stub.On(mockTimeLog).GetProperty("Activities").Will(Return.Value(activities));
+            XmlNode data = Serializer.TimeLogToXml(mockTimeLog)["LazyCureData"];
+            Assert.AreEqual("3.1", data.Attributes["LazyCureVersion"].Value);
         }
     }
 }
