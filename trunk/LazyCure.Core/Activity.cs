@@ -19,9 +19,9 @@ namespace LifeIdea.LazyCure.Core
         protected TimeSpan duration;
         protected DateTime start;
 
-        virtual public TimeSpan Duration { get { return duration; } set { duration = value; } }
         public string Name { get { return name; } set { name = value; } }
-        public DateTime StartTime {get { return start; } set { start=value; } }
+        virtual public TimeSpan Duration { get { return duration; } set { duration = value; } }
+        virtual public DateTime StartTime {get { return start; } set { start=value; } }
         public override string ToString()
         {
             return Serializer.ActivityToString(this);
