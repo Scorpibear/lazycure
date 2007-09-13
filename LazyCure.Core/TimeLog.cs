@@ -10,7 +10,7 @@ namespace LifeIdea.LazyCure.Core
     /// <summary>
     /// Store information about activities
     /// </summary>
-    public class TimeLog:ITimeLog
+    public class TimeLog : ITimeLog
     {
         private LiveActivity currentActivity, previousActivity = null;
         private readonly DataTable activitiesSummary;
@@ -31,9 +31,9 @@ namespace LifeIdea.LazyCure.Core
                     if (row["Duration"] != DBNull.Value)
                     {
                         IActivity activity = new Activity(
-                            (string) row["Activity"],
-                            (DateTime) row["Start"],
-                            (TimeSpan) row["Duration"]
+                            (string)row["Activity"],
+                            (DateTime)row["Start"],
+                            (TimeSpan)row["Duration"]
                             );
                         activities.Add(activity);
                     }
@@ -49,6 +49,7 @@ namespace LifeIdea.LazyCure.Core
                 }
             }
         }
+
         public TimeLog(ITimeSystem timeSystem, string firstActivityName)
         {
             currentActivity = new LiveActivity(firstActivityName, timeSystem);
@@ -74,7 +75,7 @@ namespace LifeIdea.LazyCure.Core
             currentActivity.Stop();
 
             AddNewActivity(currentActivity.Name, currentActivity.StartTime, currentActivity.Duration);
-            
+
             previousActivity = currentActivity;
             currentActivity = LiveActivity.After(previousActivity, nextActivity);
             return currentActivity;
@@ -88,7 +89,6 @@ namespace LifeIdea.LazyCure.Core
         {
             writer.WriteLine(Serializer.TimeLogToString(this));
         }
-
         public void Load(string filename)
         {
             XmlDocument document = new XmlDocument();
@@ -103,6 +103,7 @@ namespace LifeIdea.LazyCure.Core
                 {
                     switch (parameter.Name)
                     {
+                        case "Start":
                         case "Begin":
                             start = DateTime.Parse(parameter.InnerText);
                             break;
@@ -116,7 +117,7 @@ namespace LifeIdea.LazyCure.Core
                 }
                 AddNewActivity(name, start, duration);
             }
-            this.day = DateTime.Parse(new FileInfo(filename).Name.Split('.')[0]);;
+            this.day = DateTime.Parse(new FileInfo(filename).Name.Split('.')[0]); ;
         }
 
         private void AddNewActivity(string name, DateTime start, TimeSpan duration)
@@ -155,7 +156,7 @@ namespace LifeIdea.LazyCure.Core
                     if (HasValues(e.Row["Start"], e.ProposedValue))
                     {
                         DateTime end = (DateTime)e.ProposedValue;
-                        DateTime start = (DateTime) e.Row["Start"];
+                        DateTime start = (DateTime)e.Row["Start"];
                         if (start > end)
                             end = end + TimeSpan.FromDays(1);
                         e.Row["Duration"] = end - start;
