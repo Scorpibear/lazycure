@@ -13,6 +13,7 @@ One development cycle:
 Notes:
 When you could not create automated unit test, add manual test case to LazyCure_TestCases.xls file. Every bug should have appropriate test case.
 LazyCure requirements could be found at http://lazycure.wiki.sourceforge.net/Requirements.
+In case of any questions, please, contact Mikhail Subach (Scorpibear) by emailing at scorpibear@tut.by.
 
 
 
