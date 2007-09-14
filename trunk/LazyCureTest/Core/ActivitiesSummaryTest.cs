@@ -28,6 +28,7 @@ namespace LifeIdea.LazyCure.Core
         {
             Assert.AreEqual(Type.GetType("System.String"), activitiesSummary.Data.Columns["Activity"].DataType);
             Assert.AreEqual(Type.GetType("System.TimeSpan"), activitiesSummary.Data.Columns["Spent"].DataType);
+            Assert.AreEqual(Type.GetType("System.String"), activitiesSummary.Data.Columns["Task"].DataType);
         }
         [Test]
         public void SimpleRecord()
@@ -70,6 +71,17 @@ namespace LifeIdea.LazyCure.Core
 
             Assert.AreEqual(1, activitiesSummary.Data.Rows.Count, "rows count");
             Assert.AreEqual(tenSec, activitiesSummary.Data.Rows[0]["Spent"]);
+        }
+        [Test]
+        public void AllActivitiesTime()
+        {
+            Stub.On(timeLog).GetProperty("Activities").Will(Return.Value(new List<IActivity>(new IActivity[]{
+                new Activity("first", DateTime.Now, sevenSec),
+                new Activity("second", DateTime.Now, threeSec)})));
+
+            activitiesSummary.Update();
+
+            Assert.AreEqual(tenSec,activitiesSummary.AllActivitiesTime);
         }
     }
 }

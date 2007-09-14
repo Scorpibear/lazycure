@@ -1,4 +1,5 @@
 using System;
+using System.Text.RegularExpressions;
 
 namespace LifeIdea.LazyCure.Interfaces
 {
@@ -18,6 +19,15 @@ namespace LifeIdea.LazyCure.Interfaces
                 return str.Substring(0, str.LastIndexOf('.'));
             else
                 return str;
+        }
+        public static string ShortDuration(TimeSpan timeSpan)
+        {
+            TimeSpan roundedTime;
+            if(timeSpan.Seconds>=30)
+                roundedTime = TimeSpan.FromMinutes(timeSpan.TotalMinutes + 1);
+            else
+                roundedTime = TimeSpan.FromMinutes(timeSpan.TotalMinutes);
+            return Regex.Match(roundedTime.ToString(), "[1-9]*[0-9]:[0-9][0-9]").Groups[0].Value;
         }
         public static string Time(DateTime dateTime)
         {
