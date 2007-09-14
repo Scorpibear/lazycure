@@ -7,16 +7,14 @@ using System.Data;
 namespace LifeIdea.LazyCure.Core
 {
     [TestFixture]
-    public class TimeLogTest
+    public class TimeLogTest:Mockery
     {
-        private Mockery mocks;
         private TimeLog timeLog;
         private readonly DateTime startTime = DateTime.Parse("2125-06-30 05:00:00");
         [SetUp]
         public void SetUp()
         {
-            mocks = new Mockery();
-            ITimeSystem mockTimeSystem = mocks.NewMock<ITimeSystem>();
+            ITimeSystem mockTimeSystem = NewMock<ITimeSystem>();
             Stub.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(startTime));
             timeLog = new TimeLog(mockTimeSystem, "first");
         }
@@ -62,78 +60,6 @@ namespace LifeIdea.LazyCure.Core
             Assert.AreEqual(Type.GetType("System.DateTime"), timeLog.Data.Columns["Start"].DataType, "Start column");
             Assert.AreEqual(Type.GetType("System.TimeSpan"), timeLog.Data.Columns["Duration"].DataType, "Duration column");
             Assert.AreEqual(Type.GetType("System.DateTime"), timeLog.Data.Columns["End"].DataType, "End column");
-        }
-        [Test]
-        public void ActivitiesSummaryDataColumns()
-        {
-            DataTable summary = timeLog.ActivitiesSummary;
-            Assert.AreEqual(Type.GetType("System.String"), summary.Columns["Activity"].DataType);
-            Assert.AreEqual(Type.GetType("System.TimeSpan"), summary.Columns["Spent"].DataType);
-        }
-        [Test]
-        public void ActivitiesSummarySimpleRecord()
-        {
-            ITimeSystem mockTimeSystem = mocks.NewMock<ITimeSystem>();
-            using (mocks.Ordered)
-            {
-                Expect.Once.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(DateTime.Parse("2007-11-18 5:00:00")));
-                Expect.Once.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(DateTime.Parse("2007-11-18 6:23:45")));
-            }
-            timeLog = new TimeLog(mockTimeSystem, "first");
-            timeLog.SwitchTo("second");
-            DataTable summary = timeLog.ActivitiesSummary;
-            DataRow firstRow = summary.Rows[0];
-            Assert.AreEqual("first", firstRow["Activity"]);
-            Assert.AreEqual(TimeSpan.Parse("1:23:45"), firstRow["Spent"]);
-        }
-        
-        [Test]
-        public void ActivitiesSummaryTwoDiffRecords()
-        {
-            ITimeSystem mockTimeSystem = mocks.NewMock<ITimeSystem>();
-            using (mocks.Ordered)
-            {
-                Expect.Once.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(DateTime.Parse("2007-11-18 5:00:00")));
-                Expect.Once.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(DateTime.Parse("2007-11-18 5:07:00")));
-                Expect.Once.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(DateTime.Parse("2007-11-18 5:10:00")));
-            }
-            timeLog = new TimeLog(mockTimeSystem,"first");
-            timeLog.SwitchTo("second");
-            timeLog.SwitchTo("third");
-            DataTable summary = timeLog.ActivitiesSummary;
-            DataRow firstRow = summary.Rows[0];
-            DataRow secondRow = summary.Rows[1];
-            Assert.AreEqual(2, summary.Rows.Count, "rows count");
-            Assert.AreEqual("first", firstRow["Activity"]);
-            Assert.AreEqual(TimeSpan.Parse("0:07:00"), firstRow["Spent"]);
-            Assert.AreEqual("second", secondRow["Activity"]);
-            Assert.AreEqual(TimeSpan.Parse("0:03:00"), secondRow["Spent"]);
-        }
-        [Test]
-        public void ActivitiesSummaryTwoEqualRecords()
-        {
-            ITimeSystem mockTimeSystem = mocks.NewMock<ITimeSystem>();
-            using (mocks.Ordered)
-            {
-                Expect.Once.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(DateTime.Parse("2007-11-18 5:00:00")));
-                Expect.Once.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(DateTime.Parse("2007-11-18 5:07:00")));
-                Expect.Once.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(DateTime.Parse("2007-11-18 5:10:00")));
-            }
-            timeLog = new TimeLog(mockTimeSystem,"first");
-            timeLog.SwitchTo("first");
-            timeLog.SwitchTo("second");
-            DataTable summary = timeLog.ActivitiesSummary;
-            DataRow firstRow = summary.Rows[0];
-            Assert.AreEqual(1, summary.Rows.Count, "rows count");
-            Assert.AreEqual(firstRow["Activity"], "first");
-            Assert.AreEqual(firstRow["Spent"], TimeSpan.Parse("0:10:00"));
-        }
-        [Test]
-        public void SummaryChangedAfterDataTableChange()
-        {
-            timeLog.SwitchTo("second");
-            timeLog.Data.Rows[0]["Activity"] = "aaa";
-            Assert.AreEqual("aaa",timeLog.ActivitiesSummary.Rows[0]["Activity"]);
         }
         [Test]
         public void ColumnsOrder()
