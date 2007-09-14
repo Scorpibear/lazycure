@@ -13,12 +13,10 @@ namespace LifeIdea.LazyCure.Core
     public class TimeLog : ITimeLog
     {
         private LiveActivity currentActivity, previousActivity = null;
-        private readonly DataTable activitiesSummary;
         private readonly DataTable data;
         private DateTime day;
 
         public IActivity CurrentActivity { get { return currentActivity; } }
-        public DataTable ActivitiesSummary { get { return activitiesSummary; } }
         public DataTable Data { get { return data; } }
         public DateTime Day { get { return day; } }
         public List<IActivity> Activities
@@ -61,13 +59,9 @@ namespace LifeIdea.LazyCure.Core
             startCol.AllowDBNull = false;
             DataColumn activityCol = data.Columns.Add("Activity");
             activityCol.AllowDBNull = false;
-            DataColumn durationCol = data.Columns.Add("Duration", Type.GetType("System.TimeSpan"));
-            DataColumn endCol = data.Columns.Add("End", Type.GetType("System.DateTime"));
-
-            activitiesSummary = new DataTable("ActivitiesSummary");
-            activitiesSummary.Columns.Add("Activity");
-            activitiesSummary.Columns.Add("Spent", Type.GetType("System.TimeSpan"));
-            data.RowChanged += data_RowChanged;
+            data.Columns.Add("Duration", Type.GetType("System.TimeSpan"));
+            data.Columns.Add("End", Type.GetType("System.DateTime"));
+            
             data.ColumnChanging += data_ColumnChanging;
         }
         public IActivity SwitchTo(string nextActivity)
@@ -128,10 +122,6 @@ namespace LifeIdea.LazyCure.Core
             row["Duration"] = duration;
             data.Rows.Add(row);
         }
-        private void data_RowChanged(object sender, DataRowChangeEventArgs e)
-        {
-            CalculateActivitiesSummary();
-        }
         private bool isChanging = false;
         private void data_ColumnChanging(object sender, DataColumnChangeEventArgs e)
         {
@@ -167,30 +157,6 @@ namespace LifeIdea.LazyCure.Core
             }
             isChanging = false;
 
-        }
-        private void CalculateActivitiesSummary()
-        {
-            activitiesSummary.Clear();
-            foreach (DataRow theRow in data.Rows)
-            {
-                bool isRowAdded = false;
-                for (int iRowIndex = 0; iRowIndex < activitiesSummary.Rows.Count; iRowIndex++)
-                {
-                    if (((string)activitiesSummary.Rows[iRowIndex]["Activity"] == (string)theRow["Activity"]) &&
-                        activitiesSummary.Rows[iRowIndex]["Spent"].GetType() != Type.GetType("System.DBNull")
-                        )
-                    {
-                        TimeSpan currentDuration = (TimeSpan)activitiesSummary.Rows[iRowIndex]["Spent"];
-                        activitiesSummary.Rows[iRowIndex]["Spent"] = currentDuration + (TimeSpan)theRow["Duration"];
-                        isRowAdded = true;
-                        break;
-                    }
-                }
-                if (!isRowAdded)
-                {
-                    activitiesSummary.Rows.Add(theRow["Activity"], theRow["Duration"]);
-                }
-            }
         }
         private static bool HasValues(object a, object b)
         {

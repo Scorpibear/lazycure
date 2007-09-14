@@ -6,8 +6,8 @@ namespace LifeIdea.LazyCure.Core
 {
     public class Driver : ILazyCureDriver
     {
-        private ITimeSystem timeSystem;
-        private TimeLog timeLog;
+        private readonly TimeLog timeLog;
+        private readonly ActivitiesSummary activitiesSummary;
         private string timeLogsFolder;
         private readonly History history;
 
@@ -17,8 +17,8 @@ namespace LifeIdea.LazyCure.Core
 
         public Driver(ITimeSystem timeSystem)
         {
-            this.timeSystem = timeSystem;
             timeLog = new TimeLog(timeSystem, FirstActivityName);
+            activitiesSummary = new ActivitiesSummary(timeLog);
             history = new History();
         }
         public Driver() : this(new RunTimeSystem()) { }
@@ -33,7 +33,7 @@ namespace LifeIdea.LazyCure.Core
         #region ILazyCureDriver Members
 
         public IActivity CurrentActivity { get { return timeLog.CurrentActivity; } }
-        public object ActivitiesSummaryData { get { return timeLog.ActivitiesSummary; } }
+        public object ActivitiesSummaryData { get { return activitiesSummary.Data; } }
         public object TimeLogData { get { return timeLog.Data; } }
         public void FinishActivity(string finishedActivity, string nextActivity)
         {

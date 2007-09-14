@@ -5,6 +5,9 @@ using LifeIdea.LazyCure.Interfaces;
 
 namespace LifeIdea.LazyCure.Core
 {
+    /// <summary>
+    /// Serialize core objects.
+    /// </summary>
     public class Serializer
     {
 
