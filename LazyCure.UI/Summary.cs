@@ -1,3 +1,4 @@
+using System;
 using System.Windows.Forms;
 using LifeIdea.LazyCure.Interfaces;
 
@@ -7,11 +8,13 @@ namespace LifeIdea.LazyCure.UI
     {
         private ILazyCureDriver lazyCure;
         private readonly IMainForm mainForm;
+
         public Summary(ILazyCureDriver lazyCure, IMainForm mainForm)
         {
             this.lazyCure = lazyCure;
             InitializeComponent();
-            this.activitiesSummary.DataSource = lazyCure.ActivitiesSummaryData;
+            activitiesSummary.DataSource = lazyCure.ActivitiesSummaryData;
+            allActivitiesTime.Text = Format.ShortDuration(lazyCure.AllActivitiesTime);
             this.mainForm = mainForm;
         }
 
@@ -19,6 +22,11 @@ namespace LifeIdea.LazyCure.UI
         {
             if(mainForm!=null)
                 mainForm.Summary_VisibleChanged();
+        }
+
+        private void timeUpdate_Click(object sender, EventArgs e)
+        {
+            allActivitiesTime.Text = Format.ShortDuration(lazyCure.AllActivitiesTime);
         }
     }
 }

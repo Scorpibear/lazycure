@@ -1,3 +1,5 @@
+using System;
+
 namespace LifeIdea.LazyCure.Interfaces
 {
     public interface ILazyCureDriver
@@ -8,6 +10,8 @@ namespace LifeIdea.LazyCure.Interfaces
         string[] LatestActivities { get;}
         string TimeLogDate { get;}
         string TimeLogsFolder { get;}
+
+        TimeSpan AllActivitiesTime { get; }
 
         void FinishActivity(string finishedActivity, string nextActivity);
         bool SaveTimeLog();

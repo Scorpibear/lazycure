@@ -31,7 +31,7 @@ namespace LifeIdea.LazyCure.Core
             history.Save(filename);
         }
         #region ILazyCureDriver Members
-
+        public TimeSpan AllActivitiesTime { get { return activitiesSummary.AllActivitiesTime; } }
         public IActivity CurrentActivity { get { return timeLog.CurrentActivity; } }
         public object ActivitiesSummaryData { get { return activitiesSummary.Data; } }
         public object TimeLogData { get { return timeLog.Data; } }
