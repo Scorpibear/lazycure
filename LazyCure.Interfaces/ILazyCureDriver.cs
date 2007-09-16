@@ -14,7 +14,7 @@ namespace LifeIdea.LazyCure.Interfaces
         TimeSpan AllActivitiesTime { get; }
 
         void FinishActivity(string finishedActivity, string nextActivity);
-        bool SaveTimeLog();
+        bool Save();
         bool SaveTimeLog(string filename);
         bool LoadTimeLog(string filename);
         

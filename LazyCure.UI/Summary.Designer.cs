@@ -28,15 +28,16 @@ namespace LifeIdea.LazyCure.UI
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Summary));
             this.activitiesSummary = new System.Windows.Forms.DataGridView();
             this.Activity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Spent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Task = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.activities = new System.Windows.Forms.TabPage();
+            this.timeUpdate = new System.Windows.Forms.Button();
             this.allActivitiesTime = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.timeUpdate = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.activitiesSummary)).BeginInit();
             this.tabControl.SuspendLayout();
             this.activities.SuspendLayout();
@@ -104,6 +105,16 @@ namespace LifeIdea.LazyCure.UI
             this.activities.Text = "Activities";
             this.activities.UseVisualStyleBackColor = true;
             // 
+            // timeUpdate
+            // 
+            this.timeUpdate.Location = new System.Drawing.Point(226, 296);
+            this.timeUpdate.Name = "timeUpdate";
+            this.timeUpdate.Size = new System.Drawing.Size(75, 23);
+            this.timeUpdate.TabIndex = 3;
+            this.timeUpdate.Text = "Update";
+            this.timeUpdate.UseVisualStyleBackColor = true;
+            this.timeUpdate.Click += new System.EventHandler(this.timeUpdate_Click);
+            // 
             // allActivitiesTime
             // 
             this.allActivitiesTime.Location = new System.Drawing.Point(186, 297);
@@ -123,22 +134,13 @@ namespace LifeIdea.LazyCure.UI
             this.label1.TabIndex = 1;
             this.label1.Text = "Time, spent on all activities (h:mm):";
             // 
-            // timeUpdate
-            // 
-            this.timeUpdate.Location = new System.Drawing.Point(226, 296);
-            this.timeUpdate.Name = "timeUpdate";
-            this.timeUpdate.Size = new System.Drawing.Size(75, 23);
-            this.timeUpdate.TabIndex = 3;
-            this.timeUpdate.Text = "Update";
-            this.timeUpdate.UseVisualStyleBackColor = true;
-            this.timeUpdate.Click += new System.EventHandler(this.timeUpdate_Click);
-            // 
             // Summary
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(546, 351);
             this.Controls.Add(this.tabControl);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimizeBox = false;
             this.Name = "Summary";
             this.Text = "Summary";

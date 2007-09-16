@@ -11,12 +11,13 @@ namespace LifeIdea.LazyCure.UI
         private readonly ILazyCureDriver lazyCure;
         private readonly string nextActivity = "(specify what you are doing)";
 
-        public Main(ILazyCureDriver driver)
+        public Main(ILazyCureDriver driver,ISettings settings)
         {
             InitializeComponent();
             this.lazyCure = driver;
             Dialogs.MainForm = this;
             Dialogs.LazyCureDriver = driver;
+            Dialogs.Settings = settings;
             timer.Start();
             SetCaption();
             UpdateCurrentActivity();
@@ -98,7 +99,7 @@ namespace LifeIdea.LazyCure.UI
         }
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (!lazyCure.SaveTimeLog())
+            if (!lazyCure.Save())
             {
                 DialogResult result = MessageBox.Show("Time Log could not be saved. Exit from LazyCure anyway?", "Could not save time log", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
                 if (result == DialogResult.Yes)
@@ -109,7 +110,7 @@ namespace LifeIdea.LazyCure.UI
         }
         private void miSave_Click(object sender, EventArgs e)
         {
-            if (!lazyCure.SaveTimeLog())
+            if (!lazyCure.Save())
                 MessageBox.Show("Time log has not been saved!", "Saving  error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
         private void notifyIcon_DoubleClick(object sender, EventArgs e)
@@ -133,6 +134,11 @@ namespace LifeIdea.LazyCure.UI
             {
                 lazyCure.SaveTimeLog(saveDialog.FileName);
             }
+        }
+
+        private void miOptions_Click(object sender, EventArgs e)
+        {
+            Dialogs.Options.Show();
         }
     }
 }

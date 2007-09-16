@@ -58,6 +58,7 @@ namespace LifeIdea.LazyCure.UI
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.miOptions = new System.Windows.Forms.ToolStripMenuItem();
             this.statusBar.SuspendLayout();
             this.nowYou.SuspendLayout();
             this.menu.SuspendLayout();
@@ -154,6 +155,7 @@ namespace LifeIdea.LazyCure.UI
             this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.miFile,
             this.miShow,
+            this.miOptions,
             this.miHelp});
             this.menu.Location = new System.Drawing.Point(0, 0);
             this.menu.Name = "menu";
@@ -222,8 +224,7 @@ namespace LifeIdea.LazyCure.UI
             this.miTimeLog,
             this.miSummary});
             this.showMenu.Name = "contextMenu";
-            this.showMenu.OwnerItem = this.miShow;
-            this.showMenu.Size = new System.Drawing.Size(157, 92);
+            this.showMenu.Size = new System.Drawing.Size(157, 70);
             // 
             // miActivityDetails
             // 
@@ -321,6 +322,13 @@ namespace LifeIdea.LazyCure.UI
             this.contextMenu.Name = "contextMenu";
             this.contextMenu.Size = new System.Drawing.Size(112, 26);
             // 
+            // miOptions
+            // 
+            this.miOptions.Name = "miOptions";
+            this.miOptions.Size = new System.Drawing.Size(56, 20);
+            this.miOptions.Text = "&Options";
+            this.miOptions.Click += new System.EventHandler(this.miOptions_Click);
+            // 
             // Main
             // 
             this.AcceptButton = this.switchButton;
@@ -388,5 +396,6 @@ namespace LifeIdea.LazyCure.UI
         private System.Windows.Forms.ContextMenuStrip contextMenu;
         private System.Windows.Forms.ToolStripMenuItem miContextShow;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem miOptions;
     }
 }
