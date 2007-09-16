@@ -1,9 +1,9 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="LifeIdea.LazyCure" GeneratedClassName="LazyCureSettings">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="LifeIdea.LazyCure.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
     <Setting Name="TimeLogsFolder" Type="System.String" Scope="User">
-      <Value Profile="(Default)">.\TimeLogs</Value>
+      <Value Profile="(Default)">TimeLogs</Value>
     </Setting>
     <Setting Name="SaveAfterDone" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>

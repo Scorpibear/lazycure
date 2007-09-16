@@ -23,7 +23,7 @@ namespace LifeIdea.LazyCure.UI
             Stub.On(mockDriver).GetProperty("ActivitiesSummaryData");
             Stub.On(mockDriver).GetProperty("TimeLogDate").Will(Return.Value("2126-11-18"));
             Stub.On(mockDriver).GetProperty("LatestActivities").Will(Return.Value(new string[] { }));
-            form = new Main(mockDriver);
+            form = new Main(mockDriver,null);
         }
         [Test]
         public void MinimizeBoxExists()

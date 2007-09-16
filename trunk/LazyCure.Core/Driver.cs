@@ -9,6 +9,7 @@ namespace LifeIdea.LazyCure.Core
         private readonly TimeLog timeLog;
         private readonly ActivitiesSummary activitiesSummary;
         private string timeLogsFolder;
+        private readonly string historyFileName = "history.txt";
         private readonly History history;
 
         public static string FirstActivityName = "starting LazyCure";
@@ -40,7 +41,7 @@ namespace LifeIdea.LazyCure.Core
             timeLog.FinishActivity(finishedActivity, nextActivity);
             history.AddActivity(finishedActivity);
             if(SaveAfterDone)
-                SaveTimeLog();
+                Save();
         }
         public string TimeLogDate { get { return timeLog.Day.ToString("yyyy-MM-dd"); } }
         public bool LoadTimeLog(string filename)
@@ -59,8 +60,10 @@ namespace LifeIdea.LazyCure.Core
         {
             get { return history.LatestActivities; }
         }
-        public bool SaveTimeLog()
+        public bool Save()
         {
+            if (history != null)
+                history.Save("history.txt");
             if (timeLogsFolder == "")
             {
                 Log.Error("TimeLogsFolder is not specified");
@@ -88,6 +91,7 @@ namespace LifeIdea.LazyCure.Core
         }
         public bool LoadTimeLog(DateTime date)
         {
+            history.Load(historyFileName);
             string filename = GetTimeLogFileNameByDate(date);
             return LoadTimeLog(filename);
         }

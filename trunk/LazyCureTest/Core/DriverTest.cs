@@ -32,7 +32,7 @@ namespace LifeIdea.LazyCure.Core
             PrepareFolder();
             driver.TimeLogsFolder = folder;
         
-            if (driver.SaveTimeLog())
+            if (driver.Save())
                 Assert.Contains(filename, Directory.GetFiles(folder));
             else
                 Assert.Fail(mockWriter.Content);
@@ -51,7 +51,7 @@ namespace LifeIdea.LazyCure.Core
         public void NullTimeLogs()
         {
             driver.TimeLogsFolder = "";
-            Assert.IsFalse(driver.SaveTimeLog());
+            Assert.IsFalse(driver.Save());
             Assert.AreEqual("TimeLogsFolder is not specified", mockWriter.Content);
         }
         [Test]

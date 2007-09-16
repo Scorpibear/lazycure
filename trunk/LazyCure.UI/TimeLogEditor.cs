@@ -42,7 +42,7 @@ namespace LifeIdea.LazyCure.UI
         {
             if (Visible == false)
             {
-                lazyCure.SaveTimeLog();
+                lazyCure.Save();
             }
             if(mainForm!=null)
                 mainForm.TimeLogEditor_VisibleChanged();

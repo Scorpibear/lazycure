@@ -1,3 +1,4 @@
+using LifeIdea.LazyCure.Properties;
 using NUnit.Framework;
 
 namespace LifeIdea.LazyCure
@@ -11,17 +12,17 @@ namespace LifeIdea.LazyCure
         [Test]
         public void TimeLogsFolderDefaultSetting()
         {
-            AreEqual(@".\TimeLogs", LazyCureSettings.Default.TimeLogsFolder);
+            AreEqual("TimeLogs", Settings.Default.TimeLogsFolder);
         }
         [Test]
         public void SaveAfterDoneDefaultSetting()
         {
-            AreEqual(true, LazyCureSettings.Default.SaveAfterDone);
+            AreEqual(true, Settings.Default.SaveAfterDone);
         }
         [Test]
         public void MaxActivitiesInHistoryDefaultSetting()
         {
-            AreEqual(30,LazyCureSettings.Default.MaxActivitiesInHistory);
+            AreEqual(30,Settings.Default.MaxActivitiesInHistory);
         }
     }
 }

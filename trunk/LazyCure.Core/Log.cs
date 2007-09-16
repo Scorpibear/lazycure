@@ -16,6 +16,10 @@ namespace LifeIdea.LazyCure.Core
             {
                 textWriter.WriteLine(str);
             }
+            public void Close()
+            {
+                textWriter.Close();
+            }
         }
         public static IWriter Writer;
         public static TextWriter TextWriter { set { Writer = new LazyCureTextWriter(value); } }
@@ -27,6 +31,11 @@ namespace LifeIdea.LazyCure.Core
         public static void Error(string text)
         {
             Writer.WriteLine(text);
+        }
+
+        public static void Close()
+        {
+            Writer.Close();
         }
     }
     

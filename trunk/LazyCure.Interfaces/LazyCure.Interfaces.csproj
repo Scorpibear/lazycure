@@ -37,6 +37,7 @@
     <Compile Include="IActivity.cs" />
     <Compile Include="ILazyCureDriver.cs" />
     <Compile Include="INameable.cs" />
+    <Compile Include="ISettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

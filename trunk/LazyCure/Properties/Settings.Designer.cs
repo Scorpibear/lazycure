@@ -8,16 +8,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace LifeIdea.LazyCure {
+using LifeIdea.LazyCure.Interfaces;
+
+namespace LifeIdea.LazyCure.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "8.0.0.0")]
-    public sealed partial class LazyCureSettings : global::System.Configuration.ApplicationSettingsBase {
+    public sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase,ISettings {
         
-        private static LazyCureSettings defaultInstance = ((LazyCureSettings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new LazyCureSettings())));
+        private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
         
-        public static LazyCureSettings Default {
+        public static Settings Default {
             get {
                 return defaultInstance;
             }
@@ -25,7 +27,7 @@ namespace LifeIdea.LazyCure {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute(".\\TimeLogs")]
+        [global::System.Configuration.DefaultSettingValueAttribute("TimeLogs")]
         public string TimeLogsFolder {
             get {
                 return ((string)(this["TimeLogsFolder"]));
