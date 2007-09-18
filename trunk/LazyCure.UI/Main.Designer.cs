@@ -49,16 +49,19 @@ namespace LifeIdea.LazyCure.UI
             this.miActivityDetails = new System.Windows.Forms.ToolStripMenuItem();
             this.miTimeLog = new System.Windows.Forms.ToolStripMenuItem();
             this.miSummary = new System.Windows.Forms.ToolStripMenuItem();
+            this.miContextShow = new System.Windows.Forms.ToolStripMenuItem();
+            this.miOptions = new System.Windows.Forms.ToolStripMenuItem();
             this.miHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.miOnline = new System.Windows.Forms.ToolStripMenuItem();
+            this.miSubscribe = new System.Windows.Forms.ToolStripMenuItem();
             this.miAbout = new System.Windows.Forms.ToolStripMenuItem();
-            this.miContextShow = new System.Windows.Forms.ToolStripMenuItem();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.miOptions = new System.Windows.Forms.ToolStripMenuItem();
+            this.miSubmit = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.statusBar.SuspendLayout();
             this.nowYou.SuspendLayout();
             this.menu.SuspendLayout();
@@ -224,6 +227,7 @@ namespace LifeIdea.LazyCure.UI
             this.miTimeLog,
             this.miSummary});
             this.showMenu.Name = "contextMenu";
+            this.showMenu.OwnerItem = this.miShow;
             this.showMenu.Size = new System.Drawing.Size(157, 70);
             // 
             // miActivityDetails
@@ -252,10 +256,27 @@ namespace LifeIdea.LazyCure.UI
             this.miSummary.Text = "&Summary";
             this.miSummary.Click += new System.EventHandler(this.miShowSummary_Click);
             // 
+            // miContextShow
+            // 
+            this.miContextShow.DropDown = this.showMenu;
+            this.miContextShow.Name = "miContextShow";
+            this.miContextShow.Size = new System.Drawing.Size(111, 22);
+            this.miContextShow.Text = "Show";
+            // 
+            // miOptions
+            // 
+            this.miOptions.Name = "miOptions";
+            this.miOptions.Size = new System.Drawing.Size(56, 20);
+            this.miOptions.Text = "&Options";
+            this.miOptions.Click += new System.EventHandler(this.miOptions_Click);
+            // 
             // miHelp
             // 
             this.miHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.miOnline,
+            this.miSubscribe,
+            this.miSubmit,
+            this.toolStripSeparator2,
             this.miAbout});
             this.miHelp.Name = "miHelp";
             this.miHelp.Size = new System.Drawing.Size(40, 20);
@@ -264,23 +285,25 @@ namespace LifeIdea.LazyCure.UI
             // miOnline
             // 
             this.miOnline.Name = "miOnline";
-            this.miOnline.Size = new System.Drawing.Size(163, 22);
+            this.miOnline.Size = new System.Drawing.Size(220, 22);
+            this.miOnline.Tag = "http://lazycure.com/";
             this.miOnline.Text = "LazyCure &Online";
-            this.miOnline.Click += new System.EventHandler(this.miOnline_Click);
+            this.miOnline.Click += new System.EventHandler(this.Link_Click);
+            // 
+            // miSubscribe
+            // 
+            this.miSubscribe.Name = "miSubscribe";
+            this.miSubscribe.Size = new System.Drawing.Size(220, 22);
+            this.miSubscribe.Tag = "http://lazycure.com/feed/";
+            this.miSubscribe.Text = "&Subscribe to LazyCure news";
+            this.miSubscribe.Click += new System.EventHandler(this.Link_Click);
             // 
             // miAbout
             // 
             this.miAbout.Name = "miAbout";
-            this.miAbout.Size = new System.Drawing.Size(163, 22);
+            this.miAbout.Size = new System.Drawing.Size(220, 22);
             this.miAbout.Text = "&About LazyCure";
             this.miAbout.Click += new System.EventHandler(this.miAbout_Click);
-            // 
-            // miContextShow
-            // 
-            this.miContextShow.DropDown = this.showMenu;
-            this.miContextShow.Name = "miContextShow";
-            this.miContextShow.Size = new System.Drawing.Size(111, 22);
-            this.miContextShow.Text = "Show";
             // 
             // timer
             // 
@@ -322,12 +345,18 @@ namespace LifeIdea.LazyCure.UI
             this.contextMenu.Name = "contextMenu";
             this.contextMenu.Size = new System.Drawing.Size(112, 26);
             // 
-            // miOptions
+            // miSubmit
             // 
-            this.miOptions.Name = "miOptions";
-            this.miOptions.Size = new System.Drawing.Size(56, 20);
-            this.miOptions.Text = "&Options";
-            this.miOptions.Click += new System.EventHandler(this.miOptions_Click);
+            this.miSubmit.Name = "miSubmit";
+            this.miSubmit.Size = new System.Drawing.Size(233, 22);
+            this.miSubmit.Tag = "http://lazycure.com/submit/";
+            this.miSubmit.Text = "Submit a &bug / feature request";
+            this.miSubmit.Click += new System.EventHandler(this.Link_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(230, 6);
             // 
             // Main
             // 
@@ -397,5 +426,8 @@ namespace LifeIdea.LazyCure.UI
         private System.Windows.Forms.ToolStripMenuItem miContextShow;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem miOptions;
+        private System.Windows.Forms.ToolStripMenuItem miSubscribe;
+        private System.Windows.Forms.ToolStripMenuItem miSubmit;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
     }
 }

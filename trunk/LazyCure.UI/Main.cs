@@ -89,9 +89,10 @@ namespace LifeIdea.LazyCure.UI
         {
             Dialogs.About.Show();
         }
-        private void miOnline_Click(object sender, EventArgs e)
+        private void Link_Click(object sender, EventArgs e)
         {
-            Process.Start("http://lifeidea.org/lazycure/");
+            string link = (string)((ToolStripItem)sender).Tag;
+            Process.Start(link);
         }
         private void Main_FormClosed(object sender, FormClosedEventArgs e)
         {
