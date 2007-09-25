@@ -1,4 +1,6 @@
 using System;
+using System.Windows.Forms;
+using LifeIdea.LazyCure.Core.Interfaces;
 using LifeIdea.LazyCure.Interfaces;
 using System.IO;
 
@@ -8,9 +10,11 @@ namespace LifeIdea.LazyCure.Core
     {
         private readonly TimeLog timeLog;
         private readonly ActivitiesSummary activitiesSummary;
+        private readonly ITaskActivityLinker linker;
         private string timeLogsFolder;
         private readonly string historyFileName = "history.txt";
         private readonly History history;
+        private readonly TaskCollection tasks;
 
         public static string FirstActivityName = "starting LazyCure";
         public bool SaveAfterDone=true;
@@ -19,7 +23,9 @@ namespace LifeIdea.LazyCure.Core
         public Driver(ITimeSystem timeSystem)
         {
             timeLog = new TimeLog(timeSystem, FirstActivityName);
-            activitiesSummary = new ActivitiesSummary(timeLog);
+            tasks = new TaskCollection();
+            linker = new TaskActivityLinker(tasks);
+            activitiesSummary = new ActivitiesSummary(timeLog,linker);
             history = new History();
         }
         public Driver() : this(new RunTimeSystem()) { }
@@ -32,10 +38,20 @@ namespace LifeIdea.LazyCure.Core
             history.Save(filename);
         }
         #region ILazyCureDriver Members
+
         public TimeSpan AllActivitiesTime { get { return activitiesSummary.AllActivitiesTime; } }
+
         public IActivity CurrentActivity { get { return timeLog.CurrentActivity; } }
+
         public object ActivitiesSummaryData { get { return activitiesSummary.Data; } }
+
+        public void FillTaskNodes(TreeNodeCollection nodes)
+        {
+            nodes.AddRange(tasks.ToArray());
+        }
+
         public object TimeLogData { get { return timeLog.Data; } }
+
         public void FinishActivity(string finishedActivity, string nextActivity)
         {
             timeLog.FinishActivity(finishedActivity, nextActivity);
@@ -43,7 +59,9 @@ namespace LifeIdea.LazyCure.Core
             if(SaveAfterDone)
                 Save();
         }
+
         public string TimeLogDate { get { return timeLog.Day.ToString("yyyy-MM-dd"); } }
+
         public bool LoadTimeLog(string filename)
         {
             if (File.Exists(filename))
@@ -56,10 +74,12 @@ namespace LifeIdea.LazyCure.Core
                 return false;
             }
         }
+
         public string[] LatestActivities
         {
             get { return history.LatestActivities; }
         }
+
         public bool Save()
         {
             if (history != null)
@@ -71,6 +91,7 @@ namespace LifeIdea.LazyCure.Core
             }
             return SaveTimeLog(GetTimeLogFileNameByDate(timeLog.Day));
         }
+
         public bool SaveTimeLog(string filename)
         {
             StreamWriter stream = null;
@@ -89,6 +110,7 @@ namespace LifeIdea.LazyCure.Core
             stream.Close();
             return true;
         }
+
         public bool LoadTimeLog(DateTime date)
         {
             history.Load(historyFileName);

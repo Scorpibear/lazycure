@@ -55,6 +55,7 @@ namespace LifeIdea.LazyCure.UI
             this.activitiesSummary.Name = "activitiesSummary";
             this.activitiesSummary.Size = new System.Drawing.Size(532, 288);
             this.activitiesSummary.TabIndex = 0;
+            this.activitiesSummary.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.activitiesSummary_CellDoubleClick);
             // 
             // Activity
             // 
@@ -70,6 +71,7 @@ namespace LifeIdea.LazyCure.UI
             this.Spent.HeaderText = "Spent";
             this.Spent.Name = "Spent";
             this.Spent.ReadOnly = true;
+            this.Spent.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.Spent.Width = 50;
             // 
             // Task
@@ -157,13 +159,13 @@ namespace LifeIdea.LazyCure.UI
         #endregion
 
         private System.Windows.Forms.DataGridView activitiesSummary;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Activity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Spent;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Task;
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage activities;
         private System.Windows.Forms.TextBox allActivitiesTime;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button timeUpdate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Activity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Spent;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Task;
     }
 }

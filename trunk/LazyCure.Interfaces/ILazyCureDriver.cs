@@ -1,4 +1,5 @@
 using System;
+using System.Windows.Forms;
 
 namespace LifeIdea.LazyCure.Interfaces
 {
@@ -6,6 +7,7 @@ namespace LifeIdea.LazyCure.Interfaces
     {
         IActivity CurrentActivity { get;}
         object ActivitiesSummaryData{get;}
+        void FillTaskNodes(TreeNodeCollection nodes);
         object TimeLogData { get;}
         string[] LatestActivities { get;}
         string TimeLogDate { get;}
@@ -17,6 +19,7 @@ namespace LifeIdea.LazyCure.Interfaces
         bool Save();
         bool SaveTimeLog(string filename);
         bool LoadTimeLog(string filename);
-        
+
+
     }
 }

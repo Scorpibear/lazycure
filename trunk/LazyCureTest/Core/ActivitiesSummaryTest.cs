@@ -12,6 +12,7 @@ namespace LifeIdea.LazyCure.Core
     {
         private ActivitiesSummary activitiesSummary;
         private ITimeLog timeLog;
+        private ITaskActivityLinker linker;
         private readonly TimeSpan sevenSec = TimeSpan.Parse("0:07:00");
         private readonly TimeSpan threeSec = TimeSpan.Parse("0:03:00");
         private readonly TimeSpan tenSec = TimeSpan.Parse("0:10:00");
@@ -20,8 +21,15 @@ namespace LifeIdea.LazyCure.Core
         public void SetUp()
         {
             timeLog = NewMock<ITimeLog>();
+            linker = NewMock<ITaskActivityLinker>();
             Stub.On(timeLog).GetProperty("Data").Will(Return.Value(new DataTable()));
-            activitiesSummary = new ActivitiesSummary(timeLog);
+            Stub.On(linker).Method("GetRelatedTask");
+            activitiesSummary = new ActivitiesSummary(timeLog, linker);
+        }
+        [TearDown]
+        public void TearDown()
+        {
+            this.VerifyAllExpectationsHaveBeenMet();
         }
         [Test]
         public void DataColumnsTypes()
@@ -82,6 +90,35 @@ namespace LifeIdea.LazyCure.Core
             activitiesSummary.Update();
 
             Assert.AreEqual(tenSec,activitiesSummary.AllActivitiesTime);
+        }
+
+        [Test]
+        public void GetRelatedTask()
+        {
+            Stub.On(timeLog).GetProperty("Activities").Will(Return.Value(new List<IActivity>(
+                new IActivity[] { new Activity("first", DateTime.Now, sevenSec) })));
+
+            linker = NewMock<ITaskActivityLinker>();
+            Expect.AtLeastOnce.On(linker).Method("GetRelatedTask").With("first").Will(Return.Value("related task"));
+            
+            activitiesSummary = new ActivitiesSummary(timeLog,linker);
+            activitiesSummary.Update();
+            string task = activitiesSummary.Data.Rows[0]["Task"] as string;
+            Assert.IsNotNull(task);
+            Assert.AreEqual("related task", task);
+        }
+
+        [Test]
+        public void LinkActivityAndTask()
+        {
+            Stub.On(timeLog).GetProperty("Activities").Will(Return.Value(new List<IActivity>(
+                new IActivity[] { new Activity("activity1", DateTime.Now, sevenSec) })));
+
+            Expect.Once.On(linker).Method("LinkActivityAndTask").With("activity1","task1");
+
+            activitiesSummary.Update();
+
+            activitiesSummary.Data.Rows[0]["Task"] = "task1";
         }
     }
 }
