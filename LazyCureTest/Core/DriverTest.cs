@@ -1,4 +1,5 @@
 using System;
+using System.Windows.Forms;
 using NUnit.Framework;
 using NMock2;
 using System.IO;
@@ -7,10 +8,9 @@ using System.Data;
 namespace LifeIdea.LazyCure.Core
 {
     [TestFixture]
-    public class DriverTest
+    public class DriverTest:Mockery
     {
         Driver driver;
-        Mockery mocks;
         MockWriter mockWriter;
         const string folder = @"c:\temp\LazyCure\test\TimeLogs";
         static readonly string strDate = "2126-11-18";
@@ -21,7 +21,6 @@ namespace LifeIdea.LazyCure.Core
         public void SetUp()
         {
             driver = new Driver();
-            mocks = new Mockery();
             mockWriter = new MockWriter();
             Log.TextWriter = mockWriter;
         }
@@ -159,9 +158,9 @@ namespace LifeIdea.LazyCure.Core
             TimeSpan duration = TimeSpan.FromMinutes(15);
             DateTime endTime = startTime + duration;
 
-            ITimeSystem mockTimeSystem = mocks.NewMock<ITimeSystem>();
+            ITimeSystem mockTimeSystem = NewMock<ITimeSystem>();
 
-            using (mocks.Ordered)
+            using (Ordered)
             {
                 Expect.Once.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(startTime));
                 Expect.Once.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(endTime));
@@ -220,7 +219,7 @@ namespace LifeIdea.LazyCure.Core
                 Directory.Delete(folder, true);
             }
 
-            ITimeSystem mockTimeSystem = mocks.NewMock<ITimeSystem>();
+            ITimeSystem mockTimeSystem = NewMock<ITimeSystem>();
             Stub.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(DateTime.Parse(strDate + " 5:00:00")));
 
             driver = new Driver(mockTimeSystem);

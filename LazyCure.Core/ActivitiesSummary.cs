@@ -12,20 +12,24 @@ namespace LifeIdea.LazyCure.Core
     public class ActivitiesSummary
     {
         private readonly ITimeLog timeLog;
+        private readonly ITaskActivityLinker linker;
         private TimeSpan allActivitiesTime=new TimeSpan();
 
         public DataTable Data;
         public TimeSpan AllActivitiesTime{get{ return allActivitiesTime;}}
         
-        public ActivitiesSummary(ITimeLog timeLog)
+        public ActivitiesSummary(ITimeLog timeLog, ITaskActivityLinker linker)
         {
             Data = new DataTable("ActivitiesSummary");
             Data.Columns.Add("Activity");
             Data.Columns.Add("Spent", Type.GetType("System.TimeSpan"));
             Data.Columns.Add("Task");
             this.timeLog = timeLog;
+            this.linker = linker;
             timeLog.Data.RowChanged += TimeLogData_RowChanged;
+            Data.ColumnChanged += Data_ColumnChanged;
         }
+
         public void Update()
         {
             Data.Clear();
@@ -45,7 +49,10 @@ namespace LifeIdea.LazyCure.Core
                     }
                 }
                 if (!existentRowUpdated)
-                    Data.Rows.Add(activity.Name, activity.Duration, "Work");
+                {
+                    string relatedTask = linker.GetRelatedTask(activity.Name);
+                    Data.Rows.Add(activity.Name, activity.Duration, relatedTask);
+                }
 
                 allActivitiesTime+= activity.Duration;
             }
@@ -54,6 +61,14 @@ namespace LifeIdea.LazyCure.Core
         private void TimeLogData_RowChanged(object sender, DataRowChangeEventArgs e)
         {
             Update();
+        }
+
+        private void Data_ColumnChanged(object sender, DataColumnChangeEventArgs e)
+        {
+            if(e.Column==Data.Columns["Task"])
+            {
+                linker.LinkActivityAndTask(e.Row["Activity"] as string,e.ProposedValue as string);
+            }
         }
     }
 }

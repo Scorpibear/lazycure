@@ -28,5 +28,16 @@ namespace LifeIdea.LazyCure.UI
         {
             allActivitiesTime.Text = Format.ShortDuration(lazyCure.AllActivitiesTime);
         }
+
+        private void activitiesSummary_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.ColumnIndex==activitiesSummary.Columns["Task"].Index)
+            {
+                Dialogs.Tasks.SelectedTask = activitiesSummary.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+                Dialogs.Tasks.Location = Cursor.Position;
+                Dialogs.Tasks.ShowDialog(this);
+                activitiesSummary.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = Dialogs.Tasks.SelectedTask;
+            }
+        }
     }
 }

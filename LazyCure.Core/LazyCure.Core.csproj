@@ -32,12 +32,15 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActivitiesSummary.cs" />
     <Compile Include="Activity.cs" />
     <Compile Include="History.cs" />
+    <Compile Include="Interfaces\ITaskCollection.cs" />
+    <Compile Include="ITaskActivityLinker.cs" />
     <Compile Include="ITimeLog.cs" />
     <Compile Include="LiveActivity.cs" />
     <Compile Include="Driver.cs" />
@@ -48,6 +51,8 @@
     <Compile Include="RunTimeSystem.cs" />
     <Compile Include="Serializer.cs" />
     <Compile Include="Task.cs" />
+    <Compile Include="TaskActivityLinker.cs" />
+    <Compile Include="TaskCollection.cs" />
     <Compile Include="TimeLog.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -55,9 +60,6 @@
       <Project>{61117267-380A-4D4B-8228-29F4CB193E44}</Project>
       <Name>LazyCure.Interfaces</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Interfaces\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

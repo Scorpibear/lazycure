@@ -1,9 +1,16 @@
+using System.Collections.Generic;
+using System.Windows.Forms;
+
 namespace LifeIdea.LazyCure.Core
 {
-    public class Task
+    /// <summary>
+    /// Store information about task
+    /// </summary>
+    public class Task:TreeNode
     {
-        public string Name;
-        public Task(string name)
+        public readonly List<string> RelatedActivities = new List<string>();
+
+        public Task(string name):base(name)
         {
             Name = name;
         }

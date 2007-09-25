@@ -11,7 +11,8 @@ namespace LifeIdea.LazyCure.UI
         private static ISummaryView summary = null;
         private static AboutBox about = null;
         private static Options options = null;
-        
+        private static Tasks tasks = null;
+
         internal static ILazyCureDriver LazyCureDriver = null;
         internal static IMainForm MainForm = null;
         internal static ISettings Settings;
@@ -28,6 +29,7 @@ namespace LifeIdea.LazyCure.UI
                 return open;
             }
         }
+
         internal static SaveFileDialog Save
         {
             get
@@ -40,26 +42,29 @@ namespace LifeIdea.LazyCure.UI
                 return save;
             }
         }
+
         internal static ITimeLogView TimeLog
         {
             get
             {
                 if (timeLog == null)
-                    timeLog = new TimeLogEditor(LazyCureDriver,MainForm);
+                    timeLog = new TimeLogEditor(LazyCureDriver, MainForm);
                 return timeLog;
             }
         }
+
         internal static ISummaryView Summary
         {
             get
             {
                 if (summary == null)
                 {
-                    summary = new Summary(LazyCureDriver,MainForm);
+                    summary = new Summary(LazyCureDriver, MainForm);
                 }
                 return summary;
             }
         }
+
         internal static AboutBox About
         {
             get
@@ -70,12 +75,24 @@ namespace LifeIdea.LazyCure.UI
             }
         }
 
+        internal static Tasks Tasks
+        {
+            get
+            {
+                if (tasks == null)
+                    tasks = new Tasks(LazyCureDriver);
+                return tasks;
+            }
+        }
+
         public static Options Options
         {
-            get { if(options == null)
-                options = new Options(Settings);
+            get
+            {
+                if (options == null)
+                    options = new Options(Settings);
                 return options;
-        }
+            }
         }
 
         internal static void CancelEditTimeLog()
@@ -83,6 +100,7 @@ namespace LifeIdea.LazyCure.UI
             if (timeLog != null)
                 timeLog.CancelEdit();
         }
+
         private static void InitiateFileDialog(FileDialog fileDialog)
         {
             if (LazyCureDriver != null)
