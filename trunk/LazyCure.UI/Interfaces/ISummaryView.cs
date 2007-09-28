@@ -1,4 +1,4 @@
-namespace LifeIdea.LazyCure.UI
+namespace LifeIdea.LazyCure.UI.Interfaces
 {
     interface ISummaryView
     {

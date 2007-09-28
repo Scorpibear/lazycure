@@ -1,6 +1,7 @@
 using System;
 using System.Windows.Forms;
 using LifeIdea.LazyCure.Interfaces;
+using LifeIdea.LazyCure.UI.Interfaces;
 
 namespace LifeIdea.LazyCure.UI
 {
