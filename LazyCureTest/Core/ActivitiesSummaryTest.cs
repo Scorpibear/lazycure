@@ -114,7 +114,7 @@ namespace LifeIdea.LazyCure.Core
             Stub.On(timeLog).GetProperty("Activities").Will(Return.Value(new List<IActivity>(
                 new IActivity[] { new Activity("activity1", DateTime.Now, sevenSec) })));
 
-            Expect.Once.On(linker).Method("LinkActivityAndTask").With("activity1","task1");
+            Expect.Once.On(linker).Method("LinkActivityAndTask").With("activity1","task1").Will(Return.Value(true));
 
             activitiesSummary.Update();
 

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using LifeIdea.LazyCure.Core.Interfaces;
 using LifeIdea.LazyCure.Interfaces;
@@ -48,6 +49,14 @@ namespace LifeIdea.LazyCure.Core
         public void FillTaskNodes(TreeNodeCollection nodes)
         {
             nodes.AddRange(tasks.ToArray());
+        }
+
+        public void UpdateTaskNodeText(TreeNode node, string text)
+        {
+            if(tasks.Contains(node.Name))
+                tasks.GetTask(node.Name).Text = text;
+            else
+                tasks.Add(new Task(text));
         }
 
         public object TimeLogData { get { return timeLog.Data; } }
@@ -124,5 +133,6 @@ namespace LifeIdea.LazyCure.Core
         {
             return TimeLogsFolder + @"\" + date.ToString("yyyy-MM-dd") + ".timelog";
         }
+
     }
 }
