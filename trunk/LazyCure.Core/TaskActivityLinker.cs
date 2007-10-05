@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
 using LifeIdea.LazyCure.Core.Interfaces;
 
 namespace LifeIdea.LazyCure.Core
@@ -27,10 +24,13 @@ namespace LifeIdea.LazyCure.Core
             return null;
         }
 
-        public void LinkActivityAndTask(string activityName, string taskName)
+        public bool LinkActivityAndTask(string activityName, string taskName)
         {
             Task task = tasks.GetTask(taskName);
+            if (task == null)
+                return false;
             task.RelatedActivities.Add(activityName);
+            return true;
         }
     }
 }

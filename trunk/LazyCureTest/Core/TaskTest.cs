@@ -25,5 +25,21 @@ namespace LifeIdea.LazyCure.Core
             task.RelatedActivities.Add("activity1");
             Assert.IsTrue(task.RelatedActivities.Contains("activity1"));
         }
+
+        [Test]
+        public void NameIsChangedWithText()
+        {
+            task.Text = "new text";
+            Assert.AreEqual("new text",task.Text);
+            Assert.AreEqual("new text", task.Name);
+        }
+
+        [Test]
+        public void TextIsChangedWithName()
+        {
+            task.Name = "new name";
+            Assert.AreEqual("new name", task.Name);
+            Assert.AreEqual("new name", task.Text);
+        }
     }
 }

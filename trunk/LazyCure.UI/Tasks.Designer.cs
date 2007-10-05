@@ -28,26 +28,63 @@ namespace LifeIdea.LazyCure.UI
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Tasks));
             this.treeView = new System.Windows.Forms.TreeView();
+            this.splitContainer = new System.Windows.Forms.SplitContainer();
+            this.addSibling = new System.Windows.Forms.Button();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.splitContainer.Panel1.SuspendLayout();
+            this.splitContainer.Panel2.SuspendLayout();
+            this.splitContainer.SuspendLayout();
             this.SuspendLayout();
             // 
             // treeView
             // 
             this.treeView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeView.LabelEdit = true;
             this.treeView.Location = new System.Drawing.Point(0, 0);
             this.treeView.Name = "treeView";
-            this.treeView.Size = new System.Drawing.Size(115, 51);
+            this.treeView.Size = new System.Drawing.Size(96, 83);
             this.treeView.TabIndex = 0;
             this.treeView.DoubleClick += new System.EventHandler(this.treeView_DoubleClick);
+            this.treeView.AfterLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.treeView_AfterLabelEdit);
+            // 
+            // splitContainer
+            // 
+            this.splitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer.Name = "splitContainer";
+            // 
+            // splitContainer.Panel1
+            // 
+            this.splitContainer.Panel1.Controls.Add(this.treeView);
+            // 
+            // splitContainer.Panel2
+            // 
+            this.splitContainer.Panel2.Controls.Add(this.addSibling);
+            this.splitContainer.Size = new System.Drawing.Size(159, 83);
+            this.splitContainer.SplitterDistance = 96;
+            this.splitContainer.TabIndex = 1;
+            // 
+            // addSibling
+            // 
+            this.addSibling.Location = new System.Drawing.Point(4, 4);
+            this.addSibling.Name = "addSibling";
+            this.addSibling.Size = new System.Drawing.Size(52, 23);
+            this.addSibling.TabIndex = 0;
+            this.addSibling.Text = "Add";
+            this.toolTip.SetToolTip(this.addSibling, "Add sibling task");
+            this.addSibling.UseVisualStyleBackColor = true;
+            this.addSibling.Click += new System.EventHandler(this.addSibling_Click);
             // 
             // Tasks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(115, 51);
-            this.Controls.Add(this.treeView);
+            this.ClientSize = new System.Drawing.Size(159, 83);
+            this.Controls.Add(this.splitContainer);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -56,6 +93,9 @@ namespace LifeIdea.LazyCure.UI
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Tasks";
             this.TopMost = true;
+            this.splitContainer.Panel1.ResumeLayout(false);
+            this.splitContainer.Panel2.ResumeLayout(false);
+            this.splitContainer.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -63,5 +103,8 @@ namespace LifeIdea.LazyCure.UI
         #endregion
 
         private System.Windows.Forms.TreeView treeView;
+        private System.Windows.Forms.SplitContainer splitContainer;
+        private System.Windows.Forms.Button addSibling;
+        private System.Windows.Forms.ToolTip toolTip;
     }
 }

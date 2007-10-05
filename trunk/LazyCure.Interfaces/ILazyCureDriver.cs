@@ -20,6 +20,6 @@ namespace LifeIdea.LazyCure.Interfaces
         bool SaveTimeLog(string filename);
         bool LoadTimeLog(string filename);
 
-
+        void UpdateTaskNodeText(TreeNode treeNode, string text);
     }
 }

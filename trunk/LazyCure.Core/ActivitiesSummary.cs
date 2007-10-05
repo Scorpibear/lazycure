@@ -67,7 +67,11 @@ namespace LifeIdea.LazyCure.Core
         {
             if(e.Column==Data.Columns["Task"])
             {
-                linker.LinkActivityAndTask(e.Row["Activity"] as string,e.ProposedValue as string);
+                string activity = e.Row["Activity"] as string;
+                string task = e.ProposedValue as string;
+                bool isLinked = linker.LinkActivityAndTask(activity, task);
+                if(!isLinked)
+                    Log.Error(String.Format("Could not link activity '{0}' and task '{1}'",activity,task));
             }
         }
     }
