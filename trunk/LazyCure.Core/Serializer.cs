@@ -1,6 +1,7 @@
 using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Xml;
+using LifeIdea.LazyCure.Core.Time;
 using LifeIdea.LazyCure.Interfaces;
 
 namespace LifeIdea.LazyCure.Core

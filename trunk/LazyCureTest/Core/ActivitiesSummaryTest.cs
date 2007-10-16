@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using LifeIdea.LazyCure.Core.Activities;
+using LifeIdea.LazyCure.Core.Tasks;
+using LifeIdea.LazyCure.Core.Time;
 using LifeIdea.LazyCure.Interfaces;
 using NMock2;
 using NUnit.Framework;
@@ -42,7 +45,7 @@ namespace LifeIdea.LazyCure.Core
         public void SimpleRecord()
         {
             Stub.On(timeLog).GetProperty("Activities").Will(Return.Value(new List<IActivity>(
-                new IActivity[] { new Activity("first", DateTime.Now, sevenSec) })));
+                                                                             new IActivity[] { new Activity("first", DateTime.Now, sevenSec) })));
 
             activitiesSummary.Update();
 
@@ -55,8 +58,8 @@ namespace LifeIdea.LazyCure.Core
         public void TwoDifferentActivities()
         {
             Stub.On(timeLog).GetProperty("Activities").Will(Return.Value(new List<IActivity>(new Activity[]{
-                new Activity("first", DateTime.Now, sevenSec),
-                new Activity("second", DateTime.Now, threeSec)})));
+                                                                                                               new Activity("first", DateTime.Now, sevenSec),
+                                                                                                               new Activity("second", DateTime.Now, threeSec)})));
 
             activitiesSummary.Update();
 
@@ -72,8 +75,8 @@ namespace LifeIdea.LazyCure.Core
         public void TwoEqualActivities()
         {
             Stub.On(timeLog).GetProperty("Activities").Will(Return.Value(new List<IActivity>(new IActivity[]{
-                new Activity("first", DateTime.Now, sevenSec),
-                new Activity("first", DateTime.Now, threeSec)})));
+                                                                                                                new Activity("first", DateTime.Now, sevenSec),
+                                                                                                                new Activity("first", DateTime.Now, threeSec)})));
 
             activitiesSummary.Update();
 
@@ -84,8 +87,8 @@ namespace LifeIdea.LazyCure.Core
         public void AllActivitiesTime()
         {
             Stub.On(timeLog).GetProperty("Activities").Will(Return.Value(new List<IActivity>(new IActivity[]{
-                new Activity("first", DateTime.Now, sevenSec),
-                new Activity("second", DateTime.Now, threeSec)})));
+                                                                                                                new Activity("first", DateTime.Now, sevenSec),
+                                                                                                                new Activity("second", DateTime.Now, threeSec)})));
 
             activitiesSummary.Update();
 
@@ -96,7 +99,7 @@ namespace LifeIdea.LazyCure.Core
         public void GetRelatedTask()
         {
             Stub.On(timeLog).GetProperty("Activities").Will(Return.Value(new List<IActivity>(
-                new IActivity[] { new Activity("first", DateTime.Now, sevenSec) })));
+                                                                             new IActivity[] { new Activity("first", DateTime.Now, sevenSec) })));
 
             linker = NewMock<ITaskActivityLinker>();
             Expect.AtLeastOnce.On(linker).Method("GetRelatedTask").With("first").Will(Return.Value("related task"));
@@ -112,7 +115,7 @@ namespace LifeIdea.LazyCure.Core
         public void LinkActivityAndTask()
         {
             Stub.On(timeLog).GetProperty("Activities").Will(Return.Value(new List<IActivity>(
-                new IActivity[] { new Activity("activity1", DateTime.Now, sevenSec) })));
+                                                                             new IActivity[] { new Activity("activity1", DateTime.Now, sevenSec) })));
 
             Expect.Once.On(linker).Method("LinkActivityAndTask").With("activity1","task1").Will(Return.Value(true));
 

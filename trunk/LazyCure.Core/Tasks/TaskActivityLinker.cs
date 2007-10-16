@@ -1,6 +1,4 @@
-using LifeIdea.LazyCure.Core.Interfaces;
-
-namespace LifeIdea.LazyCure.Core
+namespace LifeIdea.LazyCure.Core.Tasks
 {
     /// <summary>
     /// Link task and activities

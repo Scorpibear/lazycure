@@ -1,13 +1,14 @@
 using System;
 using System.IO;
+using LifeIdea.LazyCure.Core.IO;
 
-namespace LifeIdea.LazyCure.Core
+namespace LifeIdea.LazyCure.Core.IO
 {
     public static class Log
     {
         class LazyCureTextWriter : IWriter
         {
-            private TextWriter textWriter;
+            private readonly TextWriter textWriter;
             public LazyCureTextWriter(TextWriter textWriter)
             {
                 this.textWriter = textWriter;
@@ -38,5 +39,4 @@ namespace LifeIdea.LazyCure.Core
             Writer.Close();
         }
     }
-    
 }

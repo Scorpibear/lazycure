@@ -1,7 +1,6 @@
 using System.Collections.Generic;
-using LifeIdea.LazyCure.Core.Interfaces;
 
-namespace LifeIdea.LazyCure.Core
+namespace LifeIdea.LazyCure.Core.Tasks
 {
     /// <summary>
     /// Represent collection of all tasks

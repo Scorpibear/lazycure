@@ -1,11 +1,9 @@
 using System;
 
-namespace LifeIdea.LazyCure.Core
+namespace LifeIdea.LazyCure.Core.Time
 {
     class RunTimeSystem: ITimeSystem
     {
-        #region ITimeSystem Members
-
         public DateTime Now
         {
             get
@@ -13,7 +11,5 @@ namespace LifeIdea.LazyCure.Core
                 return DateTime.Now;
             }
         }
-
-        #endregion
     }
 }

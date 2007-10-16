@@ -42,9 +42,9 @@
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Dialogs.cs" />
-    <Compile Include="Interfaces\IMainForm.cs" />
-    <Compile Include="Interfaces\ISummaryView.cs" />
-    <Compile Include="Interfaces\ITimeLogView.cs" />
+    <Compile Include="IMainForm.cs" />
+    <Compile Include="ISummaryView.cs" />
+    <Compile Include="ITimeLogView.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>

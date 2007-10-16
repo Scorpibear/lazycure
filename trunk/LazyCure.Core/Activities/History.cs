@@ -1,9 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using LifeIdea.LazyCure.Core.IO;
 
-namespace LifeIdea.LazyCure.Core
+namespace LifeIdea.LazyCure.Core.Activities
 {
+    /// <summary>
+    /// Store history of latests activities
+    /// </summary>
     public class History
     {
         private readonly List<string> activities = new List<string>();

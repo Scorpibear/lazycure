@@ -1,7 +1,7 @@
 using System;
 using NUnit.Framework;
 
-namespace LifeIdea.LazyCure.Core
+namespace LifeIdea.LazyCure.Core.Activities
 {
     [TestFixture]
     public class ActivityTest

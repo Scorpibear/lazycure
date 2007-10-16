@@ -1,4 +1,4 @@
-namespace LifeIdea.LazyCure.UI.Interfaces
+namespace LifeIdea.LazyCure.UI
 {
     public interface IMainForm
     {

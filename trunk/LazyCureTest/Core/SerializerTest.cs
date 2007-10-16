@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using LifeIdea.LazyCure.Core.Time;
 using NUnit.Framework;
 using NMock2;
 using System.Xml;

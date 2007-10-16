@@ -1,5 +1,6 @@
 using System;
-using System.Windows.Forms;
+using LifeIdea.LazyCure.Core.IO;
+using LifeIdea.LazyCure.Core.Time;
 using NUnit.Framework;
 using NMock2;
 using System.IO;
@@ -57,8 +58,8 @@ namespace LifeIdea.LazyCure.Core
         public void LoadTimeLog()
         {
             string sContent = "<?xml version=\"1.0\" standalone=\"yes\"?><LazyCureData><Records>"+
-                "<Activity>changed</Activity><Begin>14:35:02</Begin><Duration>0:00:07</Duration>"+
-                "</Records></LazyCureData>";
+                              "<Activity>changed</Activity><Begin>14:35:02</Begin><Duration>0:00:07</Duration>"+
+                              "</Records></LazyCureData>";
             if (File.Exists(filename))
                 File.Delete(filename);
             if (!Directory.Exists(folder))
@@ -78,8 +79,8 @@ namespace LifeIdea.LazyCure.Core
         public void LoadSpecifiedTimeLog()
         {
             string sContent = "<?xml version=\"1.0\" standalone=\"yes\"?><LazyCureData><Records>" +
-                "<Activity>changed</Activity><Begin>14:35:02</Begin><Duration>0:00:07</Duration>" +
-                "</Records></LazyCureData>";
+                              "<Activity>changed</Activity><Begin>14:35:02</Begin><Duration>0:00:07</Duration>" +
+                              "</Records></LazyCureData>";
                         
             FileInfo fileInfo = new FileInfo(filename);
             fileInfo.Directory.Create();
@@ -102,13 +103,13 @@ namespace LifeIdea.LazyCure.Core
         public void LoadTwoActivites()
         {
             string sContent = "<?xml version=\"1.0\" standalone=\"yes\"?><LazyCureData>"+
-                "<Records>"+
-                "<Activity>sleep</Activity><Begin>0:00:00</Begin><Duration>5:00:00</Duration>" +
-                "</Records>" +
-                "<Records>" +
-                "<Activity>clean</Activity><Begin>5:00:00</Begin><Duration>0:07:00</Duration>" +
-                "</Records>"+
-                "</LazyCureData>";
+                              "<Records>"+
+                              "<Activity>sleep</Activity><Begin>0:00:00</Begin><Duration>5:00:00</Duration>" +
+                              "</Records>" +
+                              "<Records>" +
+                              "<Activity>clean</Activity><Begin>5:00:00</Begin><Duration>0:07:00</Duration>" +
+                              "</Records>"+
+                              "</LazyCureData>";
             if (File.Exists(filename))
                 File.Delete(filename);
             if (!Directory.Exists(folder))
@@ -211,7 +212,6 @@ namespace LifeIdea.LazyCure.Core
 
             Assert.AreEqual(false,Directory.Exists(folder),"Existence of folder with timelog");
         }
-
         private void PrepareFolder()
         {
             if (Directory.Exists(folder))

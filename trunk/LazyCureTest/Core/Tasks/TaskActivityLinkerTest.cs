@@ -1,8 +1,7 @@
-using LifeIdea.LazyCure.Core.Interfaces;
 using NMock2;
 using NUnit.Framework;
 
-namespace LifeIdea.LazyCure.Core
+namespace LifeIdea.LazyCure.Core.Tasks
 {
     [TestFixture]
     public class TaskActivityLinkerTest:Mockery

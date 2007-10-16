@@ -1,8 +1,9 @@
 using System;
-using System.Configuration;
 using System.IO;
 using System.Windows.Forms;
 using LifeIdea.LazyCure.Core;
+using LifeIdea.LazyCure.Core.Activities;
+using LifeIdea.LazyCure.Core.IO;
 using LifeIdea.LazyCure.Interfaces;
 using LifeIdea.LazyCure.Properties;
 using LifeIdea.LazyCure.UI;

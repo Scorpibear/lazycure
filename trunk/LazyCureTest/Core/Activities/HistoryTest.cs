@@ -1,8 +1,9 @@
+using LifeIdea.LazyCure.Core.IO;
 using NUnit.Framework;
 using NMock2;
 using System.IO;
 
-namespace LifeIdea.LazyCure.Core
+namespace LifeIdea.LazyCure.Core.Activities
 {
     [TestFixture]
     public class HistoryTest: Mockery
