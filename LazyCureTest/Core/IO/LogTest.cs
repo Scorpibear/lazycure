@@ -2,10 +2,10 @@ using System;
 using NMock2;
 using NUnit.Framework;
 
-namespace LifeIdea.LazyCure.Core
+namespace LifeIdea.LazyCure.Core.IO
 {
     [TestFixture]
-    public class LogTest: NMock2.Mockery
+    public class LogTest: Mockery
     {
         [TearDown]
         public void TearDown()

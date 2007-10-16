@@ -1,6 +1,7 @@
 using System;
+using LifeIdea.LazyCure.Core.Time;
 
-namespace LifeIdea.LazyCure.Core
+namespace LifeIdea.LazyCure.Core.Activities
 {
     public class LiveActivity : ActivityBase
     {

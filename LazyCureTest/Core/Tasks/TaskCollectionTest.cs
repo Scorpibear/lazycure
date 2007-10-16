@@ -1,6 +1,6 @@
 using NUnit.Framework;
 
-namespace LifeIdea.LazyCure.Core
+namespace LifeIdea.LazyCure.Core.Tasks
 {
     [TestFixture]
     public class TaskCollectionTest

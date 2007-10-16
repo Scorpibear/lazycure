@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Data;
 using LifeIdea.LazyCure.Interfaces;
 
-namespace LifeIdea.LazyCure.Core
+namespace LifeIdea.LazyCure.Core.Time
 {
     public interface ITimeLog
     {

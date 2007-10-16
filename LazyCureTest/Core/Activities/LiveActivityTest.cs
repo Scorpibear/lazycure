@@ -1,8 +1,9 @@
 using System;
+using LifeIdea.LazyCure.Core.Time;
 using NUnit.Framework;
 using NMock2;
 
-namespace LifeIdea.LazyCure.Core
+namespace LifeIdea.LazyCure.Core.Activities
 {
     [TestFixture]
     public class LiveActivityTest

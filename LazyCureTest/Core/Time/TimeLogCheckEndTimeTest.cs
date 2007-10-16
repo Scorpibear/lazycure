@@ -3,15 +3,15 @@ using NUnit.Framework;
 using NMock2;
 using System.Data;
 
-namespace LifeIdea.LazyCure.Core
+namespace LifeIdea.LazyCure.Core.Time
 {
     [TestFixture]
     public class TimeLogCheckEndTimeTest
     {
         private Mockery mocks;
         private TimeLog timeLog;
-        private DateTime startTime = DateTime.Parse("2125-06-30 05:00:00");
-        private DateTime endTime = DateTime.Parse("2125-06-30 5:06:43");
+        private readonly DateTime startTime = DateTime.Parse("2125-06-30 05:00:00");
+        private readonly DateTime endTime = DateTime.Parse("2125-06-30 5:06:43");
         [SetUp]
         public void SetUp()
         {

@@ -1,12 +1,17 @@
 using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
-using LifeIdea.LazyCure.Core.Interfaces;
+using LifeIdea.LazyCure.Core.Activities;
+using LifeIdea.LazyCure.Core.IO;
+using LifeIdea.LazyCure.Core.Tasks;
+using LifeIdea.LazyCure.Core.Time;
 using LifeIdea.LazyCure.Interfaces;
 using System.IO;
 
 namespace LifeIdea.LazyCure.Core
 {
+    /// <summary>
+    /// Initialize required for LazyCure work objects. Provide data to UI forms.
+    /// </summary>
     public class Driver : ILazyCureDriver
     {
         private readonly TimeLog timeLog;

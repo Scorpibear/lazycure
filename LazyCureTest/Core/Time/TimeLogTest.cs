@@ -4,7 +4,7 @@ using NMock2;
 using LifeIdea.LazyCure.Interfaces;
 using System.Data;
 
-namespace LifeIdea.LazyCure.Core
+namespace LifeIdea.LazyCure.Core.Time
 {
     [TestFixture]
     public class TimeLogTest:Mockery

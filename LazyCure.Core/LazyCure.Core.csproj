@@ -37,23 +37,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActivitiesSummary.cs" />
-    <Compile Include="Activity.cs" />
-    <Compile Include="History.cs" />
-    <Compile Include="Interfaces\ITaskCollection.cs" />
-    <Compile Include="ITaskActivityLinker.cs" />
-    <Compile Include="ITimeLog.cs" />
-    <Compile Include="LiveActivity.cs" />
+    <Compile Include="Activities\Activity.cs" />
+    <Compile Include="Activities\ActivityBase.cs" />
+    <Compile Include="Activities\History.cs" />
+    <Compile Include="Tasks\ITaskCollection.cs" />
+    <Compile Include="Tasks\ITaskActivityLinker.cs" />
+    <Compile Include="Time\ITimeLog.cs" />
+    <Compile Include="Activities\LiveActivity.cs" />
     <Compile Include="Driver.cs" />
-    <Compile Include="ITimeSystem.cs" />
-    <Compile Include="IWriter.cs" />
-    <Compile Include="Log.cs" />
+    <Compile Include="Time\ITimeSystem.cs" />
+    <Compile Include="IO\IWriter.cs" />
+    <Compile Include="IO\Log.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RunTimeSystem.cs" />
+    <Compile Include="Time\RunTimeSystem.cs" />
     <Compile Include="Serializer.cs" />
-    <Compile Include="Task.cs" />
-    <Compile Include="TaskActivityLinker.cs" />
-    <Compile Include="TaskCollection.cs" />
-    <Compile Include="TimeLog.cs" />
+    <Compile Include="Tasks\Task.cs" />
+    <Compile Include="Tasks\TaskActivityLinker.cs" />
+    <Compile Include="Tasks\TaskCollection.cs" />
+    <Compile Include="Time\TimeLog.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LazyCure.Interfaces\LazyCure.Interfaces.csproj">

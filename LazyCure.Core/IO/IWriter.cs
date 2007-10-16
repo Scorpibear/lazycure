@@ -1,5 +1,4 @@
-
-namespace LifeIdea.LazyCure.Core
+namespace LifeIdea.LazyCure.Core.IO
 {
     public interface IWriter
     {
