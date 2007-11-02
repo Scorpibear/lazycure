@@ -4,7 +4,7 @@ using LifeIdea.LazyCure.Interfaces;
 namespace LifeIdea.LazyCure.Core.Time
 {
     /// <summary>
-    /// manages time
+    /// Manages time
     /// </summary>
     public class TimeManager: ITimeManager
     {
