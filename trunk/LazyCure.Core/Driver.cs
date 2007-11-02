@@ -91,6 +91,7 @@ namespace LifeIdea.LazyCure.Core
                     timeLog.Date = date;
                 timeManager.TimeLog = timeLog;
                 activitiesSummary = new ActivitiesSummary(timeLog,linker);
+                activitiesSummary.Update();
                 return true;
             }
             else
