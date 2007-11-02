@@ -1,4 +1,3 @@
-using LifeIdea.LazyCure.Core.IO;
 using NUnit.Framework;
 using NMock2;
 using System.IO;
@@ -7,14 +6,14 @@ using System.Text;
 namespace LifeIdea.LazyCure.Core.Activities
 {
     [TestFixture]
-    public class HistoryTest: Mockery
+    public class ActivitiesHistoryTest: Mockery
     {
         private ActivitiesHistory history;
+
         [SetUp]
         public void SetUp()
         {
             history = new ActivitiesHistory();
-            Log.TextWriter = new MockWriter();
         }
         [TearDown]
         public void TearDown()

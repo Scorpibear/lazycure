@@ -1,42 +1,36 @@
 using System;
 using System.IO;
-using LifeIdea.LazyCure.Core.IO;
 
 namespace LifeIdea.LazyCure.Core.IO
 {
+    /// <summary>
+    /// Log errors and exceptions to specified writer (file or string)
+    /// </summary>
     public static class Log
     {
-        class LazyCureTextWriter : IWriter
-        {
-            private readonly TextWriter textWriter;
-            public LazyCureTextWriter(TextWriter textWriter)
-            {
-                this.textWriter = textWriter;
-            }
-            public void WriteLine(string str)
-            {
-                textWriter.WriteLine(str);
-            }
-            public void Close()
-            {
-                textWriter.Close();
-            }
-        }
-        public static IWriter Writer;
-        public static TextWriter TextWriter { set { Writer = new LazyCureTextWriter(value); } }
+        public static TextWriter Writer = null;
+
         public static void Exception(Exception ex)
         {
-            Writer.WriteLine(ex.Message);
-            Writer.WriteLine(ex.StackTrace);
+            Error(ex.Message);
+            Error(ex.StackTrace);
         }
+
         public static void Error(string text)
         {
-            Writer.WriteLine(text);
+            try{
+                Writer.WriteLine(text);
+            }catch(Exception)
+            {
+            }
         }
 
         public static void Close()
         {
-            Writer.Close();
+            if (Writer != null)
+            {
+                Writer.Close();
+            }
         }
     }
 }

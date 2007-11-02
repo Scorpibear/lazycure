@@ -21,7 +21,7 @@ namespace LifeIdea.LazyCure
         {
             try
             {
-                Log.TextWriter = GetLogWriter("LazyCure.log");
+                Log.Writer = GetLogWriter("LazyCure.log");
 
                 SetApplicationProperties();
 
