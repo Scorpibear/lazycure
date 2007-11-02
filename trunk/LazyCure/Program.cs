@@ -13,6 +13,9 @@ using System.Globalization;
 
 namespace LifeIdea.LazyCure
 {
+    /// <summary>
+    /// Represent LazyCure Program
+    /// </summary>
     public class Program
     {
         private const string askToFix = "\r\n\r\nPlease, fix the error and start LazyCure again. Sorry for inconveniences.";

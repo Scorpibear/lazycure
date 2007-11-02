@@ -37,7 +37,7 @@ namespace LifeIdea.LazyCure.Core
             activitiesSummary = new ActivitiesSummary(timeLog,linker);
             history = new ActivitiesHistory();
         }
-        public Driver() : this(new RunTimeSystem()) { }
+        public Driver() : this(new NaturalTimeSystem()) { }
         public void LoadHistory(string filename)
         {
             history.Load(filename);

@@ -5,7 +5,6 @@ using System.Text.RegularExpressions;
 using System.Xml;
 using LifeIdea.LazyCure.Core.Activities;
 using LifeIdea.LazyCure.Interfaces;
-using LifeIdea.LazyCure.Core.IO;
 
 namespace LifeIdea.LazyCure.Core.Time
 {

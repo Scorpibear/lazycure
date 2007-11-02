@@ -4,7 +4,7 @@ using System.IO;
 namespace LifeIdea.LazyCure.Core
 {
     /// <summary>
-    /// Perform different static operations
+    /// Perform different static utility operations
     /// </summary>
     public static class Utilities
     {
