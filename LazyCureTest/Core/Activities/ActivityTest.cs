@@ -17,5 +17,12 @@ namespace LifeIdea.LazyCure.Core.Activities
             Assert.AreEqual(startTime,activity.StartTime);
             Assert.AreEqual(duration, activity.Duration);
         }
+        [Test]
+        public void EqualActivities()
+        {
+            Activity activity1 = new Activity("activity", DateTime.Parse("5:00:00"),TimeSpan.Parse("1:23:45"));
+            Activity activity2 = new Activity("activity", DateTime.Parse("5:00:00"), TimeSpan.Parse("1:23:45"));
+            Assert.AreEqual(activity1, activity2);
+        }
     }
 }

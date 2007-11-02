@@ -25,7 +25,11 @@ namespace LifeIdea.LazyCure.Core
             mockWriter = new MockWriter();
             Log.TextWriter = mockWriter;
         }
-        
+        [TearDown]
+        public void TearDown()
+        {
+            Log.Close();
+        }
         [Test]
         public void SaveTimeLog()
         {
@@ -164,6 +168,7 @@ namespace LifeIdea.LazyCure.Core
             using (Ordered)
             {
                 Expect.Once.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(startTime));
+                Expect.Once.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(startTime));
                 Expect.Once.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(endTime));
             }
             driver = new Driver(mockTimeSystem);
@@ -180,9 +185,11 @@ namespace LifeIdea.LazyCure.Core
         public void HistoryReused()
         {
             driver.FinishActivity("saved", "next");
-            driver.SaveHistory(@"c:\temp\history.txt");
+            File.Delete("HistoryReused.txt");
+            driver.SaveHistory("HistoryReused.txt");
             driver = new Driver();
-            driver.LoadHistory(@"c:\temp\history.txt");
+            driver.LoadHistory("HistoryReused.txt");
+            File.Delete("HistoryReused.txt");
             Assert.Contains("saved", driver.LatestActivities);
         }
         [Test]

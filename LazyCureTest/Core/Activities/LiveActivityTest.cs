@@ -11,7 +11,7 @@ namespace LifeIdea.LazyCure.Core.Activities
         private readonly Mockery mocks = new Mockery();
         private readonly DateTime startTime = DateTime.Parse("2007-08-29 0:00:00");
         private ITimeSystem mockTimeSystem;
-        private LiveActivity activity;
+        private RunningActivity activity;
         [SetUp]
         public void SetUp()
         {
@@ -26,7 +26,7 @@ namespace LifeIdea.LazyCure.Core.Activities
         public void StopActivity()
         {
             Stub.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(startTime));
-            activity = new LiveActivity("test activity",mockTimeSystem);
+            activity = new RunningActivity("test activity",mockTimeSystem);
             Assert.IsTrue(activity.IsRunning);
             activity.Stop();
             Assert.IsFalse(activity.IsRunning);
@@ -35,7 +35,7 @@ namespace LifeIdea.LazyCure.Core.Activities
         public void ActivityRecordsStartTime()
         {
             Stub.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(startTime));
-            activity = new LiveActivity("test activity", mockTimeSystem);
+            activity = new RunningActivity("test activity", mockTimeSystem);
             Assert.AreEqual(startTime, activity.StartTime);
         }
         [Test]
@@ -46,7 +46,7 @@ namespace LifeIdea.LazyCure.Core.Activities
                 Expect.Once.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(DateTime.Parse("2007-11-18 5:00:00")));
                 Expect.Once.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(DateTime.Parse("2007-11-18 5:07:00.123456")));
             }
-            activity = new LiveActivity("activity", mockTimeSystem);
+            activity = new RunningActivity("activity", mockTimeSystem);
             activity.Stop();
             Assert.AreEqual(TimeSpan.Parse("0:07:00"), activity.Duration);
         }
@@ -58,7 +58,7 @@ namespace LifeIdea.LazyCure.Core.Activities
                 Expect.Once.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(DateTime.Parse("2007-11-18 5:00:00")));
                 Expect.Once.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(DateTime.Parse("2007-11-18 5:07:00.5")));
             }
-            activity = new LiveActivity("activity", mockTimeSystem);
+            activity = new RunningActivity("activity", mockTimeSystem);
             activity.Stop();
             Assert.AreEqual(TimeSpan.Parse("0:07:01"), activity.Duration);
         }
@@ -74,16 +74,16 @@ namespace LifeIdea.LazyCure.Core.Activities
                 Expect.Once.On(mockTimeSystem).GetProperty("Now").Will(
                     Return.Value(DateTime.Parse("2111-11-11 5:00:00.7")));
             }
-            activity = new LiveActivity("first",mockTimeSystem);
+            activity = new RunningActivity("first",mockTimeSystem);
             activity.Stop();
-            activity = LiveActivity.After(activity, "second");
+            activity = RunningActivity.After(activity, "second");
             Assert.AreEqual(TimeSpan.Parse("0:00:00"),activity.Duration);
         }
         [Test]
         public void StartTimeIsRounded()
         {
             Expect.Once.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(DateTime.Parse("2111-11-11 5:00:00.5")));
-            activity = new LiveActivity("activity", mockTimeSystem);
+            activity = new RunningActivity("activity", mockTimeSystem);
             Assert.AreEqual(DateTime.Parse("2111-11-11 5:00:01"), activity.StartTime);
         }
     }

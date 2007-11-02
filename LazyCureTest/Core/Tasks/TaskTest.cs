@@ -5,8 +5,13 @@ namespace LifeIdea.LazyCure.Core.Tasks
     [TestFixture]
     public class TaskTest
     {
-        private readonly Task task = new Task("task1");
+        private Task task;
 
+        [SetUp]
+        public void SetUp()
+        {
+            task = new Task("task1");
+        }
         [Test]
         public void TaskName()
         {

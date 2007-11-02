@@ -32,7 +32,7 @@ namespace LifeIdea.LazyCure
                 {
                     driver.TimeLogsFolder = settings.TimeLogsFolder;
                     driver.SaveAfterDone = settings.SaveAfterDone;
-                    History.MaxActivities = settings.MaxActivitiesInHistory;
+                    ActivitiesHistory.MaxActivities = settings.MaxActivitiesInHistory;
                 }
                 try
                 {

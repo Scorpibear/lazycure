@@ -14,7 +14,15 @@ namespace LifeIdea.LazyCure.Core.Activities
         virtual public DateTime StartTime { get { return start; } set { start = value; } }
         public override string ToString()
         {
-            return Serializer.ActivityToString(this);
+            return Name + " " + StartTime + " " + Duration;
+        }
+        public override int GetHashCode()
+        {
+            return ToString().GetHashCode();
+        }
+        public override bool Equals(object obj)
+        {
+            return GetHashCode()==obj.GetHashCode();
         }
     }
 }
