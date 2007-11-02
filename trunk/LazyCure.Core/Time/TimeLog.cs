@@ -1,28 +1,23 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.IO;
-using System.Xml;
 using LifeIdea.LazyCure.Core.Activities;
 using LifeIdea.LazyCure.Interfaces;
 
 namespace LifeIdea.LazyCure.Core.Time
 {
     /// <summary>
-    /// Store information about activities
+    /// Represent time log for one day
     /// </summary>
     public class TimeLog : ITimeLog
     {
         private readonly DataTable data;
-        private LiveActivity currentActivity;
-        private DateTime day;
+        private DateTime date;
         private bool isChanging = false;
-        private LiveActivity previousActivity = null;
 
-        public TimeLog(ITimeSystem timeSystem, string firstActivityName)
+        public TimeLog(DateTime date)
         {
-            currentActivity = new LiveActivity(firstActivityName, timeSystem);
-            day = currentActivity.StartTime;
+            this.date = date;
 
             data = new DataTable("TimeLog");
 
@@ -35,18 +30,19 @@ namespace LifeIdea.LazyCure.Core.Time
 
             data.ColumnChanging += data_ColumnChanging;
         }
-
-        public IActivity CurrentActivity
+        
+        public DateTime Date
         {
-            get { return currentActivity; }
-        }
-
-        public DateTime Day
-        {
-            get { return day; }
+            get { return date; }
+            set { date = value.Date;}
         }
 
         #region ITimeLog Members
+
+        public void AddActivity(IActivity activity)
+        {
+            AddActivity(activity.Name,activity.StartTime,activity.Duration);
+        }
 
         public DataTable Data
         {
@@ -77,68 +73,29 @@ namespace LifeIdea.LazyCure.Core.Time
                 data.Clear();
                 foreach (IActivity activity in value)
                 {
-                    AddNewActivity(activity.Name, activity.StartTime, activity.Duration);
+                    AddActivity(activity.Name, activity.StartTime, activity.Duration);
                 }
             }
         }
 
         #endregion
-
-        public IActivity SwitchTo(string nextActivity)
+        
+        public override string ToString()
         {
-            currentActivity.Stop();
-
-            AddNewActivity(currentActivity.Name, currentActivity.StartTime, currentActivity.Duration);
-
-            previousActivity = currentActivity;
-            currentActivity = LiveActivity.After(previousActivity, nextActivity);
-            return currentActivity;
+            return date.ToShortDateString();
         }
 
-        public void FinishActivity(string finishedActivity, string nextActivity)
+        public override bool Equals(object obj)
         {
-            currentActivity.Name = finishedActivity;
-            SwitchTo(nextActivity);
+            return GetHashCode() == obj.GetHashCode();
         }
 
-        public void Save(TextWriter writer)
+        public override int GetHashCode()
         {
-            writer.WriteLine(Serializer.TimeLogToString(this));
+            return ToString().GetHashCode();
         }
 
-        public void Load(string filename)
-        {
-            XmlDocument document = new XmlDocument();
-            document.Load(filename);
-            Data.Clear();
-            foreach (XmlNode node in document.DocumentElement.ChildNodes)
-            {
-                DateTime start = new DateTime();
-                TimeSpan duration = new TimeSpan();
-                string name = null;
-                foreach (XmlNode parameter in node.ChildNodes)
-                {
-                    switch (parameter.Name)
-                    {
-                        case "Start":
-                        case "Begin":
-                            start = DateTime.Parse(parameter.InnerText);
-                            break;
-                        case "Duration":
-                            duration = TimeSpan.Parse(parameter.InnerText);
-                            break;
-                        case "Activity":
-                            name = parameter.InnerText;
-                            break;
-                    }
-                }
-                AddNewActivity(name, start, duration);
-            }
-            day = DateTime.Parse(new FileInfo(filename).Name.Split('.')[0]);
-            ;
-        }
-
-        private void AddNewActivity(string name, DateTime start, TimeSpan duration)
+        private void AddActivity(string name, DateTime start, TimeSpan duration)
         {
             DataRow row = data.NewRow();
             row["Activity"] = name;

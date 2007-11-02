@@ -3,7 +3,10 @@ using LifeIdea.LazyCure.Core.Time;
 
 namespace LifeIdea.LazyCure.Core.Activities
 {
-    public class LiveActivity : ActivityBase
+    /// <summary>
+    /// Represent running activity
+    /// </summary>
+    public class RunningActivity : ActivityBase
     {
         public ITimeSystem timeSystem;
         public Boolean IsRunning = true;
@@ -27,7 +30,7 @@ namespace LifeIdea.LazyCure.Core.Activities
             }
         }
 
-        public LiveActivity(string name, ITimeSystem timeSystem)
+        public RunningActivity(string name, ITimeSystem timeSystem)
         {
             this.name = name;
             this.timeSystem = timeSystem;
@@ -38,12 +41,12 @@ namespace LifeIdea.LazyCure.Core.Activities
             RecalculateDuration();
             IsRunning = false;
         }
-        public static LiveActivity After(LiveActivity previous, string name)
+        public static RunningActivity After(RunningActivity previous, string name)
         {
-            return new LiveActivity(name, previous);
+            return new RunningActivity(name, previous);
         }
 
-        private LiveActivity(string name, LiveActivity previous)
+        private RunningActivity(string name, RunningActivity previous)
         {
             this.name = name;
             this.timeSystem = previous.timeSystem;

@@ -2,17 +2,18 @@ using LifeIdea.LazyCure.Core.IO;
 using NUnit.Framework;
 using NMock2;
 using System.IO;
+using System.Text;
 
 namespace LifeIdea.LazyCure.Core.Activities
 {
     [TestFixture]
     public class HistoryTest: Mockery
     {
-        private History history;
+        private ActivitiesHistory history;
         [SetUp]
         public void SetUp()
         {
-            history = new History();
+            history = new ActivitiesHistory();
             Log.TextWriter = new MockWriter();
         }
         [TearDown]
@@ -60,40 +61,30 @@ namespace LifeIdea.LazyCure.Core.Activities
         [Test]
         public void Load()
         {
-            File.CreateText(@"c:\temp\load.txt").Close();
-            Assert.IsTrue(history.Load(@"c:\temp\load.txt"));
-            File.Delete(@"c:\temp\load.txt");
+            File.CreateText("HistoryTest-Load.txt").Close();
+            Assert.IsTrue(history.Load("HistoryTest-Load.txt"));
         }
         [Test]
         public void LoadMultiple()
         {
-            StreamWriter writer = File.CreateText(@"c:\temp\history.txt");
-            writer.WriteLine("first");
-            writer.WriteLine("second");
-            writer.Close();
-            history.Load(@"c:\temp\history.txt");
+            history.Load(new StringReader("first\r\nsecond\r\n"));
             Assert.AreEqual(new string[] { "first", "second" }, history.LatestActivities);
         }
         [Test]
         public void LoadDuplicates()
         {
-            StreamWriter writer = File.CreateText(@"c:\temp\history.txt");
-            writer.WriteLine("duplicate");
-            writer.WriteLine("duplicate");
-            writer.Close();
-            history = new History();
-            history.Load(@"c:\temp\history.txt");
+            history.Load(new StringReader("duplicate\r\nduplicate\r\n"));
             Assert.AreEqual(1, history.LatestActivities.Length);
         }
         [Test]
         public void LoadFromUnexistedPath()
         {
-            Assert.IsFalse(history.Load(@"c:\temp\notexistedfile.txt"));
+            Assert.IsFalse(history.Load("HistoryTest-notexistentfile.txt"));
         }
         [Test]
         public void Save()
         {
-            Assert.IsTrue(history.Save(@"c:\temp\history.txt"));
+            Assert.IsTrue(history.Save("HistoryTest-Save.txt"));
         }
         [Test]
         public void SaveToUnexistedPath()
@@ -105,19 +96,20 @@ namespace LifeIdea.LazyCure.Core.Activities
         {
             history.AddActivity("saved");
             history.AddActivity("saved2");
-            history.Save(@"c:\temp\history.txt");
-            history = new History();
-            history.Load(@"c:\temp\history.txt");
+            StringBuilder sb = new StringBuilder();
+            StringWriter writer = new StringWriter(sb);
+            history.Save(writer);
+            history = new ActivitiesHistory();
+            history.Load(new StringReader(sb.ToString()));
             Assert.AreEqual(new string[] { "saved2", "saved" }, history.LatestActivities);
         }
         [Test]
         public void LoadLimit()
         {
-            StreamWriter writer = File.CreateText("31.txt");
+            StringBuilder sb = new StringBuilder();
             for (int i = 1; i <= 31;i++ )
-                writer.WriteLine(i);
-            writer.Close();
-            history.Load("31.txt");
+                sb.AppendLine(i.ToString());
+            history.Load(new StringReader(sb.ToString()));
             Assert.IsTrue(history.ContainsActivity("30"));
             Assert.IsFalse(history.ContainsActivity("31"));
         }

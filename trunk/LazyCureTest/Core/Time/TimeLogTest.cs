@@ -1,8 +1,8 @@
 using System;
 using NUnit.Framework;
 using NMock2;
-using LifeIdea.LazyCure.Interfaces;
 using System.Data;
+using LifeIdea.LazyCure.Core.Activities;
 
 namespace LifeIdea.LazyCure.Core.Time
 {
@@ -14,44 +14,7 @@ namespace LifeIdea.LazyCure.Core.Time
         [SetUp]
         public void SetUp()
         {
-            ITimeSystem mockTimeSystem = NewMock<ITimeSystem>();
-            Stub.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(startTime));
-            timeLog = new TimeLog(mockTimeSystem, "first");
-        }
-        [Test]
-        public void SwitchTo()
-        {
-            string nextActivityName = "test next task";
-            Assert.AreEqual(nextActivityName, timeLog.SwitchTo(nextActivityName).Name);
-            Assert.AreEqual(nextActivityName, timeLog.CurrentActivity.Name);
-        }
-        [Test]
-        public void SwitchToStartsNewActivity()
-        {
-            IActivity activity1, activity2;
-            activity1 = timeLog.CurrentActivity;
-            activity2 = timeLog.SwitchTo("next");
-            Assert.AreNotSame(activity1, activity2);
-        }
-        [Test]
-        public void CurrentTaskStartTime()
-        {
-            Assert.AreEqual(startTime, timeLog.CurrentActivity.StartTime);
-        }
-        [Test]
-        public void FinishActivity()
-        {
-            string finishedActivity = "prev";
-            string currentActivity = "next";
-            timeLog.FinishActivity(finishedActivity, currentActivity);
-            Assert.AreEqual(finishedActivity, timeLog.Activities[0].Name, "previous check");
-            Assert.AreEqual(currentActivity, timeLog.CurrentActivity.Name, "current check");
-        }
-        [Test]
-        public void CurrentActivityDiffersFromFinished()
-        {
-            timeLog.FinishActivity("prev", "next");
-            Assert.AreNotSame(timeLog.Activities[0], timeLog.CurrentActivity, "current and previous different");
+            timeLog = new TimeLog(startTime.Date);
         }
         [Test]
         public void DataColumns()
@@ -153,15 +116,6 @@ namespace LifeIdea.LazyCure.Core.Time
             Assert.AreEqual(TimeSpan.Parse("01:12:34"), timeLog.Data.Rows[0]["Duration"]);
         }
         [Test]
-        public void ChangesSaved()
-        {
-            timeLog.SwitchTo("second");
-            timeLog.Data.Rows[0]["Activity"] = "changed";
-            MockWriter mockWriter = new MockWriter();
-            timeLog.Save(mockWriter);
-            Assert.IsTrue(mockWriter.Content.Contains("changed"));
-        }
-        [Test]
         public void StartCouldNotBeDBNull()
         {
             Assert.IsFalse(timeLog.Data.Columns["Start"].AllowDBNull);
@@ -174,7 +128,7 @@ namespace LifeIdea.LazyCure.Core.Time
         [Test]
         public void GetActivitiesWithEmptyDurationAndEnd()
         {
-            timeLog.SwitchTo("second");
+            timeLog.AddActivity(new Activity("name",DateTime.MinValue,new TimeSpan()));
             timeLog.Data.Rows[0]["Duration"] = DBNull.Value;
             timeLog.Data.Rows[0]["End"] = DBNull.Value;
             Assert.IsEmpty(timeLog.Activities);
@@ -188,6 +142,13 @@ namespace LifeIdea.LazyCure.Core.Time
             row["End"] = DateTime.Parse("0:00:00");
             timeLog.Data.Rows.Add(row);
             Assert.AreEqual(TimeSpan.Parse("1:00:00"),timeLog.Activities[0].Duration);
+        }
+        [Test]
+        public void Equal()
+        {
+            TimeLog timeLog1 = new TimeLog(DateTime.Parse("2008-02-19"));
+            TimeLog timeLog2 = new TimeLog(DateTime.Parse("2008-02-19"));
+            Assert.AreEqual(timeLog2, timeLog1);
         }
     }
 }

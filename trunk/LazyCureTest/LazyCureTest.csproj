@@ -45,8 +45,12 @@
   <ItemGroup>
     <Compile Include="Core\ActivitiesSummaryTest.cs" />
     <Compile Include="Core\Activities\ActivityTest.cs" />
+    <Compile Include="Core\Activities\ActivitySerializerTest.cs" />
+    <Compile Include="Core\Time\TimeManagerTest.cs" />
+    <Compile Include="Core\UtilitiesTest.cs" />
     <Compile Include="Core\Tasks\TaskActivityLinkerTest.cs" />
     <Compile Include="Core\Tasks\TaskCollectionTest.cs" />
+    <Compile Include="Core\Time\TimeLogSerializerTest.cs" />
     <Compile Include="Interfaces\FormatTest.cs" />
     <Compile Include="ProgramTests.cs" />
     <Compile Include="Core\Activities\HistoryTest.cs" />
@@ -56,9 +60,7 @@
     <Compile Include="UI\MainTest.cs" />
     <Compile Include="MockWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Core\SerializerTest.cs" />
     <Compile Include="Core\Tasks\TaskTest.cs" />
-    <Compile Include="Core\Time\TimeLogCheckEndTimeTest.cs" />
     <Compile Include="Core\Time\TimeLogTest.cs" />
   </ItemGroup>
   <ItemGroup>
