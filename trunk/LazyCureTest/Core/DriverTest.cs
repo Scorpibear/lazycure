@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 using LifeIdea.LazyCure.Core.IO;
 using LifeIdea.LazyCure.Core.Time;
 using NUnit.Framework;
@@ -12,7 +13,7 @@ namespace LifeIdea.LazyCure.Core
     public class DriverTest:Mockery
     {
         Driver driver;
-        MockWriter mockWriter;
+        StringBuilder logStringBuilder;
         const string folder = @"c:\temp\LazyCure\test\TimeLogs";
         static readonly string strDate = "2126-11-18";
         readonly string filename = folder + "\\"+strDate+".timelog";
@@ -22,8 +23,8 @@ namespace LifeIdea.LazyCure.Core
         public void SetUp()
         {
             driver = new Driver();
-            mockWriter = new MockWriter();
-            Log.TextWriter = mockWriter;
+            logStringBuilder = new StringBuilder();
+            Log.Writer = new StringWriter(logStringBuilder);
         }
         [TearDown]
         public void TearDown()
@@ -39,7 +40,7 @@ namespace LifeIdea.LazyCure.Core
             if (driver.Save())
                 Assert.Contains(filename, Directory.GetFiles(folder));
             else
-                Assert.Fail(mockWriter.Content);
+                Assert.Fail(logStringBuilder.ToString());
         }
         [Test]
         public void SaveTimeLogSpecifyFileName()
@@ -49,14 +50,14 @@ namespace LifeIdea.LazyCure.Core
             if (driver.SaveTimeLog(filename))
                 Assert.Contains(filename, Directory.GetFiles(folder));
             else
-                Assert.Fail(mockWriter.Content);
+                Assert.Fail(logStringBuilder.ToString());
         }
         [Test]
         public void NullTimeLogs()
         {
             driver.TimeLogsFolder = "";
             Assert.IsFalse(driver.Save());
-            Assert.AreEqual("TimeLogsFolder is not specified", mockWriter.Content);
+            Assert.AreEqual("TimeLogsFolder is not specified\r\n", logStringBuilder.ToString());
         }
         [Test]
         public void LoadTimeLog()
@@ -101,7 +102,7 @@ namespace LifeIdea.LazyCure.Core
                 Assert.AreEqual(strDate, driver.TimeLogDate, "current day changed");
             }
             else
-                Assert.Fail(mockWriter.Content);
+                Assert.Fail(logStringBuilder.ToString());
         }
         [Test]
         public void LoadTwoActivites()

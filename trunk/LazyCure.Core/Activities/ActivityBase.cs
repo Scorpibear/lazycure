@@ -3,6 +3,9 @@ using LifeIdea.LazyCure.Interfaces;
 
 namespace LifeIdea.LazyCure.Core.Activities
 {
+    /// <summary>
+    /// Represent base abstract class for Activity and RunningActivity
+    /// </summary>
     public abstract class ActivityBase : IActivity
     {
         protected string name;
