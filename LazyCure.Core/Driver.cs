@@ -14,6 +14,7 @@ namespace LifeIdea.LazyCure.Core
     /// </summary>
     public class Driver : ILazyCureDriver
     {
+        private IFileManager fileManager = new FileManager();
         private TimeLog timeLog;
         private ITimeManager timeManager;
         private ActivitiesSummary activitiesSummary;
@@ -21,10 +22,10 @@ namespace LifeIdea.LazyCure.Core
         private string timeLogsFolder;
         private readonly string historyFileName = "history.txt";
         private readonly ActivitiesHistory history;
-        private readonly TaskCollection tasks;
 
         public static string FirstActivityName = "starting LazyCure";
         public bool SaveAfterDone=true;
+        public ITaskCollection TaskCollection=null;
         public string TimeLogsFolder { get { return timeLogsFolder; } set { timeLogsFolder = value; } }
 
         public Driver(ITimeSystem timeSystem)
@@ -32,8 +33,8 @@ namespace LifeIdea.LazyCure.Core
             timeLog = new TimeLog(timeSystem.Now.Date);
             timeManager = new TimeManager(timeSystem);
             timeManager.TimeLog = timeLog;
-            tasks = new TaskCollection();
-            linker = new TaskActivityLinker(tasks);
+            TaskCollection = new TaskCollection();
+            linker = new TaskActivityLinker(TaskCollection);
             activitiesSummary = new ActivitiesSummary(timeLog,linker);
             history = new ActivitiesHistory();
         }
@@ -56,15 +57,15 @@ namespace LifeIdea.LazyCure.Core
 
         public void FillTaskNodes(TreeNodeCollection nodes)
         {
-            nodes.AddRange(tasks.ToArray());
+            nodes.AddRange(TaskCollection.ToArray());
         }
 
         public void UpdateTaskNodeText(TreeNode node, string text)
         {
-            if(tasks.Contains(node.Name))
-                tasks.GetTask(node.Name).Text = text;
+            if(TaskCollection.Contains(node.Name))
+                TaskCollection.GetTask(node.Name).Text = text;
             else
-                tasks.Add(new Task(text));
+                TaskCollection.Add(new Task(text));
         }
 
         public object TimeLogData { get { return timeLog.Data; } }
@@ -112,10 +113,17 @@ namespace LifeIdea.LazyCure.Core
             get { return history.LatestActivities; }
         }
 
+        public IFileManager FileManager
+        {
+            get { return fileManager; }
+            set { fileManager = value; }
+        }
+
         public bool Save()
         {
             if (history != null)
                 history.Save("history.txt");
+            fileManager.SaveTasks(TaskCollection);
             if (timeLogsFolder == "")
             {
                 Log.Error("TimeLogsFolder is not specified");

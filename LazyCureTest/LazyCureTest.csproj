@@ -46,6 +46,9 @@
     <Compile Include="Core\ActivitiesSummaryTest.cs" />
     <Compile Include="Core\Activities\ActivityTest.cs" />
     <Compile Include="Core\Activities\ActivitySerializerTest.cs" />
+    <Compile Include="Core\IO\FileManagerTest.cs" />
+    <Compile Include="Core\Tasks\TaskCollectionSerializerTest.cs" />
+    <Compile Include="Core\Tasks\TaskSerializerTest.cs" />
     <Compile Include="Core\Time\TimeManagerTest.cs" />
     <Compile Include="Core\UtilitiesTest.cs" />
     <Compile Include="Core\Tasks\TaskActivityLinkerTest.cs" />
