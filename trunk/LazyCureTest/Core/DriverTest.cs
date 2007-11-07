@@ -1,6 +1,7 @@
 using System;
 using System.Text;
 using LifeIdea.LazyCure.Core.IO;
+using LifeIdea.LazyCure.Core.Tasks;
 using LifeIdea.LazyCure.Core.Time;
 using NUnit.Framework;
 using NMock2;
@@ -219,6 +220,18 @@ namespace LifeIdea.LazyCure.Core
             driver.FinishActivity("should not be saved", "next");
 
             Assert.AreEqual(false,Directory.Exists(folder),"Existence of folder with timelog");
+        }
+        [Test]
+        public void SaveTasks()
+        {
+            IFileManager fileManager = NewMock<IFileManager>();
+            Expect.AtLeastOnce.On(fileManager).Method("SaveTasks").With(driver.TaskCollection).Will(Return.Value(true));
+            driver.FileManager = fileManager;
+
+            bool isSaved = driver.Save();
+
+            Assert.IsTrue(isSaved);
+            VerifyAllExpectationsHaveBeenMet();
         }
         private void PrepareFolder()
         {

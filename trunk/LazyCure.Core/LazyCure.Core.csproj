@@ -41,8 +41,12 @@
     <Compile Include="Activities\ActivityBase.cs" />
     <Compile Include="Activities\ActivitiesHistory.cs" />
     <Compile Include="Activities\ActivitySerializer.cs" />
+    <Compile Include="IO\FileManager.cs" />
+    <Compile Include="IO\IFileManager.cs" />
     <Compile Include="Tasks\ITaskCollection.cs" />
     <Compile Include="Tasks\ITaskActivityLinker.cs" />
+    <Compile Include="Tasks\TaskCollectionSerializer.cs" />
+    <Compile Include="Tasks\TaskSerializer.cs" />
     <Compile Include="Time\ITimeLog.cs" />
     <Compile Include="Activities\RunningActivity.cs" />
     <Compile Include="Driver.cs" />
