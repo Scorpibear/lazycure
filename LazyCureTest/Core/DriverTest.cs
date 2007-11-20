@@ -33,6 +33,11 @@ namespace LifeIdea.LazyCure.Core
             Log.Close();
         }
         [Test]
+        public void DefaultTaskCollection()
+        {
+            Assert.AreEqual(TaskCollection.Default,driver.TaskCollection);
+        }
+        [Test]
         public void SaveTimeLog()
         {
             PrepareFolder();
@@ -52,6 +57,15 @@ namespace LifeIdea.LazyCure.Core
                 Assert.Contains(filename, Directory.GetFiles(folder));
             else
                 Assert.Fail(logStringBuilder.ToString());
+        }
+        [Test]
+        public void SaveTasksAreLoaded()
+        {
+            driver.TaskCollection.Add(new Task("new task"));
+            driver.Save();
+            driver = new Driver();
+            driver.Load();
+            Assert.IsTrue(driver.TaskCollection.Contains("new task"));
         }
         [Test]
         public void NullTimeLogs()
@@ -233,6 +247,18 @@ namespace LifeIdea.LazyCure.Core
             Assert.IsTrue(isSaved);
             VerifyAllExpectationsHaveBeenMet();
         }
+        [Test]
+        public void Load()
+        {
+            IFileManager fileManager = NewMock<IFileManager>();
+            Expect.AtLeastOnce.On(fileManager).Method("GetTasks").Will(Return.Value(null));
+            Expect.AtLeastOnce.On(fileManager).Method("GetTimeLog").Will(Return.Value(null));
+
+            bool isLoaded = driver.Load();
+
+            Assert.IsTrue(isLoaded);
+        }
+
         private void PrepareFolder()
         {
             if (Directory.Exists(folder))

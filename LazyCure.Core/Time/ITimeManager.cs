@@ -8,6 +8,8 @@ namespace LifeIdea.LazyCure.Core.Time
 
         ITimeLog TimeLog { get; set; }
 
+        ITimeSystem TimeSystem { get;}
+
         void FinishActivity(string activity, string nextActivity);
     }
 }

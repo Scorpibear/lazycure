@@ -24,5 +24,15 @@ namespace LifeIdea.LazyCure.Core.Tasks
             }
             set { Name = value; }
         }
+
+        public override int GetHashCode()
+        {
+            return Name.GetHashCode();
+        }
+
+        public override bool Equals(object obj)
+        {
+            return GetHashCode() == obj.GetHashCode();
+        }
     }
 }

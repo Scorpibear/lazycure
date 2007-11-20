@@ -39,7 +39,7 @@ namespace LifeIdea.LazyCure
                 }
                 try
                 {
-                    driver.LoadTimeLog(DateTime.Now);
+                    driver.Load();
                 }
                 catch(Exception ex)
                 {

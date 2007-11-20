@@ -35,6 +35,11 @@ namespace LifeIdea.LazyCure.Core.Time
             set{ timeLog = value;}
         }
 
+        public ITimeSystem TimeSystem
+        {
+            get { return currentActivity.timeSystem; }
+        }
+
         public IActivity SwitchTo(string nextActivityName)
         {
             currentActivity.Stop();
