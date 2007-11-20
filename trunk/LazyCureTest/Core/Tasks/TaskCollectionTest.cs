@@ -8,15 +8,15 @@ namespace LifeIdea.LazyCure.Core.Tasks
         private readonly TaskCollection tasks = new TaskCollection();
 
         [Test]
-        public void DefaultTasks()
+        public void Empty()
         {
-            Assert.IsTrue(tasks.Contains("Work"), "contains Work");
-            Assert.IsTrue(tasks.Contains("Rest"), "contains Rest");
+            Assert.AreEqual(0,tasks.Count);
         }
 
         [Test]
         public void GetTask()
         {
+            tasks.Add(new Task("Work"));
             Task task = tasks.GetTask("Work");
             Assert.IsNotNull(task);
             Assert.AreEqual("Work",task.Name);
@@ -29,6 +29,13 @@ namespace LifeIdea.LazyCure.Core.Tasks
             Task task1 = new Task("task1");
             tasks.Add(task1);
             Assert.AreSame(task1,tasks.GetTask("task1"));
+        }
+
+        [Test]
+        public void DefaultCollection()
+        {
+            Assert.IsTrue(TaskCollection.Default.Contains("Work"), "contains Work");
+            Assert.IsTrue(TaskCollection.Default.Contains("Rest"), "contains Rest");
         }
     }
 }

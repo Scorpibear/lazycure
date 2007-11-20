@@ -5,12 +5,17 @@ namespace LifeIdea.LazyCure.Core.Tasks
     /// <summary>
     /// Represent collection of all tasks
     /// </summary>
-    public class TaskCollection: List<Task>,ITaskCollection
+    public class TaskCollection : List<Task>, ITaskCollection
     {
-        public TaskCollection()
+        public static TaskCollection Default
         {
-            Add(new Task("Work"));
-            Add(new Task("Rest"));
+            get
+            {
+                TaskCollection defaultCollection = new TaskCollection();
+                defaultCollection.Add(new Task("Work"));
+                defaultCollection.Add(new Task("Rest"));
+                return defaultCollection;
+            }
         }
 
         public bool Contains(string taskName)
@@ -20,7 +25,7 @@ namespace LifeIdea.LazyCure.Core.Tasks
 
         public Task GetTask(string taskName)
         {
-            foreach(Task task in this)
+            foreach (Task task in this)
             {
                 if (task.Name == taskName)
                     return task;

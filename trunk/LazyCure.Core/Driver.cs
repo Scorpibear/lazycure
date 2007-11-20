@@ -16,7 +16,7 @@ namespace LifeIdea.LazyCure.Core
     {
         private IFileManager fileManager = new FileManager();
         private TimeLog timeLog;
-        private ITimeManager timeManager;
+        private readonly ITimeManager timeManager;
         private ActivitiesSummary activitiesSummary;
         private readonly ITaskActivityLinker linker;
         private string timeLogsFolder;
@@ -33,20 +33,34 @@ namespace LifeIdea.LazyCure.Core
             timeLog = new TimeLog(timeSystem.Now.Date);
             timeManager = new TimeManager(timeSystem);
             timeManager.TimeLog = timeLog;
-            TaskCollection = new TaskCollection();
+            TaskCollection = Tasks.TaskCollection.Default;
             linker = new TaskActivityLinker(TaskCollection);
             activitiesSummary = new ActivitiesSummary(timeLog,linker);
             history = new ActivitiesHistory();
         }
+        
         public Driver() : this(new NaturalTimeSystem()) { }
+
         public void LoadHistory(string filename)
         {
             history.Load(filename);
         }
+        
         public void SaveHistory(string filename)
         {
             history.Save(filename);
         }
+
+        public bool Load()
+        {
+            ITaskCollection loadedTasks = fileManager.GetTasks();
+            if (loadedTasks != null)
+                TaskCollection = loadedTasks;
+            LoadHistory(historyFileName);
+            LoadTimeLog(timeManager.TimeSystem.Now);
+            return true;
+        }
+
         #region ILazyCureDriver Members
 
         public TimeSpan AllActivitiesTime { get { return activitiesSummary.AllActivitiesTime; } }
@@ -103,7 +117,6 @@ namespace LifeIdea.LazyCure.Core
 
         public bool LoadTimeLog(DateTime date)
         {
-            history.Load(historyFileName);
             string filename = GetTimeLogFileNameByDate(date);
             return LoadTimeLog(filename);
         }
@@ -121,8 +134,7 @@ namespace LifeIdea.LazyCure.Core
 
         public bool Save()
         {
-            if (history != null)
-                history.Save("history.txt");
+            SaveHistory("history.txt");
             fileManager.SaveTasks(TaskCollection);
             if (timeLogsFolder == "")
             {
@@ -157,6 +169,5 @@ namespace LifeIdea.LazyCure.Core
         {
             return TimeLogsFolder + @"\" + date.ToString("yyyy-MM-dd") + ".timelog";
         }
-
     }
 }
