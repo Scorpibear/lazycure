@@ -12,12 +12,21 @@ namespace LifeIdea.LazyCure.Core
     /// </summary>
     public class ActivitiesSummary
     {
-        private readonly ITimeLog timeLog;
+        private ITimeLog timeLog;
         private readonly ITaskActivityLinker linker;
         private TimeSpan allActivitiesTime=new TimeSpan();
 
         public DataTable Data;
         public TimeSpan AllActivitiesTime{get{ return allActivitiesTime;}}
+        public ITimeLog TimeLog
+        {
+            get{ return timeLog;}
+            set
+            {
+                timeLog = value;
+                timeLog.Data.RowChanged += TimeLogData_RowChanged;
+            }
+        }
         
         public ActivitiesSummary(ITimeLog timeLog, ITaskActivityLinker linker)
         {
@@ -25,9 +34,8 @@ namespace LifeIdea.LazyCure.Core
             Data.Columns.Add("Activity");
             Data.Columns.Add("Spent", Type.GetType("System.TimeSpan"));
             Data.Columns.Add("Task");
-            this.timeLog = timeLog;
+            TimeLog = timeLog;            
             this.linker = linker;
-            timeLog.Data.RowChanged += TimeLogData_RowChanged;
             Data.ColumnChanged += Data_ColumnChanged;
         }
 

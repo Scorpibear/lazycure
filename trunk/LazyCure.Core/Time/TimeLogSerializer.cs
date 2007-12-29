@@ -31,7 +31,7 @@ namespace LifeIdea.LazyCure.Core.Time
             return xml;
         }
 
-        public static void Serialize(TimeLog timeLog, TextWriter writer)
+        public static void Serialize(ITimeLog timeLog, TextWriter writer)
         {
             writer.WriteLine(Serialize(timeLog).OuterXml);
         }

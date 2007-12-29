@@ -38,27 +38,6 @@ namespace LifeIdea.LazyCure.Core
             Assert.AreEqual(TaskCollection.Default,driver.TaskCollection);
         }
         [Test]
-        public void SaveTimeLog()
-        {
-            PrepareFolder();
-            driver.TimeLogsFolder = folder;
-        
-            if (driver.Save())
-                Assert.Contains(filename, Directory.GetFiles(folder));
-            else
-                Assert.Fail(logStringBuilder.ToString());
-        }
-        [Test]
-        public void SaveTimeLogSpecifyFileName()
-        {
-            PrepareFolder();
-
-            if (driver.SaveTimeLog(filename))
-                Assert.Contains(filename, Directory.GetFiles(folder));
-            else
-                Assert.Fail(logStringBuilder.ToString());
-        }
-        [Test]
         public void SaveTasksAreLoaded()
         {
             driver.TaskCollection.Add(new Task("new task"));
@@ -209,67 +188,55 @@ namespace LifeIdea.LazyCure.Core
             Assert.Contains("saved", driver.LatestActivities);
         }
         [Test]
-        public void SaveAfterDoneDefault()
+        public void SaveAfterDoneDefaultSetting()
         {
-            Assert.AreEqual(true,driver.SaveAfterDone,"Default setting for SaveAfterDone");
+            Assert.AreEqual(true,driver.SaveAfterDone);
             
         }
         [Test]
         public void SaveAfterDone()
         {
-            PrepareFolder();
+            driver.FileManager = NewMock<IFileManager>();
             driver.TimeLogsFolder = folder;
-        
             driver.SaveAfterDone = true;
+            Expect.AtLeastOnce.On(driver.FileManager).Method("SaveTimeLog").Will(Return.Value(true));
+            
             driver.FinishActivity("should be saved", "next");
-            Assert.Contains(filename, Directory.GetFiles(folder));
+            
+            VerifyAllExpectationsHaveBeenMet();
         }
         [Test]
         public void TimeLogIsNotSavedIfSaveAfterDoneFalse()
         {
-            PrepareFolder();
+            driver.FileManager = NewMock<IFileManager>();
             driver.TimeLogsFolder = folder;
-            
             driver.SaveAfterDone = false;
-            driver.FinishActivity("should not be saved", "next");
 
-            Assert.AreEqual(false,Directory.Exists(folder),"Existence of folder with timelog");
+            driver.FinishActivity("should not be saved", "next");
         }
         [Test]
-        public void SaveTasks()
+        public void Save()
         {
-            IFileManager fileManager = NewMock<IFileManager>();
-            Expect.AtLeastOnce.On(fileManager).Method("SaveTasks").With(driver.TaskCollection).Will(Return.Value(true));
-            driver.FileManager = fileManager;
+            driver.FileManager = NewMock<IFileManager>();
+            Expect.AtLeastOnce.On(driver.FileManager).Method("SaveTasks").With(driver.TaskCollection).Will(Return.Value(true));
+            Expect.AtLeastOnce.On(driver.FileManager).Method("SaveTimeLog").Will(Return.Value(true));
 
             bool isSaved = driver.Save();
-
+            
             Assert.IsTrue(isSaved);
             VerifyAllExpectationsHaveBeenMet();
         }
         [Test]
         public void Load()
         {
-            IFileManager fileManager = NewMock<IFileManager>();
-            Expect.AtLeastOnce.On(fileManager).Method("GetTasks").Will(Return.Value(null));
-            Expect.AtLeastOnce.On(fileManager).Method("GetTimeLog").Will(Return.Value(null));
+            driver.FileManager = NewMock<IFileManager>();
+            Expect.AtLeastOnce.On(driver.FileManager).Method("GetTasks").Will(Return.Value(null));
+            Expect.AtLeastOnce.On(driver.FileManager).Method("GetTimeLog").Will(Return.Value(null));
 
             bool isLoaded = driver.Load();
 
             Assert.IsTrue(isLoaded);
-        }
-
-        private void PrepareFolder()
-        {
-            if (Directory.Exists(folder))
-            {
-                Directory.Delete(folder, true);
-            }
-
-            ITimeSystem mockTimeSystem = NewMock<ITimeSystem>();
-            Stub.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(DateTime.Parse(strDate + " 5:00:00")));
-
-            driver = new Driver(mockTimeSystem);
+            VerifyAllExpectationsHaveBeenMet();
         }
     }
 }

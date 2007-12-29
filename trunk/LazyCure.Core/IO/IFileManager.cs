@@ -9,5 +9,6 @@ namespace LifeIdea.LazyCure.Core.IO
         ITaskCollection GetTasks();
         ITimeLog GetTimeLog(string filename);
         bool SaveTasks(ITaskCollection taskCollection);
+        bool SaveTimeLog(ITimeLog timeLog, string filename);
     }
 }

@@ -6,7 +6,7 @@ using LifeIdea.LazyCure.Core.Time;
 namespace LifeIdea.LazyCure.Core.IO
 {
     /// <summary>
-    /// Create streams for working with files
+    /// Perform file-related activities
     /// </summary>
     public class FileManager:IFileManager
     {
@@ -42,6 +42,9 @@ namespace LifeIdea.LazyCure.Core.IO
                 StreamReader reader = File.OpenText(filename);
                 ITimeLog timeLog = TimeLogSerializer.Deserialize(reader);
                 reader.Close();
+                DateTime date = Utilities.GetDateFromFileName(filename);
+                if (date != DateTime.MinValue)
+                    timeLog.Date = date;
                 return timeLog;
             }
             else
@@ -66,6 +69,25 @@ namespace LifeIdea.LazyCure.Core.IO
                 }
             }
             return false;
+        }
+
+        public bool SaveTimeLog(ITimeLog timeLog, string filename)
+        {
+            StreamWriter stream = null;
+            try
+            {
+                FileInfo fileInfo = new FileInfo(filename);
+                fileInfo.Directory.Create();
+                stream = fileInfo.CreateText();
+            }
+            catch (Exception ex)
+            {
+                Log.Exception(ex);
+                return false;
+            }
+            TimeLogSerializer.Serialize(timeLog, stream);
+            stream.Close();
+            return true;
         }
 
         #endregion IFileManager Members

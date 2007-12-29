@@ -12,7 +12,7 @@ namespace LifeIdea.LazyCure.Core.IO
     {
         private FileManager fileManager;
         private string filename = null;
-        private readonly string sContent = "<?xml version=\"1.0\" standalone=\"yes\"?><LazyCureData><Records>" +
+        private readonly string sContent = "<?xml version=\"1.0\" standalone=\"yes\"?><LazyCureData Date=\"2102-03-12\"><Records>" +
                   "<Activity>changed</Activity><Begin>14:35:02</Begin><Duration>0:00:07</Duration>" +
                   "</Records></LazyCureData>";
         [SetUp]
@@ -106,6 +106,25 @@ namespace LifeIdea.LazyCure.Core.IO
             Assert.IsNull(timeLog);
         }
         [Test]
+        public void GetTimeLogGetDateFromFileName()
+        {
+            filename = "2013-12-21.timelog";
+            File.WriteAllText(filename,sContent);
+
+            ITimeLog timeLog = fileManager.GetTimeLog(filename);
+            Assert.AreEqual("2013-12-21",timeLog.Date.ToString("yyyy-MM-dd"));
+        }
+        [Test]
+        public void GetTimeLogDateFromXmlIfFileNameIsNotDate()
+        {
+            filename = "TimeLog~1.timelog";
+            File.WriteAllText(filename, sContent);
+
+            ITimeLog timeLog = fileManager.GetTimeLog(filename);
+
+            Assert.AreEqual("2102-03-12", timeLog.Date.ToString("yyyy-MM-dd"));
+        }
+        [Test]
         public void GetTasksReturnsWhatWasSaved()
         {
             ITaskCollection taskCollection = new TaskCollection();
@@ -114,6 +133,13 @@ namespace LifeIdea.LazyCure.Core.IO
 
             fileManager.SaveTasks(taskCollection);
             Assert.AreEqual(taskCollection, fileManager.GetTasks());
+        }
+        [Test]
+        public void SaveTimeLogCreateFile()
+        {
+            ITimeLog timeLog = new TimeLog(DateTime.Now);
+            fileManager.SaveTimeLog(timeLog, "SaveTimeLog.tmp");
+            Assert.IsTrue(File.Exists("SaveTimeLog.tmp"));
         }
     }
 }
