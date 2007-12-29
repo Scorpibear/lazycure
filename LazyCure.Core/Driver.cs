@@ -15,7 +15,6 @@ namespace LifeIdea.LazyCure.Core
     public class Driver : ILazyCureDriver
     {
         private IFileManager fileManager = new FileManager();
-        private TimeLog timeLog;
         private readonly ITimeManager timeManager;
         private ActivitiesSummary activitiesSummary;
         private readonly ITaskActivityLinker linker;
@@ -26,6 +25,7 @@ namespace LifeIdea.LazyCure.Core
         public static string FirstActivityName = "starting LazyCure";
         public bool SaveAfterDone=true;
         public ITaskCollection TaskCollection=null;
+        public ITimeLog timeLog;
         public string TimeLogsFolder { get { return timeLogsFolder; } set { timeLogsFolder = value; } }
 
         public Driver(ITimeSystem timeSystem)
@@ -89,30 +89,24 @@ namespace LifeIdea.LazyCure.Core
             timeManager.FinishActivity(finishedActivity, nextActivity);
             history.AddActivity(finishedActivity);
             if(SaveAfterDone)
-                Save();
+                SaveTimeLog();
         }
 
         public string TimeLogDate { get { return timeLog.Date.ToString("yyyy-MM-dd"); } }
 
         public bool LoadTimeLog(string filename)
         {
-            if (File.Exists(filename))
+            ITimeLog loadedTimeLog = fileManager.GetTimeLog(filename);
+            if (loadedTimeLog != null)
             {
-                StreamReader reader = File.OpenText(filename);
-                timeLog = (TimeLog)TimeLogSerializer.Deserialize(reader);
-                reader.Close();
-                DateTime date = Utilities.GetDateFromFileName(filename);
-                if (date!= DateTime.MinValue)
-                    timeLog.Date = date;
-                timeManager.TimeLog = timeLog;
-                activitiesSummary = new ActivitiesSummary(timeLog,linker);
+                timeManager.TimeLog = loadedTimeLog;
+                timeLog = loadedTimeLog;
+                activitiesSummary.TimeLog = loadedTimeLog;
                 activitiesSummary.Update();
                 return true;
             }
             else
-            {
                 return false;
-            }
         }
 
         public bool LoadTimeLog(DateTime date)
@@ -141,26 +135,12 @@ namespace LifeIdea.LazyCure.Core
                 Log.Error("TimeLogsFolder is not specified");
                 return false;
             }
-            return SaveTimeLog(GetTimeLogFileNameByDate(timeLog.Date));
+            return SaveTimeLog();
         }
 
         public bool SaveTimeLog(string filename)
         {
-            StreamWriter stream = null;
-            try
-            {
-                FileInfo fileInfo = new FileInfo(filename);
-                fileInfo.Directory.Create();
-                stream = fileInfo.CreateText();
-            }
-            catch (Exception ex)
-            {
-                Log.Exception(ex);
-                return false;
-            }
-            TimeLogSerializer.Serialize(timeLog, stream);
-            stream.Close();
-            return true;
+            return fileManager.SaveTimeLog(timeLog, filename);
         }
 
         #endregion
@@ -168,6 +148,10 @@ namespace LifeIdea.LazyCure.Core
         private string GetTimeLogFileNameByDate(DateTime date)
         {
             return TimeLogsFolder + @"\" + date.ToString("yyyy-MM-dd") + ".timelog";
+        }
+        private bool SaveTimeLog()
+        {
+            return SaveTimeLog(GetTimeLogFileNameByDate(timeLog.Date));
         }
     }
 }

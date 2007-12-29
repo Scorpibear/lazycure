@@ -1,5 +1,7 @@
+using System;
 using System.IO;
 using System.Xml;
+using LifeIdea.LazyCure.Core.IO;
 
 namespace LifeIdea.LazyCure.Core.Tasks
 {
@@ -20,7 +22,14 @@ namespace LifeIdea.LazyCure.Core.Tasks
 
         public static void Serialize(ITaskCollection taskCollection, TextWriter writer)
         {
-            writer.WriteLine(Serialize(taskCollection).InnerXml);
+            try
+            {
+                writer.WriteLine(Serialize(taskCollection).InnerXml);
+            }
+            catch (Exception ex)
+            {
+                Log.Exception(ex);
+            }
         }
 
         public static ITaskCollection Deserialize(XmlNode xml)
@@ -44,8 +53,17 @@ namespace LifeIdea.LazyCure.Core.Tasks
         public static ITaskCollection Deserialize(TextReader reader)
         {
             XmlDocument doc = new XmlDocument();
-            doc.Load(reader);
-            return Deserialize(doc);
+            try
+            {
+                doc.Load(reader);
+                return Deserialize(doc);
+            }
+            catch(Exception ex)
+            {
+                Log.Exception(ex);
+                return null;
+            }
+            
         }
     }
 }

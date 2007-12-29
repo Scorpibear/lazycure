@@ -110,6 +110,18 @@ namespace LifeIdea.LazyCure.Core.Time
             Assert.IsTrue(content.Contains("2007-02-23"));
         }
         [Test]
+        public void DateIsDeserialized()
+        {
+            XmlDocument xml = new XmlDocument();
+            xml.InnerXml = "<LazyCureData Date=\"2013-10-14\">" +
+                           "<Records>" +
+                           "<Activity>first</Activity>" +
+                           "</Records>" +
+                           "</LazyCureData>";
+            ITimeLog timeLog = TimeLogSerializer.Deserialize(xml);
+            Assert.AreEqual("2013-10-14",timeLog.Date.ToString("yyyy-MM-dd"));
+        }
+        [Test]
         public void VersionIsSerialized()
         {
             Stub.On(mockTimeLog).GetProperty("Activities").Will(Return.Value(new List<IActivity>()));
