@@ -6,7 +6,7 @@ using NMock2;
 namespace LifeIdea.LazyCure.Core.Activities
 {
     [TestFixture]
-    public class LiveActivityTest
+    public class RunningActivityTest
     {
         private readonly Mockery mocks = new Mockery();
         private readonly DateTime startTime = DateTime.Parse("2007-08-29 0:00:00");
@@ -85,6 +85,15 @@ namespace LifeIdea.LazyCure.Core.Activities
             Expect.Once.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(DateTime.Parse("2111-11-11 5:00:00.5")));
             activity = new RunningActivity("activity", mockTimeSystem);
             Assert.AreEqual(DateTime.Parse("2111-11-11 5:00:01"), activity.StartTime);
+        }
+        [Test]
+        public void StartTimeAtTheEndOfMinute()
+        {
+            Stub.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(DateTime.Parse("17:59:59.500")));
+            
+            activity = new RunningActivity("name",mockTimeSystem);
+            
+            Assert.AreEqual(DateTime.Parse("18:00:00"), activity.StartTime);
         }
     }
 }

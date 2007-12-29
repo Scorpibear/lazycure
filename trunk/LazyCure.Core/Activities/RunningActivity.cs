@@ -10,14 +10,15 @@ namespace LifeIdea.LazyCure.Core.Activities
     {
         public ITimeSystem timeSystem;
         public Boolean IsRunning = true;
+        public const double MILLISECONDS_IN_ONE_SECOND = 1000;
         public override DateTime StartTime
         {
             get
             {
-                if (start.Millisecond < 500)
-                    return new DateTime(start.Year, start.Month, start.Day, start.Hour, start.Minute, start.Second);
+                if (start.Millisecond < MILLISECONDS_IN_ONE_SECOND/2)
+                    return start.AddMilliseconds(-start.Millisecond);
                 else
-                    return new DateTime(start.Year, start.Month, start.Day, start.Hour, start.Minute, start.Second + 1);
+                    return start.AddMilliseconds(MILLISECONDS_IN_ONE_SECOND - start.Millisecond);
             }
         }
         public override TimeSpan Duration
@@ -56,7 +57,7 @@ namespace LifeIdea.LazyCure.Core.Activities
         {
             get
             {
-                if (duration.Milliseconds < 500)
+                if (duration.Milliseconds < MILLISECONDS_IN_ONE_SECOND/2)
                     return new TimeSpan(0, 0, 0, (int)duration.TotalSeconds);
                 else
                     return new TimeSpan(0, 0, 0, (int)duration.TotalSeconds + 1);
