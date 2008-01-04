@@ -12,7 +12,7 @@ namespace LifeIdea.LazyCure.Core.Activities
     {
         private readonly List<string> activities = new List<string>();
         
-        public static int MaxActivities = 30;
+        public int MaxActivities = 30;
         public string[] LatestActivities { get { return activities.ToArray(); } }
         
         public void AddActivity(string activity)

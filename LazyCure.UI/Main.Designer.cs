@@ -49,19 +49,19 @@ namespace LifeIdea.LazyCure.UI
             this.miActivityDetails = new System.Windows.Forms.ToolStripMenuItem();
             this.miTimeLog = new System.Windows.Forms.ToolStripMenuItem();
             this.miSummary = new System.Windows.Forms.ToolStripMenuItem();
-            this.miContextShow = new System.Windows.Forms.ToolStripMenuItem();
             this.miOptions = new System.Windows.Forms.ToolStripMenuItem();
             this.miHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.miOnline = new System.Windows.Forms.ToolStripMenuItem();
             this.miSubscribe = new System.Windows.Forms.ToolStripMenuItem();
+            this.miSubmit = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.miAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.miContextShow = new System.Windows.Forms.ToolStripMenuItem();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.miSubmit = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.statusBar.SuspendLayout();
             this.nowYou.SuspendLayout();
             this.menu.SuspendLayout();
@@ -227,7 +227,7 @@ namespace LifeIdea.LazyCure.UI
             this.miTimeLog,
             this.miSummary});
             this.showMenu.Name = "contextMenu";
-            this.showMenu.OwnerItem = this.miShow;
+            this.showMenu.OwnerItem = this.miContextShow;
             this.showMenu.Size = new System.Drawing.Size(157, 70);
             // 
             // miActivityDetails
@@ -246,7 +246,7 @@ namespace LifeIdea.LazyCure.UI
             this.miTimeLog.Name = "miTimeLog";
             this.miTimeLog.Size = new System.Drawing.Size(156, 22);
             this.miTimeLog.Text = "&Time Log";
-            this.miTimeLog.Click += new System.EventHandler(this.showTimeLog_Click);
+            this.miTimeLog.Click += new System.EventHandler(this.miTimeLog_Click);
             // 
             // miSummary
             // 
@@ -254,14 +254,7 @@ namespace LifeIdea.LazyCure.UI
             this.miSummary.Name = "miSummary";
             this.miSummary.Size = new System.Drawing.Size(156, 22);
             this.miSummary.Text = "&Summary";
-            this.miSummary.Click += new System.EventHandler(this.miShowSummary_Click);
-            // 
-            // miContextShow
-            // 
-            this.miContextShow.DropDown = this.showMenu;
-            this.miContextShow.Name = "miContextShow";
-            this.miContextShow.Size = new System.Drawing.Size(111, 22);
-            this.miContextShow.Text = "Show";
+            this.miSummary.Click += new System.EventHandler(this.miSummary_Click);
             // 
             // miOptions
             // 
@@ -285,7 +278,7 @@ namespace LifeIdea.LazyCure.UI
             // miOnline
             // 
             this.miOnline.Name = "miOnline";
-            this.miOnline.Size = new System.Drawing.Size(220, 22);
+            this.miOnline.Size = new System.Drawing.Size(233, 22);
             this.miOnline.Tag = "http://lazycure.com/";
             this.miOnline.Text = "LazyCure &Online";
             this.miOnline.Click += new System.EventHandler(this.Link_Click);
@@ -293,17 +286,37 @@ namespace LifeIdea.LazyCure.UI
             // miSubscribe
             // 
             this.miSubscribe.Name = "miSubscribe";
-            this.miSubscribe.Size = new System.Drawing.Size(220, 22);
+            this.miSubscribe.Size = new System.Drawing.Size(233, 22);
             this.miSubscribe.Tag = "http://lazycure.com/feed/";
             this.miSubscribe.Text = "&Subscribe to LazyCure news";
             this.miSubscribe.Click += new System.EventHandler(this.Link_Click);
             // 
+            // miSubmit
+            // 
+            this.miSubmit.Name = "miSubmit";
+            this.miSubmit.Size = new System.Drawing.Size(233, 22);
+            this.miSubmit.Tag = "http://lazycure.com/submit/";
+            this.miSubmit.Text = "Submit a &bug / feature request";
+            this.miSubmit.Click += new System.EventHandler(this.Link_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(230, 6);
+            // 
             // miAbout
             // 
             this.miAbout.Name = "miAbout";
-            this.miAbout.Size = new System.Drawing.Size(220, 22);
+            this.miAbout.Size = new System.Drawing.Size(233, 22);
             this.miAbout.Text = "&About LazyCure";
             this.miAbout.Click += new System.EventHandler(this.miAbout_Click);
+            // 
+            // miContextShow
+            // 
+            this.miContextShow.DropDown = this.showMenu;
+            this.miContextShow.Name = "miContextShow";
+            this.miContextShow.Size = new System.Drawing.Size(111, 22);
+            this.miContextShow.Text = "Show";
             // 
             // timer
             // 
@@ -345,19 +358,6 @@ namespace LifeIdea.LazyCure.UI
             this.contextMenu.Name = "contextMenu";
             this.contextMenu.Size = new System.Drawing.Size(112, 26);
             // 
-            // miSubmit
-            // 
-            this.miSubmit.Name = "miSubmit";
-            this.miSubmit.Size = new System.Drawing.Size(233, 22);
-            this.miSubmit.Tag = "http://lazycure.com/submit/";
-            this.miSubmit.Text = "Submit a &bug / feature request";
-            this.miSubmit.Click += new System.EventHandler(this.Link_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(230, 6);
-            // 
             // Main
             // 
             this.AcceptButton = this.switchButton;
@@ -374,7 +374,6 @@ namespace LifeIdea.LazyCure.UI
             this.Name = "Main";
             this.Text = "Main";
             this.TopMost = true;
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Main_FormClosed);
             this.Activated += new System.EventHandler(this.Main_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             this.statusBar.ResumeLayout(false);

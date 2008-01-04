@@ -1,8 +1,10 @@
 using System;
 using System.Text;
+using LifeIdea.LazyCure.Core.Activities;
 using LifeIdea.LazyCure.Core.IO;
 using LifeIdea.LazyCure.Core.Tasks;
 using LifeIdea.LazyCure.Core.Time;
+using LifeIdea.LazyCure.Interfaces;
 using NUnit.Framework;
 using NMock2;
 using System.IO;
@@ -31,6 +33,22 @@ namespace LifeIdea.LazyCure.Core
         public void TearDown()
         {
             Log.Close();
+        }
+        [Test]
+        public void ApplySettings()
+        {
+            ISettings settings = NewMock<ISettings>();
+            Stub.On(settings).GetProperty("TimeLogsFolder").Will(Return.Value(@"c:\test"));
+            Stub.On(settings).GetProperty("SaveAfterDone").Will(Return.Value(false));
+            Stub.On(settings).GetProperty("MaxActivitiesInHistory").Will(Return.Value(13));
+            Stub.On(settings).GetProperty("ReminderTime").Will(Return.Value(TimeSpan.Parse("0:59:48")));
+            
+            driver.ApplySettings(settings);
+
+            Assert.AreEqual(@"c:\test", driver.TimeLogsFolder);
+            Assert.AreEqual(false, driver.SaveAfterDone);
+            Assert.AreEqual(13,driver.History.MaxActivities);
+            Assert.AreEqual(TimeSpan.Parse("0:59:48"), driver.TimeManager.MaxDuration);
         }
         [Test]
         public void DefaultTaskCollection()
@@ -152,24 +170,6 @@ namespace LifeIdea.LazyCure.Core
             Assert.AreEqual(DateTime.Now.ToString("yyyy-MM-dd"), driver.TimeLogDate);
         }
         [Test]
-        public void CurrentActivityDuration()
-        {
-            DateTime startTime = DateTime.Parse("5:00:00");
-            TimeSpan duration = TimeSpan.FromMinutes(15);
-            DateTime endTime = startTime + duration;
-
-            ITimeSystem mockTimeSystem = NewMock<ITimeSystem>();
-
-            using (Ordered)
-            {
-                Expect.Once.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(startTime));
-                Expect.Once.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(startTime));
-                Expect.Once.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(endTime));
-            }
-            driver = new Driver(mockTimeSystem);
-            Assert.AreEqual(duration, driver.CurrentActivity.Duration);
-        }
-        [Test]
         public void LatestActivities()
         {
             driver.FinishActivity("latest", "next");
@@ -188,18 +188,13 @@ namespace LifeIdea.LazyCure.Core
             Assert.Contains("saved", driver.LatestActivities);
         }
         [Test]
-        public void SaveAfterDoneDefaultSetting()
-        {
-            Assert.AreEqual(true,driver.SaveAfterDone);
-            
-        }
-        [Test]
         public void SaveAfterDone()
         {
             driver.FileManager = NewMock<IFileManager>();
+            Expect.AtLeastOnce.On(driver.FileManager).Method("SaveTimeLog").Will(Return.Value(true));
+            Stub.On(driver.FileManager).SetProperty("TimeLogsFolder");
             driver.TimeLogsFolder = folder;
             driver.SaveAfterDone = true;
-            Expect.AtLeastOnce.On(driver.FileManager).Method("SaveTimeLog").Will(Return.Value(true));
             
             driver.FinishActivity("should be saved", "next");
             
@@ -209,10 +204,14 @@ namespace LifeIdea.LazyCure.Core
         public void TimeLogIsNotSavedIfSaveAfterDoneFalse()
         {
             driver.FileManager = NewMock<IFileManager>();
+            Expect.Never.On(driver.FileManager).Method("SaveTimeLog");
+            Stub.On(driver.FileManager).SetProperty("TimeLogsFolder");
             driver.TimeLogsFolder = folder;
             driver.SaveAfterDone = false;
 
             driver.FinishActivity("should not be saved", "next");
+
+            VerifyAllExpectationsHaveBeenMet();
         }
         [Test]
         public void Save()
@@ -232,10 +231,22 @@ namespace LifeIdea.LazyCure.Core
             driver.FileManager = NewMock<IFileManager>();
             Expect.AtLeastOnce.On(driver.FileManager).Method("GetTasks").Will(Return.Value(null));
             Expect.AtLeastOnce.On(driver.FileManager).Method("GetTimeLog").Will(Return.Value(null));
+            Stub.On(driver.FileManager).Method("GetTimeLogFileName").Will(Return.Value(@"c:\temp\test.txt"));
 
             bool isLoaded = driver.Load();
 
             Assert.IsTrue(isLoaded);
+            VerifyAllExpectationsHaveBeenMet();
+        }
+        [Test]
+        public void TimeToUpdateTimeLogUsesTimeManager()
+        {
+            driver.TimeManager = NewMock<ITimeManager>();
+            
+            Expect.AtLeastOnce.On(driver.TimeManager).GetProperty("CurrentActivityIsLastingTooLong").Will(Return.Value(true));
+
+            Assert.IsTrue(driver.TimeToUpdateTimeLog);
+
             VerifyAllExpectationsHaveBeenMet();
         }
     }

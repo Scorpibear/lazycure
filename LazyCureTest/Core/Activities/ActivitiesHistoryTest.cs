@@ -14,6 +14,7 @@ namespace LifeIdea.LazyCure.Core.Activities
         public void SetUp()
         {
             history = new ActivitiesHistory();
+            history.MaxActivities = 5;
         }
         [TearDown]
         public void TearDown()
@@ -106,20 +107,20 @@ namespace LifeIdea.LazyCure.Core.Activities
         public void LoadLimit()
         {
             StringBuilder sb = new StringBuilder();
-            for (int i = 1; i <= 31;i++ )
+            for (int i = 1; i <= 6;i++ )
                 sb.AppendLine(i.ToString());
             history.Load(new StringReader(sb.ToString()));
-            Assert.IsTrue(history.ContainsActivity("30"));
-            Assert.IsFalse(history.ContainsActivity("31"));
+            Assert.IsTrue(history.ContainsActivity("5"));
+            Assert.IsFalse(history.ContainsActivity("6"));
         }
         [Test]
         public void LimitActivitiesWhileAdd()
         {
-            for (int i = 30; i >= 1; i--)
+            for (int i = 5; i >= 1; i--)
                 history.AddActivity(i.ToString());
             history.AddActivity("test");
-            Assert.IsTrue(history.ContainsActivity("29"));
-            Assert.IsFalse(history.ContainsActivity("30"));
+            Assert.IsTrue(history.ContainsActivity("4"));
+            Assert.IsFalse(history.ContainsActivity("5"));
         }
     }
 }

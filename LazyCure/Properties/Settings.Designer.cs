@@ -60,5 +60,17 @@ namespace LifeIdea.LazyCure.Properties {
                 this["MaxActivitiesInHistory"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("01:00:00")]
+        public global::System.TimeSpan ReminderTime {
+            get {
+                return ((global::System.TimeSpan)(this["ReminderTime"]));
+            }
+            set {
+                this["ReminderTime"] = value;
+            }
+        }
     }
 }

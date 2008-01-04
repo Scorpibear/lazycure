@@ -25,18 +25,10 @@ namespace LifeIdea.LazyCure
             try
             {
                 Log.Writer = GetLogWriter("LazyCure.log");
-
                 SetApplicationProperties();
-
                 ISettings settings = GetSettings();
-
                 Driver driver = new Driver();
-                if (settings != null)
-                {
-                    driver.TimeLogsFolder = settings.TimeLogsFolder;
-                    driver.SaveAfterDone = settings.SaveAfterDone;
-                    ActivitiesHistory.MaxActivities = settings.MaxActivitiesInHistory;
-                }
+                driver.ApplySettings(settings);
                 try
                 {
                     driver.Load();

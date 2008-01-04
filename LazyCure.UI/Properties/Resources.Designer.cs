@@ -59,5 +59,19 @@ namespace LifeIdea.LazyCure.UI.Properties {
                 resourceCulture = value;
             }
         }
+        
+        internal static System.Drawing.Icon Empty {
+            get {
+                object obj = ResourceManager.GetObject("Empty", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Icon LazyCure {
+            get {
+                object obj = ResourceManager.GetObject("LazyCure", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
     }
 }
