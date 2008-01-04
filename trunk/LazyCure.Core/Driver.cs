@@ -5,7 +5,6 @@ using LifeIdea.LazyCure.Core.IO;
 using LifeIdea.LazyCure.Core.Tasks;
 using LifeIdea.LazyCure.Core.Time;
 using LifeIdea.LazyCure.Interfaces;
-using System.IO;
 
 namespace LifeIdea.LazyCure.Core
 {
@@ -15,40 +14,38 @@ namespace LifeIdea.LazyCure.Core
     public class Driver : ILazyCureDriver
     {
         private IFileManager fileManager = new FileManager();
-        private readonly ITimeManager timeManager;
-        private ActivitiesSummary activitiesSummary;
+        private readonly ActivitiesSummary activitiesSummary;
         private readonly ITaskActivityLinker linker;
-        private string timeLogsFolder;
         private readonly string historyFileName = "history.txt";
-        private readonly ActivitiesHistory history;
+        public readonly ActivitiesHistory History;
 
         public static string FirstActivityName = "starting LazyCure";
         public bool SaveAfterDone=true;
         public ITaskCollection TaskCollection=null;
-        public ITimeLog timeLog;
-        public string TimeLogsFolder { get { return timeLogsFolder; } set { timeLogsFolder = value; } }
+        //public ITimeLog timeLog;
+        public ITimeManager TimeManager;
+        public string TimeLogsFolder { get { return FileManager.TimeLogsFolder; } set { FileManager.TimeLogsFolder = value; } }
 
         public Driver(ITimeSystem timeSystem)
         {
-            timeLog = new TimeLog(timeSystem.Now.Date);
-            timeManager = new TimeManager(timeSystem);
-            timeManager.TimeLog = timeLog;
+            TimeManager = new TimeManager(timeSystem);
+            TimeManager.TimeLog = new TimeLog(timeSystem.Now.Date);
             TaskCollection = Tasks.TaskCollection.Default;
             linker = new TaskActivityLinker(TaskCollection);
-            activitiesSummary = new ActivitiesSummary(timeLog,linker);
-            history = new ActivitiesHistory();
+            activitiesSummary = new ActivitiesSummary(TimeManager.TimeLog,linker);
+            History = new ActivitiesHistory();
         }
         
         public Driver() : this(new NaturalTimeSystem()) { }
 
         public void LoadHistory(string filename)
         {
-            history.Load(filename);
+            History.Load(filename);
         }
         
         public void SaveHistory(string filename)
         {
-            history.Save(filename);
+            History.Save(filename);
         }
 
         public bool Load()
@@ -57,7 +54,7 @@ namespace LifeIdea.LazyCure.Core
             if (loadedTasks != null)
                 TaskCollection = loadedTasks;
             LoadHistory(historyFileName);
-            LoadTimeLog(timeManager.TimeSystem.Now);
+            LoadTimeLog(TimeManager.TimeSystem.Now);
             return true;
         }
 
@@ -65,9 +62,29 @@ namespace LifeIdea.LazyCure.Core
 
         public TimeSpan AllActivitiesTime { get { return activitiesSummary.AllActivitiesTime; } }
 
-        public IActivity CurrentActivity { get { return timeManager.CurrentActivity; } }
+        public bool TimeToUpdateTimeLog
+        {
+            get
+            {
+                return TimeManager.CurrentActivityIsLastingTooLong;
+            }
+        }
+
+
+        public IActivity CurrentActivity { get { return TimeManager.CurrentActivity; } }
 
         public object ActivitiesSummaryData { get { return activitiesSummary.Data; } }
+
+        public void ApplySettings(ISettings settings)
+        {
+            if (settings != null)
+            {
+                TimeLogsFolder = settings.TimeLogsFolder;
+                SaveAfterDone = settings.SaveAfterDone;
+                History.MaxActivities = settings.MaxActivitiesInHistory;
+                TimeManager.MaxDuration = settings.ReminderTime;
+            }
+        }
 
         public void FillTaskNodes(TreeNodeCollection nodes)
         {
@@ -82,25 +99,24 @@ namespace LifeIdea.LazyCure.Core
                 TaskCollection.Add(new Task(text));
         }
 
-        public object TimeLogData { get { return timeLog.Data; } }
+        public object TimeLogData { get { return TimeManager.TimeLog.Data; } }
 
         public void FinishActivity(string finishedActivity, string nextActivity)
         {
-            timeManager.FinishActivity(finishedActivity, nextActivity);
-            history.AddActivity(finishedActivity);
+            TimeManager.FinishActivity(finishedActivity, nextActivity);
+            History.AddActivity(finishedActivity);
             if(SaveAfterDone)
-                SaveTimeLog();
+                fileManager.SaveTimeLog(TimeManager.TimeLog);
         }
 
-        public string TimeLogDate { get { return timeLog.Date.ToString("yyyy-MM-dd"); } }
+        public string TimeLogDate { get { return TimeManager.TimeLog.Date.ToString("yyyy-MM-dd"); } }
 
         public bool LoadTimeLog(string filename)
         {
             ITimeLog loadedTimeLog = fileManager.GetTimeLog(filename);
             if (loadedTimeLog != null)
             {
-                timeManager.TimeLog = loadedTimeLog;
-                timeLog = loadedTimeLog;
+                TimeManager.TimeLog = loadedTimeLog;
                 activitiesSummary.TimeLog = loadedTimeLog;
                 activitiesSummary.Update();
                 return true;
@@ -108,16 +124,16 @@ namespace LifeIdea.LazyCure.Core
             else
                 return false;
         }
-
+        
         public bool LoadTimeLog(DateTime date)
         {
-            string filename = GetTimeLogFileNameByDate(date);
+            string filename = fileManager.GetTimeLogFileName(date);
             return LoadTimeLog(filename);
         }
 
         public string[] LatestActivities
         {
-            get { return history.LatestActivities; }
+            get { return History.LatestActivities; }
         }
 
         public IFileManager FileManager
@@ -130,28 +146,14 @@ namespace LifeIdea.LazyCure.Core
         {
             SaveHistory("history.txt");
             fileManager.SaveTasks(TaskCollection);
-            if (timeLogsFolder == "")
-            {
-                Log.Error("TimeLogsFolder is not specified");
-                return false;
-            }
-            return SaveTimeLog();
+            return fileManager.SaveTimeLog(TimeManager.TimeLog);
         }
 
         public bool SaveTimeLog(string filename)
         {
-            return fileManager.SaveTimeLog(timeLog, filename);
+            return fileManager.SaveTimeLog(TimeManager.TimeLog, filename);
         }
 
         #endregion
-
-        private string GetTimeLogFileNameByDate(DateTime date)
-        {
-            return TimeLogsFolder + @"\" + date.ToString("yyyy-MM-dd") + ".timelog";
-        }
-        private bool SaveTimeLog()
-        {
-            return SaveTimeLog(GetTimeLogFileNameByDate(timeLog.Date));
-        }
     }
 }

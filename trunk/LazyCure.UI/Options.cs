@@ -12,10 +12,12 @@ namespace LifeIdea.LazyCure.UI
         public Options(ISettings settings)
         {
             InitializeComponent();
+            reminderTime.ValidatingType = settings.ReminderTime.GetType();
             this.settings = settings;
             maxActivitiesInHistory.Value = settings.MaxActivitiesInHistory;
             saveAfterDone.Checked = settings.SaveAfterDone;
             timeLogFolder.Text = settings.TimeLogsFolder;
+            reminderTime.Text = settings.ReminderTime.ToString();
         }
 
         private void cancel_Click(object sender, EventArgs e)
@@ -34,8 +36,9 @@ namespace LifeIdea.LazyCure.UI
             settings.MaxActivitiesInHistory = (int) maxActivitiesInHistory.Value;
             settings.SaveAfterDone = saveAfterDone.Checked;
             settings.TimeLogsFolder = timeLogFolder.Text;
+            settings.ReminderTime = (TimeSpan) reminderTime.ValidateText();
             settings.Save();
-            MessageBox.Show(this, "Changed settings will be applied after application restart.", "Settings changing");
+            Dialogs.LazyCureDriver.ApplySettings(settings);
             Hide();
         }
 
