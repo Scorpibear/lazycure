@@ -6,7 +6,7 @@ namespace LifeIdea.LazyCure.UI
 {
     partial class Summary : View,ISummaryView
     {
-        private ILazyCureDriver lazyCure;
+        private readonly ILazyCureDriver lazyCure;
         private readonly IMainForm mainForm;
 
         public Summary(ILazyCureDriver lazyCure, IMainForm mainForm)

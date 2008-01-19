@@ -15,10 +15,10 @@ namespace LifeIdea.LazyCure.Core.Activities
         {
             get
             {
-                if (start.Millisecond < MILLISECONDS_IN_ONE_SECOND/2)
-                    return start.AddMilliseconds(-start.Millisecond);
+                if (start.Millisecond < MILLISECONDS_IN_ONE_SECOND / 2.0)
+                    return DateTime.Parse(start.ToString("yyyy-MM-dd HH:mm:ss"));
                 else
-                    return start.AddMilliseconds(MILLISECONDS_IN_ONE_SECOND - start.Millisecond);
+                    return DateTime.Parse(start.AddSeconds(1).ToString("yyyy-MM-dd HH:mm:ss"));
             }
         }
         public override TimeSpan Duration
