@@ -29,7 +29,7 @@ namespace LifeIdea.LazyCure.Core.Tasks
             task.RelatedActivities.Add("activity1");
             tasks.Add(task);
             
-            string taskName = linker.GetRelatedTask("activity1");
+            string taskName = linker.GetRelatedTaskName("activity1");
 
             Assert.AreEqual("task1", taskName);
         }
@@ -40,7 +40,7 @@ namespace LifeIdea.LazyCure.Core.Tasks
             ITaskCollection tasks = new TaskCollection();
             TaskActivityLinker linker = new TaskActivityLinker(tasks);
 
-            Assert.IsNull(linker.GetRelatedTask("activity1"));
+            Assert.IsNull(linker.GetRelatedTaskName("activity1"));
         }
 
         [Test]

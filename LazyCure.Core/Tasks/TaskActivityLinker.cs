@@ -5,14 +5,19 @@ namespace LifeIdea.LazyCure.Core.Tasks
     /// </summary>
     public class TaskActivityLinker:ITaskActivityLinker
     {
-        private readonly ITaskCollection tasks;
+        private ITaskCollection tasks;
 
         public TaskActivityLinker(ITaskCollection tasks)
         {
             this.tasks = tasks;
         }
 
-        public string GetRelatedTask(string activityName)
+        public ITaskCollection TaskCollection
+        {
+            set { tasks = value; }
+        }
+
+        public string GetRelatedTaskName(string activityName)
         {
             foreach(Task task in tasks)
             {

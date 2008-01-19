@@ -239,6 +239,21 @@ namespace LifeIdea.LazyCure.Core
             VerifyAllExpectationsHaveBeenMet();
         }
         [Test]
+        public void LoadUpdateTaskCollectionInLinker()
+        {
+            driver.Linker = NewMock<ITaskActivityLinker>();
+            driver.FileManager = NewMock<IFileManager>();
+            ITaskCollection taskCollection = new TaskCollection();
+            Stub.On(driver.FileManager).Method("GetTasks").Will(Return.Value(taskCollection));
+            Stub.On(driver.FileManager).Method("GetTimeLog").Will(Return.Value(null));
+            Stub.On(driver.FileManager).Method("GetTimeLogFileName").Will(Return.Value(@"c:\temp\test.txt"));
+            Expect.AtLeastOnce.On(driver.Linker).SetProperty("TaskCollection").To(taskCollection);
+            
+            driver.Load();
+
+            VerifyAllExpectationsHaveBeenMet();
+        }
+        [Test]
         public void TimeToUpdateTimeLogUsesTimeManager()
         {
             driver.TimeManager = NewMock<ITimeManager>();
@@ -249,5 +264,6 @@ namespace LifeIdea.LazyCure.Core
 
             VerifyAllExpectationsHaveBeenMet();
         }
+        
     }
 }

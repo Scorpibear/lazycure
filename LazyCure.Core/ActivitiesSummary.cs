@@ -59,7 +59,7 @@ namespace LifeIdea.LazyCure.Core
                 }
                 if (!existentRowUpdated)
                 {
-                    string relatedTask = linker.GetRelatedTask(activity.Name);
+                    string relatedTask = linker.GetRelatedTaskName(activity.Name);
                     Data.Rows.Add(activity.Name, activity.Duration, relatedTask);
                 }
 

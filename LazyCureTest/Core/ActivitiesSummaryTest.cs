@@ -26,7 +26,7 @@ namespace LifeIdea.LazyCure.Core
             timeLog = NewMock<ITimeLog>();
             linker = NewMock<ITaskActivityLinker>();
             Stub.On(timeLog).GetProperty("Data").Will(Return.Value(new DataTable()));
-            Stub.On(linker).Method("GetRelatedTask");
+            Stub.On(linker).Method("GetRelatedTaskName");
             activitiesSummary = new ActivitiesSummary(timeLog, linker);
         }
         [TearDown]
@@ -53,7 +53,6 @@ namespace LifeIdea.LazyCure.Core
             Assert.AreEqual("first", firstRow["Activity"]);
             Assert.AreEqual(sevenSec, firstRow["Spent"]);
         }
-
         [Test]
         public void TwoDifferentActivities()
         {
@@ -94,7 +93,6 @@ namespace LifeIdea.LazyCure.Core
 
             Assert.AreEqual(tenSec,activitiesSummary.AllActivitiesTime);
         }
-
         [Test]
         public void GetRelatedTask()
         {
@@ -102,7 +100,7 @@ namespace LifeIdea.LazyCure.Core
                                                                              new IActivity[] { new Activity("first", DateTime.Now, sevenSec) })));
 
             linker = NewMock<ITaskActivityLinker>();
-            Expect.AtLeastOnce.On(linker).Method("GetRelatedTask").With("first").Will(Return.Value("related task"));
+            Expect.AtLeastOnce.On(linker).Method("GetRelatedTaskName").With("first").Will(Return.Value("related task"));
             
             activitiesSummary = new ActivitiesSummary(timeLog,linker);
             activitiesSummary.Update();
@@ -110,7 +108,6 @@ namespace LifeIdea.LazyCure.Core
             Assert.IsNotNull(task);
             Assert.AreEqual("related task", task);
         }
-
         [Test]
         public void LinkActivityAndTask()
         {

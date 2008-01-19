@@ -15,14 +15,13 @@ namespace LifeIdea.LazyCure.Core
     {
         private IFileManager fileManager = new FileManager();
         private readonly ActivitiesSummary activitiesSummary;
-        private readonly ITaskActivityLinker linker;
         private readonly string historyFileName = "history.txt";
         public readonly ActivitiesHistory History;
 
         public static string FirstActivityName = "starting LazyCure";
+        public ITaskActivityLinker Linker;
         public bool SaveAfterDone=true;
-        public ITaskCollection TaskCollection=null;
-        //public ITimeLog timeLog;
+        public ITaskCollection TaskCollection=Tasks.TaskCollection.Default;
         public ITimeManager TimeManager;
         public string TimeLogsFolder { get { return FileManager.TimeLogsFolder; } set { FileManager.TimeLogsFolder = value; } }
 
@@ -30,9 +29,8 @@ namespace LifeIdea.LazyCure.Core
         {
             TimeManager = new TimeManager(timeSystem);
             TimeManager.TimeLog = new TimeLog(timeSystem.Now.Date);
-            TaskCollection = Tasks.TaskCollection.Default;
-            linker = new TaskActivityLinker(TaskCollection);
-            activitiesSummary = new ActivitiesSummary(TimeManager.TimeLog,linker);
+            Linker = new TaskActivityLinker(TaskCollection);
+            activitiesSummary = new ActivitiesSummary(TimeManager.TimeLog,Linker);
             History = new ActivitiesHistory();
         }
         
@@ -53,6 +51,7 @@ namespace LifeIdea.LazyCure.Core
             ITaskCollection loadedTasks = fileManager.GetTasks();
             if (loadedTasks != null)
                 TaskCollection = loadedTasks;
+            Linker.TaskCollection = loadedTasks;
             LoadHistory(historyFileName);
             LoadTimeLog(TimeManager.TimeSystem.Now);
             return true;
