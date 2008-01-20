@@ -10,4 +10,4 @@ Installation Notes:
 Upgrade Notes:
 1. Replaces previous version of dll's and LazyCure.exe with new versions.
 
-Visit us at http://lifeidea.org/lazycure/
+Visit us at http://lazycure.com/
