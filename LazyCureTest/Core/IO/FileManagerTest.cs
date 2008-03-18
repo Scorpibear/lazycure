@@ -48,7 +48,12 @@ namespace LifeIdea.LazyCure.Core.IO
         [Test]
         public void DefaultTasksFileName()
         {
-            Assert.AreEqual("tasks.xml",fileManager.TasksFileName);
+            Assert.That(fileManager.TasksFileName.IndexOf("tasks.xml")>1);
+        }
+        [Test]
+        public void DefaultHistoryFileName()
+        {
+            Assert.That(fileManager.HistoryFileName.IndexOf("history.txt") > 1);
         }
         [Test]
         public void FileIsClosing()

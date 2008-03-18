@@ -18,5 +18,13 @@ namespace LifeIdea.LazyCure.Core
             } catch(Exception){
                 return DateTime.MinValue;}
         }
+
+        public static bool IsFileNameShort(string fileName)
+        {
+            if (fileName.Contains("/") || fileName.Contains("\\") || (fileName == string.Empty))
+                return false;
+            else
+                return true;
+        }
     }
 }

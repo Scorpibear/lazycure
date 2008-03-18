@@ -52,7 +52,6 @@
     <Compile Include="Core\Tasks\TaskSerializerTest.cs" />
     <Compile Include="Core\Time\TimeManagerTest.cs" />
     <Compile Include="Core\UtilitiesTest.cs" />
-    <Compile Include="Core\Tasks\TaskActivityLinkerTest.cs" />
     <Compile Include="Core\Tasks\TaskCollectionTest.cs" />
     <Compile Include="Core\Time\TimeLogSerializerTest.cs" />
     <Compile Include="Interfaces\FormatTest.cs" />

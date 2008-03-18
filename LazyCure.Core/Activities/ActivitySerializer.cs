@@ -1,4 +1,7 @@
 using System;
+using System.Data;
+using System.Globalization;
+using System.IO;
 using System.Xml;
 using LifeIdea.LazyCure.Interfaces;
 
@@ -35,10 +38,10 @@ namespace LifeIdea.LazyCure.Core.Activities
                 {
                     case "Begin":
                     case "Start":
-                        start = DateTime.Parse(node.InnerText);
+                        start = ParseDateTime(node.InnerText);
                         break;
                     case "Duration":
-                        duration = TimeSpan.Parse(node.InnerText);
+                        duration = ParseTimeSpan(node.InnerText);
                         break;
                     case "Activity":
                         name = node.InnerText;
@@ -47,6 +50,46 @@ namespace LifeIdea.LazyCure.Core.Activities
             }
             IActivity activity = new Activity(name, start, duration);
             return activity;
+        }
+
+        public static DateTime ParseDateTime(string s)
+        {
+            DateTime parsedValue;
+            bool isParsed = DateTime.TryParse(s, out parsedValue);
+            if(!isParsed)
+            {
+                parsedValue = DateTime.Now.Date + ParseTimeSpanOldWay(s);
+            }
+            return parsedValue;
+        }
+
+        public static TimeSpan ParseTimeSpan(string s)
+        {
+            TimeSpan parsedValue;
+            bool isParsed = TimeSpan.TryParse(s, out parsedValue);
+            if(!isParsed)
+            {
+                parsedValue = ParseTimeSpanOldWay(s);
+            }
+            return parsedValue;
+        }
+
+        public static TimeSpan ParseTimeSpanOldWay(string s)
+        {
+            TimeSpan parsedValue;
+            string xml = "<root><activity><time>" + s + "</time></activity></root>";
+            DataTable data = new DataTable("activity");
+            data.Columns.Add("time", TimeSpan.MinValue.GetType());
+            try
+            {
+                data.ReadXml(new StringReader(xml));
+                parsedValue = (TimeSpan) data.Rows[0]["time"];
+            }
+            catch(Exception)
+            {
+                parsedValue = TimeSpan.Zero;
+            }
+            return parsedValue;
         }
     }
 }

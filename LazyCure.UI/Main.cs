@@ -25,16 +25,13 @@ namespace LifeIdea.LazyCure.UI
             UpdateActivityStartTime();
         }
         
-        public void Summary_VisibleChanged()
-        {
-            miSummary.Checked = Dialogs.Summary.Visible;
-        }
-        
-        public void TimeLogEditor_VisibleChanged()
+        public void ViewsVisibilityChanged()
         {
             miTimeLog.Checked = Dialogs.TimeLog.Visible;
+            miSummary.Checked = Dialogs.Summary.Visible;
+            miTasks.Checked = Dialogs.Tasks.Visible;
         }
-
+        
         #region Private Methods
 
         private void SetCaption()
@@ -132,6 +129,7 @@ namespace LifeIdea.LazyCure.UI
             if (result == DialogResult.OK)
             {
                 lazyCure.LoadTimeLog(openDialog.FileName);
+                Dialogs.TimeLog.Data = lazyCure.TimeLogData;
                 SetCaption();
             }
         }
@@ -159,6 +157,12 @@ namespace LifeIdea.LazyCure.UI
         private void miSummary_Click(object sender, EventArgs e)
         {
             Dialogs.Summary.Visible = miSummary.Checked;
+        }
+
+        private void miTasks_Click(object sender, EventArgs e)
+        {
+            Dialogs.Tasks.Visible = miTasks.Checked;
+
         }
 
         private void miTimeLog_Click(object sender, EventArgs e)

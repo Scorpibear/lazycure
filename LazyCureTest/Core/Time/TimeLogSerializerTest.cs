@@ -75,6 +75,24 @@ namespace LifeIdea.LazyCure.Core.Time
             Assert.AreEqual("first", timeLog.Activities[0].Name);
         }
         [Test]
+        public void DeserializeOldFormatTimeLog()
+        {
+            XmlDocument xml = new XmlDocument();
+            xml.InnerXml = "<LazyCureData>" +
+                           "<Records>" +
+                           "<Activity>exercises</Activity>" +
+                           "<Begin>PT7H1M</Begin>" +
+                           "<Duration>PT9M38S</Duration>" +
+                           "</Records>" +
+                           "<ActivitiesSummary>" +
+                           "<Activity>exercises</Activity>" +
+                           "<SpentTime>PT9M38S</SpentTime>" +
+                           "</ActivitiesSummary>" +
+                           "</LazyCureData>";
+            ITimeLog timeLog = TimeLogSerializer.Deserialize(xml);
+            Assert.AreEqual(1, timeLog.Activities.Count, "number of activities in TimeLog");
+        }
+        [Test]
         public void SerializeActivities()
         {
             using (Ordered)

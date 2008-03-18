@@ -7,7 +7,6 @@ namespace LifeIdea.LazyCure.UI
     partial class Summary : View,ISummaryView
     {
         private readonly ILazyCureDriver lazyCure;
-        private readonly IMainForm mainForm;
 
         public Summary(ILazyCureDriver lazyCure, IMainForm mainForm)
         {
@@ -16,12 +15,6 @@ namespace LifeIdea.LazyCure.UI
             activitiesSummary.DataSource = lazyCure.ActivitiesSummaryData;
             allActivitiesTime.Text = Format.ShortDuration(lazyCure.AllActivitiesTime);
             this.mainForm = mainForm;
-        }
-
-        private void Summary_VisibleChanged(object sender, System.EventArgs e)
-        {
-            if(mainForm!=null)
-                mainForm.Summary_VisibleChanged();
         }
 
         private void timeUpdate_Click(object sender, EventArgs e)

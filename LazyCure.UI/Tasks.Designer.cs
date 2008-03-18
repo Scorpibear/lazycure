@@ -34,6 +34,7 @@ namespace LifeIdea.LazyCure.UI
             this.splitContainer = new System.Windows.Forms.SplitContainer();
             this.addSibling = new System.Windows.Forms.Button();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.isWorkingCheckBox = new System.Windows.Forms.CheckBox();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
             this.splitContainer.SuspendLayout();
@@ -45,10 +46,10 @@ namespace LifeIdea.LazyCure.UI
             this.treeView.LabelEdit = true;
             this.treeView.Location = new System.Drawing.Point(0, 0);
             this.treeView.Name = "treeView";
-            this.treeView.Size = new System.Drawing.Size(96, 83);
+            this.treeView.Size = new System.Drawing.Size(110, 83);
             this.treeView.TabIndex = 0;
-            this.treeView.DoubleClick += new System.EventHandler(this.treeView_DoubleClick);
             this.treeView.AfterLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.treeView_AfterLabelEdit);
+            this.treeView.DoubleClick += new System.EventHandler(this.treeView_DoubleClick);
             // 
             // splitContainer
             // 
@@ -62,9 +63,10 @@ namespace LifeIdea.LazyCure.UI
             // 
             // splitContainer.Panel2
             // 
+            this.splitContainer.Panel2.Controls.Add(this.isWorkingCheckBox);
             this.splitContainer.Panel2.Controls.Add(this.addSibling);
-            this.splitContainer.Size = new System.Drawing.Size(159, 83);
-            this.splitContainer.SplitterDistance = 96;
+            this.splitContainer.Size = new System.Drawing.Size(183, 83);
+            this.splitContainer.SplitterDistance = 110;
             this.splitContainer.TabIndex = 1;
             // 
             // addSibling
@@ -78,12 +80,22 @@ namespace LifeIdea.LazyCure.UI
             this.addSibling.UseVisualStyleBackColor = true;
             this.addSibling.Click += new System.EventHandler(this.addSibling_Click);
             // 
+            // isWorkingCheckBox
+            // 
+            this.isWorkingCheckBox.AutoSize = true;
+            this.isWorkingCheckBox.Location = new System.Drawing.Point(4, 34);
+            this.isWorkingCheckBox.Name = "isWorkingCheckBox";
+            this.isWorkingCheckBox.Size = new System.Drawing.Size(66, 17);
+            this.isWorkingCheckBox.TabIndex = 1;
+            this.isWorkingCheckBox.Text = "Working";
+            this.isWorkingCheckBox.UseVisualStyleBackColor = true;
+            // 
             // Tasks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(159, 83);
+            this.ClientSize = new System.Drawing.Size(183, 83);
             this.Controls.Add(this.splitContainer);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -95,6 +107,7 @@ namespace LifeIdea.LazyCure.UI
             this.TopMost = true;
             this.splitContainer.Panel1.ResumeLayout(false);
             this.splitContainer.Panel2.ResumeLayout(false);
+            this.splitContainer.Panel2.PerformLayout();
             this.splitContainer.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -106,5 +119,6 @@ namespace LifeIdea.LazyCure.UI
         private System.Windows.Forms.SplitContainer splitContainer;
         private System.Windows.Forms.Button addSibling;
         private System.Windows.Forms.ToolTip toolTip;
+        private System.Windows.Forms.CheckBox isWorkingCheckBox;
     }
 }

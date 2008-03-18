@@ -2,8 +2,12 @@ namespace LifeIdea.LazyCure.UI
 {
     interface ITimeLogView
     {
-        void CancelEdit();
-        void Show();
+        object Data { set; }
+
         bool Visible { get; set; }
+
+        void CancelEdit();
+
+        void Show();
     }
 }

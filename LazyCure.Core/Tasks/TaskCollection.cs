@@ -5,7 +5,7 @@ namespace LifeIdea.LazyCure.Core.Tasks
     /// <summary>
     /// Represent collection of all tasks
     /// </summary>
-    public class TaskCollection : List<Task>, ITaskCollection
+    public class TaskCollection : List<Task>, ITaskCollection, ITaskActivityLinker
     {
         public static TaskCollection Default
         {
@@ -31,6 +31,25 @@ namespace LifeIdea.LazyCure.Core.Tasks
                     return task;
             }
             return null;
+        }
+
+        public string GetRelatedTaskName(string activityName)
+        {
+            foreach (Task task in this)
+            {
+                if (task.RelatedActivities.Contains(activityName))
+                    return task.Name;
+            }
+            return null;
+        }
+
+        public bool LinkActivityAndTask(string activityName, string taskName)
+        {
+            Task task = GetTask(taskName);
+            if (task == null)
+                return false;
+            task.RelatedActivities.Add(activityName);
+            return true;
         }
     }
 }

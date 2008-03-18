@@ -77,5 +77,44 @@ namespace LifeIdea.LazyCure.Core.Activities
             Assert.AreEqual(DateTime.Parse("6:00:00"), activity.StartTime);
             Assert.AreEqual(TimeSpan.Parse("2:34:50"), activity.Duration);
         }
+        [Test]
+        public void OldTimeFormat()
+        {
+            XmlDocument doc = new XmlDocument();
+            doc.InnerXml = "<Records>" +
+                           "<Activity>yoga</Activity>" +
+                           "<Begin>PT7H1M</Begin>" +
+                           "<Duration>PT9M38S</Duration>" +
+                           "</Records>";
+            
+            activity = ActivitySerializer.Deserialize(doc.FirstChild);
+
+            Assert.AreEqual("yoga", activity.Name);
+            Assert.AreEqual(DateTime.Parse("7:01:00"), activity.StartTime);
+            Assert.AreEqual(TimeSpan.Parse("0:09:38"), activity.Duration);
+        }
+        [Test]
+        public void ParseOldFormatDateTime()
+        {
+            Assert.AreEqual(DateTime.Parse("7:00:00"), ActivitySerializer.ParseDateTime("PT7H"));
+            Assert.AreEqual(DateTime.Parse("0:17:00"), ActivitySerializer.ParseDateTime("PT17M"));
+            Assert.AreEqual(DateTime.Parse("0:00:25"), ActivitySerializer.ParseDateTime("PT25S"));
+            Assert.AreEqual(DateTime.Parse("1:02:03"), ActivitySerializer.ParseDateTime("PT1H2M3S"));
+        }
+        [Test]
+        public void ParseOldFormatTimeSpan()
+        {
+            Assert.AreEqual(TimeSpan.Parse("1:23:45"),ActivitySerializer.ParseTimeSpan("PT1H23M45S"));
+        }
+        [Test]
+        public void ParseInvalidTimeSpan()
+        {
+            Assert.AreEqual(TimeSpan.Zero,ActivitySerializer.ParseTimeSpan("invalid"));
+        }
+        [Test]
+        public void ParseInvalidDate()
+        {
+            Assert.AreEqual(DateTime.Now.Date,ActivitySerializer.ParseDateTime("invalid"));
+        }
     }
 }

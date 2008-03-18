@@ -9,6 +9,7 @@ namespace LifeIdea.LazyCure.Core.Tasks
     public class Task : TreeNode
     {
         public readonly List<string> RelatedActivities = new List<string>();
+        public bool IsWorking = true;
 
         public Task(string name)
             : base(name)
