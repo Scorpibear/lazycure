@@ -3,16 +3,17 @@ using LifeIdea.LazyCure.Interfaces;
 
 namespace LifeIdea.LazyCure.UI
 {
-    public partial class Tasks : Form
+    partial class Tasks : View
     {
         private readonly ILazyCureDriver driver;
         const string NewTaskName = "New task...";
 
-        public Tasks(ILazyCureDriver driver)
+        public Tasks(ILazyCureDriver driver,IMainForm mainForm)
         {
             InitializeComponent();
             this.driver = driver;
-            driver.FillTaskNodes(treeView.Nodes);
+            this.mainForm = mainForm;
+            treeView.Nodes.AddRange(driver.TasksNodes);
         }
 
         public string SelectedTask
@@ -36,5 +37,6 @@ namespace LifeIdea.LazyCure.UI
         {
             driver.UpdateTaskNodeText(e.Node, e.Label);
         }
+
     }
 }

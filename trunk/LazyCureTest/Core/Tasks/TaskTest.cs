@@ -49,5 +49,10 @@ namespace LifeIdea.LazyCure.Core.Tasks
             Task task2 = new Task("task1");
             Assert.AreEqual(task, task2);
         }
+        [Test]
+        public void DefaultTaskIsWorking()
+        {
+            Assert.That(task.IsWorking);
+        }
     }
 }

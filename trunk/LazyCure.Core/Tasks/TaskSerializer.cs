@@ -11,6 +11,10 @@ namespace LifeIdea.LazyCure.Core.Tasks
             XmlDocument doc = new XmlDocument();
             XmlNode xml = doc.CreateElement("task");
             xml.Attributes.Append(doc.CreateAttribute(NAME)).Value = task.Name;
+            foreach(string activity in task.RelatedActivities)
+            {
+                xml.AppendChild(doc.CreateElement("activity")).InnerText = activity;
+            }
             return xml;
         }
 

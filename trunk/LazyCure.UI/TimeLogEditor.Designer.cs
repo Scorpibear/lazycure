@@ -102,7 +102,6 @@ namespace LifeIdea.LazyCure.UI
             this.Name = "TimeLogEditor";
             this.ShowInTaskbar = false;
             this.TopMost = true;
-            this.VisibleChanged += new System.EventHandler(this.TimeLogEditor_VisibleChanged);
             ((System.ComponentModel.ISupportInitialize)(this.timeLogView)).EndInit();
             this.ResumeLayout(false);
 

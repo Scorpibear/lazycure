@@ -80,7 +80,7 @@ namespace LifeIdea.LazyCure.UI
             get
             {
                 if (tasks == null)
-                    tasks = new Tasks(LazyCureDriver);
+                    tasks = new Tasks(LazyCureDriver, MainForm);
                 return tasks;
             }
         }

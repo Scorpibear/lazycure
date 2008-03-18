@@ -177,14 +177,12 @@ namespace LifeIdea.LazyCure.Core
             Assert.Contains("latest", driver.LatestActivities);
         }
         [Test]
-        public void HistoryReused()
+        public void LatestActivitiesAreReloaded()
         {
             driver.FinishActivity("saved", "next");
-            File.Delete("HistoryReused.txt");
-            driver.SaveHistory("HistoryReused.txt");
+            driver.Save();
             driver = new Driver();
-            driver.LoadHistory("HistoryReused.txt");
-            File.Delete("HistoryReused.txt");
+            driver.Load();
             Assert.Contains("saved", driver.LatestActivities);
         }
         [Test]
@@ -219,6 +217,7 @@ namespace LifeIdea.LazyCure.Core
             driver.FileManager = NewMock<IFileManager>();
             Expect.AtLeastOnce.On(driver.FileManager).Method("SaveTasks").With(driver.TaskCollection).Will(Return.Value(true));
             Expect.AtLeastOnce.On(driver.FileManager).Method("SaveTimeLog").Will(Return.Value(true));
+            Expect.AtLeastOnce.On(driver.FileManager).Method("SaveHistory").With(driver.History);
 
             bool isSaved = driver.Save();
             
@@ -231,26 +230,12 @@ namespace LifeIdea.LazyCure.Core
             driver.FileManager = NewMock<IFileManager>();
             Expect.AtLeastOnce.On(driver.FileManager).Method("GetTasks").Will(Return.Value(null));
             Expect.AtLeastOnce.On(driver.FileManager).Method("GetTimeLog").Will(Return.Value(null));
+            Expect.AtLeastOnce.On(driver.FileManager).Method("LoadHistory").With(driver.History);
             Stub.On(driver.FileManager).Method("GetTimeLogFileName").Will(Return.Value(@"c:\temp\test.txt"));
 
             bool isLoaded = driver.Load();
 
             Assert.IsTrue(isLoaded);
-            VerifyAllExpectationsHaveBeenMet();
-        }
-        [Test]
-        public void LoadUpdateTaskCollectionInLinker()
-        {
-            driver.Linker = NewMock<ITaskActivityLinker>();
-            driver.FileManager = NewMock<IFileManager>();
-            ITaskCollection taskCollection = new TaskCollection();
-            Stub.On(driver.FileManager).Method("GetTasks").Will(Return.Value(taskCollection));
-            Stub.On(driver.FileManager).Method("GetTimeLog").Will(Return.Value(null));
-            Stub.On(driver.FileManager).Method("GetTimeLogFileName").Will(Return.Value(@"c:\temp\test.txt"));
-            Expect.AtLeastOnce.On(driver.Linker).SetProperty("TaskCollection").To(taskCollection);
-            
-            driver.Load();
-
             VerifyAllExpectationsHaveBeenMet();
         }
         [Test]

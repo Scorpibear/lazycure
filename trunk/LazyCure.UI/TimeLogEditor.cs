@@ -7,19 +7,24 @@ namespace LifeIdea.LazyCure.UI
     internal partial class TimeLogEditor : View,ITimeLogView
     {
         private ILazyCureDriver lazyCure;
-        private IMainForm mainForm;
 
         public TimeLogEditor(ILazyCureDriver lazyCure, IMainForm mainForm)
         {
             InitializeComponent();
             this.lazyCure = lazyCure;
-            timeLogView.DataSource = lazyCure.TimeLogData;
+            this.Data = lazyCure.TimeLogData;
             this.mainForm = mainForm;
         }
         public void CancelEdit()
         {
             timeLogView.CancelEdit();
         }
+
+        public object Data
+        {
+            set { timeLogView.DataSource = value; }
+        }
+
         private void timeLogView_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -38,14 +43,13 @@ namespace LifeIdea.LazyCure.UI
                     "Please, enter correct time value between 0:00:00 and 23:59:59",
                     String.Format("Value in '{0}' column is not correct",column), MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-        private void TimeLogEditor_VisibleChanged(object sender, EventArgs e)
+        protected override void View_VisibleChanged(object sender, EventArgs e)
         {
             if (Visible == false)
             {
                 lazyCure.Save();
             }
-            if(mainForm!=null)
-                mainForm.TimeLogEditor_VisibleChanged();
+            base.View_VisibleChanged(sender,e);
         }
    }
 }

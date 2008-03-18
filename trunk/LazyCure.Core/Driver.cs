@@ -15,11 +15,9 @@ namespace LifeIdea.LazyCure.Core
     {
         private IFileManager fileManager = new FileManager();
         private readonly ActivitiesSummary activitiesSummary;
-        private readonly string historyFileName = "history.txt";
         public readonly ActivitiesHistory History;
 
         public static string FirstActivityName = "starting LazyCure";
-        public ITaskActivityLinker Linker;
         public bool SaveAfterDone=true;
         public ITaskCollection TaskCollection=Tasks.TaskCollection.Default;
         public ITimeManager TimeManager;
@@ -29,30 +27,18 @@ namespace LifeIdea.LazyCure.Core
         {
             TimeManager = new TimeManager(timeSystem);
             TimeManager.TimeLog = new TimeLog(timeSystem.Now.Date);
-            Linker = new TaskActivityLinker(TaskCollection);
-            activitiesSummary = new ActivitiesSummary(TimeManager.TimeLog,Linker);
+            activitiesSummary = new ActivitiesSummary(TimeManager.TimeLog,TaskCollection as ITaskActivityLinker);
             History = new ActivitiesHistory();
         }
         
         public Driver() : this(new NaturalTimeSystem()) { }
-
-        public void LoadHistory(string filename)
-        {
-            History.Load(filename);
-        }
-        
-        public void SaveHistory(string filename)
-        {
-            History.Save(filename);
-        }
 
         public bool Load()
         {
             ITaskCollection loadedTasks = fileManager.GetTasks();
             if (loadedTasks != null)
                 TaskCollection = loadedTasks;
-            Linker.TaskCollection = loadedTasks;
-            LoadHistory(historyFileName);
+            fileManager.LoadHistory(History);
             LoadTimeLog(TimeManager.TimeSystem.Now);
             return true;
         }
@@ -61,6 +47,14 @@ namespace LifeIdea.LazyCure.Core
 
         public TimeSpan AllActivitiesTime { get { return activitiesSummary.AllActivitiesTime; } }
 
+        public TreeNode[] TasksNodes
+        {
+            get
+            {
+                return TaskCollection.ToArray();
+            }
+        }
+
         public bool TimeToUpdateTimeLog
         {
             get
@@ -68,7 +62,6 @@ namespace LifeIdea.LazyCure.Core
                 return TimeManager.CurrentActivityIsLastingTooLong;
             }
         }
-
 
         public IActivity CurrentActivity { get { return TimeManager.CurrentActivity; } }
 
@@ -83,11 +76,6 @@ namespace LifeIdea.LazyCure.Core
                 History.MaxActivities = settings.MaxActivitiesInHistory;
                 TimeManager.MaxDuration = settings.ReminderTime;
             }
-        }
-
-        public void FillTaskNodes(TreeNodeCollection nodes)
-        {
-            nodes.AddRange(TaskCollection.ToArray());
         }
 
         public void UpdateTaskNodeText(TreeNode node, string text)
@@ -143,7 +131,7 @@ namespace LifeIdea.LazyCure.Core
 
         public bool Save()
         {
-            SaveHistory("history.txt");
+            fileManager.SaveHistory(History);
             fileManager.SaveTasks(TaskCollection);
             return fileManager.SaveTimeLog(TimeManager.TimeLog);
         }

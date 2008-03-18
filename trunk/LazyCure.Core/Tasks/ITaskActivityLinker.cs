@@ -5,7 +5,5 @@ namespace LifeIdea.LazyCure.Core.Tasks
         string GetRelatedTaskName(string activity);
 
         bool LinkActivityAndTask(string activity, string task);
-
-        ITaskCollection TaskCollection { set; }
     }
 }

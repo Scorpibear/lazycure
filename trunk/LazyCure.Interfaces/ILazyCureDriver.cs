@@ -13,6 +13,8 @@ namespace LifeIdea.LazyCure.Interfaces
 
         string[] LatestActivities { get;}
 
+        TreeNode[] TasksNodes{ get;}
+
         object TimeLogData { get;}
 
         string TimeLogDate { get;}
@@ -23,8 +25,6 @@ namespace LifeIdea.LazyCure.Interfaces
 
         void ApplySettings(ISettings settings);
         
-        void FillTaskNodes(TreeNodeCollection nodes);
-
         void FinishActivity(string finishedActivity, string nextActivity);
 
         bool LoadTimeLog(string filename);

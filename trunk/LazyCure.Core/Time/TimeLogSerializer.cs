@@ -52,8 +52,11 @@ namespace LifeIdea.LazyCure.Core.Time
 
                 foreach (XmlNode node in data.ChildNodes)
                 {
-                    IActivity activity = ActivitySerializer.Deserialize(node);
-                    timeLog.AddActivity(activity);
+                    if (node.Name == "Records")
+                    {
+                        IActivity activity = ActivitySerializer.Deserialize(node);
+                        timeLog.AddActivity(activity);
+                    }
                 }
             }
             else
