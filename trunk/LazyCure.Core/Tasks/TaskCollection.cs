@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using LifeIdea.LazyCure.Core.IO;
 
 namespace LifeIdea.LazyCure.Core.Tasks
 {
@@ -13,7 +14,7 @@ namespace LifeIdea.LazyCure.Core.Tasks
             {
                 TaskCollection defaultCollection = new TaskCollection();
                 defaultCollection.Add(new Task("Work"));
-                defaultCollection.Add(new Task("Rest"));
+                defaultCollection.Add(new Task("Rest",false));
                 return defaultCollection;
             }
         }
@@ -21,6 +22,39 @@ namespace LifeIdea.LazyCure.Core.Tasks
         public bool Contains(string taskName)
         {
             return (GetTask(taskName) != null);
+        }
+
+        public bool IsWorkingTask(string selectedTask)
+        {
+            if (selectedTask == null)
+            {
+                Log.Error("IsWorking method is called with null");
+                return false;
+            }
+            Task task = GetTask(selectedTask);
+            if (task != null)
+                return task.IsWorking;
+            else
+            {
+                Log.Error(string.Format("IsWorking method is called for not existent task '{0}'",selectedTask));
+                return false;
+            }
+        }
+
+        public void UpdateIsWorkingProperty(string taskName, bool working)
+        {
+            if (taskName == null)
+            {
+                Log.Error("UpdateIsWorkingProperty method is called with null task");
+                return;
+            }
+            Task task = GetTask(taskName);
+            if(task!=null)
+                task.IsWorking = working;
+            else
+            {
+                Log.Error(string.Format("UpdateIsWorkingProperty method is called for not existent task '{0}'",taskName));
+            }
         }
 
         public Task GetTask(string taskName)

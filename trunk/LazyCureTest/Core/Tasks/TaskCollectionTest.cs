@@ -1,3 +1,6 @@
+using System;
+using System.IO;
+using LifeIdea.LazyCure.Core.IO;
 using NMock2;
 using NUnit.Framework;
 
@@ -12,6 +15,38 @@ namespace LifeIdea.LazyCure.Core.Tasks
         public void Empty()
         {
             Assert.AreEqual(0,tasks.Count);
+        }
+        [Test]
+        public void IsWorkingTaskTrue()
+        {
+            tasks.Add(new Task("working task"));
+            Assert.IsTrue(tasks.IsWorkingTask("working task"));
+        }
+        [Test]
+        public void IsWorkingTaskFalse()
+        {
+            Task task = new Task("resting task",false);
+            tasks.Add(task);
+            Assert.IsFalse(tasks.IsWorkingTask("resting task"));
+        }
+        [Test]
+        public void IsWorkingTaskUnexistent()
+        {
+            StringWriter sw = new StringWriter();
+            Log.Writer = sw;
+            string expected = "IsWorking method is called for not existent task 'unexisted task'";
+            
+            Assert.IsFalse(tasks.IsWorkingTask("unexisted task"));
+            Assert.That(sw.GetStringBuilder().ToString().Contains(expected));
+        }
+        [Test]
+        public void IsWorkingTaskNull()
+        {
+            StringWriter sw = new StringWriter();
+            Log.Writer = sw;
+
+            Assert.IsFalse(tasks.IsWorkingTask(null));
+            Assert.That(sw.GetStringBuilder().ToString().Contains("IsWorking method is called with null"));
         }
         [Test]
         public void GetTask()
@@ -34,6 +69,7 @@ namespace LifeIdea.LazyCure.Core.Tasks
         {
             Assert.IsTrue(TaskCollection.Default.Contains("Work"), "contains Work");
             Assert.IsTrue(TaskCollection.Default.Contains("Rest"), "contains Rest");
+            Assert.IsFalse(TaskCollection.Default.IsWorkingTask("Rest"));
         }
         [Test]
         public void LinkActivityAndTask()
@@ -77,6 +113,34 @@ namespace LifeIdea.LazyCure.Core.Tasks
             bool isLinked = linker.LinkActivityAndTask("activity1", "task1");
 
             Assert.IsFalse(isLinked);
+        }
+        [Test]
+        public void UpdateIsWorkingProperty()
+        {
+            Task task = new Task("tested");
+            tasks.Add(task);
+            tasks.UpdateIsWorkingProperty("tested",false);
+            Assert.IsFalse(task.IsWorking);
+        }
+        [Test]
+        public void UpdateIsWorkingPropertyNotexistent()
+        {
+            StringWriter sw = new StringWriter();
+            Log.Writer = sw;
+            
+            tasks.UpdateIsWorkingProperty("not existent", false);
+
+            Assert.That(sw.GetStringBuilder().ToString().Contains("UpdateIsWorkingProperty method is called for not existent task 'not existent'"));
+        }
+        [Test]
+        public void UpdateIsWorkingPropertyForNull()
+        {
+            StringWriter sw = new StringWriter();
+            Log.Writer = sw;
+
+            tasks.UpdateIsWorkingProperty(null, false);
+
+            Assert.That(sw.GetStringBuilder().ToString().Contains("UpdateIsWorkingProperty method is called with null task"));
         }
     }
 }

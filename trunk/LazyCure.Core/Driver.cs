@@ -78,6 +78,11 @@ namespace LifeIdea.LazyCure.Core
             }
         }
 
+        public bool IsWorkingTask(string SelectedTask)
+        {
+            return TaskCollection.IsWorkingTask(SelectedTask);
+        }
+
         public void UpdateTaskNodeText(TreeNode node, string text)
         {
             if(TaskCollection.Contains(node.Name))
@@ -95,6 +100,8 @@ namespace LifeIdea.LazyCure.Core
             if(SaveAfterDone)
                 fileManager.SaveTimeLog(TimeManager.TimeLog);
         }
+
+
 
         public string TimeLogDate { get { return TimeManager.TimeLog.Date.ToString("yyyy-MM-dd"); } }
 
@@ -139,6 +146,11 @@ namespace LifeIdea.LazyCure.Core
         public bool SaveTimeLog(string filename)
         {
             return fileManager.SaveTimeLog(TimeManager.TimeLog, filename);
+        }
+
+        public void UpdateIsWorkingTaskProperty(string task, bool isWorking)
+        {
+            TaskCollection.UpdateIsWorkingProperty(task, isWorking);
         }
 
         #endregion

@@ -1,6 +1,5 @@
 using System;
 using System.Text;
-using LifeIdea.LazyCure.Core.Activities;
 using LifeIdea.LazyCure.Core.IO;
 using LifeIdea.LazyCure.Core.Tasks;
 using LifeIdea.LazyCure.Core.Time;
@@ -54,6 +53,15 @@ namespace LifeIdea.LazyCure.Core
         public void DefaultTaskCollection()
         {
             Assert.AreEqual(TaskCollection.Default,driver.TaskCollection);
+        }
+        [Test]
+        public void IsWorkingTask()
+        {
+            driver.TaskCollection = NewMock<ITaskCollection>();
+            Expect.Once.On(driver.TaskCollection).Method("IsWorkingTask").With("test task").Will(Return.Value(false));
+
+            Assert.IsFalse(driver.IsWorkingTask("test task"));
+            VerifyAllExpectationsHaveBeenMet();
         }
         [Test]
         public void SaveTasksAreLoaded()
@@ -249,6 +257,13 @@ namespace LifeIdea.LazyCure.Core
 
             VerifyAllExpectationsHaveBeenMet();
         }
-        
+        [Test]
+        public void UpdateIsWorkingTaskProperty()
+        {
+            driver.TaskCollection = NewMock<ITaskCollection>();
+            Expect.Once.On(driver.TaskCollection).Method("UpdateIsWorkingProperty").With("updated task", true);
+            driver.UpdateIsWorkingTaskProperty("updated task",true);
+            VerifyAllExpectationsHaveBeenMet();
+        }
     }
 }

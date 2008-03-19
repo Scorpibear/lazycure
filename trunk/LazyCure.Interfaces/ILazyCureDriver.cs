@@ -27,11 +27,15 @@ namespace LifeIdea.LazyCure.Interfaces
         
         void FinishActivity(string finishedActivity, string nextActivity);
 
+        bool IsWorkingTask(string SelectedTask);
+
         bool LoadTimeLog(string filename);
 
         bool Save();
 
         bool SaveTimeLog(string filename);
+
+        void UpdateIsWorkingTaskProperty(string task, bool isWorking);
 
         void UpdateTaskNodeText(TreeNode treeNode, string text);
     }

@@ -38,5 +38,15 @@ namespace LifeIdea.LazyCure.UI
             driver.UpdateTaskNodeText(e.Node, e.Label);
         }
 
+        private void treeView_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            this.isWorkingCheckBox.Checked = driver.IsWorkingTask(SelectedTask);
+        }
+
+        private void isWorkingCheckBox_CheckedChanged(object sender, System.EventArgs e)
+        {
+            driver.UpdateIsWorkingTaskProperty(SelectedTask, isWorkingCheckBox.Checked);
+        }
+
     }
 }
