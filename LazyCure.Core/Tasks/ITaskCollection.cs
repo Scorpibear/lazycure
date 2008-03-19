@@ -11,5 +11,9 @@ namespace LifeIdea.LazyCure.Core.Tasks
         Task GetTask(string name);
 
         Task[] ToArray();
+
+        bool IsWorkingTask(string selectedTask);
+
+        void UpdateIsWorkingProperty(string task, bool working);
     }
 }

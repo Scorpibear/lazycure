@@ -32,9 +32,9 @@ namespace LifeIdea.LazyCure.UI
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Tasks));
             this.treeView = new System.Windows.Forms.TreeView();
             this.splitContainer = new System.Windows.Forms.SplitContainer();
+            this.isWorkingCheckBox = new System.Windows.Forms.CheckBox();
             this.addSibling = new System.Windows.Forms.Button();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.isWorkingCheckBox = new System.Windows.Forms.CheckBox();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
             this.splitContainer.SuspendLayout();
@@ -50,6 +50,7 @@ namespace LifeIdea.LazyCure.UI
             this.treeView.TabIndex = 0;
             this.treeView.AfterLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.treeView_AfterLabelEdit);
             this.treeView.DoubleClick += new System.EventHandler(this.treeView_DoubleClick);
+            this.treeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_AfterSelect);
             // 
             // splitContainer
             // 
@@ -69,6 +70,17 @@ namespace LifeIdea.LazyCure.UI
             this.splitContainer.SplitterDistance = 110;
             this.splitContainer.TabIndex = 1;
             // 
+            // isWorkingCheckBox
+            // 
+            this.isWorkingCheckBox.AutoSize = true;
+            this.isWorkingCheckBox.Location = new System.Drawing.Point(4, 34);
+            this.isWorkingCheckBox.Name = "isWorkingCheckBox";
+            this.isWorkingCheckBox.Size = new System.Drawing.Size(66, 17);
+            this.isWorkingCheckBox.TabIndex = 1;
+            this.isWorkingCheckBox.Text = "Working";
+            this.isWorkingCheckBox.UseVisualStyleBackColor = true;
+            this.isWorkingCheckBox.CheckedChanged += new System.EventHandler(this.isWorkingCheckBox_CheckedChanged);
+            // 
             // addSibling
             // 
             this.addSibling.Location = new System.Drawing.Point(4, 4);
@@ -79,16 +91,6 @@ namespace LifeIdea.LazyCure.UI
             this.toolTip.SetToolTip(this.addSibling, "Add sibling task");
             this.addSibling.UseVisualStyleBackColor = true;
             this.addSibling.Click += new System.EventHandler(this.addSibling_Click);
-            // 
-            // isWorkingCheckBox
-            // 
-            this.isWorkingCheckBox.AutoSize = true;
-            this.isWorkingCheckBox.Location = new System.Drawing.Point(4, 34);
-            this.isWorkingCheckBox.Name = "isWorkingCheckBox";
-            this.isWorkingCheckBox.Size = new System.Drawing.Size(66, 17);
-            this.isWorkingCheckBox.TabIndex = 1;
-            this.isWorkingCheckBox.Text = "Working";
-            this.isWorkingCheckBox.UseVisualStyleBackColor = true;
             // 
             // Tasks
             // 

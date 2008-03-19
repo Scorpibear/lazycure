@@ -17,6 +17,11 @@ namespace LifeIdea.LazyCure.Core.Tasks
             Name = name;
         }
 
+        public Task(string name,bool isWorking):this(name)
+        {
+            IsWorking = isWorking;
+        }
+
         public new string Text
         {
             get
