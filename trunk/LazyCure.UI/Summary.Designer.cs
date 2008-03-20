@@ -35,7 +35,6 @@ namespace LifeIdea.LazyCure.UI
             this.Task = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.activities = new System.Windows.Forms.TabPage();
-            this.timeUpdate = new System.Windows.Forms.Button();
             this.allActivitiesTime = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.activitiesSummary)).BeginInit();
@@ -95,7 +94,6 @@ namespace LifeIdea.LazyCure.UI
             // 
             // activities
             // 
-            this.activities.Controls.Add(this.timeUpdate);
             this.activities.Controls.Add(this.allActivitiesTime);
             this.activities.Controls.Add(this.label1);
             this.activities.Controls.Add(this.activitiesSummary);
@@ -106,16 +104,6 @@ namespace LifeIdea.LazyCure.UI
             this.activities.TabIndex = 0;
             this.activities.Text = "Activities";
             this.activities.UseVisualStyleBackColor = true;
-            // 
-            // timeUpdate
-            // 
-            this.timeUpdate.Location = new System.Drawing.Point(226, 296);
-            this.timeUpdate.Name = "timeUpdate";
-            this.timeUpdate.Size = new System.Drawing.Size(75, 23);
-            this.timeUpdate.TabIndex = 3;
-            this.timeUpdate.Text = "Update";
-            this.timeUpdate.UseVisualStyleBackColor = true;
-            this.timeUpdate.Click += new System.EventHandler(this.timeUpdate_Click);
             // 
             // allActivitiesTime
             // 
@@ -162,7 +150,6 @@ namespace LifeIdea.LazyCure.UI
         private System.Windows.Forms.TabPage activities;
         private System.Windows.Forms.TextBox allActivitiesTime;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button timeUpdate;
         private System.Windows.Forms.DataGridViewTextBoxColumn Activity;
         private System.Windows.Forms.DataGridViewTextBoxColumn Spent;
         private System.Windows.Forms.DataGridViewTextBoxColumn Task;
