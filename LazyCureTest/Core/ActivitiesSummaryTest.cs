@@ -120,5 +120,16 @@ namespace LifeIdea.LazyCure.Core
 
             activitiesSummary.Data.Rows[0]["Task"] = "task1";
         }
+        [Test]
+        public void TimeSpentOnAllActivitiesIsUpdatedWhenTimeLogsIsChanged()
+        {
+            TimeLog timeLog = new TimeLog(DateTime.Now.Date);
+            activitiesSummary.TimeLog = timeLog;
+            timeLog.AddActivity(new Activity("test",DateTime.Parse("5:00:00"),TimeSpan.Parse("0:10:00")));
+
+            timeLog.Data.Rows[0]["Duration"] = TimeSpan.Parse("0:05:00");
+            
+            Assert.AreEqual(activitiesSummary.AllActivitiesTime,TimeSpan.Parse("0:05:00"));
+        }
     }
 }

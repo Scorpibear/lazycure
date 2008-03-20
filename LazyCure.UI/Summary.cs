@@ -7,17 +7,20 @@ namespace LifeIdea.LazyCure.UI
     partial class Summary : View,ISummaryView
     {
         private readonly ILazyCureDriver lazyCure;
+        private readonly Timer timer = new Timer();
 
         public Summary(ILazyCureDriver lazyCure, IMainForm mainForm)
         {
             this.lazyCure = lazyCure;
             InitializeComponent();
             activitiesSummary.DataSource = lazyCure.ActivitiesSummaryData;
-            allActivitiesTime.Text = Format.ShortDuration(lazyCure.AllActivitiesTime);
             this.mainForm = mainForm;
+            timer.Interval = 500;
+            timer.Start();
+            timer.Tick += timer_Tick;
         }
 
-        private void timeUpdate_Click(object sender, EventArgs e)
+        private void timer_Tick(object sender, EventArgs e)
         {
             allActivitiesTime.Text = Format.ShortDuration(lazyCure.AllActivitiesTime);
         }
