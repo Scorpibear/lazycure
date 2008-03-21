@@ -264,6 +264,7 @@ namespace LifeIdea.LazyCure.UI
             this.miContextShow.Name = "miContextShow";
             this.miContextShow.Size = new System.Drawing.Size(111, 22);
             this.miContextShow.Text = "Show";
+            this.miTasks.Click += new System.EventHandler(this.miTasks_Click);
             // 
             // miOptions
             // 
@@ -382,8 +383,10 @@ namespace LifeIdea.LazyCure.UI
             this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(300, 107);
             this.Name = "Main";
+            this.ShowInTaskbar = false;
             this.Text = "Main";
             this.TopMost = true;
+            this.Deactivate += new System.EventHandler(this.Main_Deactivate);
             this.Activated += new System.EventHandler(this.Main_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             this.statusBar.ResumeLayout(false);

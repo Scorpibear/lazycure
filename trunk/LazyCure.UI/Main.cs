@@ -91,6 +91,20 @@ namespace LifeIdea.LazyCure.UI
             this.currentActivity.Focus();
         }
 
+        private void Main_Deactivate(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Minimized)
+            {
+                Hide();
+            }
+        }
+
+        private void notifyIcon_DoubleClick(object sender, EventArgs e)
+        {
+            Show();
+            WindowState = FormWindowState.Normal;
+        }
+
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (!lazyCure.Save())
@@ -168,11 +182,6 @@ namespace LifeIdea.LazyCure.UI
         private void miTimeLog_Click(object sender, EventArgs e)
         {
             Dialogs.TimeLog.Visible = miTimeLog.Checked;
-        }
-        
-        private void notifyIcon_DoubleClick(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Normal;
         }
         
         private void switchButton_Click(object sender, EventArgs e)
