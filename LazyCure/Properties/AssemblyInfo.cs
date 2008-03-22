@@ -5,7 +5,19 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("LazyCure")]
-[assembly: AssemblyDescription("Tool for easy time logging, time analysis, calculation and improving personal efficiency. \r\n\r\nFirst version of LazyCure was issued in November 2003 by Mikhail Subach (aka Scorpibear). Since then, a lot of people were involved in LazyCure development, directly and inderectly. Special thanks to Andrei Kulabukhau, Andrei Savastsiuk, Alena Yermokhina, Siarhei Serko, Siarhei Gvozdukevich, Ihar Kalasouski, Siarhei Dziatlau, Andrei Pretkel and Alena Batsekina. Thank you, guys!")]
+[assembly: AssemblyDescription("Tool for easy time logging, time analysis, calculation and improving personal efficiency. \r\n\r\nFirst version of LazyCure was issued in November 2003 by Mikhail Subach (aka Scorpibear). Since then, a lot of people were involved in LazyCure development, directly and inderectly. Special thanks to:\r\n\r\n"+
+    "Andrei Kulabukhau, \r\n"+
+   "Andrei Savastsiuk, \r\n" +
+   "Alena Yermokhina, \r\n" +
+   "Siarhei Serko, \r\n" +
+   "Siarhei Gvozdukevich, \r\n" +
+   "Ihar Kalasouski, \r\n" +
+   "Siarhei Dziatlau, \r\n" +
+   "Andrei Pretkel, \r\n" +
+   "Alena Batsekina, \r\n" +
+   "Dzmitry Kuchko and \r\n" +
+   "Irina Rusetskaya.\r\n" +
+    "\r\nThank to all of you who improve your personal efficiency with LazyCure!")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("LifeIdea.org")]
 [assembly: AssemblyProduct("LazyCure")]
@@ -28,5 +40,5 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("3.1.6.1")]
-[assembly: AssemblyFileVersion("3.1.6.1")]
+[assembly: AssemblyVersion("3.1.7.0")]
+[assembly: AssemblyFileVersion("3.1.7.0")]

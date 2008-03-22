@@ -1,0 +1,10 @@
+1. Update.
+2. Test.
+3. Whatsnew.
+4. Tag.
+5. Release.
+6. Zip.
+7. Exe.
+8. Ftp.
+9. Download.
+10. Publish.
