@@ -7,10 +7,11 @@ using LifeIdea.LazyCure.UI.Properties;
 
 namespace LifeIdea.LazyCure.UI
 {
-    public partial class Main : Form, IMainForm
+    public partial class Main : Form, IMainForm, IDisposable
     {
         private readonly ILazyCureDriver lazyCure;
         private readonly string nextActivity = "(specify what you are doing)";
+        private HotKeyManager hotKeyManager = new HotKeyManager();
 
         public Main(ILazyCureDriver driver,ISettings settings)
         {
@@ -23,6 +24,7 @@ namespace LifeIdea.LazyCure.UI
             SetCaption();
             UpdateCurrentActivity();
             UpdateActivityStartTime();
+            hotKeyManager.Register(this);
         }
         
         public void ViewsVisibilityChanged()
@@ -76,6 +78,13 @@ namespace LifeIdea.LazyCure.UI
             }
         }
 
+        protected override void WndProc(ref Message m)
+        {
+            if (m.Msg == 0x0312)
+                Display();
+            base.WndProc(ref m);
+        }
+
         #endregion Private Methods
 
         #region Event Handlers
@@ -99,10 +108,15 @@ namespace LifeIdea.LazyCure.UI
             }
         }
 
-        private void notifyIcon_DoubleClick(object sender, EventArgs e)
+        private void Display()
         {
             Show();
             WindowState = FormWindowState.Normal;
+        }
+
+        private void notifyIcon_DoubleClick(object sender, EventArgs e)
+        {
+            Display();
         }
 
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
@@ -200,5 +214,10 @@ namespace LifeIdea.LazyCure.UI
         }
 
         #endregion Event Handlers
+
+        private void Main_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            hotKeyManager.Unregister(this);
+        }
     }
 }
