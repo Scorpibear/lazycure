@@ -3,8 +3,7 @@
 3. Whatsnew.
 4. Tag.
 5. Release.
-6. Zip.
-7. Exe.
-8. Ftp.
-9. Download.
-10. Publish.
+6. Pack.
+7. Ftp.
+8. Download.
+9. Publish.
