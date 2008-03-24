@@ -6,7 +6,7 @@ namespace LifeIdea.LazyCure.UI
 {
     internal partial class TimeLogEditor : View,ITimeLogView
     {
-        private ILazyCureDriver lazyCure;
+        private readonly ILazyCureDriver lazyCure;
 
         public TimeLogEditor(ILazyCureDriver lazyCure, IMainForm mainForm)
         {
@@ -15,6 +15,7 @@ namespace LifeIdea.LazyCure.UI
             this.Data = lazyCure.TimeLogData;
             this.mainForm = mainForm;
         }
+        
         public void CancelEdit()
         {
             timeLogView.CancelEdit();
@@ -32,17 +33,31 @@ namespace LifeIdea.LazyCure.UI
                 timeLogView.CurrentCell = timeLogView.CurrentRow.Cells["Start"];
             }
         }
+
         private void timeLogView_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
-            if (e.ColumnIndex != timeLogView.Columns["Activity"].Index)
-                ShowTimeNotValidMessage(timeLogView.Columns[e.ColumnIndex].Name);
+            if (e.Exception.Message == "Column 'Activity' does not allow nulls.")
+            {
+                ShowErrorMessage("Please, enter not empty activity name.",
+                                "Value in 'Activity' column is not correct");
+                e.Cancel = true;
+            }
+            else
+                if (e.ColumnIndex != timeLogView.Columns["Activity"].Index)
+                    ShowTimeNotValidMessage(timeLogView.Columns[e.ColumnIndex].Name);
         }
+        
         private void ShowTimeNotValidMessage(string column)
         {
-            MessageBox.Show(timeLogView,
-                    "Please, enter correct time value between 0:00:00 and 23:59:59",
-                    String.Format("Value in '{0}' column is not correct",column), MessageBoxButtons.OK, MessageBoxIcon.Information);
+            ShowErrorMessage("Please, enter correct time value between 0:00:00 and 23:59:59",
+                    String.Format("Value in '{0}' column is not correct",column));
         }
+        
+        private void ShowErrorMessage(string message, string header)
+        {
+            MessageBox.Show(timeLogView, message, header, MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
         protected override void View_VisibleChanged(object sender, EventArgs e)
         {
             if (Visible == false)
