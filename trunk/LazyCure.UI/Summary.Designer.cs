@@ -30,61 +30,68 @@ namespace LifeIdea.LazyCure.UI
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Summary));
             this.activitiesSummary = new System.Windows.Forms.DataGridView();
-            this.Activity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Spent = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Task = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.activityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.spentColumnForActivitySummary = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.taskColumnForActivitySummary = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.activities = new System.Windows.Forms.TabPage();
             this.allActivitiesTime = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.tasks = new System.Windows.Forms.TabPage();
+            this.tasksSummary = new System.Windows.Forms.DataGridView();
+            this.taskColumnForTasksSummary = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.spentColumnForTasksSummary = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.activitiesSummary)).BeginInit();
             this.tabControl.SuspendLayout();
             this.activities.SuspendLayout();
+            this.tasks.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tasksSummary)).BeginInit();
             this.SuspendLayout();
             // 
             // activitiesSummary
             // 
+            this.activitiesSummary.AllowUserToAddRows = false;
+            this.activitiesSummary.AllowUserToDeleteRows = false;
+            this.activitiesSummary.AllowUserToOrderColumns = true;
             this.activitiesSummary.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.activitiesSummary.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Activity,
-            this.Spent,
-            this.Task});
+            this.activityColumn,
+            this.spentColumnForActivitySummary,
+            this.taskColumnForActivitySummary});
             this.activitiesSummary.Dock = System.Windows.Forms.DockStyle.Top;
             this.activitiesSummary.Location = new System.Drawing.Point(3, 3);
             this.activitiesSummary.Name = "activitiesSummary";
-            this.activitiesSummary.Size = new System.Drawing.Size(532, 288);
+            this.activitiesSummary.Size = new System.Drawing.Size(532, 276);
             this.activitiesSummary.TabIndex = 0;
             this.activitiesSummary.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.activitiesSummary_CellDoubleClick);
             // 
-            // Activity
+            // activityColumn
             // 
-            this.Activity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Activity.DataPropertyName = "Activity";
-            this.Activity.HeaderText = "Activity";
-            this.Activity.Name = "Activity";
-            this.Activity.ReadOnly = true;
+            this.activityColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.activityColumn.DataPropertyName = "Activity";
+            this.activityColumn.HeaderText = "Activity";
+            this.activityColumn.Name = "activityColumn";
             // 
-            // Spent
+            // spentColumnForActivitySummary
             // 
-            this.Spent.DataPropertyName = "Spent";
-            this.Spent.HeaderText = "Spent";
-            this.Spent.Name = "Spent";
-            this.Spent.ReadOnly = true;
-            this.Spent.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Spent.Width = 50;
+            this.spentColumnForActivitySummary.DataPropertyName = "Spent";
+            this.spentColumnForActivitySummary.HeaderText = "Spent";
+            this.spentColumnForActivitySummary.Name = "spentColumnForActivitySummary";
+            this.spentColumnForActivitySummary.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.spentColumnForActivitySummary.Width = 50;
             // 
-            // Task
+            // taskColumnForActivitySummary
             // 
-            this.Task.DataPropertyName = "Task";
-            this.Task.HeaderText = "Task";
-            this.Task.Name = "Task";
-            this.Task.ReadOnly = true;
-            this.Task.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Task.Width = 150;
+            this.taskColumnForActivitySummary.DataPropertyName = "Task";
+            this.taskColumnForActivitySummary.HeaderText = "Task";
+            this.taskColumnForActivitySummary.Name = "taskColumnForActivitySummary";
+            this.taskColumnForActivitySummary.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.taskColumnForActivitySummary.Width = 150;
             // 
             // tabControl
             // 
             this.tabControl.Controls.Add(this.activities);
+            this.tabControl.Controls.Add(this.tasks);
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl.Location = new System.Drawing.Point(0, 0);
             this.tabControl.Name = "tabControl";
@@ -124,6 +131,48 @@ namespace LifeIdea.LazyCure.UI
             this.label1.TabIndex = 1;
             this.label1.Text = "Time, spent on all activities (h:mm):";
             // 
+            // tasks
+            // 
+            this.tasks.Controls.Add(this.tasksSummary);
+            this.tasks.Location = new System.Drawing.Point(4, 22);
+            this.tasks.Name = "tasks";
+            this.tasks.Size = new System.Drawing.Size(538, 325);
+            this.tasks.TabIndex = 1;
+            this.tasks.Text = "Tasks";
+            this.tasks.UseVisualStyleBackColor = true;
+            // 
+            // tasksSummary
+            // 
+            this.tasksSummary.AllowUserToAddRows = false;
+            this.tasksSummary.AllowUserToDeleteRows = false;
+            this.tasksSummary.AllowUserToOrderColumns = true;
+            this.tasksSummary.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tasksSummary.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.taskColumnForTasksSummary,
+            this.spentColumnForTasksSummary});
+            this.tasksSummary.Location = new System.Drawing.Point(3, 3);
+            this.tasksSummary.Name = "tasksSummary";
+            this.tasksSummary.Size = new System.Drawing.Size(532, 276);
+            this.tasksSummary.TabIndex = 0;
+            // 
+            // taskColumnForTasksSummary
+            // 
+            this.taskColumnForTasksSummary.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.taskColumnForTasksSummary.DataPropertyName = "Task";
+            this.taskColumnForTasksSummary.HeaderText = "Task";
+            this.taskColumnForTasksSummary.Name = "taskColumnForTasksSummary";
+            this.taskColumnForTasksSummary.ReadOnly = true;
+            // 
+            // spentColumnForTasksSummary
+            // 
+            this.spentColumnForTasksSummary.DataPropertyName = "Spent";
+            this.spentColumnForTasksSummary.HeaderText = "Spent";
+            this.spentColumnForTasksSummary.MinimumWidth = 50;
+            this.spentColumnForTasksSummary.Name = "spentColumnForTasksSummary";
+            this.spentColumnForTasksSummary.ReadOnly = true;
+            this.spentColumnForTasksSummary.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.spentColumnForTasksSummary.Width = 50;
+            // 
             // Summary
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -139,6 +188,8 @@ namespace LifeIdea.LazyCure.UI
             this.tabControl.ResumeLayout(false);
             this.activities.ResumeLayout(false);
             this.activities.PerformLayout();
+            this.tasks.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.tasksSummary)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -150,8 +201,12 @@ namespace LifeIdea.LazyCure.UI
         private System.Windows.Forms.TabPage activities;
         private System.Windows.Forms.TextBox allActivitiesTime;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Activity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Spent;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Task;
+        private System.Windows.Forms.TabPage tasks;
+        private System.Windows.Forms.DataGridView tasksSummary;
+        private System.Windows.Forms.DataGridViewTextBoxColumn activityColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn spentColumnForActivitySummary;
+        private System.Windows.Forms.DataGridViewTextBoxColumn taskColumnForActivitySummary;
+        private System.Windows.Forms.DataGridViewTextBoxColumn taskColumnForTasksSummary;
+        private System.Windows.Forms.DataGridViewTextBoxColumn spentColumnForTasksSummary;
     }
 }

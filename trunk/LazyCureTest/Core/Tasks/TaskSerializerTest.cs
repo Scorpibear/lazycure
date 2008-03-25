@@ -42,5 +42,18 @@ namespace LifeIdea.LazyCure.Core.Tasks
             Task task = TaskSerializer.Deserialize(doc.FirstChild);
             Assert.AreEqual("deserialized_task",task.Name);
         }
+        [Test]
+        public void DeserializeLinkToActivity()
+        {
+            XmlDocument doc = new XmlDocument();
+            XmlNode node = doc.CreateElement("task");
+            node.Attributes.Append(doc.CreateAttribute("name")).Value = "task1";
+            node.InnerXml = "<activity>activity1</activity>";
+
+            Task task = TaskSerializer.Deserialize(node);
+            
+            Assert.AreEqual("activity1",task.RelatedActivities[0],"related activity");
+            Assert.AreEqual(1, task.RelatedActivities.Count,"related activities count");
+        }
     }
 }

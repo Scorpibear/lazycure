@@ -26,7 +26,13 @@ namespace LifeIdea.LazyCure.Core.Tasks
                 {
                     if (attribute.Name == NAME)
                     {
-                        return new Task(attribute.Value);
+                        Task task = new Task(attribute.Value);
+                        foreach(XmlNode node in xml.ChildNodes)
+                        {
+                            if(node.InnerText!=string.Empty)
+                                task.RelatedActivities.Add(node.InnerText);
+                        }
+                        return task;
                     }
                 }
             }

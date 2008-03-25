@@ -1,6 +1,7 @@
 using System;
 using System.Text;
 using LifeIdea.LazyCure.Core.IO;
+using LifeIdea.LazyCure.Core.Reports;
 using LifeIdea.LazyCure.Core.Tasks;
 using LifeIdea.LazyCure.Core.Time;
 using LifeIdea.LazyCure.Interfaces;
@@ -263,6 +264,18 @@ namespace LifeIdea.LazyCure.Core
             driver.TaskCollection = NewMock<ITaskCollection>();
             Expect.Once.On(driver.TaskCollection).Method("UpdateIsWorkingProperty").With("updated task", true);
             driver.UpdateIsWorkingTaskProperty("updated task",true);
+            VerifyAllExpectationsHaveBeenMet();
+        }
+        [Test]
+        public void TasksSummaryData()
+        {
+            driver.TasksSummary = NewMock<IDataProvider>();
+            DataTable test = new DataTable("test");
+            Expect.Once.On(driver.TasksSummary).GetProperty("Data").Will(Return.Value(test));
+
+            object data = driver.TasksSummaryData;
+
+            Assert.AreEqual(test,data);
             VerifyAllExpectationsHaveBeenMet();
         }
     }

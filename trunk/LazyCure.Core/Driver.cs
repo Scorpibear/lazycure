@@ -2,6 +2,7 @@ using System;
 using System.Windows.Forms;
 using LifeIdea.LazyCure.Core.Activities;
 using LifeIdea.LazyCure.Core.IO;
+using LifeIdea.LazyCure.Core.Reports;
 using LifeIdea.LazyCure.Core.Tasks;
 using LifeIdea.LazyCure.Core.Time;
 using LifeIdea.LazyCure.Interfaces;
@@ -20,6 +21,7 @@ namespace LifeIdea.LazyCure.Core
         public static string FirstActivityName = "starting LazyCure";
         public bool SaveAfterDone=true;
         public ITaskCollection TaskCollection=Tasks.TaskCollection.Default;
+        public IDataProvider TasksSummary;
         public ITimeManager TimeManager;
         public string TimeLogsFolder { get { return FileManager.TimeLogsFolder; } set { FileManager.TimeLogsFolder = value; } }
 
@@ -28,6 +30,7 @@ namespace LifeIdea.LazyCure.Core
             TimeManager = new TimeManager(timeSystem);
             TimeManager.TimeLog = new TimeLog(timeSystem.Now.Date);
             activitiesSummary = new ActivitiesSummary(TimeManager.TimeLog,TaskCollection as ITaskActivityLinker);
+            TasksSummary = new TasksSummary(activitiesSummary.Data);
             History = new ActivitiesHistory();
         }
         
@@ -38,6 +41,7 @@ namespace LifeIdea.LazyCure.Core
             ITaskCollection loadedTasks = fileManager.GetTasks();
             if (loadedTasks != null)
                 TaskCollection = loadedTasks;
+            activitiesSummary.Linker = TaskCollection as ITaskActivityLinker;
             fileManager.LoadHistory(History);
             LoadTimeLog(TimeManager.TimeSystem.Now);
             return true;
@@ -53,6 +57,11 @@ namespace LifeIdea.LazyCure.Core
             {
                 return TaskCollection.ToArray();
             }
+        }
+
+        public object TasksSummaryData
+        {
+            get { return TasksSummary.Data; }
         }
 
         public bool TimeToUpdateTimeLog

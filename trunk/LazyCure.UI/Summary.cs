@@ -14,6 +14,7 @@ namespace LifeIdea.LazyCure.UI
             this.lazyCure = lazyCure;
             InitializeComponent();
             activitiesSummary.DataSource = lazyCure.ActivitiesSummaryData;
+            tasksSummary.DataSource = lazyCure.TasksSummaryData;
             this.mainForm = mainForm;
             timer.Interval = 500;
             timer.Start();
@@ -27,7 +28,7 @@ namespace LifeIdea.LazyCure.UI
 
         private void activitiesSummary_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.ColumnIndex==activitiesSummary.Columns["Task"].Index)
+            if (e.ColumnIndex == activitiesSummary.Columns[taskColumnForActivitySummary.Name].Index)
             {
                 Dialogs.Tasks.SelectedTask = activitiesSummary.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
                 Dialogs.Tasks.Location = Cursor.Position;
