@@ -43,11 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\ActivitiesSummaryTest.cs" />
+    <Compile Include="Core\Reports\ActivitiesSummaryTest.cs" />
     <Compile Include="Core\Activities\ActivityTest.cs" />
     <Compile Include="Core\Activities\ActivitySerializerTest.cs" />
     <Compile Include="Core\Activities\RunningActivityTest.cs" />
     <Compile Include="Core\IO\FileManagerTest.cs" />
+    <Compile Include="Core\Reports\TasksSummaryTest.cs" />
     <Compile Include="Core\Tasks\TaskCollectionSerializerTest.cs" />
     <Compile Include="Core\Tasks\TaskSerializerTest.cs" />
     <Compile Include="Core\Time\TimeManagerTest.cs" />

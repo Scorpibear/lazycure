@@ -8,7 +8,7 @@ using LifeIdea.LazyCure.Interfaces;
 using NMock2;
 using NUnit.Framework;
 
-namespace LifeIdea.LazyCure.Core
+namespace LifeIdea.LazyCure.Core.Reports
 {
     [TestFixture]
     public class ActivitiesSummaryTest:Mockery
@@ -73,9 +73,10 @@ namespace LifeIdea.LazyCure.Core
         [Test]
         public void TwoEqualActivities()
         {
-            Stub.On(timeLog).GetProperty("Activities").Will(Return.Value(new List<IActivity>(new IActivity[]{
-                                                                                                                new Activity("first", DateTime.Now, sevenSec),
-                                                                                                                new Activity("first", DateTime.Now, threeSec)})));
+            Stub.On(timeLog).GetProperty("Activities").Will(
+                Return.Value(new List<IActivity>(new IActivity[]{
+                    new Activity("first", DateTime.Now, sevenSec),
+                    new Activity("first", DateTime.Now, threeSec)})));
 
             activitiesSummary.Update();
 
@@ -85,9 +86,10 @@ namespace LifeIdea.LazyCure.Core
         [Test]
         public void AllActivitiesTime()
         {
-            Stub.On(timeLog).GetProperty("Activities").Will(Return.Value(new List<IActivity>(new IActivity[]{
-                                                                                                                new Activity("first", DateTime.Now, sevenSec),
-                                                                                                                new Activity("second", DateTime.Now, threeSec)})));
+            Stub.On(timeLog).GetProperty("Activities").Will(
+                Return.Value(new List<IActivity>(new IActivity[]{
+                    new Activity("first", DateTime.Now, sevenSec),
+                    new Activity("second", DateTime.Now, threeSec)})));
 
             activitiesSummary.Update();
 
@@ -96,8 +98,9 @@ namespace LifeIdea.LazyCure.Core
         [Test]
         public void GetRelatedTask()
         {
-            Stub.On(timeLog).GetProperty("Activities").Will(Return.Value(new List<IActivity>(
-                                                                             new IActivity[] { new Activity("first", DateTime.Now, sevenSec) })));
+            Stub.On(timeLog).GetProperty("Activities").Will(
+                Return.Value(new List<IActivity>(
+                new IActivity[] { new Activity("first", DateTime.Now, sevenSec) })));
 
             linker = NewMock<ITaskActivityLinker>();
             Expect.AtLeastOnce.On(linker).Method("GetRelatedTaskName").With("first").Will(Return.Value("related task"));
@@ -123,13 +126,24 @@ namespace LifeIdea.LazyCure.Core
         [Test]
         public void TimeSpentOnAllActivitiesIsUpdatedWhenTimeLogsIsChanged()
         {
-            TimeLog timeLog = new TimeLog(DateTime.Now.Date);
+            timeLog = new TimeLog(DateTime.Now.Date);
             activitiesSummary.TimeLog = timeLog;
             timeLog.AddActivity(new Activity("test",DateTime.Parse("5:00:00"),TimeSpan.Parse("0:10:00")));
 
             timeLog.Data.Rows[0]["Duration"] = TimeSpan.Parse("0:05:00");
             
-            Assert.AreEqual(activitiesSummary.AllActivitiesTime,TimeSpan.Parse("0:05:00"));
+            Assert.AreEqual(TimeSpan.Parse("0:05:00"), activitiesSummary.AllActivitiesTime);
+        }
+        [Test]
+        public void SummaryIsUpdatedWhenTimeLogEntryDeleted()
+        {
+            timeLog = new TimeLog(DateTime.Now.Date);
+            activitiesSummary.TimeLog = timeLog;
+            timeLog.AddActivity(new Activity("test", DateTime.Parse("5:00:00"), TimeSpan.Parse("0:10:00")));
+
+            timeLog.Data.Rows[0].Delete();
+
+            Assert.AreEqual(TimeSpan.Zero, activitiesSummary.AllActivitiesTime);
         }
     }
 }

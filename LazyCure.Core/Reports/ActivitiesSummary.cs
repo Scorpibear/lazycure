@@ -5,25 +5,29 @@ using LifeIdea.LazyCure.Core.Tasks;
 using LifeIdea.LazyCure.Core.Time;
 using LifeIdea.LazyCure.Interfaces;
 
-namespace LifeIdea.LazyCure.Core
+namespace LifeIdea.LazyCure.Core.Reports
 {
     /// <summary>
     /// Represent activities summary data
     /// </summary>
-    public class ActivitiesSummary
+    public class ActivitiesSummary: IActivitiesSummary
     {
         private ITimeLog timeLog;
-        private readonly ITaskActivityLinker linker;
         private TimeSpan allActivitiesTime=new TimeSpan();
 
         public DataTable Data;
+
+        public ITaskActivityLinker Linker;
+
         public TimeSpan AllActivitiesTime{get{ return allActivitiesTime;}}
+
         public ITimeLog TimeLog
         {
             get{ return timeLog;}
             set
             {
                 timeLog = value;
+                timeLog.Data.RowDeleted += TimeLogData_RowChanged;
                 timeLog.Data.RowChanged += TimeLogData_RowChanged;
             }
         }
@@ -35,7 +39,7 @@ namespace LifeIdea.LazyCure.Core
             Data.Columns.Add("Spent", Type.GetType("System.TimeSpan"));
             Data.Columns.Add("Task");
             TimeLog = timeLog;            
-            this.linker = linker;
+            this.Linker = linker;
             Data.ColumnChanged += Data_ColumnChanged;
         }
 
@@ -59,7 +63,7 @@ namespace LifeIdea.LazyCure.Core
                 }
                 if (!existentRowUpdated)
                 {
-                    string relatedTask = linker.GetRelatedTaskName(activity.Name);
+                    string relatedTask = Linker.GetRelatedTaskName(activity.Name);
                     Data.Rows.Add(activity.Name, activity.Duration, relatedTask);
                 }
 
@@ -78,7 +82,7 @@ namespace LifeIdea.LazyCure.Core
             {
                 string activity = e.Row["Activity"] as string;
                 string task = e.ProposedValue as string;
-                bool isLinked = linker.LinkActivityAndTask(activity, task);
+                bool isLinked = Linker.LinkActivityAndTask(activity, task);
                 if(!isLinked)
                     Log.Error(String.Format("Could not link activity '{0}' and task '{1}'",activity,task));
             }

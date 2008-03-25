@@ -15,6 +15,8 @@ namespace LifeIdea.LazyCure.Interfaces
 
         TreeNode[] TasksNodes{ get;}
 
+        object TasksSummaryData { get; }
+
         object TimeLogData { get;}
 
         string TimeLogDate { get;}
