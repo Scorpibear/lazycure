@@ -14,6 +14,11 @@ namespace LifeIdea.LazyCure.Core.Tasks
             Assert.IsTrue(xml.OuterXml.Contains("task1"));
         }
         [Test]
+        public void SerializeWithNull()
+        {
+            Assert.IsNull(TaskSerializer.Serialize(null));
+        }
+        [Test]
         public void SerializeLinkToActivity()
         {
             Task task = new Task("task1");
@@ -34,26 +39,44 @@ namespace LifeIdea.LazyCure.Core.Tasks
             Assert.IsTrue(xml.InnerText.Contains("a&b>c"));
         }
         [Test]
+        public void SerializeWorkingProperty()
+        {
+            Task task = new Task("rest", false);
+
+            XmlNode xml = TaskSerializer.Serialize(task);
+
+            Assert.AreEqual("false", xml.Attributes["working"].Value);
+        }
+        [Test]
         public void Deserialize()
         {
-            XmlDocument doc = new XmlDocument();
-            doc.AppendChild(doc.CreateElement("task")).Attributes.Append(doc.CreateAttribute("name")).Value =
-                "deserialized_task";
-            Task task = TaskSerializer.Deserialize(doc.FirstChild);
-            Assert.AreEqual("deserialized_task",task.Name);
+            Task task = TaskSerializer.Deserialize("<task name=\"deserialized_task\"></task>");
+            Assert.AreEqual("deserialized_task", task.Name);
         }
         [Test]
         public void DeserializeLinkToActivity()
         {
-            XmlDocument doc = new XmlDocument();
-            XmlNode node = doc.CreateElement("task");
-            node.Attributes.Append(doc.CreateAttribute("name")).Value = "task1";
-            node.InnerXml = "<activity>activity1</activity>";
+            Task task = TaskSerializer.Deserialize("<task name=\"task1\"><activity>activity1</activity></task>");
 
-            Task task = TaskSerializer.Deserialize(node);
-            
-            Assert.AreEqual("activity1",task.RelatedActivities[0],"related activity");
-            Assert.AreEqual(1, task.RelatedActivities.Count,"related activities count");
+            Assert.AreEqual("activity1", task.RelatedActivities[0], "related activity");
+            Assert.AreEqual(1, task.RelatedActivities.Count, "related activities count");
+        }
+        [Test]
+        public void DeserializeWorkingProperty()
+        {
+            Task task = TaskSerializer.Deserialize("<task name=\"task1\" working=\"false\"/>");
+            Assert.IsFalse(task.IsWorking);
+        }
+        [Test]
+        public void DeserializeBrokenTask()
+        {
+            Assert.IsNull(TaskSerializer.Deserialize("<task>&</task>"));
+        }
+        [Test]
+        public void DeserializeTaskWithIncorrectWorking()
+        {
+            Task task = TaskSerializer.Deserialize("<task name=\"task1\" working=\"aaa\" />");
+            Assert.IsTrue(task.IsWorking);
         }
     }
 }

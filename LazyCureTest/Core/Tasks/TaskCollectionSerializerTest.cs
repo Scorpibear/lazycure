@@ -62,7 +62,7 @@ namespace LifeIdea.LazyCure.Core.Tasks
             ITaskCollection taskCollection = new TaskCollection();
 
             TaskCollectionSerializer.Serialize(null, Log.Writer);
-            Console.WriteLine(sb.ToString());
+
             Assert.That(sb.ToString().Contains("Object reference not set to an instance of an object"));
         }
         [Test]

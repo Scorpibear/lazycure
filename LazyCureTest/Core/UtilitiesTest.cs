@@ -36,5 +36,25 @@ namespace LifeIdea.LazyCure.Core
         {
             Assert.IsFalse(Utilities.IsFileNameShort(String.Empty));
         }
+        [Test]
+        public void TrueToString()
+        {
+            Assert.AreEqual("true",Utilities.BoolToString(true));
+        }
+        [Test]
+        public void FalseToString()
+        {
+            Assert.AreEqual("false", Utilities.BoolToString(false));
+        }
+        [Test]
+        public void StringToBoolCorrect()
+        {
+            Assert.AreEqual(false, Utilities.StringToBool("false"));
+        }
+        [Test]
+        public void InvalidStringToBool()
+        {
+            Assert.AreEqual(true, Utilities.StringToBool("qwerty"));
+        }
     }
 }
