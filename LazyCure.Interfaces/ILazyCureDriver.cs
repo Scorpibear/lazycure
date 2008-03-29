@@ -25,6 +25,8 @@ namespace LifeIdea.LazyCure.Interfaces
 
         bool TimeToUpdateTimeLog { get; }
 
+        TimeSpan WorkingActivitiesTime { get; }
+
         void ApplySettings(ISettings settings);
         
         void FinishActivity(string finishedActivity, string nextActivity);

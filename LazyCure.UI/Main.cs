@@ -31,7 +31,7 @@ namespace LifeIdea.LazyCure.UI
         {
             miTimeLog.Checked = Dialogs.TimeLog.Visible;
             miSummary.Checked = Dialogs.Summary.Visible;
-            miTasks.Checked = Dialogs.Tasks.Visible;
+            miTasks.Checked = Dialogs.TaskManager.Visible;
         }
         
         #region Private Methods
@@ -189,7 +189,7 @@ namespace LifeIdea.LazyCure.UI
 
         private void miTasks_Click(object sender, EventArgs e)
         {
-            Dialogs.Tasks.Visible = miTasks.Checked;
+            Dialogs.TaskManager.Visible = miTasks.Checked;
 
         }
 
@@ -218,6 +218,17 @@ namespace LifeIdea.LazyCure.UI
         private void Main_FormClosed(object sender, FormClosedEventArgs e)
         {
             hotKeyManager.Unregister(this);
+        }
+
+        private void notifyIcon_MouseClick(object sender, MouseEventArgs e)
+        {
+            if(e.Button==MouseButtons.Left)
+                Display();
+        }
+
+        private void miContextActivate_Click(object sender, EventArgs e)
+        {
+            Display();
         }
     }
 }

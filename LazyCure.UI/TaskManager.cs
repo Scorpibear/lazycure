@@ -3,12 +3,12 @@ using LifeIdea.LazyCure.Interfaces;
 
 namespace LifeIdea.LazyCure.UI
 {
-    partial class Tasks : View
+    partial class TaskManager : View
     {
         private readonly ILazyCureDriver driver;
         const string NewTaskName = "New task...";
 
-        public Tasks(ILazyCureDriver driver,IMainForm mainForm)
+        public TaskManager(ILazyCureDriver driver,IMainForm mainForm)
         {
             InitializeComponent();
             this.driver = driver;

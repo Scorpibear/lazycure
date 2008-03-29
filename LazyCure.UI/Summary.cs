@@ -18,23 +18,30 @@ namespace LifeIdea.LazyCure.UI
             this.mainForm = mainForm;
             timer.Interval = 500;
             timer.Start();
-            timer.Tick += timer_Tick;
+            timer.Tick += UpdateStatistics;
         }
 
-        private void timer_Tick(object sender, EventArgs e)
+        private void UpdateStatistics(object sender, EventArgs e)
         {
             allActivitiesTime.Text = Format.ShortDuration(lazyCure.AllActivitiesTime);
+            UpdateWorkingActivitiesTime();
         }
 
         private void activitiesSummary_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == activitiesSummary.Columns[taskColumnForActivitySummary.Name].Index)
             {
-                Dialogs.Tasks.SelectedTask = activitiesSummary.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
-                Dialogs.Tasks.Location = Cursor.Position;
-                Dialogs.Tasks.ShowDialog(this);
-                activitiesSummary.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = Dialogs.Tasks.SelectedTask;
+                Dialogs.TaskManager.SelectedTask = activitiesSummary.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+                Dialogs.TaskManager.Location = Cursor.Position;
+                Dialogs.TaskManager.ShowDialog(this);
+                activitiesSummary.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = Dialogs.TaskManager.SelectedTask;
+                UpdateWorkingActivitiesTime();
             }
+        }
+
+        private void UpdateWorkingActivitiesTime()
+        {
+            workingActivitiesTime.Text = Format.ShortDuration(lazyCure.WorkingActivitiesTime);
         }
     }
 }

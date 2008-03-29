@@ -59,7 +59,7 @@ namespace LifeIdea.LazyCure.Core
         public void IsWorkingTask()
         {
             driver.TaskCollection = NewMock<ITaskCollection>();
-            Expect.Once.On(driver.TaskCollection).Method("IsWorkingTask").With("test task").Will(Return.Value(false));
+            Expect.Once.On(driver.TaskCollection).Method("IsWorking").With("test task").Will(Return.Value(false));
 
             Assert.IsFalse(driver.IsWorkingTask("test task"));
             VerifyAllExpectationsHaveBeenMet();
@@ -259,6 +259,14 @@ namespace LifeIdea.LazyCure.Core
             VerifyAllExpectationsHaveBeenMet();
         }
         [Test]
+        public void WorkingActivitiesTime()
+        {
+            driver.TasksSummary = NewMock<ITasksSummary>();
+            Expect.Once.On(driver.TasksSummary).GetProperty("WorkingTasksTime").Will(Return.Value(TimeSpan.Parse("0:15")));
+            Assert.AreEqual(TimeSpan.Parse("0:15"),driver.WorkingActivitiesTime);
+            VerifyAllExpectationsHaveBeenMet();
+        }
+        [Test]
         public void UpdateIsWorkingTaskProperty()
         {
             driver.TaskCollection = NewMock<ITaskCollection>();
@@ -269,7 +277,7 @@ namespace LifeIdea.LazyCure.Core
         [Test]
         public void TasksSummaryData()
         {
-            driver.TasksSummary = NewMock<IDataProvider>();
+            driver.TasksSummary = NewMock<ITasksSummary>();
             DataTable test = new DataTable("test");
             Expect.Once.On(driver.TasksSummary).GetProperty("Data").Will(Return.Value(test));
 

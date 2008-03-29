@@ -11,7 +11,7 @@ namespace LifeIdea.LazyCure.UI
         private static ISummaryView summary = null;
         private static AboutBox about = null;
         private static Options options = null;
-        private static Tasks tasks = null;
+        private static TaskManager taskManager = null;
 
         internal static ILazyCureDriver LazyCureDriver = null;
         internal static IMainForm MainForm = null;
@@ -75,13 +75,13 @@ namespace LifeIdea.LazyCure.UI
             }
         }
 
-        internal static Tasks Tasks
+        internal static TaskManager TaskManager
         {
             get
             {
-                if (tasks == null)
-                    tasks = new Tasks(LazyCureDriver, MainForm);
-                return tasks;
+                if (taskManager == null)
+                    taskManager = new TaskManager(LazyCureDriver, MainForm);
+                return taskManager;
             }
         }
 

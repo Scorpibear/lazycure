@@ -70,11 +70,11 @@
     <Compile Include="Summary.Designer.cs">
       <DependentUpon>Summary.cs</DependentUpon>
     </Compile>
-    <Compile Include="Tasks.cs">
+    <Compile Include="TaskManager.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Tasks.Designer.cs">
-      <DependentUpon>Tasks.cs</DependentUpon>
+    <Compile Include="TaskManager.Designer.cs">
+      <DependentUpon>TaskManager.cs</DependentUpon>
     </Compile>
     <Compile Include="TimeLogEditor.cs">
       <SubType>Form</SubType>
@@ -108,9 +108,9 @@
       <SubType>Designer</SubType>
       <DependentUpon>Summary.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Tasks.resx">
+    <EmbeddedResource Include="TaskManager.resx">
       <SubType>Designer</SubType>
-      <DependentUpon>Tasks.cs</DependentUpon>
+      <DependentUpon>TaskManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TimeLogEditor.resx">
       <SubType>Designer</SubType>
