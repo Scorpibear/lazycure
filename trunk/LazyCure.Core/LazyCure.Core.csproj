@@ -45,6 +45,7 @@
     <Compile Include="IO\IFileManager.cs" />
     <Compile Include="Reports\IActivitiesSummary.cs" />
     <Compile Include="Reports\IDataProvider.cs" />
+    <Compile Include="Reports\ITasksSummary.cs" />
     <Compile Include="Reports\TasksSummary.cs" />
     <Compile Include="Tasks\ITaskCollection.cs" />
     <Compile Include="Tasks\ITaskActivityLinker.cs" />

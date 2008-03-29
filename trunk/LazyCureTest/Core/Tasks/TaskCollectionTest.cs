@@ -1,4 +1,3 @@
-using System;
 using System.IO;
 using LifeIdea.LazyCure.Core.IO;
 using NMock2;
@@ -25,14 +24,14 @@ namespace LifeIdea.LazyCure.Core.Tasks
         public void IsWorkingTaskTrue()
         {
             tasks.Add(new Task("working task"));
-            Assert.IsTrue(tasks.IsWorkingTask("working task"));
+            Assert.IsTrue(tasks.IsWorking("working task"));
         }
         [Test]
         public void IsWorkingTaskFalse()
         {
             Task task = new Task("resting task",false);
             tasks.Add(task);
-            Assert.IsFalse(tasks.IsWorkingTask("resting task"));
+            Assert.IsFalse(tasks.IsWorking("resting task"));
         }
         [Test]
         public void IsWorkingTaskUnexistent()
@@ -41,7 +40,7 @@ namespace LifeIdea.LazyCure.Core.Tasks
             Log.Writer = sw;
             string expected = "IsWorking method is called for not existent task 'unexisted task'";
             
-            Assert.IsFalse(tasks.IsWorkingTask("unexisted task"));
+            Assert.IsFalse(tasks.IsWorking("unexisted task"));
             Assert.That(sw.GetStringBuilder().ToString().Contains(expected));
         }
         [Test]
@@ -50,7 +49,7 @@ namespace LifeIdea.LazyCure.Core.Tasks
             StringWriter sw = new StringWriter();
             Log.Writer = sw;
 
-            Assert.IsFalse(tasks.IsWorkingTask(null));
+            Assert.IsFalse(tasks.IsWorking(null));
             Assert.That(sw.GetStringBuilder().ToString().Contains("IsWorking method is called with null"));
         }
         [Test]
@@ -74,7 +73,7 @@ namespace LifeIdea.LazyCure.Core.Tasks
         {
             Assert.IsTrue(TaskCollection.Default.Contains("Work"), "contains Work");
             Assert.IsTrue(TaskCollection.Default.Contains("Rest"), "contains Rest");
-            Assert.IsFalse(TaskCollection.Default.IsWorkingTask("Rest"));
+            Assert.IsFalse(TaskCollection.Default.IsWorking("Rest"));
         }
         [Test]
         public void LinkActivityAndTask()

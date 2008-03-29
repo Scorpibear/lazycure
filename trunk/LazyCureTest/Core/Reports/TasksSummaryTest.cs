@@ -1,20 +1,26 @@
 using System;
 using System.Data;
+using LifeIdea.LazyCure.Core.Tasks;
+using NMock2;
 using NUnit.Framework;
 
 namespace LifeIdea.LazyCure.Core.Reports
 {
     [TestFixture]
-    public class TasksSummaryTest
+    public class TasksSummaryTest:Mockery
     {
         private TasksSummary tasksSummary;
+
         [SetUp]
         public void SetUp()
         {
             DataTable activitiesSummaryTable = new DataTable("ActivitiesSummary");
             activitiesSummaryTable.Columns.Add("Task");
             activitiesSummaryTable.Columns.Add("Spent", TimeSpan.Zero.GetType());
-            tasksSummary = new TasksSummary(activitiesSummaryTable);
+            ITaskCollection taskCollection = NewMock<ITaskCollection>();
+            Stub.On(taskCollection).Method("IsWorking").With("Work").Will(Return.Value(true));
+            Stub.On(taskCollection).Method("IsWorking").With("Rest").Will(Return.Value(false));
+            tasksSummary = new TasksSummary(activitiesSummaryTable,taskCollection);
         }
         [Test]
         public void DataTableColumnsTypes()
@@ -66,6 +72,28 @@ namespace LifeIdea.LazyCure.Core.Reports
             tasksSummary.ActivitiesSummaryTable.Rows[0].Delete();
 
             Assert.AreEqual(0, tasksSummary.Data.Rows.Count, "rows count");
+        }
+        [Test]
+        public void WorkingTasksTime()
+        {
+            tasksSummary.ActivitiesSummaryTable.Rows.Add("Work", TimeSpan.Parse("0:01"));
+            Assert.AreEqual(TimeSpan.Parse("0:01"),tasksSummary.WorkingTasksTime);
+        }
+        [Test]
+        public void WorkingTasksTimeExcludeRest()
+        {
+            tasksSummary.ActivitiesSummaryTable.Rows.Add("Work", TimeSpan.Parse("0:04"));
+            tasksSummary.ActivitiesSummaryTable.Rows.Add("Rest", TimeSpan.Parse("0:01"));
+            
+            Assert.AreEqual(TimeSpan.Parse("0:04"), tasksSummary.WorkingTasksTime);
+        }
+        [Test]
+        public void WorkingTasksTimeForEmptyTask()
+        {
+            tasksSummary.ActivitiesSummaryTable.Rows.Add(null, TimeSpan.Parse("0:04"));
+            tasksSummary.ActivitiesSummaryTable.Rows.Add("Rest", TimeSpan.Parse("0:01"));
+
+            Assert.AreEqual(TimeSpan.Parse("0:00"), tasksSummary.WorkingTasksTime);
         }
     }
 }

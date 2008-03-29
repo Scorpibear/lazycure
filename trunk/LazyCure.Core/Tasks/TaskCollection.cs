@@ -24,19 +24,19 @@ namespace LifeIdea.LazyCure.Core.Tasks
             return (GetTask(taskName) != null);
         }
 
-        public bool IsWorkingTask(string selectedTask)
+        public bool IsWorking(string taskName)
         {
-            if (selectedTask == null)
+            if (taskName == null)
             {
                 Log.Error("IsWorking method is called with null");
                 return false;
             }
-            Task task = GetTask(selectedTask);
+            Task task = GetTask(taskName);
             if (task != null)
                 return task.IsWorking;
             else
             {
-                Log.Error(string.Format("IsWorking method is called for not existent task '{0}'",selectedTask));
+                Log.Error(string.Format("IsWorking method is called for not existent task '{0}'",taskName));
                 return false;
             }
         }

@@ -1,6 +1,6 @@
 namespace LifeIdea.LazyCure.UI
 {
-    partial class Tasks
+    partial class TaskManager
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace LifeIdea.LazyCure.UI
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Tasks));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TaskManager));
             this.treeView = new System.Windows.Forms.TreeView();
             this.splitContainer = new System.Windows.Forms.SplitContainer();
             this.isWorkingCheckBox = new System.Windows.Forms.CheckBox();
@@ -92,7 +92,7 @@ namespace LifeIdea.LazyCure.UI
             this.addSibling.UseVisualStyleBackColor = true;
             this.addSibling.Click += new System.EventHandler(this.addSibling_Click);
             // 
-            // Tasks
+            // taskManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -102,10 +102,10 @@ namespace LifeIdea.LazyCure.UI
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Tasks";
+            this.Name = "taskManager";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "Tasks";
+            this.Text = "taskManager";
             this.TopMost = true;
             this.splitContainer.Panel1.ResumeLayout(false);
             this.splitContainer.Panel2.ResumeLayout(false);
