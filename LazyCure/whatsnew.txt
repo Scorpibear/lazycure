@@ -1,12 +1,15 @@
-LazyCure 3.1
-* TBD
+LazyCure 3.1.8
+* New: Summary time by tasks
+* New: Activate main form by hotkey Ctrl+F12.
+* New: Notification by flashing icon in tray after long time of inactivity.
+* Fixed: Functionality from LazyCure 2.5 was recovered.
 
 LazyCure 3.0.2.2
 * New: status bar shows current time
 * Improved: design reworked
 
 LazyCure 2.5
-* New: Convinient hiding and showing application by clicking on icon. 
+* New: Convenient hiding and showing application by clicking on icon. 
 * New: Status bar with spent time summary. 
 * New: Autocomplete when shoosing activity name. 
 * New: Show beginning and duration of current activity. 
