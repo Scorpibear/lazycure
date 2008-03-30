@@ -125,7 +125,7 @@ namespace LifeIdea.LazyCure.UI
             this.tasks.Name = "tasks";
             this.tasks.Size = new System.Drawing.Size(561, 262);
             this.tasks.TabIndex = 1;
-            this.tasks.Text = "taskManager";
+            this.tasks.Text = "Tasks";
             this.tasks.UseVisualStyleBackColor = true;
             // 
             // tasksSummary
