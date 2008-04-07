@@ -44,12 +44,14 @@ namespace LifeIdea.LazyCure.UI
             this.statisticsGroup = new System.Windows.Forms.GroupBox();
             this.workingActivitiesTime = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.activitiesSummary)).BeginInit();
             this.tabControl.SuspendLayout();
             this.activities.SuspendLayout();
             this.tasks.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tasksSummary)).BeginInit();
             this.statisticsGroup.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // activitiesSummary
@@ -66,7 +68,7 @@ namespace LifeIdea.LazyCure.UI
             this.activitiesSummary.Location = new System.Drawing.Point(3, 3);
             this.activitiesSummary.Name = "activitiesSummary";
             this.activitiesSummary.ReadOnly = true;
-            this.activitiesSummary.Size = new System.Drawing.Size(555, 256);
+            this.activitiesSummary.Size = new System.Drawing.Size(549, 253);
             this.activitiesSummary.TabIndex = 0;
             this.activitiesSummary.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.activitiesSummary_CellDoubleClick);
             // 
@@ -100,11 +102,11 @@ namespace LifeIdea.LazyCure.UI
             // 
             this.tabControl.Controls.Add(this.activities);
             this.tabControl.Controls.Add(this.tasks);
-            this.tabControl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tabControl.Location = new System.Drawing.Point(0, 0);
+            this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl.Location = new System.Drawing.Point(3, 3);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(569, 288);
+            this.tabControl.Size = new System.Drawing.Size(563, 285);
             this.tabControl.TabIndex = 1;
             // 
             // activities
@@ -113,7 +115,7 @@ namespace LifeIdea.LazyCure.UI
             this.activities.Location = new System.Drawing.Point(4, 22);
             this.activities.Name = "activities";
             this.activities.Padding = new System.Windows.Forms.Padding(3);
-            this.activities.Size = new System.Drawing.Size(561, 262);
+            this.activities.Size = new System.Drawing.Size(555, 259);
             this.activities.TabIndex = 0;
             this.activities.Text = "Activities";
             this.activities.UseVisualStyleBackColor = true;
@@ -123,7 +125,7 @@ namespace LifeIdea.LazyCure.UI
             this.tasks.Controls.Add(this.tasksSummary);
             this.tasks.Location = new System.Drawing.Point(4, 22);
             this.tasks.Name = "tasks";
-            this.tasks.Size = new System.Drawing.Size(561, 262);
+            this.tasks.Size = new System.Drawing.Size(555, 259);
             this.tasks.TabIndex = 1;
             this.tasks.Text = "Tasks";
             this.tasks.UseVisualStyleBackColor = true;
@@ -137,10 +139,11 @@ namespace LifeIdea.LazyCure.UI
             this.tasksSummary.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.taskColumnForTasksSummary,
             this.spentColumnForTasksSummary});
-            this.tasksSummary.Location = new System.Drawing.Point(3, 3);
+            this.tasksSummary.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tasksSummary.Location = new System.Drawing.Point(0, 0);
             this.tasksSummary.Name = "tasksSummary";
             this.tasksSummary.ReadOnly = true;
-            this.tasksSummary.Size = new System.Drawing.Size(555, 256);
+            this.tasksSummary.Size = new System.Drawing.Size(555, 259);
             this.tasksSummary.TabIndex = 0;
             // 
             // taskColumnForTasksSummary
@@ -186,10 +189,10 @@ namespace LifeIdea.LazyCure.UI
             this.statisticsGroup.Controls.Add(this.label2);
             this.statisticsGroup.Controls.Add(this.allActivitiesTime);
             this.statisticsGroup.Controls.Add(this.label1);
-            this.statisticsGroup.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.statisticsGroup.Location = new System.Drawing.Point(0, 294);
+            this.statisticsGroup.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.statisticsGroup.Location = new System.Drawing.Point(3, 294);
             this.statisticsGroup.Name = "statisticsGroup";
-            this.statisticsGroup.Size = new System.Drawing.Size(569, 57);
+            this.statisticsGroup.Size = new System.Drawing.Size(563, 54);
             this.statisticsGroup.TabIndex = 2;
             this.statisticsGroup.TabStop = false;
             this.statisticsGroup.Text = "Statistics";
@@ -213,13 +216,28 @@ namespace LifeIdea.LazyCure.UI
             this.label2.TabIndex = 3;
             this.label2.Text = "Working activities (h:mm):";
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.tabControl, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.statisticsGroup, 0, 1);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(569, 351);
+            this.tableLayoutPanel1.TabIndex = 5;
+            // 
             // Summary
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(569, 351);
-            this.Controls.Add(this.statisticsGroup);
-            this.Controls.Add(this.tabControl);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimizeBox = false;
             this.Name = "Summary";
@@ -233,6 +251,7 @@ namespace LifeIdea.LazyCure.UI
             ((System.ComponentModel.ISupportInitialize)(this.tasksSummary)).EndInit();
             this.statisticsGroup.ResumeLayout(false);
             this.statisticsGroup.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -254,5 +273,6 @@ namespace LifeIdea.LazyCure.UI
         private System.Windows.Forms.GroupBox statisticsGroup;
         private System.Windows.Forms.TextBox workingActivitiesTime;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }
