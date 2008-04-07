@@ -41,11 +41,11 @@
     <Compile Include="AboutBox.Designer.cs">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="Dialogs.cs" />
-    <Compile Include="HotKeyManager.cs" />
-    <Compile Include="IMainForm.cs" />
-    <Compile Include="ISummaryView.cs" />
-    <Compile Include="ITimeLogView.cs" />
+    <Compile Include="Backend\Dialogs.cs" />
+    <Compile Include="Backend\HotKeyManager.cs" />
+    <Compile Include="Backend\IMainForm.cs" />
+    <Compile Include="Backend\ISummaryView.cs" />
+    <Compile Include="Backend\ITimeLogView.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,7 +82,7 @@
     <Compile Include="TimeLogEditor.Designer.cs">
       <DependentUpon>TimeLogEditor.cs</DependentUpon>
     </Compile>
-    <Compile Include="View.cs">
+    <Compile Include="Backend\View.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
