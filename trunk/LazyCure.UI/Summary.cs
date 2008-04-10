@@ -29,7 +29,7 @@ namespace LifeIdea.LazyCure.UI
 
         private void activitiesSummary_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == activitiesSummary.Columns[taskColumnForActivitySummary.Name].Index)
+            if (IsTaskCell(e))
             {
                 Dialogs.TaskManager.SelectedTask = activitiesSummary.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
                 Dialogs.TaskManager.Location = Cursor.Position;
@@ -37,6 +37,12 @@ namespace LifeIdea.LazyCure.UI
                 activitiesSummary.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = Dialogs.TaskManager.SelectedTask;
                 UpdateWorkingActivitiesTime();
             }
+        }
+
+        private bool IsTaskCell(DataGridViewCellEventArgs e)
+        {
+            return (e.ColumnIndex == activitiesSummary.Columns[taskColumnForActivitySummary.Name].Index)
+                   && (e.RowIndex > -1);
         }
 
         private void UpdateWorkingActivitiesTime()
