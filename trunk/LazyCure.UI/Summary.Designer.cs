@@ -42,6 +42,8 @@ namespace LifeIdea.LazyCure.UI
             this.allActivitiesTime = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.statisticsGroup = new System.Windows.Forms.GroupBox();
+            this.selectedRowsTime = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.workingActivitiesTime = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -185,6 +187,8 @@ namespace LifeIdea.LazyCure.UI
             // 
             // statisticsGroup
             // 
+            this.statisticsGroup.Controls.Add(this.selectedRowsTime);
+            this.statisticsGroup.Controls.Add(this.label3);
             this.statisticsGroup.Controls.Add(this.workingActivitiesTime);
             this.statisticsGroup.Controls.Add(this.label2);
             this.statisticsGroup.Controls.Add(this.allActivitiesTime);
@@ -196,6 +200,25 @@ namespace LifeIdea.LazyCure.UI
             this.statisticsGroup.TabIndex = 2;
             this.statisticsGroup.TabStop = false;
             this.statisticsGroup.Text = "Statistics";
+            // 
+            // selectedRowsTime
+            // 
+            this.selectedRowsTime.Location = new System.Drawing.Point(332, 13);
+            this.selectedRowsTime.Name = "selectedRowsTime";
+            this.selectedRowsTime.ReadOnly = true;
+            this.selectedRowsTime.Size = new System.Drawing.Size(34, 20);
+            this.selectedRowsTime.TabIndex = 6;
+            this.selectedRowsTime.Text = "12:34";
+            this.selectedRowsTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(180, 16);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(146, 13);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Time in selected rows (h:mm):";
             // 
             // workingActivitiesTime
             // 
@@ -274,5 +297,7 @@ namespace LifeIdea.LazyCure.UI
         private System.Windows.Forms.TextBox workingActivitiesTime;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TextBox selectedRowsTime;
+        private System.Windows.Forms.Label label3;
     }
 }
