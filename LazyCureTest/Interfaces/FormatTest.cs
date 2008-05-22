@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
 using NUnit.Framework;
 
 namespace LifeIdea.LazyCure.Interfaces
@@ -27,6 +25,21 @@ namespace LifeIdea.LazyCure.Interfaces
         public void ShortDurationRoundMinutes()
         {
             Assert.AreEqual("0:02",Format.ShortDuration(TimeSpan.Parse("0:01:30")));
+        }
+        [Test]
+        public void Percent()
+        {
+            Assert.AreEqual("75%",Format.Percent(0.75));
+        }
+        [Test]
+        public void PercentForNaN()
+        {
+            Assert.AreEqual("0%",Format.Percent(double.NaN));
+        }
+        [Test]
+        public void FormatDurationWithIncorrectString()
+        {
+            Assert.AreEqual(TimeSpan.Zero,Format.Duration("0-3"));
         }
     }
 }

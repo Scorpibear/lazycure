@@ -1,6 +1,7 @@
 using System;
-using System.Windows.Forms;
+using System.IO;
 using System.Reflection;
+using System.Windows.Forms;
 
 namespace LifeIdea.LazyCure.UI
 {
@@ -40,7 +41,7 @@ namespace LifeIdea.LazyCure.UI
                         return titleAttribute.Title;
                 }
                 // If there was no Title attribute, or if the Title attribute was the empty string, return the .exe name
-                return System.IO.Path.GetFileNameWithoutExtension(GetAssembly().CodeBase);
+                return Path.GetFileNameWithoutExtension(GetAssembly().CodeBase);
             }
         }
 

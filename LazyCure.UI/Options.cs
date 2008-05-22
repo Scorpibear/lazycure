@@ -46,7 +46,7 @@ namespace LifeIdea.LazyCure.UI
         {
             timeLogFolderBrowser.SelectedPath = timeLogFolder.Text;
             DialogResult result = timeLogFolderBrowser.ShowDialog(this);
-            if(result==System.Windows.Forms.DialogResult.OK)
+            if(result==DialogResult.OK)
                 timeLogFolder.Text = timeLogFolderBrowser.SelectedPath;
         }
     }

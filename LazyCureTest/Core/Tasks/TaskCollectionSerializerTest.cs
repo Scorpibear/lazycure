@@ -51,8 +51,7 @@ namespace LifeIdea.LazyCure.Core.Tasks
             ITaskCollection taskCollection = new TaskCollection();
             
             TaskCollectionSerializer.Serialize(taskCollection, null);
-            
-            Assert.That(sb.ToString().Contains("Object reference not set to an instance of an object"));
+            Assert.That(sb.ToString().Contains("Could not serialize tasks because writer is null"));
         }
         [Test]
         public void SerializeWithNullTaskCollection()
@@ -63,7 +62,7 @@ namespace LifeIdea.LazyCure.Core.Tasks
 
             TaskCollectionSerializer.Serialize(null, Log.Writer);
 
-            Assert.That(sb.ToString().Contains("Object reference not set to an instance of an object"));
+            Assert.That(sb.ToString().Contains("Could not serialize null tasks collection"));
         }
         [Test]
         public void Deserialize()

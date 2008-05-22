@@ -1,15 +1,12 @@
 using System;
+using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
 using LifeIdea.LazyCure.Core;
-using LifeIdea.LazyCure.Core.Activities;
 using LifeIdea.LazyCure.Core.IO;
 using LifeIdea.LazyCure.Interfaces;
 using LifeIdea.LazyCure.Properties;
 using LifeIdea.LazyCure.UI;
-using System.Globalization;
-
-
 
 namespace LifeIdea.LazyCure
 {
@@ -79,6 +76,7 @@ namespace LifeIdea.LazyCure
         {
             CultureInfo info = new CultureInfo(Application.CurrentCulture.LCID);
             info.DateTimeFormat.LongTimePattern = "H:mm:ss";
+            info.DateTimeFormat.ShortTimePattern = "H:mm";
             Application.CurrentCulture = info;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

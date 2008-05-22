@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using LifeIdea.LazyCure.Interfaces;
@@ -17,8 +16,10 @@ namespace LifeIdea.LazyCure.UI
             InitializeComponent();
             activitiesSummary.DataSource = lazyCure.ActivitiesSummaryData;
             tasksSummary.DataSource = lazyCure.TasksSummaryData;
+            workingTimeIntervalsGrid.DataSource = lazyCure.WorkingTimeIntervalsData;
+            maxRestDurationTextBox.Text = Format.ShortDuration(lazyCure.PossibleWorkInterruptionDuration);
             this.mainForm = mainForm;
-            timer.Interval = 500;
+            timer.Interval = 300;
             timer.Start();
             timer.Tick += UpdateStatistics;
             UpdateSelectedRowsTime();
@@ -29,6 +30,8 @@ namespace LifeIdea.LazyCure.UI
             allActivitiesTime.Text = Format.ShortDuration(lazyCure.AllActivitiesTime);
             UpdateWorkingActivitiesTime();
             UpdateSelectedRowsTime();
+            efficiencyTextBox.Text = Format.Percent(lazyCure.Efficiency);
+            timeOnWorkTextBox.Text = Format.ShortDuration(lazyCure.TimeOnWork);
         }
 
         private void activitiesSummary_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -98,6 +101,27 @@ namespace LifeIdea.LazyCure.UI
                 }
             }
             return timeInSelectedRows;
+        }
+
+        private void maxRestDurationTextBox_TextChanged(object sender, EventArgs e)
+        {
+            lazyCure.PossibleWorkInterruptionDuration = Format.Duration(maxRestDurationTextBox.Text);
+            automaticallyRadioButton.Checked = true;
+        }
+
+        private void automaticallyRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            lazyCure.CalculateAutomaticallyWorkingIntervals = automaticallyRadioButton.Checked;
+        }
+
+        private void workingTimeIntervalsGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            manuallyRadioButton.Checked = true;
+        }
+
+        private void efficiencyTextBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

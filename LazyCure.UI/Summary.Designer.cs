@@ -28,6 +28,8 @@ namespace LifeIdea.LazyCure.UI
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Summary));
             this.activitiesSummary = new System.Windows.Forms.DataGridView();
             this.activityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -39,6 +41,19 @@ namespace LifeIdea.LazyCure.UI
             this.tasksSummary = new System.Windows.Forms.DataGridView();
             this.taskColumnForTasksSummary = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.spentColumnForTasksSummary = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.efficiency = new System.Windows.Forms.TabPage();
+            this.intervalsDefinitionGroupBox = new System.Windows.Forms.GroupBox();
+            this.workingTimeIntervalsGrid = new System.Windows.Forms.DataGridView();
+            this.Start = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.End = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.maxRestDurationTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.manuallyRadioButton = new System.Windows.Forms.RadioButton();
+            this.automaticallyRadioButton = new System.Windows.Forms.RadioButton();
+            this.timeOnWorkTextBox = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.efficiencyTextBox = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.allActivitiesTime = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.statisticsGroup = new System.Windows.Forms.GroupBox();
@@ -52,6 +67,9 @@ namespace LifeIdea.LazyCure.UI
             this.activities.SuspendLayout();
             this.tasks.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tasksSummary)).BeginInit();
+            this.efficiency.SuspendLayout();
+            this.intervalsDefinitionGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.workingTimeIntervalsGrid)).BeginInit();
             this.statisticsGroup.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -104,6 +122,7 @@ namespace LifeIdea.LazyCure.UI
             // 
             this.tabControl.Controls.Add(this.activities);
             this.tabControl.Controls.Add(this.tasks);
+            this.tabControl.Controls.Add(this.efficiency);
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl.Location = new System.Drawing.Point(3, 3);
             this.tabControl.Name = "tabControl";
@@ -127,6 +146,7 @@ namespace LifeIdea.LazyCure.UI
             this.tasks.Controls.Add(this.tasksSummary);
             this.tasks.Location = new System.Drawing.Point(4, 22);
             this.tasks.Name = "tasks";
+            this.tasks.Padding = new System.Windows.Forms.Padding(3);
             this.tasks.Size = new System.Drawing.Size(555, 259);
             this.tasks.TabIndex = 1;
             this.tasks.Text = "Tasks";
@@ -142,10 +162,10 @@ namespace LifeIdea.LazyCure.UI
             this.taskColumnForTasksSummary,
             this.spentColumnForTasksSummary});
             this.tasksSummary.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tasksSummary.Location = new System.Drawing.Point(0, 0);
+            this.tasksSummary.Location = new System.Drawing.Point(3, 3);
             this.tasksSummary.Name = "tasksSummary";
             this.tasksSummary.ReadOnly = true;
-            this.tasksSummary.Size = new System.Drawing.Size(555, 259);
+            this.tasksSummary.Size = new System.Drawing.Size(549, 253);
             this.tasksSummary.TabIndex = 0;
             // 
             // taskColumnForTasksSummary
@@ -165,6 +185,152 @@ namespace LifeIdea.LazyCure.UI
             this.spentColumnForTasksSummary.ReadOnly = true;
             this.spentColumnForTasksSummary.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.spentColumnForTasksSummary.Width = 50;
+            // 
+            // efficiency
+            // 
+            this.efficiency.Controls.Add(this.intervalsDefinitionGroupBox);
+            this.efficiency.Controls.Add(this.timeOnWorkTextBox);
+            this.efficiency.Controls.Add(this.label5);
+            this.efficiency.Controls.Add(this.efficiencyTextBox);
+            this.efficiency.Controls.Add(this.label4);
+            this.efficiency.Location = new System.Drawing.Point(4, 22);
+            this.efficiency.Name = "efficiency";
+            this.efficiency.Padding = new System.Windows.Forms.Padding(3);
+            this.efficiency.Size = new System.Drawing.Size(555, 259);
+            this.efficiency.TabIndex = 2;
+            this.efficiency.Text = "Efficiency";
+            this.efficiency.UseVisualStyleBackColor = true;
+            // 
+            // intervalsDefinitionGroupBox
+            // 
+            this.intervalsDefinitionGroupBox.Controls.Add(this.workingTimeIntervalsGrid);
+            this.intervalsDefinitionGroupBox.Controls.Add(this.maxRestDurationTextBox);
+            this.intervalsDefinitionGroupBox.Controls.Add(this.label7);
+            this.intervalsDefinitionGroupBox.Controls.Add(this.manuallyRadioButton);
+            this.intervalsDefinitionGroupBox.Controls.Add(this.automaticallyRadioButton);
+            this.intervalsDefinitionGroupBox.Location = new System.Drawing.Point(11, 48);
+            this.intervalsDefinitionGroupBox.Name = "intervalsDefinitionGroupBox";
+            this.intervalsDefinitionGroupBox.Size = new System.Drawing.Size(269, 205);
+            this.intervalsDefinitionGroupBox.TabIndex = 5;
+            this.intervalsDefinitionGroupBox.TabStop = false;
+            this.intervalsDefinitionGroupBox.Text = "Time on work definition";
+            // 
+            // workingTimeIntervalsGrid
+            // 
+            this.workingTimeIntervalsGrid.ColumnHeadersVisible = false;
+            this.workingTimeIntervalsGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Start,
+            this.End});
+            this.workingTimeIntervalsGrid.Location = new System.Drawing.Point(26, 81);
+            this.workingTimeIntervalsGrid.Name = "workingTimeIntervalsGrid";
+            this.workingTimeIntervalsGrid.RowHeadersWidth = 30;
+            this.workingTimeIntervalsGrid.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.workingTimeIntervalsGrid.Size = new System.Drawing.Size(129, 118);
+            this.workingTimeIntervalsGrid.TabIndex = 9;
+            this.workingTimeIntervalsGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.workingTimeIntervalsGrid_CellClick);
+            // 
+            // Start
+            // 
+            this.Start.DataPropertyName = "Start";
+            dataGridViewCellStyle1.Format = "t";
+            dataGridViewCellStyle1.NullValue = null;
+            this.Start.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Start.HeaderText = "Start";
+            this.Start.MinimumWidth = 35;
+            this.Start.Name = "Start";
+            this.Start.Width = 35;
+            // 
+            // End
+            // 
+            this.End.DataPropertyName = "End";
+            dataGridViewCellStyle2.Format = "t";
+            dataGridViewCellStyle2.NullValue = null;
+            this.End.DefaultCellStyle = dataGridViewCellStyle2;
+            this.End.HeaderText = "End";
+            this.End.MinimumWidth = 35;
+            this.End.Name = "End";
+            this.End.Width = 35;
+            // 
+            // maxRestDurationTextBox
+            // 
+            this.maxRestDurationTextBox.Location = new System.Drawing.Point(231, 38);
+            this.maxRestDurationTextBox.Mask = "0:00";
+            this.maxRestDurationTextBox.Name = "maxRestDurationTextBox";
+            this.maxRestDurationTextBox.Size = new System.Drawing.Size(31, 20);
+            this.maxRestDurationTextBox.TabIndex = 8;
+            this.maxRestDurationTextBox.Text = "015";
+            this.maxRestDurationTextBox.TextChanged += new System.EventHandler(this.maxRestDurationTextBox_TextChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(23, 41);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(205, 13);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "Possible work interruption duration (h:mm):";
+            // 
+            // manuallyRadioButton
+            // 
+            this.manuallyRadioButton.AutoSize = true;
+            this.manuallyRadioButton.Location = new System.Drawing.Point(7, 57);
+            this.manuallyRadioButton.Name = "manuallyRadioButton";
+            this.manuallyRadioButton.Size = new System.Drawing.Size(66, 17);
+            this.manuallyRadioButton.TabIndex = 1;
+            this.manuallyRadioButton.Text = "manually";
+            this.manuallyRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // automaticallyRadioButton
+            // 
+            this.automaticallyRadioButton.AutoSize = true;
+            this.automaticallyRadioButton.Checked = true;
+            this.automaticallyRadioButton.Location = new System.Drawing.Point(7, 20);
+            this.automaticallyRadioButton.Name = "automaticallyRadioButton";
+            this.automaticallyRadioButton.Size = new System.Drawing.Size(86, 17);
+            this.automaticallyRadioButton.TabIndex = 0;
+            this.automaticallyRadioButton.TabStop = true;
+            this.automaticallyRadioButton.Text = "automatically";
+            this.automaticallyRadioButton.UseVisualStyleBackColor = true;
+            this.automaticallyRadioButton.CheckedChanged += new System.EventHandler(this.automaticallyRadioButton_CheckedChanged);
+            // 
+            // timeOnWorkTextBox
+            // 
+            this.timeOnWorkTextBox.Location = new System.Drawing.Point(132, 22);
+            this.timeOnWorkTextBox.Name = "timeOnWorkTextBox";
+            this.timeOnWorkTextBox.ReadOnly = true;
+            this.timeOnWorkTextBox.Size = new System.Drawing.Size(34, 20);
+            this.timeOnWorkTextBox.TabIndex = 4;
+            this.timeOnWorkTextBox.Text = "8:00";
+            this.timeOnWorkTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(18, 25);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(108, 13);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Time on work (h:mm):";
+            // 
+            // efficiencyTextBox
+            // 
+            this.efficiencyTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.efficiencyTextBox.Location = new System.Drawing.Point(401, 3);
+            this.efficiencyTextBox.Name = "efficiencyTextBox";
+            this.efficiencyTextBox.ReadOnly = true;
+            this.efficiencyTextBox.Size = new System.Drawing.Size(148, 62);
+            this.efficiencyTextBox.TabIndex = 1;
+            this.efficiencyTextBox.Text = "85%";
+            this.efficiencyTextBox.TextChanged += new System.EventHandler(this.efficiencyTextBox_TextChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(18, 6);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(377, 13);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Working time usage efficiency ( [Working activities] / [Time on work]  * 100% ):";
             // 
             // allActivitiesTime
             // 
@@ -272,6 +438,11 @@ namespace LifeIdea.LazyCure.UI
             this.activities.ResumeLayout(false);
             this.tasks.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tasksSummary)).EndInit();
+            this.efficiency.ResumeLayout(false);
+            this.efficiency.PerformLayout();
+            this.intervalsDefinitionGroupBox.ResumeLayout(false);
+            this.intervalsDefinitionGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.workingTimeIntervalsGrid)).EndInit();
             this.statisticsGroup.ResumeLayout(false);
             this.statisticsGroup.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -299,5 +470,18 @@ namespace LifeIdea.LazyCure.UI
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TextBox selectedRowsTime;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TabPage efficiency;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox efficiencyTextBox;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.GroupBox intervalsDefinitionGroupBox;
+        private System.Windows.Forms.RadioButton automaticallyRadioButton;
+        private System.Windows.Forms.TextBox timeOnWorkTextBox;
+        private System.Windows.Forms.RadioButton manuallyRadioButton;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.MaskedTextBox maxRestDurationTextBox;
+        private System.Windows.Forms.DataGridView workingTimeIntervalsGrid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Start;
+        private System.Windows.Forms.DataGridViewTextBoxColumn End;
     }
 }
