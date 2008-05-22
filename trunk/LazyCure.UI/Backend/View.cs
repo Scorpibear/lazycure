@@ -1,3 +1,4 @@
+using System;
 using System.Windows.Forms;
 
 namespace LifeIdea.LazyCure.UI
@@ -19,7 +20,7 @@ namespace LifeIdea.LazyCure.UI
                 this.Visible = false;
             }
         }
-        protected virtual void View_VisibleChanged(object sender, System.EventArgs e)
+        protected virtual void View_VisibleChanged(object sender, EventArgs e)
         {
             if (mainForm != null)
                 mainForm.ViewsVisibilityChanged();

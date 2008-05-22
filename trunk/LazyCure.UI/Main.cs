@@ -1,8 +1,8 @@
 using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 using LifeIdea.LazyCure.Interfaces;
-using System.Diagnostics;
 using LifeIdea.LazyCure.UI.Properties;
 
 namespace LifeIdea.LazyCure.UI

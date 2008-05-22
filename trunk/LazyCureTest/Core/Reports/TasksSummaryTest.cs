@@ -73,27 +73,5 @@ namespace LifeIdea.LazyCure.Core.Reports
 
             Assert.AreEqual(0, tasksSummary.Data.Rows.Count, "rows count");
         }
-        [Test]
-        public void WorkingTasksTime()
-        {
-            tasksSummary.ActivitiesSummaryTable.Rows.Add("Work", TimeSpan.Parse("0:01"));
-            Assert.AreEqual(TimeSpan.Parse("0:01"),tasksSummary.WorkingTasksTime);
-        }
-        [Test]
-        public void WorkingTasksTimeExcludeRest()
-        {
-            tasksSummary.ActivitiesSummaryTable.Rows.Add("Work", TimeSpan.Parse("0:04"));
-            tasksSummary.ActivitiesSummaryTable.Rows.Add("Rest", TimeSpan.Parse("0:01"));
-            
-            Assert.AreEqual(TimeSpan.Parse("0:04"), tasksSummary.WorkingTasksTime);
-        }
-        [Test]
-        public void WorkingTasksTimeForEmptyTask()
-        {
-            tasksSummary.ActivitiesSummaryTable.Rows.Add(null, TimeSpan.Parse("0:04"));
-            tasksSummary.ActivitiesSummaryTable.Rows.Add("Rest", TimeSpan.Parse("0:01"));
-
-            Assert.AreEqual(TimeSpan.Parse("0:00"), tasksSummary.WorkingTasksTime);
-        }
     }
 }

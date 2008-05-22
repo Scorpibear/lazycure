@@ -1,7 +1,7 @@
 using System;
 using LifeIdea.LazyCure.Core.Time;
-using NUnit.Framework;
 using NMock2;
+using NUnit.Framework;
 
 namespace LifeIdea.LazyCure.Core.Activities
 {

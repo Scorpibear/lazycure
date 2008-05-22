@@ -1,7 +1,7 @@
-using NUnit.Framework;
-using NMock2;
 using System.IO;
 using System.Text;
+using NMock2;
+using NUnit.Framework;
 
 namespace LifeIdea.LazyCure.Core.Activities
 {

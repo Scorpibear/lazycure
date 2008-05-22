@@ -1,3 +1,4 @@
+using System;
 using System.Windows.Forms;
 using LifeIdea.LazyCure.Interfaces;
 
@@ -22,12 +23,12 @@ namespace LifeIdea.LazyCure.UI
             set { treeView.SelectedNode = treeView.Nodes[value]; }
         }
 
-        private void treeView_DoubleClick(object sender, System.EventArgs e)
+        private void treeView_DoubleClick(object sender, EventArgs e)
         {
             Hide();
         }
 
-        private void addSibling_Click(object sender, System.EventArgs e)
+        private void addSibling_Click(object sender, EventArgs e)
         {
             TreeNode newNode = treeView.Nodes.Add(NewTaskName);
             newNode.BeginEdit();
@@ -43,7 +44,7 @@ namespace LifeIdea.LazyCure.UI
             this.isWorkingCheckBox.Checked = driver.IsWorkingTask(SelectedTask);
         }
 
-        private void isWorkingCheckBox_CheckedChanged(object sender, System.EventArgs e)
+        private void isWorkingCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             driver.UpdateIsWorkingTaskProperty(SelectedTask, isWorkingCheckBox.Checked);
         }

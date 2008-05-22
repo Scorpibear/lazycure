@@ -13,10 +13,15 @@ namespace LifeIdea.LazyCure.Core.Tasks
         {
             XmlDocument doc = new XmlDocument();
             XmlNode root = doc.AppendChild(doc.CreateElement(ROOT_NODE));
-            foreach (Task task in taskCollection)
+            if (taskCollection != null)
             {
-                root.InnerXml += TaskSerializer.Serialize(task).OuterXml;
+                foreach (Task task in taskCollection)
+                {
+                    root.InnerXml += TaskSerializer.Serialize(task).OuterXml;
+                }
             }
+            else 
+                Log.Error("Could not serialize null tasks collection");
             return doc;
         }
 
@@ -24,7 +29,10 @@ namespace LifeIdea.LazyCure.Core.Tasks
         {
             try
             {
-                writer.WriteLine(Serialize(taskCollection).InnerXml);
+                if (writer != null)
+                    writer.WriteLine(Serialize(taskCollection).InnerXml);
+                else
+                    Log.Error("Could not serialize tasks because writer is null");
             }
             catch (Exception ex)
             {

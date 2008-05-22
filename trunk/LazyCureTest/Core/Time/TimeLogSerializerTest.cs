@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Xml;
 using LifeIdea.LazyCure.Interfaces;
 using NMock2;
 using NUnit.Framework;
-using System.Data;
 
 namespace LifeIdea.LazyCure.Core.Time
 {

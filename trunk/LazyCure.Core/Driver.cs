@@ -17,20 +17,23 @@ namespace LifeIdea.LazyCure.Core
         #region Fields
 
         private readonly ActivitiesSummary activitiesSummary;
+        private IEfficiencyCalculator efficiencyCalculator;
         private IFileManager fileManager = new FileManager();
         private ActivitiesHistory history;
         private ITaskCollection taskCollection = Tasks.TaskCollection.Default;
         private ITimeManager timeManager;
         private ITasksSummary tasksSummary;
+        private IWorkingTimeManager workingTime;
 
         #endregion Fields
 
         #region Properties
 
-        public ActivitiesHistory History
+
+        public IEfficiencyCalculator EfficiencyCalculator
         {
-            get{ return history;}
-            set{ history = value;}
+            get { return efficiencyCalculator; }
+            set { efficiencyCalculator = value; }
         }
 
         public IFileManager FileManager
@@ -41,8 +44,14 @@ namespace LifeIdea.LazyCure.Core
 
         public static string FirstActivityName = "starting LazyCure";
 
-        public bool SaveAfterDone = true;
+        public ActivitiesHistory History
+        {
+            get { return history; }
+            set { history = value; }
+        }
 
+        public bool SaveAfterDone = true;
+        
         public ITaskCollection TaskCollection
         {
             get { return taskCollection; }
@@ -50,9 +59,11 @@ namespace LifeIdea.LazyCure.Core
             {
                 taskCollection = value;
                 if (activitiesSummary != null)
-                    activitiesSummary.Linker = taskCollection as ITaskActivityLinker;
+                    activitiesSummary.Linker = taskCollection;
                 if (TasksSummary != null)
                     TasksSummary.TaskCollection = taskCollection;
+                if (WorkingTime != null)
+                    WorkingTime.TaskCollection = taskCollection;
             }
         }
 
@@ -70,15 +81,23 @@ namespace LifeIdea.LazyCure.Core
 
         public string TimeLogsFolder { get { return FileManager.TimeLogsFolder; } set { FileManager.TimeLogsFolder = value; } }
 
+        public IWorkingTimeManager WorkingTime
+        {
+            get { return workingTime; }
+            set { workingTime = value; }
+        }
+
         #endregion Properties
 
         public Driver(ITimeSystem timeSystem)
         {
             timeManager = new TimeManager(timeSystem);
             timeManager.TimeLog = new TimeLog(timeSystem.Now.Date);
-            activitiesSummary = new ActivitiesSummary(TimeManager.TimeLog, TaskCollection as ITaskActivityLinker);
+            activitiesSummary = new ActivitiesSummary(TimeManager.TimeLog, TaskCollection);
             tasksSummary = new TasksSummary(activitiesSummary.Data, TaskCollection);
             history = new ActivitiesHistory();
+            workingTime = new WorkingTime(TimeManager.TimeLog, TaskCollection);
+            efficiencyCalculator = new EfficiencyCalculator(workingTime);
         }
 
         public Driver() : this(new NaturalTimeSystem()) { }
@@ -99,7 +118,20 @@ namespace LifeIdea.LazyCure.Core
 
         public TimeSpan AllActivitiesTime { get { return activitiesSummary.AllActivitiesTime; } }
 
+        public bool CalculateAutomaticallyWorkingIntervals
+        {
+            set { WorkingTime.CalculateAutomatically = value; }
+        }
+
         public IActivity CurrentActivity { get { return TimeManager.CurrentActivity; } }
+
+        public double Efficiency { get { return EfficiencyCalculator.Efficiency; } }
+
+        public TimeSpan PossibleWorkInterruptionDuration
+        {
+            get { return WorkingTime.PossibleWorkInterruption; }
+            set { workingTime.PossibleWorkInterruption = value;}
+        }
 
         public TreeNode[] TasksNodes
         {
@@ -122,9 +154,16 @@ namespace LifeIdea.LazyCure.Core
             }
         }
 
+        public TimeSpan TimeOnWork { get { return WorkingTime.TimeOnWork; } }
+
         public TimeSpan WorkingActivitiesTime
         {
-            get { return TasksSummary.WorkingTasksTime; }
+            get { return WorkingTime.WorkingTasksTime; }
+        }
+
+        public object WorkingTimeIntervalsData
+        {
+            get { return WorkingTime.Intervals; }
         }
 
         public void ApplySettings(ISettings settings)
@@ -171,6 +210,7 @@ namespace LifeIdea.LazyCure.Core
                 TimeManager.TimeLog = loadedTimeLog;
                 activitiesSummary.TimeLog = loadedTimeLog;
                 activitiesSummary.Update();
+                workingTime.TimeLog = loadedTimeLog;
                 return true;
             }
             else

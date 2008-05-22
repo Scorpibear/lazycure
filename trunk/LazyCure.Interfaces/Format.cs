@@ -20,6 +20,13 @@ namespace LifeIdea.LazyCure.Interfaces
             else
                 return str;
         }
+
+        public static string Percent(double value)
+        {
+            int percent = (value.Equals(double.NaN)) ? 0 : (int) Math.Round(value*100);
+            return String.Format("{0}%",percent);
+        }
+
         public static string ShortDuration(TimeSpan timeSpan)
         {
             TimeSpan roundedTime;
@@ -35,7 +42,9 @@ namespace LifeIdea.LazyCure.Interfaces
         }
         public static TimeSpan Duration(object obj)
         {
-            return TimeSpan.Parse(obj.ToString());
+            TimeSpan result = TimeSpan.Zero;
+            TimeSpan.TryParse(obj.ToString(), out result);
+            return result;
         }
         public static DateTime Time(object obj)
         {

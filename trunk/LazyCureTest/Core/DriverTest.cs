@@ -1,14 +1,14 @@
 using System;
+using System.Data;
+using System.IO;
 using System.Text;
 using LifeIdea.LazyCure.Core.IO;
 using LifeIdea.LazyCure.Core.Reports;
 using LifeIdea.LazyCure.Core.Tasks;
 using LifeIdea.LazyCure.Core.Time;
 using LifeIdea.LazyCure.Interfaces;
-using NUnit.Framework;
 using NMock2;
-using System.IO;
-using System.Data;
+using NUnit.Framework;
 
 namespace LifeIdea.LazyCure.Core
 {
@@ -32,6 +32,7 @@ namespace LifeIdea.LazyCure.Core
         [TearDown]
         public void TearDown()
         {
+            VerifyAllExpectationsHaveBeenMet();
             Log.Close();
         }
         [Test]
@@ -51,9 +52,23 @@ namespace LifeIdea.LazyCure.Core
             Assert.AreEqual(TimeSpan.Parse("0:59:48"), driver.TimeManager.MaxDuration);
         }
         [Test]
+        public void CalculateAutomaticallyWorkingIntervals()
+        {
+            driver.WorkingTime = NewMock<IWorkingTimeManager>();
+            Expect.Once.On(driver.WorkingTime).SetProperty("CalculateAutomatically").To(false);
+            driver.CalculateAutomaticallyWorkingIntervals = false;
+        }
+        [Test]
         public void DefaultTaskCollection()
         {
             Assert.AreEqual(TaskCollection.Default,driver.TaskCollection);
+        }
+        [Test]
+        public void GetEfficiency()
+        {
+            driver.EfficiencyCalculator = NewMock<IEfficiencyCalculator>();
+            Expect.Once.On(driver.EfficiencyCalculator).GetProperty("Efficiency").Will(Return.Value(0.76));
+            Assert.AreEqual(0.76,driver.Efficiency);
         }
         [Test]
         public void IsWorkingTask()
@@ -62,7 +77,20 @@ namespace LifeIdea.LazyCure.Core
             Expect.Once.On(driver.TaskCollection).Method("IsWorking").With("test task").Will(Return.Value(false));
 
             Assert.IsFalse(driver.IsWorkingTask("test task"));
-            VerifyAllExpectationsHaveBeenMet();
+        }
+        [Test]
+        public void GetPossibleWorkInterruptionDuration()
+        {
+            driver.WorkingTime = NewMock<IWorkingTimeManager>();
+            Expect.Once.On(driver.WorkingTime).GetProperty("PossibleWorkInterruption").Will(Return.Value(TimeSpan.MaxValue));
+            Assert.AreEqual(TimeSpan.MaxValue, driver.PossibleWorkInterruptionDuration);
+        }
+        [Test]
+        public void SetPossibleWorkInterruptionDuration()
+        {
+            driver.WorkingTime = NewMock<IWorkingTimeManager>();
+            Expect.Once.On(driver.WorkingTime).SetProperty("PossibleWorkInterruption").To(TimeSpan.MaxValue);
+            driver.PossibleWorkInterruptionDuration = TimeSpan.MaxValue;
         }
         [Test]
         public void SaveTasksAreLoaded()
@@ -174,6 +202,15 @@ namespace LifeIdea.LazyCure.Core
             Assert.Fail("LoadTimeLog does not raise an exception for broken timelog");
         }
         [Test]
+        public void TaskCollectionIsUpdatedInEfficiencyCalculator()
+        {
+            TaskCollection updatedTasks = new TaskCollection();
+            driver.WorkingTime = NewMock<IWorkingTimeManager>();
+            Expect.Once.On(driver.WorkingTime).SetProperty("TaskCollection").To(updatedTasks);
+
+            driver.TaskCollection = updatedTasks;
+        }
+        [Test]
         public void TimeLogDate()
         {
             Assert.AreEqual(DateTime.Now.ToString("yyyy-MM-dd"), driver.TimeLogDate);
@@ -248,6 +285,15 @@ namespace LifeIdea.LazyCure.Core
             VerifyAllExpectationsHaveBeenMet();
         }
         [Test]
+        public void TimeOnWork()
+        {
+            driver.WorkingTime = NewMock<IWorkingTimeManager>();
+            Expect.AtLeastOnce.On(driver.WorkingTime).GetProperty("TimeOnWork").Will(Return.Value(TimeSpan.MaxValue));
+            
+            Assert.AreEqual(TimeSpan.MaxValue, driver.TimeOnWork);
+            VerifyAllExpectationsHaveBeenMet();
+        }
+        [Test]
         public void TimeToUpdateTimeLogUsesTimeManager()
         {
             driver.TimeManager = NewMock<ITimeManager>();
@@ -261,9 +307,18 @@ namespace LifeIdea.LazyCure.Core
         [Test]
         public void WorkingActivitiesTime()
         {
-            driver.TasksSummary = NewMock<ITasksSummary>();
-            Expect.Once.On(driver.TasksSummary).GetProperty("WorkingTasksTime").Will(Return.Value(TimeSpan.Parse("0:15")));
+            driver.WorkingTime = NewMock<IWorkingTimeManager>();
+            Expect.Once.On(driver.WorkingTime).GetProperty("WorkingTasksTime").Will(Return.Value(TimeSpan.Parse("0:15")));
             Assert.AreEqual(TimeSpan.Parse("0:15"),driver.WorkingActivitiesTime);
+        }
+        [Test]
+        public void WorkingTimeIntervalsDataUsesWorkingTimeIntervals()
+        {
+            driver.WorkingTime = NewMock<IWorkingTimeManager>();
+            DataTable test = new DataTable("test");
+            Expect.Once.On(driver.WorkingTime).GetProperty("Intervals").Will(Return.Value(test));
+            
+            Assert.AreEqual(test, driver.WorkingTimeIntervalsData);
             VerifyAllExpectationsHaveBeenMet();
         }
         [Test]

@@ -8,16 +8,21 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System;
+using System.CodeDom.Compiler;
+using System.Configuration;
+using System.Diagnostics;
+using System.Runtime.CompilerServices;
 using LifeIdea.LazyCure.Interfaces;
 
 namespace LifeIdea.LazyCure.Properties {
     
     
-    [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "8.0.0.0")]
-    public sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase,ISettings {
+    [CompilerGenerated()]
+    [GeneratedCode("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "8.0.0.0")]
+    public sealed partial class Settings : ApplicationSettingsBase,ISettings {
         
-        private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
+        private static Settings defaultInstance = ((Settings)(Synchronized(new Settings())));
         
         public static Settings Default {
             get {
@@ -25,9 +30,9 @@ namespace LifeIdea.LazyCure.Properties {
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("TimeLogs")]
+        [UserScopedSetting()]
+        [DebuggerNonUserCode()]
+        [DefaultSettingValue("TimeLogs")]
         public string TimeLogsFolder {
             get {
                 return ((string)(this["TimeLogsFolder"]));
@@ -37,9 +42,9 @@ namespace LifeIdea.LazyCure.Properties {
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [UserScopedSetting()]
+        [DebuggerNonUserCode()]
+        [DefaultSettingValue("True")]
         public bool SaveAfterDone {
             get {
                 return ((bool)(this["SaveAfterDone"]));
@@ -49,9 +54,9 @@ namespace LifeIdea.LazyCure.Properties {
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("30")]
+        [UserScopedSetting()]
+        [DebuggerNonUserCode()]
+        [DefaultSettingValue("30")]
         public int MaxActivitiesInHistory {
             get {
                 return ((int)(this["MaxActivitiesInHistory"]));
@@ -61,12 +66,12 @@ namespace LifeIdea.LazyCure.Properties {
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("01:00:00")]
-        public global::System.TimeSpan ReminderTime {
+        [UserScopedSetting()]
+        [DebuggerNonUserCode()]
+        [DefaultSettingValue("01:00:00")]
+        public TimeSpan ReminderTime {
             get {
-                return ((global::System.TimeSpan)(this["ReminderTime"]));
+                return ((TimeSpan)(this["ReminderTime"]));
             }
             set {
                 this["ReminderTime"] = value;

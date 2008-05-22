@@ -5,30 +5,40 @@ namespace LifeIdea.LazyCure.Interfaces
 {
     public interface ILazyCureDriver
     {
-        object ActivitiesSummaryData { get;}
+        object ActivitiesSummaryData { get; }
 
         TimeSpan AllActivitiesTime { get; }
 
-        IActivity CurrentActivity { get;}
+        bool CalculateAutomaticallyWorkingIntervals { set; }
 
-        string[] LatestActivities { get;}
+        IActivity CurrentActivity { get; }
 
-        TreeNode[] TasksNodes{ get;}
+        double Efficiency { get; }
+
+        string[] LatestActivities { get; }
+
+        TimeSpan PossibleWorkInterruptionDuration { get; set; }
+
+        TreeNode[] TasksNodes { get; }
 
         object TasksSummaryData { get; }
 
-        object TimeLogData { get;}
+        object TimeLogData { get; }
 
-        string TimeLogDate { get;}
+        string TimeLogDate { get; }
 
-        string TimeLogsFolder { get;}
+        string TimeLogsFolder { get; }
+
+        TimeSpan TimeOnWork { get; }
 
         bool TimeToUpdateTimeLog { get; }
 
         TimeSpan WorkingActivitiesTime { get; }
 
+        Object WorkingTimeIntervalsData { get; }
+
         void ApplySettings(ISettings settings);
-        
+
         void FinishActivity(string finishedActivity, string nextActivity);
 
         bool IsWorkingTask(string SelectedTask);

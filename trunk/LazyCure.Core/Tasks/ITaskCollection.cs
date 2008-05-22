@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace LifeIdea.LazyCure.Core.Tasks
 {
-    public interface ITaskCollection:IEnumerable<Task>
+    public interface ITaskCollection:IEnumerable<Task>,ITaskActivityLinker
     {
         void Add(Task task);
 

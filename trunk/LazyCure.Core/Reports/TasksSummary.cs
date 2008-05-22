@@ -29,25 +29,6 @@ namespace LifeIdea.LazyCure.Core.Reports
             get { return dataTable; }
         }
 
-        public TimeSpan WorkingTasksTime
-        {
-            get
-            {
-                Calculate();
-                TimeSpan result = TimeSpan.Zero;
-                foreach (DataRow row in dataTable.Rows)
-                {
-                    string taskName = row["Task"] as string;
-                    if (taskName != null)
-                    {
-                        if (taskCollection.IsWorking(taskName))
-                            result += (TimeSpan) row["Spent"];
-                    }
-                }
-                return result;
-            }
-        }
-
         public ITaskCollection TaskCollection
         {
             set { taskCollection = value; }

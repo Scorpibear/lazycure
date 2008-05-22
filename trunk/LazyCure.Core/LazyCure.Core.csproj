@@ -43,10 +43,14 @@
     <Compile Include="Activities\ActivitySerializer.cs" />
     <Compile Include="IO\FileManager.cs" />
     <Compile Include="IO\IFileManager.cs" />
+    <Compile Include="Reports\EfficiencyCalculator.cs" />
     <Compile Include="Reports\IActivitiesSummary.cs" />
     <Compile Include="Reports\IDataProvider.cs" />
+    <Compile Include="Reports\IEfficiencyCalculator.cs" />
     <Compile Include="Reports\ITasksSummary.cs" />
+    <Compile Include="Reports\IWorkingTimeManager.cs" />
     <Compile Include="Reports\TasksSummary.cs" />
+    <Compile Include="Reports\WorkingTime.cs" />
     <Compile Include="Tasks\ITaskCollection.cs" />
     <Compile Include="Tasks\ITaskActivityLinker.cs" />
     <Compile Include="Tasks\TaskCollectionSerializer.cs" />

@@ -48,7 +48,9 @@
     <Compile Include="Core\Activities\ActivitySerializerTest.cs" />
     <Compile Include="Core\Activities\RunningActivityTest.cs" />
     <Compile Include="Core\IO\FileManagerTest.cs" />
+    <Compile Include="Core\Reports\EfficiencyCalculatorTest.cs" />
     <Compile Include="Core\Reports\TasksSummaryTest.cs" />
+    <Compile Include="Core\Reports\WorkingTimeTest.cs" />
     <Compile Include="Core\Tasks\TaskCollectionSerializerTest.cs" />
     <Compile Include="Core\Tasks\TaskSerializerTest.cs" />
     <Compile Include="Core\Time\TimeManagerTest.cs" />
@@ -60,7 +62,6 @@
     <Compile Include="Core\Activities\ActivitiesHistoryTest.cs" />
     <Compile Include="Core\DriverTest.cs" />
     <Compile Include="Core\IO\LogTest.cs" />
-    <Compile Include="UI\MainTest.cs" />
     <Compile Include="Core\Tasks\TaskTest.cs" />
     <Compile Include="Core\Time\TimeLogTest.cs" />
   </ItemGroup>
@@ -84,6 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
+    <Folder Include="UI\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
