@@ -144,7 +144,7 @@ namespace LifeIdea.LazyCure.Core.Time
         {
             Stub.On(mockTimeLog).GetProperty("Activities").Will(Return.Value(new List<IActivity>()));
             XmlNode data = TimeLogSerializer.Serialize(mockTimeLog)["LazyCureData"];
-            Assert.AreEqual("3.1", data.Attributes["LazyCureVersion"].Value);
+            Assert.AreEqual("3.2", data.Attributes["LazyCureVersion"].Value);
         }
     }
 }
