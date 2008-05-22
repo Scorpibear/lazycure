@@ -1,12 +1,19 @@
+LazyCure 3.2
+* New: Personal efficiency calculation.
+* Fixed: Show summary spent time for selected activities functionality recovered (was in LazyCure 2.5).
+* Fixed: An exception occurs after double click on 'Task' header.
+* Fixed: Grid does not fill empty space when Summary is resized.
+* Fixed: When activity-task link is changed, old link is not removed.
+
 LazyCure 3.1.8
-* New: Summary time by tasks
+* New: Summary time by tasks.
 * New: Activate main form by hotkey Ctrl+F12.
 * New: Notification by flashing icon in tray after long time of inactivity.
 * Fixed: Functionality from LazyCure 2.5 was recovered.
 
 LazyCure 3.0.2.2
-* New: status bar shows current time
-* Improved: design reworked
+* New: status bar shows current time.
+* Improved: design reworked.
 
 LazyCure 2.5
 * New: Convenient hiding and showing application by clicking on icon. 
@@ -22,19 +29,19 @@ LazyCure 2.5
 * Fixed: Bug with autosaving was fixed. 
 
 LazyCure 2.4
-* New: possibility to calc summary time of selected activities
-* New: time for working activities is displayed
-* Improved: odd 'task' column is removed from time log
-* Improved: summary screen
-* Fixed: removed empty tabs from summary screen
+* New: possibility to calc summary time of selected activities.
+* New: time for working activities is displayed.
+* Improved: odd 'task' column is removed from time log.
+* Improved: summary screen.
+* Fixed: removed empty tabs from summary screen.
 
 LazyCure 2.3
-* New: summary for activities
+* New: summary for activities.
 
 LazyCure 2.2.4
 * New: tasks are saved in xml file.
 * New: possibility to reuse names of already used activities.
-* New: link to article "How to triple your productivity"
+* New: link to article "How to triple your productivity".
 
 LazyCure 2.1
 * New: Ability to select time logs folder.
@@ -52,4 +59,4 @@ LazyCure 1.10
 * Notification after resting too long.
 * Autosave after finishing activity.
 * Posibility to open time log.
-* Application options
+* Application options.
