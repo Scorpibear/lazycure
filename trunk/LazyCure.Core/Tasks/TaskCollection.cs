@@ -82,6 +82,9 @@ namespace LifeIdea.LazyCure.Core.Tasks
             Task task = GetTask(taskName);
             if (task == null)
                 return false;
+            Task previousTask = GetTask(GetRelatedTaskName(activityName));
+            if (previousTask != null)
+                previousTask.RelatedActivities.Remove(activityName);
             task.RelatedActivities.Add(activityName);
             return true;
         }
