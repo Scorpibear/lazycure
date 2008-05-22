@@ -87,6 +87,15 @@ namespace LifeIdea.LazyCure.Core.Tasks
             Assert.IsTrue(task.RelatedActivities.Contains("activity1"));
         }
         [Test]
+        public void UpdateLink()
+        {
+            tasks = TaskCollection.Default;
+            tasks.LinkActivityAndTask("thinking", "Work");
+            tasks.LinkActivityAndTask("thinking", "Rest");
+
+            Assert.AreEqual("Rest", tasks.GetRelatedTaskName("thinking"));
+        }
+        [Test]
         public void GetRelatedTask()
         {
             Task task = new Task("task1");
