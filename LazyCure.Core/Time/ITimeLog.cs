@@ -10,5 +10,6 @@ namespace LifeIdea.LazyCure.Core.Time
         List<IActivity> Activities { get;}
         void AddActivity(IActivity activity);
         DateTime Date { get; set;}
+        string FileName { get; set;}
     }
 }

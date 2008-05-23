@@ -13,6 +13,7 @@ namespace LifeIdea.LazyCure.Core.Time
     {
         private readonly DataTable data;
         private DateTime date;
+        private string filename = null;
         private bool isChanging = false;
 
         public TimeLog(DateTime date)
@@ -31,23 +32,7 @@ namespace LifeIdea.LazyCure.Core.Time
             data.ColumnChanging += data_ColumnChanging;
         }
         
-        public DateTime Date
-        {
-            get { return date; }
-            set { date = value.Date;}
-        }
-
         #region ITimeLog Members
-
-        public void AddActivity(IActivity activity)
-        {
-            AddActivity(activity.Name,activity.StartTime,activity.Duration);
-        }
-
-        public DataTable Data
-        {
-            get { return data; }
-        }
 
         public List<IActivity> Activities
         {
@@ -59,9 +44,9 @@ namespace LifeIdea.LazyCure.Core.Time
                     if (row["Duration"] != DBNull.Value)
                     {
                         IActivity activity = new Activity(
-                            (string) row["Activity"],
-                            (DateTime) row["Start"],
-                            (TimeSpan) row["Duration"]
+                            (string)row["Activity"],
+                            (DateTime)row["Start"],
+                            (TimeSpan)row["Duration"]
                             );
                         activities.Add(activity);
                     }
@@ -76,6 +61,28 @@ namespace LifeIdea.LazyCure.Core.Time
                     AddActivity(activity.Name, activity.StartTime, activity.Duration);
                 }
             }
+        }
+
+        public void AddActivity(IActivity activity)
+        {
+            AddActivity(activity.Name,activity.StartTime,activity.Duration);
+        }
+
+        public DataTable Data
+        {
+            get { return data; }
+        }
+
+        public DateTime Date
+        {
+            get { return date; }
+            set { date = value.Date; }
+        }
+
+        public string FileName
+        {
+            get { return filename; }
+            set { filename = value; }
         }
 
         #endregion

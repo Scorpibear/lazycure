@@ -12,7 +12,7 @@ namespace LifeIdea.LazyCure.Core.IO
     {
         private FileManager fileManager;
         private string filename = null;
-        private readonly string sContent = "<?xml version=\"1.0\" standalone=\"yes\"?><LazyCureData Date=\"2102-03-12\"><Records>" +
+        private readonly string content = "<?xml version=\"1.0\" standalone=\"yes\"?><LazyCureData Date=\"2102-03-12\"><Records>" +
                   "<Activity>changed</Activity><Begin>14:35:02</Begin><Duration>0:00:07</Duration>" +
                   "</Records></LazyCureData>";
         [SetUp]
@@ -97,7 +97,7 @@ namespace LifeIdea.LazyCure.Core.IO
         public void GetNotNullTimeLog()
         {
             filename = "GetNotNullTimeLog.timelog";
-            File.WriteAllText(filename, sContent);
+            File.WriteAllText(filename, content);
 
             ITimeLog timeLog = fileManager.GetTimeLog(filename);
             Assert.IsNotNull(timeLog);
@@ -114,7 +114,7 @@ namespace LifeIdea.LazyCure.Core.IO
         public void GetTimeLogGetDateFromFileName()
         {
             filename = "2013-12-21.timelog";
-            File.WriteAllText(filename,sContent);
+            File.WriteAllText(filename,content);
 
             ITimeLog timeLog = fileManager.GetTimeLog(filename);
             Assert.AreEqual("2013-12-21",timeLog.Date.ToString("yyyy-MM-dd"));
@@ -123,7 +123,7 @@ namespace LifeIdea.LazyCure.Core.IO
         public void GetTimeLogDateFromXmlIfFileNameIsNotDate()
         {
             filename = "TimeLog~1.timelog";
-            File.WriteAllText(filename, sContent);
+            File.WriteAllText(filename, content);
 
             ITimeLog timeLog = fileManager.GetTimeLog(filename);
 
@@ -145,6 +145,20 @@ namespace LifeIdea.LazyCure.Core.IO
             ITimeLog timeLog = new TimeLog(DateTime.Now);
             fileManager.SaveTimeLog(timeLog, "SaveTimeLog.tmp");
             Assert.IsTrue(File.Exists("SaveTimeLog.tmp"));
+        }
+        [Test]
+        public void GetTimeLogFileNameForSpecifiedTimeLog()
+        {
+            ITimeLog timeLog = NewMock<ITimeLog>();
+            Expect.AtLeastOnce.On(timeLog).GetProperty("FileName").Will(Return.Value("test.time.log"));
+            Assert.AreEqual("test.time.log", fileManager.GetTimeLogFileName(timeLog));
+        }
+        [Test]
+        public void GetTimeLogSaveFileName()
+        {
+            File.WriteAllText("GetTimeLog.SaveFileName", content);
+            ITimeLog timeLog = fileManager.GetTimeLog("GetTimeLog.SaveFileName");
+            Assert.AreEqual("GetTimeLog.SaveFileName", timeLog.FileName);
         }
     }
 }
