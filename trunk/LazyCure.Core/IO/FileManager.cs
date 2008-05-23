@@ -80,6 +80,7 @@ namespace LifeIdea.LazyCure.Core.IO
                 DateTime date = Utilities.GetDateFromFileName(filename);
                 if (date != DateTime.MinValue)
                     timeLog.Date = date;
+                timeLog.FileName = filename;
                 return timeLog;
             }
             else
@@ -113,7 +114,7 @@ namespace LifeIdea.LazyCure.Core.IO
                 Log.Error("TimeLogsFolder is not specified");
                 return false;
             }
-            return SaveTimeLog(timeLog, GetTimeLogFileName(timeLog.Date));
+            return SaveTimeLog(timeLog, GetTimeLogFileName(timeLog));
         }
 
         public bool SaveTimeLog(ITimeLog timeLog, string filename)
@@ -136,6 +137,14 @@ namespace LifeIdea.LazyCure.Core.IO
         }
 
         #endregion IFileManager Members
+
+        public string GetTimeLogFileName(ITimeLog timeLog)
+        {
+            if (timeLog.FileName != null)
+                return timeLog.FileName;
+            else
+                return GetTimeLogFileName(timeLog.Date);
+        }
 
         public string GetTimeLogFileName(DateTime date)
         {
