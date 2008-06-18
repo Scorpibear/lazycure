@@ -30,6 +30,12 @@ namespace LifeIdea.LazyCure.Core.Time
             data.Columns.Add("End", Type.GetType("System.DateTime"));
 
             data.ColumnChanging += data_ColumnChanging;
+            data.ColumnChanged += data_ColumnChanged;
+        }
+
+        void data_ColumnChanged(object sender, DataColumnChangeEventArgs e)
+        {
+            Data.AcceptChanges();
         }
         
         #region ITimeLog Members
