@@ -130,6 +130,15 @@ namespace LifeIdea.LazyCure.Core.IO
             Assert.AreEqual("2102-03-12", timeLog.Date.ToString("yyyy-MM-dd"));
         }
         [Test]
+        public void GetTasksWhenThereIsNoTasksFile()
+        {
+            Log.Writer = new StringWriter();
+            File.Delete(fileManager.TasksFileName);
+            ITaskCollection taskCollection = fileManager.GetTasks();
+            Assert.IsNull(taskCollection);
+            Assert.AreEqual("", Log.Writer.ToString());
+        }
+        [Test]
         public void GetTasksReturnsWhatWasSaved()
         {
             ITaskCollection taskCollection = new TaskCollection();

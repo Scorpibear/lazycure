@@ -91,10 +91,18 @@ namespace LifeIdea.LazyCure.Core.Reports
             }
         }
 
-
         public DataTable Intervals
         {
             get { return table; }
+        }
+
+        public bool IsWorkingActivity(IActivity activity)
+        {
+            string task = taskCollection.GetRelatedTaskName(activity.Name);
+            if (task != null)
+                return taskCollection.IsWorking(task);
+            else
+                return false;
         }
 
         private void CreateTable()
@@ -137,11 +145,6 @@ namespace LifeIdea.LazyCure.Core.Reports
                 table.Rows.Add(start, end);
                 start = DateTime.MinValue;
             }
-        }
-
-        private bool IsWorkingActivity(IActivity activity)
-        {
-            return taskCollection.IsWorking(taskCollection.GetRelatedTaskName(activity.Name));
         }
 
         private void TimeLogData_RowChanged(object sender, DataRowChangeEventArgs e)

@@ -53,19 +53,22 @@ namespace LifeIdea.LazyCure.Core.IO
         {
             StreamReader reader = null;
             ITaskCollection taskCollection = null;
-            try
+            if (File.Exists(TasksFileName))
             {
-                reader = File.OpenText(TasksFileName);
-                taskCollection = TaskCollectionSerializer.Deserialize(reader);
-            }
-            catch (Exception ex)
-            {
-                Log.Exception(ex);
-            }
-            finally
-            {
-                if(reader!=null)
-                    reader.Close();
+                try
+                {
+                    reader = File.OpenText(TasksFileName);
+                    taskCollection = TaskCollectionSerializer.Deserialize(reader);
+                }
+                catch (Exception ex)
+                {
+                    Log.Exception(ex);
+                }
+                finally
+                {
+                    if (reader != null)
+                        reader.Close();
+                }
             }
             return taskCollection;        
         }
