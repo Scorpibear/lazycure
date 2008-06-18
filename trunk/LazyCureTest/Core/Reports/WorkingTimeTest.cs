@@ -7,6 +7,8 @@ using LifeIdea.LazyCure.Core.Time;
 using LifeIdea.LazyCure.Interfaces;
 using NMock2;
 using NUnit.Framework;
+using LifeIdea.LazyCure.Core.IO;
+using System.IO;
 
 namespace LifeIdea.LazyCure.Core.Reports
 {
@@ -205,6 +207,15 @@ namespace LifeIdea.LazyCure.Core.Reports
             workingTime = new WorkingTime(timeLog, taskCollection);
 
             Assert.AreEqual(DateTime.Parse("9:15"), workingTime.Intervals.Rows[0]["Start"]);
+        }
+        [Test]
+        public void IsWorkingWithNullTaskIsSilent()
+        {
+            Log.Writer = new StringWriter();
+            IActivity activity = NewMock<IActivity>();
+            Stub.On(activity).GetProperty("Name").Will(Return.Value("test"));
+            workingTime.IsWorkingActivity(activity);
+            Assert.AreEqual("", Log.Writer.ToString());
         }
     }
 }
