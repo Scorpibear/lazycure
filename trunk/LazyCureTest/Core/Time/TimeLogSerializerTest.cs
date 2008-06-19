@@ -6,6 +6,7 @@ using System.Xml;
 using LifeIdea.LazyCure.Interfaces;
 using NMock2;
 using NUnit.Framework;
+using System.Reflection;
 
 namespace LifeIdea.LazyCure.Core.Time
 {
@@ -144,7 +145,8 @@ namespace LifeIdea.LazyCure.Core.Time
         {
             Stub.On(mockTimeLog).GetProperty("Activities").Will(Return.Value(new List<IActivity>()));
             XmlNode data = TimeLogSerializer.Serialize(mockTimeLog)["LazyCureData"];
-            Assert.AreEqual("3.2", data.Attributes["LazyCureVersion"].Value);
+            Version version = Assembly.GetAssembly(new Program().GetType()).GetName().Version;
+            Assert.AreEqual(version.Major+"."+version.Minor, data.Attributes["LazyCureVersion"].Value);
         }
     }
 }
