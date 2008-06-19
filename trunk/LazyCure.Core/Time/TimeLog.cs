@@ -35,7 +35,8 @@ namespace LifeIdea.LazyCure.Core.Time
 
         void data_ColumnChanged(object sender, DataColumnChangeEventArgs e)
         {
-            Data.AcceptChanges();
+            if (Data.Rows.Count > 0)
+                Data.AcceptChanges();
         }
         
         #region ITimeLog Members
