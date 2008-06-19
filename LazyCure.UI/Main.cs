@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using LifeIdea.LazyCure.Interfaces;
 using LifeIdea.LazyCure.UI.Properties;
+using System.Collections.Generic;
 
 namespace LifeIdea.LazyCure.UI
 {
@@ -12,6 +13,8 @@ namespace LifeIdea.LazyCure.UI
         private readonly ILazyCureDriver lazyCure;
         private readonly string nextActivity = "(specify what you are doing)";
         private HotKeyManager hotKeyManager = new HotKeyManager();
+        private ToolStripSeparator topSeparatorForActivities = new ToolStripSeparator();
+        private Dictionary<string,ToolStripMenuItem> activitiesMenuItems = new Dictionary<string,ToolStripMenuItem>();
 
         public Main(ILazyCureDriver driver,ISettings settings)
         {
@@ -23,10 +26,11 @@ namespace LifeIdea.LazyCure.UI
             timer.Start();
             SetCaption();
             UpdateCurrentActivity();
+            UpdateContextMenuActivities();
             UpdateActivityStartTime();
             hotKeyManager.Register(this);
         }
-        
+
         public void ViewsVisibilityChanged()
         {
             miTimeLog.Checked = Dialogs.TimeLog.Visible;
@@ -35,6 +39,22 @@ namespace LifeIdea.LazyCure.UI
         }
         
         #region Private Methods
+
+        private void Display()
+        {
+            Show();
+            WindowState = FormWindowState.Normal;
+        }
+
+        private void SwitchActivity(string finishedActivity)
+        {
+            Dialogs.CancelEditTimeLog();
+            lazyCure.FinishActivity(finishedActivity, nextActivity);
+            UpdateCurrentActivity();
+            UpdateContextMenuActivities();
+            UpdateActivityStartTime();
+            currentActivity.SelectAll();
+        }
 
         private void SetCaption()
         {
@@ -47,7 +67,28 @@ namespace LifeIdea.LazyCure.UI
         {
             this.activityStartTime.Text = Format.Time(lazyCure.CurrentActivity.StartTime);
         }
-       
+
+        private void UpdateContextMenuActivities()
+        {
+            if (lazyCure.LatestActivities.Length > 0)
+            {
+                foreach (string activity in lazyCure.LatestActivities)
+                {
+                    ToolStripMenuItem menuItem;
+                    if (activitiesMenuItems.ContainsKey(activity))
+                        menuItem = activitiesMenuItems[activity];
+                    else
+                    {
+                        menuItem = new ToolStripMenuItem(activity);
+                        menuItem.Click += ActivityMenuItem_Click;
+                        activitiesMenuItems.Add(activity, menuItem);
+                    }
+                    contextMenu.Items.Insert(2, menuItem);
+                }
+                contextMenu.Items.Insert(2, topSeparatorForActivities);
+            }
+        }
+
         private void UpdateCurrentActivity()
         {
             currentActivity.Text = nextActivity;
@@ -89,6 +130,15 @@ namespace LifeIdea.LazyCure.UI
 
         #region Event Handlers
 
+        private void ActivityMenuItem_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem menuItem = sender as ToolStripMenuItem;
+            if (menuItem != null)
+            {
+                SwitchActivity(menuItem.Text);
+            }
+        }
+
         private void Link_Click(object sender, EventArgs e)
         {
             string link = (string)((ToolStripItem)sender).Tag;
@@ -106,12 +156,6 @@ namespace LifeIdea.LazyCure.UI
             {
                 Hide();
             }
-        }
-
-        private void Display()
-        {
-            Show();
-            WindowState = FormWindowState.Normal;
         }
 
         private void notifyIcon_DoubleClick(object sender, EventArgs e)
@@ -200,11 +244,7 @@ namespace LifeIdea.LazyCure.UI
         
         private void switchButton_Click(object sender, EventArgs e)
         {
-            Dialogs.CancelEditTimeLog();
-            lazyCure.FinishActivity(this.currentActivity.Text, nextActivity);
-            UpdateCurrentActivity();
-            UpdateActivityStartTime();
-            currentActivity.SelectAll();
+            SwitchActivity(this.currentActivity.Text);
         }
         
         private void timer_Tick(object sender, EventArgs e)
@@ -213,8 +253,6 @@ namespace LifeIdea.LazyCure.UI
             UpdateTrayIcon();
         }
 
-        #endregion Event Handlers
-
         private void Main_FormClosed(object sender, FormClosedEventArgs e)
         {
             hotKeyManager.Unregister(this);
@@ -222,7 +260,7 @@ namespace LifeIdea.LazyCure.UI
 
         private void notifyIcon_MouseClick(object sender, MouseEventArgs e)
         {
-            if(e.Button==MouseButtons.Left)
+            if (e.Button == MouseButtons.Left)
                 Display();
         }
 
@@ -230,5 +268,7 @@ namespace LifeIdea.LazyCure.UI
         {
             Display();
         }
+
+        #endregion Event Handlers
     }
 }

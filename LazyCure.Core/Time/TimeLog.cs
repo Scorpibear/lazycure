@@ -47,14 +47,17 @@ namespace LifeIdea.LazyCure.Core.Time
                 List<IActivity> activities = new List<IActivity>();
                 foreach (DataRow row in data.Rows)
                 {
-                    if (row["Duration"] != DBNull.Value)
+                    if (row.RowState != DataRowState.Deleted)
                     {
-                        IActivity activity = new Activity(
-                            (string)row["Activity"],
-                            (DateTime)row["Start"],
-                            (TimeSpan)row["Duration"]
-                            );
-                        activities.Add(activity);
+                        if (row["Duration"] != DBNull.Value)
+                        {
+                            IActivity activity = new Activity(
+                                (string)row["Activity"],
+                                (DateTime)row["Start"],
+                                (TimeSpan)row["Duration"]
+                                );
+                            activities.Add(activity);
+                        }
                     }
                 }
                 return activities;
