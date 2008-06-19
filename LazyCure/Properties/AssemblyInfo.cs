@@ -17,7 +17,7 @@ using System.Runtime.InteropServices;
    "Alena Batsekina, \r\n" +
    "Dzmitry Kuchko and \r\n" +
    "Irina Rusetskaya.\r\n" +
-    "\r\nThank to all of you who improve your personal efficiency with LazyCure!")]
+    "\r\nThank to all of you who improves your personal efficiency with LazyCure!")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("LifeIdea.org")]
 [assembly: AssemblyProduct("LazyCure")]
