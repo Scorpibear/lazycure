@@ -14,7 +14,6 @@ namespace LifeIdea.LazyCure.Core.Time
         private readonly DataTable data;
         private DateTime date;
         private string filename = null;
-        private bool isChanging = false;
 
         public TimeLog(DateTime date)
         {
@@ -30,15 +29,8 @@ namespace LifeIdea.LazyCure.Core.Time
             data.Columns.Add("End", Type.GetType("System.DateTime"));
 
             data.ColumnChanging += data_ColumnChanging;
-            data.ColumnChanged += data_ColumnChanged;
         }
 
-        void data_ColumnChanged(object sender, DataColumnChangeEventArgs e)
-        {
-            if (Data.Rows.Count > 0)
-                Data.AcceptChanges();
-        }
-        
         #region ITimeLog Members
 
         public List<IActivity> Activities
@@ -123,9 +115,7 @@ namespace LifeIdea.LazyCure.Core.Time
 
         private void data_ColumnChanging(object sender, DataColumnChangeEventArgs e)
         {
-            if (isChanging)
-                return;
-            isChanging = true;
+            data.ColumnChanging -= data_ColumnChanging;
             switch (e.Column.ColumnName)
             {
                 case "Start":
@@ -153,7 +143,7 @@ namespace LifeIdea.LazyCure.Core.Time
                         e.Row["Start"] = (DateTime) e.ProposedValue - (TimeSpan) e.Row["Duration"];
                     break;
             }
-            isChanging = false;
+            data.ColumnChanging += data_ColumnChanging;
         }
 
         private static bool HasValues(object a, object b)

@@ -1,12 +1,14 @@
 using System;
 using System.Windows.Forms;
 using LifeIdea.LazyCure.Interfaces;
+using System.Collections.Generic;
 
 namespace LifeIdea.LazyCure.UI
 {
-    internal partial class TimeLogEditor : View,ITimeLogView
+    internal partial class TimeLogEditor : View, ITimeLogView
     {
         private readonly ILazyCureDriver lazyCure;
+        private List<int> timeColumnsIndeces = new List<int>();
 
         public TimeLogEditor(ILazyCureDriver lazyCure, IMainForm mainForm)
         {
@@ -14,8 +16,11 @@ namespace LifeIdea.LazyCure.UI
             this.lazyCure = lazyCure;
             this.Data = lazyCure.TimeLogData;
             this.mainForm = mainForm;
+            string[] timeColumnsNames = new string[] { "Start", "Duration", "End" };
+            foreach (string columnName in timeColumnsNames)
+                timeColumnsIndeces.Add(timeLogView.Columns[columnName].Index);
         }
-        
+
         public void CancelEdit()
         {
             timeLogView.CancelEdit();
@@ -43,16 +48,16 @@ namespace LifeIdea.LazyCure.UI
                 e.Cancel = true;
             }
             else
-                if (e.ColumnIndex != timeLogView.Columns["Activity"].Index)
+                if (timeColumnsIndeces.Contains(e.ColumnIndex))
                     ShowTimeNotValidMessage(timeLogView.Columns[e.ColumnIndex].Name);
         }
-        
+
         private void ShowTimeNotValidMessage(string column)
         {
             ShowErrorMessage("Please, enter correct time value between 0:00:00 and 23:59:59",
-                    String.Format("Value in '{0}' column is not correct",column));
+                    String.Format("Value in '{0}' column is not correct", column));
         }
-        
+
         private void ShowErrorMessage(string message, string header)
         {
             MessageBox.Show(timeLogView, message, header, MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -64,7 +69,13 @@ namespace LifeIdea.LazyCure.UI
             {
                 lazyCure.Save();
             }
-            base.View_VisibleChanged(sender,e);
+            base.View_VisibleChanged(sender, e);
         }
-   }
+
+        private void timeLogView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            foreach (int columnIndex in timeColumnsIndeces)
+                timeLogView.UpdateCellValue(columnIndex, e.RowIndex);
+        }
+    }
 }

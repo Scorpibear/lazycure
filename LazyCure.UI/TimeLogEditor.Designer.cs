@@ -28,11 +28,11 @@ namespace LifeIdea.LazyCure.UI
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TimeLogEditor));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.timeLogView = new System.Windows.Forms.DataGridView();
             this.Start = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Activity = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,17 +51,18 @@ namespace LifeIdea.LazyCure.UI
             this.End});
             resources.ApplyResources(this.timeLogView, "timeLogView");
             this.timeLogView.Name = "timeLogView";
-            dataGridViewCellStyle8.NullValue = null;
-            this.timeLogView.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.NullValue = null;
+            this.timeLogView.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.timeLogView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.timeLogView_CellEndEdit);
             this.timeLogView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.timeLogView_DataError);
             this.timeLogView.KeyUp += new System.Windows.Forms.KeyEventHandler(this.timeLogView_KeyUp);
             // 
             // Start
             // 
             this.Start.DataPropertyName = "Start";
-            dataGridViewCellStyle5.Format = "T";
-            dataGridViewCellStyle5.NullValue = null;
-            this.Start.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Format = "T";
+            dataGridViewCellStyle1.NullValue = null;
+            this.Start.DefaultCellStyle = dataGridViewCellStyle1;
             resources.ApplyResources(this.Start, "Start");
             this.Start.Name = "Start";
             this.Start.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -77,9 +78,9 @@ namespace LifeIdea.LazyCure.UI
             // Duration
             // 
             this.Duration.DataPropertyName = "Duration";
-            dataGridViewCellStyle6.Format = "T";
-            dataGridViewCellStyle6.NullValue = null;
-            this.Duration.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Format = "T";
+            dataGridViewCellStyle2.NullValue = null;
+            this.Duration.DefaultCellStyle = dataGridViewCellStyle2;
             resources.ApplyResources(this.Duration, "Duration");
             this.Duration.Name = "Duration";
             this.Duration.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -87,8 +88,8 @@ namespace LifeIdea.LazyCure.UI
             // End
             // 
             this.End.DataPropertyName = "End";
-            dataGridViewCellStyle7.Format = "T";
-            this.End.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Format = "T";
+            this.End.DefaultCellStyle = dataGridViewCellStyle3;
             resources.ApplyResources(this.End, "End");
             this.End.Name = "End";
             this.End.Resizable = System.Windows.Forms.DataGridViewTriState.False;
