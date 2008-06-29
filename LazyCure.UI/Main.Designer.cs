@@ -66,6 +66,8 @@ namespace LifeIdea.LazyCure.UI
             this.miContextActivate = new System.Windows.Forms.ToolStripMenuItem();
             this.miSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.miContextExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.miHowToUse = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.statusBar.SuspendLayout();
             this.nowYou.SuspendLayout();
             this.menu.SuspendLayout();
@@ -278,6 +280,8 @@ namespace LifeIdea.LazyCure.UI
             // miHelp
             // 
             this.miHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.miHowToUse,
+            this.toolStripSeparator3,
             this.miOnline,
             this.miSubscribe,
             this.miSubmit,
@@ -372,7 +376,7 @@ namespace LifeIdea.LazyCure.UI
             this.miSeparator,
             this.miContextExit});
             this.contextMenu.Name = "contextMenu";
-            this.contextMenu.Size = new System.Drawing.Size(176, 98);
+            this.contextMenu.Size = new System.Drawing.Size(176, 76);
             // 
             // miContextActivate
             // 
@@ -394,6 +398,19 @@ namespace LifeIdea.LazyCure.UI
             this.miContextExit.Text = "Exit";
             this.miContextExit.Click += new System.EventHandler(this.miExit_Click);
             // 
+            // miHowToUse
+            // 
+            this.miHowToUse.Name = "miHowToUse";
+            this.miHowToUse.Size = new System.Drawing.Size(233, 22);
+            this.miHowToUse.Tag = "LazyCure.html";
+            this.miHowToUse.Text = "&How to use";
+            this.miHowToUse.Click += new System.EventHandler(this.Link_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(230, 6);
+            // 
             // Main
             // 
             this.AcceptButton = this.switchButton;
@@ -412,8 +429,8 @@ namespace LifeIdea.LazyCure.UI
             this.Text = "Main";
             this.TopMost = true;
             this.Deactivate += new System.EventHandler(this.Main_Deactivate);
-            this.Activated += new System.EventHandler(this.Main_Activated);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Main_FormClosed);
+            this.Activated += new System.EventHandler(this.Main_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             this.statusBar.ResumeLayout(false);
             this.statusBar.PerformLayout();
@@ -471,5 +488,7 @@ namespace LifeIdea.LazyCure.UI
         private System.Windows.Forms.ToolStripMenuItem miContextActivate;
         private System.Windows.Forms.ToolStripSeparator miSeparator;
         private System.Windows.Forms.ToolStripMenuItem miContextExit;
+        private System.Windows.Forms.ToolStripMenuItem miHowToUse;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
     }
 }

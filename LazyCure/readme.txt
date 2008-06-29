@@ -17,7 +17,7 @@ If LazyCure does not start, please, verify that:
 	- LazyCure.exe,
 	- LazyCure.Core.dll,
 	- LazyCure.Interfaces.dll,
-	- LazyCure.UI,
+	- LazyCure.UI.dll,
 	- LazyCure.exe.config
 
 The latest LazyCure could be found at http://lazycure.com/.
