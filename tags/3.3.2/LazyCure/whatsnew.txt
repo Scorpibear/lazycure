@@ -1,0 +1,68 @@
+LazyCure 3.3
+* New: Possibility to specify finished activity from tray.
+* Fixed: TimeLogs opened from not-default folder are saved in TimeLogs folder.
+* Fixed: Program writes in log "IsWorking method is called with null".
+* Fixed: Time is calculated only after move cursor or time log reopen.
+
+LazyCure 3.2
+* New: Personal efficiency calculation.
+* Fixed: Show summary spent time for selected activities functionality recovered (was in LazyCure 2.5).
+* Fixed: An exception occurs after double click on 'Task' header.
+* Fixed: Grid does not fill empty space when Summary is resized.
+* Fixed: When activity-task link is changed, old link is not removed.
+
+LazyCure 3.1.8
+* New: Summary time by tasks.
+* New: Activate main form by hotkey Ctrl+F12.
+* New: Notification by flashing icon in tray after long time of inactivity.
+* Fixed: Functionality from LazyCure 2.5 was recovered.
+
+LazyCure 3.0.2.2
+* New: status bar shows current time.
+* Improved: design reworked.
+
+LazyCure 2.5
+* New: Convenient hiding and showing application by clicking on icon. 
+* New: Status bar with spent time summary. 
+* New: Autocomplete when shoosing activity name. 
+* New: Show beginning and duration of current activity. 
+* New: When new log is openning, the opened one is closing. 
+* Improved: Some cosmetic changes. 
+* Improved: Column 'Activity' is shown longer. 
+* Improved: Form size increased. 
+* Improved: Columns header was localized. 
+* Improved: Working time is shown just after openning report. 
+* Fixed: Bug with autosaving was fixed. 
+
+LazyCure 2.4
+* New: possibility to calc summary time of selected activities.
+* New: time for working activities is displayed.
+* Improved: odd 'task' column is removed from time log.
+* Improved: summary screen.
+* Fixed: removed empty tabs from summary screen.
+
+LazyCure 2.3
+* New: summary for activities.
+
+LazyCure 2.2.4
+* New: tasks are saved in xml file.
+* New: possibility to reuse names of already used activities.
+* New: link to article "How to triple your productivity".
+
+LazyCure 2.1
+* New: Ability to select time logs folder.
+* New: Ability to create and edit tasks.
+* New: tasks are loaded from file.
+* Improved: Separate activity properties on activity name, start time and duration.
+* Improved: file is saved as xml.
+
+LazyCure 1.10
+* Ability to track time.
+* Posibility to save time log as txt file.
+* Posibility to edit time log.
+* Customized application color.
+* Notification after working too long.
+* Notification after resting too long.
+* Autosave after finishing activity.
+* Posibility to open time log.
+* Application options.
