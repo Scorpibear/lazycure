@@ -1,8 +1,8 @@
 LazyCure 3.3
-* New: Possibility to specify finished activity from tray
-* Fixed: TimeLogs opened from not-default folder are saved in TimeLogs folder
-* Fixed: Program writes in log "IsWorking method is called with null"
-* Fixed: Time is calculated only after move cursor or time log reopen
+* New: Possibility to specify finished activity from tray.
+* Fixed: TimeLogs opened from not-default folder are saved in TimeLogs folder.
+* Fixed: Program writes in log "IsWorking method is called with null".
+* Fixed: Time is calculated only after move cursor or time log reopen.
 
 LazyCure 3.2
 * New: Personal efficiency calculation.
