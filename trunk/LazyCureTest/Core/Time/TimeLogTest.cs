@@ -35,74 +35,74 @@ namespace LifeIdea.LazyCure.Core.Time
         public void EndCalculation()
         {
             DataRow theRow = timeLog.Data.NewRow();
-            theRow["Start"] = DateTime.Parse("15:11:00");
+            theRow["Start"] = DateTime.Parse("15:11");
             theRow["Activity"] = "test1";
-            theRow["Duration"] = TimeSpan.Parse("0:10:00");
+            theRow["Duration"] = TimeSpan.Parse("0:10");
             timeLog.Data.Rows.Add(theRow);
             Assert.AreEqual(1,timeLog.Data.Rows.Count);
-            Assert.AreEqual(DateTime.Parse("15:21:00"), timeLog.Data.Rows[0]["End"]);
+            Assert.AreEqual(DateTime.Parse("15:21"), timeLog.Data.Rows[0]["End"]);
             theRow = timeLog.Data.NewRow();
-            theRow["Duration"] = TimeSpan.Parse("0:15:00");
-            theRow["Start"] = DateTime.Parse("15:21:00");
+            theRow["Duration"] = TimeSpan.Parse("0:15");
+            theRow["Start"] = DateTime.Parse("15:21");
             theRow["Activity"] = "test2";
             timeLog.Data.Rows.Add(theRow);
             Assert.AreEqual(2, timeLog.Data.Rows.Count);
-            Assert.AreEqual(DateTime.Parse("15:36:00"), timeLog.Data.Rows[1]["End"]);
+            Assert.AreEqual(DateTime.Parse("15:36"), timeLog.Data.Rows[1]["End"]);
         }
         [Test]
         public void StartCalculation()
         {
             DataRow theRow = timeLog.Data.NewRow();
-            theRow["End"] = DateTime.Parse("15:10:00");
+            theRow["End"] = DateTime.Parse("15:10");
             theRow["Activity"] = "test1";
-            theRow["Duration"] = TimeSpan.Parse("0:10:00");
+            theRow["Duration"] = TimeSpan.Parse("0:10");
             timeLog.Data.Rows.Add(theRow);
-            Assert.AreEqual(DateTime.Parse("15:00:00"), timeLog.Data.Rows[0]["Start"]);
+            Assert.AreEqual(DateTime.Parse("15:00"), timeLog.Data.Rows[0]["Start"]);
             theRow = timeLog.Data.NewRow();
             theRow["Activity"] = "test2";
-            theRow["Duration"] = TimeSpan.Parse("0:15:00");
-            theRow["End"] = DateTime.Parse("15:25:00");
+            theRow["Duration"] = TimeSpan.Parse("0:15");
+            theRow["End"] = DateTime.Parse("15:25");
             timeLog.Data.Rows.Add(theRow);
-            Assert.AreEqual(DateTime.Parse("15:10:00"), timeLog.Data.Rows[1]["Start"]);
+            Assert.AreEqual(DateTime.Parse("15:10"), timeLog.Data.Rows[1]["Start"]);
         }
         [Test]
         public void DurationCalculation()
         {
             DataRow theRow = timeLog.Data.NewRow();
-            theRow["Start"] = DateTime.Parse("15:00:00");
-            theRow["End"] = DateTime.Parse("15:10:00");
+            theRow["Start"] = DateTime.Parse("15:00");
+            theRow["End"] = DateTime.Parse("15:10");
             theRow["Activity"] = "test1";
             timeLog.Data.Rows.Add(theRow);
-            Assert.AreEqual(TimeSpan.Parse("0:10:00"), timeLog.Data.Rows[0]["Duration"]);
+            Assert.AreEqual(TimeSpan.Parse("0:10"), timeLog.Data.Rows[0]["Duration"]);
             theRow = timeLog.Data.NewRow();
-            theRow["End"] = DateTime.Parse("15:25:00");
-            theRow["Start"] = DateTime.Parse("15:10:00");
+            theRow["End"] = DateTime.Parse("15:25");
+            theRow["Start"] = DateTime.Parse("15:10");
             theRow["Activity"] = "test1";
             timeLog.Data.Rows.Add(theRow);
-            Assert.AreEqual(TimeSpan.Parse("0:15:00"), timeLog.Data.Rows[1]["Duration"]);
+            Assert.AreEqual(TimeSpan.Parse("0:15"), timeLog.Data.Rows[1]["Duration"]);
     
         }
         [Test]
-        public void ChangeStartEndChanged()
+        public void ChangeStartDurationChanged()
         {
             DataRow theRow = timeLog.Data.NewRow();
-            theRow["Start"] = DateTime.Parse("15:00:00");
+            theRow["Start"] = DateTime.Parse("15:00");
             theRow["Activity"] = "test1";
-            theRow["Duration"] = TimeSpan.Parse("0:10:00");
+            theRow["Duration"] = TimeSpan.Parse("0:10");
             timeLog.Data.Rows.Add(theRow);
-            timeLog.Data.Rows[0]["Start"] = DateTime.Parse("14:30:00");
-            Assert.AreEqual(DateTime.Parse("14:40:00"), timeLog.Data.Rows[0]["End"]);
+            timeLog.Data.Rows[0]["Start"] = DateTime.Parse("14:30");
+            Assert.AreEqual(TimeSpan.Parse("0:40"), timeLog.Data.Rows[0]["Duration"]);
         }
         [Test]
         public void ChangeDurationEndChanged()
         {
             DataRow theRow = timeLog.Data.NewRow();
-            theRow["Start"] = DateTime.Parse("15:00:00");
+            theRow["Start"] = DateTime.Parse("15:00");
             theRow["Activity"] = "test1";
-            theRow["Duration"] = TimeSpan.Parse("0:10:00");
+            theRow["Duration"] = TimeSpan.Parse("0:10");
             timeLog.Data.Rows.Add(theRow);
-            timeLog.Data.Rows[0]["Duration"] = TimeSpan.Parse("0:15:00");
-            Assert.AreEqual(DateTime.Parse("15:15:00"), timeLog.Data.Rows[0]["End"]);
+            timeLog.Data.Rows[0]["Duration"] = TimeSpan.Parse("0:15");
+            Assert.AreEqual(DateTime.Parse("15:15"), timeLog.Data.Rows[0]["End"]);
         }
         [Test]
         public void ChangeEndDurationChanged()
@@ -137,11 +137,11 @@ namespace LifeIdea.LazyCure.Core.Time
         public void CalcDurationAtTheEndOfDay()
         {
             DataRow row = timeLog.Data.NewRow();
-            row["Start"] = DateTime.Parse("23:00:00");
+            row["Start"] = DateTime.Parse("23:00");
             row["Activity"] = "activity";
-            row["End"] = DateTime.Parse("0:00:00");
+            row["End"] = DateTime.Parse("0:00");
             timeLog.Data.Rows.Add(row);
-            Assert.AreEqual(TimeSpan.Parse("1:00:00"),timeLog.Activities[0].Duration);
+            Assert.AreEqual(TimeSpan.Parse("1:00"),timeLog.Activities[0].Duration);
         }
         [Test]
         public void Equal()
