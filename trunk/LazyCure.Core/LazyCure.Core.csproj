@@ -58,6 +58,7 @@
     <Compile Include="Time\ITimeLog.cs" />
     <Compile Include="Activities\RunningActivity.cs" />
     <Compile Include="Driver.cs" />
+    <Compile Include="Time\ITimeLogsManager.cs" />
     <Compile Include="Time\ITimeManager.cs" />
     <Compile Include="Time\ITimeSystem.cs" />
     <Compile Include="IO\Log.cs" />
