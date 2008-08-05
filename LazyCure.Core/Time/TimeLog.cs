@@ -119,10 +119,10 @@ namespace LifeIdea.LazyCure.Core.Time
             switch (e.Column.ColumnName)
             {
                 case "Start":
-                    if (HasValues(e.ProposedValue, e.Row["Duration"]))
+                    if (HasValues(e.Row["End"], e.ProposedValue))
+                        e.Row["Duration"] = (DateTime)e.Row["End"] - (DateTime)e.ProposedValue;
+                    else if (HasValues(e.ProposedValue, e.Row["Duration"]))
                         e.Row["End"] = (DateTime) e.ProposedValue + (TimeSpan) e.Row["Duration"];
-                    else if (HasValues(e.Row["End"], e.ProposedValue))
-                        e.Row["Duration"] = (DateTime) e.Row["End"] - (DateTime) e.ProposedValue;
                     break;
                 case "Duration":
                     if (HasValues(e.Row["Start"], e.ProposedValue))
