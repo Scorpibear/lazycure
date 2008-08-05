@@ -12,7 +12,7 @@ namespace LifeIdea.LazyCure.Core
     /// <summary>
     /// Initialize required for LazyCure work objects. Provide data to UI forms.
     /// </summary>
-    public class Driver : ILazyCureDriver
+    public class Driver : ILazyCureDriver, ITimeLogsManager
     {
         #region Fields
 
@@ -91,8 +91,7 @@ namespace LifeIdea.LazyCure.Core
 
         public Driver(ITimeSystem timeSystem)
         {
-            timeManager = new TimeManager(timeSystem);
-            timeManager.TimeLog = new TimeLog(timeSystem.Now.Date);
+            timeManager = new TimeManager(timeSystem, this);
             activitiesSummary = new ActivitiesSummary(TimeManager.TimeLog, TaskCollection);
             tasksSummary = new TasksSummary(activitiesSummary.Data, TaskCollection);
             history = new ActivitiesHistory();
@@ -207,14 +206,19 @@ namespace LifeIdea.LazyCure.Core
             ITimeLog loadedTimeLog = fileManager.GetTimeLog(filename);
             if (loadedTimeLog != null)
             {
-                TimeManager.TimeLog = loadedTimeLog;
-                activitiesSummary.TimeLog = loadedTimeLog;
-                activitiesSummary.Update();
-                workingTime.TimeLog = loadedTimeLog;
+                UpdateTimeLogReferencies(loadedTimeLog);
                 return true;
             }
             else
                 return false;
+        }
+
+        public void UpdateTimeLogReferencies(ITimeLog timeLog)
+        {
+            TimeManager.TimeLog = timeLog;
+            activitiesSummary.TimeLog = TimeManager.TimeLog;
+            activitiesSummary.Update();
+            workingTime.TimeLog = TimeManager.TimeLog;
         }
 
         public bool LoadTimeLog(DateTime date)

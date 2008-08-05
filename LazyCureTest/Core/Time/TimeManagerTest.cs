@@ -2,6 +2,7 @@ using System;
 using LifeIdea.LazyCure.Interfaces;
 using NMock2;
 using NUnit.Framework;
+using LifeIdea.LazyCure.Core.Activities;
 
 namespace LifeIdea.LazyCure.Core.Time
 {
@@ -122,6 +123,81 @@ namespace LifeIdea.LazyCure.Core.Time
 
             timeManager.FinishActivity("first", "second");
 
+            VerifyAllExpectationsHaveBeenMet();
+        }
+        [Test]
+        public void TimeLogIsSwitchedAtMidnight()
+        {
+            ITimeSystem mockTime = NewMock<ITimeSystem>();
+            using (Ordered)
+            {
+                Expect.Once.On(mockTime).GetProperty("Now").Will(Return.Value(DateTime.Parse("2008-08-07 23:59:55")));
+                Expect.Once.On(mockTime).GetProperty("Now").Will(Return.Value(DateTime.Parse("2008-08-08 0:00:06")));
+            }
+            ITimeLogsManager timeLogsManager = NewMock<ITimeLogsManager>();
+            Expect.Once.On(timeLogsManager).Method("Save").Will(Return.Value(true));
+            Expect.Once.On(timeLogsManager).Method(Is.Anything);
+            ITimeLog timeLog1 = new TimeLog(DateTime.Now);
+            timeManager = new TimeManager(mockTime, timeLogsManager, timeLog1);
+            timeManager.FinishActivity("first", "second");
+            Assert.AreEqual(DateTime.Parse("2008-08-08"),timeManager.TimeLog.Date);
+            Assert.AreNotEqual(timeLog1, timeManager.TimeLog);
+        }
+        [Test]
+        public void AfterMidnightActivityIsCut()
+        {
+            ITimeSystem mockTime = NewMock<ITimeSystem>();
+            using (Ordered)
+            {
+                Expect.Once.On(mockTime).GetProperty("Now").Will(Return.Value(DateTime.Parse("2008-08-07 23:59:55")));
+                Expect.Once.On(mockTime).GetProperty("Now").Will(Return.Value(DateTime.Parse("2008-08-08 0:00:06")));
+            }
+            ITimeLogsManager timeLogsManager = NewMock<ITimeLogsManager>();
+            ITimeLog timeLog1 = NewMock<ITimeLog>();
+            Expect.Once.On(timeLog1).Method("AddActivity").With(new Activities.Activity("first", DateTime.Parse("2008-08-07 23:59:55"), TimeSpan.Parse("0:00:05")));
+            Stub.On(timeLogsManager).Method("Save").Will(Return.Value(true));
+            Stub.On(timeLogsManager).Method(Is.Anything);
+            timeManager = new TimeManager(mockTime, timeLogsManager, timeLog1);
+            timeManager.FinishActivity("first", "second");
+
+            VerifyAllExpectationsHaveBeenMet();
+        }
+        [Test]
+        public void AfterMidnightNewLogContainsOneRecord()
+        {
+            ITimeSystem mockTime = NewMock<ITimeSystem>();
+            using (Ordered)
+            {
+                Expect.Once.On(mockTime).GetProperty("Now").Will(Return.Value(DateTime.Parse("2008-08-07 23:59:55")));
+                Expect.Once.On(mockTime).GetProperty("Now").Will(Return.Value(DateTime.Parse("2008-08-08 0:00:06")));
+            }
+            ITimeLogsManager timeLogsManager = NewMock<ITimeLogsManager>();
+            Stub.On(timeLogsManager).Method("Save").Will(Return.Value(true));
+            Stub.On(timeLogsManager).Method(Is.Anything);
+            timeManager = new TimeManager(mockTime, timeLogsManager,new TimeLog(DateTime.Now));
+            timeManager.FinishActivity("first", "second");
+            Assert.AreEqual(1, timeManager.TimeLog.Activities.Count, "1 activity");
+            Assert.AreEqual(new Activity("first",DateTime.Parse("2008-08-08 0:00:00"),TimeSpan.Parse("0:00:06")), timeManager.TimeLog.Activities[0]);
+        }
+        [Test]
+        public void SwitchAtMidnightWithoutTimeLogsManager()
+        {
+            ITimeSystem mockTime = NewMock<ITimeSystem>();
+            using (Ordered)
+            {
+                Expect.Once.On(mockTime).GetProperty("Now").Will(Return.Value(DateTime.Parse("2008-08-07 23:59:55")));
+                Expect.Once.On(mockTime).GetProperty("Now").Will(Return.Value(DateTime.Parse("2008-08-08 0:00:06")));
+            }
+            timeManager = new TimeManager(mockTime);
+            timeManager.TimeLog = new TimeLog(DateTime.Now);
+            timeManager.SwitchTo("next");
+        }
+        [Test]
+        public void AtMidnightReferenciesUpdated()
+        {
+            timeManager.TimeLogsManager = NewMock<ITimeLogsManager>();
+            Expect.Once.On(timeManager.TimeLogsManager).Method("UpdateTimeLogReferencies");
+            timeManager.PerformMidnightCorrection(DateTime.Now);
             VerifyAllExpectationsHaveBeenMet();
         }
     }
