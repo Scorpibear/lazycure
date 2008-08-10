@@ -41,6 +41,8 @@ namespace LifeIdea.LazyCure.Interfaces
 
         void FinishActivity(string finishedActivity, string nextActivity);
 
+        string GetUniqueActivityName();
+
         bool IsWorkingTask(string SelectedTask);
 
         bool LoadTimeLog(string filename);

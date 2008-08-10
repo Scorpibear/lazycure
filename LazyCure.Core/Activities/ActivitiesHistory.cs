@@ -11,10 +11,10 @@ namespace LifeIdea.LazyCure.Core.Activities
     public class ActivitiesHistory
     {
         private readonly List<string> activities = new List<string>();
-        
+
         public int MaxActivities = 30;
         public string[] LatestActivities { get { return activities.ToArray(); } }
-        
+
         public void AddActivity(string activity)
         {
             activities.Remove(activity);
@@ -22,7 +22,25 @@ namespace LifeIdea.LazyCure.Core.Activities
             if (activities.Count > MaxActivities)
                 activities.RemoveAt(MaxActivities);
         }
-        
+
+        public bool ContainsActivity(string activityName)
+        {
+            return activities.Contains(activityName);
+        }
+
+        public string GenerateUniqueName()
+        {
+            int i = 1;
+            do
+            {
+                string candidate = "activity" + i.ToString();
+                if (activities.Contains(candidate))
+                    i++;
+                else
+                    return candidate;
+            } while (true);
+        }
+
         public void Load(TextReader reader)
         {
             while (true)
@@ -81,10 +99,6 @@ namespace LifeIdea.LazyCure.Core.Activities
                     writer.Close();
             }
             return true;
-        }
-        public bool ContainsActivity(string activityName)
-        {
-            return activities.Contains(activityName);
         }
     }
 }

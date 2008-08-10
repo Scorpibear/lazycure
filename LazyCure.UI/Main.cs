@@ -10,8 +10,9 @@ namespace LifeIdea.LazyCure.UI
 {
     public partial class Main : Form, IMainForm, IDisposable
     {
+        private const string DefaultActivity = "(specify what you are doing)";
         private readonly ILazyCureDriver lazyCure;
-        private readonly string nextActivity = "(specify what you are doing)";
+        private readonly string nextActivity = DefaultActivity;
         private HotKeyManager hotKeyManager = new HotKeyManager();
         private ToolStripSeparator topSeparatorForActivities = new ToolStripSeparator();
         private Dictionary<string,ToolStripMenuItem> activitiesMenuItems = new Dictionary<string,ToolStripMenuItem>();
@@ -244,7 +245,10 @@ namespace LifeIdea.LazyCure.UI
         
         private void switchButton_Click(object sender, EventArgs e)
         {
-            SwitchActivity(this.currentActivity.Text);
+            string finishedActivity =
+                (this.currentActivity.Text == DefaultActivity) ?
+                lazyCure.GetUniqueActivityName() : this.currentActivity.Text;
+            SwitchActivity(finishedActivity);
         }
         
         private void timer_Tick(object sender, EventArgs e)
