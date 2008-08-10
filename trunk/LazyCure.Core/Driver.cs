@@ -176,6 +176,11 @@ namespace LifeIdea.LazyCure.Core
             }
         }
 
+        public string GetUniqueActivityName()
+        {
+            return History.GenerateUniqueName();
+        }
+
         public bool IsWorkingTask(string SelectedTask)
         {
             return TaskCollection.IsWorking(SelectedTask);

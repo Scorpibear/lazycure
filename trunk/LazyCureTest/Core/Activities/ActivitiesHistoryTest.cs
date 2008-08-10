@@ -122,5 +122,16 @@ namespace LifeIdea.LazyCure.Core.Activities
             Assert.IsTrue(history.ContainsActivity("4"));
             Assert.IsFalse(history.ContainsActivity("5"));
         }
+        [Test]
+        public void GenerateUniqueActivityName()
+        {
+            Assert.AreEqual("activity1", history.GenerateUniqueName());
+        }
+        [Test]
+        public void GenerateNextUnique()
+        {
+            history.AddActivity("activity1");
+            Assert.AreEqual("activity2", history.GenerateUniqueName());
+        }
     }
 }
