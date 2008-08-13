@@ -15,9 +15,9 @@ namespace LifeIdea.LazyCure.UI
         private readonly string nextActivity = DefaultActivity;
         private HotKeyManager hotKeyManager = new HotKeyManager();
         private ToolStripSeparator topSeparatorForActivities = new ToolStripSeparator();
-        private Dictionary<string,ToolStripMenuItem> activitiesMenuItems = new Dictionary<string,ToolStripMenuItem>();
+        private Dictionary<string, ToolStripMenuItem> activitiesMenuItems = new Dictionary<string, ToolStripMenuItem>();
 
-        public Main(ILazyCureDriver driver,ISettings settings)
+        public Main(ILazyCureDriver driver, ISettings settings)
         {
             InitializeComponent();
             this.lazyCure = driver;
@@ -38,13 +38,23 @@ namespace LifeIdea.LazyCure.UI
             miSummary.Checked = Dialogs.Summary.Visible;
             miTasks.Checked = Dialogs.TaskManager.Visible;
         }
-        
+
         #region Private Methods
 
         private void Display()
         {
             Show();
             WindowState = FormWindowState.Normal;
+        }
+
+        private void SaveWithNotification(FormClosingEventArgs e)
+        {
+            if (!lazyCure.Save())
+            {
+                DialogResult result = MessageBox.Show(this, "Time Log could not be saved. Exit from LazyCure anyway?", "Could not save time log", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                if (result == DialogResult.No)
+                    e.Cancel = true;
+            }
         }
 
         private void SwitchActivity(string finishedActivity)
@@ -63,7 +73,7 @@ namespace LifeIdea.LazyCure.UI
             this.Text = String.Format("{0} - {1} {2}.{3}", lazyCure.TimeLogDate, Application.ProductName,
                 versionNumbers[0], versionNumbers[1]);
         }
-        
+
         private void UpdateActivityStartTime()
         {
             this.activityStartTime.Text = Format.Time(lazyCure.CurrentActivity.StartTime);
@@ -166,14 +176,21 @@ namespace LifeIdea.LazyCure.UI
 
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (!lazyCure.Save())
+            if (e.CloseReason == CloseReason.WindowsShutDown)
             {
-                DialogResult result = MessageBox.Show("Time Log could not be saved. Exit from LazyCure anyway?", "Could not save time log", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                DialogResult result = MessageBox.Show(this,
+                    "Do you want to log current activity before LazyCure will be closed?",
+                    "LazyCure is shutting down", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
-                    return;
-                else
+                {
                     e.Cancel = true;
+                    lazyCure.Save();
+                }
+                else
+                    SaveWithNotification(e);
             }
+            else
+                SaveWithNotification(e);
         }
 
         private void miAbout_Click(object sender, EventArgs e)
@@ -242,7 +259,7 @@ namespace LifeIdea.LazyCure.UI
         {
             Dialogs.TimeLog.Visible = miTimeLog.Checked;
         }
-        
+
         private void switchButton_Click(object sender, EventArgs e)
         {
             string finishedActivity =
@@ -250,7 +267,7 @@ namespace LifeIdea.LazyCure.UI
                 lazyCure.GetUniqueActivityName() : this.currentActivity.Text;
             SwitchActivity(finishedActivity);
         }
-        
+
         private void timer_Tick(object sender, EventArgs e)
         {
             UpdateTime();
