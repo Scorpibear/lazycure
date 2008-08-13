@@ -16,6 +16,8 @@ namespace LifeIdea.LazyCure.UI
         private HotKeyManager hotKeyManager = new HotKeyManager();
         private ToolStripSeparator topSeparatorForActivities = new ToolStripSeparator();
         private Dictionary<string, ToolStripMenuItem> activitiesMenuItems = new Dictionary<string, ToolStripMenuItem>();
+        private Size expandedSize;
+        private Size collapsedSize;
 
         public Main(ILazyCureDriver driver, ISettings settings)
         {
@@ -30,6 +32,8 @@ namespace LifeIdea.LazyCure.UI
             UpdateContextMenuActivities();
             UpdateActivityStartTime();
             hotKeyManager.Register(this);
+            expandedSize = Size;
+            collapsedSize = new Size(Size.Width, Size.Height - statusBar.Height);
         }
 
         public void ViewsVisibilityChanged()
@@ -202,9 +206,9 @@ namespace LifeIdea.LazyCure.UI
         {
             statusBar.Visible = miActivityDetails.Checked;
             if (statusBar.Visible)
-                this.Size = new Size(300, 128);
+                this.Size = expandedSize;
             else
-                this.Size = new Size(300, 128 - statusBar.Height);
+                this.Size = collapsedSize;
         }
 
         private void miExit_Click(object sender, EventArgs e)
