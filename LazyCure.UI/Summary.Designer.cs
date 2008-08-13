@@ -32,9 +32,6 @@ namespace LifeIdea.LazyCure.UI
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Summary));
             this.activitiesSummary = new System.Windows.Forms.DataGridView();
-            this.activityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.spentColumnForActivitySummary = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.taskColumnForActivitySummary = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.activities = new System.Windows.Forms.TabPage();
             this.tasks = new System.Windows.Forms.TabPage();
@@ -62,6 +59,9 @@ namespace LifeIdea.LazyCure.UI
             this.workingActivitiesTime = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.activityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.spentColumnForActivitySummary = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.taskColumnForActivitySummary = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.activitiesSummary)).BeginInit();
             this.tabControl.SuspendLayout();
             this.activities.SuspendLayout();
@@ -91,32 +91,6 @@ namespace LifeIdea.LazyCure.UI
             this.activitiesSummary.Size = new System.Drawing.Size(549, 253);
             this.activitiesSummary.TabIndex = 0;
             this.activitiesSummary.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.activitiesSummary_CellDoubleClick);
-            // 
-            // activityColumn
-            // 
-            this.activityColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.activityColumn.DataPropertyName = "Activity";
-            this.activityColumn.HeaderText = "Activity";
-            this.activityColumn.Name = "activityColumn";
-            this.activityColumn.ReadOnly = true;
-            // 
-            // spentColumnForActivitySummary
-            // 
-            this.spentColumnForActivitySummary.DataPropertyName = "Spent";
-            this.spentColumnForActivitySummary.HeaderText = "Spent";
-            this.spentColumnForActivitySummary.Name = "spentColumnForActivitySummary";
-            this.spentColumnForActivitySummary.ReadOnly = true;
-            this.spentColumnForActivitySummary.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.spentColumnForActivitySummary.Width = 50;
-            // 
-            // taskColumnForActivitySummary
-            // 
-            this.taskColumnForActivitySummary.DataPropertyName = "Task";
-            this.taskColumnForActivitySummary.HeaderText = "Task";
-            this.taskColumnForActivitySummary.Name = "taskColumnForActivitySummary";
-            this.taskColumnForActivitySummary.ReadOnly = true;
-            this.taskColumnForActivitySummary.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.taskColumnForActivitySummary.Width = 150;
             // 
             // tabControl
             // 
@@ -421,6 +395,35 @@ namespace LifeIdea.LazyCure.UI
             this.tableLayoutPanel1.Size = new System.Drawing.Size(569, 351);
             this.tableLayoutPanel1.TabIndex = 5;
             // 
+            // activityColumn
+            // 
+            this.activityColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.activityColumn.DataPropertyName = "Activity";
+            this.activityColumn.FillWeight = 65F;
+            this.activityColumn.HeaderText = "Activity";
+            this.activityColumn.Name = "activityColumn";
+            this.activityColumn.ReadOnly = true;
+            // 
+            // spentColumnForActivitySummary
+            // 
+            this.spentColumnForActivitySummary.DataPropertyName = "Spent";
+            this.spentColumnForActivitySummary.FillWeight = 10F;
+            this.spentColumnForActivitySummary.HeaderText = "Spent";
+            this.spentColumnForActivitySummary.Name = "spentColumnForActivitySummary";
+            this.spentColumnForActivitySummary.ReadOnly = true;
+            this.spentColumnForActivitySummary.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.spentColumnForActivitySummary.Width = 50;
+            // 
+            // taskColumnForActivitySummary
+            // 
+            this.taskColumnForActivitySummary.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.taskColumnForActivitySummary.DataPropertyName = "Task";
+            this.taskColumnForActivitySummary.FillWeight = 35F;
+            this.taskColumnForActivitySummary.HeaderText = "Task";
+            this.taskColumnForActivitySummary.Name = "taskColumnForActivitySummary";
+            this.taskColumnForActivitySummary.ReadOnly = true;
+            this.taskColumnForActivitySummary.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
             // Summary
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -459,9 +462,6 @@ namespace LifeIdea.LazyCure.UI
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabPage tasks;
         private System.Windows.Forms.DataGridView tasksSummary;
-        private System.Windows.Forms.DataGridViewTextBoxColumn activityColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn spentColumnForActivitySummary;
-        private System.Windows.Forms.DataGridViewTextBoxColumn taskColumnForActivitySummary;
         private System.Windows.Forms.DataGridViewTextBoxColumn taskColumnForTasksSummary;
         private System.Windows.Forms.DataGridViewTextBoxColumn spentColumnForTasksSummary;
         private System.Windows.Forms.GroupBox statisticsGroup;
@@ -483,5 +483,8 @@ namespace LifeIdea.LazyCure.UI
         private System.Windows.Forms.DataGridView workingTimeIntervalsGrid;
         private System.Windows.Forms.DataGridViewTextBoxColumn Start;
         private System.Windows.Forms.DataGridViewTextBoxColumn End;
+        private System.Windows.Forms.DataGridViewTextBoxColumn activityColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn spentColumnForActivitySummary;
+        private System.Windows.Forms.DataGridViewTextBoxColumn taskColumnForActivitySummary;
     }
 }
