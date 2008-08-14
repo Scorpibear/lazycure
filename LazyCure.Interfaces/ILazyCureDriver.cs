@@ -47,6 +47,8 @@ namespace LifeIdea.LazyCure.Interfaces
 
         bool LoadTimeLog(string filename);
 
+        void RemoveTask(string task);
+
         bool Save();
 
         bool SaveTimeLog(string filename);

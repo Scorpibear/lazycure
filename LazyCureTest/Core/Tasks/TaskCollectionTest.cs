@@ -87,6 +87,18 @@ namespace LifeIdea.LazyCure.Core.Tasks
             Assert.IsTrue(task.RelatedActivities.Contains("activity1"));
         }
         [Test]
+        public void RemoveTask()
+        {
+            tasks.Add(new Task("ToRemove"));
+            tasks.Remove("ToRemove");
+            Assert.IsFalse(tasks.Contains("ToRemove"));
+        }
+        [Test]
+        public void RemoveNotExistedTask()
+        {
+            tasks.Remove("NotExistent");
+        }
+        [Test]
         public void UpdateLink()
         {
             tasks = TaskCollection.Default;

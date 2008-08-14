@@ -86,6 +86,14 @@ namespace LifeIdea.LazyCure.Core
             Assert.AreEqual(TimeSpan.MaxValue, driver.PossibleWorkInterruptionDuration);
         }
         [Test]
+        public void RemoveTaskCallsTaskCollection()
+        {
+            driver.TaskCollection = NewMock<ITaskCollection>();
+            Expect.Once.On(driver.TaskCollection).Method("Remove").With("ToRemove");
+            driver.RemoveTask("ToRemove");
+            VerifyAllExpectationsHaveBeenMet();
+        }
+        [Test]
         public void SetPossibleWorkInterruptionDuration()
         {
             driver.WorkingTime = NewMock<IWorkingTimeManager>();

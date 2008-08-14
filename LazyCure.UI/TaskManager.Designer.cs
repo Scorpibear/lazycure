@@ -33,8 +33,9 @@ namespace LifeIdea.LazyCure.UI
             this.treeView = new System.Windows.Forms.TreeView();
             this.splitContainer = new System.Windows.Forms.SplitContainer();
             this.isWorkingCheckBox = new System.Windows.Forms.CheckBox();
-            this.addSibling = new System.Windows.Forms.Button();
+            this.addSiblingButton = new System.Windows.Forms.Button();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.deleteButton = new System.Windows.Forms.Button();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
             this.splitContainer.SuspendLayout();
@@ -46,11 +47,12 @@ namespace LifeIdea.LazyCure.UI
             this.treeView.LabelEdit = true;
             this.treeView.Location = new System.Drawing.Point(0, 0);
             this.treeView.Name = "treeView";
-            this.treeView.Size = new System.Drawing.Size(110, 83);
+            this.treeView.Size = new System.Drawing.Size(153, 81);
             this.treeView.TabIndex = 0;
-            this.treeView.AfterLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.treeView_AfterLabelEdit);
             this.treeView.DoubleClick += new System.EventHandler(this.treeView_DoubleClick);
+            this.treeView.AfterLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.treeView_AfterLabelEdit);
             this.treeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_AfterSelect);
+            this.treeView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.treeView_KeyDown);
             // 
             // splitContainer
             // 
@@ -64,10 +66,11 @@ namespace LifeIdea.LazyCure.UI
             // 
             // splitContainer.Panel2
             // 
+            this.splitContainer.Panel2.Controls.Add(this.deleteButton);
             this.splitContainer.Panel2.Controls.Add(this.isWorkingCheckBox);
-            this.splitContainer.Panel2.Controls.Add(this.addSibling);
-            this.splitContainer.Size = new System.Drawing.Size(183, 83);
-            this.splitContainer.SplitterDistance = 110;
+            this.splitContainer.Panel2.Controls.Add(this.addSiblingButton);
+            this.splitContainer.Size = new System.Drawing.Size(256, 81);
+            this.splitContainer.SplitterDistance = 153;
             this.splitContainer.TabIndex = 1;
             // 
             // isWorkingCheckBox
@@ -81,23 +84,34 @@ namespace LifeIdea.LazyCure.UI
             this.isWorkingCheckBox.UseVisualStyleBackColor = true;
             this.isWorkingCheckBox.CheckedChanged += new System.EventHandler(this.isWorkingCheckBox_CheckedChanged);
             // 
-            // addSibling
+            // addSiblingButton
             // 
-            this.addSibling.Location = new System.Drawing.Point(4, 4);
-            this.addSibling.Name = "addSibling";
-            this.addSibling.Size = new System.Drawing.Size(52, 23);
-            this.addSibling.TabIndex = 0;
-            this.addSibling.Text = "Add";
-            this.toolTip.SetToolTip(this.addSibling, "Add sibling task");
-            this.addSibling.UseVisualStyleBackColor = true;
-            this.addSibling.Click += new System.EventHandler(this.addSibling_Click);
+            this.addSiblingButton.Location = new System.Drawing.Point(4, 4);
+            this.addSiblingButton.Name = "addSiblingButton";
+            this.addSiblingButton.Size = new System.Drawing.Size(39, 23);
+            this.addSiblingButton.TabIndex = 0;
+            this.addSiblingButton.Text = "Add";
+            this.toolTip.SetToolTip(this.addSiblingButton, "Add sibling task (Enter)");
+            this.addSiblingButton.UseVisualStyleBackColor = true;
+            this.addSiblingButton.Click += new System.EventHandler(this.addSiblingButton_Click);
+            // 
+            // deleteButton
+            // 
+            this.deleteButton.Location = new System.Drawing.Point(49, 4);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(47, 23);
+            this.deleteButton.TabIndex = 2;
+            this.deleteButton.Text = "Delete";
+            this.toolTip.SetToolTip(this.deleteButton, "Delete task (Del)");
+            this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // TaskManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(183, 83);
+            this.ClientSize = new System.Drawing.Size(256, 81);
             this.Controls.Add(this.splitContainer);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -119,8 +133,9 @@ namespace LifeIdea.LazyCure.UI
 
         private System.Windows.Forms.TreeView treeView;
         private System.Windows.Forms.SplitContainer splitContainer;
-        private System.Windows.Forms.Button addSibling;
+        private System.Windows.Forms.Button addSiblingButton;
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.CheckBox isWorkingCheckBox;
+        private System.Windows.Forms.Button deleteButton;
     }
 }

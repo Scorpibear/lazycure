@@ -41,6 +41,11 @@ namespace LifeIdea.LazyCure.Core.Tasks
             }
         }
 
+        public void Remove(string taskName)
+        {
+            Remove(GetTask(taskName));
+        }
+
         public void UpdateIsWorkingProperty(string taskName, bool working)
         {
             if (taskName == null)
