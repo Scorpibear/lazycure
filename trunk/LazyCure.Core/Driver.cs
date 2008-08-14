@@ -181,9 +181,14 @@ namespace LifeIdea.LazyCure.Core
             return History.GenerateUniqueName();
         }
 
-        public bool IsWorkingTask(string SelectedTask)
+        public bool IsWorkingTask(string task)
         {
-            return TaskCollection.IsWorking(SelectedTask);
+            return TaskCollection.IsWorking(task);
+        }
+
+        public void RemoveTask(string task)
+        {
+            TaskCollection.Remove(task);
         }
 
         public void UpdateTaskNodeText(TreeNode node, string text)

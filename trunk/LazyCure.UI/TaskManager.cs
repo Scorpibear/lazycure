@@ -9,7 +9,7 @@ namespace LifeIdea.LazyCure.UI
         private readonly ILazyCureDriver driver;
         const string NewTaskName = "New task...";
 
-        public TaskManager(ILazyCureDriver driver,IMainForm mainForm)
+        public TaskManager(ILazyCureDriver driver, IMainForm mainForm)
         {
             InitializeComponent();
             this.driver = driver;
@@ -23,25 +23,36 @@ namespace LifeIdea.LazyCure.UI
             set { treeView.SelectedNode = treeView.Nodes[value]; }
         }
 
-        private void treeView_DoubleClick(object sender, EventArgs e)
+        private void AddSibling()
         {
-            Hide();
-        }
-
-        private void addSibling_Click(object sender, EventArgs e)
-        {
-            TreeNode newNode = treeView.Nodes.Add(NewTaskName);
+            TreeNode newNode;
+            if (treeView.SelectedNode != null)
+                newNode = treeView.Nodes.Insert(treeView.SelectedNode.Index+1, NewTaskName);
+            else
+                newNode = treeView.Nodes.Add(NewTaskName);
             newNode.BeginEdit();
         }
 
-        private void treeView_AfterLabelEdit(object sender, NodeLabelEditEventArgs e)
+        private void DeleteTask()
         {
-            driver.UpdateTaskNodeText(e.Node, e.Label);
+            DialogResult result = MessageBox.Show(this,
+                "Do you really want to delete selected task '" + SelectedTask + "'?",
+                "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                driver.RemoveTask(SelectedTask);
+                treeView.SelectedNode.Remove();
+            }
         }
 
-        private void treeView_AfterSelect(object sender, TreeViewEventArgs e)
+        private void addSiblingButton_Click(object sender, EventArgs e)
         {
-            this.isWorkingCheckBox.Checked = driver.IsWorkingTask(SelectedTask);
+            AddSibling();
+        }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            DeleteTask();
         }
 
         private void isWorkingCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -49,5 +60,34 @@ namespace LifeIdea.LazyCure.UI
             driver.UpdateIsWorkingTaskProperty(SelectedTask, isWorkingCheckBox.Checked);
         }
 
+        private void treeView_AfterLabelEdit(object sender, NodeLabelEditEventArgs e)
+        {
+            if (e.Label != null)
+                driver.UpdateTaskNodeText(e.Node, e.Label);
+            treeView.SelectedNode = e.Node;
+        }
+
+        private void treeView_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            this.isWorkingCheckBox.Checked = driver.IsWorkingTask(SelectedTask);
+        }
+
+        private void treeView_DoubleClick(object sender, EventArgs e)
+        {
+            Hide();
+        }
+
+        private void treeView_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyData)
+            {
+                case Keys.Delete:
+                    DeleteTask();
+                    break;
+                case Keys.Enter:
+                    AddSibling();
+                    break;
+            }
+        }
     }
 }
