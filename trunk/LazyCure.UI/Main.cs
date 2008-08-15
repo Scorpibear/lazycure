@@ -270,6 +270,7 @@ namespace LifeIdea.LazyCure.UI
                 (this.currentActivity.Text == DefaultActivity) ?
                 lazyCure.GetUniqueActivityName() : this.currentActivity.Text;
             SwitchActivity(finishedActivity);
+            currentActivity.Focus();
         }
 
         private void timer_Tick(object sender, EventArgs e)
