@@ -1,4 +1,5 @@
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 using LifeIdea.LazyCure.Interfaces;
 
@@ -6,8 +7,9 @@ namespace LifeIdea.LazyCure.UI
 {
     partial class TaskManager : View
     {
-        private readonly ILazyCureDriver driver;
         const string NewTaskName = "New task...";
+        private readonly ILazyCureDriver driver;
+        private int minimalHeight;
 
         public TaskManager(ILazyCureDriver driver, IMainForm mainForm)
         {
@@ -15,6 +17,7 @@ namespace LifeIdea.LazyCure.UI
             this.driver = driver;
             this.mainForm = mainForm;
             treeView.Nodes.AddRange(driver.TasksNodes);
+            minimalHeight = ClientSize.Height;
         }
 
         public string SelectedTask
@@ -22,6 +25,8 @@ namespace LifeIdea.LazyCure.UI
             get { return treeView.SelectedNode.Text; }
             set { treeView.SelectedNode = treeView.Nodes[value]; }
         }
+
+        #region Private Methods
 
         private void AddSibling()
         {
@@ -45,6 +50,18 @@ namespace LifeIdea.LazyCure.UI
             }
         }
 
+        private void ResizeToShowAllTasks()
+        {
+            int treeViewBordersHeight = treeView.Size.Height - treeView.ClientSize.Height;
+            int newFormHeight = treeView.ItemHeight * (treeView.Nodes.Count + 1) + treeViewBordersHeight;
+            if (newFormHeight < minimalHeight)
+                newFormHeight = minimalHeight;
+            if (newFormHeight!=Height)
+                ClientSize = new Size(Width, newFormHeight);
+        }
+
+        #endregion Private Methods
+
         private void addSiblingButton_Click(object sender, EventArgs e)
         {
             AddSibling();
@@ -58,6 +75,12 @@ namespace LifeIdea.LazyCure.UI
         private void isWorkingCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             driver.UpdateIsWorkingTaskProperty(SelectedTask, isWorkingCheckBox.Checked);
+        }
+
+        private void TaskManager_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible)
+                ResizeToShowAllTasks();
         }
 
         private void treeView_AfterLabelEdit(object sender, NodeLabelEditEventArgs e)
