@@ -1,11 +1,11 @@
-LazyCure 3.3
+LazyCure 3.4
 
 Prerequsites:
 1. .NET Framework 2.0 (go with Windows XP Updates. Could be downloaded from http://www.microsoft.com/downloads/details.aspx?familyid=0856eacb-4362-4b0d-8edd-aab15c5e04f5 page)
 
 Installation Notes:
-1. Run LazyCure 3.3.exe
-	or unpack content of LazyCure 3.3.zip to local folder (e.g. to c:\Program Files\LazyCure) and run LazyCure.exe
+1. Run LazyCure 3.4.exe
+	or unpack content of LazyCure 3.4.zip to local folder (e.g. to c:\Program Files\LazyCure) and run LazyCure.exe
 
 Upgrade Notes:
 1. Replaces existent dll's and LazyCure.exe with new versions.
@@ -20,4 +20,4 @@ If LazyCure does not start, please, verify that:
 	- LazyCure.UI.dll,
 	- LazyCure.exe.config
 
-The latest LazyCure could be found at http://lazycure.com/.
+For more information about LazyCure visit http://lazycure.com/.
