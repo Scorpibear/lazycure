@@ -32,10 +32,10 @@ namespace LifeIdea.LazyCure.UI
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TaskManager));
             this.treeView = new System.Windows.Forms.TreeView();
             this.splitContainer = new System.Windows.Forms.SplitContainer();
+            this.deleteButton = new System.Windows.Forms.Button();
             this.isWorkingCheckBox = new System.Windows.Forms.CheckBox();
             this.addSiblingButton = new System.Windows.Forms.Button();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.deleteButton = new System.Windows.Forms.Button();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
             this.splitContainer.SuspendLayout();
@@ -47,7 +47,7 @@ namespace LifeIdea.LazyCure.UI
             this.treeView.LabelEdit = true;
             this.treeView.Location = new System.Drawing.Point(0, 0);
             this.treeView.Name = "treeView";
-            this.treeView.Size = new System.Drawing.Size(153, 81);
+            this.treeView.Size = new System.Drawing.Size(153, 54);
             this.treeView.TabIndex = 0;
             this.treeView.DoubleClick += new System.EventHandler(this.treeView_DoubleClick);
             this.treeView.AfterLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.treeView_AfterLabelEdit);
@@ -69,9 +69,20 @@ namespace LifeIdea.LazyCure.UI
             this.splitContainer.Panel2.Controls.Add(this.deleteButton);
             this.splitContainer.Panel2.Controls.Add(this.isWorkingCheckBox);
             this.splitContainer.Panel2.Controls.Add(this.addSiblingButton);
-            this.splitContainer.Size = new System.Drawing.Size(256, 81);
+            this.splitContainer.Size = new System.Drawing.Size(256, 54);
             this.splitContainer.SplitterDistance = 153;
             this.splitContainer.TabIndex = 1;
+            // 
+            // deleteButton
+            // 
+            this.deleteButton.Location = new System.Drawing.Point(49, 4);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(47, 23);
+            this.deleteButton.TabIndex = 2;
+            this.deleteButton.Text = "Delete";
+            this.toolTip.SetToolTip(this.deleteButton, "Delete task (Del)");
+            this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // isWorkingCheckBox
             // 
@@ -95,23 +106,12 @@ namespace LifeIdea.LazyCure.UI
             this.addSiblingButton.UseVisualStyleBackColor = true;
             this.addSiblingButton.Click += new System.EventHandler(this.addSiblingButton_Click);
             // 
-            // deleteButton
-            // 
-            this.deleteButton.Location = new System.Drawing.Point(49, 4);
-            this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(47, 23);
-            this.deleteButton.TabIndex = 2;
-            this.deleteButton.Text = "Delete";
-            this.toolTip.SetToolTip(this.deleteButton, "Delete task (Del)");
-            this.deleteButton.UseVisualStyleBackColor = true;
-            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
-            // 
             // TaskManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(256, 81);
+            this.ClientSize = new System.Drawing.Size(256, 54);
             this.Controls.Add(this.splitContainer);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -121,6 +121,7 @@ namespace LifeIdea.LazyCure.UI
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Task Manager";
             this.TopMost = true;
+            this.VisibleChanged += new System.EventHandler(this.TaskManager_VisibleChanged);
             this.splitContainer.Panel1.ResumeLayout(false);
             this.splitContainer.Panel2.ResumeLayout(false);
             this.splitContainer.Panel2.PerformLayout();
