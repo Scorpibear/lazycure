@@ -1,3 +1,14 @@
+LazyCure 3.4
+* New: Task Manager is resized automatically in order to show all tasks without scrolling.
+* New: Possibility to delete tasks in Task Manager.
+* New: Notification when computer is shutdown.
+* New: Auto-generated unique activities names, if nothing is specified.
+* New: Switch time logs at midnight.
+* Fixed: 'Now you' combobox is not active after pressing 'Done'.
+* Fixed: Activity and Task columns width could not be changed.
+* Fixed: Bottom part of Main form is cut when no Activity Details.
+* Fixed: When edit start, end is changed, but duration should changed.
+
 LazyCure 3.3
 * New: Possibility to specify finished activity from tray.
 * Fixed: TimeLogs opened from not-default folder are saved in TimeLogs folder.

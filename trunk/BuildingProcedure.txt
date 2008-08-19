@@ -7,8 +7,9 @@ LazyCure Build Checklist
 5. Release.
 6. Pack.
 7. Ftp.
-8. Download.
-9. Publish.
+8. Smoke.
+9. Download.
+10. Publish.
 
 Explanations
 
@@ -19,5 +20,6 @@ Explanations
 5. Build LazyCure with release configuration.
 6. Create LazyCureX.X.zip archive and LazyCureX.X.exe self-extracting archive. Load text from readme.txt as installation info, get license info from license.txt.
 7. Place LazyCureX.X.zip and LazyCureX.X.exe on http://lazycure.com/files via ftp.
-8. Update links on 'LazyCure Download' page (http://lazycure.com/download).
-9. Publish post on http://lazycure.com about new LazyCure version availability.
+8. Pass smoke test.
+9. Update links on 'LazyCure Download' page (http://lazycure.com/download).
+10. Publish post on http://lazycure.com about new LazyCure version availability.
