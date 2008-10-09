@@ -50,14 +50,16 @@ namespace LifeIdea.LazyCure.UI
             this.miTimeLog = new System.Windows.Forms.ToolStripMenuItem();
             this.miSummary = new System.Windows.Forms.ToolStripMenuItem();
             this.miTasks = new System.Windows.Forms.ToolStripMenuItem();
+            this.miContextShow = new System.Windows.Forms.ToolStripMenuItem();
             this.miOptions = new System.Windows.Forms.ToolStripMenuItem();
             this.miHelp = new System.Windows.Forms.ToolStripMenuItem();
+            this.miHowToUse = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.miOnline = new System.Windows.Forms.ToolStripMenuItem();
             this.miSubscribe = new System.Windows.Forms.ToolStripMenuItem();
             this.miSubmit = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.miAbout = new System.Windows.Forms.ToolStripMenuItem();
-            this.miContextShow = new System.Windows.Forms.ToolStripMenuItem();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
@@ -66,8 +68,6 @@ namespace LifeIdea.LazyCure.UI
             this.miContextActivate = new System.Windows.Forms.ToolStripMenuItem();
             this.miSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.miContextExit = new System.Windows.Forms.ToolStripMenuItem();
-            this.miHowToUse = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.statusBar.SuspendLayout();
             this.nowYou.SuspendLayout();
             this.menu.SuspendLayout();
@@ -91,6 +91,7 @@ namespace LifeIdea.LazyCure.UI
             this.currentActivity.Size = new System.Drawing.Size(203, 21);
             this.currentActivity.TabIndex = 0;
             this.toolTip.SetToolTip(this.currentActivity, "Enter an activity that you are doing right now");
+            this.currentActivity.KeyDown += new System.Windows.Forms.KeyEventHandler(this.currentActivity_KeyDown);
             // 
             // switchButton
             // 
@@ -234,6 +235,7 @@ namespace LifeIdea.LazyCure.UI
             this.miSummary,
             this.miTasks});
             this.showMenu.Name = "contextMenu";
+            this.showMenu.OwnerItem = this.miShow;
             this.showMenu.Size = new System.Drawing.Size(157, 92);
             // 
             // miActivityDetails
@@ -270,6 +272,13 @@ namespace LifeIdea.LazyCure.UI
             this.miTasks.Text = "&Task Manager";
             this.miTasks.Click += new System.EventHandler(this.miTasks_Click);
             // 
+            // miContextShow
+            // 
+            this.miContextShow.DropDown = this.showMenu;
+            this.miContextShow.Name = "miContextShow";
+            this.miContextShow.Size = new System.Drawing.Size(175, 22);
+            this.miContextShow.Text = "Show";
+            // 
             // miOptions
             // 
             this.miOptions.Name = "miOptions";
@@ -290,6 +299,19 @@ namespace LifeIdea.LazyCure.UI
             this.miHelp.Name = "miHelp";
             this.miHelp.Size = new System.Drawing.Size(40, 20);
             this.miHelp.Text = "&Help";
+            // 
+            // miHowToUse
+            // 
+            this.miHowToUse.Name = "miHowToUse";
+            this.miHowToUse.Size = new System.Drawing.Size(233, 22);
+            this.miHowToUse.Tag = "LazyCure.html";
+            this.miHowToUse.Text = "&How to use";
+            this.miHowToUse.Click += new System.EventHandler(this.Link_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(230, 6);
             // 
             // miOnline
             // 
@@ -326,13 +348,6 @@ namespace LifeIdea.LazyCure.UI
             this.miAbout.Size = new System.Drawing.Size(233, 22);
             this.miAbout.Text = "&About LazyCure";
             this.miAbout.Click += new System.EventHandler(this.miAbout_Click);
-            // 
-            // miContextShow
-            // 
-            this.miContextShow.DropDown = this.showMenu;
-            this.miContextShow.Name = "miContextShow";
-            this.miContextShow.Size = new System.Drawing.Size(175, 22);
-            this.miContextShow.Text = "Show";
             // 
             // timer
             // 
@@ -398,19 +413,6 @@ namespace LifeIdea.LazyCure.UI
             this.miContextExit.Text = "Exit";
             this.miContextExit.Click += new System.EventHandler(this.miExit_Click);
             // 
-            // miHowToUse
-            // 
-            this.miHowToUse.Name = "miHowToUse";
-            this.miHowToUse.Size = new System.Drawing.Size(233, 22);
-            this.miHowToUse.Tag = "LazyCure.html";
-            this.miHowToUse.Text = "&How to use";
-            this.miHowToUse.Click += new System.EventHandler(this.Link_Click);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(230, 6);
-            // 
             // Main
             // 
             this.AcceptButton = this.switchButton;
@@ -429,8 +431,8 @@ namespace LifeIdea.LazyCure.UI
             this.Text = "Main";
             this.TopMost = true;
             this.Deactivate += new System.EventHandler(this.Main_Deactivate);
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Main_FormClosed);
             this.Activated += new System.EventHandler(this.Main_Activated);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Main_FormClosed);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             this.statusBar.ResumeLayout(false);
             this.statusBar.PerformLayout();
