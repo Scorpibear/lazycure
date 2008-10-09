@@ -154,6 +154,12 @@ namespace LifeIdea.LazyCure.UI
             }
         }
 
+        private void currentActivity_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+                Hide();
+        }
+
         private void Link_Click(object sender, EventArgs e)
         {
             string link = (string)((ToolStripItem)sender).Tag;
