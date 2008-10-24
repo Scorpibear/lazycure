@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace LifeIdea.LazyCure.UI
 {
-    public partial class Main : Form, IMainForm, IDisposable
+    public partial class Main : MainBase, IMainForm, IDisposable
     {
         private const string DefaultActivity = "(specify what you are doing)";
         private readonly ILazyCureDriver lazyCure;
@@ -34,6 +34,7 @@ namespace LifeIdea.LazyCure.UI
             hotKeyManager.Register(this);
             expandedSize = Size;
             collapsedSize = new Size(Size.Width, Size.Height - statusBar.Height);
+            SetLocation(settings.MainWindowLocation);
         }
 
         public void ViewsVisibilityChanged()
@@ -288,6 +289,8 @@ namespace LifeIdea.LazyCure.UI
         private void Main_FormClosed(object sender, FormClosedEventArgs e)
         {
             hotKeyManager.Unregister(this);
+            Dialogs.Settings.MainWindowLocation = Location;
+            Dialogs.Settings.Save();
         }
 
         private void notifyIcon_MouseClick(object sender, MouseEventArgs e)

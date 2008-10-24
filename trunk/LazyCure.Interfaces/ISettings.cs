@@ -1,10 +1,13 @@
 using System;
+using System.Drawing;
 
 namespace LifeIdea.LazyCure.Interfaces
 {
     public interface ISettings
     {
         int MaxActivitiesInHistory{ get; set;}
+
+        Point MainWindowLocation { get; set;}
 
         TimeSpan ReminderTime { get; set;}
 
