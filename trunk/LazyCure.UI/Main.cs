@@ -46,12 +46,6 @@ namespace LifeIdea.LazyCure.UI
 
         #region Private Methods
 
-        private void Display()
-        {
-            Show();
-            WindowState = FormWindowState.Normal;
-        }
-
         private void SaveWithNotification(FormClosingEventArgs e)
         {
             if (!lazyCure.Save())

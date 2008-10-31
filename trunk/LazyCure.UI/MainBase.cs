@@ -5,6 +5,13 @@ namespace LifeIdea.LazyCure.UI
 {
     public class MainBase: Form
     {
+        public void Display()
+        {
+            Show();
+            WindowState = FormWindowState.Normal;
+            Activate();
+        }
+
         public void SetLocation(Point location)
         {
             Size desktopSize = Screen.PrimaryScreen.WorkingArea.Size;
