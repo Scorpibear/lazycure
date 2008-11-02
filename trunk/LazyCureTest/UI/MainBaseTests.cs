@@ -48,12 +48,5 @@ namespace LifeIdea.LazyCure.UI
             main.SetLocation(new Point(5000, 5));
             Assert.AreEqual(Screen.PrimaryScreen.WorkingArea.Right-main.Width,main.Location.X);
         }
-        [Test]
-        public void MinimizedOnESC()
-        {
-            KeyEventArgs args = new KeyEventArgs(Keys.Escape);
-            main.currentActivity_KeyDown(null, args);
-            Assert.AreEqual(FormWindowState.Minimized, main.WindowState);
-        }
     }
 }
