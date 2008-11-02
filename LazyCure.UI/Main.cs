@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using LifeIdea.LazyCure.Interfaces;
 using LifeIdea.LazyCure.UI.Properties;
 using System.Collections.Generic;
+using Microsoft.Win32;
 
 namespace LifeIdea.LazyCure.UI
 {
@@ -35,6 +36,13 @@ namespace LifeIdea.LazyCure.UI
             expandedSize = Size;
             collapsedSize = new Size(Size.Width, Size.Height - statusBar.Height);
             SetLocation(settings.MainWindowLocation);
+            SystemEvents.SessionSwitch += SystemEvents_SessionSwitch;
+        }
+
+        void SystemEvents_SessionSwitch(object sender, SessionSwitchEventArgs e)
+        {
+            if(e.Reason== SessionSwitchReason.SessionLock)
+                SwitchActivity();
         }
 
         public void ViewsVisibilityChanged()
@@ -54,6 +62,14 @@ namespace LifeIdea.LazyCure.UI
                 if (result == DialogResult.No)
                     e.Cancel = true;
             }
+        }
+
+        private void SwitchActivity()
+        {
+            string finishedActivity =
+                (this.currentActivity.Text == DefaultActivity) ?
+                lazyCure.GetUniqueActivityName() : this.currentActivity.Text;
+            SwitchActivity(finishedActivity);
         }
 
         private void SwitchActivity(string finishedActivity)
@@ -132,7 +148,10 @@ namespace LifeIdea.LazyCure.UI
         protected override void WndProc(ref Message m)
         {
             if (m.Msg == 0x0312)
+            {
+                MessageBox.Show("LParam: " + m.LParam + ", WParam: " + m.WParam);
                 Display();
+            }
             base.WndProc(ref m);
         }
 
@@ -147,6 +166,12 @@ namespace LifeIdea.LazyCure.UI
             {
                 SwitchActivity(menuItem.Text);
             }
+        }
+
+        private void currentActivity_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+                WindowState = FormWindowState.Minimized;
         }
 
         private void Link_Click(object sender, EventArgs e)
@@ -268,10 +293,7 @@ namespace LifeIdea.LazyCure.UI
 
         private void switchButton_Click(object sender, EventArgs e)
         {
-            string finishedActivity =
-                (this.currentActivity.Text == DefaultActivity) ?
-                lazyCure.GetUniqueActivityName() : this.currentActivity.Text;
-            SwitchActivity(finishedActivity);
+            SwitchActivity();
             currentActivity.Focus();
         }
 
@@ -283,7 +305,9 @@ namespace LifeIdea.LazyCure.UI
 
         private void Main_FormClosed(object sender, FormClosedEventArgs e)
         {
+            SystemEvents.SessionSwitch -= SystemEvents_SessionSwitch;
             hotKeyManager.Unregister(this);
+            Display();
             Dialogs.Settings.MainWindowLocation = Location;
             Dialogs.Settings.Save();
         }
