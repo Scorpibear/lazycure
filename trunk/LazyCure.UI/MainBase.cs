@@ -25,5 +25,11 @@ namespace LifeIdea.LazyCure.UI
                 location.Y = desktopSize.Height - Height;
             Location = location;
         }
+
+        public void currentActivity_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+                WindowState = FormWindowState.Minimized;
+        }
     }
 }
