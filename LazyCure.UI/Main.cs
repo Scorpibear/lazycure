@@ -149,12 +149,6 @@ namespace LifeIdea.LazyCure.UI
             }
         }
 
-        private void currentActivity_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Escape)
-                Hide();
-        }
-
         private void Link_Click(object sender, EventArgs e)
         {
             string link = (string)((ToolStripItem)sender).Tag;
@@ -181,21 +175,28 @@ namespace LifeIdea.LazyCure.UI
 
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (e.CloseReason == CloseReason.WindowsShutDown)
+            switch (e.CloseReason)
             {
-                DialogResult result = MessageBox.Show(this,
+                case CloseReason.UserClosing:
+                    WindowState = FormWindowState.Minimized;
+                    e.Cancel=true;
+                    break;
+                case CloseReason.WindowsShutDown:
+                    DialogResult result = MessageBox.Show(this,
                     "Do you want to log current activity before LazyCure will be closed?",
                     "LazyCure is shutting down", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
-                {
-                    e.Cancel = true;
-                    lazyCure.Save();
-                }
-                else
+                    if (result == DialogResult.Yes)
+                    {
+                        e.Cancel = true;
+                        lazyCure.Save();
+                    }
+                    else
+                        SaveWithNotification(e);
+                    break;
+                default:
                     SaveWithNotification(e);
+                    break;
             }
-            else
-                SaveWithNotification(e);
         }
 
         private void miAbout_Click(object sender, EventArgs e)
@@ -214,7 +215,7 @@ namespace LifeIdea.LazyCure.UI
 
         private void miExit_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
 
         private void miOpen_Click(object sender, EventArgs e)
