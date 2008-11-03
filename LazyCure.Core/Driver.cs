@@ -19,7 +19,7 @@ namespace LifeIdea.LazyCure.Core
         private readonly ActivitiesSummary activitiesSummary;
         private IEfficiencyCalculator efficiencyCalculator;
         private IFileManager fileManager = new FileManager();
-        private ActivitiesHistory history;
+        private IActivitiesHistory history;
         private ITaskCollection taskCollection = Tasks.TaskCollection.Default;
         private ITimeManager timeManager;
         private ITasksSummary tasksSummary;
@@ -44,7 +44,7 @@ namespace LifeIdea.LazyCure.Core
 
         public static string FirstActivityName = "starting LazyCure";
 
-        public ActivitiesHistory History
+        public IActivitiesHistory History
         {
             get { return history; }
             set { history = value; }
@@ -171,14 +171,15 @@ namespace LifeIdea.LazyCure.Core
             {
                 TimeLogsFolder = settings.TimeLogsFolder;
                 SaveAfterDone = settings.SaveAfterDone;
-                History.MaxActivities = settings.MaxActivitiesInHistory;
+                History.LatestSize = settings.ActivitiesNumberInTray;
+                History.Size = settings.MaxActivitiesInHistory;
                 TimeManager.MaxDuration = settings.ReminderTime;
             }
         }
 
         public string GetUniqueActivityName()
         {
-            return History.GenerateUniqueName();
+            return History.UniqueName;
         }
 
         public bool IsWorkingTask(string task)
@@ -235,6 +236,11 @@ namespace LifeIdea.LazyCure.Core
         {
             string filename = fileManager.GetTimeLogFileName(date);
             return LoadTimeLog(filename);
+        }
+
+        public string[] HistoryActivities
+        {
+            get { return History.Activities; }
         }
 
         public string[] LatestActivities

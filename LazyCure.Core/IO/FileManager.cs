@@ -39,12 +39,12 @@ namespace LifeIdea.LazyCure.Core.IO
             }
         }
 
-        public void LoadHistory(ActivitiesHistory history)
+        public void LoadHistory(IActivitiesHistory history)
         {
             history.Load(HistoryFileName);
         }
 
-        public void SaveHistory(ActivitiesHistory history)
+        public void SaveHistory(IActivitiesHistory history)
         {
             history.Save(HistoryFileName);
         }

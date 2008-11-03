@@ -13,9 +13,9 @@ namespace LifeIdea.LazyCure.Core.IO
 
         string GetTimeLogFileName(DateTime date);
 
-        void LoadHistory(ActivitiesHistory history);
+        void LoadHistory(IActivitiesHistory history);
 
-        void SaveHistory(ActivitiesHistory History);
+        void SaveHistory(IActivitiesHistory History);
         
         bool SaveTasks(ITaskCollection taskCollection);
 

@@ -7,6 +7,8 @@ namespace LifeIdea.LazyCure.Interfaces
     {
         int MaxActivitiesInHistory{ get; set;}
 
+        int ActivitiesNumberInTray { get; set;}
+
         Point MainWindowLocation { get; set;}
 
         TimeSpan ReminderTime { get; set;}

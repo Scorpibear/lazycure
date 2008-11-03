@@ -8,37 +8,52 @@ namespace LifeIdea.LazyCure.Core.Activities
     /// <summary>
     /// Store history of latests activities
     /// </summary>
-    public class ActivitiesHistory
+    public class ActivitiesHistory:IActivitiesHistory
     {
-        private readonly List<string> activities = new List<string>();
+        public const int DEFAULT_SIZE = 30;
+        public const int DEFAULT_LATEST_SIZE = 15;
 
-        public int MaxActivities = 30;
-        public string[] LatestActivities { get { return activities.ToArray(); } }
+        private readonly List<string> activities = new List<string>();
+        private int size = DEFAULT_SIZE;
+        private int latestSize = DEFAULT_LATEST_SIZE;
+
+        public string[] Activities { get { return activities.ToArray(); } }
+        public string[] LatestActivities { get {
+            int actualLatestSize = Math.Min(activities.Count, latestSize);
+            string[] array = new string[actualLatestSize];
+            activities.CopyTo(0, array, 0, actualLatestSize); 
+            return array;
+        } }
+        public int LatestSize { get { return latestSize; } set { latestSize = value; } }
+        public int Size { get { return size; } set { size = value; } }
+
+        public string UniqueName
+        {
+            get
+            {
+                int i = 1;
+                do
+                {
+                    string candidate = "activity" + i.ToString();
+                    if (activities.Contains(candidate))
+                        i++;
+                    else
+                        return candidate;
+                } while (true);
+            }
+        }
 
         public void AddActivity(string activity)
         {
             activities.Remove(activity);
             activities.Insert(0, activity);
-            if (activities.Count > MaxActivities)
-                activities.RemoveAt(MaxActivities);
+            if (activities.Count > size)
+                activities.RemoveAt(size);
         }
 
         public bool ContainsActivity(string activityName)
         {
             return activities.Contains(activityName);
-        }
-
-        public string GenerateUniqueName()
-        {
-            int i = 1;
-            do
-            {
-                string candidate = "activity" + i.ToString();
-                if (activities.Contains(candidate))
-                    i++;
-                else
-                    return candidate;
-            } while (true);
         }
 
         public void Load(TextReader reader)
@@ -53,7 +68,7 @@ namespace LifeIdea.LazyCure.Core.Activities
                     if (!activities.Contains(line))
                     {
                         activities.Add(line);
-                        if (activities.Count == MaxActivities)
+                        if (activities.Count == size)
                             break;
                     }
                 }
