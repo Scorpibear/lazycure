@@ -25,57 +25,7 @@ namespace LifeIdea.LazyCure.UI
             UpdateSelectedRowsTime();
         }
 
-        private void UpdateStatistics(object sender, EventArgs e)
-        {
-            allActivitiesTime.Text = Format.ShortDuration(lazyCure.AllActivitiesTime);
-            UpdateWorkingActivitiesTime();
-            UpdateSelectedRowsTime();
-            efficiencyTextBox.Text = Format.Percent(lazyCure.Efficiency);
-            timeOnWorkTextBox.Text = Format.ShortDuration(lazyCure.TimeOnWork);
-        }
-
-        private void activitiesSummary_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (IsTaskCell(e))
-            {
-                Dialogs.TaskManager.SelectedTask = activitiesSummary.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
-                Dialogs.TaskManager.Location = Cursor.Position;
-                Dialogs.TaskManager.ShowDialog(this);
-                activitiesSummary.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = Dialogs.TaskManager.SelectedTask;
-                UpdateWorkingActivitiesTime();
-            }
-        }
-
-        private bool IsTaskCell(DataGridViewCellEventArgs e)
-        {
-            return (e.ColumnIndex == activitiesSummary.Columns[taskColumnForActivitySummary.Name].Index)
-                   && (e.RowIndex > -1);
-        }
-
-        private void UpdateWorkingActivitiesTime()
-        {
-            workingActivitiesTime.Text = Format.ShortDuration(lazyCure.WorkingActivitiesTime);
-        }
-
-        private void UpdateSelectedRowsTime()
-        {
-            TimeSpan timeInSelectedRows;
-            switch(tabControl.SelectedIndex)
-            {
-                case 0:
-                    timeInSelectedRows = CalculateSelectedRowsTime(activitiesSummary,
-                        spentColumnForActivitySummary.Name);
-                    break;
-                case 1:
-                    timeInSelectedRows = CalculateSelectedRowsTime(tasksSummary,
-                        spentColumnForTasksSummary.Name);
-                    break;
-                default:
-                    timeInSelectedRows = TimeSpan.Zero;
-                    break;
-            }
-            selectedRowsTime.Text = Format.ShortDuration(timeInSelectedRows);
-        }
+        #region Private Methods
 
         private static TimeSpan CalculateSelectedRowsTime(DataGridView summaryTable, string durationColumnName)
         {
@@ -103,10 +53,60 @@ namespace LifeIdea.LazyCure.UI
             return timeInSelectedRows;
         }
 
-        private void maxRestDurationTextBox_TextChanged(object sender, EventArgs e)
+        private bool IsTaskCell(DataGridViewCellEventArgs e)
         {
-            lazyCure.PossibleWorkInterruptionDuration = Format.Duration(maxRestDurationTextBox.Text);
-            automaticallyRadioButton.Checked = true;
+            return (e.ColumnIndex == activitiesSummary.Columns[taskColumnForActivitySummary.Name].Index)
+                   && (e.RowIndex > -1);
+        }
+
+        private void UpdateSelectedRowsTime()
+        {
+            TimeSpan timeInSelectedRows;
+            switch (tabControl.SelectedIndex)
+            {
+                case 0:
+                    timeInSelectedRows = CalculateSelectedRowsTime(activitiesSummary,
+                        spentColumnForActivitySummary.Name);
+                    break;
+                case 1:
+                    timeInSelectedRows = CalculateSelectedRowsTime(tasksSummary,
+                        spentColumnForTasksSummary.Name);
+                    break;
+                default:
+                    timeInSelectedRows = TimeSpan.Zero;
+                    break;
+            }
+            selectedRowsTime.Text = Format.ShortDuration(timeInSelectedRows);
+        }
+
+        private void UpdateWorkingActivitiesTime()
+        {
+            workingActivitiesTime.Text = Format.ShortDuration(lazyCure.WorkingActivitiesTime);
+        }
+
+        #endregion Private Methods
+
+        #region Event Handlers
+
+        private void UpdateStatistics(object sender, EventArgs e)
+        {
+            allActivitiesTime.Text = Format.ShortDuration(lazyCure.AllActivitiesTime);
+            UpdateWorkingActivitiesTime();
+            UpdateSelectedRowsTime();
+            efficiencyTextBox.Text = Format.Percent(lazyCure.Efficiency);
+            timeOnWorkTextBox.Text = Format.ShortDuration(lazyCure.TimeOnWork);
+        }
+
+        private void activitiesSummary_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (IsTaskCell(e))
+            {
+                Dialogs.TaskManager.SelectedTask = activitiesSummary.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+                Dialogs.TaskManager.Location = Cursor.Position;
+                Dialogs.TaskManager.ShowDialog(this);
+                activitiesSummary.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = Dialogs.TaskManager.SelectedTask;
+                UpdateWorkingActivitiesTime();
+            }
         }
 
         private void automaticallyRadioButton_CheckedChanged(object sender, EventArgs e)
@@ -114,14 +114,26 @@ namespace LifeIdea.LazyCure.UI
             lazyCure.CalculateAutomaticallyWorkingIntervals = automaticallyRadioButton.Checked;
         }
 
-        private void workingTimeIntervalsGrid_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            manuallyRadioButton.Checked = true;
-        }
-
         private void efficiencyTextBox_TextChanged(object sender, EventArgs e)
         {
 
         }
+
+        private void maxRestDurationTextBox_TextChanged(object sender, EventArgs e)
+        {
+            lazyCure.PossibleWorkInterruptionDuration = Format.Duration(maxRestDurationTextBox.Text);
+            automaticallyRadioButton.Checked = true;
+        }
+
+        private void showTimeLogButton_Click(object sender, EventArgs e)
+        {
+            Dialogs.TimeLog.Show();
+        }
+
+        private void workingTimeIntervalsGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            manuallyRadioButton.Checked = true;
+        }
+        #endregion Event Handlers
     }
 }
