@@ -2,6 +2,7 @@ using System;
 using System.Data;
 using System.IO;
 using System.Text;
+using LifeIdea.LazyCure.Core.Activities;
 using LifeIdea.LazyCure.Core.IO;
 using LifeIdea.LazyCure.Core.Reports;
 using LifeIdea.LazyCure.Core.Tasks;
@@ -42,13 +43,15 @@ namespace LifeIdea.LazyCure.Core
             Stub.On(settings).GetProperty("TimeLogsFolder").Will(Return.Value(@"c:\test"));
             Stub.On(settings).GetProperty("SaveAfterDone").Will(Return.Value(false));
             Stub.On(settings).GetProperty("MaxActivitiesInHistory").Will(Return.Value(13));
+            Stub.On(settings).GetProperty("ActivitiesNumberInTray").Will(Return.Value(5));
             Stub.On(settings).GetProperty("ReminderTime").Will(Return.Value(TimeSpan.Parse("0:59:48")));
             
             driver.ApplySettings(settings);
 
             Assert.AreEqual(@"c:\test", driver.TimeLogsFolder);
             Assert.AreEqual(false, driver.SaveAfterDone);
-            Assert.AreEqual(13,driver.History.MaxActivities);
+            Assert.AreEqual(5, driver.History.LatestSize);
+            Assert.AreEqual(13, driver.History.Size);
             Assert.AreEqual(TimeSpan.Parse("0:59:48"), driver.TimeManager.MaxDuration);
         }
         [Test]
@@ -227,8 +230,29 @@ namespace LifeIdea.LazyCure.Core
         public void LatestActivities()
         {
             driver.FinishActivity("latest", "next");
-
             Assert.Contains("latest", driver.LatestActivities);
+        }
+        [Test]
+        public void HistoryActivities()
+        {
+            driver.FinishActivity("latest", "next");
+            Assert.Contains("latest", driver.HistoryActivities);
+        }
+        [Test]
+        public void LatestActivitiesCallsHistory()
+        {
+            driver.History = NewMock<IActivitiesHistory>();
+            Expect.Once.On(driver.History).GetProperty("LatestActivities").
+                Will(Return.Value(new string[] { "test" }));
+            Assert.AreEqual(new string[] { "test" }, driver.LatestActivities);
+        }
+        [Test]
+        public void HistoryActivitiesCallsHistory()
+        {
+            driver.History = NewMock<IActivitiesHistory>();
+            Expect.Once.On(driver.History).GetProperty("Activities").
+                Will(Return.Value(new string[] { "test" }));
+            Assert.AreEqual(new string[]{"test"},driver.HistoryActivities);
         }
         [Test]
         public void LatestActivitiesAreReloaded()

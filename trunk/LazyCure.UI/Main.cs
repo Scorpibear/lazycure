@@ -96,6 +96,8 @@ namespace LifeIdea.LazyCure.UI
 
         private void UpdateContextMenuActivities()
         {
+            foreach (ToolStripMenuItem item in activitiesMenuItems.Values)
+                contextMenu.Items.Remove(item);
             if (lazyCure.LatestActivities.Length > 0)
             {
                 foreach (string activity in lazyCure.LatestActivities)
@@ -119,7 +121,7 @@ namespace LifeIdea.LazyCure.UI
         {
             currentActivity.Text = nextActivity;
             currentActivity.Items.Clear();
-            currentActivity.Items.AddRange(lazyCure.LatestActivities);
+            currentActivity.Items.AddRange(lazyCure.HistoryActivities);
         }
 
         private void UpdateTime()

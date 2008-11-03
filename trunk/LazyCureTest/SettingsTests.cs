@@ -20,7 +20,12 @@ namespace LifeIdea.LazyCure.Properties
         [Test]
         public void MaxActivitiesInHistoryDefaultSetting()
         {
-            AreEqual(30, Settings.Default.MaxActivitiesInHistory);
+            AreEqual(LazyCure.Core.Activities.ActivitiesHistory.DEFAULT_SIZE, Settings.Default.MaxActivitiesInHistory);
+        }
+        [Test]
+        public void NumberOfActivitiesAvailableFromTray()
+        {
+            AreEqual(LazyCure.Core.Activities.ActivitiesHistory.DEFAULT_LATEST_SIZE, Settings.Default.ActivitiesNumberInTray);
         }
         [Test]
         public void ReminderTimeDefaultSetting()

@@ -15,6 +15,8 @@ namespace LifeIdea.LazyCure.Interfaces
 
         double Efficiency { get; }
 
+        string[] HistoryActivities { get; }
+
         string[] LatestActivities { get; }
 
         TimeSpan PossibleWorkInterruptionDuration { get; set; }

@@ -14,7 +14,7 @@ namespace LifeIdea.LazyCure.Core.Activities
         public void SetUp()
         {
             history = new ActivitiesHistory();
-            history.MaxActivities = 5;
+            history.Size = 5;
         }
         [TearDown]
         public void TearDown()
@@ -24,14 +24,14 @@ namespace LifeIdea.LazyCure.Core.Activities
         [Test]
         public void EmptyLatestActivities()
         {
-            Assert.IsEmpty(history.LatestActivities);
+            Assert.IsEmpty(history.Activities);
         }
         [Test]
         public void OneActivity()
         {
             history.AddActivity("reading");
             
-            Assert.Contains("reading", history.LatestActivities);
+            Assert.Contains("reading", history.Activities);
         }
         [Test]
         public void TheSameActivity()
@@ -39,7 +39,7 @@ namespace LifeIdea.LazyCure.Core.Activities
             history.AddActivity("writing");
             history.AddActivity("writing");
 
-            Assert.AreEqual(1, history.LatestActivities.Length);
+            Assert.AreEqual(1, history.Activities.Length);
         }
         [Test]
         public void LIFO()
@@ -47,7 +47,7 @@ namespace LifeIdea.LazyCure.Core.Activities
             history.AddActivity("first");
             history.AddActivity("second");
 
-            Assert.AreEqual(new string[] { "second", "first" }, history.LatestActivities);
+            Assert.AreEqual(new string[] { "second", "first" }, history.Activities);
         }
         [Test]
         public void LastMoveToFirst()
@@ -56,7 +56,7 @@ namespace LifeIdea.LazyCure.Core.Activities
             history.AddActivity("two");
             history.AddActivity("one");
 
-            Assert.AreEqual(new string[] { "one", "two" }, history.LatestActivities);
+            Assert.AreEqual(new string[] { "one", "two" }, history.Activities);
         }
         [Test]
         public void Load()
@@ -68,13 +68,13 @@ namespace LifeIdea.LazyCure.Core.Activities
         public void LoadMultiple()
         {
             history.Load(new StringReader("first\r\nsecond\r\n"));
-            Assert.AreEqual(new string[] { "first", "second" }, history.LatestActivities);
+            Assert.AreEqual(new string[] { "first", "second" }, history.Activities);
         }
         [Test]
         public void LoadDuplicates()
         {
             history.Load(new StringReader("duplicate\r\nduplicate\r\n"));
-            Assert.AreEqual(1, history.LatestActivities.Length);
+            Assert.AreEqual(1, history.Activities.Length);
         }
         [Test]
         public void LoadFromUnexistedPath()
@@ -101,7 +101,7 @@ namespace LifeIdea.LazyCure.Core.Activities
             history.Save(writer);
             history = new ActivitiesHistory();
             history.Load(new StringReader(sb.ToString()));
-            Assert.AreEqual(new string[] { "saved2", "saved" }, history.LatestActivities);
+            Assert.AreEqual(new string[] { "saved2", "saved" }, history.Activities);
         }
         [Test]
         public void LoadLimit()
@@ -125,13 +125,21 @@ namespace LifeIdea.LazyCure.Core.Activities
         [Test]
         public void GenerateUniqueActivityName()
         {
-            Assert.AreEqual("activity1", history.GenerateUniqueName());
+            Assert.AreEqual("activity1", history.UniqueName);
         }
         [Test]
         public void GenerateNextUnique()
         {
             history.AddActivity("activity1");
-            Assert.AreEqual("activity2", history.GenerateUniqueName());
+            Assert.AreEqual("activity2", history.UniqueName);
+        }
+        [Test]
+        public void LatestActivities()
+        {
+            history.LatestSize = 1;
+            history.AddActivity("a");
+            history.AddActivity("b");
+            Assert.AreEqual(new string[] { "b" }, history.LatestActivities);
         }
     }
 }

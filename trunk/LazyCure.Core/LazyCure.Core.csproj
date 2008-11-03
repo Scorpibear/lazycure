@@ -36,6 +36,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Activities\IActivitiesHistory.cs" />
     <Compile Include="Reports\ActivitiesSummary.cs" />
     <Compile Include="Activities\Activity.cs" />
     <Compile Include="Activities\ActivityBase.cs" />

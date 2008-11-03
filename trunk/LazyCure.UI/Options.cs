@@ -15,6 +15,7 @@ namespace LifeIdea.LazyCure.UI
             reminderTime.ValidatingType = settings.ReminderTime.GetType();
             this.settings = settings;
             maxActivitiesInHistory.Value = settings.MaxActivitiesInHistory;
+            activitiesNumberInTray.Value = settings.ActivitiesNumberInTray;
             saveAfterDone.Checked = settings.SaveAfterDone;
             timeLogFolder.Text = settings.TimeLogsFolder;
             reminderTime.Text = settings.ReminderTime.ToString();
@@ -33,10 +34,11 @@ namespace LifeIdea.LazyCure.UI
 
         private void ok_Click(object sender, EventArgs e)
         {
-            settings.MaxActivitiesInHistory = (int) maxActivitiesInHistory.Value;
+            settings.MaxActivitiesInHistory = (int)maxActivitiesInHistory.Value;
+            settings.ActivitiesNumberInTray = (int)activitiesNumberInTray.Value;
             settings.SaveAfterDone = saveAfterDone.Checked;
             settings.TimeLogsFolder = timeLogFolder.Text;
-            settings.ReminderTime = (TimeSpan) reminderTime.ValidateText();
+            settings.ReminderTime = (TimeSpan)reminderTime.ValidateText();
             settings.Save();
             Dialogs.LazyCureDriver.ApplySettings(settings);
             Hide();
