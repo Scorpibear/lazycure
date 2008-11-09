@@ -2,6 +2,7 @@ using System;
 using System.Windows.Forms;
 using LifeIdea.LazyCure.Core.Activities;
 using LifeIdea.LazyCure.Core.IO;
+using LifeIdea.LazyCure.Core.Plugins;
 using LifeIdea.LazyCure.Core.Reports;
 using LifeIdea.LazyCure.Core.Tasks;
 using LifeIdea.LazyCure.Core.Time;
@@ -28,7 +29,6 @@ namespace LifeIdea.LazyCure.Core
         #endregion Fields
 
         #region Properties
-
 
         public IEfficiencyCalculator EfficiencyCalculator
         {
@@ -80,6 +80,8 @@ namespace LifeIdea.LazyCure.Core
         }
 
         public string TimeLogsFolder { get { return FileManager.TimeLogsFolder; } set { FileManager.TimeLogsFolder = value; } }
+
+        public IExternalPoster ExternalPoster = new Twitter();
 
         public IWorkingTimeManager WorkingTime
         {
@@ -174,6 +176,8 @@ namespace LifeIdea.LazyCure.Core
                 History.LatestSize = settings.ActivitiesNumberInTray;
                 History.Size = settings.MaxActivitiesInHistory;
                 TimeManager.MaxDuration = settings.ReminderTime;
+                ExternalPoster.Username = settings.TwitterUsername;
+                ExternalPoster.Password = Format.Decode(settings.TwitterPassword);
             }
         }
 
@@ -185,6 +189,11 @@ namespace LifeIdea.LazyCure.Core
         public bool IsWorkingTask(string task)
         {
             return TaskCollection.IsWorking(task);
+        }
+
+        public void PostToTwitter(string activity)
+        {
+            ExternalPoster.PostAsync(activity);
         }
 
         public void RemoveTask(string task)

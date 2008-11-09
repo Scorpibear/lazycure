@@ -32,11 +32,13 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Activities\IActivitiesHistory.cs" />
+    <Compile Include="Plugins\IExternalPoster.cs" />
     <Compile Include="Reports\ActivitiesSummary.cs" />
     <Compile Include="Activities\Activity.cs" />
     <Compile Include="Activities\ActivityBase.cs" />
@@ -70,6 +72,7 @@
     <Compile Include="Time\TimeLog.cs" />
     <Compile Include="Time\TimeLogSerializer.cs" />
     <Compile Include="Time\TimeManager.cs" />
+    <Compile Include="Plugins\Twitter.cs" />
     <Compile Include="Utilities.cs" />
   </ItemGroup>
   <ItemGroup>

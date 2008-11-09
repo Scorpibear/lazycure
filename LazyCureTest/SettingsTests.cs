@@ -37,5 +37,10 @@ namespace LifeIdea.LazyCure.Properties
         {
             AreEqual(new Point(1280, 1024), Settings.Default.MainWindowLocation);
         }
+        [Test]
+        public void TwitterIsDisabledByDefault()
+        {
+            IsFalse(Settings.Default.TwitterEnabled);
+        }
     }
 }
