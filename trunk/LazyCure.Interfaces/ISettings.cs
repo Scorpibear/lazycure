@@ -5,7 +5,7 @@ namespace LifeIdea.LazyCure.Interfaces
 {
     public interface ISettings
     {
-        int MaxActivitiesInHistory{ get; set;}
+        int MaxActivitiesInHistory { get; set;}
 
         int ActivitiesNumberInTray { get; set;}
 
@@ -15,8 +15,14 @@ namespace LifeIdea.LazyCure.Interfaces
 
         void Save();
 
-        bool SaveAfterDone{ get; set;}
-        
-        string TimeLogsFolder{ get; set;}
+        bool SaveAfterDone { get; set;}
+
+        string TimeLogsFolder { get; set;}
+
+        bool TwitterEnabled { get; set;}
+
+        string TwitterPassword { get; set;}
+
+        string TwitterUsername { get; set;}
     }
 }

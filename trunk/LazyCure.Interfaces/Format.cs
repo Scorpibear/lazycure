@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace LifeIdea.LazyCure.Interfaces
@@ -49,6 +50,19 @@ namespace LifeIdea.LazyCure.Interfaces
         public static DateTime Time(object obj)
         {
             return DateTime.Parse(obj.ToString());
+        }
+
+        public static string Encode(string password)
+        {
+            StringBuilder builder = new StringBuilder();
+            for (int i = 0; i < password.Length; i++)
+                builder.Append(((char)(password[i] ^ 5)));
+            return builder.ToString();
+        }
+
+        public static string Decode(string password)
+        {
+            return Encode(password);
         }
     }
 }

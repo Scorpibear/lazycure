@@ -20,6 +20,8 @@ namespace LifeIdea.LazyCure.UI
         private Size expandedSize;
         private Size collapsedSize;
 
+        public bool PostToTwitterEnabled { set { postToTwitter.Visible = value; } }
+
         public Main(ILazyCureDriver driver, ISettings settings)
         {
             InitializeComponent();
@@ -37,6 +39,7 @@ namespace LifeIdea.LazyCure.UI
             collapsedSize = new Size(Size.Width, Size.Height - statusBar.Height);
             SetLocation(settings.MainWindowLocation);
             SystemEvents.SessionSwitch += SystemEvents_SessionSwitch;
+            postToTwitter.Visible = Dialogs.Settings.TwitterEnabled;
         }
 
         void SystemEvents_SessionSwitch(object sender, SessionSwitchEventArgs e)
@@ -54,6 +57,15 @@ namespace LifeIdea.LazyCure.UI
 
         #region Private Methods
 
+        private void PostToTwitter(string activity)
+        {
+            if (postToTwitter.Visible && postToTwitter.Checked)
+            {
+                lazyCure.PostToTwitter(activity);
+                postToTwitter.Checked = false;
+            }
+        }
+
         private void SaveWithNotification(FormClosingEventArgs e)
         {
             if (!lazyCure.Save())
@@ -70,6 +82,7 @@ namespace LifeIdea.LazyCure.UI
                 (this.currentActivity.Text == DefaultActivity) ?
                 lazyCure.GetUniqueActivityName() : this.currentActivity.Text;
             SwitchActivity(finishedActivity);
+            PostToTwitter(finishedActivity);
         }
 
         private void SwitchActivity(string finishedActivity)
@@ -228,7 +241,8 @@ namespace LifeIdea.LazyCure.UI
 
         private void miAbout_Click(object sender, EventArgs e)
         {
-            Dialogs.About.Show();
+            Dialogs.About.ShowDialog(this);
+            postToTwitter.Visible = Dialogs.Settings.TwitterEnabled;
         }
 
         private void miActivityDetails_Click(object sender, EventArgs e)

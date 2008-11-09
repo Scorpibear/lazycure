@@ -37,6 +37,7 @@ namespace LifeIdea.LazyCure.UI
             this.activityDuration = new System.Windows.Forms.ToolStripStatusLabel();
             this.currentTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.nowYou = new System.Windows.Forms.GroupBox();
+            this.postToTwitter = new System.Windows.Forms.CheckBox();
             this.menu = new System.Windows.Forms.MenuStrip();
             this.miFile = new System.Windows.Forms.ToolStripMenuItem();
             this.miOpen = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,7 +51,6 @@ namespace LifeIdea.LazyCure.UI
             this.miTimeLog = new System.Windows.Forms.ToolStripMenuItem();
             this.miSummary = new System.Windows.Forms.ToolStripMenuItem();
             this.miTasks = new System.Windows.Forms.ToolStripMenuItem();
-            this.miContextShow = new System.Windows.Forms.ToolStripMenuItem();
             this.miOptions = new System.Windows.Forms.ToolStripMenuItem();
             this.miHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.miHowToUse = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,6 +60,7 @@ namespace LifeIdea.LazyCure.UI
             this.miSubmit = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.miAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.miContextShow = new System.Windows.Forms.ToolStripMenuItem();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
@@ -96,10 +97,10 @@ namespace LifeIdea.LazyCure.UI
             // switchButton
             // 
             this.switchButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.switchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.switchButton.Location = new System.Drawing.Point(215, 13);
+            this.switchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.switchButton.Location = new System.Drawing.Point(215, 11);
             this.switchButton.Name = "switchButton";
-            this.switchButton.Size = new System.Drawing.Size(70, 37);
+            this.switchButton.Size = new System.Drawing.Size(70, 46);
             this.switchButton.TabIndex = 2;
             this.switchButton.Text = "Done!";
             this.toolTip.SetToolTip(this.switchButton, "Press the button, when you have finished the current activity and are starting an" +
@@ -150,14 +151,26 @@ namespace LifeIdea.LazyCure.UI
             // 
             // nowYou
             // 
+            this.nowYou.Controls.Add(this.postToTwitter);
             this.nowYou.Controls.Add(this.currentActivity);
             this.nowYou.Controls.Add(this.switchButton);
             this.nowYou.Location = new System.Drawing.Point(3, 3);
             this.nowYou.Name = "nowYou";
-            this.nowYou.Size = new System.Drawing.Size(290, 54);
+            this.nowYou.Size = new System.Drawing.Size(290, 60);
             this.nowYou.TabIndex = 3;
             this.nowYou.TabStop = false;
             this.nowYou.Text = "Now you...";
+            // 
+            // postToTwitter
+            // 
+            this.postToTwitter.AutoSize = true;
+            this.postToTwitter.Location = new System.Drawing.Point(116, 40);
+            this.postToTwitter.Name = "postToTwitter";
+            this.postToTwitter.Size = new System.Drawing.Size(93, 17);
+            this.postToTwitter.TabIndex = 3;
+            this.postToTwitter.Text = "post to Twitter";
+            this.postToTwitter.UseVisualStyleBackColor = true;
+            this.postToTwitter.Visible = false;
             // 
             // menu
             // 
@@ -235,7 +248,7 @@ namespace LifeIdea.LazyCure.UI
             this.miSummary,
             this.miTasks});
             this.showMenu.Name = "contextMenu";
-            this.showMenu.OwnerItem = this.miShow;
+            this.showMenu.OwnerItem = this.miContextShow;
             this.showMenu.Size = new System.Drawing.Size(157, 92);
             // 
             // miActivityDetails
@@ -271,13 +284,6 @@ namespace LifeIdea.LazyCure.UI
             this.miTasks.Size = new System.Drawing.Size(156, 22);
             this.miTasks.Text = "&Task Manager";
             this.miTasks.Click += new System.EventHandler(this.miTasks_Click);
-            // 
-            // miContextShow
-            // 
-            this.miContextShow.DropDown = this.showMenu;
-            this.miContextShow.Name = "miContextShow";
-            this.miContextShow.Size = new System.Drawing.Size(175, 22);
-            this.miContextShow.Text = "Show";
             // 
             // miOptions
             // 
@@ -349,6 +355,13 @@ namespace LifeIdea.LazyCure.UI
             this.miAbout.Text = "&About LazyCure";
             this.miAbout.Click += new System.EventHandler(this.miAbout_Click);
             // 
+            // miContextShow
+            // 
+            this.miContextShow.DropDown = this.showMenu;
+            this.miContextShow.Name = "miContextShow";
+            this.miContextShow.Size = new System.Drawing.Size(175, 22);
+            this.miContextShow.Text = "Show";
+            // 
             // timer
             // 
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
@@ -363,11 +376,11 @@ namespace LifeIdea.LazyCure.UI
             // toolStripContainer1.ContentPanel
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.nowYou);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(294, 58);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(294, 66);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
             this.toolStripContainer1.Name = "toolStripContainer1";
-            this.toolStripContainer1.Size = new System.Drawing.Size(294, 104);
+            this.toolStripContainer1.Size = new System.Drawing.Size(294, 112);
             this.toolStripContainer1.TabIndex = 5;
             this.toolStripContainer1.Text = "toolStripContainer1";
             // 
@@ -419,7 +432,7 @@ namespace LifeIdea.LazyCure.UI
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(294, 104);
+            this.ClientSize = new System.Drawing.Size(294, 112);
             this.ContextMenuStrip = this.contextMenu;
             this.Controls.Add(this.toolStripContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -437,6 +450,7 @@ namespace LifeIdea.LazyCure.UI
             this.statusBar.ResumeLayout(false);
             this.statusBar.PerformLayout();
             this.nowYou.ResumeLayout(false);
+            this.nowYou.PerformLayout();
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
             this.showMenu.ResumeLayout(false);
@@ -492,5 +506,6 @@ namespace LifeIdea.LazyCure.UI
         private System.Windows.Forms.ToolStripMenuItem miContextExit;
         private System.Windows.Forms.ToolStripMenuItem miHowToUse;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.CheckBox postToTwitter;
     }
 }

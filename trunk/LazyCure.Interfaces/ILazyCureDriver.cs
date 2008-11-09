@@ -49,6 +49,8 @@ namespace LifeIdea.LazyCure.Interfaces
 
         bool LoadTimeLog(string filename);
 
+        void PostToTwitter(string activity);
+
         void RemoveTask(string task);
 
         bool Save();

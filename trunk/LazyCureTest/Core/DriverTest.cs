@@ -4,6 +4,7 @@ using System.IO;
 using System.Text;
 using LifeIdea.LazyCure.Core.Activities;
 using LifeIdea.LazyCure.Core.IO;
+using LifeIdea.LazyCure.Core.Plugins;
 using LifeIdea.LazyCure.Core.Reports;
 using LifeIdea.LazyCure.Core.Tasks;
 using LifeIdea.LazyCure.Core.Time;
@@ -40,11 +41,16 @@ namespace LifeIdea.LazyCure.Core
         public void ApplySettings()
         {
             ISettings settings = NewMock<ISettings>();
+            driver.ExternalPoster = NewMock<IExternalPoster>();
             Stub.On(settings).GetProperty("TimeLogsFolder").Will(Return.Value(@"c:\test"));
             Stub.On(settings).GetProperty("SaveAfterDone").Will(Return.Value(false));
             Stub.On(settings).GetProperty("MaxActivitiesInHistory").Will(Return.Value(13));
             Stub.On(settings).GetProperty("ActivitiesNumberInTray").Will(Return.Value(5));
             Stub.On(settings).GetProperty("ReminderTime").Will(Return.Value(TimeSpan.Parse("0:59:48")));
+            Stub.On(settings).GetProperty("TwitterUsername").Will(Return.Value("testname"));
+            Stub.On(settings).GetProperty("TwitterPassword").Will(Return.Value(Format.Encode("testpass")));
+            Expect.Once.On(driver.ExternalPoster).SetProperty("Username").To("testname");
+            Expect.Once.On(driver.ExternalPoster).SetProperty("Password").To("testpass");
             
             driver.ApplySettings(settings);
 
@@ -53,6 +59,7 @@ namespace LifeIdea.LazyCure.Core
             Assert.AreEqual(5, driver.History.LatestSize);
             Assert.AreEqual(13, driver.History.Size);
             Assert.AreEqual(TimeSpan.Parse("0:59:48"), driver.TimeManager.MaxDuration);
+            VerifyAllExpectationsHaveBeenMet();
         }
         [Test]
         public void CalculateAutomaticallyWorkingIntervals()
