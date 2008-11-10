@@ -1,3 +1,13 @@
+LazyCure 3.5
+* New: LazyCure is minimized by pressing 'ESC' on main window.
+* New: Main window is opened in the same position as it was before closing LazyCure.
+* New: Minimize to tray on pressing 'X'.
+* New: Activity is switched when computer is locked.
+* New: Possibility to post activity to Twitter.
+* Improved: Button 'Show Time Log' added to 'Efficiency' tab.
+* Improved: Two different settings for number of activities showed in tray and number of activities in history.
+* Fixed: After Ctrl-F12 program stays inactive if was visible before.
+
 LazyCure 3.4
 * New: Task Manager is resized automatically in order to show all tasks without scrolling.
 * New: Possibility to delete tasks in Task Manager.
