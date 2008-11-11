@@ -163,10 +163,7 @@ namespace LifeIdea.LazyCure.UI
         protected override void WndProc(ref Message m)
         {
             if (m.Msg == 0x0312)
-            {
-                MessageBox.Show("LParam: " + m.LParam + ", WParam: " + m.WParam);
                 Display();
-            }
             base.WndProc(ref m);
         }
 
