@@ -151,14 +151,14 @@ namespace LifeIdea.LazyCure.Core.IO
 
         public string GetTimeLogFileName(DateTime date)
         {
-            return timeLogsFolder + @"\" + date.ToString("yyyy-MM-dd") + ".timelog";
+            return timeLogsFolder + Path.DirectorySeparatorChar + date.ToString("yyyy-MM-dd") + ".timelog";
         }
 
         public string GetFullFileName(string shortFileName)
         {
             string path = Assembly.GetCallingAssembly().Location;
             FileInfo fileInfo = new FileInfo(path);
-            return fileInfo.DirectoryName + "\\" + shortFileName;
+            return fileInfo.DirectoryName + Path.DirectorySeparatorChar + shortFileName;
         }
     }
 }
