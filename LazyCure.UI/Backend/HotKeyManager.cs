@@ -15,7 +15,14 @@ namespace LifeIdea.LazyCure.UI
         public bool Register(Form form)
         {
             // Alt = 1, Ctrl = 2, Shift = 4, Win = 8
-            return RegisterHotKey(form.Handle,form.GetType().GetHashCode(), 2, (int)Keys.F12);
+			try
+			{
+				return RegisterHotKey(form.Handle,form.GetType().GetHashCode(), 2, (int)Keys.F12);
+			}
+			catch(Exception)
+			{
+				return false;
+			}
         }
         public bool Unregister(Form form)
         {
