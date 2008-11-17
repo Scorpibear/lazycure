@@ -9,6 +9,9 @@ using Microsoft.Win32;
 
 namespace LifeIdea.LazyCure.UI
 {
+    /// <summary>
+    /// Represent classic main form GUI
+    /// </summary>
     public partial class Main : MainBase, IMainForm, IDisposable
     {
         private const string DefaultActivity = "(specify what you are doing)";
@@ -44,7 +47,8 @@ namespace LifeIdea.LazyCure.UI
 
         void SystemEvents_SessionSwitch(object sender, SessionSwitchEventArgs e)
         {
-            if(e.Reason== SessionSwitchReason.SessionLock)
+            if(Dialogs.Settings.SwitchOnLogOff && 
+                (e.Reason == SessionSwitchReason.SessionLock))
                 SwitchActivity();
         }
 
@@ -57,7 +61,15 @@ namespace LifeIdea.LazyCure.UI
 
         #region Private Methods
 
-        private void PostToTwitter(string activity)
+        private string GetFinishedActivity()
+        {
+            string finishedActivity =
+                (this.currentActivity.Text == DefaultActivity) ?
+                lazyCure.GetUniqueActivityName() : this.currentActivity.Text;
+            return finishedActivity;
+        }
+
+        private void PostToExternals(string activity)
         {
             if (postToTwitter.Visible && postToTwitter.Checked)
             {
@@ -78,11 +90,9 @@ namespace LifeIdea.LazyCure.UI
 
         private void SwitchActivity()
         {
-            string finishedActivity =
-                (this.currentActivity.Text == DefaultActivity) ?
-                lazyCure.GetUniqueActivityName() : this.currentActivity.Text;
+            string finishedActivity = GetFinishedActivity();
             SwitchActivity(finishedActivity);
-            PostToTwitter(finishedActivity);
+            PostToExternals(finishedActivity);
         }
 
         private void SwitchActivity(string finishedActivity)

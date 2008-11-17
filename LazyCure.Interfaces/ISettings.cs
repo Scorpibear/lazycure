@@ -17,6 +17,8 @@ namespace LifeIdea.LazyCure.Interfaces
 
         bool SaveAfterDone { get; set;}
 
+        bool SwitchOnLogOff { get; set;}
+
         string TimeLogsFolder { get; set;}
 
         bool TwitterEnabled { get; set;}
