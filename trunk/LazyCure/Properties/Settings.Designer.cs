@@ -130,5 +130,17 @@ namespace LifeIdea.LazyCure.Properties {
                 this["TwitterPassword"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool SwitchOnLogOff {
+            get {
+                return ((bool)(this["SwitchOnLogOff"]));
+            }
+            set {
+                this["SwitchOnLogOff"] = value;
+            }
+        }
     }
 }

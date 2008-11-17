@@ -20,6 +20,7 @@ namespace LifeIdea.LazyCure.UI
             saveAfterDone.Checked = settings.SaveAfterDone;
             timeLogFolder.Text = settings.TimeLogsFolder;
             reminderTime.Text = settings.ReminderTime.ToString();
+            switchOnLogOff.Checked = settings.SwitchOnLogOff;
             enableTwitterCheckbox.Checked = settings.TwitterEnabled;
             usernameField.Text = settings.TwitterUsername;
             passwordField.Text = Format.Decode(settings.TwitterPassword);
@@ -56,6 +57,7 @@ namespace LifeIdea.LazyCure.UI
             settings.SaveAfterDone = saveAfterDone.Checked;
             settings.TimeLogsFolder = timeLogFolder.Text;
             settings.ReminderTime = (TimeSpan)reminderTime.ValidateText();
+            settings.SwitchOnLogOff = switchOnLogOff.Checked;
             settings.TwitterEnabled = enableTwitterCheckbox.Checked;
             settings.TwitterUsername = usernameField.Text;
             settings.TwitterPassword = Format.Encode(passwordField.Text);

@@ -42,5 +42,10 @@ namespace LifeIdea.LazyCure.Properties
         {
             IsFalse(Settings.Default.TwitterEnabled);
         }
+        [Test]
+        public void SwitchOnLogOffIsTurnedOffByDefault()
+        {
+            IsFalse(Settings.Default.SwitchOnLogOff);
+        }
     }
 }
