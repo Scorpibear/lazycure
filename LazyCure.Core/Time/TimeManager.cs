@@ -70,8 +70,11 @@ namespace LifeIdea.LazyCure.Core.Time
             TimeLog = timeLog;
         }
 
-        public TimeManager(ITimeSystem timeSystem, ITimeLogsManager timeLogsManager)
-            : this(timeSystem, timeLogsManager, new TimeLog(timeSystem.Now.Date)) { }
+        public TimeManager(ITimeSystem timeSystem, ITimeLogsManager timeLogsManager):this(timeSystem)
+        {
+            TimeLogsManager = timeLogsManager;
+            TimeLog = new TimeLog(currentActivity.StartTime.Date);
+        }
 
         public void FinishActivity(string finishedActivity, string nextActivity)
         {
