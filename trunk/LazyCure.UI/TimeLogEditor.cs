@@ -14,11 +14,11 @@ namespace LifeIdea.LazyCure.UI
         {
             InitializeComponent();
             this.lazyCure = lazyCure;
-            this.Data = lazyCure.TimeLogData;
             this.mainForm = mainForm;
             string[] timeColumnsNames = new string[] { "Start", "Duration", "End" };
             foreach (string columnName in timeColumnsNames)
                 timeColumnsIndeces.Add(timeLogView.Columns[columnName].Index);
+            Update();
         }
 
         public void CancelEdit()
@@ -26,9 +26,10 @@ namespace LifeIdea.LazyCure.UI
             timeLogView.CancelEdit();
         }
 
-        public object Data
+        public new void Update()
         {
-            set { timeLogView.DataSource = value; }
+            timeLogView.DataSource = lazyCure.TimeLogData;
+            base.Update();
         }
 
         private void timeLogView_KeyUp(object sender, KeyEventArgs e)
@@ -66,9 +67,9 @@ namespace LifeIdea.LazyCure.UI
         protected override void View_VisibleChanged(object sender, EventArgs e)
         {
             if (Visible == false)
-            {
                 lazyCure.Save();
-            }
+            else
+                Update();
             base.View_VisibleChanged(sender, e);
         }
 

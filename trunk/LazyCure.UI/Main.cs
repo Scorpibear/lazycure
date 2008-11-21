@@ -103,6 +103,7 @@ namespace LifeIdea.LazyCure.UI
             UpdateContextMenuActivities();
             UpdateActivityStartTime();
             currentActivity.SelectAll();
+            SetCaption();
         }
 
         private void SetCaption()
@@ -273,7 +274,7 @@ namespace LifeIdea.LazyCure.UI
             if (result == DialogResult.OK)
             {
                 lazyCure.LoadTimeLog(openDialog.FileName);
-                Dialogs.TimeLog.Data = lazyCure.TimeLogData;
+                Dialogs.TimeLog.Update();
                 SetCaption();
             }
         }

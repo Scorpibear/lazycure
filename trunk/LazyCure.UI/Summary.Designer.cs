@@ -326,7 +326,6 @@ namespace LifeIdea.LazyCure.UI
             this.efficiencyTextBox.Size = new System.Drawing.Size(148, 62);
             this.efficiencyTextBox.TabIndex = 1;
             this.efficiencyTextBox.Text = "85%";
-            this.efficiencyTextBox.TextChanged += new System.EventHandler(this.efficiencyTextBox_TextChanged);
             // 
             // label4
             // 
