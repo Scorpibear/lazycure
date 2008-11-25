@@ -22,7 +22,14 @@ namespace LifeIdea.LazyCure.UI
 
         public string SelectedTask
         {
-            get { return treeView.SelectedNode.Text; }
+            get
+            {
+                TreeNode selected = treeView.SelectedNode;
+                if (selected != null)
+                    return selected.Text;
+                else
+                    return null;
+            }
             set { treeView.SelectedNode = treeView.Nodes[value]; }
         }
 
