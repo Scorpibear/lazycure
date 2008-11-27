@@ -209,13 +209,21 @@ namespace LifeIdea.LazyCure.Core.Reports
             Assert.AreEqual(DateTime.Parse("9:15"), workingTime.Intervals.Rows[0]["Start"]);
         }
         [Test]
-        public void IsWorkingWithNullTaskIsSilent()
+        public void IntervalsChangesWhenActivityBecomesWorking()
         {
-            Log.Writer = new StringWriter();
-            IActivity activity = NewMock<IActivity>();
-            Stub.On(activity).GetProperty("Name").Will(Return.Value("test"));
-            workingTime.IsWorkingActivity(activity);
-            Assert.AreEqual("", Log.Writer.ToString());
+            ITaskCollection taskCollection = NewMock<ITaskCollection>();
+            ITimeLog timeLog = NewMock<ITimeLog>();
+            Expect.Once.On(taskCollection).Method("IsWorkingActivity").With("test").
+                Will(Return.Value(false));
+            Stub.On(timeLog).GetProperty("Data").Will(Return.Value(null));
+            List<IActivity> activities = new List<IActivity>();
+            activities.Add(new Activity("test",DateTime.Now,TimeSpan.FromMinutes(1)));
+            Stub.On(timeLog).GetProperty("Activities").Will(Return.Value(activities));
+            workingTime = new WorkingTime(timeLog, taskCollection);
+            Expect.AtLeastOnce.On(taskCollection).Method("IsWorkingActivity").With("test").
+                Will(Return.Value(true));
+            TimeSpan workingTasksTime = workingTime.WorkingTasksTime;
+            Assert.AreEqual(1, workingTime.Intervals.Rows.Count);
         }
     }
 }

@@ -14,6 +14,8 @@ namespace LifeIdea.LazyCure.Core.Tasks
 
         bool IsWorking(string taskName);
 
+        bool IsWorkingActivity(string activity);
+
         void Remove(string taskName);
 
         void UpdateIsWorkingProperty(string taskName, bool working);
