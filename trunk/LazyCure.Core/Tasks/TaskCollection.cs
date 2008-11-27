@@ -41,6 +41,15 @@ namespace LifeIdea.LazyCure.Core.Tasks
             }
         }
 
+        public bool IsWorkingActivity(string activity)
+        {
+            string task = GetRelatedTaskName(activity);
+            if (task != null)
+                return IsWorking(task);
+            else
+                return false;
+        }
+
         public void Remove(string taskName)
         {
             Remove(GetTask(taskName));

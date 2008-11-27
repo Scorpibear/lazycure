@@ -53,6 +53,13 @@ namespace LifeIdea.LazyCure.Core.Tasks
             Assert.That(sw.GetStringBuilder().ToString().Contains("IsWorking method is called with null"));
         }
         [Test]
+        public void IsWorkingActivityWithUnknownActivityIsSilent()
+        {
+            Log.Writer = new StringWriter();
+            tasks.IsWorkingActivity("unknown");
+            Assert.AreEqual("", Log.Writer.ToString());
+        }
+        [Test]
         public void GetTask()
         {
             tasks.Add(new Task("Work"));

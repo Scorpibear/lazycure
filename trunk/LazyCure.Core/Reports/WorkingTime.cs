@@ -20,6 +20,7 @@ namespace LifeIdea.LazyCure.Core.Reports
         private ITimeLog timeLog;
         private ITaskCollection taskCollection;
         private TimeSpan possibleWorkInterruption = TimeSpan.Parse("0:25");
+        private TimeSpan previousWorkingTasksTime;
 
         public WorkingTime(ITimeLog timeLog, ITaskCollection taskCollection)
         {
@@ -58,8 +59,11 @@ namespace LifeIdea.LazyCure.Core.Reports
             set
             {
                 timeLog = value;
-                timeLog.Data.RowDeleted += TimeLogData_RowChanged;
-                timeLog.Data.RowChanged += TimeLogData_RowChanged;
+                if (timeLog.Data != null)
+                {
+                    timeLog.Data.RowDeleted += TimeLogData_RowChanged;
+                    timeLog.Data.RowChanged += TimeLogData_RowChanged;
+                }
                 FillTable();
             }
         }
@@ -84,9 +88,10 @@ namespace LifeIdea.LazyCure.Core.Reports
                 TimeSpan result = TimeSpan.Zero;
                 foreach (IActivity activity in timeLog.Activities)
                 {
-                    if (IsWorkingActivity(activity))
+                    if (IsWorking(activity))
                         result += activity.Duration;
                 }
+                UpdateTable(result);
                 return result;
             }
         }
@@ -96,17 +101,14 @@ namespace LifeIdea.LazyCure.Core.Reports
             get { return table; }
         }
 
-        public bool IsWorkingActivity(IActivity activity)
+        public bool IsWorking(IActivity activity)
         {
-            string task = taskCollection.GetRelatedTaskName(activity.Name);
-            if (task != null)
-                return taskCollection.IsWorking(task);
-            else
-                return false;
+            return taskCollection.IsWorkingActivity(activity.Name);
         }
 
         private void CreateTable()
         {
+            table = null;
             table = new DataTable();
             table.Columns.Add("Start", DateTime.MinValue.GetType());
             table.Columns.Add("End", DateTime.MinValue.GetType());
@@ -121,8 +123,7 @@ namespace LifeIdea.LazyCure.Core.Reports
                 DateTime end = start;
                 foreach (IActivity activity in timeLog.Activities)
                 {
-
-                    if (IsWorkingActivity(activity))// || (activity.Duration <= PossibleWorkInterruption))
+                    if (IsWorking(activity))
                     {
                         if (start == DateTime.MinValue)
                             start = activity.StartTime;
@@ -135,6 +136,15 @@ namespace LifeIdea.LazyCure.Core.Reports
                     }
                 }
                 AddInterval(ref start, end);
+            }
+        }
+
+        private void UpdateTable(TimeSpan newWorkingTasksTime)
+        {
+            if (newWorkingTasksTime != previousWorkingTasksTime)
+            {
+                previousWorkingTasksTime = newWorkingTasksTime;
+                FillTable();
             }
         }
 
