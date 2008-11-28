@@ -50,7 +50,7 @@ namespace LifeIdea.LazyCure.Core
             set { history = value; }
         }
 
-        public bool SaveAfterDone = true;
+        public bool SaveAfterDone = false;
         
         public ITaskCollection TaskCollection
         {
