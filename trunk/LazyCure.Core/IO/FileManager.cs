@@ -151,7 +151,11 @@ namespace LifeIdea.LazyCure.Core.IO
 
         public string GetTimeLogFileName(DateTime date)
         {
-            return timeLogsFolder + Path.DirectorySeparatorChar + date.ToString("yyyy-MM-dd") + ".timelog";
+            string filename = date.ToString("yyyy-MM-dd") + ".timelog";
+            if (timeLogsFolder != null)
+                return Path.Combine(timeLogsFolder, filename);
+            else
+                return filename;
         }
 
         public string GetFullFileName(string shortFileName)

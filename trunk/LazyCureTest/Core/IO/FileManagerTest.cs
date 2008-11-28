@@ -35,6 +35,17 @@ namespace LifeIdea.LazyCure.Core.IO
             }
         }
         [Test]
+        public void GetTimeLogFileName()
+        {
+            fileManager.timeLogsFolder = "test";
+            Assert.AreEqual(@"test\2109-12-31.timelog", fileManager.GetTimeLogFileName(DateTime.Parse("2109-12-31")));
+        }
+        [Test]
+        public void GetTimeLogFileNameWithNullFolder()
+        {
+            Assert.AreEqual("2109-12-31.timelog",fileManager.GetTimeLogFileName(DateTime.Parse("2109-12-31")));
+        }
+        [Test]
         public void SaveTasksWriteToFile()
         {
             ITaskCollection taskCollection = new TaskCollection();
