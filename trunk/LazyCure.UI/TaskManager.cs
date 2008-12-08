@@ -57,6 +57,11 @@ namespace LifeIdea.LazyCure.UI
             }
         }
 
+        private void EditTask()
+        {
+            treeView.SelectedNode.BeginEdit();
+        }
+
         private void ResizeToShowAllTasks()
         {
             int treeViewBordersHeight = treeView.Size.Height - treeView.ClientSize.Height;
@@ -82,6 +87,11 @@ namespace LifeIdea.LazyCure.UI
         private void isWorkingCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             driver.UpdateIsWorkingTaskProperty(SelectedTask, isWorkingCheckBox.Checked);
+        }
+
+        private void miRename_Click(object sender, EventArgs e)
+        {
+            EditTask();
         }
 
         private void TaskManager_VisibleChanged(object sender, EventArgs e)
@@ -117,7 +127,15 @@ namespace LifeIdea.LazyCure.UI
                 case Keys.Enter:
                     AddSibling();
                     break;
+                case Keys.F2:
+                    EditTask();
+                    break;
             }
+        }
+
+        private void treeView_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            treeView.SelectedNode = e.Node;
         }
     }
 }
