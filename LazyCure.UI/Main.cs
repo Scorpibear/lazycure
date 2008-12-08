@@ -234,7 +234,8 @@ namespace LifeIdea.LazyCure.UI
                     "LazyCure is shutting down", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
-                        e.Cancel = true;
+                        this.Hide();
+                        this.ShowDialog();
                         lazyCure.Save();
                     }
                     else
