@@ -17,6 +17,7 @@ namespace LifeIdea.LazyCure.UI
             this.settings = settings;
             maxActivitiesInHistory.Value = settings.MaxActivitiesInHistory;
             activitiesNumberInTray.Value = settings.ActivitiesNumberInTray;
+            showsRecentActivities.Checked = settings.LeftClickOnTray;
             saveAfterDone.Checked = settings.SaveAfterDone;
             timeLogFolder.Text = settings.TimeLogsFolder;
             reminderTime.Text = settings.ReminderTime.ToString();
@@ -54,6 +55,7 @@ namespace LifeIdea.LazyCure.UI
         {
             settings.MaxActivitiesInHistory = (int)maxActivitiesInHistory.Value;
             settings.ActivitiesNumberInTray = (int)activitiesNumberInTray.Value;
+            settings.LeftClickOnTray = showsRecentActivities.Checked;
             settings.SaveAfterDone = saveAfterDone.Checked;
             settings.TimeLogsFolder = timeLogFolder.Text;
             settings.ReminderTime = (TimeSpan)reminderTime.ValidateText();

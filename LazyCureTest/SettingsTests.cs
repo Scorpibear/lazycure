@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using System;
 using System.Drawing;
+using LifeIdea.LazyCure.Interfaces;
 
 namespace LifeIdea.LazyCure.Properties
 {
@@ -46,6 +47,11 @@ namespace LifeIdea.LazyCure.Properties
         public void SwitchOnLogOffIsTurnedOffByDefault()
         {
             IsFalse(Settings.Default.SwitchOnLogOff);
+        }
+        [Test]
+        public void LeftClickOnTrayOpensMainWindowByDefault()
+        {
+            AreEqual(LeftClickOnTray.ShowsMainWindow, Settings.Default.LeftClickOnTray);
         }
     }
 }
