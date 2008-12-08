@@ -22,7 +22,8 @@ namespace LifeIdea.LazyCure.UI
         private Dictionary<string, ToolStripMenuItem> activitiesMenuItems = new Dictionary<string, ToolStripMenuItem>();
         private Size expandedSize;
         private Size collapsedSize;
-
+        private Timer leftClickTimer;
+        
         public bool PostToTwitterEnabled { set { postToTwitter.Visible = value; } }
 
         public Main(ILazyCureDriver driver, ISettings settings)
@@ -43,6 +44,9 @@ namespace LifeIdea.LazyCure.UI
             SetLocation(settings.MainWindowLocation);
             SystemEvents.SessionSwitch += SystemEvents_SessionSwitch;
             postToTwitter.Visible = Dialogs.Settings.TwitterEnabled;
+            leftClickTimer = new Timer();
+            leftClickTimer.Tick += new EventHandler(notifyIcon_LeftClick);
+            leftClickTimer.Interval = 300; // should be changed on max double click interval
         }
 
         void SystemEvents_SessionSwitch(object sender, SessionSwitchEventArgs e)
@@ -216,11 +220,6 @@ namespace LifeIdea.LazyCure.UI
             }
         }
 
-        private void notifyIcon_DoubleClick(object sender, EventArgs e)
-        {
-            Display();
-        }
-
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
         {
             switch (e.CloseReason)
@@ -336,10 +335,24 @@ namespace LifeIdea.LazyCure.UI
             Dialogs.Settings.Save();
         }
 
-        private void notifyIcon_MouseClick(object sender, MouseEventArgs e)
+        private void notifyIcon_Click(object sender, EventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
+            leftClickTimer.Start();
+        }
+
+        private void notifyIcon_DoubleClick(object sender, EventArgs e)
+        {
+            leftClickTimer.Stop();
+            Display();
+        }
+
+        void notifyIcon_LeftClick(object sender, EventArgs e)
+        {
+            leftClickTimer.Stop();
+            if (Dialogs.Settings.LeftClickOnTray == LeftClickOnTray.ShowsMainWindow)
                 Display();
+            else
+                notifyIcon.ContextMenuStrip.Show(Cursor.Position);
         }
 
         private void miContextActivate_Click(object sender, EventArgs e)

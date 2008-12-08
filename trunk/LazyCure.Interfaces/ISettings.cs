@@ -3,11 +3,18 @@ using System.Drawing;
 
 namespace LifeIdea.LazyCure.Interfaces
 {
+    public struct LeftClickOnTray
+    {
+        public const bool ShowsMainWindow = false;
+    }
+
     public interface ISettings
     {
         int MaxActivitiesInHistory { get; set;}
 
         int ActivitiesNumberInTray { get; set;}
+
+        bool LeftClickOnTray { get; set;}
 
         Point MainWindowLocation { get; set;}
 

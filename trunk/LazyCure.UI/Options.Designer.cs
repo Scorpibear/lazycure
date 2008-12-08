@@ -44,6 +44,10 @@ namespace LifeIdea.LazyCure.UI
             this.cancel = new System.Windows.Forms.Button();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabGeneral = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.opensMainWindow = new System.Windows.Forms.RadioButton();
+            this.showsRecentActivities = new System.Windows.Forms.RadioButton();
+            this.switchOnLogOff = new System.Windows.Forms.CheckBox();
             this.tabTwitter = new System.Windows.Forms.TabPage();
             this.twitterLink = new System.Windows.Forms.LinkLabel();
             this.passwordField = new System.Windows.Forms.TextBox();
@@ -51,11 +55,11 @@ namespace LifeIdea.LazyCure.UI
             this.usernameField = new System.Windows.Forms.TextBox();
             this.usernameLabel = new System.Windows.Forms.Label();
             this.enableTwitterCheckbox = new System.Windows.Forms.CheckBox();
-            this.switchOnLogOff = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.maxActivitiesInHistory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.activitiesNumberInTray)).BeginInit();
             this.tabControl.SuspendLayout();
             this.tabGeneral.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.tabTwitter.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -157,7 +161,7 @@ namespace LifeIdea.LazyCure.UI
             // 
             // ok
             // 
-            this.ok.Location = new System.Drawing.Point(185, 165);
+            this.ok.Location = new System.Drawing.Point(185, 215);
             this.ok.Name = "ok";
             this.ok.Size = new System.Drawing.Size(75, 23);
             this.ok.TabIndex = 4;
@@ -167,7 +171,7 @@ namespace LifeIdea.LazyCure.UI
             // 
             // cancel
             // 
-            this.cancel.Location = new System.Drawing.Point(266, 165);
+            this.cancel.Location = new System.Drawing.Point(266, 215);
             this.cancel.Name = "cancel";
             this.cancel.Size = new System.Drawing.Size(75, 23);
             this.cancel.TabIndex = 5;
@@ -183,11 +187,12 @@ namespace LifeIdea.LazyCure.UI
             this.tabControl.Location = new System.Drawing.Point(0, 0);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(350, 159);
+            this.tabControl.Size = new System.Drawing.Size(350, 209);
             this.tabControl.TabIndex = 6;
             // 
             // tabGeneral
             // 
+            this.tabGeneral.Controls.Add(this.groupBox1);
             this.tabGeneral.Controls.Add(this.switchOnLogOff);
             this.tabGeneral.Controls.Add(this.activitiesNumberInTray);
             this.tabGeneral.Controls.Add(this.saveAfterDone);
@@ -203,10 +208,53 @@ namespace LifeIdea.LazyCure.UI
             this.tabGeneral.Location = new System.Drawing.Point(4, 22);
             this.tabGeneral.Name = "tabGeneral";
             this.tabGeneral.Padding = new System.Windows.Forms.Padding(3);
-            this.tabGeneral.Size = new System.Drawing.Size(342, 133);
+            this.tabGeneral.Size = new System.Drawing.Size(342, 183);
             this.tabGeneral.TabIndex = 1;
             this.tabGeneral.Text = "General";
             this.tabGeneral.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.opensMainWindow);
+            this.groupBox1.Controls.Add(this.showsRecentActivities);
+            this.groupBox1.Location = new System.Drawing.Point(9, 130);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(145, 47);
+            this.groupBox1.TabIndex = 15;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Left click on tray:";
+            // 
+            // opensMainWindow
+            // 
+            this.opensMainWindow.AutoSize = true;
+            this.opensMainWindow.Checked = true;
+            this.opensMainWindow.Location = new System.Drawing.Point(6, 13);
+            this.opensMainWindow.Name = "opensMainWindow";
+            this.opensMainWindow.Size = new System.Drawing.Size(118, 17);
+            this.opensMainWindow.TabIndex = 13;
+            this.opensMainWindow.TabStop = true;
+            this.opensMainWindow.Text = "opens main window";
+            this.opensMainWindow.UseVisualStyleBackColor = true;
+            // 
+            // showsRecentActivities
+            // 
+            this.showsRecentActivities.AutoSize = true;
+            this.showsRecentActivities.Location = new System.Drawing.Point(6, 28);
+            this.showsRecentActivities.Name = "showsRecentActivities";
+            this.showsRecentActivities.Size = new System.Drawing.Size(132, 17);
+            this.showsRecentActivities.TabIndex = 14;
+            this.showsRecentActivities.Text = "shows recent activities";
+            this.showsRecentActivities.UseVisualStyleBackColor = true;
+            // 
+            // switchOnLogOff
+            // 
+            this.switchOnLogOff.AutoSize = true;
+            this.switchOnLogOff.Location = new System.Drawing.Point(6, 24);
+            this.switchOnLogOff.Name = "switchOnLogOff";
+            this.switchOnLogOff.Size = new System.Drawing.Size(177, 17);
+            this.switchOnLogOff.TabIndex = 11;
+            this.switchOnLogOff.Text = "Switch current activity on log off";
+            this.switchOnLogOff.UseVisualStyleBackColor = true;
             // 
             // tabTwitter
             // 
@@ -219,7 +267,7 @@ namespace LifeIdea.LazyCure.UI
             this.tabTwitter.Location = new System.Drawing.Point(4, 22);
             this.tabTwitter.Name = "tabTwitter";
             this.tabTwitter.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTwitter.Size = new System.Drawing.Size(342, 117);
+            this.tabTwitter.Size = new System.Drawing.Size(342, 183);
             this.tabTwitter.TabIndex = 0;
             this.tabTwitter.Text = "Twitter";
             this.tabTwitter.UseVisualStyleBackColor = true;
@@ -283,21 +331,11 @@ namespace LifeIdea.LazyCure.UI
             this.enableTwitterCheckbox.UseVisualStyleBackColor = true;
             this.enableTwitterCheckbox.CheckedChanged += new System.EventHandler(this.enableTwitterCheckbox_CheckedChanged);
             // 
-            // switchOnLogOff
-            // 
-            this.switchOnLogOff.AutoSize = true;
-            this.switchOnLogOff.Location = new System.Drawing.Point(6, 24);
-            this.switchOnLogOff.Name = "switchOnLogOff";
-            this.switchOnLogOff.Size = new System.Drawing.Size(177, 17);
-            this.switchOnLogOff.TabIndex = 11;
-            this.switchOnLogOff.Text = "Switch current activity on log off";
-            this.switchOnLogOff.UseVisualStyleBackColor = true;
-            // 
             // Options
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(350, 194);
+            this.ClientSize = new System.Drawing.Size(350, 244);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.cancel);
             this.Controls.Add(this.ok);
@@ -315,6 +353,8 @@ namespace LifeIdea.LazyCure.UI
             this.tabControl.ResumeLayout(false);
             this.tabGeneral.ResumeLayout(false);
             this.tabGeneral.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.tabTwitter.ResumeLayout(false);
             this.tabTwitter.PerformLayout();
             this.ResumeLayout(false);
@@ -346,6 +386,9 @@ namespace LifeIdea.LazyCure.UI
         private System.Windows.Forms.Label usernameLabel;
         private System.Windows.Forms.LinkLabel twitterLink;
         private System.Windows.Forms.CheckBox switchOnLogOff;
+        private System.Windows.Forms.RadioButton showsRecentActivities;
+        private System.Windows.Forms.RadioButton opensMainWindow;
+        private System.Windows.Forms.GroupBox groupBox1;
 
     }
 }

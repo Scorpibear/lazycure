@@ -142,5 +142,17 @@ namespace LifeIdea.LazyCure.Properties {
                 this["SwitchOnLogOff"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool LeftClickOnTray {
+            get {
+                return ((bool)(this["LeftClickOnTray"]));
+            }
+            set {
+                this["LeftClickOnTray"] = value;
+            }
+        }
     }
 }
