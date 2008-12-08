@@ -31,11 +31,16 @@ namespace LifeIdea.LazyCure.UI
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TaskManager));
             this.treeView = new System.Windows.Forms.TreeView();
+            this.tasksContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.miAdd = new System.Windows.Forms.ToolStripMenuItem();
+            this.miRename = new System.Windows.Forms.ToolStripMenuItem();
+            this.miDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer = new System.Windows.Forms.SplitContainer();
             this.deleteButton = new System.Windows.Forms.Button();
             this.isWorkingCheckBox = new System.Windows.Forms.CheckBox();
             this.addSiblingButton = new System.Windows.Forms.Button();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.tasksContextMenu.SuspendLayout();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
             this.splitContainer.SuspendLayout();
@@ -43,16 +48,52 @@ namespace LifeIdea.LazyCure.UI
             // 
             // treeView
             // 
+            this.treeView.ContextMenuStrip = this.tasksContextMenu;
             this.treeView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeView.HideSelection = false;
             this.treeView.LabelEdit = true;
             this.treeView.Location = new System.Drawing.Point(0, 0);
             this.treeView.Name = "treeView";
             this.treeView.Size = new System.Drawing.Size(153, 54);
             this.treeView.TabIndex = 0;
-            this.treeView.DoubleClick += new System.EventHandler(this.treeView_DoubleClick);
             this.treeView.AfterLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.treeView_AfterLabelEdit);
+            this.treeView.DoubleClick += new System.EventHandler(this.treeView_DoubleClick);
             this.treeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_AfterSelect);
+            this.treeView.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView_NodeMouseClick);
             this.treeView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.treeView_KeyDown);
+            // 
+            // tasksContextMenu
+            // 
+            this.tasksContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.miAdd,
+            this.miRename,
+            this.miDelete});
+            this.tasksContextMenu.Name = "tasksContextMenu";
+            this.tasksContextMenu.Size = new System.Drawing.Size(144, 70);
+            // 
+            // miAdd
+            // 
+            this.miAdd.Name = "miAdd";
+            this.miAdd.ShortcutKeyDisplayString = "Enter";
+            this.miAdd.Size = new System.Drawing.Size(143, 22);
+            this.miAdd.Text = "Add";
+            this.miAdd.Click += new System.EventHandler(this.addSiblingButton_Click);
+            // 
+            // miRename
+            // 
+            this.miRename.Name = "miRename";
+            this.miRename.ShortcutKeyDisplayString = "F2";
+            this.miRename.Size = new System.Drawing.Size(143, 22);
+            this.miRename.Text = "Rename";
+            this.miRename.Click += new System.EventHandler(this.miRename_Click);
+            // 
+            // miDelete
+            // 
+            this.miDelete.Name = "miDelete";
+            this.miDelete.ShortcutKeyDisplayString = "Del";
+            this.miDelete.Size = new System.Drawing.Size(143, 22);
+            this.miDelete.Text = "Delete";
+            this.miDelete.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // splitContainer
             // 
@@ -122,6 +163,7 @@ namespace LifeIdea.LazyCure.UI
             this.Text = "Task Manager";
             this.TopMost = true;
             this.VisibleChanged += new System.EventHandler(this.TaskManager_VisibleChanged);
+            this.tasksContextMenu.ResumeLayout(false);
             this.splitContainer.Panel1.ResumeLayout(false);
             this.splitContainer.Panel2.ResumeLayout(false);
             this.splitContainer.Panel2.PerformLayout();
@@ -138,5 +180,9 @@ namespace LifeIdea.LazyCure.UI
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.CheckBox isWorkingCheckBox;
         private System.Windows.Forms.Button deleteButton;
+        private System.Windows.Forms.ContextMenuStrip tasksContextMenu;
+        private System.Windows.Forms.ToolStripMenuItem miAdd;
+        private System.Windows.Forms.ToolStripMenuItem miRename;
+        private System.Windows.Forms.ToolStripMenuItem miDelete;
     }
 }
