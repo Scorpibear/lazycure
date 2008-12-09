@@ -1,6 +1,6 @@
 using System;
 using System.Xml;
-using LifeIdea.LazyCure.Core.IO;
+using LifeIdea.LazyCure.Interfaces;
 
 namespace LifeIdea.LazyCure.Core.Tasks
 {

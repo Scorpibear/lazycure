@@ -3,7 +3,7 @@ using System.IO;
 using System.Text;
 using NUnit.Framework;
 
-namespace LifeIdea.LazyCure.Core.IO
+namespace LifeIdea.LazyCure.Interfaces
 {
     [TestFixture]
     public class LogTest

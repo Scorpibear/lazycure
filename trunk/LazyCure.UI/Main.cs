@@ -312,7 +312,14 @@ namespace LifeIdea.LazyCure.UI
 
         private void miTimeLog_Click(object sender, EventArgs e)
         {
-            Dialogs.TimeLog.Visible = miTimeLog.Checked;
+            try
+            {
+                Dialogs.TimeLog.Visible = miTimeLog.Checked;
+            }
+            catch (Exception ex)
+            {
+                Log.Exception(ex);
+            }
         }
 
         private void switchButton_Click(object sender, EventArgs e)
@@ -336,9 +343,10 @@ namespace LifeIdea.LazyCure.UI
             Dialogs.Settings.Save();
         }
 
-        private void notifyIcon_Click(object sender, EventArgs e)
+        private void notifyIcon_MouseClick(object sender, MouseEventArgs e)
         {
-            leftClickTimer.Start();
+            if (e.Button == MouseButtons.Left)
+                leftClickTimer.Start();
         }
 
         private void notifyIcon_DoubleClick(object sender, EventArgs e)

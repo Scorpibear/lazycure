@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using LifeIdea.LazyCure.Core.Tasks;
 using LifeIdea.LazyCure.Core.Time;
+using LifeIdea.LazyCure.Interfaces;
 using NMock2;
 using NUnit.Framework;
 

@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.Text;
 using System.Xml;
-using LifeIdea.LazyCure.Core.IO;
+using LifeIdea.LazyCure.Interfaces;
 using NMock2;
 using NUnit.Framework;
 

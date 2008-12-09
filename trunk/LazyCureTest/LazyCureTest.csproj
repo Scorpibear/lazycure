@@ -62,7 +62,7 @@
     <Compile Include="ProgramTests.cs" />
     <Compile Include="Core\Activities\ActivitiesHistoryTest.cs" />
     <Compile Include="Core\DriverTest.cs" />
-    <Compile Include="Core\IO\LogTest.cs" />
+    <Compile Include="Interfaces\LogTest.cs" />
     <Compile Include="Core\Tasks\TaskTest.cs" />
     <Compile Include="Core\Time\TimeLogTest.cs" />
     <Compile Include="SettingsTests.cs" />
