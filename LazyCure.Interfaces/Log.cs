@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 
-namespace LifeIdea.LazyCure.Core.IO
+namespace LifeIdea.LazyCure.Interfaces
 {
     /// <summary>
     /// Log errors and exceptions to specified writer (file or string)

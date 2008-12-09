@@ -64,7 +64,6 @@
     <Compile Include="Time\ITimeLogsManager.cs" />
     <Compile Include="Time\ITimeManager.cs" />
     <Compile Include="Time\ITimeSystem.cs" />
-    <Compile Include="IO\Log.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Time\NaturalTimeSystem.cs" />
     <Compile Include="Tasks\Task.cs" />
