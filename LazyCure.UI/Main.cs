@@ -249,8 +249,14 @@ namespace LifeIdea.LazyCure.UI
 
         private void miAbout_Click(object sender, EventArgs e)
         {
-            Dialogs.About.ShowDialog(this);
-            postToTwitter.Visible = Dialogs.Settings.TwitterEnabled;
+            try
+            {
+                Dialogs.About.ShowDialog(this);
+            }
+            catch(Exception ex)
+            {
+                Log.Exception(ex);
+            }
         }
 
         private void miActivityDetails_Click(object sender, EventArgs e)
