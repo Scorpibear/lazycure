@@ -58,7 +58,7 @@ namespace LifeIdea.LazyCure.UI
             settings.LeftClickOnTray = showsRecentActivities.Checked;
             settings.SaveAfterDone = saveAfterDone.Checked;
             settings.TimeLogsFolder = timeLogFolder.Text;
-            settings.ReminderTime = (TimeSpan)reminderTime.ValidateText();
+            settings.ReminderTime = TimeSpan.Parse(reminderTime.Text);
             settings.SwitchOnLogOff = switchOnLogOff.Checked;
             settings.TwitterEnabled = enableTwitterCheckbox.Checked;
             settings.TwitterUsername = usernameField.Text;
