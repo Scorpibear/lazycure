@@ -64,5 +64,10 @@ namespace LifeIdea.LazyCure.Interfaces
         {
             return Encode(password);
         }
+
+        public static string MaskedText(TimeSpan timeSpan)
+        {
+            return timeSpan.Hours.ToString()+timeSpan.Minutes.ToString("00");
+        }
     }
 }

@@ -41,5 +41,15 @@ namespace LifeIdea.LazyCure.Interfaces
         {
             Assert.AreEqual(TimeSpan.Zero,Format.Duration("0-3"));
         }
+        [Test]
+        public void FormatMaskedText()
+        {
+            Assert.AreEqual("934", Format.MaskedText(TimeSpan.Parse("9:34")));
+        }
+        [Test]
+        public void MaskedTextWithLeadingZero()
+        {
+            Assert.AreEqual("001", Format.MaskedText(TimeSpan.Parse("0:01")));
+        }
     }
 }
