@@ -355,6 +355,15 @@ namespace LifeIdea.LazyCure.UI
                 leftClickTimer.Start();
         }
 
+        private void notifyIcon_MouseMove(object sender, MouseEventArgs e)
+        {
+            string activityName = (currentActivity.Text == DefaultActivity) ?
+                "current activity is lasting" : currentActivity.Text;
+            notifyIcon.Text = String.Format("{0} from {1} for {2}", activityName,
+                Format.Time(lazyCure.CurrentActivity.StartTime),
+                Format.Duration(lazyCure.CurrentActivity.Duration));
+        }
+
         private void notifyIcon_DoubleClick(object sender, EventArgs e)
         {
             leftClickTimer.Stop();
