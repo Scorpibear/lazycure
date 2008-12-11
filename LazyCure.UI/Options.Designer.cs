@@ -75,7 +75,7 @@ namespace LifeIdea.LazyCure.UI
             // 
             // maxActivitiesInHistory
             // 
-            this.maxActivitiesInHistory.Location = new System.Drawing.Point(233, 63);
+            this.maxActivitiesInHistory.Location = new System.Drawing.Point(244, 63);
             this.maxActivitiesInHistory.Name = "maxActivitiesInHistory";
             this.maxActivitiesInHistory.Size = new System.Drawing.Size(36, 20);
             this.maxActivitiesInHistory.TabIndex = 1;
@@ -83,6 +83,7 @@ namespace LifeIdea.LazyCure.UI
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(6, 65);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(224, 13);
@@ -91,7 +92,7 @@ namespace LifeIdea.LazyCure.UI
             // 
             // activitiesNumberInTray
             // 
-            this.activitiesNumberInTray.Location = new System.Drawing.Point(181, 42);
+            this.activitiesNumberInTray.Location = new System.Drawing.Point(193, 42);
             this.activitiesNumberInTray.Name = "activitiesNumberInTray";
             this.activitiesNumberInTray.Size = new System.Drawing.Size(36, 20);
             this.activitiesNumberInTray.TabIndex = 9;
@@ -99,6 +100,7 @@ namespace LifeIdea.LazyCure.UI
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label5.Location = new System.Drawing.Point(6, 44);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(174, 13);
@@ -108,18 +110,18 @@ namespace LifeIdea.LazyCure.UI
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(117, 110);
+            this.label4.Location = new System.Drawing.Point(106, 110);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(100, 13);
+            this.label4.Size = new System.Drawing.Size(94, 13);
             this.label4.TabIndex = 8;
-            this.label4.Text = "(hh:mm) of inactivity";
+            this.label4.Text = "(h:mm) of inactivity";
             // 
             // reminderTime
             // 
-            this.reminderTime.Location = new System.Drawing.Point(73, 107);
-            this.reminderTime.Mask = "00:00";
+            this.reminderTime.Location = new System.Drawing.Point(75, 107);
+            this.reminderTime.Mask = "0:00";
             this.reminderTime.Name = "reminderTime";
-            this.reminderTime.Size = new System.Drawing.Size(38, 20);
+            this.reminderTime.Size = new System.Drawing.Size(28, 20);
             this.reminderTime.TabIndex = 7;
             // 
             // label3
@@ -153,6 +155,7 @@ namespace LifeIdea.LazyCure.UI
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label2.Location = new System.Drawing.Point(6, 88);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(105, 13);

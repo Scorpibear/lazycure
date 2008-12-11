@@ -17,7 +17,7 @@ namespace LifeIdea.LazyCure.UI
             activitiesSummary.DataSource = lazyCure.ActivitiesSummaryData;
             tasksSummary.DataSource = lazyCure.TasksSummaryData;
             workingTimeIntervalsGrid.DataSource = lazyCure.WorkingTimeIntervalsData;
-            maxRestDurationTextBox.Text = Format.ShortDuration(lazyCure.PossibleWorkInterruptionDuration);
+            maxRestDurationTextBox.Text = Format.MaskedText(lazyCure.PossibleWorkInterruptionDuration);
             this.mainForm = mainForm;
             timer.Interval = 300;
             timer.Start();

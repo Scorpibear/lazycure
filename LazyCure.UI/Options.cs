@@ -20,7 +20,7 @@ namespace LifeIdea.LazyCure.UI
             showsRecentActivities.Checked = settings.LeftClickOnTray;
             saveAfterDone.Checked = settings.SaveAfterDone;
             timeLogFolder.Text = settings.TimeLogsFolder;
-            reminderTime.Text = settings.ReminderTime.ToString();
+            reminderTime.Text = Format.MaskedText(settings.ReminderTime);
             switchOnLogOff.Checked = settings.SwitchOnLogOff;
             enableTwitterCheckbox.Checked = settings.TwitterEnabled;
             usernameField.Text = settings.TwitterUsername;
@@ -53,20 +53,26 @@ namespace LifeIdea.LazyCure.UI
 
         private void ok_Click(object sender, EventArgs e)
         {
-            settings.MaxActivitiesInHistory = (int)maxActivitiesInHistory.Value;
-            settings.ActivitiesNumberInTray = (int)activitiesNumberInTray.Value;
-            settings.LeftClickOnTray = showsRecentActivities.Checked;
-            settings.SaveAfterDone = saveAfterDone.Checked;
-            settings.TimeLogsFolder = timeLogFolder.Text;
-            settings.ReminderTime = TimeSpan.Parse(reminderTime.Text);
-            settings.SwitchOnLogOff = switchOnLogOff.Checked;
-            settings.TwitterEnabled = enableTwitterCheckbox.Checked;
-            settings.TwitterUsername = usernameField.Text;
-            settings.TwitterPassword = Format.Encode(passwordField.Text);
-            settings.Save();
-            Dialogs.LazyCureDriver.ApplySettings(settings);
-            Dialogs.MainForm.PostToTwitterEnabled = enableTwitterCheckbox.Checked;
-            Hide();
+            TimeSpan parsedReminderTime;
+            if (TimeSpan.TryParse(reminderTime.Text, out parsedReminderTime))
+            {
+                settings.ReminderTime = parsedReminderTime;
+                settings.MaxActivitiesInHistory = (int)maxActivitiesInHistory.Value;
+                settings.ActivitiesNumberInTray = (int)activitiesNumberInTray.Value;
+                settings.LeftClickOnTray = showsRecentActivities.Checked;
+                settings.SaveAfterDone = saveAfterDone.Checked;
+                settings.TimeLogsFolder = timeLogFolder.Text;
+                settings.SwitchOnLogOff = switchOnLogOff.Checked;
+                settings.TwitterEnabled = enableTwitterCheckbox.Checked;
+                settings.TwitterUsername = usernameField.Text;
+                settings.TwitterPassword = Format.Encode(passwordField.Text);
+                settings.Save();
+                Dialogs.LazyCureDriver.ApplySettings(settings);
+                Dialogs.MainForm.PostToTwitterEnabled = enableTwitterCheckbox.Checked;
+                Hide();
+            }
+            else
+                MessageBox.Show(String.Format("'{0}' is invalid reminder time. Please, correct it and press 'OK' then", reminderTime.Text), "Options could not be saved");
         }
 
         private void selectTimeLogsFolder_Click(object sender, EventArgs e)
