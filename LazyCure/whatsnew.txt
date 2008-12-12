@@ -1,3 +1,14 @@
+LazyCure 3.6
+* New: LazyCure is working under Linux with Mono framework.
+* New: Possibility to customize left click on tray icon.
+* New: Possibility to manage tasks via context menu, F2 hot key for task rename.
+* New: Info about current activity is shown when cursor is placed on tray icon.
+* Improved: Switch activity on log off is made an optional feature.
+* Improved: Last activity logging when computer is shutting down.
+* Fixed: At midnight new time log is created but is not switched.
+* Fixed: An exception when linking activity with not selected task.
+* Fixed: Efficiency is not auto-calculated when linked task is changed.
+
 LazyCure 3.5
 * New: LazyCure is minimized by pressing 'ESC' on main window.
 * New: Main window is opened in the same position as it was before closing LazyCure.
