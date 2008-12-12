@@ -1,0 +1,106 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2176C395-84EA-46CF-B234-6EC6C7A45E9B}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LifeIdea.LazyCure</RootNamespace>
+    <AssemblyName>LazyCureTest</AssemblyName>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="NMock2, Version=1.0.2313.18049, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>ExtFiles\NMock2.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=2.4.1.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>ExtFiles\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Core\Reports\ActivitiesSummaryTest.cs" />
+    <Compile Include="Core\Activities\ActivityTest.cs" />
+    <Compile Include="Core\Activities\ActivitySerializerTest.cs" />
+    <Compile Include="Core\Activities\RunningActivityTest.cs" />
+    <Compile Include="Core\IO\FileManagerTest.cs" />
+    <Compile Include="Core\Reports\EfficiencyCalculatorTest.cs" />
+    <Compile Include="Core\Reports\TasksSummaryTest.cs" />
+    <Compile Include="Core\Reports\WorkingTimeTest.cs" />
+    <Compile Include="Core\Tasks\TaskCollectionSerializerTest.cs" />
+    <Compile Include="Core\Tasks\TaskSerializerTest.cs" />
+    <Compile Include="Core\Time\TimeManagerTest.cs" />
+    <Compile Include="Core\UtilitiesTest.cs" />
+    <Compile Include="Core\Tasks\TaskCollectionTest.cs" />
+    <Compile Include="Core\Time\TimeLogSerializerTest.cs" />
+    <Compile Include="Interfaces\FormatTest.cs" />
+    <Compile Include="ProgramTests.cs" />
+    <Compile Include="Core\Activities\ActivitiesHistoryTest.cs" />
+    <Compile Include="Core\DriverTest.cs" />
+    <Compile Include="Interfaces\LogTest.cs" />
+    <Compile Include="Core\Tasks\TaskTest.cs" />
+    <Compile Include="Core\Time\TimeLogTest.cs" />
+    <Compile Include="SettingsTests.cs" />
+    <Compile Include="UI\MainBaseTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LazyCure.Core\LazyCure.Core.csproj">
+      <Project>{055BDC4B-9AD3-471A-B3E3-19CBFC45C9C8}</Project>
+      <Name>LazyCure.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LazyCure.Interfaces\LazyCure.Interfaces.csproj">
+      <Project>{61117267-380A-4D4B-8228-29F4CB193E44}</Project>
+      <Name>LazyCure.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LazyCure.UI\LazyCure.UI.csproj">
+      <Project>{B919C7EB-8DC6-42E3-AD2A-A078A72738F1}</Project>
+      <Name>LazyCure.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LazyCure\LazyCure.csproj">
+      <Project>{F86EDBE5-26FD-47E3-94AF-CB602737E7B7}</Project>
+      <Name>LazyCure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>
