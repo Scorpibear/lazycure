@@ -48,6 +48,14 @@ namespace LifeIdea.LazyCure.Core.Tasks
             Assert.AreEqual("false", xml.Attributes["working"].Value);
         }
         [Test]
+        public void SerializeSubtask()
+        {
+            Task task = new Task("parent");
+            task.Nodes.Add(new Task("sub"));
+            XmlNode xml = TaskSerializer.Serialize(task);
+            Assert.AreEqual("sub", xml.ChildNodes[0].Attributes["name"].Value);
+        }
+        [Test]
         public void Deserialize()
         {
             Task task = TaskSerializer.Deserialize("<task name=\"deserialized_task\"></task>");
@@ -77,6 +85,12 @@ namespace LifeIdea.LazyCure.Core.Tasks
         {
             Task task = TaskSerializer.Deserialize("<task name=\"task1\" working=\"aaa\" />");
             Assert.IsTrue(task.IsWorking);
+        }
+        [Test]
+        public void DeserializeSubtask()
+        {
+            Task task = TaskSerializer.Deserialize("<task name=\"parent\"><task name=\"sub\"/></task>");
+            Assert.AreEqual("sub", task.Nodes[0].Name);
         }
     }
 }

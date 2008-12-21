@@ -21,7 +21,7 @@ namespace LifeIdea.LazyCure.Interfaces
 
         TimeSpan PossibleWorkInterruptionDuration { get; set; }
 
-        TreeNode[] TasksNodes { get; }
+        ITaskViewDataSource TaskViewDataSource { get;}
 
         object TasksSummaryData { get; }
 
@@ -45,20 +45,12 @@ namespace LifeIdea.LazyCure.Interfaces
 
         string GetUniqueActivityName();
 
-        bool IsWorkingTask(string SelectedTask);
-
         bool LoadTimeLog(string filename);
 
         void PostToTwitter(string activity);
 
-        void RemoveTask(string task);
-
         bool Save();
 
         bool SaveTimeLog(string filename);
-
-        void UpdateIsWorkingTaskProperty(string task, bool isWorking);
-
-        void UpdateTaskNodeText(TreeNode treeNode, string text);
     }
 }

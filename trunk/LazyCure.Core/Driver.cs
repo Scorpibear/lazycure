@@ -1,5 +1,4 @@
 using System;
-using System.Windows.Forms;
 using LifeIdea.LazyCure.Core.Activities;
 using LifeIdea.LazyCure.Core.IO;
 using LifeIdea.LazyCure.Core.Plugins;
@@ -65,6 +64,11 @@ namespace LifeIdea.LazyCure.Core
                 if (WorkingTime != null)
                     WorkingTime.TaskCollection = taskCollection;
             }
+        }
+
+        public ITaskViewDataSource TaskViewDataSource
+        {
+            get { return taskCollection as ITaskViewDataSource; }
         }
 
         public ITasksSummary TasksSummary
@@ -134,14 +138,6 @@ namespace LifeIdea.LazyCure.Core
             set { workingTime.PossibleWorkInterruption = value;}
         }
 
-        public TreeNode[] TasksNodes
-        {
-            get
-            {
-                return TaskCollection.ToArray();
-            }
-        }
-
         public object TasksSummaryData
         {
             get { return TasksSummary.Data; }
@@ -186,27 +182,9 @@ namespace LifeIdea.LazyCure.Core
             return History.UniqueName;
         }
 
-        public bool IsWorkingTask(string task)
-        {
-            return TaskCollection.IsWorking(task);
-        }
-
         public void PostToTwitter(string activity)
         {
             ExternalPoster.PostAsync(activity);
-        }
-
-        public void RemoveTask(string task)
-        {
-            TaskCollection.Remove(task);
-        }
-
-        public void UpdateTaskNodeText(TreeNode node, string text)
-        {
-            if (TaskCollection.Contains(node.Name))
-                TaskCollection.GetTask(node.Name).Text = text;
-            else
-                TaskCollection.Add(new Task(text));
         }
 
         public object TimeLogData { get { return TimeManager.TimeLog.Data; } }

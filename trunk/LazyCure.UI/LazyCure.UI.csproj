@@ -46,6 +46,7 @@
     <Compile Include="Backend\IMainForm.cs" />
     <Compile Include="Backend\ISummaryView.cs" />
     <Compile Include="Backend\ITimeLogView.cs" />
+    <Compile Include="Backend\TreeBinder.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
