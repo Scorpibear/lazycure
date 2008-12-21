@@ -2,21 +2,25 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 using LifeIdea.LazyCure.Interfaces;
+using LifeIdea.LazyCure.UI.Backend;
 
 namespace LifeIdea.LazyCure.UI
 {
     partial class TaskManager : View
     {
         const string NewTaskName = "New task...";
+
         private readonly ILazyCureDriver driver;
         private int minimalHeight;
+        private TreeBinder treeBinder;
 
         public TaskManager(ILazyCureDriver driver, IMainForm mainForm)
         {
             InitializeComponent();
             this.driver = driver;
             this.mainForm = mainForm;
-            treeView.Nodes.AddRange(driver.TasksNodes);
+            treeBinder = new TreeBinder(driver.TaskViewDataSource);
+            treeBinder.BindNodes(treeView);
             minimalHeight = ClientSize.Height;
         }
 
@@ -30,18 +34,20 @@ namespace LifeIdea.LazyCure.UI
                 else
                     return null;
             }
-            set { treeView.SelectedNode = treeView.Nodes[value]; }
+            set { treeView.SelectedNode = treeBinder.GetTask(value); }
         }
 
         #region Private Methods
 
         private void AddSibling()
         {
-            TreeNode newNode;
-            if (treeView.SelectedNode != null)
-                newNode = treeView.Nodes.Insert(treeView.SelectedNode.Index+1, NewTaskName);
-            else
-                newNode = treeView.Nodes.Add(NewTaskName);
+            TreeNode newNode = treeBinder.AddSibling(treeView.SelectedNode);
+            newNode.BeginEdit();
+        }
+
+        private void AddSubtask()
+        {
+            TreeNode newNode = treeBinder.AddSubtask(treeView.SelectedNode);
             newNode.BeginEdit();
         }
 
@@ -51,10 +57,8 @@ namespace LifeIdea.LazyCure.UI
                 "Do you really want to delete selected task '" + SelectedTask + "'?",
                 "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
-            {
-                driver.RemoveTask(SelectedTask);
-                treeView.SelectedNode.Remove();
-            }
+                treeBinder.Remove(treeView.SelectedNode);
+            treeView.Focus();
         }
 
         private void EditTask()
@@ -65,18 +69,37 @@ namespace LifeIdea.LazyCure.UI
         private void ResizeToShowAllTasks()
         {
             int treeViewBordersHeight = treeView.Size.Height - treeView.ClientSize.Height;
-            int newFormHeight = treeView.ItemHeight * (treeView.Nodes.Count + 1) + treeViewBordersHeight;
+            int newFormHeight = treeView.ItemHeight * NodesCountToShow() + treeViewBordersHeight;
             if (newFormHeight < minimalHeight)
                 newFormHeight = minimalHeight;
             if (newFormHeight!=Height)
                 ClientSize = new Size(Width, newFormHeight);
         }
 
+        private int NodesCountToShow()
+        {
+            int count = 1 + GetChildrenNodesCount(treeView.Nodes);
+            return count;
+        }
+
+        private static int GetChildrenNodesCount(TreeNodeCollection nodes)
+        {
+            int count = nodes.Count;
+            foreach (TreeNode subNode in nodes)
+                count += GetChildrenNodesCount(subNode.Nodes);
+            return count;
+        }
+
         #endregion Private Methods
 
-        private void addSiblingButton_Click(object sender, EventArgs e)
+        private void addTaskButton_Click(object sender, EventArgs e)
         {
             AddSibling();
+        }
+
+        private void addSubtaskButton_Click(object sender, EventArgs e)
+        {
+            AddSubtask();
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
@@ -86,10 +109,10 @@ namespace LifeIdea.LazyCure.UI
 
         private void isWorkingCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            driver.UpdateIsWorkingTaskProperty(SelectedTask, isWorkingCheckBox.Checked);
+            treeBinder.UpdateIsWorking(treeView.SelectedNode, isWorkingCheckBox.Checked);
         }
 
-        private void miRename_Click(object sender, EventArgs e)
+        private void renameButton_Click(object sender, EventArgs e)
         {
             EditTask();
         }
@@ -97,19 +120,22 @@ namespace LifeIdea.LazyCure.UI
         private void TaskManager_VisibleChanged(object sender, EventArgs e)
         {
             if (this.Visible)
+            {
                 ResizeToShowAllTasks();
+                treeView.ExpandAll();
+            }
         }
 
         private void treeView_AfterLabelEdit(object sender, NodeLabelEditEventArgs e)
         {
             if (e.Label != null)
-                driver.UpdateTaskNodeText(e.Node, e.Label);
+                treeBinder.Rename(e.Node, e.Label);
             treeView.SelectedNode = e.Node;
         }
 
         private void treeView_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            this.isWorkingCheckBox.Checked = driver.IsWorkingTask(SelectedTask);
+            this.isWorkingCheckBox.Checked = treeBinder.IsWorking(treeView.SelectedNode);
         }
 
         private void treeView_DoubleClick(object sender, EventArgs e)
@@ -126,6 +152,9 @@ namespace LifeIdea.LazyCure.UI
                     break;
                 case Keys.Enter:
                     AddSibling();
+                    break;
+                case Keys.Insert:
+                    AddSubtask();
                     break;
                 case Keys.F2:
                     EditTask();

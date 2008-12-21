@@ -66,6 +66,7 @@
     <Compile Include="Core\Tasks\TaskTest.cs" />
     <Compile Include="Core\Time\TimeLogTest.cs" />
     <Compile Include="SettingsTests.cs" />
+    <Compile Include="UI\Backend\TreeBinderTests.cs" />
     <Compile Include="UI\MainBaseTests.cs" />
   </ItemGroup>
   <ItemGroup>

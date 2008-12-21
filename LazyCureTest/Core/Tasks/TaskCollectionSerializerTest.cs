@@ -91,7 +91,7 @@ namespace LifeIdea.LazyCure.Core.Tasks
 
             ITaskCollection taskCollection = TaskCollectionSerializer.Deserialize(new StringReader(sXml));
 
-            Assert.AreEqual(0,taskCollection.ToArray().Length);
+            Assert.AreEqual(0,taskCollection.Count);
         }
         
     }

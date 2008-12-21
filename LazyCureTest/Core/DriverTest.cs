@@ -81,27 +81,11 @@ namespace LifeIdea.LazyCure.Core
             Assert.AreEqual(0.76,driver.Efficiency);
         }
         [Test]
-        public void IsWorkingTask()
-        {
-            driver.TaskCollection = NewMock<ITaskCollection>();
-            Expect.Once.On(driver.TaskCollection).Method("IsWorking").With("test task").Will(Return.Value(false));
-
-            Assert.IsFalse(driver.IsWorkingTask("test task"));
-        }
-        [Test]
         public void GetPossibleWorkInterruptionDuration()
         {
             driver.WorkingTime = NewMock<IWorkingTimeManager>();
             Expect.Once.On(driver.WorkingTime).GetProperty("PossibleWorkInterruption").Will(Return.Value(TimeSpan.MaxValue));
             Assert.AreEqual(TimeSpan.MaxValue, driver.PossibleWorkInterruptionDuration);
-        }
-        [Test]
-        public void RemoveTaskCallsTaskCollection()
-        {
-            driver.TaskCollection = NewMock<ITaskCollection>();
-            Expect.Once.On(driver.TaskCollection).Method("Remove").With("ToRemove");
-            driver.RemoveTask("ToRemove");
-            VerifyAllExpectationsHaveBeenMet();
         }
         [Test]
         public void SetPossibleWorkInterruptionDuration()
@@ -124,7 +108,7 @@ namespace LifeIdea.LazyCure.Core
         {
             driver.TimeLogsFolder = "";
             Assert.IsFalse(driver.Save());
-            Assert.AreEqual("TimeLogsFolder is not specified\r\n", logStringBuilder.ToString());
+            Assert.AreEqual("TimeLogsFolder is not specified", Log.LastError);
         }
         [Test]
         public void LoadTimeLog()

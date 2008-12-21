@@ -10,12 +10,12 @@ namespace LifeIdea.LazyCure.Core.Tasks
         private const string TASK_ELEMENT = "task";
         private const string ACTIVITY_ELEMENT = "activity";
         private const string WORKING_ATTRIBUTE = "working";
+        private static XmlDocument doc = new XmlDocument();
 
         public static XmlNode Serialize(Task task)
         {
             if (task != null)
             {
-                XmlDocument doc = new XmlDocument();
                 XmlNode xml = doc.CreateElement(TASK_ELEMENT);
                 xml.Attributes.Append(doc.CreateAttribute(NAME_ATTRIBUTE)).Value = task.Name;
                 xml.Attributes.Append(doc.CreateAttribute(WORKING_ATTRIBUTE)).Value =
@@ -24,6 +24,8 @@ namespace LifeIdea.LazyCure.Core.Tasks
                 {
                     xml.AppendChild(doc.CreateElement(ACTIVITY_ELEMENT)).InnerText = activity;
                 }
+                foreach (Task subtask in task.Nodes)
+                    xml.AppendChild(Serialize(subtask));
                 return xml;
             }
             else
@@ -51,8 +53,21 @@ namespace LifeIdea.LazyCure.Core.Tasks
                     Task task = new Task(name, isWorking);
                     foreach (XmlNode node in xml.ChildNodes)
                     {
-                        if (node.InnerText != string.Empty)
-                            task.RelatedActivities.Add(node.InnerText);
+                        switch (node.Name)
+                        {
+                            case TASK_ELEMENT:
+                                task.Nodes.Add(Deserialize(node));
+                                break;
+                            case ACTIVITY_ELEMENT:
+                                if (node.InnerText != string.Empty)
+                                    task.RelatedActivities.Add(node.InnerText);
+                                break;
+                            default:
+                                Log.Error("'{0}' is unsupported element name. Supported elements are: {1},{2}",
+                                    node.Name, TASK_ELEMENT, ACTIVITY_ELEMENT);
+                                break;
+                        }
+                        
                     }
                     return task;
                 }
@@ -62,7 +77,6 @@ namespace LifeIdea.LazyCure.Core.Tasks
 
         public static Task Deserialize(string xml)
         {
-            XmlDocument doc = new XmlDocument();
             try
             {
                 doc.LoadXml(xml);

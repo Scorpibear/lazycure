@@ -55,5 +55,12 @@ namespace LifeIdea.LazyCure.Interfaces
             }
             catch (Exception) { Assert.Fail("Exception occured"); }
         }
+        [Test]
+        public void LastError()
+        {
+            Log.Error("the first");
+            Log.Error("the last");
+            Assert.AreEqual("the last", Log.LastError);
+        }
     }
 }
