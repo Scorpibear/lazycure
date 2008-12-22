@@ -5,19 +5,20 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("LazyCure")]
-[assembly: AssemblyDescription("Tool for easy time logging, time analysis, calculation and improving personal efficiency. \r\n\r\nFirst version of LazyCure was issued in November 2003 by Mikhail Subach (aka Scorpibear). Since then, a lot of people were involved in LazyCure development, directly and inderectly. Special thanks to:\r\n\r\n"+
-    "Andrei Kulabukhau, \r\n"+
-   "Andrei Savastsiuk, \r\n" +
-   "Alena Yermokhina, \r\n" +
-   "Siarhei Serko, \r\n" +
-   "Siarhei Gvozdukevich, \r\n" +
-   "Ihar Kalasouski, \r\n" +
-   "Siarhei Dziatlau, \r\n" +
-   "Andrei Pretkel, \r\n" +
-   "Alena Batsekina, \r\n" +
-   "Dzmitry Kuchko and \r\n" +
-   "Irina Rusetskaya.\r\n" +
-    "\r\nThank to all of you who improves your personal efficiency with LazyCure!")]
+[assembly: AssemblyDescription("Tool for easy time logging, time analysis, calculation and improving personal efficiency. \r\n\r\nFirst version of LazyCure was issued in November 2003 by Mikhail Subach (aka Scorpibear). Since then, a lot of people were involved in LazyCure development, directly and inderectly. Special thanks to:\r\n\r\n" +
+    "Andrei Kulabukhau, for huge list of feature requests and ideas for improvements, \r\n\r\n" +
+   "Andrei Savastsiuk, for support and desire to use LazyCure for increasing personal efficiency, \r\n\r\n" +
+   "Alena Yermokhina, for unbiased look at LazyCure and further ideas for improvements, \r\n\r\n" +
+   "Siarhei Serko, for sharing his experience in personal efficiency calculation, \r\n\r\n" +
+   "Siarhei Gvozdukevich, for critical bugs discovering, \r\n\r\n" +
+   "Ihar Kalasouski, for his enthusiasm and improved interface designing, \r\n\r\n" +
+   "Siarhei Dziatlau, for his unconventional ideas and support, \r\n\r\n" +
+   "Andrei Pretkel, for usability improvement ideas and support, \r\n\r\n" +
+   "Alena Batsekina, for her commitment to time logging idea, \r\n\r\n" +
+   "Dzmitry Kuchko and Irina Rusetskaya, for helping with LazyCure quality increasing, \r\n\r\n" +
+    "Gleb Reys, for sharing personal experience in time logging, providing ideas for improvement and support, \r\n\r\n" +
+    "Aliaksandr Zhuraukin, for his patience to LazyCure bugs during raising experience in test automation, \r\n\r\n" +
+    "and a lot of thanks to You, who improves your personal efficiency with LazyCure now!")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("LifeIdea.org")]
 [assembly: AssemblyProduct("LazyCure")]
