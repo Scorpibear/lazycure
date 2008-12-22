@@ -9,13 +9,14 @@ using System.Runtime.InteropServices;
     "Andrei Kulabukhau, for huge list of feature requests and ideas for improvements, \r\n\r\n" +
    "Andrei Savastsiuk, for support and desire to use LazyCure for increasing personal efficiency, \r\n\r\n" +
    "Alena Yermokhina, for unbiased look at LazyCure and further ideas for improvements, \r\n\r\n" +
+    "Andrei Ramanchuk, for idea to make LazyCure open source project, \r\n\r\n" +
    "Siarhei Serko, for sharing his experience in personal efficiency calculation, \r\n\r\n" +
-   "Siarhei Gvozdukevich, for critical bugs discovering, \r\n\r\n" +
+  "Sergey Gvozdyukevich, for critical bugs discovering, \r\n\r\n" +
    "Ihar Kalasouski, for his enthusiasm and improved interface designing, \r\n\r\n" +
    "Siarhei Dziatlau, for his unconventional ideas and support, \r\n\r\n" +
    "Andrei Pretkel, for usability improvement ideas and support, \r\n\r\n" +
    "Alena Batsekina, for her commitment to time logging idea, \r\n\r\n" +
-   "Dzmitry Kuchko and Irina Rusetskaya, for helping with LazyCure quality increasing, \r\n\r\n" +
+   "Dzmitry Kuchko and Iryna Rusetskaya, for helping with LazyCure quality increasing, \r\n\r\n" +
     "Gleb Reys, for sharing personal experience in time logging, providing ideas for improvement and support, \r\n\r\n" +
     "Aliaksandr Zhuraukin, for his patience to LazyCure bugs during raising experience in test automation, \r\n\r\n" +
     "and a lot of thanks to You, who improves your personal efficiency with LazyCure now!")]
