@@ -15,7 +15,7 @@ namespace LifeIdea.LazyCure.Core.Activities
         {
             activity = NewMock<IActivity>();
             Stub.On(activity).GetProperty("Duration").Will(Return.Value(TimeSpan.Parse("1:23:45")));
-            Stub.On(activity).GetProperty("StartTime").Will(Return.Value(DateTime.Parse("5:00:00")));
+            Stub.On(activity).GetProperty("Start").Will(Return.Value(DateTime.Parse("5:00:00")));
         }
         [Test]
         public void SerializeActivity()
@@ -41,7 +41,7 @@ namespace LifeIdea.LazyCure.Core.Activities
             activity = ActivitySerializer.Deserialize(doc.FirstChild);
 
             Assert.AreEqual("activity",activity.Name);
-            Assert.AreEqual(DateTime.Parse("5:00:00"), activity.StartTime);
+            Assert.AreEqual(DateTime.Parse("5:00:00"), activity.Start);
             Assert.AreEqual(TimeSpan.Parse("1:23:45"), activity.Duration);
         }
         [Test]
@@ -74,7 +74,7 @@ namespace LifeIdea.LazyCure.Core.Activities
             activity = ActivitySerializer.Deserialize(doc.FirstChild);
 
             Assert.AreEqual("activity", activity.Name);
-            Assert.AreEqual(DateTime.Parse("6:00:00"), activity.StartTime);
+            Assert.AreEqual(DateTime.Parse("6:00:00"), activity.Start);
             Assert.AreEqual(TimeSpan.Parse("2:34:50"), activity.Duration);
         }
         [Test]
@@ -90,7 +90,7 @@ namespace LifeIdea.LazyCure.Core.Activities
             activity = ActivitySerializer.Deserialize(doc.FirstChild);
 
             Assert.AreEqual("yoga", activity.Name);
-            Assert.AreEqual(DateTime.Parse("7:01:00"), activity.StartTime);
+            Assert.AreEqual(DateTime.Parse("7:01:00"), activity.Start);
             Assert.AreEqual(TimeSpan.Parse("0:09:38"), activity.Duration);
         }
         [Test]

@@ -21,7 +21,7 @@ namespace LifeIdea.LazyCure.Core.Time
             activity = NewMock<IActivity>();
             mockTimeLog = NewMock<ITimeLog>();
             Stub.On(activity).GetProperty("Duration").Will(Return.Value(TimeSpan.Parse("1:23:45")));
-            Stub.On(activity).GetProperty("StartTime").Will(Return.Value(DateTime.Parse("5:00:00")));
+            Stub.On(activity).GetProperty("Start").Will(Return.Value(DateTime.Parse("5:00:00")));
             Stub.On(mockTimeLog).GetProperty("Date").Will(Return.Value(DateTime.Parse("2007-02-23")));
         }
         [TearDown]

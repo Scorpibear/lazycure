@@ -11,7 +11,7 @@ namespace LifeIdea.LazyCure.Core.Activities
         public ITimeSystem timeSystem;
         public Boolean IsRunning = true;
         public const double MILLISECONDS_IN_ONE_SECOND = 1000;
-        public override DateTime StartTime
+        public override DateTime Start
         {
             get
             {
@@ -65,7 +65,7 @@ namespace LifeIdea.LazyCure.Core.Activities
         }
         private void RecalculateDuration()
         {
-            duration = timeSystem.Now - StartTime;
+            duration = timeSystem.Now - Start;
         }
     }
 }

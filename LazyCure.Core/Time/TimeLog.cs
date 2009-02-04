@@ -60,14 +60,14 @@ namespace LifeIdea.LazyCure.Core.Time
                 data.Clear();
                 foreach (IActivity activity in value)
                 {
-                    AddActivity(activity.Name, activity.StartTime, activity.Duration);
+                    AddActivity(activity.Name, activity.Start, activity.Duration);
                 }
             }
         }
 
         public void AddActivity(IActivity activity)
         {
-            AddActivity(activity.Name,activity.StartTime,activity.Duration);
+            AddActivity(activity.Name,activity.Start,activity.Duration);
         }
 
         public DataTable Data

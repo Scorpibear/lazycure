@@ -14,10 +14,11 @@ namespace LifeIdea.LazyCure.Core.Activities
 
         public string Name { get { return name; } set { name = value; } }
         virtual public TimeSpan Duration { get { return duration; } set { duration = value; } }
-        virtual public DateTime StartTime { get { return start; } set { start = value; } }
+        virtual public DateTime Start { get { return start; } set { start = value; } }
+        virtual public DateTime End { get { return Start + Duration; } }
         public override string ToString()
         {
-            return Name + " " + StartTime + " " + Duration;
+            return Name + " " + Start + " " + Duration;
         }
         public override int GetHashCode()
         {

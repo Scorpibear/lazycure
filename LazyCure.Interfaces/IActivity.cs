@@ -5,7 +5,8 @@ namespace LifeIdea.LazyCure.Interfaces
     public interface IActivity
     {
         string Name { get;set;}
-        DateTime StartTime { get;set;}
+        DateTime Start { get;set;}
         TimeSpan Duration { get;set;}
+        DateTime End { get;}
     }
 }

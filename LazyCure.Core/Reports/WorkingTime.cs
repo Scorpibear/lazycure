@@ -126,8 +126,8 @@ namespace LifeIdea.LazyCure.Core.Reports
                     if (IsWorking(activity))
                     {
                         if (start == DateTime.MinValue)
-                            start = activity.StartTime;
-                        end = activity.StartTime + activity.Duration;
+                            start = activity.Start;
+                        end = activity.Start + activity.Duration;
                     }
                     else
                     {

@@ -73,7 +73,7 @@ namespace LifeIdea.LazyCure.Core.Time
         public TimeManager(ITimeSystem timeSystem, ITimeLogsManager timeLogsManager):this(timeSystem)
         {
             TimeLogsManager = timeLogsManager;
-            TimeLog = new TimeLog(currentActivity.StartTime.Date);
+            TimeLog = new TimeLog(currentActivity.Start.Date);
         }
 
         public void FinishActivity(string finishedActivity, string nextActivity)
@@ -86,9 +86,9 @@ namespace LifeIdea.LazyCure.Core.Time
         {
             currentActivity.Stop();
 
-            DateTime endTime = currentActivity.StartTime + currentActivity.Duration;
+            DateTime endTime = currentActivity.Start + currentActivity.Duration;
             DateTime endDate = endTime.Date;
-            if (currentActivity.StartTime.Date < endDate)
+            if (currentActivity.Start.Date < endDate)
                 PerformMidnightCorrection(endDate);
             if (TimeLog != null)
                 TimeLog.AddActivity(currentActivity);
@@ -99,7 +99,7 @@ namespace LifeIdea.LazyCure.Core.Time
 
         public void PerformMidnightCorrection(DateTime endDate)
         {
-            TimeSpan oldDayActivityDuration = endDate - currentActivity.StartTime;
+            TimeSpan oldDayActivityDuration = endDate - currentActivity.Start;
             TimeSpan newDayActivityDuration = currentActivity.Duration - oldDayActivityDuration;
             currentActivity.Duration = oldDayActivityDuration;
             if (TimeLog != null)
@@ -113,7 +113,7 @@ namespace LifeIdea.LazyCure.Core.Time
             TimeLog = new TimeLog(endDate);
             if (TimeLogsManager != null)
                 TimeLogsManager.UpdateTimeLogReferencies(TimeLog);
-            currentActivity.StartTime = endDate;
+            currentActivity.Start = endDate;
             currentActivity.Duration = newDayActivityDuration;
         }
     }

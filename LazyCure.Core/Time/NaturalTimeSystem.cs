@@ -5,7 +5,7 @@ namespace LifeIdea.LazyCure.Core.Time
     /// <summary>
     /// Natural time system
     /// </summary>
-    class NaturalTimeSystem: ITimeSystem
+    public class NaturalTimeSystem: ITimeSystem
     {
         public DateTime Now
         {
