@@ -14,7 +14,7 @@ namespace LifeIdea.LazyCure.Core.Activities
             TimeSpan duration = TimeSpan.FromMinutes(15.0);
             Activity activity = new Activity(name, startTime, duration);
             Assert.AreEqual(name, activity.Name);
-            Assert.AreEqual(startTime,activity.StartTime);
+            Assert.AreEqual(startTime,activity.Start);
             Assert.AreEqual(duration, activity.Duration);
         }
         [Test]

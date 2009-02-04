@@ -44,7 +44,7 @@ namespace LifeIdea.LazyCure.Core.Time
         [Test]
         public void CurrentActivityStartTime()
         {
-            Assert.AreEqual(startTime, timeManager.CurrentActivity.StartTime);
+            Assert.AreEqual(startTime, timeManager.CurrentActivity.Start);
         }
         [Test]
         public void CurrentActivityIsLastingTooLongIsFalseByDefault()

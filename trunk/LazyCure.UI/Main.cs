@@ -119,7 +119,7 @@ namespace LifeIdea.LazyCure.UI
 
         private void UpdateActivityStartTime()
         {
-            this.activityStartTime.Text = Format.Time(lazyCure.CurrentActivity.StartTime);
+            this.activityStartTime.Text = Format.Time(lazyCure.CurrentActivity.Start);
         }
 
         private void UpdateContextMenuActivities()
@@ -360,7 +360,7 @@ namespace LifeIdea.LazyCure.UI
             string activityName = (currentActivity.Text == DefaultActivity) ?
                 "current activity is lasting" : currentActivity.Text;
             notifyIcon.Text = String.Format("{0} from {1} for {2}", activityName,
-                Format.Time(lazyCure.CurrentActivity.StartTime),
+                Format.Time(lazyCure.CurrentActivity.Start),
                 Format.Duration(lazyCure.CurrentActivity.Duration));
         }
 

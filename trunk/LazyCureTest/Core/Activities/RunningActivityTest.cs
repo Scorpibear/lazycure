@@ -36,7 +36,7 @@ namespace LifeIdea.LazyCure.Core.Activities
         {
             Stub.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(startTime));
             activity = new RunningActivity("test activity", mockTimeSystem);
-            Assert.AreEqual(startTime, activity.StartTime);
+            Assert.AreEqual(startTime, activity.Start);
         }
         [Test]
         public void DurationMillisecondsAreTruncatedAfterStop()
@@ -84,7 +84,7 @@ namespace LifeIdea.LazyCure.Core.Activities
         {
             Expect.Once.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(DateTime.Parse("2111-11-11 5:00:00.5")));
             activity = new RunningActivity("activity", mockTimeSystem);
-            Assert.AreEqual(DateTime.Parse("2111-11-11 5:00:01"), activity.StartTime);
+            Assert.AreEqual(DateTime.Parse("2111-11-11 5:00:01"), activity.Start);
         }
         [Test]
         public void StartTimeAtTheEndOfMinute()
@@ -93,7 +93,7 @@ namespace LifeIdea.LazyCure.Core.Activities
             
             activity = new RunningActivity("name",mockTimeSystem);
             
-            Assert.AreEqual(DateTime.Parse("18:00:00"), activity.StartTime);
+            Assert.AreEqual(DateTime.Parse("18:00:00"), activity.Start);
         }
     }
 }

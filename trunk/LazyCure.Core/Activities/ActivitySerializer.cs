@@ -16,7 +16,7 @@ namespace LifeIdea.LazyCure.Core.Activities
             XmlDocument xml = new XmlDocument();
             XmlNode records = xml.AppendChild(xml.CreateElement("Records"));
             records.AppendChild(xml.CreateElement("Activity")).InnerText = activity.Name;
-            records.AppendChild(xml.CreateElement("Start")).InnerText = Format.Time(activity.StartTime);
+            records.AppendChild(xml.CreateElement("Start")).InnerText = Format.Time(activity.Start);
             records.AppendChild(xml.CreateElement("Duration")).InnerText = Format.Duration(activity.Duration);
             return records;
         }
