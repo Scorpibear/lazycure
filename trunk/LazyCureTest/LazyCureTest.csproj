@@ -68,6 +68,8 @@
     <Compile Include="SettingsTests.cs" />
     <Compile Include="TimeLanguage\InterpreterTests.cs" />
     <Compile Include="TimeLanguage\TimeLanguageConsoleTests.cs" />
+    <Compile Include="UI\Backend\HotKeyManagerTest.cs" />
+    <Compile Include="UI\Backend\HotKeyTest.cs" />
     <Compile Include="UI\Backend\TreeBinderTests.cs" />
     <Compile Include="UI\MainBaseTests.cs" />
   </ItemGroup>

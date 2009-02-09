@@ -53,5 +53,10 @@ namespace LifeIdea.LazyCure.Properties
         {
             AreEqual(LeftClickOnTray.ShowsMainWindow, Settings.Default.LeftClickOnTray);
         }
+        [Test]
+        public void DefaultHotKey()
+        {
+            AreEqual("Ctrl+F12", Settings.Default.HotKeyToActivate);
+        }
     }
 }

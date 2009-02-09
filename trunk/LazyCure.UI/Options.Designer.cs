@@ -44,6 +44,9 @@ namespace LifeIdea.LazyCure.UI
             this.cancel = new System.Windows.Forms.Button();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabGeneral = new System.Windows.Forms.TabPage();
+            this.hotKeyToActivateLabel = new System.Windows.Forms.Label();
+            this.editActivateKeys = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.opensMainWindow = new System.Windows.Forms.RadioButton();
             this.showsRecentActivities = new System.Windows.Forms.RadioButton();
@@ -195,6 +198,9 @@ namespace LifeIdea.LazyCure.UI
             // 
             // tabGeneral
             // 
+            this.tabGeneral.Controls.Add(this.hotKeyToActivateLabel);
+            this.tabGeneral.Controls.Add(this.editActivateKeys);
+            this.tabGeneral.Controls.Add(this.label6);
             this.tabGeneral.Controls.Add(this.groupBox1);
             this.tabGeneral.Controls.Add(this.switchOnLogOff);
             this.tabGeneral.Controls.Add(this.activitiesNumberInTray);
@@ -215,6 +221,35 @@ namespace LifeIdea.LazyCure.UI
             this.tabGeneral.TabIndex = 1;
             this.tabGeneral.Text = "General";
             this.tabGeneral.UseVisualStyleBackColor = true;
+            // 
+            // hotKeyToActivateLabel
+            // 
+            this.hotKeyToActivateLabel.Location = new System.Drawing.Point(160, 147);
+            this.hotKeyToActivateLabel.Name = "hotKeyToActivateLabel";
+            this.hotKeyToActivateLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.hotKeyToActivateLabel.Size = new System.Drawing.Size(96, 16);
+            this.hotKeyToActivateLabel.TabIndex = 19;
+            this.hotKeyToActivateLabel.Text = "Ctrl+F12";
+            this.hotKeyToActivateLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // editActivateKeys
+            // 
+            this.editActivateKeys.Location = new System.Drawing.Point(262, 143);
+            this.editActivateKeys.Name = "editActivateKeys";
+            this.editActivateKeys.Size = new System.Drawing.Size(25, 23);
+            this.editActivateKeys.TabIndex = 18;
+            this.editActivateKeys.Text = "...";
+            this.editActivateKeys.UseVisualStyleBackColor = true;
+            this.editActivateKeys.Click += new System.EventHandler(this.editActivateKeys_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(187, 130);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(100, 13);
+            this.label6.TabIndex = 16;
+            this.label6.Text = "Hot key to activate:";
             // 
             // groupBox1
             // 
@@ -392,6 +427,9 @@ namespace LifeIdea.LazyCure.UI
         private System.Windows.Forms.RadioButton showsRecentActivities;
         private System.Windows.Forms.RadioButton opensMainWindow;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button editActivateKeys;
+        private System.Windows.Forms.Label hotKeyToActivateLabel;
 
     }
 }

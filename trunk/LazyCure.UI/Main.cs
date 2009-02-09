@@ -9,8 +9,9 @@ using Microsoft.Win32;
 
 namespace LifeIdea.LazyCure.UI
 {
+    using Backend;
     /// <summary>
-    /// Represent classic main form GUI
+    /// Represent classic main window GUI
     /// </summary>
     public partial class Main : MainBase, IMainForm, IDisposable
     {
@@ -38,7 +39,6 @@ namespace LifeIdea.LazyCure.UI
             UpdateCurrentActivity();
             UpdateContextMenuActivities();
             UpdateActivityStartTime();
-            hotKeyManager.Register(this);
             expandedSize = Size;
             collapsedSize = new Size(Size.Width, Size.Height - statusBar.Height);
             SetLocation(settings.MainWindowLocation);
@@ -47,6 +47,7 @@ namespace LifeIdea.LazyCure.UI
             leftClickTimer = new Timer();
             leftClickTimer.Tick += new EventHandler(notifyIcon_LeftClick);
             leftClickTimer.Interval = 300; // should be changed on max double click interval
+            RegisterHotKey();
         }
 
         void SystemEvents_SessionSwitch(object sender, SessionSwitchEventArgs e)
@@ -54,6 +55,12 @@ namespace LifeIdea.LazyCure.UI
             if(Dialogs.Settings.SwitchOnLogOff && 
                 (e.Reason == SessionSwitchReason.SessionLock))
                 SwitchActivity();
+        }
+
+        public void RegisterHotKey()
+        {
+            hotKeyManager.Unregister(this);
+            hotKeyManager.Register(this, HotKey.Parse(Dialogs.Settings.HotKeyToActivate));
         }
 
         public void ViewsVisibilityChanged()

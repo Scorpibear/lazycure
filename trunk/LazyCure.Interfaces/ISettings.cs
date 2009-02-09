@@ -14,6 +14,8 @@ namespace LifeIdea.LazyCure.Interfaces
 
         int ActivitiesNumberInTray { get; set;}
 
+        string HotKeyToActivate { get; set;}
+
         bool LeftClickOnTray { get; set;}
 
         Point MainWindowLocation { get; set;}
