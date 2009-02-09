@@ -1,8 +1,9 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using LifeIdea.LazyCure.Interfaces;
 
-namespace LifeIdea.LazyCure.UI
+namespace LifeIdea.LazyCure.UI.Backend
 {
     public class HotKeyManager
     {
@@ -12,21 +13,37 @@ namespace LifeIdea.LazyCure.UI
         [DllImport("user32.dll")]
         public static extern bool UnregisterHotKey(IntPtr hWnd, int id);
 
-        public bool Register(Form form)
+        public bool Register(IWin32Window window, IHotKeyCodeProvider hotKey)
         {
-            // Alt = 1, Ctrl = 2, Shift = 4, Win = 8
 			try
 			{
-				return RegisterHotKey(form.Handle,form.GetType().GetHashCode(), 2, (int)Keys.F12);
+                if (window == null)
+                {
+                    Log.Error("Could not register hot key for null window");
+                    return false;
+                }
+                if (hotKey == null)
+                {
+                    Log.Error("Could not register null hot key");
+                    return false;
+                }
+                return RegisterHotKey(window.Handle, GetID(window), hotKey.ModifiersCode, hotKey.Code);
 			}
-			catch(Exception)
+			catch(Exception ex)
 			{
+                Log.Error(String.Format("Could not register hot key '{0}'", hotKey));
+                Log.Exception(ex);
 				return false;
 			}
         }
-        public bool Unregister(Form form)
+
+        private static int GetID(IWin32Window window)
         {
-            return UnregisterHotKey(form.Handle, form.GetType().GetHashCode());
+            return window.GetType().GetHashCode();
+        }
+        public bool Unregister(IWin32Window window)
+        {
+            return UnregisterHotKey(window.Handle, GetID(window));
         }
     }
 }

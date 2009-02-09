@@ -154,5 +154,17 @@ namespace LifeIdea.LazyCure.Properties {
                 this["LeftClickOnTray"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Ctrl+F12")]
+        public string HotKeyToActivate {
+            get {
+                return ((string)(this["HotKeyToActivate"]));
+            }
+            set {
+                this["HotKeyToActivate"] = value;
+            }
+        }
     }
 }

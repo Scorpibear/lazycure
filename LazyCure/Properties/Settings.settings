@@ -35,5 +35,8 @@
     <Setting Name="LeftClickOnTray" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="HotKeyToActivate" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Ctrl+F12</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

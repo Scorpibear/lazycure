@@ -1,7 +1,7 @@
 using System;
+using System.Text;
 using System.Windows.Forms;
 using LifeIdea.LazyCure.Interfaces;
-using System.Text;
 
 namespace LifeIdea.LazyCure.UI
 {
@@ -22,6 +22,7 @@ namespace LifeIdea.LazyCure.UI
             timeLogFolder.Text = settings.TimeLogsFolder;
             reminderTime.Text = Format.MaskedText(settings.ReminderTime);
             switchOnLogOff.Checked = settings.SwitchOnLogOff;
+            hotKeyToActivateLabel.Text = settings.HotKeyToActivate;
             enableTwitterCheckbox.Checked = settings.TwitterEnabled;
             usernameField.Text = settings.TwitterUsername;
             passwordField.Text = Format.Decode(settings.TwitterPassword);
@@ -63,12 +64,14 @@ namespace LifeIdea.LazyCure.UI
                 settings.SaveAfterDone = saveAfterDone.Checked;
                 settings.TimeLogsFolder = timeLogFolder.Text;
                 settings.SwitchOnLogOff = switchOnLogOff.Checked;
+                settings.HotKeyToActivate = hotKeyToActivateLabel.Text;
                 settings.TwitterEnabled = enableTwitterCheckbox.Checked;
                 settings.TwitterUsername = usernameField.Text;
                 settings.TwitterPassword = Format.Encode(passwordField.Text);
                 settings.Save();
                 Dialogs.LazyCureDriver.ApplySettings(settings);
                 Dialogs.MainForm.PostToTwitterEnabled = enableTwitterCheckbox.Checked;
+                Dialogs.MainForm.RegisterHotKey();
                 Hide();
             }
             else
@@ -91,6 +94,15 @@ namespace LifeIdea.LazyCure.UI
                 System.Diagnostics.Process.Start(target);
             }
 
+        }
+
+        private void editActivateKeys_Click(object sender, EventArgs e)
+        {
+            HotKeysEditor keysEditor = new HotKeysEditor();
+            keysEditor.Keys = hotKeyToActivateLabel.Text;
+            DialogResult result = keysEditor.ShowDialog(this);
+            if (result == DialogResult.OK)
+                hotKeyToActivateLabel.Text = keysEditor.Keys;
         }
     }
 }

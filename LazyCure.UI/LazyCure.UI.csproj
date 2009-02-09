@@ -42,11 +42,19 @@
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Backend\Dialogs.cs" />
+    <Compile Include="Backend\HotKey.cs" />
     <Compile Include="Backend\HotKeyManager.cs" />
+    <Compile Include="Backend\IHotKeyCodeProvider.cs" />
     <Compile Include="Backend\IMainForm.cs" />
     <Compile Include="Backend\ISummaryView.cs" />
     <Compile Include="Backend\ITimeLogView.cs" />
     <Compile Include="Backend\TreeBinder.cs" />
+    <Compile Include="HotKeysEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HotKeysEditor.Designer.cs">
+      <DependentUpon>HotKeysEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +102,10 @@
     <EmbeddedResource Include="AboutBox.resx">
       <SubType>Designer</SubType>
       <DependentUpon>AboutBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HotKeysEditor.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>HotKeysEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <SubType>Designer</SubType>
