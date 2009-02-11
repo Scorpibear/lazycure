@@ -43,6 +43,7 @@ namespace LifeIdea.LazyCure.UI
             this.spentColumnForTasksSummary = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.efficiency = new System.Windows.Forms.TabPage();
             this.intervalsDefinitionGroupBox = new System.Windows.Forms.GroupBox();
+            this.showTimeLogButton = new System.Windows.Forms.Button();
             this.workingTimeIntervalsGrid = new System.Windows.Forms.DataGridView();
             this.Start = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.End = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,7 +63,6 @@ namespace LifeIdea.LazyCure.UI
             this.workingActivitiesTime = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.showTimeLogButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.activitiesSummary)).BeginInit();
             this.tabControl.SuspendLayout();
             this.activities.SuspendLayout();
@@ -220,6 +220,16 @@ namespace LifeIdea.LazyCure.UI
             this.intervalsDefinitionGroupBox.TabStop = false;
             this.intervalsDefinitionGroupBox.Text = "Time on work definition";
             // 
+            // showTimeLogButton
+            // 
+            this.showTimeLogButton.Location = new System.Drawing.Point(168, 81);
+            this.showTimeLogButton.Name = "showTimeLogButton";
+            this.showTimeLogButton.Size = new System.Drawing.Size(94, 23);
+            this.showTimeLogButton.TabIndex = 10;
+            this.showTimeLogButton.Text = "Show Time Log";
+            this.showTimeLogButton.UseVisualStyleBackColor = true;
+            this.showTimeLogButton.Click += new System.EventHandler(this.showTimeLogButton_Click);
+            // 
             // workingTimeIntervalsGrid
             // 
             this.workingTimeIntervalsGrid.ColumnHeadersVisible = false;
@@ -233,6 +243,7 @@ namespace LifeIdea.LazyCure.UI
             this.workingTimeIntervalsGrid.Size = new System.Drawing.Size(129, 118);
             this.workingTimeIntervalsGrid.TabIndex = 9;
             this.workingTimeIntervalsGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.workingTimeIntervalsGrid_CellClick);
+            this.workingTimeIntervalsGrid.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.workingTimeIntervalsGrid_DataError);
             // 
             // Start
             // 
@@ -424,16 +435,6 @@ namespace LifeIdea.LazyCure.UI
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(569, 351);
             this.tableLayoutPanel1.TabIndex = 5;
-            // 
-            // showTimeLogButton
-            // 
-            this.showTimeLogButton.Location = new System.Drawing.Point(168, 81);
-            this.showTimeLogButton.Name = "showTimeLogButton";
-            this.showTimeLogButton.Size = new System.Drawing.Size(94, 23);
-            this.showTimeLogButton.TabIndex = 10;
-            this.showTimeLogButton.Text = "Show Time Log";
-            this.showTimeLogButton.UseVisualStyleBackColor = true;
-            this.showTimeLogButton.Click += new System.EventHandler(this.showTimeLogButton_Click);
             // 
             // Summary
             // 
