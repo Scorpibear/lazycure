@@ -13,6 +13,8 @@ namespace LifeIdea.LazyCure.Core.Time
 
         TimeSpan MaxDuration { get; set; }
 
+        bool SwitchAtMidnight { set; }
+
         ITimeLog TimeLog { get; set; }
 
         ITimeSystem TimeSystem { get;}

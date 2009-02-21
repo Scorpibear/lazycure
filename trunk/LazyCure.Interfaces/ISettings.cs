@@ -28,6 +28,8 @@ namespace LifeIdea.LazyCure.Interfaces
 
         bool SwitchOnLogOff { get; set;}
 
+        bool SwitchTimeLogAtMidnight { get; set;}
+
         string TimeLogsFolder { get; set;}
 
         bool TwitterEnabled { get; set;}

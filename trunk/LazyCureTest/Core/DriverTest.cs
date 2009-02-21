@@ -49,6 +49,7 @@ namespace LifeIdea.LazyCure.Core
             Stub.On(settings).GetProperty("ReminderTime").Will(Return.Value(TimeSpan.Parse("0:59:48")));
             Stub.On(settings).GetProperty("TwitterUsername").Will(Return.Value("testname"));
             Stub.On(settings).GetProperty("TwitterPassword").Will(Return.Value(Format.Encode("testpass")));
+            Stub.On(settings).GetProperty("SwitchTimeLogAtMidnight").Will(Return.Value(false));
             Expect.Once.On(driver.ExternalPoster).SetProperty("Username").To("testname");
             Expect.Once.On(driver.ExternalPoster).SetProperty("Password").To("testpass");
             
@@ -59,6 +60,22 @@ namespace LifeIdea.LazyCure.Core
             Assert.AreEqual(5, driver.History.LatestSize);
             Assert.AreEqual(13, driver.History.Size);
             Assert.AreEqual(TimeSpan.Parse("0:59:48"), driver.TimeManager.MaxDuration);
+            VerifyAllExpectationsHaveBeenMet();
+        }
+        [Test]
+        public void SwitchTimeLogAtMidnightSettingIsApplied()
+        {
+            ISettings settings = NewMock<ISettings>();
+            driver.TimeManager = NewMock<ITimeManager>();
+            Stub.On(settings).GetProperty("SwitchTimeLogAtMidnight").Will(Return.Value(false));
+            Stub.On(settings).GetProperty("SaveAfterDone").Will(Return.Value(false));
+            Stub.On(settings).GetProperty("ActivitiesNumberInTray").Will(Return.Value(0));
+            Stub.On(settings).GetProperty("MaxActivitiesInHistory").Will(Return.Value(0));
+            Stub.On(settings).GetProperty("ReminderTime").Will(Return.Value(TimeSpan.Zero));
+            Stub.On(settings).Method(Is.Anything);
+            Expect.Once.On(driver.TimeManager).SetProperty("SwitchAtMidnight").To(false);
+            Stub.On(driver.TimeManager).Method(Is.Anything);
+            driver.ApplySettings(settings);
             VerifyAllExpectationsHaveBeenMet();
         }
         [Test]

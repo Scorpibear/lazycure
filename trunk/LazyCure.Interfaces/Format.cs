@@ -54,9 +54,11 @@ namespace LifeIdea.LazyCure.Interfaces
 
         public static string Encode(string password)
         {
+            
             StringBuilder builder = new StringBuilder();
-            for (int i = 0; i < password.Length; i++)
-                builder.Append(((char)(password[i] ^ 5)));
+            if (password != null)
+                for (int i = 0; i < password.Length; i++)
+                    builder.Append(((char)(password[i] ^ 5)));
             return builder.ToString();
         }
 
