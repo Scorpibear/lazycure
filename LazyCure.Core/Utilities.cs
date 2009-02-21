@@ -21,7 +21,7 @@ namespace LifeIdea.LazyCure.Core
 
         public static bool IsFileNameShort(string fileName)
         {
-            if (fileName.Contains("/") || fileName.Contains("\\") || (fileName == string.Empty))
+            if ((fileName == null) || fileName.Contains("/") || fileName.Contains("\\") || (fileName == string.Empty))
                 return false;
             else
                 return true;

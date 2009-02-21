@@ -19,6 +19,7 @@ namespace LifeIdea.LazyCure.UI
             activitiesNumberInTray.Value = settings.ActivitiesNumberInTray;
             showsRecentActivities.Checked = settings.LeftClickOnTray;
             saveAfterDone.Checked = settings.SaveAfterDone;
+            switchTimeLogAtMidnight.Checked = settings.SwitchTimeLogAtMidnight;
             timeLogFolder.Text = settings.TimeLogsFolder;
             reminderTime.Text = Format.MaskedText(settings.ReminderTime);
             switchOnLogOff.Checked = settings.SwitchOnLogOff;
@@ -62,6 +63,7 @@ namespace LifeIdea.LazyCure.UI
                 settings.ActivitiesNumberInTray = (int)activitiesNumberInTray.Value;
                 settings.LeftClickOnTray = showsRecentActivities.Checked;
                 settings.SaveAfterDone = saveAfterDone.Checked;
+                settings.SwitchTimeLogAtMidnight = switchTimeLogAtMidnight.Checked;
                 settings.TimeLogsFolder = timeLogFolder.Text;
                 settings.SwitchOnLogOff = switchOnLogOff.Checked;
                 settings.HotKeyToActivate = hotKeyToActivateLabel.Text;

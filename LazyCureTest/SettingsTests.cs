@@ -58,5 +58,10 @@ namespace LifeIdea.LazyCure.Properties
         {
             AreEqual("Ctrl+F12", Settings.Default.HotKeyToActivate);
         }
+        [Test]
+        public void DefaultSwitchTimeLogAtMidnight()
+        {
+            IsTrue(Settings.Default.SwitchTimeLogAtMidnight);
+        }
     }
 }

@@ -7,6 +7,11 @@ namespace LifeIdea.LazyCure.Interfaces
     public class FormatTest
     {
         [Test]
+        public void EncodeWithNull()
+        {
+            Assert.IsEmpty(Format.Encode(null));
+        }
+        [Test]
         public void SimpleShortDuration()
         {
             Assert.AreEqual("8:00",Format.ShortDuration(TimeSpan.Parse("8:00:00")));

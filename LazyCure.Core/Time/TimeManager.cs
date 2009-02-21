@@ -13,6 +13,7 @@ namespace LifeIdea.LazyCure.Core.Time
         private RunningActivity currentActivity;
         private TimeSpan maxDuration = TimeSpan.Parse("1:00");
         private RunningActivity previousActivity;
+        private bool switchAtMidnight;
         private ITimeLog timeLog;
         private ITimeLogsManager timeLogsManager;
 
@@ -38,6 +39,8 @@ namespace LifeIdea.LazyCure.Core.Time
         {
             get { return previousActivity; }
         }
+
+        public bool SwitchAtMidnight { set { switchAtMidnight = value; } }
 
         public ITimeLog TimeLog
         {
@@ -88,7 +91,7 @@ namespace LifeIdea.LazyCure.Core.Time
 
             DateTime endTime = currentActivity.Start + currentActivity.Duration;
             DateTime endDate = endTime.Date;
-            if (currentActivity.Start.Date < endDate)
+            if ((currentActivity.Start.Date < endDate) && switchAtMidnight)
                 PerformMidnightCorrection(endDate);
             if (TimeLog != null)
                 TimeLog.AddActivity(currentActivity);

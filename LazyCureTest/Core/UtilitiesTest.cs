@@ -37,6 +37,11 @@ namespace LifeIdea.LazyCure.Core
             Assert.IsFalse(Utilities.IsFileNameShort(String.Empty));
         }
         [Test]
+        public void IsShortFileNameWithNull()
+        {
+            Assert.IsFalse(Utilities.IsFileNameShort(null));
+        }
+        [Test]
         public void TrueToString()
         {
             Assert.AreEqual("true",Utilities.BoolToString(true));
