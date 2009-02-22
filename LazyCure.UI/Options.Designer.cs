@@ -44,6 +44,7 @@ namespace LifeIdea.LazyCure.UI
             this.cancel = new System.Windows.Forms.Button();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabGeneral = new System.Windows.Forms.TabPage();
+            this.switchTimeLogAtMidnight = new System.Windows.Forms.CheckBox();
             this.hotKeyToActivateLabel = new System.Windows.Forms.Label();
             this.editActivateKeys = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
@@ -58,7 +59,6 @@ namespace LifeIdea.LazyCure.UI
             this.usernameField = new System.Windows.Forms.TextBox();
             this.usernameLabel = new System.Windows.Forms.Label();
             this.enableTwitterCheckbox = new System.Windows.Forms.CheckBox();
-            this.switchTimeLogAtMidnight = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.maxActivitiesInHistory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.activitiesNumberInTray)).BeginInit();
             this.tabControl.SuspendLayout();
@@ -168,6 +168,7 @@ namespace LifeIdea.LazyCure.UI
             // 
             // ok
             // 
+            this.ok.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.ok.Location = new System.Drawing.Point(185, 236);
             this.ok.Name = "ok";
             this.ok.Size = new System.Drawing.Size(75, 23);
@@ -178,6 +179,7 @@ namespace LifeIdea.LazyCure.UI
             // 
             // cancel
             // 
+            this.cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cancel.Location = new System.Drawing.Point(266, 236);
             this.cancel.Name = "cancel";
             this.cancel.Size = new System.Drawing.Size(75, 23);
@@ -223,6 +225,16 @@ namespace LifeIdea.LazyCure.UI
             this.tabGeneral.TabIndex = 1;
             this.tabGeneral.Text = "General";
             this.tabGeneral.UseVisualStyleBackColor = true;
+            // 
+            // switchTimeLogAtMidnight
+            // 
+            this.switchTimeLogAtMidnight.AutoSize = true;
+            this.switchTimeLogAtMidnight.Location = new System.Drawing.Point(6, 42);
+            this.switchTimeLogAtMidnight.Name = "switchTimeLogAtMidnight";
+            this.switchTimeLogAtMidnight.Size = new System.Drawing.Size(301, 17);
+            this.switchTimeLogAtMidnight.TabIndex = 20;
+            this.switchTimeLogAtMidnight.Text = "At midnight close active time log and open on the next day";
+            this.switchTimeLogAtMidnight.UseVisualStyleBackColor = true;
             // 
             // hotKeyToActivateLabel
             // 
@@ -307,7 +319,7 @@ namespace LifeIdea.LazyCure.UI
             this.tabTwitter.Location = new System.Drawing.Point(4, 22);
             this.tabTwitter.Name = "tabTwitter";
             this.tabTwitter.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTwitter.Size = new System.Drawing.Size(342, 183);
+            this.tabTwitter.Size = new System.Drawing.Size(342, 204);
             this.tabTwitter.TabIndex = 0;
             this.tabTwitter.Text = "Twitter";
             this.tabTwitter.UseVisualStyleBackColor = true;
@@ -371,20 +383,11 @@ namespace LifeIdea.LazyCure.UI
             this.enableTwitterCheckbox.UseVisualStyleBackColor = true;
             this.enableTwitterCheckbox.CheckedChanged += new System.EventHandler(this.enableTwitterCheckbox_CheckedChanged);
             // 
-            // switchTimeLogAtMidnight
-            // 
-            this.switchTimeLogAtMidnight.AutoSize = true;
-            this.switchTimeLogAtMidnight.Location = new System.Drawing.Point(6, 42);
-            this.switchTimeLogAtMidnight.Name = "switchTimeLogAtMidnight";
-            this.switchTimeLogAtMidnight.Size = new System.Drawing.Size(301, 17);
-            this.switchTimeLogAtMidnight.TabIndex = 20;
-            this.switchTimeLogAtMidnight.Text = "At midnight close active time log and open on the next day";
-            this.switchTimeLogAtMidnight.UseVisualStyleBackColor = true;
-            // 
             // Options
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.cancel;
             this.ClientSize = new System.Drawing.Size(350, 271);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.cancel);

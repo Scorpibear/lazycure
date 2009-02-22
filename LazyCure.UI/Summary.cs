@@ -114,6 +114,11 @@ namespace LifeIdea.LazyCure.UI
             lazyCure.CalculateAutomaticallyWorkingIntervals = automaticallyRadioButton.Checked;
         }
 
+        private void closeButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
+
         private void maxRestDurationTextBox_TextChanged(object sender, EventArgs e)
         {
             lazyCure.PossibleWorkInterruptionDuration = Format.Duration(maxRestDurationTextBox.Text);

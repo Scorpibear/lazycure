@@ -102,6 +102,11 @@ namespace LifeIdea.LazyCure.UI
             AddSubtask();
         }
 
+        private void closeButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
+
         private void deleteButton_Click(object sender, EventArgs e)
         {
             DeleteTask();
