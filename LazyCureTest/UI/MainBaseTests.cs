@@ -1,22 +1,43 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using NUnit.Framework;
-using LifeIdea.LazyCure.Properties;
 using System.Drawing;
-using LifeIdea.LazyCure.Core;
 using System.Windows.Forms;
+using NUnit.Framework;
+using NMock2;
+using LifeIdea.LazyCure.Properties;
+using LifeIdea.LazyCure.Core;
+using LifeIdea.LazyCure.Interfaces;
 
 namespace LifeIdea.LazyCure.UI
 {
     [TestFixture]
-    public class MainBaseTests
+    public class MainBaseTests:Mockery
     {
         MainBase main;
+        IActivity activity;
         [SetUp]
         public void SetUp()
         {
             main = new MainBase();
+            activity = NewMock<IActivity>();
+            Stub.On(activity).GetProperty("Start").Will(Return.Value(DateTime.Parse("7:00:00")));
+            Stub.On(activity).GetProperty("Duration").Will(Return.Value(TimeSpan.Parse("0:30:00")));
+        }
+        [Test]
+        public void GetPopupText()
+        {
+            Assert.AreEqual("working from 7:00:00 for 0:30:00",main.GetPopupText("working",activity));
+        }
+        [Test]
+        public void GetPopupText64()
+        {
+            Assert.AreEqual("abcdefghijklmnopqrstuvwxyz789012345... from 7:00:00 for 0:30:00", main.GetPopupText("abcdefghijklmnopqrstuvwxyz7890123456789", activity));
+        }
+        [Test]
+        public void GetPopupText63()
+        {
+            Assert.AreEqual("abcdefghijklmnopqrstuvwxyz789012345678 from 7:00:00 for 0:30:00", main.GetPopupText("abcdefghijklmnopqrstuvwxyz789012345678", activity));
         }
         [Test]
         public void SetLocation()

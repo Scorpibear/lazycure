@@ -1,5 +1,7 @@
+using System;
 using System.Drawing;
 using System.Windows.Forms;
+using LifeIdea.LazyCure.Interfaces;
 
 namespace LifeIdea.LazyCure.UI
 {
@@ -10,6 +12,18 @@ namespace LifeIdea.LazyCure.UI
             Show();
             WindowState = FormWindowState.Normal;
             Activate();
+        }
+
+        public string GetPopupText(string activityName, IActivity activity)
+        {
+            int maxLengthAllowed = 63;
+            string timePart = String.Format(" from {0} for {1}", Format.Time(activity.Start),
+                            Format.Duration(activity.Duration));
+            int activityMaxLength = maxLengthAllowed - timePart.Length;
+            string activityPart = activityName;
+            if(activityName.Length>activityMaxLength)
+                activityPart = activityName.Substring(0,activityMaxLength-3) + "...";
+            return activityPart + timePart;
         }
 
         public void SetLocation(Point location)
