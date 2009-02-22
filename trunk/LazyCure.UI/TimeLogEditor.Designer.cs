@@ -55,6 +55,7 @@ namespace LifeIdea.LazyCure.UI
             this.timeLogView.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.timeLogView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.timeLogView_CellEndEdit);
             this.timeLogView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.timeLogView_DataError);
+            this.timeLogView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.timeLogView_KeyDown);
             this.timeLogView.KeyUp += new System.Windows.Forms.KeyEventHandler(this.timeLogView_KeyUp);
             // 
             // Start

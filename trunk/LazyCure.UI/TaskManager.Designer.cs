@@ -37,6 +37,7 @@ namespace LifeIdea.LazyCure.UI
             this.miRename = new System.Windows.Forms.ToolStripMenuItem();
             this.miDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer = new System.Windows.Forms.SplitContainer();
+            this.closeButton = new System.Windows.Forms.Button();
             this.renameButton = new System.Windows.Forms.Button();
             this.addSubtaskButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
@@ -119,6 +120,7 @@ namespace LifeIdea.LazyCure.UI
             // 
             // splitContainer.Panel2
             // 
+            this.splitContainer.Panel2.Controls.Add(this.closeButton);
             this.splitContainer.Panel2.Controls.Add(this.renameButton);
             this.splitContainer.Panel2.Controls.Add(this.addSubtaskButton);
             this.splitContainer.Panel2.Controls.Add(this.deleteButton);
@@ -128,11 +130,22 @@ namespace LifeIdea.LazyCure.UI
             this.splitContainer.SplitterDistance = 149;
             this.splitContainer.TabIndex = 1;
             // 
+            // closeButton
+            // 
+            this.closeButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.closeButton.Location = new System.Drawing.Point(102, 89);
+            this.closeButton.Name = "closeButton";
+            this.closeButton.Size = new System.Drawing.Size(41, 20);
+            this.closeButton.TabIndex = 5;
+            this.closeButton.Text = "close";
+            this.closeButton.UseVisualStyleBackColor = true;
+            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
+            // 
             // renameButton
             // 
-            this.renameButton.Location = new System.Drawing.Point(74, 3);
+            this.renameButton.Location = new System.Drawing.Point(74, 0);
             this.renameButton.Name = "renameButton";
-            this.renameButton.Size = new System.Drawing.Size(66, 20);
+            this.renameButton.Size = new System.Drawing.Size(69, 20);
             this.renameButton.TabIndex = 4;
             this.renameButton.Text = "rename";
             this.toolTip.SetToolTip(this.renameButton, "Rename task (F2)");
@@ -143,7 +156,7 @@ namespace LifeIdea.LazyCure.UI
             // 
             this.addSubtaskButton.Location = new System.Drawing.Point(2, 22);
             this.addSubtaskButton.Name = "addSubtaskButton";
-            this.addSubtaskButton.Size = new System.Drawing.Size(66, 20);
+            this.addSubtaskButton.Size = new System.Drawing.Size(69, 20);
             this.addSubtaskButton.TabIndex = 3;
             this.addSubtaskButton.Text = "+ subtask";
             this.toolTip.SetToolTip(this.addSubtaskButton, "Add subtask (Insert)");
@@ -154,7 +167,7 @@ namespace LifeIdea.LazyCure.UI
             // 
             this.deleteButton.Location = new System.Drawing.Point(74, 22);
             this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(66, 20);
+            this.deleteButton.Size = new System.Drawing.Size(69, 20);
             this.deleteButton.TabIndex = 2;
             this.deleteButton.Text = "delete";
             this.toolTip.SetToolTip(this.deleteButton, "Delete task (Delete)");
@@ -174,9 +187,9 @@ namespace LifeIdea.LazyCure.UI
             // 
             // addTaskButton
             // 
-            this.addTaskButton.Location = new System.Drawing.Point(2, 3);
+            this.addTaskButton.Location = new System.Drawing.Point(2, 0);
             this.addTaskButton.Name = "addTaskButton";
-            this.addTaskButton.Size = new System.Drawing.Size(66, 20);
+            this.addTaskButton.Size = new System.Drawing.Size(69, 20);
             this.addTaskButton.TabIndex = 0;
             this.addTaskButton.Text = "+ task";
             this.toolTip.SetToolTip(this.addTaskButton, "Add sibling task (Enter)");
@@ -188,6 +201,7 @@ namespace LifeIdea.LazyCure.UI
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
+            this.CancelButton = this.closeButton;
             this.ClientSize = new System.Drawing.Size(296, 109);
             this.Controls.Add(this.splitContainer);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -223,5 +237,6 @@ namespace LifeIdea.LazyCure.UI
         private System.Windows.Forms.Button addSubtaskButton;
         private System.Windows.Forms.ToolStripMenuItem miAddSubtask;
         private System.Windows.Forms.Button renameButton;
+        private System.Windows.Forms.Button closeButton;
     }
 }

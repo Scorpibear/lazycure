@@ -78,5 +78,11 @@ namespace LifeIdea.LazyCure.UI
             foreach (int columnIndex in timeColumnsIndeces)
                 timeLogView.UpdateCellValue(columnIndex, e.RowIndex);
         }
+
+        private void timeLogView_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+                this.Hide();
+        }
     }
 }

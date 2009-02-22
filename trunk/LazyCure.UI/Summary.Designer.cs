@@ -58,6 +58,7 @@ namespace LifeIdea.LazyCure.UI
             this.allActivitiesTime = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.statisticsGroup = new System.Windows.Forms.GroupBox();
+            this.closeButton = new System.Windows.Forms.Button();
             this.selectedRowsTime = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.workingActivitiesTime = new System.Windows.Forms.TextBox();
@@ -368,6 +369,7 @@ namespace LifeIdea.LazyCure.UI
             // 
             // statisticsGroup
             // 
+            this.statisticsGroup.Controls.Add(this.closeButton);
             this.statisticsGroup.Controls.Add(this.selectedRowsTime);
             this.statisticsGroup.Controls.Add(this.label3);
             this.statisticsGroup.Controls.Add(this.workingActivitiesTime);
@@ -381,6 +383,17 @@ namespace LifeIdea.LazyCure.UI
             this.statisticsGroup.TabIndex = 2;
             this.statisticsGroup.TabStop = false;
             this.statisticsGroup.Text = "Statistics";
+            // 
+            // closeButton
+            // 
+            this.closeButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.closeButton.Location = new System.Drawing.Point(522, 32);
+            this.closeButton.Name = "closeButton";
+            this.closeButton.Size = new System.Drawing.Size(41, 20);
+            this.closeButton.TabIndex = 1;
+            this.closeButton.Text = "Close";
+            this.closeButton.UseVisualStyleBackColor = true;
+            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
             // selectedRowsTime
             // 
@@ -440,6 +453,7 @@ namespace LifeIdea.LazyCure.UI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.closeButton;
             this.ClientSize = new System.Drawing.Size(569, 351);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -499,5 +513,6 @@ namespace LifeIdea.LazyCure.UI
         private System.Windows.Forms.DataGridViewTextBoxColumn spentColumnForActivitySummary;
         private System.Windows.Forms.DataGridViewTextBoxColumn taskColumnForActivitySummary;
         private System.Windows.Forms.Button showTimeLogButton;
+        private System.Windows.Forms.Button closeButton;
     }
 }
