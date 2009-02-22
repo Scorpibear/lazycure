@@ -59,6 +59,7 @@ namespace LifeIdea.LazyCure.UI
             this.usernameField = new System.Windows.Forms.TextBox();
             this.usernameLabel = new System.Windows.Forms.Label();
             this.enableTwitterCheckbox = new System.Windows.Forms.CheckBox();
+            this.splitByComma = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.maxActivitiesInHistory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.activitiesNumberInTray)).BeginInit();
             this.tabControl.SuspendLayout();
@@ -79,7 +80,7 @@ namespace LifeIdea.LazyCure.UI
             // 
             // maxActivitiesInHistory
             // 
-            this.maxActivitiesInHistory.Location = new System.Drawing.Point(244, 85);
+            this.maxActivitiesInHistory.Location = new System.Drawing.Point(244, 105);
             this.maxActivitiesInHistory.Name = "maxActivitiesInHistory";
             this.maxActivitiesInHistory.Size = new System.Drawing.Size(36, 20);
             this.maxActivitiesInHistory.TabIndex = 1;
@@ -88,7 +89,7 @@ namespace LifeIdea.LazyCure.UI
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(6, 87);
+            this.label1.Location = new System.Drawing.Point(6, 107);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(224, 13);
             this.label1.TabIndex = 2;
@@ -96,7 +97,7 @@ namespace LifeIdea.LazyCure.UI
             // 
             // activitiesNumberInTray
             // 
-            this.activitiesNumberInTray.Location = new System.Drawing.Point(193, 64);
+            this.activitiesNumberInTray.Location = new System.Drawing.Point(193, 84);
             this.activitiesNumberInTray.Name = "activitiesNumberInTray";
             this.activitiesNumberInTray.Size = new System.Drawing.Size(36, 20);
             this.activitiesNumberInTray.TabIndex = 9;
@@ -105,7 +106,7 @@ namespace LifeIdea.LazyCure.UI
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(6, 66);
+            this.label5.Location = new System.Drawing.Point(6, 86);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(174, 13);
             this.label5.TabIndex = 10;
@@ -114,7 +115,7 @@ namespace LifeIdea.LazyCure.UI
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(106, 132);
+            this.label4.Location = new System.Drawing.Point(106, 152);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(94, 13);
             this.label4.TabIndex = 8;
@@ -122,7 +123,7 @@ namespace LifeIdea.LazyCure.UI
             // 
             // reminderTime
             // 
-            this.reminderTime.Location = new System.Drawing.Point(75, 129);
+            this.reminderTime.Location = new System.Drawing.Point(75, 149);
             this.reminderTime.Mask = "0:00";
             this.reminderTime.Name = "reminderTime";
             this.reminderTime.Size = new System.Drawing.Size(28, 20);
@@ -131,7 +132,7 @@ namespace LifeIdea.LazyCure.UI
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 132);
+            this.label3.Location = new System.Drawing.Point(6, 152);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(67, 13);
             this.label3.TabIndex = 6;
@@ -139,7 +140,7 @@ namespace LifeIdea.LazyCure.UI
             // 
             // selectTimeLogsFolder
             // 
-            this.selectTimeLogsFolder.Location = new System.Drawing.Point(308, 105);
+            this.selectTimeLogsFolder.Location = new System.Drawing.Point(308, 125);
             this.selectTimeLogsFolder.Name = "selectTimeLogsFolder";
             this.selectTimeLogsFolder.Size = new System.Drawing.Size(25, 23);
             this.selectTimeLogsFolder.TabIndex = 5;
@@ -149,7 +150,7 @@ namespace LifeIdea.LazyCure.UI
             // 
             // timeLogFolder
             // 
-            this.timeLogFolder.Location = new System.Drawing.Point(117, 107);
+            this.timeLogFolder.Location = new System.Drawing.Point(117, 127);
             this.timeLogFolder.Name = "timeLogFolder";
             this.timeLogFolder.ReadOnly = true;
             this.timeLogFolder.Size = new System.Drawing.Size(185, 20);
@@ -160,7 +161,7 @@ namespace LifeIdea.LazyCure.UI
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(6, 110);
+            this.label2.Location = new System.Drawing.Point(6, 130);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(105, 13);
             this.label2.TabIndex = 3;
@@ -169,7 +170,7 @@ namespace LifeIdea.LazyCure.UI
             // ok
             // 
             this.ok.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.ok.Location = new System.Drawing.Point(185, 236);
+            this.ok.Location = new System.Drawing.Point(190, 254);
             this.ok.Name = "ok";
             this.ok.Size = new System.Drawing.Size(75, 23);
             this.ok.TabIndex = 4;
@@ -180,7 +181,7 @@ namespace LifeIdea.LazyCure.UI
             // cancel
             // 
             this.cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancel.Location = new System.Drawing.Point(266, 236);
+            this.cancel.Location = new System.Drawing.Point(271, 254);
             this.cancel.Name = "cancel";
             this.cancel.Size = new System.Drawing.Size(75, 23);
             this.cancel.TabIndex = 5;
@@ -196,11 +197,12 @@ namespace LifeIdea.LazyCure.UI
             this.tabControl.Location = new System.Drawing.Point(0, 0);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(350, 230);
+            this.tabControl.Size = new System.Drawing.Size(350, 248);
             this.tabControl.TabIndex = 6;
             // 
             // tabGeneral
             // 
+            this.tabGeneral.Controls.Add(this.splitByComma);
             this.tabGeneral.Controls.Add(this.switchTimeLogAtMidnight);
             this.tabGeneral.Controls.Add(this.hotKeyToActivateLabel);
             this.tabGeneral.Controls.Add(this.editActivateKeys);
@@ -221,7 +223,7 @@ namespace LifeIdea.LazyCure.UI
             this.tabGeneral.Location = new System.Drawing.Point(4, 22);
             this.tabGeneral.Name = "tabGeneral";
             this.tabGeneral.Padding = new System.Windows.Forms.Padding(3);
-            this.tabGeneral.Size = new System.Drawing.Size(342, 204);
+            this.tabGeneral.Size = new System.Drawing.Size(342, 222);
             this.tabGeneral.TabIndex = 1;
             this.tabGeneral.Text = "General";
             this.tabGeneral.UseVisualStyleBackColor = true;
@@ -238,7 +240,7 @@ namespace LifeIdea.LazyCure.UI
             // 
             // hotKeyToActivateLabel
             // 
-            this.hotKeyToActivateLabel.Location = new System.Drawing.Point(160, 169);
+            this.hotKeyToActivateLabel.Location = new System.Drawing.Point(160, 189);
             this.hotKeyToActivateLabel.Name = "hotKeyToActivateLabel";
             this.hotKeyToActivateLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.hotKeyToActivateLabel.Size = new System.Drawing.Size(96, 16);
@@ -248,7 +250,7 @@ namespace LifeIdea.LazyCure.UI
             // 
             // editActivateKeys
             // 
-            this.editActivateKeys.Location = new System.Drawing.Point(262, 165);
+            this.editActivateKeys.Location = new System.Drawing.Point(262, 185);
             this.editActivateKeys.Name = "editActivateKeys";
             this.editActivateKeys.Size = new System.Drawing.Size(25, 23);
             this.editActivateKeys.TabIndex = 18;
@@ -259,7 +261,7 @@ namespace LifeIdea.LazyCure.UI
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(187, 152);
+            this.label6.Location = new System.Drawing.Point(187, 172);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(100, 13);
             this.label6.TabIndex = 16;
@@ -269,7 +271,7 @@ namespace LifeIdea.LazyCure.UI
             // 
             this.groupBox1.Controls.Add(this.opensMainWindow);
             this.groupBox1.Controls.Add(this.showsRecentActivities);
-            this.groupBox1.Location = new System.Drawing.Point(9, 152);
+            this.groupBox1.Location = new System.Drawing.Point(9, 172);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(145, 47);
             this.groupBox1.TabIndex = 15;
@@ -383,12 +385,22 @@ namespace LifeIdea.LazyCure.UI
             this.enableTwitterCheckbox.UseVisualStyleBackColor = true;
             this.enableTwitterCheckbox.CheckedChanged += new System.EventHandler(this.enableTwitterCheckbox_CheckedChanged);
             // 
+            // splitByComma
+            // 
+            this.splitByComma.AutoSize = true;
+            this.splitByComma.Location = new System.Drawing.Point(6, 61);
+            this.splitByComma.Name = "splitByComma";
+            this.splitByComma.Size = new System.Drawing.Size(153, 17);
+            this.splitByComma.TabIndex = 21;
+            this.splitByComma.Text = "Split activities by comma (,)";
+            this.splitByComma.UseVisualStyleBackColor = true;
+            // 
             // Options
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancel;
-            this.ClientSize = new System.Drawing.Size(350, 271);
+            this.ClientSize = new System.Drawing.Size(350, 289);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.cancel);
             this.Controls.Add(this.ok);
@@ -446,6 +458,7 @@ namespace LifeIdea.LazyCure.UI
         private System.Windows.Forms.Button editActivateKeys;
         private System.Windows.Forms.Label hotKeyToActivateLabel;
         private System.Windows.Forms.CheckBox switchTimeLogAtMidnight;
+        private System.Windows.Forms.CheckBox splitByComma;
 
     }
 }

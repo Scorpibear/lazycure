@@ -178,5 +178,17 @@ namespace LifeIdea.LazyCure.Properties {
                 this["SwitchTimeLogAtMidnight"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool SplitByComma {
+            get {
+                return ((bool)(this["SplitByComma"]));
+            }
+            set {
+                this["SplitByComma"] = value;
+            }
+        }
     }
 }
