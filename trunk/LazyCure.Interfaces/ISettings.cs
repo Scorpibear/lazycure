@@ -26,6 +26,8 @@ namespace LifeIdea.LazyCure.Interfaces
 
         bool SaveAfterDone { get; set;}
 
+        bool SplitByComma { get; set;}
+
         bool SwitchOnLogOff { get; set;}
 
         bool SwitchTimeLogAtMidnight { get; set;}

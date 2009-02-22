@@ -172,6 +172,7 @@ namespace LifeIdea.LazyCure.Core
                 History.LatestSize = settings.ActivitiesNumberInTray;
                 History.Size = settings.MaxActivitiesInHistory;
                 TimeManager.MaxDuration = settings.ReminderTime;
+                TimeManager.SplitByComma = settings.SplitByComma;
                 TimeManager.SwitchAtMidnight = settings.SwitchTimeLogAtMidnight;
                 ExternalPoster.Username = settings.TwitterUsername;
                 ExternalPoster.Password = Format.Decode(settings.TwitterPassword);

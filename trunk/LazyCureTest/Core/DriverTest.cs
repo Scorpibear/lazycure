@@ -50,6 +50,7 @@ namespace LifeIdea.LazyCure.Core
             Stub.On(settings).GetProperty("TwitterUsername").Will(Return.Value("testname"));
             Stub.On(settings).GetProperty("TwitterPassword").Will(Return.Value(Format.Encode("testpass")));
             Stub.On(settings).GetProperty("SwitchTimeLogAtMidnight").Will(Return.Value(false));
+            Stub.On(settings).GetProperty("SplitByComma").Will(Return.Value(false));
             Expect.Once.On(driver.ExternalPoster).SetProperty("Username").To("testname");
             Expect.Once.On(driver.ExternalPoster).SetProperty("Password").To("testpass");
             
@@ -69,11 +70,29 @@ namespace LifeIdea.LazyCure.Core
             driver.TimeManager = NewMock<ITimeManager>();
             Stub.On(settings).GetProperty("SwitchTimeLogAtMidnight").Will(Return.Value(false));
             Stub.On(settings).GetProperty("SaveAfterDone").Will(Return.Value(false));
+            Stub.On(settings).GetProperty("SplitByComma").Will(Return.Value(false));
             Stub.On(settings).GetProperty("ActivitiesNumberInTray").Will(Return.Value(0));
             Stub.On(settings).GetProperty("MaxActivitiesInHistory").Will(Return.Value(0));
             Stub.On(settings).GetProperty("ReminderTime").Will(Return.Value(TimeSpan.Zero));
             Stub.On(settings).Method(Is.Anything);
             Expect.Once.On(driver.TimeManager).SetProperty("SwitchAtMidnight").To(false);
+            Stub.On(driver.TimeManager).Method(Is.Anything);
+            driver.ApplySettings(settings);
+            VerifyAllExpectationsHaveBeenMet();
+        }
+        [Test]
+        public void SplitByCommaSettingIsApplied()
+        {
+            ISettings settings = NewMock<ISettings>();
+            driver.TimeManager = NewMock<ITimeManager>();
+            Stub.On(settings).GetProperty("SwitchTimeLogAtMidnight").Will(Return.Value(false));
+            Stub.On(settings).GetProperty("SaveAfterDone").Will(Return.Value(false));
+            Stub.On(settings).GetProperty("SplitByComma").Will(Return.Value(true));
+            Stub.On(settings).GetProperty("ActivitiesNumberInTray").Will(Return.Value(0));
+            Stub.On(settings).GetProperty("MaxActivitiesInHistory").Will(Return.Value(0));
+            Stub.On(settings).GetProperty("ReminderTime").Will(Return.Value(TimeSpan.Zero));
+            Stub.On(settings).Method(Is.Anything);
+            Expect.Once.On(driver.TimeManager).SetProperty("SplitByComma").To(true);
             Stub.On(driver.TimeManager).Method(Is.Anything);
             driver.ApplySettings(settings);
             VerifyAllExpectationsHaveBeenMet();
@@ -160,7 +179,7 @@ namespace LifeIdea.LazyCure.Core
             StreamWriter writer = fileInfo.CreateText();
             writer.Write(sContent);
             writer.Close();
-            driver.FinishActivity("should be removed after load","next");
+            driver.FinishActivity("should be removed after load","second");
             if (driver.LoadTimeLog(fileInfo.FullName))
             {
                 DataRow row = (driver.TimeLogData as DataTable).Rows[0];
@@ -237,13 +256,13 @@ namespace LifeIdea.LazyCure.Core
         [Test]
         public void LatestActivities()
         {
-            driver.FinishActivity("latest", "next");
+            driver.FinishActivity("latest", "second");
             Assert.Contains("latest", driver.LatestActivities);
         }
         [Test]
         public void HistoryActivities()
         {
-            driver.FinishActivity("latest", "next");
+            driver.FinishActivity("latest", "second");
             Assert.Contains("latest", driver.HistoryActivities);
         }
         [Test]
@@ -265,7 +284,7 @@ namespace LifeIdea.LazyCure.Core
         [Test]
         public void LatestActivitiesAreReloaded()
         {
-            driver.FinishActivity("saved", "next");
+            driver.FinishActivity("saved", "second");
             driver.Save();
             driver = new Driver();
             driver.Load();
@@ -280,7 +299,7 @@ namespace LifeIdea.LazyCure.Core
             driver.TimeLogsFolder = folder;
             driver.SaveAfterDone = true;
             
-            driver.FinishActivity("should be saved", "next");
+            driver.FinishActivity("should be saved", "second");
             
             VerifyAllExpectationsHaveBeenMet();
         }
@@ -293,7 +312,7 @@ namespace LifeIdea.LazyCure.Core
             driver.TimeLogsFolder = folder;
             driver.SaveAfterDone = false;
 
-            driver.FinishActivity("should not be saved", "next");
+            driver.FinishActivity("should not be saved", "second");
 
             VerifyAllExpectationsHaveBeenMet();
         }

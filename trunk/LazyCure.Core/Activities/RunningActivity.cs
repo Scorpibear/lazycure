@@ -33,7 +33,7 @@ namespace LifeIdea.LazyCure.Core.Activities
 
         public RunningActivity(string name, ITimeSystem timeSystem)
         {
-            this.name = name;
+            Name = name;
             this.timeSystem = timeSystem;
             this.start = timeSystem.Now;
         }
@@ -49,7 +49,7 @@ namespace LifeIdea.LazyCure.Core.Activities
 
         private RunningActivity(string name, RunningActivity previous)
         {
-            this.name = name;
+            Name = name;
             this.timeSystem = previous.timeSystem;
             this.start = previous.start + previous.duration;
         }
@@ -57,7 +57,7 @@ namespace LifeIdea.LazyCure.Core.Activities
         {
             get
             {
-                if (duration.Milliseconds < MILLISECONDS_IN_ONE_SECOND/2)
+                if (duration.Milliseconds < MILLISECONDS_IN_ONE_SECOND / 2)
                     return new TimeSpan(0, 0, 0, (int)duration.TotalSeconds);
                 else
                     return new TimeSpan(0, 0, 0, (int)duration.TotalSeconds + 1);
@@ -66,6 +66,28 @@ namespace LifeIdea.LazyCure.Core.Activities
         private void RecalculateDuration()
         {
             duration = timeSystem.Now - Start;
+        }
+
+        public RunningActivity[] SplitByComma()
+        {
+            string[] names = Name.Split(',');
+            RunningActivity[] next = new RunningActivity[names.Length - 1];
+            if (names.Length > 0)
+            {
+                Name = names[0];
+                TimeSpan totalDuration = duration;
+                duration = TimeSpan.FromMilliseconds(totalDuration.TotalMilliseconds / names.Length);
+
+                RunningActivity previous = this;
+                for (int i = 0; i < names.Length - 1; i++)
+                {
+                    next[i] = new RunningActivity(names[i + 1], previous);
+                    next[i].IsRunning = false;
+                    next[i].duration = duration;
+                    previous = next[i];
+                }
+            }
+            return next;
         }
     }
 }

@@ -23,6 +23,59 @@ namespace LifeIdea.LazyCure.Core.Activities
             mocks.VerifyAllExpectationsHaveBeenMet();
         }
         [Test]
+        public void SplitNames()
+        {
+            Stub.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(startTime));
+            activity = new RunningActivity("first,second", mockTimeSystem);
+            activity.Stop();
+            RunningActivity second = activity.SplitByComma()[0];
+            Assert.AreEqual("first", activity.Name);
+            Assert.AreEqual("second", second.Name);
+        }
+        [Test]
+        public void SplitTime()
+        {
+            using (mocks.Ordered)
+            {
+                Expect.Once.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(DateTime.Parse("7:00:00")));
+                Expect.Once.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(DateTime.Parse("8:00:00")));
+            }
+            activity = new RunningActivity("first, second", mockTimeSystem);
+            activity.Stop();
+            RunningActivity second = activity.SplitByComma()[0];
+            Assert.AreEqual(DateTime.Parse("7:00:00"), activity.Start);
+            Assert.AreEqual(DateTime.Parse("7:30:00"), activity.End, "first end");
+            Assert.AreEqual(DateTime.Parse("7:30:00"), second.Start, "second start");
+            Assert.AreEqual(DateTime.Parse("8:00:00"), second.End);
+        }
+        [Test]
+        public void Split3()
+        {
+            using (mocks.Ordered)
+            {
+                Expect.Once.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(DateTime.Parse("7:00:00")));
+                Expect.Once.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(DateTime.Parse("8:00:00")));
+            }
+            activity = new RunningActivity("first, second, third", mockTimeSystem);
+            activity.Stop();
+            RunningActivity third = activity.SplitByComma()[1];
+            Assert.AreEqual(DateTime.Parse("7:40:00"), third.Start);
+        }
+        [Test]
+        public void SplitByCommaWhenNoComma()
+        {
+            Stub.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(startTime));
+            activity = new RunningActivity("just one", mockTimeSystem);
+            Assert.IsEmpty(activity.SplitByComma());
+        }
+        [Test]
+        public void SplitByCommaTrim()
+        {
+            Stub.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(startTime));
+            activity = new RunningActivity("first, second", mockTimeSystem);
+            Assert.AreEqual("second", activity.SplitByComma()[0].Name);
+        }
+        [Test]
         public void StopActivity()
         {
             Stub.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(startTime));

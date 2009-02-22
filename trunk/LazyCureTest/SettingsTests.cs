@@ -63,5 +63,10 @@ namespace LifeIdea.LazyCure.Properties
         {
             IsTrue(Settings.Default.SwitchTimeLogAtMidnight);
         }
+        [Test]
+        public void SplitByCommaIsTurnedOffByDefault()
+        {
+            IsTrue(Settings.Default.SplitByComma);
+        }
     }
 }
