@@ -366,9 +366,7 @@ namespace LifeIdea.LazyCure.UI
         {
             string activityName = (currentActivity.Text == DefaultActivity) ?
                 "current activity is lasting" : currentActivity.Text;
-            notifyIcon.Text = String.Format("{0} from {1} for {2}", activityName,
-                Format.Time(lazyCure.CurrentActivity.Start),
-                Format.Duration(lazyCure.CurrentActivity.Duration));
+            notifyIcon.Text = GetPopupText(activityName,lazyCure.CurrentActivity);
         }
 
         private void notifyIcon_DoubleClick(object sender, EventArgs e)
