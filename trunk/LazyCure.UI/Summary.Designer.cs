@@ -28,6 +28,7 @@ namespace LifeIdea.LazyCure.UI
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Summary));
@@ -35,6 +36,8 @@ namespace LifeIdea.LazyCure.UI
             this.activityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.spentColumnForActivitySummary = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.taskColumnForActivitySummary = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.activities = new System.Windows.Forms.TabPage();
             this.tasks = new System.Windows.Forms.TabPage();
@@ -65,6 +68,7 @@ namespace LifeIdea.LazyCure.UI
             this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.activitiesSummary)).BeginInit();
+            this.contextMenu.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.activities.SuspendLayout();
             this.tasks.SuspendLayout();
@@ -86,6 +90,7 @@ namespace LifeIdea.LazyCure.UI
             this.activityColumn,
             this.spentColumnForActivitySummary,
             this.taskColumnForActivitySummary});
+            this.activitiesSummary.ContextMenuStrip = this.contextMenu;
             this.activitiesSummary.Dock = System.Windows.Forms.DockStyle.Fill;
             this.activitiesSummary.Location = new System.Drawing.Point(3, 3);
             this.activitiesSummary.Name = "activitiesSummary";
@@ -122,6 +127,21 @@ namespace LifeIdea.LazyCure.UI
             this.taskColumnForActivitySummary.Name = "taskColumnForActivitySummary";
             this.taskColumnForActivitySummary.ReadOnly = true;
             this.taskColumnForActivitySummary.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // contextMenu
+            // 
+            this.contextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyToolStripMenuItem});
+            this.contextMenu.Name = "contextMenu";
+            this.contextMenu.Size = new System.Drawing.Size(153, 48);
+            // 
+            // copyToolStripMenuItem
+            // 
+            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
+            this.copyToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+C";
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.copyToolStripMenuItem.Text = "Copy";
+            this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
             // 
             // tabControl
             // 
@@ -166,6 +186,7 @@ namespace LifeIdea.LazyCure.UI
             this.tasksSummary.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.taskColumnForTasksSummary,
             this.spentColumnForTasksSummary});
+            this.tasksSummary.ContextMenuStrip = this.contextMenu;
             this.tasksSummary.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tasksSummary.Location = new System.Drawing.Point(3, 3);
             this.tasksSummary.Name = "tasksSummary";
@@ -463,6 +484,7 @@ namespace LifeIdea.LazyCure.UI
             this.TopMost = true;
             this.Activated += new System.EventHandler(this.UpdateStatistics);
             ((System.ComponentModel.ISupportInitialize)(this.activitiesSummary)).EndInit();
+            this.contextMenu.ResumeLayout(false);
             this.tabControl.ResumeLayout(false);
             this.activities.ResumeLayout(false);
             this.tasks.ResumeLayout(false);
@@ -514,5 +536,7 @@ namespace LifeIdea.LazyCure.UI
         private System.Windows.Forms.DataGridViewTextBoxColumn taskColumnForActivitySummary;
         private System.Windows.Forms.Button showTimeLogButton;
         private System.Windows.Forms.Button closeButton;
+        private System.Windows.Forms.ContextMenuStrip contextMenu;
+        private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
     }
 }

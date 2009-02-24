@@ -119,6 +119,17 @@ namespace LifeIdea.LazyCure.UI
             this.Hide();
         }
 
+        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DataGridView focusedGrid = null;
+            if (activitiesSummary.Focused)
+                focusedGrid = activitiesSummary;
+            if (tasksSummary.Focused)
+                focusedGrid = tasksSummary;
+            if(focusedGrid!=null)
+                Clipboard.SetDataObject(focusedGrid.GetClipboardContent());
+        }
+
         private void maxRestDurationTextBox_TextChanged(object sender, EventArgs e)
         {
             lazyCure.PossibleWorkInterruptionDuration = Format.Duration(maxRestDurationTextBox.Text);
