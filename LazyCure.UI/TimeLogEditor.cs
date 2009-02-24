@@ -32,6 +32,11 @@ namespace LifeIdea.LazyCure.UI
             base.Update();
         }
 
+        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetDataObject(timeLogView.GetClipboardContent());
+        }
+
         private void timeLogView_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
