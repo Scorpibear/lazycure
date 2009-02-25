@@ -11,5 +11,6 @@ namespace LifeIdea.LazyCure.Core.Time
         void AddActivity(IActivity activity);
         DateTime Date { get; set;}
         string FileName { get; set;}
+        void RenameActivities(string before, string after);
     }
 }

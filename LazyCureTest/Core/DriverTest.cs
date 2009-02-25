@@ -117,6 +117,20 @@ namespace LifeIdea.LazyCure.Core
             Assert.AreEqual(0.76,driver.Efficiency);
         }
         [Test]
+        public void RenameActivitiesInTimeLog()
+        {
+            driver.FinishActivity("before", "next");
+            driver.RenameActivity("before", "after");
+            Assert.AreEqual("after", driver.TimeManager.TimeLog.Activities[0].Name);
+        }
+        [Test]
+        public void RenameActivitiesInHistory()
+        {
+            driver.FinishActivity("before", "next");
+            driver.RenameActivity("before", "after");
+            Assert.AreEqual("after", driver.HistoryActivities[0]);
+        }
+        [Test]
         public void GetPossibleWorkInterruptionDuration()
         {
             driver.WorkingTime = NewMock<IWorkingTimeManager>();

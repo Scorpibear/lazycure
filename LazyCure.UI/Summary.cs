@@ -109,6 +109,14 @@ namespace LifeIdea.LazyCure.UI
             }
         }
 
+        private void activitiesSummary_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            string after = activitiesSummary.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+            activitiesSummary.CancelEdit();
+            string before = activitiesSummary.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+            lazyCure.RenameActivity(before, after);
+        }
+
         private void automaticallyRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             lazyCure.CalculateAutomaticallyWorkingIntervals = automaticallyRadioButton.Checked;

@@ -87,6 +87,13 @@ namespace LifeIdea.LazyCure.Core.Time
             set { filename = value; }
         }
 
+        public void RenameActivities(string before, string after)
+        {
+            foreach (DataRow row in Data.Rows)
+                if ((string)row["Activity"] == before)
+                    row["Activity"] = after;
+        }
+
         #endregion
         
         public override string ToString()

@@ -115,5 +115,11 @@ namespace LifeIdea.LazyCure.Core.Activities
             }
             return true;
         }
+
+        public void RenameActivity(string before, string after)
+        {
+            activities.Remove(before);
+            AddActivity(after);
+        }
     }
 }

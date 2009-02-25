@@ -141,5 +141,13 @@ namespace LifeIdea.LazyCure.Core.Activities
             history.AddActivity("b");
             Assert.AreEqual(new string[] { "b" }, history.LatestActivities);
         }
+        [Test]
+        public void AfterRenameDuplicatesAreRemoved()
+        {
+            history.AddActivity("a");
+            history.AddActivity("b");
+            history.RenameActivity("b", "a");
+            Assert.AreEqual(1, history.Activities.Length);
+        }
     }
 }
