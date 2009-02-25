@@ -184,6 +184,12 @@ namespace LifeIdea.LazyCure.Core
             return History.UniqueName;
         }
 
+        public void RenameActivity(string before, string after)
+        {
+            TimeManager.TimeLog.RenameActivities(before, after);
+            History.RenameActivity(before, after);
+        }
+
         public void PostToTwitter(string activity)
         {
             ExternalPoster.PostAsync(activity);

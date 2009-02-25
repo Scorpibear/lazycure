@@ -94,10 +94,10 @@ namespace LifeIdea.LazyCure.UI
             this.activitiesSummary.Dock = System.Windows.Forms.DockStyle.Fill;
             this.activitiesSummary.Location = new System.Drawing.Point(3, 3);
             this.activitiesSummary.Name = "activitiesSummary";
-            this.activitiesSummary.ReadOnly = true;
             this.activitiesSummary.Size = new System.Drawing.Size(549, 253);
             this.activitiesSummary.TabIndex = 0;
             this.activitiesSummary.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.activitiesSummary_CellDoubleClick);
+            this.activitiesSummary.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.activitiesSummary_CellEndEdit);
             // 
             // activityColumn
             // 
@@ -106,7 +106,6 @@ namespace LifeIdea.LazyCure.UI
             this.activityColumn.FillWeight = 65F;
             this.activityColumn.HeaderText = "Activity";
             this.activityColumn.Name = "activityColumn";
-            this.activityColumn.ReadOnly = true;
             // 
             // spentColumnForActivitySummary
             // 
@@ -133,13 +132,13 @@ namespace LifeIdea.LazyCure.UI
             this.contextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.copyToolStripMenuItem});
             this.contextMenu.Name = "contextMenu";
-            this.contextMenu.Size = new System.Drawing.Size(153, 48);
+            this.contextMenu.Size = new System.Drawing.Size(150, 26);
             // 
             // copyToolStripMenuItem
             // 
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
             this.copyToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+C";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.copyToolStripMenuItem.Text = "Copy";
             this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
             // 
@@ -531,12 +530,12 @@ namespace LifeIdea.LazyCure.UI
         private System.Windows.Forms.DataGridView workingTimeIntervalsGrid;
         private System.Windows.Forms.DataGridViewTextBoxColumn Start;
         private System.Windows.Forms.DataGridViewTextBoxColumn End;
-        private System.Windows.Forms.DataGridViewTextBoxColumn activityColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn spentColumnForActivitySummary;
-        private System.Windows.Forms.DataGridViewTextBoxColumn taskColumnForActivitySummary;
         private System.Windows.Forms.Button showTimeLogButton;
         private System.Windows.Forms.Button closeButton;
         private System.Windows.Forms.ContextMenuStrip contextMenu;
         private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn activityColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn spentColumnForActivitySummary;
+        private System.Windows.Forms.DataGridViewTextBoxColumn taskColumnForActivitySummary;
     }
 }

@@ -20,6 +20,8 @@ namespace LifeIdea.LazyCure.Core.Activities
 
         bool Load(string filename);
 
+        void RenameActivity(string before, string after);
+
         bool Save(string filename);
     }
 }
