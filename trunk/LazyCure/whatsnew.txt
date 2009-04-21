@@ -1,3 +1,15 @@
+LazyCure 3.7
+* New: Subtasks.
+* New: Possibility to customize hot-key.
+* New: Split activities by comma (',').
+* New: Possibility to disable option to switch time log at midnight.
+* New: Possibility to close TimeLog Editor, Summary, Task Manager by ESC.
+* New: Possibility to copy data via context menu from Time Log Editor and Activities Summary.
+* New: Possibility to rename activities on Activities Summary.
+* Fixed: An exception when invalid time is entered on Efficiency tab.
+* Fixed: An exception when activity is longer than 64 symbols on mouse over tray icon.
+* Fixed: Post to twitter is not working.
+
 LazyCure 3.6
 * New: LazyCure is working under Linux with Mono framework.
 * New: Possibility to customize left click on tray icon.

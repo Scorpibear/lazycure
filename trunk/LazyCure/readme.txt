@@ -1,13 +1,13 @@
-LazyCure 3.6
+LazyCure 3.7
 
 Prerequsites:
 .NET Framework 2.0 (go with Windows XP Updates. Could be downloaded from http://www.microsoft.com/downloads/details.aspx?familyid=0856eacb-4362-4b0d-8edd-aab15c5e04f5 page)
 	or
-Mono 2.0.1+ (usually goes with Linux distribute, could be downloaded from http://www.go-mono.com/mono-downloads/download.html)
+Mono 2.4+ (usually goes with Linux distribute, could be downloaded from http://www.go-mono.com/mono-downloads/download.html)
 
 Installation Notes:
-1. Run LazyCure 3.6.exe (for Windows only)
-	or unpack content of LazyCure 3.6.zip to local folder (e.g. to c:\Program Files\LazyCure) and run LazyCure.exe.
+1. Run LazyCure 3.7.exe (for Windows only)
+	or unpack content of LazyCure 3.7.zip to local folder (e.g. to c:\Program Files\LazyCure or /home/Scorpibear/Programs/LazyCure) and run LazyCure.exe.
 Under Linux and other OS where mono is used instead of .NET framework, LazyCure could be run via command "mono LazyCure.exe"
 
 Upgrade Notes:
@@ -15,7 +15,7 @@ Upgrade Notes:
 
 Troubleshooting:
 If LazyCure does not start, please, verify that:
-1. .NET Framework 2.0 or Mono 2.0.1+ is installed and working correctly.
+1. .NET Framework 2.0 or Mono 2.4+ is installed and working correctly.
 2. In LazyCure folder there are all required files:
 	- LazyCure.exe,
 	- LazyCure.Core.dll,
