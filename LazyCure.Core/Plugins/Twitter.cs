@@ -13,6 +13,12 @@ namespace LifeIdea.LazyCure.Core.Plugins
 {
     public class Twitter:IExternalPoster
     {
+        private string source = "LazyCure";
+
+        private string twitterClient = "LazyCure";
+        private string twitterClientVersion = "3.7";
+        private string twitterClientUrl = "http://lazycure.com/twitter.xml";
+
         private string username;
         private string password;
         private string text;
@@ -85,13 +91,6 @@ namespace LifeIdea.LazyCure.Core.Plugins
             Featured,
             Show,
         }
-
-        private string source = "LazyCure";
-
-        private string twitterClient = "LazyCure";
-        private string twitterClientVersion = "3.5";
-        private string twitterClientUrl = "http://lazycure.com/twitter.xml";
-
 
         /// <summary>
         /// Source is an additional parameters that will be used to fill the "From" field.
@@ -215,6 +214,7 @@ namespace LifeIdea.LazyCure.Core.Plugins
         /// <returns>The response of the request, or null if we got 404 or nothing.</returns>
         protected string ExecutePostCommand(string url, string userName, string password, string data)
         {
+            ServicePointManager.Expect100Continue = false;
             WebRequest request = WebRequest.Create(url);
             if (!string.IsNullOrEmpty(userName) && !string.IsNullOrEmpty(password))
             {
