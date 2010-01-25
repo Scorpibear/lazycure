@@ -13,7 +13,7 @@ namespace LifeIdea.LazyCure.Core.Plugins
 {
     public class Twitter:IExternalPoster
     {
-        private string source = "LazyCure";
+        private string source = "<a href=\"http://lazycure.com/\">LazyCure</a>";
 
         private string twitterClient = "LazyCure";
         private string twitterClientVersion = "3.7";
