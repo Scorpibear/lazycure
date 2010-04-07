@@ -38,7 +38,8 @@ namespace LifeIdea.LazyCure.Core.Tasks
 
         public override bool Equals(object obj)
         {
-            return GetHashCode() == obj.GetHashCode();
+            Task otherTask = obj as Task;
+            return otherTask == null ? false : Name.Equals(otherTask.Name);
         }
     }
 }

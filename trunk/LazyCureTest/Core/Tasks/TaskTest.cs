@@ -54,5 +54,28 @@ namespace LifeIdea.LazyCure.Core.Tasks
         {
             Assert.That(task.IsWorking);
         }
+
+        [Test]
+        public void TasksShouldNotBeEqualEvenIfTheirHashCodesAre()
+        {
+            string name1 = "699391";
+            string name2 = "1241308";
+
+            // just to make sure that hash codes are equal
+            Assert.IsTrue(name1.GetHashCode() == name2.GetHashCode());
+
+            task = new Task(name1);
+            Task task2 = new Task(name2);
+            
+            Assert.IsFalse(task.Equals(task2));
+            Assert.IsFalse(task2.Equals(task));
+        }
+
+        [Test]
+        public void TaskShouldBeEqualOnlyToTask()
+        {
+            // Task can't be equal to String
+            Assert.IsFalse(task.Equals("task1"));
+        }
     }
 }
