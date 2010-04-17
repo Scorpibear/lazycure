@@ -44,10 +44,8 @@ namespace LifeIdea.LazyCure.UI
             this.cancel = new System.Windows.Forms.Button();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabGeneral = new System.Windows.Forms.TabPage();
+            this.splitByComma = new System.Windows.Forms.CheckBox();
             this.switchTimeLogAtMidnight = new System.Windows.Forms.CheckBox();
-            this.hotKeyToActivateLabel = new System.Windows.Forms.Label();
-            this.editActivateKeys = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.opensMainWindow = new System.Windows.Forms.RadioButton();
             this.showsRecentActivities = new System.Windows.Forms.RadioButton();
@@ -59,13 +57,20 @@ namespace LifeIdea.LazyCure.UI
             this.usernameField = new System.Windows.Forms.TextBox();
             this.usernameLabel = new System.Windows.Forms.Label();
             this.enableTwitterCheckbox = new System.Windows.Forms.CheckBox();
-            this.splitByComma = new System.Windows.Forms.CheckBox();
+            this.tabHotKeys = new System.Windows.Forms.TabPage();
+            this.hotKeyToSwitchLabel = new System.Windows.Forms.Label();
+            this.editSwitchKey = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.hotKeyToActivateLabel = new System.Windows.Forms.Label();
+            this.editActivateKey = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.maxActivitiesInHistory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.activitiesNumberInTray)).BeginInit();
             this.tabControl.SuspendLayout();
             this.tabGeneral.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabTwitter.SuspendLayout();
+            this.tabHotKeys.SuspendLayout();
             this.SuspendLayout();
             // 
             // saveAfterDone
@@ -193,6 +198,7 @@ namespace LifeIdea.LazyCure.UI
             // 
             this.tabControl.Controls.Add(this.tabGeneral);
             this.tabControl.Controls.Add(this.tabTwitter);
+            this.tabControl.Controls.Add(this.tabHotKeys);
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Top;
             this.tabControl.Location = new System.Drawing.Point(0, 0);
             this.tabControl.Name = "tabControl";
@@ -204,9 +210,6 @@ namespace LifeIdea.LazyCure.UI
             // 
             this.tabGeneral.Controls.Add(this.splitByComma);
             this.tabGeneral.Controls.Add(this.switchTimeLogAtMidnight);
-            this.tabGeneral.Controls.Add(this.hotKeyToActivateLabel);
-            this.tabGeneral.Controls.Add(this.editActivateKeys);
-            this.tabGeneral.Controls.Add(this.label6);
             this.tabGeneral.Controls.Add(this.groupBox1);
             this.tabGeneral.Controls.Add(this.switchOnLogOff);
             this.tabGeneral.Controls.Add(this.activitiesNumberInTray);
@@ -228,6 +231,16 @@ namespace LifeIdea.LazyCure.UI
             this.tabGeneral.Text = "General";
             this.tabGeneral.UseVisualStyleBackColor = true;
             // 
+            // splitByComma
+            // 
+            this.splitByComma.AutoSize = true;
+            this.splitByComma.Location = new System.Drawing.Point(6, 61);
+            this.splitByComma.Name = "splitByComma";
+            this.splitByComma.Size = new System.Drawing.Size(153, 17);
+            this.splitByComma.TabIndex = 21;
+            this.splitByComma.Text = "Split activities by comma (,)";
+            this.splitByComma.UseVisualStyleBackColor = true;
+            // 
             // switchTimeLogAtMidnight
             // 
             this.switchTimeLogAtMidnight.AutoSize = true;
@@ -237,35 +250,6 @@ namespace LifeIdea.LazyCure.UI
             this.switchTimeLogAtMidnight.TabIndex = 20;
             this.switchTimeLogAtMidnight.Text = "At midnight close active time log and open on the next day";
             this.switchTimeLogAtMidnight.UseVisualStyleBackColor = true;
-            // 
-            // hotKeyToActivateLabel
-            // 
-            this.hotKeyToActivateLabel.Location = new System.Drawing.Point(160, 189);
-            this.hotKeyToActivateLabel.Name = "hotKeyToActivateLabel";
-            this.hotKeyToActivateLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.hotKeyToActivateLabel.Size = new System.Drawing.Size(96, 16);
-            this.hotKeyToActivateLabel.TabIndex = 19;
-            this.hotKeyToActivateLabel.Text = "Ctrl+F12";
-            this.hotKeyToActivateLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // editActivateKeys
-            // 
-            this.editActivateKeys.Location = new System.Drawing.Point(262, 185);
-            this.editActivateKeys.Name = "editActivateKeys";
-            this.editActivateKeys.Size = new System.Drawing.Size(25, 23);
-            this.editActivateKeys.TabIndex = 18;
-            this.editActivateKeys.Text = "...";
-            this.editActivateKeys.UseVisualStyleBackColor = true;
-            this.editActivateKeys.Click += new System.EventHandler(this.editActivateKeys_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(187, 172);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(100, 13);
-            this.label6.TabIndex = 16;
-            this.label6.Text = "Hot key to activate:";
             // 
             // groupBox1
             // 
@@ -321,7 +305,7 @@ namespace LifeIdea.LazyCure.UI
             this.tabTwitter.Location = new System.Drawing.Point(4, 22);
             this.tabTwitter.Name = "tabTwitter";
             this.tabTwitter.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTwitter.Size = new System.Drawing.Size(342, 204);
+            this.tabTwitter.Size = new System.Drawing.Size(342, 222);
             this.tabTwitter.TabIndex = 0;
             this.tabTwitter.Text = "Twitter";
             this.tabTwitter.UseVisualStyleBackColor = true;
@@ -385,15 +369,79 @@ namespace LifeIdea.LazyCure.UI
             this.enableTwitterCheckbox.UseVisualStyleBackColor = true;
             this.enableTwitterCheckbox.CheckedChanged += new System.EventHandler(this.enableTwitterCheckbox_CheckedChanged);
             // 
-            // splitByComma
+            // tabHotKeys
             // 
-            this.splitByComma.AutoSize = true;
-            this.splitByComma.Location = new System.Drawing.Point(6, 61);
-            this.splitByComma.Name = "splitByComma";
-            this.splitByComma.Size = new System.Drawing.Size(153, 17);
-            this.splitByComma.TabIndex = 21;
-            this.splitByComma.Text = "Split activities by comma (,)";
-            this.splitByComma.UseVisualStyleBackColor = true;
+            this.tabHotKeys.Controls.Add(this.hotKeyToSwitchLabel);
+            this.tabHotKeys.Controls.Add(this.editSwitchKey);
+            this.tabHotKeys.Controls.Add(this.label7);
+            this.tabHotKeys.Controls.Add(this.hotKeyToActivateLabel);
+            this.tabHotKeys.Controls.Add(this.editActivateKey);
+            this.tabHotKeys.Controls.Add(this.label6);
+            this.tabHotKeys.Location = new System.Drawing.Point(4, 22);
+            this.tabHotKeys.Name = "tabHotKeys";
+            this.tabHotKeys.Padding = new System.Windows.Forms.Padding(3);
+            this.tabHotKeys.Size = new System.Drawing.Size(342, 222);
+            this.tabHotKeys.TabIndex = 2;
+            this.tabHotKeys.Text = "Hot Keys";
+            this.tabHotKeys.UseVisualStyleBackColor = true;
+            // 
+            // hotKeyToSwitchLabel
+            // 
+            this.hotKeyToSwitchLabel.Location = new System.Drawing.Point(114, 36);
+            this.hotKeyToSwitchLabel.Name = "hotKeyToSwitchLabel";
+            this.hotKeyToSwitchLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.hotKeyToSwitchLabel.Size = new System.Drawing.Size(96, 16);
+            this.hotKeyToSwitchLabel.TabIndex = 25;
+            this.hotKeyToSwitchLabel.Text = "Ctrl+F12";
+            this.hotKeyToSwitchLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // editSwitchKey
+            // 
+            this.editSwitchKey.Location = new System.Drawing.Point(216, 32);
+            this.editSwitchKey.Name = "editSwitchKey";
+            this.editSwitchKey.Size = new System.Drawing.Size(25, 23);
+            this.editSwitchKey.TabIndex = 24;
+            this.editSwitchKey.Text = "...";
+            this.editSwitchKey.UseVisualStyleBackColor = true;
+            this.editSwitchKey.Click += new System.EventHandler(this.editSwitchKey_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(8, 36);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(92, 13);
+            this.label7.TabIndex = 23;
+            this.label7.Text = "Hot key to switch:";
+            // 
+            // hotKeyToActivateLabel
+            // 
+            this.hotKeyToActivateLabel.Location = new System.Drawing.Point(114, 10);
+            this.hotKeyToActivateLabel.Name = "hotKeyToActivateLabel";
+            this.hotKeyToActivateLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.hotKeyToActivateLabel.Size = new System.Drawing.Size(96, 16);
+            this.hotKeyToActivateLabel.TabIndex = 22;
+            this.hotKeyToActivateLabel.Text = "Ctrl+F12";
+            this.hotKeyToActivateLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // editActivateKey
+            // 
+            this.editActivateKey.Location = new System.Drawing.Point(216, 6);
+            this.editActivateKey.Name = "editActivateKey";
+            this.editActivateKey.Size = new System.Drawing.Size(25, 23);
+            this.editActivateKey.TabIndex = 21;
+            this.editActivateKey.Text = "...";
+            this.editActivateKey.UseVisualStyleBackColor = true;
+            this.editActivateKey.Click += new System.EventHandler(this.editActivateKey_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(8, 9);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(100, 13);
+            this.label6.TabIndex = 20;
+            this.label6.Text = "Hot key to activate:";
             // 
             // Options
             // 
@@ -422,6 +470,8 @@ namespace LifeIdea.LazyCure.UI
             this.groupBox1.PerformLayout();
             this.tabTwitter.ResumeLayout(false);
             this.tabTwitter.PerformLayout();
+            this.tabHotKeys.ResumeLayout(false);
+            this.tabHotKeys.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -454,11 +504,15 @@ namespace LifeIdea.LazyCure.UI
         private System.Windows.Forms.RadioButton showsRecentActivities;
         private System.Windows.Forms.RadioButton opensMainWindow;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button editActivateKeys;
-        private System.Windows.Forms.Label hotKeyToActivateLabel;
         private System.Windows.Forms.CheckBox switchTimeLogAtMidnight;
         private System.Windows.Forms.CheckBox splitByComma;
+        private System.Windows.Forms.TabPage tabHotKeys;
+        private System.Windows.Forms.Label hotKeyToSwitchLabel;
+        private System.Windows.Forms.Button editSwitchKey;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label hotKeyToActivateLabel;
+        private System.Windows.Forms.Button editActivateKey;
+        private System.Windows.Forms.Label label6;
 
     }
 }

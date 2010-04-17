@@ -26,14 +26,14 @@ namespace LifeIdea.LazyCure.UI.Backend
         [Test]
         public void Register()
         {
-            manager.Register(null, HotKey.Parse("Ctrl+F12"));
+            manager.Register(null, 1, HotKey.Parse("Ctrl+F12"));
         }
         [Test]
         public void CodeIsGetFromHotKey()
         {
             Expect.AtLeastOnce.On(hotKey).GetProperty("Code").Will(Return.Value(0));
             Stub.On(hotKey).GetProperty("ModifiersCode").Will(Return.Value(0));
-            manager.Register(window, hotKey);
+            manager.Register(window, 1, hotKey);
             VerifyAllExpectationsHaveBeenMet();
         }
         [Test]
@@ -41,19 +41,19 @@ namespace LifeIdea.LazyCure.UI.Backend
         {
             Stub.On(hotKey).GetProperty("Code").Will(Return.Value(0));
             Expect.AtLeastOnce.On(hotKey).GetProperty("ModifiersCode").Will(Return.Value(0));
-            manager.Register(window, hotKey);
+            manager.Register(window, 1, hotKey);
             VerifyAllExpectationsHaveBeenMet();
         }
         [Test]
         public void RegisterHotKeysLogsException()
         {
-            manager.Register(null, null);
+            manager.Register(null, 0, null);
             Assert.AreEqual("Could not register hot key for null window",Log.LastError);
         }
         [Test]
         public void RegisterWithNullKey()
         {
-            manager.Register(window, null);
+            manager.Register(window, 1, null);
             Assert.AreEqual("Could not register null hot key", Log.LastError);
         }
     }
