@@ -56,5 +56,10 @@ namespace LifeIdea.LazyCure.Interfaces
         {
             Assert.AreEqual("001", Format.MaskedText(TimeSpan.Parse("0:01")));
         }
+        [Test]
+        public void MaskedTextForZeroTimeSpan()
+        {
+            Assert.AreEqual("000", Format.MaskedText(TimeSpan.Zero));
+        }
     }
 }

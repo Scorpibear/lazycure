@@ -44,5 +44,8 @@
     <Setting Name="SplitByComma" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
+    <Setting Name="HotKeyToSwitch" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Ctrl+Alt+Shift+F12</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

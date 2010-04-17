@@ -13,7 +13,7 @@ namespace LifeIdea.LazyCure.UI.Backend
         [DllImport("user32.dll")]
         public static extern bool UnregisterHotKey(IntPtr hWnd, int id);
 
-        public bool Register(IWin32Window window, IHotKeyCodeProvider hotKey)
+        public bool Register(IWin32Window window, int id, IHotKeyCodeProvider hotKey)
         {
 			try
 			{
@@ -27,7 +27,7 @@ namespace LifeIdea.LazyCure.UI.Backend
                     Log.Error("Could not register null hot key");
                     return false;
                 }
-                return RegisterHotKey(window.Handle, GetID(window), hotKey.ModifiersCode, hotKey.Code);
+                return RegisterHotKey(window.Handle, id, hotKey.ModifiersCode, hotKey.Code);
 			}
 			catch(Exception ex)
 			{
@@ -37,13 +37,9 @@ namespace LifeIdea.LazyCure.UI.Backend
 			}
         }
 
-        private static int GetID(IWin32Window window)
+        public bool Unregister(IWin32Window window, int id)
         {
-            return window.GetType().GetHashCode();
-        }
-        public bool Unregister(IWin32Window window)
-        {
-            return UnregisterHotKey(window.Handle, GetID(window));
+            return UnregisterHotKey(window.Handle, id);
         }
     }
 }

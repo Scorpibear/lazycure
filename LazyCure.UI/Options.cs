@@ -7,29 +7,87 @@ namespace LifeIdea.LazyCure.UI
 {
     public partial class Options : Form
     {
-        private readonly ISettings settings;
+        private ISettings settings;
         private readonly FolderBrowserDialog timeLogFolderBrowser = new FolderBrowserDialog();
 
-        public Options(ISettings settings)
+        public Options()
         {
             InitializeComponent();
-            reminderTime.ValidatingType = settings.ReminderTime.GetType();
+            twitterLink.Links.Add(0, twitterLink.Text.Length, "http://twitter.com/");
+        }
+
+        public Options(ISettings settings):this()
+        {
             this.settings = settings;
-            maxActivitiesInHistory.Value = settings.MaxActivitiesInHistory;
+            LoadSettings(settings);
+        }
+
+        #region Properties
+
+        public ISettings Settings { set { this.settings = value; } }
+
+        #endregion Properties
+
+        #region Public methods
+
+        public void UpdateSettings(TimeSpan parsedReminderTime)
+        {
+            settings.ActivitiesNumberInTray = (int)activitiesNumberInTray.Value;
+            settings.HotKeyToActivate = hotKeyToActivateLabel.Text;
+            settings.HotKeyToSwitch = hotKeyToSwitchLabel.Text;
+            settings.LeftClickOnTray = showsRecentActivities.Checked;
+            settings.MaxActivitiesInHistory = (int)maxActivitiesInHistory.Value;
+            settings.ReminderTime = parsedReminderTime;
+            settings.SaveAfterDone = saveAfterDone.Checked;
+            settings.SplitByComma = splitByComma.Checked;
+            settings.SwitchOnLogOff = switchOnLogOff.Checked;
+            settings.SwitchTimeLogAtMidnight = switchTimeLogAtMidnight.Checked;
+            settings.TimeLogsFolder = timeLogFolder.Text;
+            settings.TwitterEnabled = enableTwitterCheckbox.Checked;
+            settings.TwitterPassword = Format.Encode(passwordField.Text);
+            settings.TwitterUsername = usernameField.Text;
+        }
+
+        #endregion Public methods
+
+        #region Private methods
+
+        private void EditHotKeyLabel(Label hotKeyLabel)
+        {
+            HotKeysEditor keysEditor = new HotKeysEditor();
+            keysEditor.Keys = hotKeyLabel.Text;
+            DialogResult result = keysEditor.ShowDialog(this);
+            if (result == DialogResult.OK)
+                hotKeyLabel.Text = keysEditor.Keys;
+        }
+
+        private void LoadSettings(ISettings settings)
+        {
             activitiesNumberInTray.Value = settings.ActivitiesNumberInTray;
+            hotKeyToActivateLabel.Text = settings.HotKeyToActivate;
+            hotKeyToSwitchLabel.Text = settings.HotKeyToSwitch;
             showsRecentActivities.Checked = settings.LeftClickOnTray;
+            maxActivitiesInHistory.Value = settings.MaxActivitiesInHistory;
+            SetReminderTime(settings.ReminderTime);
             saveAfterDone.Checked = settings.SaveAfterDone;
             splitByComma.Checked = settings.SplitByComma;
+            switchOnLogOff.Checked = settings.SwitchOnLogOff;
             switchTimeLogAtMidnight.Checked = settings.SwitchTimeLogAtMidnight;
             timeLogFolder.Text = settings.TimeLogsFolder;
-            reminderTime.Text = Format.MaskedText(settings.ReminderTime);
-            switchOnLogOff.Checked = settings.SwitchOnLogOff;
-            hotKeyToActivateLabel.Text = settings.HotKeyToActivate;
             enableTwitterCheckbox.Checked = settings.TwitterEnabled;
             usernameField.Text = settings.TwitterUsername;
             passwordField.Text = Format.Decode(settings.TwitterPassword);
-            twitterLink.Links.Add(0, twitterLink.Text.Length, "http://twitter.com/");
         }
+
+        private void SetReminderTime(TimeSpan newTime)
+        {
+            this.reminderTime.ValidatingType = newTime.GetType();
+            this.reminderTime.Text = Format.MaskedText(newTime);
+        }
+        
+        #endregion
+
+        #region Options form event handlers
 
         private void Options_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -40,9 +98,23 @@ namespace LifeIdea.LazyCure.UI
             }
         }
 
+        #endregion
+
+        #region Options controls event handlers
+
         private void cancel_Click(object sender, EventArgs e)
         {
             Hide();
+        }
+
+        private void editActivateKey_Click(object sender, EventArgs e)
+        {
+            EditHotKeyLabel(hotKeyToActivateLabel);
+        }
+
+        private void editSwitchKey_Click(object sender, EventArgs e)
+        {
+            EditHotKeyLabel(hotKeyToSwitchLabel);
         }
 
         private void enableTwitterCheckbox_CheckedChanged(object sender, EventArgs e)
@@ -59,23 +131,11 @@ namespace LifeIdea.LazyCure.UI
             TimeSpan parsedReminderTime;
             if (TimeSpan.TryParse(reminderTime.Text, out parsedReminderTime))
             {
-                settings.ReminderTime = parsedReminderTime;
-                settings.MaxActivitiesInHistory = (int)maxActivitiesInHistory.Value;
-                settings.ActivitiesNumberInTray = (int)activitiesNumberInTray.Value;
-                settings.LeftClickOnTray = showsRecentActivities.Checked;
-                settings.SaveAfterDone = saveAfterDone.Checked;
-                settings.SplitByComma = splitByComma.Checked;
-                settings.SwitchTimeLogAtMidnight = switchTimeLogAtMidnight.Checked;
-                settings.TimeLogsFolder = timeLogFolder.Text;
-                settings.SwitchOnLogOff = switchOnLogOff.Checked;
-                settings.HotKeyToActivate = hotKeyToActivateLabel.Text;
-                settings.TwitterEnabled = enableTwitterCheckbox.Checked;
-                settings.TwitterUsername = usernameField.Text;
-                settings.TwitterPassword = Format.Encode(passwordField.Text);
+                UpdateSettings(parsedReminderTime);
                 settings.Save();
                 Dialogs.LazyCureDriver.ApplySettings(settings);
                 Dialogs.MainForm.PostToTwitterEnabled = enableTwitterCheckbox.Checked;
-                Dialogs.MainForm.RegisterHotKey();
+                Dialogs.MainForm.RegisterHotKeys();
                 Hide();
             }
             else
@@ -100,13 +160,6 @@ namespace LifeIdea.LazyCure.UI
 
         }
 
-        private void editActivateKeys_Click(object sender, EventArgs e)
-        {
-            HotKeysEditor keysEditor = new HotKeysEditor();
-            keysEditor.Keys = hotKeyToActivateLabel.Text;
-            DialogResult result = keysEditor.ShowDialog(this);
-            if (result == DialogResult.OK)
-                hotKeyToActivateLabel.Text = keysEditor.Keys;
-        }
+        #endregion
     }
 }

@@ -16,6 +16,9 @@ namespace LifeIdea.LazyCure.UI
     public partial class Main : MainBase, IMainForm, IDisposable
     {
         private const string DefaultActivity = "(specify what you are doing)";
+        private const int HotKeyMessageID = 0x0312;
+        private const int HotKeyToActivateID = 1;
+        private const int HotKeyToSwitchID = 2;
         private readonly ILazyCureDriver lazyCure;
         private readonly string nextActivity = DefaultActivity;
         private HotKeyManager hotKeyManager = new HotKeyManager();
@@ -47,7 +50,7 @@ namespace LifeIdea.LazyCure.UI
             leftClickTimer = new Timer();
             leftClickTimer.Tick += new EventHandler(notifyIcon_LeftClick);
             leftClickTimer.Interval = 300; // should be changed on max double click interval
-            RegisterHotKey();
+            RegisterHotKeys();
         }
 
         void SystemEvents_SessionSwitch(object sender, SessionSwitchEventArgs e)
@@ -57,10 +60,11 @@ namespace LifeIdea.LazyCure.UI
                 SwitchActivity();
         }
 
-        public void RegisterHotKey()
+        public void RegisterHotKeys()
         {
-            hotKeyManager.Unregister(this);
-            hotKeyManager.Register(this, HotKey.Parse(Dialogs.Settings.HotKeyToActivate));
+            UnregisterHotKeys();
+            hotKeyManager.Register(this, HotKeyToActivateID, HotKey.Parse(Dialogs.Settings.HotKeyToActivate));
+            hotKeyManager.Register(this, HotKeyToSwitchID, HotKey.Parse(Dialogs.Settings.HotKeyToSwitch));
         }
 
         public void ViewsVisibilityChanged()
@@ -86,6 +90,20 @@ namespace LifeIdea.LazyCure.UI
             {
                 lazyCure.PostToTwitter(activity);
                 postToTwitter.Checked = false;
+            }
+        }
+
+        private void ProcessHotKeyMessage(Message m)
+        {
+            int hotKeyID = (int)m.WParam;
+            switch (hotKeyID)
+            {
+                case HotKeyToActivateID:
+                    Display();
+                    break;
+                case HotKeyToSwitchID:
+                    SwitchActivity();
+                    break;
             }
         }
 
@@ -122,6 +140,12 @@ namespace LifeIdea.LazyCure.UI
             string[] versionNumbers = Application.ProductVersion.Split('.');
             this.Text = String.Format("{0} - {1} {2}.{3}", lazyCure.TimeLogDate, Application.ProductName,
                 versionNumbers[0], versionNumbers[1]);
+        }
+
+        private void UnregisterHotKeys()
+        {
+            hotKeyManager.Unregister(this, HotKeyToActivateID);
+            hotKeyManager.Unregister(this, HotKeyToSwitchID);
         }
 
         private void UpdateActivityStartTime()
@@ -184,8 +208,8 @@ namespace LifeIdea.LazyCure.UI
 
         protected override void WndProc(ref Message m)
         {
-            if (m.Msg == 0x0312)
-                Display();
+            if (m.Msg == HotKeyMessageID)
+                ProcessHotKeyMessage(m);
             base.WndProc(ref m);
         }
 
@@ -350,7 +374,7 @@ namespace LifeIdea.LazyCure.UI
         private void Main_FormClosed(object sender, FormClosedEventArgs e)
         {
             SystemEvents.SessionSwitch -= SystemEvents_SessionSwitch;
-            hotKeyManager.Unregister(this);
+            UnregisterHotKeys();
             Display();
             Dialogs.Settings.MainWindowLocation = Location;
             Dialogs.Settings.Save();

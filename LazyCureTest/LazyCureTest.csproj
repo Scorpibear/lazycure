@@ -72,6 +72,7 @@
     <Compile Include="UI\Backend\HotKeyTest.cs" />
     <Compile Include="UI\Backend\TreeBinderTests.cs" />
     <Compile Include="UI\MainBaseTests.cs" />
+    <Compile Include="UI\OptionsTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LazyCure.Core\LazyCure.Core.csproj">

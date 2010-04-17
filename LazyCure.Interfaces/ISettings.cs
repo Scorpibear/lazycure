@@ -10,15 +10,17 @@ namespace LifeIdea.LazyCure.Interfaces
 
     public interface ISettings
     {
-        int MaxActivitiesInHistory { get; set;}
-
         int ActivitiesNumberInTray { get; set;}
 
         string HotKeyToActivate { get; set;}
 
+        string HotKeyToSwitch { get; set;}
+
         bool LeftClickOnTray { get; set;}
 
         Point MainWindowLocation { get; set;}
+
+        int MaxActivitiesInHistory { get; set;}
 
         TimeSpan ReminderTime { get; set;}
 
