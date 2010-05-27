@@ -1,3 +1,6 @@
+LazyCure 3.8
+* New: customizable hot-key for switching the current activity, Ctrl+Alt+Shift+F12 by default.
+
 LazyCure 3.7
 * New: Subtasks.
 * New: Possibility to customize hot-key.
