@@ -47,21 +47,51 @@ namespace LifeIdea.LazyCure.Core
             Stub.On(settings).GetProperty("MaxActivitiesInHistory").Will(Return.Value(13));
             Stub.On(settings).GetProperty("ActivitiesNumberInTray").Will(Return.Value(5));
             Stub.On(settings).GetProperty("ReminderTime").Will(Return.Value(TimeSpan.Parse("0:59:48")));
+            Stub.On(settings).GetProperty("UseTweetingActivity").Will(Return.Value(true));
+            Stub.On(settings).GetProperty("TweetingActivity").Will(Return.Value("tweeting activity"));
             Stub.On(settings).GetProperty("TwitterUsername").Will(Return.Value("testname"));
             Stub.On(settings).GetProperty("TwitterPassword").Will(Return.Value(Format.Encode("testpass")));
             Stub.On(settings).GetProperty("SwitchTimeLogAtMidnight").Will(Return.Value(false));
             Stub.On(settings).GetProperty("SplitByComma").Will(Return.Value(false));
             Expect.Once.On(driver.ExternalPoster).SetProperty("Username").To("testname");
             Expect.Once.On(driver.ExternalPoster).SetProperty("Password").To("testpass");
-            
+
             driver.ApplySettings(settings);
 
             Assert.AreEqual(@"c:\test", driver.TimeLogsFolder);
-            Assert.AreEqual(false, driver.SaveAfterDone);
+            Assert.IsFalse(driver.SaveAfterDone);
             Assert.AreEqual(5, driver.History.LatestSize);
             Assert.AreEqual(13, driver.History.Size);
             Assert.AreEqual(TimeSpan.Parse("0:59:48"), driver.TimeManager.MaxDuration);
+            Assert.AreEqual("tweeting activity", driver.TimeManager.TweetingActivity);
             VerifyAllExpectationsHaveBeenMet();
+        }
+        [Test]
+        public void TweetingActivityIsSetToNullIfUseTweetingActivityIsFalse()
+        {
+            ISettings settings = NewMock<ISettings>();
+            Stub.On(settings).GetProperty("TimeLogsFolder").Will(Return.Value(@"c:\test"));
+            Stub.On(settings).GetProperty("SaveAfterDone").Will(Return.Value(false));
+            Stub.On(settings).GetProperty("MaxActivitiesInHistory").Will(Return.Value(13));
+            Stub.On(settings).GetProperty("ActivitiesNumberInTray").Will(Return.Value(5));
+            Stub.On(settings).GetProperty("ReminderTime").Will(Return.Value(TimeSpan.Parse("0:59:48")));
+            Stub.On(settings).GetProperty("UseTweetingActivity").Will(Return.Value(false));
+            Stub.On(settings).GetProperty("TweetingActivity").Will(Return.Value("tweeting activity"));
+            Stub.On(settings).GetProperty("TwitterUsername").Will(Return.Value("testname"));
+            Stub.On(settings).GetProperty("TwitterPassword").Will(Return.Value(Format.Encode("testpass")));
+            Stub.On(settings).GetProperty("SwitchTimeLogAtMidnight").Will(Return.Value(false));
+            Stub.On(settings).GetProperty("SplitByComma").Will(Return.Value(false));
+
+            driver.ApplySettings(settings);
+
+            Assert.IsNull(driver.TimeManager.TweetingActivity);
+            VerifyAllExpectationsHaveBeenMet();
+        }
+        [Test]
+        public void HistoryActivityIsTrimmed()
+        {
+            driver.FinishActivity(" act ", "new one");
+            Assert.Contains("act", driver.HistoryActivities);
         }
         [Test]
         public void SwitchTimeLogAtMidnightSettingIsApplied()
@@ -74,6 +104,7 @@ namespace LifeIdea.LazyCure.Core
             Stub.On(settings).GetProperty("ActivitiesNumberInTray").Will(Return.Value(0));
             Stub.On(settings).GetProperty("MaxActivitiesInHistory").Will(Return.Value(0));
             Stub.On(settings).GetProperty("ReminderTime").Will(Return.Value(TimeSpan.Zero));
+            Stub.On(settings).GetProperty("UseTweetingActivity").Will(Return.Value(false));
             Stub.On(settings).Method(Is.Anything);
             Expect.Once.On(driver.TimeManager).SetProperty("SwitchAtMidnight").To(false);
             Stub.On(driver.TimeManager).Method(Is.Anything);
@@ -91,6 +122,7 @@ namespace LifeIdea.LazyCure.Core
             Stub.On(settings).GetProperty("ActivitiesNumberInTray").Will(Return.Value(0));
             Stub.On(settings).GetProperty("MaxActivitiesInHistory").Will(Return.Value(0));
             Stub.On(settings).GetProperty("ReminderTime").Will(Return.Value(TimeSpan.Zero));
+            Stub.On(settings).GetProperty("UseTweetingActivity").Will(Return.Value(false));
             Stub.On(settings).Method(Is.Anything);
             Expect.Once.On(driver.TimeManager).SetProperty("SplitByComma").To(true);
             Stub.On(driver.TimeManager).Method(Is.Anything);
@@ -280,6 +312,15 @@ namespace LifeIdea.LazyCure.Core
             Assert.Contains("latest", driver.HistoryActivities);
         }
         [Test]
+        public void BothActivitiesAfterSplitAppearInHistory()
+        {
+            driver.TimeManager.SplitByComma = true;
+            driver.FinishActivity("first, second", "third");
+            string[] historyActivities = driver.HistoryActivities;
+            Assert.Contains("first", historyActivities);
+            Assert.Contains("second", historyActivities);
+        }
+        [Test]
         public void LatestActivitiesCallsHistory()
         {
             driver.History = NewMock<IActivitiesHistory>();
@@ -376,6 +417,22 @@ namespace LifeIdea.LazyCure.Core
             Assert.IsTrue(driver.TimeToUpdateTimeLog);
 
             VerifyAllExpectationsHaveBeenMet();
+        }
+        [Test]
+        public void TweetingIsPosted()
+        {
+            driver.TimeManager.TweetingActivity = "tweeting";
+            driver.FinishActivity("twitter message", "(empty)", true);
+            IActivity lastActivity = driver.TimeManager.TimeLog.Activities[0];
+            Assert.AreEqual("tweeting", lastActivity.Name);
+        }
+        [Test]
+        public void TheSameIsPosted()
+        {
+            driver.TimeManager.TweetingActivity = null;
+            driver.FinishActivity("twitter message", "(empty)", true);
+            IActivity lastActivity = driver.TimeManager.TimeLog.Activities[0];
+            Assert.AreEqual("twitter message", lastActivity.Name);
         }
         [Test]
         public void WorkingActivitiesTime()

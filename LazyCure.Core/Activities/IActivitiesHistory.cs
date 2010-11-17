@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using LifeIdea.LazyCure.Interfaces;
 
 namespace LifeIdea.LazyCure.Core.Activities
 {
@@ -16,7 +17,9 @@ namespace LifeIdea.LazyCure.Core.Activities
 
         string UniqueName{ get;}
 
-        void AddActivity(string finishedActivity);
+        void AddActivity(string activity);
+
+        void AddActivities(List<IActivity> activities);
 
         bool Load(string filename);
 

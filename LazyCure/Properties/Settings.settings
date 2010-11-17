@@ -47,5 +47,11 @@
     <Setting Name="HotKeyToSwitch" Type="System.String" Scope="User">
       <Value Profile="(Default)">Ctrl+Alt+Shift+F12</Value>
     </Setting>
+    <Setting Name="TweetingActivity" Type="System.String" Scope="User">
+      <Value Profile="(Default)">tweeting</Value>
+    </Setting>
+    <Setting Name="UseTweetingActivity" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

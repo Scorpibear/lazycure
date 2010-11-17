@@ -44,6 +44,16 @@ namespace LifeIdea.LazyCure.Properties
             IsFalse(Settings.Default.TwitterEnabled);
         }
         [Test]
+        public void TweetingActivityDefault()
+        {
+            AreEqual("tweeting", Settings.Default.TweetingActivity);
+        }
+        [Test]
+        public void TweetingActivityIsTheSameAsTweetByDefault()
+        {
+            IsFalse(Settings.Default.UseTweetingActivity);
+        }
+        [Test]
         public void SwitchOnLogOffIsTurnedOffByDefault()
         {
             IsFalse(Settings.Default.SwitchOnLogOff);

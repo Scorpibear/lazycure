@@ -36,10 +36,14 @@ namespace LifeIdea.LazyCure.Interfaces
 
         string TimeLogsFolder { get; set;}
 
+        string TweetingActivity { get; set;}
+
         bool TwitterEnabled { get; set;}
 
         string TwitterPassword { get; set;}
 
         string TwitterUsername { get; set;}
+
+        bool UseTweetingActivity { get; set;}
     }
 }

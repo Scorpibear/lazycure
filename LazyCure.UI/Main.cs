@@ -84,12 +84,11 @@ namespace LifeIdea.LazyCure.UI
             return finishedActivity;
         }
 
-        private void PostToExternals(string activity)
+        private bool NeedPostToExternals
         {
-            if (postToTwitter.Visible && postToTwitter.Checked)
+            get
             {
-                lazyCure.PostToTwitter(activity);
-                postToTwitter.Checked = false;
+                return postToTwitter.Visible && postToTwitter.Checked;
             }
         }
 
@@ -107,6 +106,12 @@ namespace LifeIdea.LazyCure.UI
             }
         }
 
+        private void ResetPostToExternalsCheckbox()
+        {
+            if (NeedPostToExternals)
+                postToTwitter.Checked = false;
+        }
+
         private void SaveWithNotification(FormClosingEventArgs e)
         {
             if (!lazyCure.Save())
@@ -121,18 +126,18 @@ namespace LifeIdea.LazyCure.UI
         {
             string finishedActivity = GetFinishedActivity();
             SwitchActivity(finishedActivity);
-            PostToExternals(finishedActivity);
         }
 
         private void SwitchActivity(string finishedActivity)
         {
             Dialogs.CancelEditTimeLog();
-            lazyCure.FinishActivity(finishedActivity, nextActivity);
+            lazyCure.FinishActivity(finishedActivity, nextActivity, NeedPostToExternals);
             UpdateCurrentActivity();
             UpdateContextMenuActivities();
             UpdateActivityStartTime();
             currentActivity.SelectAll();
             SetCaption();
+            ResetPostToExternalsCheckbox();
         }
 
         private void SetCaption()

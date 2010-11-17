@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using LifeIdea.LazyCure.Core.Activities;
 using LifeIdea.LazyCure.Core.IO;
 using LifeIdea.LazyCure.Core.Plugins;
@@ -174,6 +175,8 @@ namespace LifeIdea.LazyCure.Core
                 TimeManager.MaxDuration = settings.ReminderTime;
                 TimeManager.SplitByComma = settings.SplitByComma;
                 TimeManager.SwitchAtMidnight = settings.SwitchTimeLogAtMidnight;
+                TimeManager.TweetingActivity = (settings.UseTweetingActivity) ? settings.TweetingActivity :
+                                                                                null;
                 ExternalPoster.Username = settings.TwitterUsername;
                 ExternalPoster.Password = Format.Decode(settings.TwitterPassword);
             }
@@ -197,12 +200,25 @@ namespace LifeIdea.LazyCure.Core
 
         public object TimeLogData { get { return TimeManager.TimeLog.Data; } }
 
-        public void FinishActivity(string finishedActivity, string nextActivity)
+        public void FinishActivity(string finishedActivityName, string nextActivityName, bool postToExternals)
         {
-            TimeManager.FinishActivity(finishedActivity, nextActivity);
-            History.AddActivity(finishedActivity);
+            if (postToExternals)
+            {
+                string tweet = finishedActivityName;
+                string tweetingActivity = TimeManager.TweetingActivity;
+                if(tweetingActivity!=null)
+                    finishedActivityName = tweetingActivity;
+                this.PostToTwitter(tweet);
+            }
+            List<IActivity> finishedActivities = TimeManager.FinishActivity(finishedActivityName, nextActivityName);
+            History.AddActivities(finishedActivities);
             if (SaveAfterDone)
                 fileManager.SaveTimeLog(TimeManager.TimeLog);
+        }
+
+        public void FinishActivity(string finishedActivityName, string nextActivityName)
+        {
+            FinishActivity(finishedActivityName, nextActivityName, false);
         }
 
         public string TimeLogDate { get { return TimeManager.TimeLog.Date.ToString("yyyy-MM-dd"); } }

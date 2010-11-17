@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using LifeIdea.LazyCure.Interfaces;
 
 namespace LifeIdea.LazyCure.Core.Time
@@ -9,7 +10,7 @@ namespace LifeIdea.LazyCure.Core.Time
 
         bool CurrentActivityIsLastingTooLong { get; }
 
-        void FinishActivity(string activity, string nextActivity);
+        List<IActivity> FinishActivity(string activity, string nextActivity);
 
         TimeSpan MaxDuration { get; set; }
 
@@ -20,5 +21,7 @@ namespace LifeIdea.LazyCure.Core.Time
         ITimeLog TimeLog { get; set; }
 
         ITimeSystem TimeSystem { get;}
+
+        string TweetingActivity { get; set; }
     }
 }

@@ -9,7 +9,7 @@ namespace LifeIdea.LazyCure.Core.Activities
     {
         public Activity(string name, DateTime start, TimeSpan duration)
         {
-            this.name = name;
+            Name = name;
             this.start = start;
             this.duration = duration;
         }

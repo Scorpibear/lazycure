@@ -12,7 +12,17 @@ namespace LifeIdea.LazyCure.Core.Activities
         protected TimeSpan duration;
         protected DateTime start;
 
-        public string Name { get { return name; } set { name = value.Trim(); } }
+        public string Name
+        {
+            get { return name; }
+            set
+            {
+                if (value == null)
+                    name = "";
+                else
+                    name = value.Trim();
+            }
+        }
         virtual public TimeSpan Duration { get { return duration; } set { duration = value; } }
         virtual public DateTime Start { get { return start; } set { start = value; } }
         virtual public DateTime End { get { return Start + Duration; } }

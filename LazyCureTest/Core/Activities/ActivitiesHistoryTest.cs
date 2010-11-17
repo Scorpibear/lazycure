@@ -1,7 +1,9 @@
 using System.IO;
+using System.Collections.Generic;
 using System.Text;
 using NMock2;
 using NUnit.Framework;
+using LifeIdea.LazyCure.Interfaces;
 
 namespace LifeIdea.LazyCure.Core.Activities
 {
@@ -20,6 +22,21 @@ namespace LifeIdea.LazyCure.Core.Activities
         public void TearDown()
         {
             this.VerifyAllExpectationsHaveBeenMet();
+        }
+        [Test]
+        public void AddTwoActivitiesAtOnce()
+        {
+            List<IActivity> activitiesList = new List<IActivity>();
+            IActivity activity1 = NewMock<IActivity>();
+            IActivity activity2 = NewMock<IActivity>();
+            Stub.On(activity1).GetProperty("Name").Will(Return.Value("a"));
+            Stub.On(activity2).GetProperty("Name").Will(Return.Value("b"));
+            activitiesList.Add(activity1);
+            activitiesList.Add(activity2);
+            history.AddActivities(activitiesList);
+            Assert.AreEqual(2, history.Activities.Length);
+            Assert.Contains("a", history.Activities);
+            Assert.Contains("b", history.Activities);
         }
         [Test]
         public void EmptyLatestActivities()
