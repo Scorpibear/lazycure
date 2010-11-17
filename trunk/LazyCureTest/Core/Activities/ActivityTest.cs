@@ -24,5 +24,11 @@ namespace LifeIdea.LazyCure.Core.Activities
             Activity activity2 = new Activity("activity", DateTime.Parse("5:00:00"), TimeSpan.Parse("1:23:45"));
             Assert.AreEqual(activity1, activity2);
         }
+        [Test]
+        public void SettingNullNameInConstructorShouldSetItToEmpty()
+        {
+            Activity activity = new Activity(null, DateTime.Now, TimeSpan.FromSeconds(20));
+            Assert.AreEqual("", activity.Name);
+        }
     }
 }

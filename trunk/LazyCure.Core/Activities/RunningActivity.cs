@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using LifeIdea.LazyCure.Core.Time;
 
 namespace LifeIdea.LazyCure.Core.Activities
@@ -68,23 +69,25 @@ namespace LifeIdea.LazyCure.Core.Activities
             duration = timeSystem.Now - Start;
         }
 
+        /// <summary>
+        /// Split running activity by comma and returns array of activities
+        /// </summary>
+        /// <returns>array of activities, created after split</returns>
         public RunningActivity[] SplitByComma()
         {
             string[] names = Name.Split(',');
-            RunningActivity[] next = new RunningActivity[names.Length - 1];
+            RunningActivity[] next = new RunningActivity[names.Length];
             if (names.Length > 0)
             {
-                Name = names[0];
-                TimeSpan totalDuration = duration;
-                duration = TimeSpan.FromMilliseconds(totalDuration.TotalMilliseconds / names.Length);
-
-                RunningActivity previous = this;
-                for (int i = 0; i < names.Length - 1; i++)
+                this.Name = names[0];
+                TimeSpan totalDuration = this.duration;
+                this.duration = TimeSpan.FromMilliseconds(totalDuration.TotalMilliseconds / names.Length);
+                next[0] = this;
+                for (int i = 1; i < names.Length; i++)
                 {
-                    next[i] = new RunningActivity(names[i + 1], previous);
+                    next[i] = RunningActivity.After(next[i - 1], names[i]);
                     next[i].IsRunning = false;
-                    next[i].duration = duration;
-                    previous = next[i];
+                    next[i].duration = this.duration;
                 }
             }
             return next;

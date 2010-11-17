@@ -28,7 +28,7 @@ namespace LifeIdea.LazyCure.Core.Activities
             Stub.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(startTime));
             activity = new RunningActivity("first,second", mockTimeSystem);
             activity.Stop();
-            RunningActivity second = activity.SplitByComma()[0];
+            RunningActivity second = activity.SplitByComma()[1];
             Assert.AreEqual("first", activity.Name);
             Assert.AreEqual("second", second.Name);
         }
@@ -42,7 +42,7 @@ namespace LifeIdea.LazyCure.Core.Activities
             }
             activity = new RunningActivity("first, second", mockTimeSystem);
             activity.Stop();
-            RunningActivity second = activity.SplitByComma()[0];
+            RunningActivity second = activity.SplitByComma()[1];
             Assert.AreEqual(DateTime.Parse("7:00:00"), activity.Start);
             Assert.AreEqual(DateTime.Parse("7:30:00"), activity.End, "first end");
             Assert.AreEqual(DateTime.Parse("7:30:00"), second.Start, "second start");
@@ -58,7 +58,7 @@ namespace LifeIdea.LazyCure.Core.Activities
             }
             activity = new RunningActivity("first, second, third", mockTimeSystem);
             activity.Stop();
-            RunningActivity third = activity.SplitByComma()[1];
+            RunningActivity third = activity.SplitByComma()[2];
             Assert.AreEqual(DateTime.Parse("7:40:00"), third.Start);
         }
         [Test]
@@ -66,14 +66,14 @@ namespace LifeIdea.LazyCure.Core.Activities
         {
             Stub.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(startTime));
             activity = new RunningActivity("just one", mockTimeSystem);
-            Assert.IsEmpty(activity.SplitByComma());
+            Assert.AreEqual(1,activity.SplitByComma().Length);
         }
         [Test]
         public void SplitByCommaTrim()
         {
             Stub.On(mockTimeSystem).GetProperty("Now").Will(Return.Value(startTime));
             activity = new RunningActivity("first, second", mockTimeSystem);
-            Assert.AreEqual("second", activity.SplitByComma()[0].Name);
+            Assert.AreEqual("second", activity.SplitByComma()[1].Name);
         }
         [Test]
         public void StopActivity()

@@ -11,7 +11,7 @@ using System.Resources;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("LifeIdea.org")]
 [assembly: AssemblyProduct("Time Language")]
-[assembly: AssemblyCopyright("LifeIdea.org © 2006-2009")]
+[assembly: AssemblyCopyright("LifeIdea.org © 2006-2010")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

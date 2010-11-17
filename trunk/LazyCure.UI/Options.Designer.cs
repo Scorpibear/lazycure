@@ -51,6 +51,10 @@ namespace LifeIdea.LazyCure.UI
             this.showsRecentActivities = new System.Windows.Forms.RadioButton();
             this.switchOnLogOff = new System.Windows.Forms.CheckBox();
             this.tabTwitter = new System.Windows.Forms.TabPage();
+            this.whatAddtj = new System.Windows.Forms.GroupBox();
+            this.twitterActivityField = new System.Windows.Forms.TextBox();
+            this.twitterActivitySpecificRadioButton = new System.Windows.Forms.RadioButton();
+            this.twitterActivityTheSameRadioButton = new System.Windows.Forms.RadioButton();
             this.twitterLink = new System.Windows.Forms.LinkLabel();
             this.passwordField = new System.Windows.Forms.TextBox();
             this.passwordLabel = new System.Windows.Forms.Label();
@@ -70,6 +74,7 @@ namespace LifeIdea.LazyCure.UI
             this.tabGeneral.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabTwitter.SuspendLayout();
+            this.whatAddtj.SuspendLayout();
             this.tabHotKeys.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -296,6 +301,7 @@ namespace LifeIdea.LazyCure.UI
             // 
             // tabTwitter
             // 
+            this.tabTwitter.Controls.Add(this.whatAddtj);
             this.tabTwitter.Controls.Add(this.twitterLink);
             this.tabTwitter.Controls.Add(this.passwordField);
             this.tabTwitter.Controls.Add(this.passwordLabel);
@@ -309,6 +315,46 @@ namespace LifeIdea.LazyCure.UI
             this.tabTwitter.TabIndex = 0;
             this.tabTwitter.Text = "Twitter";
             this.tabTwitter.UseVisualStyleBackColor = true;
+            // 
+            // whatAddtj
+            // 
+            this.whatAddtj.Controls.Add(this.twitterActivityField);
+            this.whatAddtj.Controls.Add(this.twitterActivitySpecificRadioButton);
+            this.whatAddtj.Controls.Add(this.twitterActivityTheSameRadioButton);
+            this.whatAddtj.Location = new System.Drawing.Point(6, 75);
+            this.whatAddtj.Name = "whatAddtj";
+            this.whatAddtj.Size = new System.Drawing.Size(328, 70);
+            this.whatAddtj.TabIndex = 6;
+            this.whatAddtj.TabStop = false;
+            this.whatAddtj.Text = "What add to time log when posting to Twitter:";
+            // 
+            // twitterActivityField
+            // 
+            this.twitterActivityField.Location = new System.Drawing.Point(135, 41);
+            this.twitterActivityField.Name = "twitterActivityField";
+            this.twitterActivityField.Size = new System.Drawing.Size(187, 20);
+            this.twitterActivityField.TabIndex = 2;
+            this.twitterActivityField.Text = "twittering";
+            // 
+            // twitterActivitySpecificRadioButton
+            // 
+            this.twitterActivitySpecificRadioButton.AutoSize = true;
+            this.twitterActivitySpecificRadioButton.Location = new System.Drawing.Point(6, 42);
+            this.twitterActivitySpecificRadioButton.Name = "twitterActivitySpecificRadioButton";
+            this.twitterActivitySpecificRadioButton.Size = new System.Drawing.Size(133, 17);
+            this.twitterActivitySpecificRadioButton.TabIndex = 1;
+            this.twitterActivitySpecificRadioButton.Text = "activity with the name: ";
+            this.twitterActivitySpecificRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // twitterActivityTheSameRadioButton
+            // 
+            this.twitterActivityTheSameRadioButton.AutoSize = true;
+            this.twitterActivityTheSameRadioButton.Location = new System.Drawing.Point(6, 19);
+            this.twitterActivityTheSameRadioButton.Name = "twitterActivityTheSameRadioButton";
+            this.twitterActivityTheSameRadioButton.Size = new System.Drawing.Size(136, 17);
+            this.twitterActivityTheSameRadioButton.TabIndex = 0;
+            this.twitterActivityTheSameRadioButton.Text = "the same that is posting";
+            this.twitterActivityTheSameRadioButton.UseVisualStyleBackColor = true;
             // 
             // twitterLink
             // 
@@ -470,6 +516,8 @@ namespace LifeIdea.LazyCure.UI
             this.groupBox1.PerformLayout();
             this.tabTwitter.ResumeLayout(false);
             this.tabTwitter.PerformLayout();
+            this.whatAddtj.ResumeLayout(false);
+            this.whatAddtj.PerformLayout();
             this.tabHotKeys.ResumeLayout(false);
             this.tabHotKeys.PerformLayout();
             this.ResumeLayout(false);
@@ -513,6 +561,10 @@ namespace LifeIdea.LazyCure.UI
         private System.Windows.Forms.Label hotKeyToActivateLabel;
         private System.Windows.Forms.Button editActivateKey;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.GroupBox whatAddtj;
+        private System.Windows.Forms.RadioButton twitterActivitySpecificRadioButton;
+        private System.Windows.Forms.RadioButton twitterActivityTheSameRadioButton;
+        private System.Windows.Forms.TextBox twitterActivityField;
 
     }
 }

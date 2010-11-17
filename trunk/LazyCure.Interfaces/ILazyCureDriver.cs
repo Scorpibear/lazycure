@@ -41,7 +41,7 @@ namespace LifeIdea.LazyCure.Interfaces
 
         void ApplySettings(ISettings settings);
 
-        void FinishActivity(string finishedActivity, string nextActivity);
+        void FinishActivity(string finishedActivity, string nextActivity, bool postToExternals);
 
         string GetUniqueActivityName();
 

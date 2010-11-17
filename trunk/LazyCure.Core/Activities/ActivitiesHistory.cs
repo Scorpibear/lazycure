@@ -51,6 +51,12 @@ namespace LifeIdea.LazyCure.Core.Activities
                 activities.RemoveAt(size);
         }
 
+        public void AddActivities(List<IActivity> activities)
+        {
+            foreach (IActivity activity in activities)
+                AddActivity(activity.Name);
+        }
+
         public bool ContainsActivity(string activityName)
         {
             return activities.Contains(activityName);

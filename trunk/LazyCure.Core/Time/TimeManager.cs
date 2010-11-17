@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using LifeIdea.LazyCure.Core.Activities;
 using LifeIdea.LazyCure.Interfaces;
 
@@ -17,6 +18,7 @@ namespace LifeIdea.LazyCure.Core.Time
         private bool switchAtMidnight;
         private ITimeLog timeLog;
         private ITimeLogsManager timeLogsManager;
+        private string tweetingActivity;
 
         #region Properties
 
@@ -62,6 +64,12 @@ namespace LifeIdea.LazyCure.Core.Time
             get { return currentActivity.timeSystem; }
         }
 
+        public string TweetingActivity
+        {
+            get { return tweetingActivity; }
+            set { tweetingActivity = value; }
+        }
+
         #endregion Properties
 
         public TimeManager(ITimeSystem timeSystem)
@@ -82,31 +90,48 @@ namespace LifeIdea.LazyCure.Core.Time
             TimeLog = new TimeLog(currentActivity.Start.Date);
         }
 
-        public void FinishActivity(string finishedActivity, string nextActivity)
+        /// <summary>
+        /// Finish activity and start the next
+        /// </summary>
+        /// <param name="finishedActivityName">finished activity name</param>
+        /// <param name="nextActivityName">next activity name</param>
+        /// <returns>finished activity object</returns>
+        public List<IActivity> FinishActivity(string finishedActivityName, string nextActivityName)
         {
-            currentActivity.Name = finishedActivity;
-            SwitchTo(nextActivity);
+            IActivity finishedActivity = currentActivity;
+            finishedActivity.Name = finishedActivityName;
+            return SwitchTo(nextActivityName);
         }
 
-        public IActivity SwitchTo(string nextActivityName)
+        /// <summary>
+        /// Switch to the next activity and returns list of finished activities
+        /// </summary>
+        /// <param name="nextActivityName">name of the next activity</param>
+        /// <returns>list of finished activities</returns>
+        public List<IActivity> SwitchTo(string nextActivityName)
         {
             Stop();
-            CheckForComma();
-            CheckForMidnight();
-            AddToTimeLog();
+            List<IActivity> finishedActivities = CheckForComma();
             StartNext(nextActivityName);
-            return currentActivity;
+            return finishedActivities;
         }
-
-        private void CheckForComma()
+        
+        /// <summary>
+        /// Check current activity for comma and split if necessary
+        /// <returns>list of additional activities created by split by comma or empty array</returns>
+        /// </summary>
+        private List<IActivity> CheckForComma()
         {
-            if(splitByComma)
-                foreach (RunningActivity additionalActivity in currentActivity.SplitByComma())
-                {
-                    CheckForMidnight();
-                    AddToTimeLog();
-                    currentActivity = additionalActivity;
-                }
+            RunningActivity[] additionalActivities = (splitByComma) ?
+                currentActivity.SplitByComma() :
+                new RunningActivity[]{currentActivity};
+            foreach (RunningActivity additionalActivity in additionalActivities)
+            {
+                CheckForMidnight();
+                currentActivity = additionalActivity;
+                AddToTimeLog();
+            }
+            return new List<IActivity>(additionalActivities);
         }
 
         private void Stop()

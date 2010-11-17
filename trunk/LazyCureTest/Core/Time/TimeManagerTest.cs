@@ -1,8 +1,9 @@
 using System;
-using LifeIdea.LazyCure.Interfaces;
+using System.Collections.Generic;
 using NMock2;
 using NUnit.Framework;
 using LifeIdea.LazyCure.Core.Activities;
+using LifeIdea.LazyCure.Interfaces;
 
 namespace LifeIdea.LazyCure.Core.Time
 {
@@ -96,6 +97,15 @@ namespace LifeIdea.LazyCure.Core.Time
             VerifyAllExpectationsHaveBeenMet();
         }
         [Test]
+        public void FinishActivityReturnsListOfActivities()
+        {
+            timeManager.SplitByComma = true;
+            List<IActivity> activities = timeManager.FinishActivity("one, two", "not used");
+            Assert.AreEqual("one", activities[0].Name);
+            Assert.AreEqual(2, activities.Count, "number of finished activities");
+            Assert.AreEqual("two", activities[1].Name);
+        }
+        [Test]
         public void SplitByComma()
         {
             timeManager.TimeLog = NewMock<ITimeLog>();
@@ -112,6 +122,14 @@ namespace LifeIdea.LazyCure.Core.Time
             timeManager.SplitByComma = true;
             timeManager.FinishActivity("first,second,third", "next");
             VerifyAllExpectationsHaveBeenMet();
+        }
+        [Test]
+        public void SwitchToSetDifferentNamesInTimeLog()
+        {
+            timeManager.SplitByComma = true;
+            timeManager.TimeLog = new TimeLog(DateTime.Now);
+            timeManager.FinishActivity("first, second", "next");
+            Assert.AreEqual("second", timeManager.TimeLog.Activities[1].Name);
         }
         [Test]
         public void DontSplitByComma()
@@ -149,16 +167,15 @@ namespace LifeIdea.LazyCure.Core.Time
         public void SwitchTo()
         {
             string nextActivityName = "test second task";
-            Assert.AreEqual(nextActivityName, timeManager.SwitchTo(nextActivityName).Name);
+            timeManager.SwitchTo(nextActivityName);
             Assert.AreEqual(nextActivityName, timeManager.CurrentActivity.Name);
         }
         [Test]
         public void SwitchToStartsNewActivity()
         {
-            IActivity activity1, activity2;
-            activity1 = timeManager.CurrentActivity;
-            activity2 = timeManager.SwitchTo("second");
-            Assert.AreNotSame(activity1, activity2);
+            IActivity activity1 = timeManager.CurrentActivity;
+            timeManager.SwitchTo("second");
+            Assert.AreNotSame(activity1, timeManager.CurrentActivity);
         }
         [Test]
         public void AddRecordToTimeLog()
