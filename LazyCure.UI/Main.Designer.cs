@@ -30,14 +30,15 @@ namespace LifeIdea.LazyCure.UI
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
-            this.currentActivity = new System.Windows.Forms.ComboBox();
-            this.switchButton = new System.Windows.Forms.Button();
+            this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.statusBar = new System.Windows.Forms.StatusStrip();
             this.activityStartTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.activityDuration = new System.Windows.Forms.ToolStripStatusLabel();
             this.currentTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.nowYou = new System.Windows.Forms.GroupBox();
             this.postToTwitter = new System.Windows.Forms.CheckBox();
+            this.currentActivity = new System.Windows.Forms.ComboBox();
+            this.switchButton = new System.Windows.Forms.Button();
             this.menu = new System.Windows.Forms.MenuStrip();
             this.miFile = new System.Windows.Forms.ToolStripMenuItem();
             this.miOpen = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,6 +52,7 @@ namespace LifeIdea.LazyCure.UI
             this.miTimeLog = new System.Windows.Forms.ToolStripMenuItem();
             this.miSummary = new System.Windows.Forms.ToolStripMenuItem();
             this.miTasks = new System.Windows.Forms.ToolStripMenuItem();
+            this.miContextShow = new System.Windows.Forms.ToolStripMenuItem();
             this.miOptions = new System.Windows.Forms.ToolStripMenuItem();
             this.miHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.miHowToUse = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,134 +62,139 @@ namespace LifeIdea.LazyCure.UI
             this.miSubmit = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.miAbout = new System.Windows.Forms.ToolStripMenuItem();
-            this.miContextShow = new System.Windows.Forms.ToolStripMenuItem();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
-            this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.miContextActivate = new System.Windows.Forms.ToolStripMenuItem();
             this.miSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.miContextExit = new System.Windows.Forms.ToolStripMenuItem();
-            this.statusBar.SuspendLayout();
-            this.nowYou.SuspendLayout();
-            this.menu.SuspendLayout();
-            this.showMenu.SuspendLayout();
+            this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
+            this.statusBar.SuspendLayout();
+            this.nowYou.SuspendLayout();
+            this.menu.SuspendLayout();
+            this.showMenu.SuspendLayout();
             this.contextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
+            // toolStripContainer1
+            // 
+            resources.ApplyResources(this.toolStripContainer1, "toolStripContainer1");
+            // 
+            // toolStripContainer1.BottomToolStripPanel
+            // 
+            resources.ApplyResources(this.toolStripContainer1.BottomToolStripPanel, "toolStripContainer1.BottomToolStripPanel");
+            this.toolStripContainer1.BottomToolStripPanel.Controls.Add(this.statusBar);
+            this.toolTip.SetToolTip(this.toolStripContainer1.BottomToolStripPanel, resources.GetString("toolStripContainer1.BottomToolStripPanel.ToolTip"));
+            // 
+            // toolStripContainer1.ContentPanel
+            // 
+            resources.ApplyResources(this.toolStripContainer1.ContentPanel, "toolStripContainer1.ContentPanel");
+            this.toolStripContainer1.ContentPanel.Controls.Add(this.nowYou);
+            this.toolTip.SetToolTip(this.toolStripContainer1.ContentPanel, resources.GetString("toolStripContainer1.ContentPanel.ToolTip"));
+            // 
+            // toolStripContainer1.LeftToolStripPanel
+            // 
+            resources.ApplyResources(this.toolStripContainer1.LeftToolStripPanel, "toolStripContainer1.LeftToolStripPanel");
+            this.toolTip.SetToolTip(this.toolStripContainer1.LeftToolStripPanel, resources.GetString("toolStripContainer1.LeftToolStripPanel.ToolTip"));
+            this.toolStripContainer1.Name = "toolStripContainer1";
+            // 
+            // toolStripContainer1.RightToolStripPanel
+            // 
+            resources.ApplyResources(this.toolStripContainer1.RightToolStripPanel, "toolStripContainer1.RightToolStripPanel");
+            this.toolTip.SetToolTip(this.toolStripContainer1.RightToolStripPanel, resources.GetString("toolStripContainer1.RightToolStripPanel.ToolTip"));
+            this.toolTip.SetToolTip(this.toolStripContainer1, resources.GetString("toolStripContainer1.ToolTip"));
+            // 
+            // toolStripContainer1.TopToolStripPanel
+            // 
+            resources.ApplyResources(this.toolStripContainer1.TopToolStripPanel, "toolStripContainer1.TopToolStripPanel");
+            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.menu);
+            this.toolTip.SetToolTip(this.toolStripContainer1.TopToolStripPanel, resources.GetString("toolStripContainer1.TopToolStripPanel.ToolTip"));
+            // 
+            // statusBar
+            // 
+            resources.ApplyResources(this.statusBar, "statusBar");
+            this.statusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.activityStartTime,
+            this.activityDuration,
+            this.currentTime});
+            this.statusBar.Name = "statusBar";
+            this.statusBar.ShowItemToolTips = true;
+            this.statusBar.SizingGrip = false;
+            this.toolTip.SetToolTip(this.statusBar, resources.GetString("statusBar.ToolTip"));
+            // 
+            // activityStartTime
+            // 
+            resources.ApplyResources(this.activityStartTime, "activityStartTime");
+            this.activityStartTime.Name = "activityStartTime";
+            this.activityStartTime.Spring = true;
+            // 
+            // activityDuration
+            // 
+            resources.ApplyResources(this.activityDuration, "activityDuration");
+            this.activityDuration.Name = "activityDuration";
+            this.activityDuration.Spring = true;
+            // 
+            // currentTime
+            // 
+            resources.ApplyResources(this.currentTime, "currentTime");
+            this.currentTime.Name = "currentTime";
+            this.currentTime.Spring = true;
+            // 
+            // nowYou
+            // 
+            resources.ApplyResources(this.nowYou, "nowYou");
+            this.nowYou.Controls.Add(this.postToTwitter);
+            this.nowYou.Controls.Add(this.currentActivity);
+            this.nowYou.Controls.Add(this.switchButton);
+            this.nowYou.Name = "nowYou";
+            this.nowYou.TabStop = false;
+            this.toolTip.SetToolTip(this.nowYou, resources.GetString("nowYou.ToolTip"));
+            // 
+            // postToTwitter
+            // 
+            resources.ApplyResources(this.postToTwitter, "postToTwitter");
+            this.postToTwitter.Name = "postToTwitter";
+            this.toolTip.SetToolTip(this.postToTwitter, resources.GetString("postToTwitter.ToolTip"));
+            this.postToTwitter.UseVisualStyleBackColor = true;
+            // 
             // currentActivity
             // 
+            resources.ApplyResources(this.currentActivity, "currentActivity");
             this.currentActivity.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.currentActivity.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.currentActivity.BackColor = System.Drawing.SystemColors.Window;
             this.currentActivity.ForeColor = System.Drawing.SystemColors.ControlText;
             this.currentActivity.FormattingEnabled = true;
-            this.currentActivity.Location = new System.Drawing.Point(6, 19);
             this.currentActivity.Name = "currentActivity";
-            this.currentActivity.Size = new System.Drawing.Size(203, 21);
-            this.currentActivity.TabIndex = 0;
-            this.toolTip.SetToolTip(this.currentActivity, "Enter an activity that you are doing right now");
+            this.toolTip.SetToolTip(this.currentActivity, resources.GetString("currentActivity.ToolTip"));
             this.currentActivity.KeyDown += new System.Windows.Forms.KeyEventHandler(this.currentActivity_KeyDown);
             // 
             // switchButton
             // 
-            this.switchButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.switchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.switchButton.Location = new System.Drawing.Point(215, 11);
+            resources.ApplyResources(this.switchButton, "switchButton");
             this.switchButton.Name = "switchButton";
-            this.switchButton.Size = new System.Drawing.Size(70, 46);
-            this.switchButton.TabIndex = 2;
-            this.switchButton.Text = "Done!";
-            this.toolTip.SetToolTip(this.switchButton, "Press the button, when you have finished the current activity and are starting an" +
-                    "other one");
+            this.toolTip.SetToolTip(this.switchButton, resources.GetString("switchButton.ToolTip"));
             this.switchButton.UseVisualStyleBackColor = true;
             this.switchButton.Click += new System.EventHandler(this.switchButton_Click);
             // 
-            // statusBar
-            // 
-            this.statusBar.Dock = System.Windows.Forms.DockStyle.None;
-            this.statusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.activityStartTime,
-            this.activityDuration,
-            this.currentTime});
-            this.statusBar.Location = new System.Drawing.Point(0, 0);
-            this.statusBar.Name = "statusBar";
-            this.statusBar.ShowItemToolTips = true;
-            this.statusBar.Size = new System.Drawing.Size(294, 22);
-            this.statusBar.SizingGrip = false;
-            this.statusBar.TabIndex = 4;
-            this.statusBar.Text = "Status Bar";
-            // 
-            // activityStartTime
-            // 
-            this.activityStartTime.Name = "activityStartTime";
-            this.activityStartTime.Size = new System.Drawing.Size(93, 17);
-            this.activityStartTime.Spring = true;
-            this.activityStartTime.Text = "00:00:00";
-            this.activityStartTime.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.activityStartTime.ToolTipText = "Activity start time";
-            // 
-            // activityDuration
-            // 
-            this.activityDuration.Name = "activityDuration";
-            this.activityDuration.Size = new System.Drawing.Size(93, 17);
-            this.activityDuration.Spring = true;
-            this.activityDuration.Text = "00:00:00";
-            this.activityDuration.ToolTipText = "Activity duration";
-            // 
-            // currentTime
-            // 
-            this.currentTime.Name = "currentTime";
-            this.currentTime.Size = new System.Drawing.Size(93, 17);
-            this.currentTime.Spring = true;
-            this.currentTime.Text = "00:00:00";
-            this.currentTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.currentTime.ToolTipText = "Current time";
-            // 
-            // nowYou
-            // 
-            this.nowYou.Controls.Add(this.postToTwitter);
-            this.nowYou.Controls.Add(this.currentActivity);
-            this.nowYou.Controls.Add(this.switchButton);
-            this.nowYou.Location = new System.Drawing.Point(3, 3);
-            this.nowYou.Name = "nowYou";
-            this.nowYou.Size = new System.Drawing.Size(290, 60);
-            this.nowYou.TabIndex = 3;
-            this.nowYou.TabStop = false;
-            this.nowYou.Text = "Now you...";
-            // 
-            // postToTwitter
-            // 
-            this.postToTwitter.AutoSize = true;
-            this.postToTwitter.Location = new System.Drawing.Point(116, 40);
-            this.postToTwitter.Name = "postToTwitter";
-            this.postToTwitter.Size = new System.Drawing.Size(93, 17);
-            this.postToTwitter.TabIndex = 3;
-            this.postToTwitter.Text = "post to Twitter";
-            this.postToTwitter.UseVisualStyleBackColor = true;
-            this.postToTwitter.Visible = false;
-            // 
             // menu
             // 
-            this.menu.Dock = System.Windows.Forms.DockStyle.None;
+            resources.ApplyResources(this.menu, "menu");
             this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.miFile,
             this.miShow,
             this.miOptions,
             this.miHelp});
-            this.menu.Location = new System.Drawing.Point(0, 0);
             this.menu.Name = "menu";
-            this.menu.Size = new System.Drawing.Size(294, 24);
-            this.menu.TabIndex = 4;
-            this.menu.Text = "menuStrip1";
+            this.toolTip.SetToolTip(this.menu, resources.GetString("menu.ToolTip"));
             // 
             // miFile
             // 
+            resources.ApplyResources(this.miFile, "miFile");
             this.miFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.miOpen,
             this.miSave,
@@ -195,105 +202,98 @@ namespace LifeIdea.LazyCure.UI
             this.toolStripSeparator1,
             this.miExit});
             this.miFile.Name = "miFile";
-            this.miFile.Size = new System.Drawing.Size(35, 20);
-            this.miFile.Text = "&File";
             // 
             // miOpen
             // 
+            resources.ApplyResources(this.miOpen, "miOpen");
             this.miOpen.Name = "miOpen";
-            this.miOpen.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.miOpen.Size = new System.Drawing.Size(163, 22);
-            this.miOpen.Text = "&Open...";
             this.miOpen.Click += new System.EventHandler(this.miOpen_Click);
             // 
             // miSave
             // 
+            resources.ApplyResources(this.miSave, "miSave");
             this.miSave.Name = "miSave";
-            this.miSave.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.miSave.Size = new System.Drawing.Size(163, 22);
-            this.miSave.Text = "&Save";
             this.miSave.Click += new System.EventHandler(this.miSave_Click);
             // 
             // miSaveAs
             // 
+            resources.ApplyResources(this.miSaveAs, "miSaveAs");
             this.miSaveAs.Name = "miSaveAs";
-            this.miSaveAs.Size = new System.Drawing.Size(163, 22);
-            this.miSaveAs.Text = "Save &As...";
             this.miSaveAs.Click += new System.EventHandler(this.miSaveAs_Click);
             // 
             // toolStripSeparator1
             // 
+            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(160, 6);
             // 
             // miExit
             // 
+            resources.ApplyResources(this.miExit, "miExit");
             this.miExit.Name = "miExit";
-            this.miExit.Size = new System.Drawing.Size(163, 22);
-            this.miExit.Text = "E&xit";
             this.miExit.Click += new System.EventHandler(this.miExit_Click);
             // 
             // miShow
             // 
+            resources.ApplyResources(this.miShow, "miShow");
             this.miShow.DropDown = this.showMenu;
             this.miShow.Name = "miShow";
-            this.miShow.Size = new System.Drawing.Size(45, 20);
-            this.miShow.Text = "&Show";
             // 
             // showMenu
             // 
+            resources.ApplyResources(this.showMenu, "showMenu");
             this.showMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.miActivityDetails,
             this.miTimeLog,
             this.miSummary,
             this.miTasks});
             this.showMenu.Name = "contextMenu";
-            this.showMenu.OwnerItem = this.miContextShow;
-            this.showMenu.Size = new System.Drawing.Size(157, 92);
+            this.toolTip.SetToolTip(this.showMenu, resources.GetString("showMenu.ToolTip"));
             // 
             // miActivityDetails
             // 
+            resources.ApplyResources(this.miActivityDetails, "miActivityDetails");
             this.miActivityDetails.Checked = true;
             this.miActivityDetails.CheckOnClick = true;
             this.miActivityDetails.CheckState = System.Windows.Forms.CheckState.Checked;
             this.miActivityDetails.Name = "miActivityDetails";
-            this.miActivityDetails.Size = new System.Drawing.Size(156, 22);
-            this.miActivityDetails.Text = "&Activity Details";
             this.miActivityDetails.Click += new System.EventHandler(this.miActivityDetails_Click);
             // 
             // miTimeLog
             // 
+            resources.ApplyResources(this.miTimeLog, "miTimeLog");
             this.miTimeLog.CheckOnClick = true;
             this.miTimeLog.Name = "miTimeLog";
-            this.miTimeLog.Size = new System.Drawing.Size(156, 22);
-            this.miTimeLog.Text = "Time &Log";
             this.miTimeLog.Click += new System.EventHandler(this.miTimeLog_Click);
             // 
             // miSummary
             // 
+            resources.ApplyResources(this.miSummary, "miSummary");
             this.miSummary.CheckOnClick = true;
             this.miSummary.Name = "miSummary";
-            this.miSummary.Size = new System.Drawing.Size(156, 22);
-            this.miSummary.Text = "&Summary";
             this.miSummary.Click += new System.EventHandler(this.miSummary_Click);
             // 
             // miTasks
             // 
+            resources.ApplyResources(this.miTasks, "miTasks");
             this.miTasks.CheckOnClick = true;
             this.miTasks.Name = "miTasks";
-            this.miTasks.Size = new System.Drawing.Size(156, 22);
-            this.miTasks.Text = "&Task Manager";
             this.miTasks.Click += new System.EventHandler(this.miTasks_Click);
+            // 
+            // miContextShow
+            // 
+            resources.ApplyResources(this.miContextShow, "miContextShow");
+            this.miContextShow.DropDown = this.showMenu;
+            this.miContextShow.Name = "miContextShow";
             // 
             // miOptions
             // 
+            resources.ApplyResources(this.miOptions, "miOptions");
             this.miOptions.Name = "miOptions";
-            this.miOptions.Size = new System.Drawing.Size(56, 20);
-            this.miOptions.Text = "&Options";
             this.miOptions.Click += new System.EventHandler(this.miOptions_Click);
             // 
             // miHelp
             // 
+            resources.ApplyResources(this.miHelp, "miHelp");
             this.miHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.miHowToUse,
             this.toolStripSeparator3,
@@ -303,159 +303,108 @@ namespace LifeIdea.LazyCure.UI
             this.toolStripSeparator2,
             this.miAbout});
             this.miHelp.Name = "miHelp";
-            this.miHelp.Size = new System.Drawing.Size(40, 20);
-            this.miHelp.Text = "&Help";
             // 
             // miHowToUse
             // 
+            resources.ApplyResources(this.miHowToUse, "miHowToUse");
             this.miHowToUse.Name = "miHowToUse";
-            this.miHowToUse.Size = new System.Drawing.Size(233, 22);
             this.miHowToUse.Tag = "LazyCure.html";
-            this.miHowToUse.Text = "&How to use";
             this.miHowToUse.Click += new System.EventHandler(this.Link_Click);
             // 
             // toolStripSeparator3
             // 
+            resources.ApplyResources(this.toolStripSeparator3, "toolStripSeparator3");
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(230, 6);
             // 
             // miOnline
             // 
+            resources.ApplyResources(this.miOnline, "miOnline");
             this.miOnline.Name = "miOnline";
-            this.miOnline.Size = new System.Drawing.Size(233, 22);
             this.miOnline.Tag = "http://lazycure.com/";
-            this.miOnline.Text = "LazyCure &Online";
             this.miOnline.Click += new System.EventHandler(this.Link_Click);
             // 
             // miSubscribe
             // 
+            resources.ApplyResources(this.miSubscribe, "miSubscribe");
             this.miSubscribe.Name = "miSubscribe";
-            this.miSubscribe.Size = new System.Drawing.Size(233, 22);
             this.miSubscribe.Tag = "http://lazycure.com/feed/";
-            this.miSubscribe.Text = "&Subscribe to LazyCure news";
             this.miSubscribe.Click += new System.EventHandler(this.Link_Click);
             // 
             // miSubmit
             // 
+            resources.ApplyResources(this.miSubmit, "miSubmit");
             this.miSubmit.Name = "miSubmit";
-            this.miSubmit.Size = new System.Drawing.Size(233, 22);
             this.miSubmit.Tag = "http://lazycure.com/submit/";
-            this.miSubmit.Text = "Submit a &bug / feature request";
             this.miSubmit.Click += new System.EventHandler(this.Link_Click);
             // 
             // toolStripSeparator2
             // 
+            resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(230, 6);
             // 
             // miAbout
             // 
+            resources.ApplyResources(this.miAbout, "miAbout");
             this.miAbout.Name = "miAbout";
-            this.miAbout.Size = new System.Drawing.Size(233, 22);
-            this.miAbout.Text = "&About LazyCure";
             this.miAbout.Click += new System.EventHandler(this.miAbout_Click);
-            // 
-            // miContextShow
-            // 
-            this.miContextShow.DropDown = this.showMenu;
-            this.miContextShow.Name = "miContextShow";
-            this.miContextShow.Size = new System.Drawing.Size(175, 22);
-            this.miContextShow.Text = "Show";
             // 
             // timer
             // 
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
-            // toolStripContainer1
-            // 
-            // 
-            // toolStripContainer1.BottomToolStripPanel
-            // 
-            this.toolStripContainer1.BottomToolStripPanel.Controls.Add(this.statusBar);
-            // 
-            // toolStripContainer1.ContentPanel
-            // 
-            this.toolStripContainer1.ContentPanel.Controls.Add(this.nowYou);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(294, 66);
-            this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
-            this.toolStripContainer1.Name = "toolStripContainer1";
-            this.toolStripContainer1.Size = new System.Drawing.Size(294, 112);
-            this.toolStripContainer1.TabIndex = 5;
-            this.toolStripContainer1.Text = "toolStripContainer1";
-            // 
-            // toolStripContainer1.TopToolStripPanel
-            // 
-            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.menu);
-            // 
-            // notifyIcon
-            // 
-            this.notifyIcon.ContextMenuStrip = this.contextMenu;
-            this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
-            this.notifyIcon.Text = "LazyCure";
-            this.notifyIcon.Visible = true;
-            this.notifyIcon.MouseMove += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseMove);
-            this.notifyIcon.DoubleClick += new System.EventHandler(this.notifyIcon_DoubleClick);
-            this.notifyIcon.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseClick);
-            // 
             // contextMenu
             // 
+            resources.ApplyResources(this.contextMenu, "contextMenu");
             this.contextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.miContextActivate,
             this.miContextShow,
             this.miSeparator,
             this.miContextExit});
             this.contextMenu.Name = "contextMenu";
-            this.contextMenu.Size = new System.Drawing.Size(176, 76);
+            this.toolTip.SetToolTip(this.contextMenu, resources.GetString("contextMenu.ToolTip"));
             // 
             // miContextActivate
             // 
+            resources.ApplyResources(this.miContextActivate, "miContextActivate");
             this.miContextActivate.Name = "miContextActivate";
-            this.miContextActivate.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F12)));
-            this.miContextActivate.Size = new System.Drawing.Size(175, 22);
-            this.miContextActivate.Text = "Activate";
             this.miContextActivate.Click += new System.EventHandler(this.miContextActivate_Click);
             // 
             // miSeparator
             // 
+            resources.ApplyResources(this.miSeparator, "miSeparator");
             this.miSeparator.Name = "miSeparator";
-            this.miSeparator.Size = new System.Drawing.Size(172, 6);
             // 
             // miContextExit
             // 
+            resources.ApplyResources(this.miContextExit, "miContextExit");
             this.miContextExit.Name = "miContextExit";
-            this.miContextExit.Size = new System.Drawing.Size(175, 22);
-            this.miContextExit.Text = "Exit";
             this.miContextExit.Click += new System.EventHandler(this.miExit_Click);
+            // 
+            // notifyIcon
+            // 
+            resources.ApplyResources(this.notifyIcon, "notifyIcon");
+            this.notifyIcon.ContextMenuStrip = this.contextMenu;
+            this.notifyIcon.DoubleClick += new System.EventHandler(this.notifyIcon_DoubleClick);
+            this.notifyIcon.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseClick);
+            this.notifyIcon.MouseMove += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseMove);
             // 
             // Main
             // 
             this.AcceptButton = this.switchButton;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(294, 112);
             this.ContextMenuStrip = this.contextMenu;
             this.Controls.Add(this.toolStripContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(300, 107);
             this.Name = "Main";
             this.ShowInTaskbar = false;
-            this.Text = "Main";
+            this.toolTip.SetToolTip(this, resources.GetString("$this.ToolTip"));
             this.TopMost = true;
-            this.Deactivate += new System.EventHandler(this.Main_Deactivate);
             this.Activated += new System.EventHandler(this.Main_Activated);
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Main_FormClosed);
+            this.Deactivate += new System.EventHandler(this.Main_Deactivate);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
-            this.statusBar.ResumeLayout(false);
-            this.statusBar.PerformLayout();
-            this.nowYou.ResumeLayout(false);
-            this.nowYou.PerformLayout();
-            this.menu.ResumeLayout(false);
-            this.menu.PerformLayout();
-            this.showMenu.ResumeLayout(false);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Main_FormClosed);
             this.toolStripContainer1.BottomToolStripPanel.ResumeLayout(false);
             this.toolStripContainer1.BottomToolStripPanel.PerformLayout();
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);
@@ -463,6 +412,13 @@ namespace LifeIdea.LazyCure.UI
             this.toolStripContainer1.TopToolStripPanel.PerformLayout();
             this.toolStripContainer1.ResumeLayout(false);
             this.toolStripContainer1.PerformLayout();
+            this.statusBar.ResumeLayout(false);
+            this.statusBar.PerformLayout();
+            this.nowYou.ResumeLayout(false);
+            this.nowYou.PerformLayout();
+            this.menu.ResumeLayout(false);
+            this.menu.PerformLayout();
+            this.showMenu.ResumeLayout(false);
             this.contextMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 

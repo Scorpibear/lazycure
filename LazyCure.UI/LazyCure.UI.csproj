@@ -133,6 +133,9 @@
       <SubType>Designer</SubType>
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Main.ru.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Options.resx">
       <SubType>Designer</SubType>
       <DependentUpon>Options.cs</DependentUpon>
