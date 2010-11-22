@@ -11,6 +11,7 @@ using LifeIdea.LazyCure.Core.Time;
 using LifeIdea.LazyCure.Interfaces;
 using NMock2;
 using NUnit.Framework;
+using Is=NMock2.Is;
 
 namespace LifeIdea.LazyCure.Core
 {

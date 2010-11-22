@@ -4,6 +4,7 @@ using NMock2;
 using NUnit.Framework;
 using LifeIdea.LazyCure.Core.Activities;
 using LifeIdea.LazyCure.Interfaces;
+using Is = NMock2.Is;
 
 namespace LifeIdea.LazyCure.Core.Time
 {
