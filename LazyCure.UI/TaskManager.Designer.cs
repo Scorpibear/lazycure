@@ -45,6 +45,7 @@ namespace LifeIdea.LazyCure.UI
             this.addTaskButton = new System.Windows.Forms.Button();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.tasksContextMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
             this.splitContainer.SuspendLayout();
@@ -52,171 +53,143 @@ namespace LifeIdea.LazyCure.UI
             // 
             // treeView
             // 
+            resources.ApplyResources(this.treeView, "treeView");
             this.treeView.ContextMenuStrip = this.tasksContextMenu;
-            this.treeView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeView.HideSelection = false;
             this.treeView.LabelEdit = true;
-            this.treeView.Location = new System.Drawing.Point(0, 0);
             this.treeView.Name = "treeView";
-            this.treeView.Size = new System.Drawing.Size(149, 109);
-            this.treeView.TabIndex = 0;
+            this.toolTip.SetToolTip(this.treeView, resources.GetString("treeView.ToolTip"));
             this.treeView.AfterLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.treeView_AfterLabelEdit);
-            this.treeView.DoubleClick += new System.EventHandler(this.treeView_DoubleClick);
             this.treeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_AfterSelect);
             this.treeView.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView_NodeMouseClick);
+            this.treeView.DoubleClick += new System.EventHandler(this.treeView_DoubleClick);
             this.treeView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.treeView_KeyDown);
             // 
             // tasksContextMenu
             // 
+            resources.ApplyResources(this.tasksContextMenu, "tasksContextMenu");
             this.tasksContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.miAdd,
             this.miAddSubtask,
             this.miRename,
             this.miDelete});
             this.tasksContextMenu.Name = "tasksContextMenu";
-            this.tasksContextMenu.Size = new System.Drawing.Size(181, 92);
+            this.toolTip.SetToolTip(this.tasksContextMenu, resources.GetString("tasksContextMenu.ToolTip"));
             // 
             // miAdd
             // 
+            resources.ApplyResources(this.miAdd, "miAdd");
             this.miAdd.Name = "miAdd";
-            this.miAdd.ShortcutKeyDisplayString = "Enter";
-            this.miAdd.Size = new System.Drawing.Size(180, 22);
-            this.miAdd.Text = "Add task";
             this.miAdd.Click += new System.EventHandler(this.addTaskButton_Click);
             // 
             // miAddSubtask
             // 
+            resources.ApplyResources(this.miAddSubtask, "miAddSubtask");
             this.miAddSubtask.Name = "miAddSubtask";
-            this.miAddSubtask.ShortcutKeyDisplayString = "Insert";
-            this.miAddSubtask.Size = new System.Drawing.Size(180, 22);
-            this.miAddSubtask.Text = "Add subtask";
             this.miAddSubtask.Click += new System.EventHandler(this.addSubtaskButton_Click);
             // 
             // miRename
             // 
+            resources.ApplyResources(this.miRename, "miRename");
             this.miRename.Name = "miRename";
-            this.miRename.ShortcutKeyDisplayString = "F2";
-            this.miRename.Size = new System.Drawing.Size(180, 22);
-            this.miRename.Text = "Rename";
             this.miRename.Click += new System.EventHandler(this.renameButton_Click);
             // 
             // miDelete
             // 
+            resources.ApplyResources(this.miDelete, "miDelete");
             this.miDelete.Name = "miDelete";
-            this.miDelete.ShortcutKeyDisplayString = "Delete";
-            this.miDelete.Size = new System.Drawing.Size(180, 22);
-            this.miDelete.Text = "Delete";
             this.miDelete.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // splitContainer
             // 
-            this.splitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.splitContainer, "splitContainer");
             this.splitContainer.Name = "splitContainer";
             // 
             // splitContainer.Panel1
             // 
+            resources.ApplyResources(this.splitContainer.Panel1, "splitContainer.Panel1");
             this.splitContainer.Panel1.Controls.Add(this.treeView);
+            this.toolTip.SetToolTip(this.splitContainer.Panel1, resources.GetString("splitContainer.Panel1.ToolTip"));
             // 
             // splitContainer.Panel2
             // 
+            resources.ApplyResources(this.splitContainer.Panel2, "splitContainer.Panel2");
             this.splitContainer.Panel2.Controls.Add(this.closeButton);
             this.splitContainer.Panel2.Controls.Add(this.renameButton);
             this.splitContainer.Panel2.Controls.Add(this.addSubtaskButton);
             this.splitContainer.Panel2.Controls.Add(this.deleteButton);
             this.splitContainer.Panel2.Controls.Add(this.isWorkingCheckBox);
             this.splitContainer.Panel2.Controls.Add(this.addTaskButton);
-            this.splitContainer.Size = new System.Drawing.Size(296, 109);
-            this.splitContainer.SplitterDistance = 149;
-            this.splitContainer.TabIndex = 1;
+            this.toolTip.SetToolTip(this.splitContainer.Panel2, resources.GetString("splitContainer.Panel2.ToolTip"));
+            this.toolTip.SetToolTip(this.splitContainer, resources.GetString("splitContainer.ToolTip"));
             // 
             // closeButton
             // 
+            resources.ApplyResources(this.closeButton, "closeButton");
             this.closeButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.closeButton.Location = new System.Drawing.Point(102, 89);
             this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(41, 20);
-            this.closeButton.TabIndex = 5;
-            this.closeButton.Text = "close";
+            this.toolTip.SetToolTip(this.closeButton, resources.GetString("closeButton.ToolTip"));
             this.closeButton.UseVisualStyleBackColor = true;
             this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
             // renameButton
             // 
-            this.renameButton.Location = new System.Drawing.Point(74, 0);
+            resources.ApplyResources(this.renameButton, "renameButton");
             this.renameButton.Name = "renameButton";
-            this.renameButton.Size = new System.Drawing.Size(69, 20);
-            this.renameButton.TabIndex = 4;
-            this.renameButton.Text = "rename";
-            this.toolTip.SetToolTip(this.renameButton, "Rename task (F2)");
+            this.toolTip.SetToolTip(this.renameButton, resources.GetString("renameButton.ToolTip"));
             this.renameButton.UseVisualStyleBackColor = true;
             this.renameButton.Click += new System.EventHandler(this.renameButton_Click);
             // 
             // addSubtaskButton
             // 
-            this.addSubtaskButton.Location = new System.Drawing.Point(2, 22);
+            resources.ApplyResources(this.addSubtaskButton, "addSubtaskButton");
             this.addSubtaskButton.Name = "addSubtaskButton";
-            this.addSubtaskButton.Size = new System.Drawing.Size(69, 20);
-            this.addSubtaskButton.TabIndex = 3;
-            this.addSubtaskButton.Text = "+ subtask";
-            this.toolTip.SetToolTip(this.addSubtaskButton, "Add subtask (Insert)");
+            this.toolTip.SetToolTip(this.addSubtaskButton, resources.GetString("addSubtaskButton.ToolTip"));
             this.addSubtaskButton.UseVisualStyleBackColor = true;
             this.addSubtaskButton.Click += new System.EventHandler(this.addSubtaskButton_Click);
             // 
             // deleteButton
             // 
-            this.deleteButton.Location = new System.Drawing.Point(74, 22);
+            resources.ApplyResources(this.deleteButton, "deleteButton");
             this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(69, 20);
-            this.deleteButton.TabIndex = 2;
-            this.deleteButton.Text = "delete";
-            this.toolTip.SetToolTip(this.deleteButton, "Delete task (Delete)");
+            this.toolTip.SetToolTip(this.deleteButton, resources.GetString("deleteButton.ToolTip"));
             this.deleteButton.UseVisualStyleBackColor = true;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // isWorkingCheckBox
             // 
-            this.isWorkingCheckBox.AutoSize = true;
-            this.isWorkingCheckBox.Location = new System.Drawing.Point(3, 48);
+            resources.ApplyResources(this.isWorkingCheckBox, "isWorkingCheckBox");
             this.isWorkingCheckBox.Name = "isWorkingCheckBox";
-            this.isWorkingCheckBox.Size = new System.Drawing.Size(66, 17);
-            this.isWorkingCheckBox.TabIndex = 1;
-            this.isWorkingCheckBox.Text = "Working";
+            this.toolTip.SetToolTip(this.isWorkingCheckBox, resources.GetString("isWorkingCheckBox.ToolTip"));
             this.isWorkingCheckBox.UseVisualStyleBackColor = true;
             this.isWorkingCheckBox.CheckedChanged += new System.EventHandler(this.isWorkingCheckBox_CheckedChanged);
             // 
             // addTaskButton
             // 
-            this.addTaskButton.Location = new System.Drawing.Point(2, 0);
+            resources.ApplyResources(this.addTaskButton, "addTaskButton");
             this.addTaskButton.Name = "addTaskButton";
-            this.addTaskButton.Size = new System.Drawing.Size(69, 20);
-            this.addTaskButton.TabIndex = 0;
-            this.addTaskButton.Text = "+ task";
-            this.toolTip.SetToolTip(this.addTaskButton, "Add sibling task (Enter)");
+            this.toolTip.SetToolTip(this.addTaskButton, resources.GetString("addTaskButton.ToolTip"));
             this.addTaskButton.UseVisualStyleBackColor = true;
             this.addTaskButton.Click += new System.EventHandler(this.addTaskButton_Click);
             // 
             // TaskManager
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
             this.CancelButton = this.closeButton;
-            this.ClientSize = new System.Drawing.Size(296, 109);
             this.Controls.Add(this.splitContainer);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "TaskManager";
             this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "Task Manager";
+            this.toolTip.SetToolTip(this, resources.GetString("$this.ToolTip"));
             this.TopMost = true;
             this.VisibleChanged += new System.EventHandler(this.TaskManager_VisibleChanged);
             this.tasksContextMenu.ResumeLayout(false);
             this.splitContainer.Panel1.ResumeLayout(false);
             this.splitContainer.Panel2.ResumeLayout(false);
             this.splitContainer.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).EndInit();
             this.splitContainer.ResumeLayout(false);
             this.ResumeLayout(false);
 
