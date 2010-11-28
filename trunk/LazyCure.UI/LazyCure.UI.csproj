@@ -152,8 +152,14 @@
       <SubType>Designer</SubType>
       <DependentUpon>Summary.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Summary.ru.resx">
+      <DependentUpon>Summary.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TaskManager.resx">
       <SubType>Designer</SubType>
+      <DependentUpon>TaskManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TaskManager.ru.resx">
       <DependentUpon>TaskManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TimeLogEditor.resx">
