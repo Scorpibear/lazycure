@@ -166,6 +166,9 @@
       <SubType>Designer</SubType>
       <DependentUpon>TimeLogEditor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="TimeLogEditor.ru.resx">
+      <DependentUpon>TimeLogEditor.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LazyCure.Interfaces\LazyCure.Interfaces.csproj">

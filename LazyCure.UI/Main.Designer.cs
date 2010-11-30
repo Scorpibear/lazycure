@@ -52,7 +52,6 @@ namespace LifeIdea.LazyCure.UI
             this.miTimeLog = new System.Windows.Forms.ToolStripMenuItem();
             this.miSummary = new System.Windows.Forms.ToolStripMenuItem();
             this.miTasks = new System.Windows.Forms.ToolStripMenuItem();
-            this.miContextShow = new System.Windows.Forms.ToolStripMenuItem();
             this.miOptions = new System.Windows.Forms.ToolStripMenuItem();
             this.miHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.miHowToUse = new System.Windows.Forms.ToolStripMenuItem();
@@ -62,6 +61,7 @@ namespace LifeIdea.LazyCure.UI
             this.miSubmit = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.miAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.miContextShow = new System.Windows.Forms.ToolStripMenuItem();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -279,12 +279,6 @@ namespace LifeIdea.LazyCure.UI
             this.miTasks.Name = "miTasks";
             this.miTasks.Click += new System.EventHandler(this.miTasks_Click);
             // 
-            // miContextShow
-            // 
-            resources.ApplyResources(this.miContextShow, "miContextShow");
-            this.miContextShow.DropDown = this.showMenu;
-            this.miContextShow.Name = "miContextShow";
-            // 
             // miOptions
             // 
             resources.ApplyResources(this.miOptions, "miOptions");
@@ -347,6 +341,12 @@ namespace LifeIdea.LazyCure.UI
             resources.ApplyResources(this.miAbout, "miAbout");
             this.miAbout.Name = "miAbout";
             this.miAbout.Click += new System.EventHandler(this.miAbout_Click);
+            // 
+            // miContextShow
+            // 
+            resources.ApplyResources(this.miContextShow, "miContextShow");
+            this.miContextShow.DropDown = this.showMenu;
+            this.miContextShow.Name = "miContextShow";
             // 
             // timer
             // 

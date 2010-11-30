@@ -30,13 +30,13 @@ namespace LifeIdea.LazyCure.UI
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TaskManager));
+            this.splitContainer = new System.Windows.Forms.SplitContainer();
             this.treeView = new System.Windows.Forms.TreeView();
             this.tasksContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.miAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.miAddSubtask = new System.Windows.Forms.ToolStripMenuItem();
             this.miRename = new System.Windows.Forms.ToolStripMenuItem();
             this.miDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.splitContainer = new System.Windows.Forms.SplitContainer();
             this.closeButton = new System.Windows.Forms.Button();
             this.renameButton = new System.Windows.Forms.Button();
             this.addSubtaskButton = new System.Windows.Forms.Button();
@@ -44,12 +44,35 @@ namespace LifeIdea.LazyCure.UI
             this.isWorkingCheckBox = new System.Windows.Forms.CheckBox();
             this.addTaskButton = new System.Windows.Forms.Button();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.tasksContextMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
             this.splitContainer.SuspendLayout();
+            this.tasksContextMenu.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // splitContainer
+            // 
+            resources.ApplyResources(this.splitContainer, "splitContainer");
+            this.splitContainer.Name = "splitContainer";
+            // 
+            // splitContainer.Panel1
+            // 
+            resources.ApplyResources(this.splitContainer.Panel1, "splitContainer.Panel1");
+            this.splitContainer.Panel1.Controls.Add(this.treeView);
+            this.toolTip.SetToolTip(this.splitContainer.Panel1, resources.GetString("splitContainer.Panel1.ToolTip"));
+            // 
+            // splitContainer.Panel2
+            // 
+            resources.ApplyResources(this.splitContainer.Panel2, "splitContainer.Panel2");
+            this.splitContainer.Panel2.Controls.Add(this.closeButton);
+            this.splitContainer.Panel2.Controls.Add(this.renameButton);
+            this.splitContainer.Panel2.Controls.Add(this.addSubtaskButton);
+            this.splitContainer.Panel2.Controls.Add(this.deleteButton);
+            this.splitContainer.Panel2.Controls.Add(this.isWorkingCheckBox);
+            this.splitContainer.Panel2.Controls.Add(this.addTaskButton);
+            this.toolTip.SetToolTip(this.splitContainer.Panel2, resources.GetString("splitContainer.Panel2.ToolTip"));
+            this.toolTip.SetToolTip(this.splitContainer, resources.GetString("splitContainer.ToolTip"));
             // 
             // treeView
             // 
@@ -99,29 +122,6 @@ namespace LifeIdea.LazyCure.UI
             resources.ApplyResources(this.miDelete, "miDelete");
             this.miDelete.Name = "miDelete";
             this.miDelete.Click += new System.EventHandler(this.deleteButton_Click);
-            // 
-            // splitContainer
-            // 
-            resources.ApplyResources(this.splitContainer, "splitContainer");
-            this.splitContainer.Name = "splitContainer";
-            // 
-            // splitContainer.Panel1
-            // 
-            resources.ApplyResources(this.splitContainer.Panel1, "splitContainer.Panel1");
-            this.splitContainer.Panel1.Controls.Add(this.treeView);
-            this.toolTip.SetToolTip(this.splitContainer.Panel1, resources.GetString("splitContainer.Panel1.ToolTip"));
-            // 
-            // splitContainer.Panel2
-            // 
-            resources.ApplyResources(this.splitContainer.Panel2, "splitContainer.Panel2");
-            this.splitContainer.Panel2.Controls.Add(this.closeButton);
-            this.splitContainer.Panel2.Controls.Add(this.renameButton);
-            this.splitContainer.Panel2.Controls.Add(this.addSubtaskButton);
-            this.splitContainer.Panel2.Controls.Add(this.deleteButton);
-            this.splitContainer.Panel2.Controls.Add(this.isWorkingCheckBox);
-            this.splitContainer.Panel2.Controls.Add(this.addTaskButton);
-            this.toolTip.SetToolTip(this.splitContainer.Panel2, resources.GetString("splitContainer.Panel2.ToolTip"));
-            this.toolTip.SetToolTip(this.splitContainer, resources.GetString("splitContainer.ToolTip"));
             // 
             // closeButton
             // 
@@ -185,12 +185,12 @@ namespace LifeIdea.LazyCure.UI
             this.toolTip.SetToolTip(this, resources.GetString("$this.ToolTip"));
             this.TopMost = true;
             this.VisibleChanged += new System.EventHandler(this.TaskManager_VisibleChanged);
-            this.tasksContextMenu.ResumeLayout(false);
             this.splitContainer.Panel1.ResumeLayout(false);
             this.splitContainer.Panel2.ResumeLayout(false);
             this.splitContainer.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).EndInit();
             this.splitContainer.ResumeLayout(false);
+            this.tasksContextMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

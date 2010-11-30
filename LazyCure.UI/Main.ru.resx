@@ -117,11 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="statusBar.ToolTip" xml:space="preserve">
-    <value />
+  <data name="nowYou.Text" xml:space="preserve">
+    <value>Сейчас я ...</value>
   </data>
-  <data name="toolStripContainer1.BottomToolStripPanel.ToolTip" xml:space="preserve">
-    <value />
+  <data name="activityStartTime.ToolTipText" xml:space="preserve">
+    <value>Время начала активности</value>
+  </data>
+  <data name="activityDuration.ToolTipText" xml:space="preserve">
+    <value>Длительность активности</value>
+  </data>
+  <data name="currentTime.ToolTipText" xml:space="preserve">
+    <value>Текущее время</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="postToTwitter.Location" type="System.Drawing.Point, System.Drawing">
@@ -133,8 +139,8 @@
   <data name="postToTwitter.Text" xml:space="preserve">
     <value>запостить в Twitter</value>
   </data>
-  <data name="postToTwitter.ToolTip" xml:space="preserve">
-    <value />
+  <data name="currentActivity.ToolTip" xml:space="preserve">
+    <value>Введи краткое описание того, что ты сейчас делаешь</value>
   </data>
   <data name="switchButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 11pt</value>
@@ -142,23 +148,14 @@
   <data name="switchButton.Text" xml:space="preserve">
     <value>Готово!</value>
   </data>
-  <data name="nowYou.Text" xml:space="preserve">
-    <value>Сейчас я ...</value>
+  <data name="switchButton.ToolTip" xml:space="preserve">
+    <value>Нажимай кнопку каждый раз, когда переключаешься с одной активности на другую</value>
   </data>
-  <data name="nowYou.ToolTip" xml:space="preserve">
-    <value />
+  <data name="miFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 20</value>
   </data>
-  <data name="toolStripContainer1.ContentPanel.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="toolStripContainer1.LeftToolStripPanel.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="toolStripContainer1.RightToolStripPanel.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="toolStripContainer1.ToolTip" xml:space="preserve">
-    <value />
+  <data name="miFile.Text" xml:space="preserve">
+    <value>&amp;Файл</value>
   </data>
   <data name="miOpen.Size" type="System.Drawing.Size, System.Drawing">
     <value>173, 22</value>
@@ -187,11 +184,14 @@
   <data name="miExit.Text" xml:space="preserve">
     <value>&amp;Выйти</value>
   </data>
-  <data name="miFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 20</value>
+  <data name="showMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 92</value>
   </data>
-  <data name="miFile.Text" xml:space="preserve">
-    <value>&amp;Файл</value>
+  <data name="miShow.Size" type="System.Drawing.Size, System.Drawing">
+    <value>69, 20</value>
+  </data>
+  <data name="miShow.Text" xml:space="preserve">
+    <value>&amp;Показать</value>
   </data>
   <data name="miActivityDetails.Size" type="System.Drawing.Size, System.Drawing">
     <value>174, 22</value>
@@ -217,23 +217,17 @@
   <data name="miTasks.Text" xml:space="preserve">
     <value>&amp;Задачи</value>
   </data>
-  <data name="showMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 92</value>
-  </data>
-  <data name="showMenu.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="miShow.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 20</value>
-  </data>
-  <data name="miShow.Text" xml:space="preserve">
-    <value>&amp;Показать</value>
-  </data>
   <data name="miOptions.Size" type="System.Drawing.Size, System.Drawing">
     <value>79, 20</value>
   </data>
   <data name="miOptions.Text" xml:space="preserve">
     <value>&amp;Настройки</value>
+  </data>
+  <data name="miHelp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 20</value>
+  </data>
+  <data name="miHelp.Text" xml:space="preserve">
+    <value>П&amp;омощь</value>
   </data>
   <data name="miHowToUse.Size" type="System.Drawing.Size, System.Drawing">
     <value>335, 22</value>
@@ -271,20 +265,29 @@
   <data name="miAbout.Text" xml:space="preserve">
     <value>&amp;О LazyCure</value>
   </data>
-  <data name="miHelp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 20</value>
+  <data name="miContextShow.Size" type="System.Drawing.Size, System.Drawing">
+    <value>202, 22</value>
   </data>
-  <data name="miHelp.Text" xml:space="preserve">
-    <value>П&amp;омощь</value>
+  <data name="miContextShow.Text" xml:space="preserve">
+    <value>Показать</value>
   </data>
-  <data name="menu.ToolTip" xml:space="preserve">
-    <value />
+  <data name="contextMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>203, 76</value>
   </data>
-  <data name="toolStripContainer1.TopToolStripPanel.ToolTip" xml:space="preserve">
-    <value />
+  <data name="miContextActivate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>202, 22</value>
   </data>
-  <data name="contextMenu.ToolTip" xml:space="preserve">
-    <value />
+  <data name="miContextActivate.Text" xml:space="preserve">
+    <value>Активировать</value>
+  </data>
+  <data name="miSeparator.Size" type="System.Drawing.Size, System.Drawing">
+    <value>199, 6</value>
+  </data>
+  <data name="miContextExit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>202, 22</value>
+  </data>
+  <data name="miContextExit.Text" xml:space="preserve">
+    <value>Выйти</value>
   </data>
   <data name="notifyIcon.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -617,8 +620,5 @@
         AAAABwAA4AAAAAAHAAD8AAAAAD8AAPwAAAAAPwAA/AAAAAA/AAD/gAAAAf8AAP+AAAAB/wAA/4AAAAH/
         AAA=
 </value>
-  </data>
-  <data name="$this.ToolTip" xml:space="preserve">
-    <value />
   </data>
 </root>
