@@ -9,6 +9,11 @@ namespace LifeIdea.LazyCure.Properties
     public class SettingsTests: Assert
     {
         [Test]
+        public void DefaultLanguage()
+        {
+            IsNull(null, Settings.Default.Language);
+        }
+        [Test]
         public void TimeLogsFolderDefaultSetting()
         {
             AreEqual("TimeLogs", Settings.Default.TimeLogsFolder);
