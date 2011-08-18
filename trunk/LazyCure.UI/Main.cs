@@ -197,18 +197,16 @@ namespace LifeIdea.LazyCure.UI
         private void UpdateTrayIcon()
         {
             if ((notifyIcon.Tag as string) == "Empty")
-            {
-                notifyIcon.Tag = "LazyCure";
-                notifyIcon.Icon = Resources.LazyCure;
-            }
+                ChangeTrayIcon("LazyCure", Resources.LazyCure);
             else
-            {
                 if (lazyCure.TimeToUpdateTimeLog)
-                {
-                    notifyIcon.Tag = "Empty";
-                    notifyIcon.Icon = Resources.Empty;
-                }
-            }
+                    ChangeTrayIcon("Empty", Resources.Empty);
+        }
+
+        private void ChangeTrayIcon(string tag, Icon icon)
+        {
+            notifyIcon.Tag = tag;
+            notifyIcon.Icon = icon;
         }
 
         protected override void WndProc(ref Message m)
