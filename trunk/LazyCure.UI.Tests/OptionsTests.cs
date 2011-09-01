@@ -16,6 +16,7 @@ namespace LifeIdea.LazyCure.UI
             Expect.Once.On(settings).GetProperty("ActivitiesNumberInTray").Will(Return.Value(0));
             Expect.Once.On(settings).GetProperty("HotKeyToActivate");
             Expect.Once.On(settings).GetProperty("HotKeyToSwitch");
+            //Expect.Once.On(settings).GetProperty("Language");
             Expect.Once.On(settings).GetProperty("LeftClickOnTray").Will(Return.Value(false));
             Expect.Once.On(settings).GetProperty("MaxActivitiesInHistory").Will(Return.Value(0));
             Expect.Once.On(settings).GetProperty("ReminderTime").Will(Return.Value(TimeSpan.Zero));
@@ -44,6 +45,7 @@ namespace LifeIdea.LazyCure.UI
             Expect.Once.On(settings).SetProperty("ActivitiesNumberInTray");
             Expect.Once.On(settings).SetProperty("HotKeyToActivate");
             Expect.Once.On(settings).SetProperty("HotKeyToSwitch");
+            //Expect.Once.On(settings).SetProperty("Language");
             Expect.Once.On(settings).SetProperty("LeftClickOnTray");
             Expect.Once.On(settings).SetProperty("MaxActivitiesInHistory");
             Expect.Once.On(settings).SetProperty("ReminderTime");
