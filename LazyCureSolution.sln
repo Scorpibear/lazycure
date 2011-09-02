@@ -21,15 +21,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LazyCure.UI.Tests", "LazyCu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeLanguage.Tests", "TimeLanguage.Tests\TimeLanguage.Tests.csproj", "{6F1ECB05-DAB8-4F60-9CC5-2DB192B29808}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LazyCure.AcceptanceTests", "LazyCure.AcceptanceTests\LazyCure.AcceptanceTests.csproj", "{D5AF957C-5005-46D1-A622-F273F2AEE621}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{723BE156-0BBC-4C8E-B6C2-532536DBA7DC}"
-	ProjectSection(SolutionItems) = preProject
-		LazyCureSolution1.vsmdi = LazyCureSolution1.vsmdi
-		Local.testsettings = Local.testsettings
-		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -140,16 +131,6 @@ Global
 		{6F1ECB05-DAB8-4F60-9CC5-2DB192B29808}.Release|Mixed Platforms.Build.0 = Release|x86
 		{6F1ECB05-DAB8-4F60-9CC5-2DB192B29808}.Release|x86.ActiveCfg = Release|x86
 		{6F1ECB05-DAB8-4F60-9CC5-2DB192B29808}.Release|x86.Build.0 = Release|x86
-		{D5AF957C-5005-46D1-A622-F273F2AEE621}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D5AF957C-5005-46D1-A622-F273F2AEE621}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D5AF957C-5005-46D1-A622-F273F2AEE621}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{D5AF957C-5005-46D1-A622-F273F2AEE621}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{D5AF957C-5005-46D1-A622-F273F2AEE621}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{D5AF957C-5005-46D1-A622-F273F2AEE621}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D5AF957C-5005-46D1-A622-F273F2AEE621}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D5AF957C-5005-46D1-A622-F273F2AEE621}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{D5AF957C-5005-46D1-A622-F273F2AEE621}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{D5AF957C-5005-46D1-A622-F273F2AEE621}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
