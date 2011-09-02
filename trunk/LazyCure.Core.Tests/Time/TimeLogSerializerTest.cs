@@ -145,7 +145,7 @@ namespace LifeIdea.LazyCure.Core.Time
         {
             Stub.On(mockTimeLog).GetProperty("Activities").Will(Return.Value(new List<IActivity>()));
             XmlNode data = TimeLogSerializer.Serialize(mockTimeLog)["LazyCureData"];
-            Version version = Assembly.GetAssembly(new Program().GetType()).GetName().Version;
+            Version version = Assembly.GetAssembly(new TimeLogSerializer().GetType()).GetName().Version;
             Assert.AreEqual(version.Major+"."+version.Minor, data.Attributes["LazyCureVersion"].Value);
         }
     }
