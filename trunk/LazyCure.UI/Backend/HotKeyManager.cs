@@ -39,7 +39,15 @@ namespace LifeIdea.LazyCure.UI.Backend
 
         public bool Unregister(IWin32Window window, int id)
         {
-            return UnregisterHotKey(window.Handle, id);
+            try
+            {
+                return UnregisterHotKey(window.Handle, id);
+            }
+            catch (Exception ex)
+            {
+                Log.Exception(ex);
+                return false;
+            }
         }
     }
 }
