@@ -178,6 +178,27 @@
   <data name="tabGeneral.Text" xml:space="preserve">
     <value>Основные</value>
   </data>
+  <data name="languageGroupBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>239, 172</value>
+  </data>
+  <data name="languageGroupBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>92, 47</value>
+  </data>
+  <data name="languageGroupBox.Text" xml:space="preserve">
+    <value>Язык:</value>
+  </data>
+  <data name="languageOptionEnglish.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 17</value>
+  </data>
+  <data name="languageOptionEnglish.Text" xml:space="preserve">
+    <value>Английский</value>
+  </data>
+  <data name="languageOptionRussian.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 17</value>
+  </data>
+  <data name="languageOptionRussian.Text" xml:space="preserve">
+    <value>Русский</value>
+  </data>
   <data name="splitByComma.Size" type="System.Drawing.Size, System.Drawing">
     <value>337, 17</value>
   </data>
@@ -191,7 +212,7 @@
     <value>Стартовать в полночь новый лог времени</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>324, 47</value>
+    <value>224, 47</value>
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
     <value>Клик левой кнопкой на трэе:</value>

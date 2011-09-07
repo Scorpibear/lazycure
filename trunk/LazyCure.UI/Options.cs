@@ -1,5 +1,7 @@
 using System;
+using System.Globalization;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 using LifeIdea.LazyCure.Interfaces;
 
@@ -36,6 +38,7 @@ namespace LifeIdea.LazyCure.UI
             settings.ActivitiesNumberInTray = (int)activitiesNumberInTray.Value;
             settings.HotKeyToActivate = hotKeyToActivateLabel.Text;
             settings.HotKeyToSwitch = hotKeyToSwitchLabel.Text;
+            UpdateLanguage(LanguageOption);
             settings.LeftClickOnTray = showsRecentActivities.Checked;
             settings.MaxActivitiesInHistory = (int)maxActivitiesInHistory.Value;
             settings.ReminderTime = parsedReminderTime;
@@ -71,11 +74,27 @@ namespace LifeIdea.LazyCure.UI
                 hotKeyLabel.Text = keysEditor.Keys;
         }
 
+        string russianLanguageCode = "ru";
+        string englishLanguageCode = "en";
+        
+        private string LanguageOption
+        {
+            get
+            {
+                return (languageOptionRussian.Checked) ? russianLanguageCode : englishLanguageCode;
+            }
+            set
+            {
+                languageOptionRussian.Checked = (value == russianLanguageCode);
+            }
+        }
+
         private void LoadSettings(ISettings settings)
         {
             activitiesNumberInTray.Value = settings.ActivitiesNumberInTray;
             hotKeyToActivateLabel.Text = settings.HotKeyToActivate;
             hotKeyToSwitchLabel.Text = settings.HotKeyToSwitch;
+            LanguageOption = settings.Language;
             showsRecentActivities.Checked = settings.LeftClickOnTray;
             maxActivitiesInHistory.Value = settings.MaxActivitiesInHistory;
             SetReminderTime(settings.ReminderTime);
@@ -95,6 +114,12 @@ namespace LifeIdea.LazyCure.UI
         {
             this.reminderTime.ValidatingType = newTime.GetType();
             this.reminderTime.Text = Format.MaskedText(newTime);
+        }
+
+        private void UpdateLanguage(string language)
+        {
+            settings.Language = language;
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(language);
         }
 
         private void UpdateTwitterControlsEnabledProperty()
@@ -145,15 +170,26 @@ namespace LifeIdea.LazyCure.UI
             TimeSpan parsedReminderTime;
             if (TimeSpan.TryParse(reminderTime.Text, out parsedReminderTime))
             {
+                CultureInfo previousUICulture = Thread.CurrentThread.CurrentUICulture;
                 UpdateSettings(parsedReminderTime);
+                CultureInfo currentUICulture = Thread.CurrentThread.CurrentUICulture;
                 settings.Save();
                 Dialogs.LazyCureDriver.ApplySettings(settings);
                 Dialogs.MainForm.PostToTwitterEnabled = enableTwitterCheckbox.Checked;
                 Dialogs.MainForm.RegisterHotKeys();
                 Hide();
+                if (!previousUICulture.Equals(currentUICulture))
+                    NotifyAboutLanguageApplyAfterRestart();
             }
             else
                 MessageBox.Show(String.Format("'{0}' is invalid reminder time. Please, correct it and press 'OK' then", reminderTime.Text), "Options could not be saved");
+        }
+
+        private void NotifyAboutLanguageApplyAfterRestart()
+        {
+            MessageBox.Show(
+                "Language settings will be applied after LazyCure restart.\r\n"+
+                "язык интерфейса будет изменЄн при следующей загрузке LazyCure.");
         }
 
         private void selectTimeLogsFolder_Click(object sender, EventArgs e)

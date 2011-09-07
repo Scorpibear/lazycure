@@ -10,6 +10,10 @@ using Microsoft.Win32;
 namespace LifeIdea.LazyCure.UI
 {
     using Backend;
+    using System.Globalization;
+    using System.Threading;
+    using Timer = System.Windows.Forms.Timer;
+
     /// <summary>
     /// Represent classic main window GUI
     /// </summary>
@@ -32,6 +36,7 @@ namespace LifeIdea.LazyCure.UI
 
         public Main(ILazyCureDriver driver, ISettings settings)
         {
+            ChangeLanguage(settings.Language);
             InitializeComponent();
             this.lazyCure = driver;
             Dialogs.MainForm = this;
@@ -52,6 +57,13 @@ namespace LifeIdea.LazyCure.UI
             leftClickTimer.Interval = 300; // should be changed on max double click interval
             RegisterHotKeys();
         }
+
+        private void ChangeLanguage(string lang)
+        {
+            if ((lang != null) && (Thread.CurrentThread.CurrentUICulture.Name != lang))
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo(lang);
+        }
+
 
         void SystemEvents_SessionSwitch(object sender, SessionSwitchEventArgs e)
         {
