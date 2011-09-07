@@ -44,6 +44,9 @@ namespace LifeIdea.LazyCure.UI
             this.cancel = new System.Windows.Forms.Button();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabGeneral = new System.Windows.Forms.TabPage();
+            this.languageGroupBox = new System.Windows.Forms.GroupBox();
+            this.languageOptionEnglish = new System.Windows.Forms.RadioButton();
+            this.languageOptionRussian = new System.Windows.Forms.RadioButton();
             this.splitByComma = new System.Windows.Forms.CheckBox();
             this.switchTimeLogAtMidnight = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -72,6 +75,7 @@ namespace LifeIdea.LazyCure.UI
             ((System.ComponentModel.ISupportInitialize)(this.activitiesNumberInTray)).BeginInit();
             this.tabControl.SuspendLayout();
             this.tabGeneral.SuspendLayout();
+            this.languageGroupBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabTwitter.SuspendLayout();
             this.whatAddtj.SuspendLayout();
@@ -139,32 +143,32 @@ namespace LifeIdea.LazyCure.UI
             // 
             // ok
             // 
-            resources.ApplyResources(this.ok, "ok");
             this.ok.DialogResult = System.Windows.Forms.DialogResult.OK;
+            resources.ApplyResources(this.ok, "ok");
             this.ok.Name = "ok";
             this.ok.UseVisualStyleBackColor = true;
             this.ok.Click += new System.EventHandler(this.ok_Click);
             // 
             // cancel
             // 
-            resources.ApplyResources(this.cancel, "cancel");
             this.cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            resources.ApplyResources(this.cancel, "cancel");
             this.cancel.Name = "cancel";
             this.cancel.UseVisualStyleBackColor = true;
             this.cancel.Click += new System.EventHandler(this.cancel_Click);
             // 
             // tabControl
             // 
-            resources.ApplyResources(this.tabControl, "tabControl");
             this.tabControl.Controls.Add(this.tabGeneral);
             this.tabControl.Controls.Add(this.tabTwitter);
             this.tabControl.Controls.Add(this.tabHotKeys);
+            resources.ApplyResources(this.tabControl, "tabControl");
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
             // 
             // tabGeneral
             // 
-            resources.ApplyResources(this.tabGeneral, "tabGeneral");
+            this.tabGeneral.Controls.Add(this.languageGroupBox);
             this.tabGeneral.Controls.Add(this.splitByComma);
             this.tabGeneral.Controls.Add(this.switchTimeLogAtMidnight);
             this.tabGeneral.Controls.Add(this.groupBox1);
@@ -180,8 +184,31 @@ namespace LifeIdea.LazyCure.UI
             this.tabGeneral.Controls.Add(this.label3);
             this.tabGeneral.Controls.Add(this.timeLogFolder);
             this.tabGeneral.Controls.Add(this.selectTimeLogsFolder);
+            resources.ApplyResources(this.tabGeneral, "tabGeneral");
             this.tabGeneral.Name = "tabGeneral";
             this.tabGeneral.UseVisualStyleBackColor = true;
+            // 
+            // languageGroupBox
+            // 
+            this.languageGroupBox.Controls.Add(this.languageOptionEnglish);
+            this.languageGroupBox.Controls.Add(this.languageOptionRussian);
+            resources.ApplyResources(this.languageGroupBox, "languageGroupBox");
+            this.languageGroupBox.Name = "languageGroupBox";
+            this.languageGroupBox.TabStop = false;
+            // 
+            // languageOptionEnglish
+            // 
+            resources.ApplyResources(this.languageOptionEnglish, "languageOptionEnglish");
+            this.languageOptionEnglish.Checked = true;
+            this.languageOptionEnglish.Name = "languageOptionEnglish";
+            this.languageOptionEnglish.TabStop = true;
+            this.languageOptionEnglish.UseVisualStyleBackColor = true;
+            // 
+            // languageOptionRussian
+            // 
+            resources.ApplyResources(this.languageOptionRussian, "languageOptionRussian");
+            this.languageOptionRussian.Name = "languageOptionRussian";
+            this.languageOptionRussian.UseVisualStyleBackColor = true;
             // 
             // splitByComma
             // 
@@ -197,9 +224,9 @@ namespace LifeIdea.LazyCure.UI
             // 
             // groupBox1
             // 
-            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Controls.Add(this.opensMainWindow);
             this.groupBox1.Controls.Add(this.showsRecentActivities);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
@@ -225,7 +252,6 @@ namespace LifeIdea.LazyCure.UI
             // 
             // tabTwitter
             // 
-            resources.ApplyResources(this.tabTwitter, "tabTwitter");
             this.tabTwitter.Controls.Add(this.whatAddtj);
             this.tabTwitter.Controls.Add(this.twitterLink);
             this.tabTwitter.Controls.Add(this.passwordField);
@@ -233,15 +259,16 @@ namespace LifeIdea.LazyCure.UI
             this.tabTwitter.Controls.Add(this.usernameField);
             this.tabTwitter.Controls.Add(this.usernameLabel);
             this.tabTwitter.Controls.Add(this.enableTwitterCheckbox);
+            resources.ApplyResources(this.tabTwitter, "tabTwitter");
             this.tabTwitter.Name = "tabTwitter";
             this.tabTwitter.UseVisualStyleBackColor = true;
             // 
             // whatAddtj
             // 
-            resources.ApplyResources(this.whatAddtj, "whatAddtj");
             this.whatAddtj.Controls.Add(this.twitterActivityField);
             this.whatAddtj.Controls.Add(this.twitterActivitySpecificRadioButton);
             this.whatAddtj.Controls.Add(this.twitterActivityTheSameRadioButton);
+            resources.ApplyResources(this.whatAddtj, "whatAddtj");
             this.whatAddtj.Name = "whatAddtj";
             this.whatAddtj.TabStop = false;
             // 
@@ -298,13 +325,13 @@ namespace LifeIdea.LazyCure.UI
             // 
             // tabHotKeys
             // 
-            resources.ApplyResources(this.tabHotKeys, "tabHotKeys");
             this.tabHotKeys.Controls.Add(this.hotKeyToSwitchLabel);
             this.tabHotKeys.Controls.Add(this.editSwitchKey);
             this.tabHotKeys.Controls.Add(this.label7);
             this.tabHotKeys.Controls.Add(this.hotKeyToActivateLabel);
             this.tabHotKeys.Controls.Add(this.editActivateKey);
             this.tabHotKeys.Controls.Add(this.label6);
+            resources.ApplyResources(this.tabHotKeys, "tabHotKeys");
             this.tabHotKeys.Name = "tabHotKeys";
             this.tabHotKeys.UseVisualStyleBackColor = true;
             // 
@@ -361,6 +388,8 @@ namespace LifeIdea.LazyCure.UI
             this.tabControl.ResumeLayout(false);
             this.tabGeneral.ResumeLayout(false);
             this.tabGeneral.PerformLayout();
+            this.languageGroupBox.ResumeLayout(false);
+            this.languageGroupBox.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabTwitter.ResumeLayout(false);
@@ -414,6 +443,9 @@ namespace LifeIdea.LazyCure.UI
         private System.Windows.Forms.RadioButton twitterActivitySpecificRadioButton;
         private System.Windows.Forms.RadioButton twitterActivityTheSameRadioButton;
         private System.Windows.Forms.TextBox twitterActivityField;
+        private System.Windows.Forms.GroupBox languageGroupBox;
+        private System.Windows.Forms.RadioButton languageOptionEnglish;
+        private System.Windows.Forms.RadioButton languageOptionRussian;
 
     }
 }

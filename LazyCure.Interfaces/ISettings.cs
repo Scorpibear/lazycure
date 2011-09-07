@@ -10,40 +10,42 @@ namespace LifeIdea.LazyCure.Interfaces
 
     public interface ISettings
     {
-        int ActivitiesNumberInTray { get; set;}
+        int ActivitiesNumberInTray { get; set; }
 
-        string HotKeyToActivate { get; set;}
+        string HotKeyToActivate { get; set; }
 
-        string HotKeyToSwitch { get; set;}
+        string HotKeyToSwitch { get; set; }
 
-        bool LeftClickOnTray { get; set;}
+        string Language { get; set; }
 
-        Point MainWindowLocation { get; set;}
+        bool LeftClickOnTray { get; set; }
 
-        int MaxActivitiesInHistory { get; set;}
+        Point MainWindowLocation { get; set; }
 
-        TimeSpan ReminderTime { get; set;}
+        int MaxActivitiesInHistory { get; set; }
+
+        TimeSpan ReminderTime { get; set; }
 
         void Save();
 
-        bool SaveAfterDone { get; set;}
+        bool SaveAfterDone { get; set; }
 
-        bool SplitByComma { get; set;}
+        bool SplitByComma { get; set; }
 
-        bool SwitchOnLogOff { get; set;}
+        bool SwitchOnLogOff { get; set; }
 
-        bool SwitchTimeLogAtMidnight { get; set;}
+        bool SwitchTimeLogAtMidnight { get; set; }
 
-        string TimeLogsFolder { get; set;}
+        string TimeLogsFolder { get; set; }
 
-        string TweetingActivity { get; set;}
+        string TweetingActivity { get; set; }
 
-        bool TwitterEnabled { get; set;}
+        bool TwitterEnabled { get; set; }
 
-        string TwitterPassword { get; set;}
+        string TwitterPassword { get; set; }
 
-        string TwitterUsername { get; set;}
+        string TwitterUsername { get; set; }
 
-        bool UseTweetingActivity { get; set;}
+        bool UseTweetingActivity { get; set; }
     }
 }
