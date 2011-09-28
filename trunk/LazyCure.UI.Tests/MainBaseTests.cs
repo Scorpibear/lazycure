@@ -30,7 +30,7 @@ namespace LifeIdea.LazyCure.UI
         [Test]
         public void GetPopupText64()
         {
-            Assert.AreEqual("abcdefghijklmnopqrstuvwxyz789012345... from 7:00:00 for 0:30:00", main.GetPopupText("abcdefghijklmnopqrstuvwxyz7890123456789", activity));
+            Assert.AreEqual("abcdefghijklmnopqrstuvwxyz78901234567… from 7:00:00 for 0:30:00", main.GetPopupText("abcdefghijklmnopqrstuvwxyz7890123456789", activity));
         }
         [Test]
         public void GetPopupText63()
@@ -66,13 +66,6 @@ namespace LifeIdea.LazyCure.UI
         {
             main.SetLocation(new Point(5000, 5));
             Assert.AreEqual(Screen.PrimaryScreen.WorkingArea.Right-main.Width,main.Location.X);
-        }
-        [Test]
-        public void ChangeLanguageWithUnsupportedCultureDoNotSwitchTheCulture()
-        {
-            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("fr");
-            main.ChangeLanguage("unsupported");
-            Assert.AreEqual("fr", System.Threading.Thread.CurrentThread.CurrentCulture.Name);
         }
     }
 }
