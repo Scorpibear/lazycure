@@ -139,6 +139,12 @@
     <value>Задачи</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="showTimeLogButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>125, 36</value>
+  </data>
+  <data name="showTimeLogButton.Text" xml:space="preserve">
+    <value>Показать лог времени</value>
+  </data>
   <data name="maxRestDurationTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>262, 38</value>
   </data>

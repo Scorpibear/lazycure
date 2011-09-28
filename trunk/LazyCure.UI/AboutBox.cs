@@ -2,6 +2,8 @@ using System;
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
+using LifeIdea.LazyCure.Interfaces;
+using System.Threading;
 
 namespace LifeIdea.LazyCure.UI
 {
@@ -15,11 +17,11 @@ namespace LifeIdea.LazyCure.UI
             //  Change assembly information settings for your application through either:
             //  - Project->Properties->Application->Assembly Information
             //  - AssemblyInfo.cs
-            this.Text = String.Format("About {0}", AssemblyTitle);
+            this.Text = String.Format(Constants.About, AssemblyTitle);
             this.labelProductName.Text = AssemblyProduct;
-            this.labelVersion.Text = String.Format("Version {0}", AssemblyVersion);
+            this.labelVersion.Text = String.Format(Constants.Version, AssemblyVersion);
             this.labelCopyright.Text = AssemblyCopyright;
-            this.textBoxDescription.Text = AssemblyDescription;
+            this.textBoxDescription.Text = (Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName == "en") ? AssemblyDescription : Constants.AssemblyDescription;
         }
 
         #region Assembly Attribute Accessors
@@ -37,7 +39,7 @@ namespace LifeIdea.LazyCure.UI
                     // Select the first one
                     AssemblyTitleAttribute titleAttribute = (AssemblyTitleAttribute)attributes[0];
                     // If it is not an empty string, return it
-                    if (titleAttribute.Title != "")
+                    if (titleAttribute.Title != string.Empty)
                         return titleAttribute.Title;
                 }
                 // If there was no Title attribute, or if the Title attribute was the empty string, return the .exe name
@@ -61,7 +63,7 @@ namespace LifeIdea.LazyCure.UI
                 object[] attributes = GetAssembly().GetCustomAttributes(typeof(AssemblyDescriptionAttribute), false);
                 // If there aren't any Description attributes, return an empty string
                 if (attributes.Length == 0)
-                    return "";
+                    return string.Empty;
                 // If there is a Description attribute, return its value
                 return ((AssemblyDescriptionAttribute)attributes[0]).Description;
             }
@@ -83,7 +85,7 @@ namespace LifeIdea.LazyCure.UI
                 object[] attributes = GetAssembly().GetCustomAttributes(typeof(AssemblyProductAttribute), false);
                 // If there aren't any Product attributes, return an empty string
                 if (attributes.Length == 0)
-                    return "";
+                    return string.Empty;
                 // If there is a Product attribute, return its value
                 return ((AssemblyProductAttribute)attributes[0]).Product;
             }
@@ -97,7 +99,7 @@ namespace LifeIdea.LazyCure.UI
                 object[] attributes = GetAssembly().GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false);
                 // If there aren't any Copyright attributes, return an empty string
                 if (attributes.Length == 0)
-                    return "";
+                    return string.Empty;
                 // If there is a Copyright attribute, return its value
                 return ((AssemblyCopyrightAttribute)attributes[0]).Copyright;
             }

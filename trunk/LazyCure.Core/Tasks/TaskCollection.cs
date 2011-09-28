@@ -10,14 +10,14 @@ namespace LifeIdea.LazyCure.Core.Tasks
     /// </summary>
     public class TaskCollection : List<Task>, ITaskCollection, ITaskActivityLinker, ITaskViewDataSource
     {
-        const string NewTaskName = "New task...";
+        readonly string NewTaskName = Constants.NewTask;
         public static TaskCollection Default
         {
             get
             {
                 TaskCollection defaultCollection = new TaskCollection();
-                defaultCollection.Add(new Task("Work"));
-                defaultCollection.Add(new Task("Rest", false));
+                defaultCollection.Add(new Task(Constants.Work));
+                defaultCollection.Add(new Task(Constants.Rest, false));
                 return defaultCollection;
             }
         }
