@@ -1,5 +1,7 @@
 using System;
+using System.Globalization;
 using System.Drawing;
+using System.Threading;
 using System.Windows.Forms;
 using LifeIdea.LazyCure.Interfaces;
 
@@ -17,12 +19,12 @@ namespace LifeIdea.LazyCure.UI
         public string GetPopupText(string activityName, IActivity activity)
         {
             int maxLengthAllowed = 63;
-            string timePart = String.Format(" from {0} for {1}", Format.Time(activity.Start),
+            string timePart = String.Format(" "+Constants.FromAndFor, Format.Time(activity.Start),
                             Format.Duration(activity.Duration));
             int activityMaxLength = maxLengthAllowed - timePart.Length;
             string activityPart = activityName;
             if(activityName.Length>activityMaxLength)
-                activityPart = activityName.Substring(0,activityMaxLength-3) + "...";
+                activityPart = activityName.Substring(0, activityMaxLength - 1) + "…";
             return activityPart + timePart;
         }
 

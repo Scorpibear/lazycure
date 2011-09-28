@@ -12,14 +12,15 @@ namespace LifeIdea.LazyCure.Core.Activities
         public ITimeSystem timeSystem;
         public Boolean IsRunning = true;
         public const double MILLISECONDS_IN_ONE_SECOND = 1000;
+        public const string TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
         public override DateTime Start
         {
             get
             {
                 if (start.Millisecond < MILLISECONDS_IN_ONE_SECOND / 2.0)
-                    return DateTime.Parse(start.ToString("yyyy-MM-dd HH:mm:ss"));
+                    return DateTime.Parse(start.ToString(TIME_FORMAT));
                 else
-                    return DateTime.Parse(start.AddSeconds(1).ToString("yyyy-MM-dd HH:mm:ss"));
+                    return DateTime.Parse(start.AddSeconds(1).ToString(TIME_FORMAT));
             }
         }
         public override TimeSpan Duration

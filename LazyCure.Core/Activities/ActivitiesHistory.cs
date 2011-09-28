@@ -34,7 +34,7 @@ namespace LifeIdea.LazyCure.Core.Activities
                 int i = 1;
                 do
                 {
-                    string candidate = "activity" + i.ToString();
+                    string candidate = Constants.GeneratedActivity + i.ToString();
                     if (activities.Contains(candidate))
                         i++;
                     else

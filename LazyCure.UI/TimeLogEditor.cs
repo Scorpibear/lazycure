@@ -47,21 +47,19 @@ namespace LifeIdea.LazyCure.UI
 
         private void timeLogView_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
-            if (e.Exception.Message == "Column 'Activity' does not allow nulls.")
-            {
-                ShowErrorMessage("Please, enter not empty activity name.",
-                                "Value in 'Activity' column is not correct");
-                e.Cancel = true;
-            }
+            string columnName = this.timeLogView.Columns[e.ColumnIndex].HeaderText;
+            if(e.ColumnIndex == 1)
+                ShowErrorMessage(Constants.PleaseEnterNotEmptyActivityName,
+                                String.Format(Constants.IncorrectValueInColumn, columnName));
             else
-                if (timeColumnsIndeces.Contains(e.ColumnIndex))
-                    ShowTimeNotValidMessage(timeLogView.Columns[e.ColumnIndex].Name);
+                ShowTimeNotValidMessage(columnName);
+            e.Cancel = true;
         }
 
         private void ShowTimeNotValidMessage(string column)
         {
-            ShowErrorMessage("Please, enter correct time value between 0:00:00 and 23:59:59",
-                    String.Format("Value in '{0}' column is not correct", column));
+            ShowErrorMessage(Constants.InvalidTimeWarning,
+                    String.Format(Constants.IncorrectValueInColumn, column));
         }
 
         private void ShowErrorMessage(string message, string header)

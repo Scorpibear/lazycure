@@ -136,6 +136,9 @@
   <data name="renameButton.Text" xml:space="preserve">
     <value>переименовать</value>
   </data>
+  <data name="renameButton.ToolTip" xml:space="preserve">
+    <value>Переименовать задачу (F2)</value>
+  </data>
   <data name="addSubtaskButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>1, 43</value>
   </data>
@@ -145,6 +148,9 @@
   <data name="addSubtaskButton.Text" xml:space="preserve">
     <value>+ подзадача</value>
   </data>
+  <data name="addSubtaskButton.ToolTip" xml:space="preserve">
+    <value>Добавить подзадачу (Insert)</value>
+  </data>
   <data name="deleteButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>1, 0</value>
   </data>
@@ -153,6 +159,9 @@
   </data>
   <data name="deleteButton.Text" xml:space="preserve">
     <value>удалить</value>
+  </data>
+  <data name="deleteButton.ToolTip" xml:space="preserve">
+    <value>Удалить задачу (Delete)</value>
   </data>
   <data name="isWorkingCheckBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>1, 89</value>
@@ -171,6 +180,9 @@
   </data>
   <data name="addTaskButton.Text" xml:space="preserve">
     <value>+ задача</value>
+  </data>
+  <data name="addTaskButton.ToolTip" xml:space="preserve">
+    <value>Добавить задачу (Enter)</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

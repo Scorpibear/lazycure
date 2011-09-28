@@ -182,14 +182,14 @@ namespace LifeIdea.LazyCure.UI
                     NotifyAboutLanguageApplyAfterRestart();
             }
             else
-                MessageBox.Show(String.Format("'{0}' is invalid reminder time. Please, correct it and press 'OK' then", reminderTime.Text), "Options could not be saved");
+                MessageBox.Show(String.Format(Constants.InvalidReminderTime, reminderTime.Text), Constants.IncorrectSettings);
         }
 
         private void NotifyAboutLanguageApplyAfterRestart()
         {
-            MessageBox.Show(
+            MessageBox.Show(this,
                 "Language settings will be applied after LazyCure restart.\r\n"+
-                "язык интерфейса будет изменЄн при следующей загрузке LazyCure.");
+                "язык интерфейса будет изменЄн при следующей загрузке LazyCure.", Constants.LanguageChange,MessageBoxButtons.OK,MessageBoxIcon.Information);
         }
 
         private void selectTimeLogsFolder_Click(object sender, EventArgs e)

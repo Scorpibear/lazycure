@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("LifeIdea.org")]
 [assembly: AssemblyProduct("LazyCure.Interfaces")]
-[assembly: AssemblyCopyright("LifeIdea.org © 2006-2010")]
+[assembly: AssemblyCopyright("LifeIdea.org © 2006-2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

@@ -156,8 +156,7 @@ namespace LifeIdea.LazyCure.UI
 
         private void workingTimeIntervalsGrid_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
-            MessageBox.Show(this, "Invalid time value was specified. Please, specify valid time from 0:00 to 23:59.",
-                "Invalid time value");
+            MessageBox.Show(this, Constants.InvalidTimeWarning, Constants.InvalidTimeValue);
         }
 
         #endregion Event Handlers

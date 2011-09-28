@@ -18,7 +18,7 @@ namespace LifeIdea.LazyCure.Core.Activities
             set
             {
                 if (value == null)
-                    name = "";
+                    name = string.Empty;
                 else
                     name = value.Trim();
             }
@@ -28,7 +28,7 @@ namespace LifeIdea.LazyCure.Core.Activities
         virtual public DateTime End { get { return Start + Duration; } }
         public override string ToString()
         {
-            return Name + " " + Start + " " + Duration;
+            return string.Format("{0} {1} {2}", Name, Start, Duration);
         }
         public override int GetHashCode()
         {

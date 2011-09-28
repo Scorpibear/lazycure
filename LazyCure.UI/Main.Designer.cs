@@ -289,7 +289,7 @@ namespace LifeIdea.LazyCure.UI
             this.miHowToUse.Name = "miHowToUse";
             resources.ApplyResources(this.miHowToUse, "miHowToUse");
             this.miHowToUse.Tag = "LazyCure.html";
-            this.miHowToUse.Click += new System.EventHandler(this.Link_Click);
+            this.miHowToUse.Click += new System.EventHandler(this.miHowToUse_Click);
             // 
             // toolStripSeparator3
             // 

@@ -8,7 +8,7 @@ namespace LifeIdea.LazyCure.UI
 {
     partial class TaskManager : View
     {
-        const string NewTaskName = "New task...";
+        readonly string NewTaskName = Constants.NewTask;
 
         private readonly ILazyCureDriver driver;
         private int minimalHeight;
@@ -53,8 +53,7 @@ namespace LifeIdea.LazyCure.UI
 
         private void DeleteTask()
         {
-            DialogResult result = MessageBox.Show(this,
-                "Do you really want to delete selected task '" + SelectedTask + "'?",
+            DialogResult result = MessageBox.Show(this, String.Format(Constants.DeleteTaskConfirmationMessage, SelectedTask),
                 "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
                 treeBinder.Remove(treeView.SelectedNode);

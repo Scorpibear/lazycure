@@ -10,21 +10,19 @@ using Microsoft.Win32;
 namespace LifeIdea.LazyCure.UI
 {
     using Backend;
-    using System.Globalization;
-    using System.Threading;
-    using Timer = System.Windows.Forms.Timer;
+    using System.IO;
 
     /// <summary>
     /// Represent classic main window GUI
     /// </summary>
     public partial class Main : MainBase, IMainForm, IDisposable
     {
-        private const string DefaultActivity = "(specify what you are doing)";
+        private readonly string DefaultActivity = Constants.DefaultActivity;
         private const int HotKeyMessageID = 0x0312;
         private const int HotKeyToActivateID = 1;
         private const int HotKeyToSwitchID = 2;
         private readonly ILazyCureDriver lazyCure;
-        private readonly string nextActivity = DefaultActivity;
+        private readonly string nextActivity = Constants.DefaultActivity;
         private HotKeyManager hotKeyManager = new HotKeyManager();
         private ToolStripSeparator topSeparatorForActivities = new ToolStripSeparator();
         private Dictionary<string, ToolStripMenuItem> activitiesMenuItems = new Dictionary<string, ToolStripMenuItem>();
@@ -36,7 +34,6 @@ namespace LifeIdea.LazyCure.UI
 
         public Main(ILazyCureDriver driver, ISettings settings)
         {
-            ChangeLanguage(settings.Language);
             InitializeComponent();
             this.lazyCure = driver;
             Dialogs.MainForm = this;
@@ -57,13 +54,6 @@ namespace LifeIdea.LazyCure.UI
             leftClickTimer.Interval = 300; // should be changed on max double click interval
             RegisterHotKeys();
         }
-
-        private void ChangeLanguage(string lang)
-        {
-            if ((lang != null) && (Thread.CurrentThread.CurrentUICulture.Name != lang))
-                Thread.CurrentThread.CurrentUICulture = new CultureInfo(lang);
-        }
-
 
         void SystemEvents_SessionSwitch(object sender, SessionSwitchEventArgs e)
         {
@@ -128,7 +118,7 @@ namespace LifeIdea.LazyCure.UI
         {
             if (!lazyCure.Save())
             {
-                DialogResult result = MessageBox.Show(this, "Time Log could not be saved. Exit from LazyCure anyway?", "Could not save time log", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                DialogResult result = MessageBox.Show(this, Constants.CouldNotSaveTimeLogDuringExitMessage, Constants.SavingError, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
                 if (result == DialogResult.No)
                     e.Cancel = true;
             }
@@ -275,9 +265,8 @@ namespace LifeIdea.LazyCure.UI
                     e.Cancel=true;
                     break;
                 case CloseReason.WindowsShutDown:
-                    DialogResult result = MessageBox.Show(this,
-                    "Do you want to log current activity before LazyCure will be closed?",
-                    "LazyCure is shutting down", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    DialogResult result = MessageBox.Show(this, Constants.DoYouWantToLogCurrentActivityBeforeClosure,
+                        Constants.LazyCureIsShuttingDown, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                     {
                         this.Hide();
@@ -314,9 +303,26 @@ namespace LifeIdea.LazyCure.UI
                 this.Size = collapsedSize;
         }
 
+        private void miContextActivate_Click(object sender, EventArgs e)
+        {
+            Display();
+        }
+
         private void miExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void miHowToUse_Click(object sender, EventArgs e)
+        {
+            string link = "LazyCure.html";
+            if(System.Threading.Thread.CurrentThread.CurrentUICulture.Name != "en")
+                link = Path.Combine(System.Threading.Thread.CurrentThread.CurrentUICulture.Name, "LazyCure.html");
+            link = Path.Combine(Directory.GetCurrentDirectory(), link);
+            if (File.Exists(link))
+                Process.Start(link);
+            else
+                MessageBox.Show(this, Constants.HelpFileWasNotFound + link, Constants.HowToUse, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
 
         private void miOpen_Click(object sender, EventArgs e)
@@ -339,7 +345,7 @@ namespace LifeIdea.LazyCure.UI
         private void miSave_Click(object sender, EventArgs e)
         {
             if (!lazyCure.Save())
-                MessageBox.Show("Time log has not been saved!", "Saving  error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(Constants.TimeLogHasNotBeenSaved, Constants.SavingError, MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         private void miSaveAs_Click(object sender, EventArgs e)
@@ -403,9 +409,10 @@ namespace LifeIdea.LazyCure.UI
 
         private void notifyIcon_MouseMove(object sender, MouseEventArgs e)
         {
-            string activityName = (currentActivity.Text == DefaultActivity) ?
-                "current activity is lasting" : currentActivity.Text;
-            notifyIcon.Text = GetPopupText(activityName,lazyCure.CurrentActivity);
+            string currentActivityName = currentActivity.Text;
+            string activityDisplayName = ((currentActivityName == DefaultActivity) || (currentActivityName == string.Empty)) ?
+                Constants.CurrentActivityIsLasting : currentActivityName;
+            notifyIcon.Text = GetPopupText(activityDisplayName,lazyCure.CurrentActivity);
         }
 
         private void notifyIcon_DoubleClick(object sender, EventArgs e)
@@ -421,11 +428,6 @@ namespace LifeIdea.LazyCure.UI
                 Display();
             else
                 notifyIcon.ContextMenuStrip.Show(Cursor.Position);
-        }
-
-        private void miContextActivate_Click(object sender, EventArgs e)
-        {
-            Display();
         }
 
         #endregion Event Handlers

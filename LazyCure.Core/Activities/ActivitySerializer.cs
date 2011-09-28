@@ -28,7 +28,7 @@ namespace LifeIdea.LazyCure.Core.Activities
 
         public static IActivity Deserialize(XmlNode xml)
         {
-            string name="";
+            string name = string.Empty;
             DateTime start=DateTime.Now;
             TimeSpan duration=new TimeSpan();
             foreach(XmlNode node in xml.ChildNodes)

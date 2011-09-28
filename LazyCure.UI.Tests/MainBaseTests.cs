@@ -67,5 +67,12 @@ namespace LifeIdea.LazyCure.UI
             main.SetLocation(new Point(5000, 5));
             Assert.AreEqual(Screen.PrimaryScreen.WorkingArea.Right-main.Width,main.Location.X);
         }
+        [Test]
+        public void ChangeLanguageWithUnsupportedCultureDoNotSwitchTheCulture()
+        {
+            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("fr");
+            main.ChangeLanguage("unsupported");
+            Assert.AreEqual("fr", System.Threading.Thread.CurrentThread.CurrentCulture.Name);
+        }
     }
 }
