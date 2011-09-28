@@ -7,6 +7,16 @@ namespace LifeIdea.LazyCure.Interfaces
     public class FormatTest
     {
         [Test]
+        public void DurationToString()
+        {
+            Assert.AreEqual("0:03:12", Format.Duration(TimeSpan.Parse("0:03:12")));
+        }
+        [Test]
+        public void DurationIsTruncatedInString()
+        {
+            Assert.AreEqual("1:22:33", Format.Duration(TimeSpan.Parse("1:22:33.666")));
+        }
+        [Test]
         public void EncodeWithNull()
         {
             Assert.IsEmpty(Format.Encode(null));
