@@ -4,7 +4,7 @@ using System.Collections;
 using System.Text;
 using System.Windows.Forms;
 
-namespace LifeIdea.LazyCure.Interfaces
+namespace LifeIdea.LazyCure.Shared.Interfaces
 {
     public interface ITaskViewDataSource:IEnumerable
     {

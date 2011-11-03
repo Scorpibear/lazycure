@@ -4,7 +4,7 @@ using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Xml;
 using LifeIdea.LazyCure.Core.Activities;
-using LifeIdea.LazyCure.Interfaces;
+using LifeIdea.LazyCure.Shared.Interfaces;
 
 namespace LifeIdea.LazyCure.Core.Time
 {

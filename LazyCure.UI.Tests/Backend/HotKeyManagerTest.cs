@@ -1,10 +1,11 @@
-using NUnit.Framework;
-using NMock2;
-using System.Windows.Forms;
-using LifeIdea.LazyCure.Interfaces;
+using System;
 using System.IO;
 using System.Text;
-using System;
+using System.Windows.Forms;
+using LifeIdea.LazyCure.Shared.Interfaces;
+using LifeIdea.LazyCure.Shared.Tools;
+using NUnit.Framework;
+using NMock2;
 
 namespace LifeIdea.LazyCure.UI.Backend
 {

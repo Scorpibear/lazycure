@@ -5,10 +5,10 @@ using System.Threading;
 using System.Windows.Forms;
 using LifeIdea.LazyCure.Core;
 using LifeIdea.LazyCure.Core.IO;
-using LifeIdea.LazyCure.Interfaces;
 using LifeIdea.LazyCure.Properties;
+using LifeIdea.LazyCure.Shared.Interfaces;
+using LifeIdea.LazyCure.Shared.Tools;
 using LifeIdea.LazyCure.UI;
-
 
 namespace LifeIdea.LazyCure
 {

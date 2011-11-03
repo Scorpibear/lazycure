@@ -2,9 +2,10 @@ using System;
 using System.IO;
 using System.Text;
 using System.Xml;
-using LifeIdea.LazyCure.Interfaces;
 using NMock2;
 using NUnit.Framework;
+using LifeIdea.LazyCure.Shared.Interfaces;
+using LifeIdea.LazyCure.Shared.Tools;
 
 namespace LifeIdea.LazyCure.Core.Tasks
 {

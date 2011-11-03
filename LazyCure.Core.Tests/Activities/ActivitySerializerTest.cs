@@ -1,6 +1,6 @@
 using System;
 using System.Xml;
-using LifeIdea.LazyCure.Interfaces;
+using LifeIdea.LazyCure.Shared.Interfaces;
 using NMock2;
 using NUnit.Framework;
 

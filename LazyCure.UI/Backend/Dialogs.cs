@@ -1,10 +1,11 @@
 using System.Windows.Forms;
-using LifeIdea.LazyCure.Interfaces;
+using LifeIdea.LazyCure.Shared.Interfaces;
 
 namespace LifeIdea.LazyCure.UI
 {
     static class Dialogs
     {
+        private static OathAuthorize oath = null;
         private static OpenFileDialog open = null;
         private static SaveFileDialog save = null;
         private static ITimeLogView timeLog = null;
@@ -16,6 +17,19 @@ namespace LifeIdea.LazyCure.UI
         internal static ILazyCureDriver LazyCureDriver = null;
         internal static IMainForm MainForm = null;
         internal static ISettings Settings;
+
+        internal static OathAuthorize Oath
+        {
+            get
+            {
+                if (oath == null)
+                {
+                    oath = new OathAuthorize(LazyCureDriver);
+                }
+                return oath;
+            }
+
+        }
 
         internal static OpenFileDialog Open
         {

@@ -6,7 +6,8 @@ using LifeIdea.LazyCure.Core.Plugins;
 using LifeIdea.LazyCure.Core.Reports;
 using LifeIdea.LazyCure.Core.Tasks;
 using LifeIdea.LazyCure.Core.Time;
-using LifeIdea.LazyCure.Interfaces;
+using LifeIdea.LazyCure.Shared.Interfaces;
+using LifeIdea.LazyCure.Shared.Structures;
 
 namespace LifeIdea.LazyCure.Core
 {
@@ -177,9 +178,13 @@ namespace LifeIdea.LazyCure.Core
                 TimeManager.SwitchAtMidnight = settings.SwitchTimeLogAtMidnight;
                 TimeManager.TweetingActivity = (settings.UseTweetingActivity) ? settings.TweetingActivity :
                                                                                 null;
-                ExternalPoster.Username = settings.TwitterUsername;
-                ExternalPoster.Password = Format.Decode(settings.TwitterPassword);
+                ExternalPoster.AccessTokens = new TokensPair(settings.TwitterAccessToken, settings.TwitterAccessTokenSecret);
             }
+        }
+
+        public void AuthorizeInExternalPoster()
+        {
+            ExternalPoster.ShowAuthorizationPage();
         }
 
         public string GetUniqueActivityName()
@@ -233,6 +238,13 @@ namespace LifeIdea.LazyCure.Core
             }
             else
                 return false;
+        }
+
+        public TokensPair SetExternalPosterAuthorizationPin(string pin)
+        {
+            if (ExternalPoster != null)
+                return ExternalPoster.SetPin(pin);
+            return TokensPair.Empty;
         }
 
         public void UpdateTimeLogReferencies(ITimeLog timeLog)

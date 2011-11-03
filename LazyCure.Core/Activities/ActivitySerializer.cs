@@ -2,7 +2,8 @@ using System;
 using System.Data;
 using System.IO;
 using System.Xml;
-using LifeIdea.LazyCure.Interfaces;
+using LifeIdea.LazyCure.Shared.Interfaces;
+using LifeIdea.LazyCure.Shared.Tools;
 
 namespace LifeIdea.LazyCure.Core.Activities
 {

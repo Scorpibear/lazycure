@@ -1,7 +1,7 @@
 using System;
 using NUnit.Framework;
 using NMock2;
-using LifeIdea.LazyCure.Interfaces;
+using LifeIdea.LazyCure.Shared.Interfaces;
 
 namespace LifeIdea.LazyCure.UI
 {
@@ -28,8 +28,6 @@ namespace LifeIdea.LazyCure.UI
             Expect.Once.On(settings).GetProperty("TweetingActivity");
             Expect.Once.On(settings).GetProperty("UseTweetingActivity").Will(Return.Value(true));
             Expect.Once.On(settings).GetProperty("TwitterEnabled").Will(Return.Value(false));
-            Expect.Once.On(settings).GetProperty("TwitterPassword");
-            Expect.Once.On(settings).GetProperty("TwitterUsername");
 
             Options options = new Options(settings);
             VerifyAllExpectationsHaveBeenMet();
@@ -55,10 +53,11 @@ namespace LifeIdea.LazyCure.UI
             Expect.Once.On(settings).SetProperty("SwitchTimeLogAtMidnight");
             Expect.Once.On(settings).SetProperty("TimeLogsFolder");
             Expect.Once.On(settings).SetProperty("TweetingActivity");
-            Expect.Once.On(settings).SetProperty("UseTweetingActivity");
+            Expect.Once.On(settings).SetProperty("TwitterAccessToken");
+            Expect.Once.On(settings).SetProperty("TwitterAccessTokenSecret");
             Expect.Once.On(settings).SetProperty("TwitterEnabled");
-            Expect.Once.On(settings).SetProperty("TwitterPassword");
-            Expect.Once.On(settings).SetProperty("TwitterUsername");
+            Expect.Once.On(settings).SetProperty("UseTweetingActivity");
+            
             // When
             options.UpdateSettings(TimeSpan.Zero);
             // Then

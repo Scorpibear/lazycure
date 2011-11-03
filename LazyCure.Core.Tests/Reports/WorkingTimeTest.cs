@@ -4,7 +4,7 @@ using System.Data;
 using LifeIdea.LazyCure.Core.Activities;
 using LifeIdea.LazyCure.Core.Tasks;
 using LifeIdea.LazyCure.Core.Time;
-using LifeIdea.LazyCure.Interfaces;
+using LifeIdea.LazyCure.Shared.Interfaces;
 using NMock2;
 using NUnit.Framework;
 using LifeIdea.LazyCure.Core.IO;

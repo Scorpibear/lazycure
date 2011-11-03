@@ -133,9 +133,6 @@
   <data name="&gt;&gt;activitiesSummary.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;efficiencyTextBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="showTimeLogButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>168, 81</value>
@@ -143,6 +140,12 @@
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="timeOnWorkTextBox.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Right</value>
+  </data>
+  <data name="efficiency.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="&gt;&gt;activitiesSummary.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;statisticsGroup.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -183,11 +186,11 @@
   <data name="copyToolStripMenuItem.Text" xml:space="preserve">
     <value>Copy</value>
   </data>
-  <data name="manuallyRadioButton.Text" xml:space="preserve">
-    <value>manually</value>
-  </data>
   <data name="&gt;&gt;intervalsDefinitionGroupBox.Parent" xml:space="preserve">
     <value>efficiency</value>
+  </data>
+  <data name="allActivitiesTime.Text" xml:space="preserve">
+    <value>12:34</value>
   </data>
   <data name="&gt;&gt;label1.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -204,6 +207,9 @@
   <data name="activities.Text" xml:space="preserve">
     <value>Activities</value>
   </data>
+  <data name="allActivitiesTime.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
   <data name="activitiesSummary.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
@@ -219,8 +225,8 @@
   <data name="activitiesSummary.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="showTimeLogButton.Text" xml:space="preserve">
-    <value>Show Time Log</value>
+  <data name="spentColumnForTasksSummary.MinimumWidth" type="System.Int32, mscorlib">
+    <value>50</value>
   </data>
   <data name="maxRestDurationTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>231, 38</value>
@@ -249,6 +255,9 @@
   <data name="&gt;&gt;workingTimeIntervalsGrid.Name" xml:space="preserve">
     <value>workingTimeIntervalsGrid</value>
   </data>
+  <data name="&gt;&gt;tabControl.Name" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
   <data name="&gt;&gt;intervalsDefinitionGroupBox.Name" xml:space="preserve">
     <value>intervalsDefinitionGroupBox</value>
   </data>
@@ -270,20 +279,17 @@
   <data name="&gt;&gt;label1.Name" xml:space="preserve">
     <value>label1</value>
   </data>
-  <data name="&gt;&gt;closeButton.Name" xml:space="preserve">
-    <value>closeButton</value>
+  <data name="&gt;&gt;tabControl.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label3.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
   </data>
   <data name="Start.HeaderText" xml:space="preserve">
     <value>Start</value>
   </data>
   <data name="label7.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
-  </data>
-  <data name="workingTimeIntervalsGrid.Size" type="System.Drawing.Size, System.Drawing">
-    <value>129, 118</value>
-  </data>
-  <data name="efficiency.Size" type="System.Drawing.Size, System.Drawing">
-    <value>555, 259</value>
   </data>
   <data name="spentColumnForActivitySummary.Width" type="System.Int32, mscorlib">
     <value>50</value>
@@ -463,8 +469,8 @@
   <data name="&gt;&gt;workingTimeIntervalsGrid.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;intervalsDefinitionGroupBox.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="closeButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 20</value>
   </data>
   <data name="&gt;&gt;timeOnWorkTextBox.Parent" xml:space="preserve">
     <value>efficiency</value>
@@ -490,8 +496,8 @@
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="activities.Size" type="System.Drawing.Size, System.Drawing">
-    <value>555, 259</value>
+  <data name="&gt;&gt;maxRestDurationTextBox.Parent" xml:space="preserve">
+    <value>intervalsDefinitionGroupBox</value>
   </data>
   <data name="&gt;&gt;copyToolStripMenuItem.Name" xml:space="preserve">
     <value>copyToolStripMenuItem</value>
@@ -505,11 +511,17 @@
   <data name="statisticsGroup.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
+  <data name="&gt;&gt;spentColumnForTasksSummary.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="tasksSummary.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="tasks.Size" type="System.Drawing.Size, System.Drawing">
     <value>555, 259</value>
+  </data>
+  <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>569, 351</value>
   </data>
   <data name="tableLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -520,8 +532,8 @@
   <data name="efficiencyTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>148, 62</value>
   </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>statisticsGroup</value>
+  <data name="&gt;&gt;intervalsDefinitionGroupBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
     <value>4</value>
@@ -529,14 +541,17 @@
   <data name="&gt;&gt;showTimeLogButton.Parent" xml:space="preserve">
     <value>intervalsDefinitionGroupBox</value>
   </data>
+  <data name="workingActivitiesTime.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
   <data name="taskColumnForTasksSummary.HeaderText" xml:space="preserve">
     <value>Task</value>
   </data>
   <data name="&gt;&gt;activityColumn.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="efficiencyTextBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 36pt</value>
+  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="&gt;&gt;efficiency.Parent" xml:space="preserve">
     <value>tabControl</value>
@@ -546,6 +561,9 @@
   </data>
   <data name="activityColumn.HeaderText" xml:space="preserve">
     <value>Activity</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Working activities (h:mm):</value>
   </data>
   <data name="&gt;&gt;label5.Name" xml:space="preserve">
     <value>label5</value>
@@ -562,8 +580,11 @@
   <data name="&gt;&gt;tableLayoutPanel1.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="label3.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+  <data name="&gt;&gt;selectedRowsTime.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="tabControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
   <data name="timeOnWorkTextBox.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -580,20 +601,23 @@
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 16</value>
   </data>
+  <data name="&gt;&gt;activitiesSummary.Name" xml:space="preserve">
+    <value>activitiesSummary</value>
+  </data>
   <data name="&gt;&gt;statisticsGroup.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="&gt;&gt;label4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="workingActivitiesTime.Location" type="System.Drawing.Point, System.Drawing">
     <value>140, 32</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>Summary</value>
+  </data>
+  <data name="tableLayoutPanel1.RowCount" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
   <data name="&gt;&gt;efficiencyTextBox.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -604,8 +628,8 @@
   <data name="efficiencyTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>401, 3</value>
   </data>
-  <data name="&gt;&gt;contextMenu.Name" xml:space="preserve">
-    <value>contextMenu</value>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 25</value>
   </data>
   <data name="End.MinimumWidth" type="System.Int32, mscorlib">
     <value>35</value>
@@ -664,8 +688,8 @@
   <data name="&gt;&gt;workingActivitiesTime.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 25</value>
+  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="&gt;&gt;selectedRowsTime.Name" xml:space="preserve">
     <value>selectedRowsTime</value>
@@ -676,32 +700,20 @@
   <data name="&gt;&gt;label2.Parent" xml:space="preserve">
     <value>statisticsGroup</value>
   </data>
-  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <data name="&gt;&gt;manuallyRadioButton.Name" xml:space="preserve">
     <value>manuallyRadioButton</value>
   </data>
   <data name="automaticallyRadioButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 20</value>
   </data>
-  <data name="copyToolStripMenuItem.ShortcutKeyDisplayString" xml:space="preserve">
-    <value>Ctrl+C</value>
+  <data name="&gt;&gt;workingActivitiesTime.Name" xml:space="preserve">
+    <value>workingActivitiesTime</value>
   </data>
-  <data name="&gt;&gt;manuallyRadioButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel1.Name" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;label3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;closeButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="workingTimeIntervalsGrid.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
-  </data>
-  <data name="&gt;&gt;label3.Name" xml:space="preserve">
-    <value>label3</value>
   </data>
   <data name="selectedRowsTime.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Right</value>
@@ -712,17 +724,14 @@
   <data name="&gt;&gt;efficiency.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="&gt;&gt;maxRestDurationTextBox.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="&gt;&gt;workingActivitiesTime.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="automaticallyRadioButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>86, 17</value>
+  <data name="efficiency.Size" type="System.Drawing.Size, System.Drawing">
+    <value>555, 259</value>
   </data>
   <data name="statisticsGroup.Size" type="System.Drawing.Size, System.Drawing">
     <value>563, 54</value>
@@ -750,9 +759,6 @@
   </data>
   <data name="intervalsDefinitionGroupBox.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
-  </data>
-  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>377, 13</value>
   </data>
   <data name="&gt;&gt;allActivitiesTime.Parent" xml:space="preserve">
     <value>statisticsGroup</value>
@@ -799,26 +805,23 @@
   <data name="selectedRowsTime.Location" type="System.Drawing.Point, System.Drawing">
     <value>332, 13</value>
   </data>
-  <data name="&gt;&gt;tabControl.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
-  </data>
-  <data name="spentColumnForTasksSummary.Width" type="System.Int32, mscorlib">
-    <value>50</value>
-  </data>
   <data name="&gt;&gt;automaticallyRadioButton.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
   <data name="workingTimeIntervalsGrid.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
     <value>Vertical</value>
   </data>
-  <data name="allActivitiesTime.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
+  <data name="efficiencyTextBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 36pt</value>
   </data>
   <data name="&gt;&gt;statisticsGroup.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
   </data>
   <data name="tasks.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
+  </data>
+  <data name="statisticsGroup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 294</value>
   </data>
   <data name="&gt;&gt;timeOnWorkTextBox.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -829,11 +832,14 @@
   <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
+  <data name="&gt;&gt;tasksSummary.Parent" xml:space="preserve">
+    <value>tasks</value>
+  </data>
   <data name="&gt;&gt;label7.Parent" xml:space="preserve">
     <value>intervalsDefinitionGroupBox</value>
   </data>
-  <data name="allActivitiesTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>140, 13</value>
+  <data name="&gt;&gt;showTimeLogButton.Name" xml:space="preserve">
+    <value>showTimeLogButton</value>
   </data>
   <data name="copyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>149, 22</value>
@@ -841,23 +847,20 @@
   <data name="&gt;&gt;activities.Parent" xml:space="preserve">
     <value>tabControl</value>
   </data>
-  <data name="&gt;&gt;allActivitiesTime.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;spentColumnForTasksSummary.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>statisticsGroup</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>LifeIdea.LazyCure.UI.View, LazyCure.UI, Version=3.8.1.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LifeIdea.LazyCure.UI.View, LazyCure.UI, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="spentColumnForTasksSummary.MinimumWidth" type="System.Int32, mscorlib">
-    <value>50</value>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
   </data>
   <data name="workingTimeIntervalsGrid.Location" type="System.Drawing.Point, System.Drawing">
     <value>26, 81</value>
   </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Working activities (h:mm):</value>
+  <data name="workingTimeIntervalsGrid.Size" type="System.Drawing.Size, System.Drawing">
+    <value>129, 118</value>
   </data>
   <data name="&gt;&gt;tabControl.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -868,8 +871,8 @@
   <data name="manuallyRadioButton.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;showTimeLogButton.Name" xml:space="preserve">
-    <value>showTimeLogButton</value>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="manuallyRadioButton.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -877,17 +880,17 @@
   <data name="&gt;&gt;Start.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;closeButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;efficiencyTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel1.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;tabControl.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
   </data>
-  <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>569, 351</value>
+  <data name="activities.Size" type="System.Drawing.Size, System.Drawing">
+    <value>555, 259</value>
   </data>
-  <data name="tableLayoutPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="showTimeLogButton.Text" xml:space="preserve">
+    <value>Show Time Log</value>
   </data>
   <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -895,8 +898,8 @@
   <data name="efficiencyTextBox.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="workingActivitiesTime.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+  <data name="copyToolStripMenuItem.ShortcutKeyDisplayString" xml:space="preserve">
+    <value>Ctrl+C</value>
   </data>
   <data name="&gt;&gt;automaticallyRadioButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -907,8 +910,8 @@
   <data name="workingActivitiesTime.Text" xml:space="preserve">
     <value>12:34</value>
   </data>
-  <data name="closeButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 20</value>
+  <data name="&gt;&gt;contextMenu.Name" xml:space="preserve">
+    <value>contextMenu</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>99, 13</value>
@@ -916,8 +919,8 @@
   <data name="&gt;&gt;spentColumnForTasksSummary.Name" xml:space="preserve">
     <value>spentColumnForTasksSummary</value>
   </data>
-  <data name="statisticsGroup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 294</value>
+  <data name="&gt;&gt;allActivitiesTime.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
@@ -927,9 +930,6 @@
   </data>
   <data name="&gt;&gt;maxRestDurationTextBox.Name" xml:space="preserve">
     <value>maxRestDurationTextBox</value>
-  </data>
-  <data name="efficiencyTextBox.Text" xml:space="preserve">
-    <value>85%</value>
   </data>
   <data name="&gt;&gt;activities.Name" xml:space="preserve">
     <value>activities</value>
@@ -946,26 +946,26 @@
   <data name="tasksSummary.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 41</value>
+  <data name="&gt;&gt;tableLayoutPanel1.Name" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;copyToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="allActivitiesTime.Text" xml:space="preserve">
-    <value>12:34</value>
+  <data name="allActivitiesTime.Location" type="System.Drawing.Point, System.Drawing">
+    <value>140, 13</value>
   </data>
-  <data name="&gt;&gt;tasksSummary.Parent" xml:space="preserve">
-    <value>tasks</value>
+  <data name="&gt;&gt;tableLayoutPanel1.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
-  <data name="&gt;&gt;activitiesSummary.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;closeButton.Parent" xml:space="preserve">
     <value>statisticsGroup</value>
   </data>
-  <data name="&gt;&gt;tabControl.Name" xml:space="preserve">
-    <value>tabControl</value>
+  <data name="automaticallyRadioButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>86, 17</value>
   </data>
   <data name="workingActivitiesTime.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Right</value>
@@ -988,8 +988,8 @@
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>569, 351</value>
   </data>
-  <data name="&gt;&gt;maxRestDurationTextBox.Parent" xml:space="preserve">
-    <value>intervalsDefinitionGroupBox</value>
+  <data name="efficiencyTextBox.Text" xml:space="preserve">
+    <value>85%</value>
   </data>
   <data name="timeOnWorkTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>34, 20</value>
@@ -997,11 +997,11 @@
   <data name="&gt;&gt;label7.Name" xml:space="preserve">
     <value>label7</value>
   </data>
-  <data name="&gt;&gt;activitiesSummary.Name" xml:space="preserve">
-    <value>activitiesSummary</value>
+  <data name="&gt;&gt;closeButton.Name" xml:space="preserve">
+    <value>closeButton</value>
   </data>
-  <data name="tableLayoutPanel1.RowCount" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="&gt;&gt;intervalsDefinitionGroupBox.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="closeButton.Text" xml:space="preserve">
     <value>Close</value>
@@ -1009,8 +1009,8 @@
   <data name="&gt;&gt;manuallyRadioButton.Parent" xml:space="preserve">
     <value>intervalsDefinitionGroupBox</value>
   </data>
-  <data name="&gt;&gt;tabControl.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="manuallyRadioButton.Text" xml:space="preserve">
+    <value>manually</value>
   </data>
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -1048,8 +1048,8 @@
   <data name="closeButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>522, 32</value>
   </data>
-  <data name="efficiency.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
+  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>23, 41</value>
   </data>
   <data name="spentColumnForTasksSummary.HeaderText" xml:space="preserve">
     <value>Spent</value>
@@ -1057,11 +1057,11 @@
   <data name="contextMenu.Size" type="System.Drawing.Size, System.Drawing">
     <value>150, 26</value>
   </data>
-  <data name="tabControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="spentColumnForTasksSummary.Width" type="System.Int32, mscorlib">
+    <value>50</value>
   </data>
-  <data name="&gt;&gt;selectedRowsTime.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>377, 13</value>
   </data>
   <data name="&gt;&gt;activityColumn.Name" xml:space="preserve">
     <value>activityColumn</value>
@@ -1084,7 +1084,7 @@
   <data name="allActivitiesTime.Size" type="System.Drawing.Size, System.Drawing">
     <value>34, 20</value>
   </data>
-  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
@@ -1093,11 +1093,11 @@
   <data name="&gt;&gt;showTimeLogButton.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;workingActivitiesTime.Name" xml:space="preserve">
-    <value>workingActivitiesTime</value>
+  <data name="tableLayoutPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
-  <data name="&gt;&gt;intervalsDefinitionGroupBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;manuallyRadioButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <metadata name="End.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using NMock2;
 using NUnit.Framework;
-using LifeIdea.LazyCure.Interfaces;
+using LifeIdea.LazyCure.Shared.Interfaces;
 
 namespace LifeIdea.LazyCure.Core.Activities
 {
