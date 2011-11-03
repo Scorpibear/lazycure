@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using LifeIdea.LazyCure.Interfaces;
+using LifeIdea.LazyCure.Shared.Tools;
 
 namespace LifeIdea.LazyCure.UI.Backend
 {

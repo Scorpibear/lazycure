@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using LifeIdea.LazyCure.Core.Activities;
-using LifeIdea.LazyCure.Interfaces;
+using LifeIdea.LazyCure.Shared.Interfaces;
 using System.Xml;
 using System.IO;
 

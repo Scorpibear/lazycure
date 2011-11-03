@@ -71,9 +71,9 @@
       <Project>{055BDC4B-9AD3-471A-B3E3-19CBFC45C9C8}</Project>
       <Name>LazyCure.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\LazyCure.Interfaces\LazyCure.Interfaces.csproj">
+    <ProjectReference Include="..\LazyCure.Interfaces\LazyCure.Shared.csproj">
       <Project>{61117267-380A-4D4B-8228-29F4CB193E44}</Project>
-      <Name>LazyCure.Interfaces</Name>
+      <Name>LazyCure.Shared</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

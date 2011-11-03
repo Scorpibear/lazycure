@@ -1,10 +1,11 @@
 using System;
 using System.IO;
-using LifeIdea.LazyCure.Core.Tasks;
-using LifeIdea.LazyCure.Core.Time;
-using LifeIdea.LazyCure.Interfaces;
 using NMock2;
 using NUnit.Framework;
+using LifeIdea.LazyCure.Core.Tasks;
+using LifeIdea.LazyCure.Core.Time;
+using LifeIdea.LazyCure.Shared.Interfaces;
+using LifeIdea.LazyCure.Shared.Tools;
 
 namespace LifeIdea.LazyCure.Core.IO
 {

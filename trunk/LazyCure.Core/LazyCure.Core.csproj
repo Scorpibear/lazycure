@@ -52,11 +52,31 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Plugins\Twitterizer\Newtonsoft.Json.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="Twitterizer.Data">
+      <HintPath>Plugins\Twitterizer\Twitterizer.Data.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Twitterizer2">
+      <HintPath>Plugins\Twitterizer\Twitterizer2.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Twitterizer2.Asynchronous">
+      <HintPath>Plugins\Twitterizer\Twitterizer2.Asynchronous.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Twitterizer2.Streaming">
+      <HintPath>Plugins\Twitterizer\Twitterizer2.Streaming.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Activities\IActivitiesHistory.cs" />
@@ -97,9 +117,9 @@
     <Compile Include="Utilities.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LazyCure.Interfaces\LazyCure.Interfaces.csproj">
+    <ProjectReference Include="..\LazyCure.Interfaces\LazyCure.Shared.csproj">
       <Project>{61117267-380A-4D4B-8228-29F4CB193E44}</Project>
-      <Name>LazyCure.Interfaces</Name>
+      <Name>LazyCure.Shared</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

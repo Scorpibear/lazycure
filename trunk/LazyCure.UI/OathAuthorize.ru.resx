@@ -117,151 +117,30 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="activityColumn.HeaderText" xml:space="preserve">
-    <value>Активность</value>
-  </data>
-  <data name="spentColumnForActivitySummary.HeaderText" xml:space="preserve">
-    <value>Время</value>
-  </data>
-  <data name="taskColumnForActivitySummary.HeaderText" xml:space="preserve">
-    <value>Задача</value>
-  </data>
-  <data name="activities.Text" xml:space="preserve">
-    <value>Активности</value>
-  </data>
-  <data name="taskColumnForTasksSummary.HeaderText" xml:space="preserve">
-    <value>Задача</value>
-  </data>
-  <data name="spentColumnForTasksSummary.HeaderText" xml:space="preserve">
-    <value>Время</value>
-  </data>
-  <data name="tasks.Text" xml:space="preserve">
-    <value>Задачи</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="showTimeLogButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 36</value>
+  <data name="buttonOK.Location" type="System.Drawing.Point, System.Drawing">
+    <value>69, 142</value>
   </data>
-  <data name="showTimeLogButton.Text" xml:space="preserve">
-    <value>Показать лог времени</value>
+  <data name="buttonCancel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>150, 142</value>
   </data>
-  <data name="maxRestDurationTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>262, 38</value>
+  <data name="buttonCancel.Text" xml:space="preserve">
+    <value>Отмена</value>
   </data>
-  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>234, 13</value>
+  <data name="textBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>286, 98</value>
   </data>
-  <data name="label7.Text" xml:space="preserve">
-    <value>Максимально допустимые перерывы (ч:мм):</value>
+  <data name="textBox1.Text" xml:space="preserve">
+    <value>Чтобы иметь возможность делиться с друзьями только что завершёнными делами через twitter, вам необходимо авторизировать приложение LazyCure на twitter.com. Пожалуйста, сделайте это перейдя на только что открывшуюся страницу в браузере, нажмите Разрешить(Allow) и скопируйте PIN со страницы в поле ниже, после этого нажмите OK.</value>
   </data>
-  <data name="manuallyRadioButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>104, 17</value>
+  <data name="labelPIN.Location" type="System.Drawing.Point, System.Drawing">
+    <value>81, 119</value>
   </data>
-  <data name="manuallyRadioButton.Text" xml:space="preserve">
-    <value>задать вручную</value>
+  <data name="textBoxPIN.Location" type="System.Drawing.Point, System.Drawing">
+    <value>115, 116</value>
   </data>
-  <data name="automaticallyRadioButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>102, 17</value>
-  </data>
-  <data name="automaticallyRadioButton.Text" xml:space="preserve">
-    <value>автоматически</value>
-  </data>
-  <data name="intervalsDefinitionGroupBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>299, 205</value>
-  </data>
-  <data name="intervalsDefinitionGroupBox.Text" xml:space="preserve">
-    <value>Определение времени в офисе</value>
-  </data>
-  <data name="timeOnWorkTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>144, 22</value>
-  </data>
-  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 13</value>
-  </data>
-  <data name="label5.Text" xml:space="preserve">
-    <value>Время в офисе (ч:мм):</value>
-  </data>
-  <data name="efficiencyTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>404, 22</value>
-  </data>
-  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>525, 13</value>
-  </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>Эффективность использования рабочего времени ( [Рабочие активности] / [Время в офисе]  * 100% ):</value>
-  </data>
-  <data name="efficiency.Text" xml:space="preserve">
-    <value>Эффективность</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="allActivitiesTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>165, 13</value>
-  </data>
-  <data name="allActivitiesTime.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>123, 13</value>
-  </data>
-  <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Все активности (ч:мм):</value>
-  </data>
-  <data name="closeButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>500, 32</value>
-  </data>
-  <data name="closeButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 20</value>
-  </data>
-  <data name="closeButton.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="closeButton.Text" xml:space="preserve">
-    <value>Закрыть</value>
-  </data>
-  <data name="selectedRowsTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>410, 13</value>
-  </data>
-  <data name="selectedRowsTime.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>205, 16</value>
-  </data>
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>199, 13</value>
-  </data>
-  <data name="label3.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Время в выделенных строчках (ч:мм):</value>
-  </data>
-  <data name="workingActivitiesTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>165, 32</value>
-  </data>
-  <data name="workingActivitiesTime.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>146, 13</value>
-  </data>
-  <data name="label2.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Рабочие активности (ч:мм):</value>
-  </data>
-  <data name="statisticsGroup.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="statisticsGroup.Text" xml:space="preserve">
-    <value>Суммарное время</value>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>300, 177</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -430,6 +309,6 @@
 </value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Статистика</value>
+    <value>Авторизация</value>
   </data>
 </root>

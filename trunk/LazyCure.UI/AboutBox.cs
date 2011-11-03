@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
-using LifeIdea.LazyCure.Interfaces;
+using LifeIdea.LazyCure.Shared.Constants;
 using System.Threading;
 
 namespace LifeIdea.LazyCure.UI

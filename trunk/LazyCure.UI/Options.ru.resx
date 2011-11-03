@@ -235,6 +235,15 @@
   <data name="switchOnLogOff.Text" xml:space="preserve">
     <value>Переключать текущую активность при завершении сеанса</value>
   </data>
+  <data name="twitterAuthorizationGroup.Text" xml:space="preserve">
+    <value>Авторизация в Twitter</value>
+  </data>
+  <data name="authorizeButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 28pt</value>
+  </data>
+  <data name="authorizeButton.Text" xml:space="preserve">
+    <value>Авторизировать</value>
+  </data>
   <data name="whatAddtj.Text" xml:space="preserve">
     <value>Что добавлять в лог времени при постинге в Twitter:</value>
   </data>
@@ -258,18 +267,6 @@
   </data>
   <data name="twitterLink.Location" type="System.Drawing.Point, System.Drawing">
     <value>248, 7</value>
-  </data>
-  <data name="passwordLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 13</value>
-  </data>
-  <data name="passwordLabel.Text" xml:space="preserve">
-    <value>Пароль:</value>
-  </data>
-  <data name="usernameLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 13</value>
-  </data>
-  <data name="usernameLabel.Text" xml:space="preserve">
-    <value>Логин:</value>
   </data>
   <data name="enableTwitterCheckbox.Size" type="System.Drawing.Size, System.Drawing">
     <value>240, 17</value>

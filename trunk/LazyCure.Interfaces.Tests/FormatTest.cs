@@ -1,7 +1,8 @@
 using System;
 using NUnit.Framework;
+using LifeIdea.LazyCure.Shared.Tools;
 
-namespace LifeIdea.LazyCure.Interfaces
+namespace LifeIdea.LazyCure.Shared
 {
     [TestFixture]
     public class FormatTest
@@ -15,11 +16,6 @@ namespace LifeIdea.LazyCure.Interfaces
         public void DurationIsTruncatedInString()
         {
             Assert.AreEqual("1:22:33", Format.Duration(TimeSpan.Parse("1:22:33.666")));
-        }
-        [Test]
-        public void EncodeWithNull()
-        {
-            Assert.IsEmpty(Format.Encode(null));
         }
         [Test]
         public void SimpleShortDuration()

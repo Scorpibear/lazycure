@@ -1,7 +1,8 @@
 using System;
 using System.Windows.Forms;
+using LifeIdea.LazyCure.Shared.Structures;
 
-namespace LifeIdea.LazyCure.Interfaces
+namespace LifeIdea.LazyCure.Shared.Interfaces
 {
     public interface ILazyCureDriver
     {
@@ -54,5 +55,9 @@ namespace LifeIdea.LazyCure.Interfaces
         bool Save();
 
         bool SaveTimeLog(string filename);
+
+        void AuthorizeInExternalPoster();
+
+        TokensPair SetExternalPosterAuthorizationPin(string p);
     }
 }

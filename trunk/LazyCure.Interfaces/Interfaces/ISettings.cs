@@ -1,7 +1,7 @@
 using System;
 using System.Drawing;
 
-namespace LifeIdea.LazyCure.Interfaces
+namespace LifeIdea.LazyCure.Shared.Interfaces
 {
     public struct LeftClickOnTray
     {
@@ -40,11 +40,11 @@ namespace LifeIdea.LazyCure.Interfaces
 
         string TweetingActivity { get; set; }
 
+        string TwitterAccessToken { get; set; }
+
+        string TwitterAccessTokenSecret { get; set; }
+
         bool TwitterEnabled { get; set; }
-
-        string TwitterPassword { get; set; }
-
-        string TwitterUsername { get; set; }
 
         bool UseTweetingActivity { get; set; }
     }

@@ -1,4 +1,4 @@
-namespace LifeIdea.LazyCure.Interfaces
+namespace LifeIdea.LazyCure.Shared.Interfaces
 {
     public interface INameable
     {

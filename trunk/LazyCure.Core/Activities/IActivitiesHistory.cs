@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using LifeIdea.LazyCure.Interfaces;
+using LifeIdea.LazyCure.Shared.Interfaces;
 
 namespace LifeIdea.LazyCure.Core.Activities
 {

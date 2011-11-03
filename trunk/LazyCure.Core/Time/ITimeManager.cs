@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using LifeIdea.LazyCure.Interfaces;
+using LifeIdea.LazyCure.Shared.Interfaces;
 
 namespace LifeIdea.LazyCure.Core.Time
 {

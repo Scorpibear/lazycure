@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Xml;
-using LifeIdea.LazyCure.Interfaces;
+using LifeIdea.LazyCure.Shared.Interfaces;
 using NMock2;
 using NUnit.Framework;
 using System.Reflection;

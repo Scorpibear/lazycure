@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using LifeIdea.LazyCure.Interfaces;
+using LifeIdea.LazyCure.Shared.Constants;
+using LifeIdea.LazyCure.Shared.Interfaces;
+using LifeIdea.LazyCure.Shared.Tools;
 
 namespace LifeIdea.LazyCure.UI
 {

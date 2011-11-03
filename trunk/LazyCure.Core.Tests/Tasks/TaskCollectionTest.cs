@@ -2,7 +2,8 @@ using System.IO;
 using System.Windows.Forms;
 using NUnit.Framework;
 using NMock2;
-using LifeIdea.LazyCure.Interfaces;
+using LifeIdea.LazyCure.Shared.Interfaces;
+using LifeIdea.LazyCure.Shared.Tools;
 
 namespace LifeIdea.LazyCure.Core.Tasks
 {

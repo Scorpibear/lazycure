@@ -3,11 +3,13 @@ using System.Globalization;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
-using LifeIdea.LazyCure.Interfaces;
+using LifeIdea.LazyCure.Shared.Constants;
+using LifeIdea.LazyCure.Shared.Interfaces;
+using LifeIdea.LazyCure.Shared.Tools;
 
 namespace LifeIdea.LazyCure.UI
 {
-    public partial class Options : Form
+    public partial class Options : Dialog
     {
         private ISettings settings;
         private readonly FolderBrowserDialog timeLogFolderBrowser = new FolderBrowserDialog();
@@ -47,11 +49,14 @@ namespace LifeIdea.LazyCure.UI
             settings.SwitchOnLogOff = switchOnLogOff.Checked;
             settings.SwitchTimeLogAtMidnight = switchTimeLogAtMidnight.Checked;
             settings.TimeLogsFolder = timeLogFolder.Text;
+
+            // Twitter settings
             settings.TweetingActivity = twitterActivityField.Text;
-            settings.UseTweetingActivity = twitterActivitySpecificRadioButton.Checked;
+            var pair = Dialogs.Oath.TokensPair;
+            settings.TwitterAccessToken = pair.Token;
+            settings.TwitterAccessTokenSecret = pair.TokenSecret;
             settings.TwitterEnabled = enableTwitterCheckbox.Checked;
-            settings.TwitterPassword = Format.Encode(passwordField.Text);
-            settings.TwitterUsername = usernameField.Text;
+            settings.UseTweetingActivity = twitterActivitySpecificRadioButton.Checked;
         }
 
         #endregion Public methods
@@ -60,7 +65,7 @@ namespace LifeIdea.LazyCure.UI
 
         private void ChangeTwitterControlsEnabled(bool enabled)
         {
-            Control[] twitterControls = new Control[] { usernameLabel, usernameField, passwordLabel, passwordField, whatAddtj};
+            Control[] twitterControls = new Control[] { twitterAuthorizationGroup, whatAddtj};
             foreach (Control control in twitterControls)
                 control.Enabled = enabled;
         }
@@ -106,8 +111,6 @@ namespace LifeIdea.LazyCure.UI
             enableTwitterCheckbox.Checked = settings.TwitterEnabled;
             twitterActivityField.Text = settings.TweetingActivity;
             twitterActivityTheSameRadioButton.Checked = !(twitterActivitySpecificRadioButton.Checked = settings.UseTweetingActivity);
-            usernameField.Text = settings.TwitterUsername;
-            passwordField.Text = Format.Decode(settings.TwitterPassword);
         }
 
         private void SetReminderTime(TimeSpan newTime)
@@ -130,24 +133,11 @@ namespace LifeIdea.LazyCure.UI
         
         #endregion
 
-        #region Options form event handlers
-
-        private void Options_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (e.CloseReason == CloseReason.UserClosing)
-            {
-                Hide();
-                e.Cancel = true;
-            }
-        }
-
-        #endregion
-
         #region Options controls event handlers
 
-        private void cancel_Click(object sender, EventArgs e)
+        private void buttonCancel_Click(object sender, EventArgs e)
         {
-            Hide();
+            this.dialog_buttonCancel_Click(sender, e);
         }
 
         private void editActivateKey_Click(object sender, EventArgs e)
@@ -211,5 +201,10 @@ namespace LifeIdea.LazyCure.UI
         }
 
         #endregion Options controls event handlers
+
+        private void authorizeButton_Click(object sender, EventArgs e)
+        {
+            Dialogs.Oath.ShowDialog(this);
+        }
     }
 }

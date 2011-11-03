@@ -2,16 +2,18 @@ using System;
 using System.Data;
 using System.IO;
 using System.Text;
+using NMock2;
+using NUnit.Framework;
+using Is=NMock2.Is;
 using LifeIdea.LazyCure.Core.Activities;
 using LifeIdea.LazyCure.Core.IO;
 using LifeIdea.LazyCure.Core.Plugins;
 using LifeIdea.LazyCure.Core.Reports;
 using LifeIdea.LazyCure.Core.Tasks;
 using LifeIdea.LazyCure.Core.Time;
-using LifeIdea.LazyCure.Interfaces;
-using NMock2;
-using NUnit.Framework;
-using Is=NMock2.Is;
+using LifeIdea.LazyCure.Shared.Tools;
+using LifeIdea.LazyCure.Shared.Interfaces;
+using LifeIdea.LazyCure.Shared.Structures;
 
 namespace LifeIdea.LazyCure.Core
 {
@@ -53,12 +55,12 @@ namespace LifeIdea.LazyCure.Core
             Stub.On(settings).GetProperty("ReminderTime").Will(Return.Value(TimeSpan.Parse("0:59:48")));
             Stub.On(settings).GetProperty("UseTweetingActivity").Will(Return.Value(true));
             Stub.On(settings).GetProperty("TweetingActivity").Will(Return.Value("tweeting activity"));
-            Stub.On(settings).GetProperty("TwitterUsername").Will(Return.Value("testname"));
-            Stub.On(settings).GetProperty("TwitterPassword").Will(Return.Value(Format.Encode("testpass")));
+            Stub.On(settings).GetProperty("TwitterAccessToken").Will(Return.Value("token"));
+            Stub.On(settings).GetProperty("TwitterAccessTokenSecret").Will(Return.Value("tokenSecret"));
             Stub.On(settings).GetProperty("SwitchTimeLogAtMidnight").Will(Return.Value(false));
             Stub.On(settings).GetProperty("SplitByComma").Will(Return.Value(false));
-            Expect.Once.On(driver.ExternalPoster).SetProperty("Username").To("testname");
-            Expect.Once.On(driver.ExternalPoster).SetProperty("Password").To("testpass");
+
+            Expect.Once.On(driver.ExternalPoster).SetProperty("AccessTokens").To(new TokensPair("token", "tokenSecret"));
 
             driver.ApplySettings(settings);
 
@@ -71,6 +73,22 @@ namespace LifeIdea.LazyCure.Core
             VerifyAllExpectationsHaveBeenMet();
         }
         [Test]
+        public void SetExternalPosterAuthorizationPinUseExternalPoster()
+        {
+            var externalPoster = NewMock<IExternalPoster>();
+            driver.ExternalPoster = externalPoster;
+            Expect.Once.On(externalPoster).Method("SetPin").With("testpin").Will(Return.Value(TokensPair.Empty));
+            driver.SetExternalPosterAuthorizationPin("testpin");
+            VerifyAllExpectationsHaveBeenMet();
+        }
+        [Test]
+        public void SetExternalPosterAuthorizationWithNullExternalPoster()
+        {
+            driver.ExternalPoster = null;
+            var tokenPair = driver.SetExternalPosterAuthorizationPin("nobody-can-recieve-this");
+            Assert.AreEqual(TokensPair.Empty, tokenPair);
+        }
+        [Test]
         public void TweetingActivityIsSetToNullIfUseTweetingActivityIsFalse()
         {
             ISettings settings = NewMock<ISettings>();
@@ -81,8 +99,8 @@ namespace LifeIdea.LazyCure.Core
             Stub.On(settings).GetProperty("ReminderTime").Will(Return.Value(TimeSpan.Parse("0:59:48")));
             Stub.On(settings).GetProperty("UseTweetingActivity").Will(Return.Value(false));
             Stub.On(settings).GetProperty("TweetingActivity").Will(Return.Value("tweeting activity"));
-            Stub.On(settings).GetProperty("TwitterUsername").Will(Return.Value("testname"));
-            Stub.On(settings).GetProperty("TwitterPassword").Will(Return.Value(Format.Encode("testpass")));
+            Stub.On(settings).GetProperty("TwitterAccessToken").Will(Return.Value(string.Empty));
+            Stub.On(settings).GetProperty("TwitterAccessTokenSecret").Will(Return.Value(string.Empty));
             Stub.On(settings).GetProperty("SwitchTimeLogAtMidnight").Will(Return.Value(false));
             Stub.On(settings).GetProperty("SplitByComma").Will(Return.Value(false));
 

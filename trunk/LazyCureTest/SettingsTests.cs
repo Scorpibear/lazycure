@@ -1,7 +1,7 @@
 using NUnit.Framework;
 using System;
 using System.Drawing;
-using LifeIdea.LazyCure.Interfaces;
+using LifeIdea.LazyCure.Shared.Interfaces;
 
 namespace LifeIdea.LazyCure.Properties
 {

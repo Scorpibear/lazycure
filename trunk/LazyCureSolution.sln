@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual C# Express 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LazyCure.Interfaces", "LazyCure.Interfaces\LazyCure.Interfaces.csproj", "{61117267-380A-4D4B-8228-29F4CB193E44}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LazyCure.Shared", "LazyCure.Interfaces\LazyCure.Shared.csproj", "{61117267-380A-4D4B-8228-29F4CB193E44}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LazyCure.UI", "LazyCure.UI\LazyCure.UI.csproj", "{B919C7EB-8DC6-42E3-AD2A-A078A72738F1}"
 EndProject
@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeLanguage", "TimeLanguag
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LazyCure.Core.Tests", "LazyCure.Core.Tests\LazyCure.Core.Tests.csproj", "{9890C162-15FA-4E0D-8FB1-EB1C9EFEC701}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LazyCure.Interfaces.Tests", "LazyCure.Interfaces.Tests\LazyCure.Interfaces.Tests.csproj", "{F5569892-1F53-413F-8AA9-8FB0E3BCC54E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LazyCure.Shared.Tests", "LazyCure.Interfaces.Tests\LazyCure.Shared.Tests.csproj", "{F5569892-1F53-413F-8AA9-8FB0E3BCC54E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LazyCure.UI.Tests", "LazyCure.UI.Tests\LazyCure.UI.Tests.csproj", "{C9D2EE81-6487-4754-8675-A7AC11E2AF61}"
 EndProject
