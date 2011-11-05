@@ -189,7 +189,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LazyCure.Interfaces\LazyCure.Shared.csproj">
+    <ProjectReference Include="..\LazyCure.Shared\LazyCure.Shared.csproj">
       <Project>{61117267-380A-4D4B-8228-29F4CB193E44}</Project>
       <Name>LazyCure.Shared</Name>
     </ProjectReference>
