@@ -28,14 +28,6 @@ namespace LifeIdea.LazyCure.Core.Plugins
             tokens.ConsumerSecret = consumerSecret;
         }
 
-        private void GetRequestTokenAsync()
-        {
-            lock (this)
-            {
-                new Thread(new ThreadStart(GetRequestToken)).Start();
-            }
-        }
-
         private void GetRequestToken()
         {
             this.requestTokenResponse = OAuthUtility.GetRequestToken(consumerKey, consumerSecret, "oob");
@@ -96,15 +88,16 @@ namespace LifeIdea.LazyCure.Core.Plugins
 
         private Uri GetAuthorizationUrl()
         {
+            return (requestTokenResponse != null) ? GetAuthorizationUrl(requestTokenResponse.Token) : null;
+        }
+
+        public static Uri GetAuthorizationUrl(string requestToken)
+        {
             // please, refer to https://dev.twitter.com/docs/api/1/get/oauth/authorize if it stops working
-            Uri uri = null;
-            if (requestTokenResponse != null) {
-                StringBuilder parameters = new StringBuilder("https://twitter.com/oauth/");
-                parameters.Append("authorize");
-                parameters.AppendFormat("?oauth_token={0}", requestTokenResponse.Token);
-                return new Uri(parameters.ToString());
-            }
-            return uri;
+            StringBuilder parameters = new StringBuilder("https://api.twitter.com/oauth/");
+            parameters.Append("authorize");
+            parameters.AppendFormat("?oauth_token={0}", requestToken);
+            return new Uri(parameters.ToString());
         }
 
         public void Post()
