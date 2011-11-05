@@ -75,7 +75,7 @@ namespace LifeIdea.LazyCure.Core
         [Test]
         public void SetExternalPosterAuthorizationPinUseExternalPoster()
         {
-            var externalPoster = NewMock<IExternalPoster>();
+            IExternalPoster externalPoster = NewMock<IExternalPoster>();
             driver.ExternalPoster = externalPoster;
             Expect.Once.On(externalPoster).Method("SetPin").With("testpin").Will(Return.Value(TokensPair.Empty));
             driver.SetExternalPosterAuthorizationPin("testpin");
@@ -85,7 +85,7 @@ namespace LifeIdea.LazyCure.Core
         public void SetExternalPosterAuthorizationWithNullExternalPoster()
         {
             driver.ExternalPoster = null;
-            var tokenPair = driver.SetExternalPosterAuthorizationPin("nobody-can-recieve-this");
+            TokensPair tokenPair = driver.SetExternalPosterAuthorizationPin("nobody-can-recieve-this");
             Assert.AreEqual(TokensPair.Empty, tokenPair);
         }
         [Test]
