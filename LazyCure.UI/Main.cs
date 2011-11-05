@@ -19,12 +19,10 @@ namespace LifeIdea.LazyCure.UI
     /// </summary>
     public partial class Main : MainBase, IMainForm, IDisposable
     {
-        private readonly string DefaultActivity = Constants.DefaultActivity;
         private const int HotKeyMessageID = 0x0312;
         private const int HotKeyToActivateID = 1;
         private const int HotKeyToSwitchID = 2;
         private readonly ILazyCureDriver lazyCure;
-        private readonly string nextActivity = Constants.DefaultActivity;
         private HotKeyManager hotKeyManager = new HotKeyManager();
         private ToolStripSeparator topSeparatorForActivities = new ToolStripSeparator();
         private Dictionary<string, ToolStripMenuItem> activitiesMenuItems = new Dictionary<string, ToolStripMenuItem>();

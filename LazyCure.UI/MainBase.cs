@@ -11,6 +11,9 @@ namespace LifeIdea.LazyCure.UI
 {
     public class MainBase: Form
     {
+        protected readonly string DefaultActivity = Constants.DefaultActivity;
+        protected readonly string nextActivity = Constants.DefaultActivity;
+
         public void Display()
         {
             Show();
