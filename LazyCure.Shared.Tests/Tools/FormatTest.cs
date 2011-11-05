@@ -66,5 +66,15 @@ namespace LifeIdea.LazyCure.Shared.Tools
         {
             Assert.AreEqual("000", Format.MaskedText(TimeSpan.Zero));
         }
+        [Test]
+        public void LeadingHourZeroInFormatTimeIsSkipped()
+        {
+            Assert.AreEqual("6:01:01", Format.Time(DateTime.Parse("06:01:01")));
+        }
+        [Test]
+        public void TimeSpanCouldBeFormattedToTime()
+        {
+            Assert.AreEqual(DateTime.Parse("13:59:00"), Format.Time(TimeSpan.Parse("13:59:00")));
+        }
     }
 }
