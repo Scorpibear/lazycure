@@ -1,8 +1,7 @@
 using System;
 using NUnit.Framework;
-using LifeIdea.LazyCure.Shared.Tools;
 
-namespace LifeIdea.LazyCure.Shared
+namespace LifeIdea.LazyCure.Shared.Tools
 {
     [TestFixture]
     public class FormatTest

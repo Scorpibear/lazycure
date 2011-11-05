@@ -2,9 +2,8 @@ using System;
 using System.IO;
 using System.Text;
 using NUnit.Framework;
-using LifeIdea.LazyCure.Shared.Tools;
 
-namespace LifeIdea.LazyCure.Shared
+namespace LifeIdea.LazyCure.Shared.Tools
 {
     [TestFixture]
     public class LogTest
