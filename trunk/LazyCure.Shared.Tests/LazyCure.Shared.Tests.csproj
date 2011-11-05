@@ -9,7 +9,7 @@
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>LifeIdea.LazyCure.Shared</RootNamespace>
-    <AssemblyName>LazyCure.Interfaces.Tests</AssemblyName>
+    <AssemblyName>LazyCure.Shared.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
@@ -57,7 +57,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LazyCure.Interfaces\LazyCure.Shared.csproj">
+    <ProjectReference Include="..\LazyCure.Shared\LazyCure.Shared.csproj">
       <Project>{61117267-380A-4D4B-8228-29F4CB193E44}</Project>
       <Name>LazyCure.Shared</Name>
     </ProjectReference>
