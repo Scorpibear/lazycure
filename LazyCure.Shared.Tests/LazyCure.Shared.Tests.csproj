@@ -51,8 +51,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormatTest.cs" />
-    <Compile Include="LogTest.cs" />
+    <Compile Include="Tools\FormatTest.cs" />
+    <Compile Include="Tools\LogTest.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
