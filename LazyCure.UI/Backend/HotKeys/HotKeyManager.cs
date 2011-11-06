@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using LifeIdea.LazyCure.Shared.Tools;
 
-namespace LifeIdea.LazyCure.UI.Backend
+namespace LifeIdea.LazyCure.UI.Backend.HotKeys
 {
     public class HotKeyManager
     {

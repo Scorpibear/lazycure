@@ -67,9 +67,10 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Backend\Dialogs.cs" />
-    <Compile Include="Backend\HotKey.cs" />
-    <Compile Include="Backend\HotKeyManager.cs" />
-    <Compile Include="Backend\IHotKeyCodeProvider.cs" />
+    <Compile Include="Backend\HotKeys\HotKey.cs" />
+    <Compile Include="Backend\HotKeys\HotKeyManager.cs" />
+    <Compile Include="Backend\HotKeys\HotKeys.cs" />
+    <Compile Include="Backend\HotKeys\IHotKeyCodeProvider.cs" />
     <Compile Include="Backend\IMainForm.cs" />
     <Compile Include="Backend\ISummaryView.cs" />
     <Compile Include="Backend\ITimeLogView.cs" />

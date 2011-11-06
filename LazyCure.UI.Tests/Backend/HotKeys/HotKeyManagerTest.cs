@@ -7,7 +7,7 @@ using LifeIdea.LazyCure.Shared.Tools;
 using NUnit.Framework;
 using NMock2;
 
-namespace LifeIdea.LazyCure.UI.Backend
+namespace LifeIdea.LazyCure.UI.Backend.HotKeys
 {
     [TestFixture]
     public class HotKeyManagerTest:Mockery
