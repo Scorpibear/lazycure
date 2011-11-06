@@ -66,6 +66,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NotifierTest.cs" />
     <Compile Include="ProgramTests.cs" />
     <Compile Include="SettingsTests.cs" />
   </ItemGroup>

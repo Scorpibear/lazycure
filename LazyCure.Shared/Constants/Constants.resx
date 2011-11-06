@@ -123,6 +123,9 @@
   <data name="Activity" xml:space="preserve">
     <value>Activity</value>
   </data>
+  <data name="AskToFixAndExcuse" xml:space="preserve">
+    <value>Please, fix the error and start LazyCure again. Sorry for inconveniences.</value>
+  </data>
   <data name="AssemblyDescription" xml:space="preserve">
     <value>to be redefined</value>
   </data>
@@ -171,6 +174,9 @@
   <data name="LanguageChange" xml:space="preserve">
     <value>Language change</value>
   </data>
+  <data name="LazyCureError" xml:space="preserve">
+    <value>LazyCure error</value>
+  </data>
   <data name="LazyCureIsShuttingDown" xml:space="preserve">
     <value>LazyCure is shutting down</value>
   </data>
@@ -185,6 +191,15 @@
   </data>
   <data name="SavingError" xml:space="preserve">
     <value>Saving error</value>
+  </data>
+  <data name="SettingsReadError" xml:space="preserve">
+    <value>Error while reading application settings</value>
+  </data>
+  <data name="TimeLogCouldNotBeLoaded" xml:space="preserve">
+    <value>TimeLog could not be loaded</value>
+  </data>
+  <data name="TimeLogError" xml:space="preserve">
+    <value>TimeLog error</value>
   </data>
   <data name="TimeLogHasNotBeenSaved" xml:space="preserve">
     <value>Time log has not been saved</value>

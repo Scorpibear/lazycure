@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using NUnit.Framework;
 
 namespace LifeIdea.LazyCure.Shared.Tools
@@ -6,6 +7,11 @@ namespace LifeIdea.LazyCure.Shared.Tools
     [TestFixture]
     public class FormatTest
     {
+        [Test]
+        public void ApplyTimePatternsSetsFullHourFormat()
+        {
+            Assert.AreEqual("H:mm:ss", Format.ApplyTimePatterns(new CultureInfo("en")).DateTimeFormat.LongTimePattern);
+        }
         [Test]
         public void DurationToString()
         {

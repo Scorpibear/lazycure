@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using LifeIdea.LazyCure.Core;
 using LifeIdea.LazyCure.Core.IO;
 using LifeIdea.LazyCure.Properties;
+using LifeIdea.LazyCure.Shared.Constants;
 using LifeIdea.LazyCure.Shared.Interfaces;
 using LifeIdea.LazyCure.Shared.Tools;
 using LifeIdea.LazyCure.UI;
@@ -17,13 +18,15 @@ namespace LifeIdea.LazyCure
     /// </summary>
     public class Program
     {
-        private const string askToFix = "\r\n\r\nPlease, fix the error and start LazyCure again. Sorry for inconveniences.";
+        private const string logFilename = "LazyCure.log";
+        private static Notifier notifier = new Notifier();
+
         [STAThread]
         static void Main()
         {
             try
             {
-                Log.Writer = GetLogWriter("LazyCure.log");
+                Log.Writer = GetLogWriter(logFilename);
                 SetApplicationProperties();
                 ISettings settings = GetSettings();
                 ChangeLanguage(settings.Language);
@@ -35,10 +38,7 @@ namespace LifeIdea.LazyCure
                 }
                 catch(Exception ex)
                 {
-                    MessageBox.Show(
-                        "TimeLog could not be loaded, because of the following error:\r\n" + ex.Message + askToFix,
-                        "TimeLog error");
-                    Log.Exception(ex);
+                    notifier.DisplayError(ex, Constants.TimeLogError, Constants.TimeLogCouldNotBeLoaded);
                     return;
                 }
                 try
@@ -47,15 +47,14 @@ namespace LifeIdea.LazyCure
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, "LazyCure error");
-                    Log.Exception(ex);
+                    notifier.DisplayError(ex, Constants.LazyCureError);
                 }
                 driver.Save();
                 Log.Close();
             }
             catch(Exception ex)
             {
-                MessageBox.Show(ex.Message+askToFix, "LazyCure error");
+                notifier.DisplayError(ex, Constants.LazyCureError);
             }
         }
 
@@ -83,9 +82,7 @@ namespace LifeIdea.LazyCure
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message+askToFix, "Error while reading application settings", MessageBoxButtons.OK,
-                                MessageBoxIcon.Warning);
-                Log.Exception(ex);
+                notifier.DisplayError(ex, Constants.SettingsReadError);
             }
             return settings;
         }
@@ -93,8 +90,7 @@ namespace LifeIdea.LazyCure
         private static void SetApplicationProperties()
         {
             CultureInfo info = new CultureInfo(Application.CurrentCulture.LCID);
-            info.DateTimeFormat.LongTimePattern = "H:mm:ss";
-            info.DateTimeFormat.ShortTimePattern = "H:mm";
+            Format.ApplyTimePatterns(info);
             Application.CurrentCulture = info;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

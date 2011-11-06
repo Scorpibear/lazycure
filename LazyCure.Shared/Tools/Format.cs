@@ -1,11 +1,30 @@
 using System;
+using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
 
 namespace LifeIdea.LazyCure.Shared.Tools
 {
+    /// <summary>
+    /// Format values
+    /// </summary>
     public class Format
     {
+        public const string LongTimePattern = "H:mm:ss";
+        public const string ShortTimePattern = "H:mm";
+
+        /// <summary>
+        /// Apply time patterns to provided culture info
+        /// </summary>
+        /// <param name="info">CultureInfo object</param>
+        /// <returns>updated CultureInfo</returns>
+        public static CultureInfo ApplyTimePatterns(CultureInfo info)
+        {
+            info.DateTimeFormat.LongTimePattern = Format.LongTimePattern;
+            info.DateTimeFormat.ShortTimePattern = Format.ShortTimePattern;
+            return info;
+        }
+
         /// <summary>
         /// Returns string representing timeSpan in format [dd:]hh:mm:ss
         /// </summary>
@@ -39,7 +58,7 @@ namespace LifeIdea.LazyCure.Shared.Tools
         }
         public static string Time(DateTime dateTime)
         {
-            return dateTime.ToString("H:mm:ss");
+            return dateTime.ToString(LongTimePattern);
         }
         public static TimeSpan Duration(object obj)
         {
