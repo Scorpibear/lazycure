@@ -123,6 +123,9 @@
   <data name="Activity" xml:space="preserve">
     <value>Активность</value>
   </data>
+  <data name="AskToFixAndExcuse" xml:space="preserve">
+    <value>Пожалуйста, устраните ошибку и перезапустите LazyCure. Извините за небольшие неудобства.</value>
+  </data>
   <data name="AssemblyDescription" xml:space="preserve">
     <value>Удобный инструмент хронометража, анализа потраченного времени, подсчёта и улучшения личной эффективности.
 
@@ -203,6 +206,9 @@
   <data name="LanguageChange" xml:space="preserve">
     <value>Смена языка</value>
   </data>
+  <data name="LazyCureError" xml:space="preserve">
+    <value>Ошибка LazyCure</value>
+  </data>
   <data name="LazyCureIsShuttingDown" xml:space="preserve">
     <value>Выход из LazyCure</value>
   </data>
@@ -217,6 +223,15 @@
   </data>
   <data name="SavingError" xml:space="preserve">
     <value>Ошибка сохранения</value>
+  </data>
+  <data name="SettingsReadError" xml:space="preserve">
+    <value>Ошибка чтения настроек приложения</value>
+  </data>
+  <data name="TimeLogCouldNotBeLoaded" xml:space="preserve">
+    <value>Не получается загрузить лог времени</value>
+  </data>
+  <data name="TimeLogError" xml:space="preserve">
+    <value>Ошибка лога времени</value>
   </data>
   <data name="TimeLogHasNotBeenSaved" xml:space="preserve">
     <value>Лог времени не сохранился</value>

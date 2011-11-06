@@ -79,6 +79,15 @@ namespace LifeIdea.LazyCure.Shared.Constants {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please, fix the error and start LazyCure again. Sorry for inconveniences..
+        /// </summary>
+        public static string AskToFixAndExcuse {
+            get {
+                return ResourceManager.GetString("AskToFixAndExcuse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to to be redefined.
         /// </summary>
         public static string AssemblyDescription {
@@ -223,6 +232,15 @@ namespace LifeIdea.LazyCure.Shared.Constants {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to LazyCure error.
+        /// </summary>
+        public static string LazyCureError {
+            get {
+                return ResourceManager.GetString("LazyCureError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to LazyCure is shutting down.
         /// </summary>
         public static string LazyCureIsShuttingDown {
@@ -264,6 +282,33 @@ namespace LifeIdea.LazyCure.Shared.Constants {
         public static string SavingError {
             get {
                 return ResourceManager.GetString("SavingError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error while reading application settings.
+        /// </summary>
+        public static string SettingsReadError {
+            get {
+                return ResourceManager.GetString("SettingsReadError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TimeLog could not be loaded.
+        /// </summary>
+        public static string TimeLogCouldNotBeLoaded {
+            get {
+                return ResourceManager.GetString("TimeLogCouldNotBeLoaded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TimeLog error.
+        /// </summary>
+        public static string TimeLogError {
+            get {
+                return ResourceManager.GetString("TimeLogError", resourceCulture);
             }
         }
         
