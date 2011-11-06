@@ -1,7 +1,7 @@
 using NUnit.Framework;
 using System.Windows.Forms;
 
-namespace LifeIdea.LazyCure.UI.Backend
+namespace LifeIdea.LazyCure.UI.Backend.HotKeys
 {
     [TestFixture]
     public class HotKeyTest

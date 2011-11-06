@@ -2,16 +2,17 @@ using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Collections.Generic;
+using Microsoft.Win32;
 using LifeIdea.LazyCure.Shared.Constants;
 using LifeIdea.LazyCure.Shared.Interfaces;
 using LifeIdea.LazyCure.Shared.Tools;
 using LifeIdea.LazyCure.UI.Properties;
-using System.Collections.Generic;
-using Microsoft.Win32;
 
 namespace LifeIdea.LazyCure.UI
 {
     using Backend;
+    using Backend.HotKeys;
     using System.IO;
 
     /// <summary>

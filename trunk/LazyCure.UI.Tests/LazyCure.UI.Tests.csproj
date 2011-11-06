@@ -53,9 +53,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Backend\HotKeyManagerTest.cs" />
-    <Compile Include="Backend\HotKeyTest.cs" />
+    <Compile Include="Backend\HotKeys\HotKeyManagerTest.cs" />
+    <Compile Include="Backend\HotKeys\HotKeyTest.cs" />
     <Compile Include="Backend\TreeBinderTests.cs" />
+    <Compile Include="Backend\HotKeys\HotKeysTest.cs" />
     <Compile Include="MainBaseTests.cs" />
     <Compile Include="OptionsTests.cs" />
     <Compile Include="Program.cs" />
