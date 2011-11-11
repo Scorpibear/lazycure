@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using LifeIdea.LazyCure.Core.Activities;
 using LifeIdea.LazyCure.Core.IO;
+using LifeIdea.LazyCure.Core.Localization;
 using LifeIdea.LazyCure.Core.Plugins;
 using LifeIdea.LazyCure.Core.Reports;
 using LifeIdea.LazyCure.Core.Tasks;
@@ -22,6 +23,7 @@ namespace LifeIdea.LazyCure.Core
         private IEfficiencyCalculator efficiencyCalculator;
         private IFileManager fileManager = new FileManager();
         private IActivitiesHistory history;
+        private ILanguageSwitcher languageSwitcher;
         private ITaskCollection taskCollection = Tasks.TaskCollection.Default;
         private ITimeManager timeManager;
         private ITasksSummary tasksSummary;
@@ -49,6 +51,11 @@ namespace LifeIdea.LazyCure.Core
         {
             get { return history; }
             set { history = value; }
+        }
+
+        public ILanguageSwitcher LanguageSwitcher
+        {
+            get { return languageSwitcher; }
         }
 
         public bool SaveAfterDone = false;
@@ -97,27 +104,24 @@ namespace LifeIdea.LazyCure.Core
 
         #endregion Properties
 
-        public Driver(ITimeSystem timeSystem)
+        #region Constructors
+
+        public Driver(ITimeSystem timeSystem, ISettings settings)
         {
+
+            languageSwitcher = new LanguageSwitcher(settings);
             timeManager = new TimeManager(timeSystem, this);
             activitiesSummary = new ActivitiesSummary(TimeManager.TimeLog, TaskCollection);
             tasksSummary = new TasksSummary(activitiesSummary.Data, TaskCollection);
             history = new ActivitiesHistory();
             workingTime = new WorkingTime(TimeManager.TimeLog, TaskCollection);
             efficiencyCalculator = new EfficiencyCalculator(workingTime);
+            ApplySettings(settings);
         }
 
-        public Driver() : this(new NaturalTimeSystem()) { }
+        public Driver(ISettings settings) : this(new NaturalTimeSystem(), settings) { }
 
-        public bool Load()
-        {
-            ITaskCollection loadedTasks = fileManager.GetTasks();
-            if (loadedTasks != null)
-                TaskCollection = loadedTasks;
-            fileManager.LoadHistory(History);
-            LoadTimeLog(TimeManager.TimeSystem.Now);
-            return true;
-        }
+        #endregion Constructors
 
         #region ILazyCureDriver Members
 
@@ -289,5 +293,19 @@ namespace LifeIdea.LazyCure.Core
         }
 
         #endregion
+
+        #region Private Members
+
+        public bool Load()
+        {
+            ITaskCollection loadedTasks = fileManager.GetTasks();
+            if (loadedTasks != null)
+                TaskCollection = loadedTasks;
+            fileManager.LoadHistory(History);
+            LoadTimeLog(TimeManager.TimeSystem.Now);
+            return true;
+        }
+
+        #endregion Private Members
     }
 }

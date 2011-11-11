@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\ILanguageSettingsProvider.cs" />
     <Compile Include="Structures\TokensPair.cs" />
     <Compile Include="Tools\Format.cs" />
     <Compile Include="Interfaces\IActivity.cs" />
