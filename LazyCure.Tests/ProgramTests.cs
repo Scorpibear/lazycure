@@ -1,4 +1,5 @@
 using System.Globalization;
+using System.IO;
 using System.Threading;
 using NUnit.Framework;
 
@@ -11,20 +12,18 @@ namespace LifeIdea.LazyCure
         {
             Thread.CurrentThread.SetApartmentState(System.Threading.ApartmentState.STA);
         }
+        TextWriter writer;
         [Test]
-        public void ChangeLanguage()
+        public void GetLogWriterCreatesWriter()
         {
-            Thread.CurrentThread.CurrentCulture = new CultureInfo("fr");
-            Program.ChangeLanguage("ru");
-            Assert.AreEqual("ru", System.Threading.Thread.CurrentThread.CurrentCulture.Name);
+            writer = Program.GetLogWriter("test.txt");
+            Assert.IsNotNull(writer);
         }
-        [Test]
-        public void ChangeLanguageWithUnsupportedCultureDoNotSwitchTheCulture()
+        [TearDown]
+        public void TearDown()
         {
-            Thread.CurrentThread.CurrentCulture = new CultureInfo("fr");
-            Program.ChangeLanguage("unsupported");
-            Assert.AreEqual("fr", System.Threading.Thread.CurrentThread.CurrentCulture.Name);
+            if (writer != null)
+                writer.Close();
         }
-        
     }
 }

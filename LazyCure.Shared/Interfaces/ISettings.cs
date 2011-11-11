@@ -8,15 +8,13 @@ namespace LifeIdea.LazyCure.Shared.Interfaces
         public const bool ShowsMainWindow = false;
     }
 
-    public interface ISettings
+    public interface ISettings: ILanguageSettingsProvider
     {
         int ActivitiesNumberInTray { get; set; }
 
         string HotKeyToActivate { get; set; }
 
         string HotKeyToSwitch { get; set; }
-
-        string Language { get; set; }
 
         bool LeftClickOnTray { get; set; }
 

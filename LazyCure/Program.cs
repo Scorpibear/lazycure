@@ -29,9 +29,7 @@ namespace LifeIdea.LazyCure
                 Log.Writer = GetLogWriter(logFilename);
                 SetApplicationProperties();
                 ISettings settings = GetSettings();
-                ChangeLanguage(settings.Language);
-                Driver driver = new Driver();
-                driver.ApplySettings(settings);
+                Driver driver = new Driver(settings);
                 try
                 {
                     driver.Load();
@@ -58,21 +56,6 @@ namespace LifeIdea.LazyCure
             }
         }
 
-        public static void ChangeLanguage(string lang)
-        {
-            if ((lang != null) && (Thread.CurrentThread.CurrentUICulture.Name != lang))
-            {
-                CultureInfo cultureInfo = null;
-                try
-                {
-                    cultureInfo = new CultureInfo(lang);
-                }
-                catch { }
-                if (cultureInfo != null)
-                    Thread.CurrentThread.CurrentUICulture = cultureInfo;
-            }
-        }
-
         private static ISettings GetSettings()
         {
             ISettings settings = null;
@@ -96,7 +79,7 @@ namespace LifeIdea.LazyCure
             Application.SetCompatibleTextRenderingDefault(false);
         }
 
-        private static TextWriter GetLogWriter(string logPath)
+        public static TextWriter GetLogWriter(string logPath)
         {
             TextWriter logWriter =
                 new StreamWriter(

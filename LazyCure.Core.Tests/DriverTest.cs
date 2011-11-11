@@ -33,7 +33,7 @@ namespace LifeIdea.LazyCure.Core
         [SetUp]
         public void SetUp()
         {
-            driver = new Driver();
+            driver = new Driver(null);
             logStringBuilder = new StringBuilder();
             Log.Writer = new StringWriter(logStringBuilder);
         }
@@ -203,7 +203,7 @@ namespace LifeIdea.LazyCure.Core
         {
             driver.TaskCollection.Add(new Task("new task"));
             driver.Save();
-            driver = new Driver();
+            driver = new Driver(null);
             driver.Load();
             Assert.IsTrue(driver.TaskCollection.Contains("new task"));
         }
@@ -363,7 +363,7 @@ namespace LifeIdea.LazyCure.Core
         {
             driver.FinishActivity("saved", "second");
             driver.Save();
-            driver = new Driver();
+            driver = new Driver(null);
             driver.Load();
             Assert.Contains("saved", driver.LatestActivities);
         }
