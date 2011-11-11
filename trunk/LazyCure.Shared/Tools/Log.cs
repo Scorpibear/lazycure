@@ -20,9 +20,10 @@ namespace LifeIdea.LazyCure.Shared.Tools
         public static void Error(string text)
         {
             LastError = text;
+            string fullText = AppendTimeStamp(text);
             try{
                 if(Writer!=null)
-                    Writer.WriteLine(AppendTimeStamp(text));
+                    Writer.WriteLine(fullText);
             }catch(Exception)
             {
             }
