@@ -1,3 +1,9 @@
+LazyCure 4.0
+* New: Support of Russian language
+* New: Possibility to switch between English/Russian
+* Improved: Twitter authentification method has been changed to safer - password and username are not stored any more.
+* Fixed: Post to twitter
+
 LazyCure 3.8
 * New: customizable hot-key for switching the current activity, Ctrl+Alt+Shift+F12 by default.
 
