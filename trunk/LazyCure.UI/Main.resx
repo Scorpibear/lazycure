@@ -483,6 +483,12 @@
   <data name="miSubmit.Text" xml:space="preserve">
     <value>Submit a &amp;bug / feature request</value>
   </data>
+  <data name="miDonate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>235, 22</value>
+  </data>
+  <data name="miDonate.Text" xml:space="preserve">
+    <value>Support by &amp;donation</value>
+  </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
     <value>232, 6</value>
   </data>
@@ -1076,6 +1082,12 @@
   <data name="&gt;&gt;miSubmit.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;miDonate.Name" xml:space="preserve">
+    <value>miDonate</value>
+  </data>
+  <data name="&gt;&gt;miDonate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;toolStripSeparator2.Name" xml:space="preserve">
     <value>toolStripSeparator2</value>
   </data>
@@ -1128,6 +1140,6 @@
     <value>Main</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>LifeIdea.LazyCure.UI.MainBase, LazyCure.UI, Version=3.8.1.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LifeIdea.LazyCure.UI.MainBase, LazyCure.UI, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

@@ -141,6 +141,9 @@
   <data name="DeleteTaskConfirmationMessage" xml:space="preserve">
     <value>Do you really want to delete selected task '{0}'?</value>
   </data>
+  <data name="DonateLink" xml:space="preserve">
+    <value>http://lazycure.com/donate-to-lazycure</value>
+  </data>
   <data name="DoYouWantToLogCurrentActivityBeforeClosure" xml:space="preserve">
     <value>Do you want to log current activity before LazyCure will be closed?</value>
   </data>

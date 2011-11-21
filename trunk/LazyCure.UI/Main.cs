@@ -309,6 +309,11 @@ namespace LifeIdea.LazyCure.UI
             Display();
         }
 
+        private void miDonate_Click(object sender, EventArgs e)
+        {
+            Process.Start(Constants.DonateLink);
+        }
+
         private void miExit_Click(object sender, EventArgs e)
         {
             Application.Exit();

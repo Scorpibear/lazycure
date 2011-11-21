@@ -60,6 +60,7 @@ namespace LifeIdea.LazyCure.UI
             this.miOnline = new System.Windows.Forms.ToolStripMenuItem();
             this.miSubscribe = new System.Windows.Forms.ToolStripMenuItem();
             this.miSubmit = new System.Windows.Forms.ToolStripMenuItem();
+            this.miDonate = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.miAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.timer = new System.Windows.Forms.Timer(this.components);
@@ -279,6 +280,7 @@ namespace LifeIdea.LazyCure.UI
             this.miOnline,
             this.miSubscribe,
             this.miSubmit,
+            this.miDonate,
             this.toolStripSeparator2,
             this.miAbout});
             this.miHelp.Name = "miHelp";
@@ -316,6 +318,12 @@ namespace LifeIdea.LazyCure.UI
             resources.ApplyResources(this.miSubmit, "miSubmit");
             this.miSubmit.Tag = "http://lazycure.com/submit/";
             this.miSubmit.Click += new System.EventHandler(this.Link_Click);
+            // 
+            // miDonate
+            // 
+            this.miDonate.Name = "miDonate";
+            resources.ApplyResources(this.miDonate, "miDonate");
+            this.miDonate.Click += new System.EventHandler(this.miDonate_Click);
             // 
             // toolStripSeparator2
             // 
@@ -444,5 +452,6 @@ namespace LifeIdea.LazyCure.UI
         private System.Windows.Forms.ToolStripMenuItem miHowToUse;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.CheckBox postToTwitter;
+        private System.Windows.Forms.ToolStripMenuItem miDonate;
     }
 }

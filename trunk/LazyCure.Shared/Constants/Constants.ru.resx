@@ -173,6 +173,9 @@
   <data name="DeleteTaskConfirmationMessage" xml:space="preserve">
     <value>Вы действительно хотите удалить задачу '{0}'?</value>
   </data>
+  <data name="DonateLink" xml:space="preserve">
+    <value>http://lifeidea.org/thanks</value>
+  </data>
   <data name="DoYouWantToLogCurrentActivityBeforeClosure" xml:space="preserve">
     <value>Хотите указать и сохранить последнюю активность прежде чем выйти из LazyCure?</value>
   </data>
