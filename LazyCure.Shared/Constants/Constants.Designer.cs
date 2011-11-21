@@ -133,6 +133,15 @@ namespace LifeIdea.LazyCure.Shared.Constants {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to http://lazycure.com/donate-to-lazycure.
+        /// </summary>
+        public static string DonateLink {
+            get {
+                return ResourceManager.GetString("DonateLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Do you want to log current activity before LazyCure will be closed?.
         /// </summary>
         public static string DoYouWantToLogCurrentActivityBeforeClosure {
