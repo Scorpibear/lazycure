@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("LazyCure.Interfaces")]
-[assembly: AssemblyDescription("LazyCure interfaces assembly")]
+[assembly: AssemblyTitle("LazyCure.Shared")]
+[assembly: AssemblyDescription("LazyCure shared assembly")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("LifeIdea.org")]
-[assembly: AssemblyProduct("LazyCure.Interfaces")]
+[assembly: AssemblyProduct("LazyCure.Shared")]
 [assembly: AssemblyCopyright("LifeIdea.org © 2006-2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -30,5 +30,5 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("3.8.1.0")]
-[assembly: AssemblyFileVersion("3.8.1.0")]
+[assembly: AssemblyVersion("4.0.0.0")]
+[assembly: AssemblyFileVersion("4.0.0.0")]
