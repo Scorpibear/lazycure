@@ -121,12 +121,6 @@
   <data name="copyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>149, 22</value>
   </data>
-  <data name="timeLogView.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="&gt;&gt;Activity.Name" xml:space="preserve">
-    <value>Activity</value>
-  </data>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
   </data>
@@ -303,11 +297,14 @@
         AAA=
 </value>
   </data>
+  <data name="Duration.HeaderText" xml:space="preserve">
+    <value>Duration</value>
+  </data>
   <data name="&gt;&gt;timeLogView.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="Start.HeaderText" xml:space="preserve">
-    <value>Start</value>
+  <data name="&gt;&gt;Activity.Name" xml:space="preserve">
+    <value>Activity</value>
   </data>
   <data name="&gt;&gt;timeLogView.Name" xml:space="preserve">
     <value>timeLogView</value>
@@ -361,11 +358,17 @@
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>397, 343</value>
   </data>
-  <data name="Duration.HeaderText" xml:space="preserve">
-    <value>Duration</value>
+  <data name="Start.HeaderText" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>Manual</value>
   </data>
   <data name="timeLogView.Size" type="System.Drawing.Size, System.Drawing">
     <value>397, 343</value>
+  </data>
+  <data name="&gt;&gt;copyToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="copyToolStripMenuItem.ShortcutKeyDisplayString" xml:space="preserve">
     <value>Ctrl+C</value>
@@ -385,23 +388,20 @@
   <data name="Duration.Width" type="System.Int32, mscorlib">
     <value>50</value>
   </data>
-  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
-    <value>Manual</value>
+  <data name="Activity.HeaderText" xml:space="preserve">
+    <value>Activity</value>
   </data>
   <data name="&gt;&gt;Start.Name" xml:space="preserve">
     <value>Start</value>
   </data>
-  <data name="&gt;&gt;copyToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="timeLogView.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
   </data>
   <data name="Start.Width" type="System.Int32, mscorlib">
     <value>50</value>
   </data>
-  <data name="Activity.HeaderText" xml:space="preserve">
-    <value>Activity</value>
-  </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>LifeIdea.LazyCure.UI.View, LazyCure.UI, Version=3.8.1.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LifeIdea.LazyCure.UI.View, LazyCure.UI, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>TimeLogEditor</value>
@@ -411,6 +411,9 @@
   </data>
   <metadata name="End.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
+  </metadata>
+  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>uk</value>
   </metadata>
   <metadata name="Start.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
