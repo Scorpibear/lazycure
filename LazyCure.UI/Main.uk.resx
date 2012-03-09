@@ -117,18 +117,36 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="activityStartTime.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 17</value>
+  </data>
   <data name="activityStartTime.ToolTipText" xml:space="preserve">
     <value>Час початку поточної діяльності</value>
+  </data>
+  <data name="activityDuration.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 17</value>
   </data>
   <data name="activityDuration.ToolTipText" xml:space="preserve">
     <value>Тривалість поточної діяльності</value>
   </data>
+  <data name="currentTime.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 17</value>
+  </data>
   <data name="currentTime.ToolTipText" xml:space="preserve">
     <value>Поточний час</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="statusBar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>303, 22</value>
+  </data>
+  <data name="statusBar.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="toolStripContainer1.BottomToolStripPanel.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="postToTwitter.Location" type="System.Drawing.Point, System.Drawing">
-    <value>81, 43</value>
+    <value>95, 41</value>
   </data>
   <data name="postToTwitter.Size" type="System.Drawing.Size, System.Drawing">
     <value>122, 17</value>
@@ -136,11 +154,20 @@
   <data name="postToTwitter.Text" xml:space="preserve">
     <value>запостити в Twitter</value>
   </data>
+  <data name="postToTwitter.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="currentActivity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>215, 21</value>
+  </data>
   <data name="currentActivity.ToolTip" xml:space="preserve">
     <value>Введи короткий опис того, що ти зараз робиш</value>
   </data>
   <data name="switchButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 11.25pt</value>
+  </data>
+  <data name="switchButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>223, 10</value>
   </data>
   <data name="switchButton.Text" xml:space="preserve">
     <value>Готово!</value>
@@ -148,128 +175,176 @@
   <data name="switchButton.ToolTip" xml:space="preserve">
     <value>Натискайте кнопку кожен раз, коли завершуєте поточну діяльність і починаєте іншу</value>
   </data>
+  <data name="nowYou.Size" type="System.Drawing.Size, System.Drawing">
+    <value>297, 60</value>
+  </data>
   <data name="nowYou.Text" xml:space="preserve">
     <value>Зараз я ...</value>
   </data>
+  <data name="nowYou.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="toolStripContainer1.ContentPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>303, 66</value>
+  </data>
+  <data name="toolStripContainer1.ContentPanel.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="toolStripContainer1.LeftToolStripPanel.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="toolStripContainer1.RightToolStripPanel.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="toolStripContainer1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>303, 112</value>
+  </data>
+  <data name="toolStripContainer1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="miOpen.Size" type="System.Drawing.Size, System.Drawing">
-    <value>182, 22</value>
+    <value>174, 22</value>
   </data>
   <data name="miOpen.Text" xml:space="preserve">
     <value>&amp;Відкрити...</value>
   </data>
   <data name="miSave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>182, 22</value>
+    <value>174, 22</value>
   </data>
   <data name="miSave.Text" xml:space="preserve">
     <value>&amp;Зберегти</value>
   </data>
   <data name="miSaveAs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>182, 22</value>
+    <value>174, 22</value>
   </data>
   <data name="miSaveAs.Text" xml:space="preserve">
     <value>Зберегти &amp;як...</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>179, 6</value>
+    <value>171, 6</value>
   </data>
   <data name="miExit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>182, 22</value>
+    <value>174, 22</value>
   </data>
   <data name="miExit.Text" xml:space="preserve">
     <value>Ви&amp;хід</value>
   </data>
   <data name="miFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 20</value>
+    <value>48, 20</value>
   </data>
   <data name="miFile.Text" xml:space="preserve">
     <value>&amp;Файл</value>
   </data>
   <data name="miActivityDetails.Size" type="System.Drawing.Size, System.Drawing">
-    <value>183, 22</value>
+    <value>177, 22</value>
   </data>
   <data name="miActivityDetails.Text" xml:space="preserve">
     <value>&amp;Час діяльності</value>
   </data>
   <data name="miTimeLog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>183, 22</value>
+    <value>177, 22</value>
   </data>
   <data name="miTimeLog.Text" xml:space="preserve">
     <value>&amp;Лог часу</value>
   </data>
   <data name="miSummary.Size" type="System.Drawing.Size, System.Drawing">
-    <value>183, 22</value>
+    <value>177, 22</value>
   </data>
   <data name="miSummary.Text" xml:space="preserve">
     <value>&amp;Статистика</value>
   </data>
   <data name="miTasks.Size" type="System.Drawing.Size, System.Drawing">
-    <value>183, 22</value>
+    <value>177, 22</value>
   </data>
   <data name="miTasks.Text" xml:space="preserve">
     <value>Менеджер &amp;завдань</value>
   </data>
+  <data name="miContextShow.Text" xml:space="preserve">
+    <value>Показати</value>
+  </data>
   <data name="showMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>184, 92</value>
+    <value>178, 92</value>
+  </data>
+  <data name="showMenu.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="miShow.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 20</value>
+    <value>70, 20</value>
   </data>
   <data name="miShow.Text" xml:space="preserve">
     <value>&amp;Показати</value>
   </data>
   <data name="miOptions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>94, 20</value>
+    <value>101, 20</value>
   </data>
   <data name="miOptions.Text" xml:space="preserve">
     <value>&amp;Налаштування</value>
   </data>
   <data name="miHowToUse.Size" type="System.Drawing.Size, System.Drawing">
-    <value>415, 22</value>
+    <value>440, 22</value>
   </data>
   <data name="miHowToUse.Text" xml:space="preserve">
     <value>&amp;Як користуватися</value>
   </data>
   <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>412, 6</value>
+    <value>437, 6</value>
   </data>
   <data name="miOnline.Size" type="System.Drawing.Size, System.Drawing">
-    <value>415, 22</value>
+    <value>440, 22</value>
   </data>
   <data name="miOnline.Text" xml:space="preserve">
     <value>&amp;Сайт LazyCure</value>
   </data>
   <data name="miSubscribe.Size" type="System.Drawing.Size, System.Drawing">
-    <value>415, 22</value>
+    <value>440, 22</value>
   </data>
   <data name="miSubscribe.Text" xml:space="preserve">
     <value>&amp;Підписатися на новини LazyCure</value>
   </data>
   <data name="miSubmit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>415, 22</value>
+    <value>440, 22</value>
   </data>
   <data name="miSubmit.Text" xml:space="preserve">
     <value>Повідомити &amp;про помилку / запропонувати нову функціональність</value>
   </data>
   <data name="miDonate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>415, 22</value>
+    <value>440, 22</value>
   </data>
   <data name="miDonate.Text" xml:space="preserve">
     <value>Подякувати &amp;автору</value>
   </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>412, 6</value>
+    <value>437, 6</value>
   </data>
   <data name="miAbout.Size" type="System.Drawing.Size, System.Drawing">
-    <value>415, 22</value>
+    <value>440, 22</value>
   </data>
   <data name="miAbout.Text" xml:space="preserve">
     <value>&amp;Про LazyCure</value>
   </data>
   <data name="miHelp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 20</value>
+    <value>75, 20</value>
   </data>
   <data name="miHelp.Text" xml:space="preserve">
     <value>&amp;Допомога</value>
+  </data>
+  <data name="menu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>303, 24</value>
+  </data>
+  <data name="menu.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="toolStripContainer1.TopToolStripPanel.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="miContextActivate.Text" xml:space="preserve">
+    <value>Активувати</value>
+  </data>
+  <data name="miContextExit.Text" xml:space="preserve">
+    <value>Вийти</value>
+  </data>
+  <data name="contextMenu.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="notifyIcon.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -437,6 +512,9 @@
         AAA=
 </value>
   </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>303, 112</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAMDAAAAEAIACoJQAAFgAAACgAAAAwAAAAYAAAAAEAIAAAAAAAgCUAAAAAAAAAAAAAAAAAAAAA
@@ -603,13 +681,7 @@
         AAA=
 </value>
   </data>
-  <data name="miContextActivate.Text" xml:space="preserve">
-    <value>Активувати</value>
-  </data>
-  <data name="miContextExit.Text" xml:space="preserve">
-    <value>Вийти</value>
-  </data>
-  <data name="miContextShow.Text" xml:space="preserve">
-    <value>Показати</value>
+  <data name="$this.ToolTip" xml:space="preserve">
+    <value />
   </data>
 </root>

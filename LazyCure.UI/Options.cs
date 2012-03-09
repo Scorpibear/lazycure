@@ -192,7 +192,7 @@ namespace LifeIdea.LazyCure.UI
             MessageBox.Show(this,
                 "Language settings will be applied after LazyCure restart.\r\n"+
                 "Язык интерфейса будет изменён при следующей загрузке LazyCure.\r\n"+
-                "Мова інтерфейсу буде змінено при наступному завантаженні LazyCure.", Constants.LanguageChange,MessageBoxButtons.OK,MessageBoxIcon.Information);
+                "Мову інтерфейсу буде змінено при наступному завантаженні LazyCure.", Constants.LanguageChange, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void selectTimeLogsFolder_Click(object sender, EventArgs e)
