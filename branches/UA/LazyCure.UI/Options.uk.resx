@@ -125,7 +125,7 @@
     <value>Зберігати лог часу кожен раз при зміні діяльності</value>
   </data>
   <data name="maxActivitiesInHistory.Location" type="System.Drawing.Point, System.Drawing">
-    <value>259, 78</value>
+    <value>264, 78</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>254, 13</value>
