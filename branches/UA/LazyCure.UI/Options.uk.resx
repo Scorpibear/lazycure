@@ -117,24 +117,204 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="&gt;&gt;textBoxPIN.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="buttonOK.Location" type="System.Drawing.Point, System.Drawing">
-    <value>58, 120</value>
+  <data name="saveAfterDone.Size" type="System.Drawing.Size, System.Drawing">
+    <value>278, 17</value>
   </data>
-  <data name="buttonCancel.Text" xml:space="preserve">
-    <value>Cancel</value>
+  <data name="saveAfterDone.Text" xml:space="preserve">
+    <value>Зберігати лог часу кожен раз при зміні діяльності</value>
   </data>
-  <data name="&gt;&gt;buttonOK.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="maxActivitiesInHistory.Location" type="System.Drawing.Point, System.Drawing">
+    <value>259, 78</value>
   </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>254, 13</value>
   </data>
-  <data name="buttonCancel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Кількість діяльностей, що зберігаються в історії:</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>130, 125</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>174, 13</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>(г:хх) виконання однієї діяльності</value>
+  </data>
+  <data name="reminderTime.Location" type="System.Drawing.Point, System.Drawing">
+    <value>96, 122</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 13</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Нагадати після</value>
+  </data>
+  <data name="selectTimeLogsFolder.Location" type="System.Drawing.Point, System.Drawing">
+    <value>306, 98</value>
+  </data>
+  <data name="timeLogFolder.Location" type="System.Drawing.Point, System.Drawing">
+    <value>97, 100</value>
+  </data>
+  <data name="timeLogFolder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>208, 20</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>91, 13</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Папка з логами:</value>
+  </data>
+  <data name="ok.Location" type="System.Drawing.Point, System.Drawing">
+    <value>189, 254</value>
+  </data>
+  <data name="cancel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>270, 254</value>
+  </data>
+  <data name="cancel.Text" xml:space="preserve">
+    <value>Відміна</value>
+  </data>
+  <data name="languageOptionUkrainian.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 17</value>
+  </data>
+  <data name="languageOptionUkrainian.Text" xml:space="preserve">
+    <value>Українська</value>
+  </data>
+  <data name="languageOptionEnglish.Size" type="System.Drawing.Size, System.Drawing">
+    <value>81, 17</value>
+  </data>
+  <data name="languageOptionEnglish.Text" xml:space="preserve">
+    <value>Англійська</value>
+  </data>
+  <data name="languageOptionRussian.Size" type="System.Drawing.Size, System.Drawing">
+    <value>76, 17</value>
+  </data>
+  <data name="languageOptionRussian.Text" xml:space="preserve">
+    <value>Російська</value>
+  </data>
+  <data name="languageGroupBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 148</value>
+  </data>
+  <data name="languageGroupBox.Text" xml:space="preserve">
+    <value>Мова інтерфейсу:</value>
+  </data>
+  <data name="splitByComma.Size" type="System.Drawing.Size, System.Drawing">
+    <value>314, 17</value>
+  </data>
+  <data name="splitByComma.Text" xml:space="preserve">
+    <value>Використовувати кому в якості роздільника діяльностей</value>
+  </data>
+  <data name="switchTimeLogAtMidnight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>194, 17</value>
+  </data>
+  <data name="switchTimeLogAtMidnight.Text" xml:space="preserve">
+    <value>Опівночі починати новий лог часу</value>
+  </data>
+  <data name="switchOnLogOff.Size" type="System.Drawing.Size, System.Drawing">
+    <value>305, 17</value>
+  </data>
+  <data name="switchOnLogOff.Text" xml:space="preserve">
+    <value>Перемикати поточну діяльність при завершенні сеансу</value>
+  </data>
+  <data name="tabGeneral.Text" xml:space="preserve">
+    <value>Загальні</value>
+  </data>
+  <data name="authorizeButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 27.75pt, style=Bold</value>
+  </data>
+  <data name="authorizeButton.Text" xml:space="preserve">
+    <value>Авторизувати</value>
+  </data>
+  <data name="twitterAuthorizationGroup.Text" xml:space="preserve">
+    <value>Авторизація в Twitter</value>
+  </data>
+  <data name="twitterActivitySpecificRadioButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>130, 17</value>
+  </data>
+  <data name="twitterActivitySpecificRadioButton.Text" xml:space="preserve">
+    <value>діяльність з іменем: </value>
+  </data>
+  <data name="twitterActivityTheSameRadioButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>157, 17</value>
+  </data>
+  <data name="twitterActivityTheSameRadioButton.Text" xml:space="preserve">
+    <value>те ж саме, що постується</value>
+  </data>
+  <data name="whatAddtj.Text" xml:space="preserve">
+    <value>Що додавати в лог часу при постуванні в Twitter:</value>
+  </data>
+  <data name="enableTwitterCheckbox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>238, 17</value>
+  </data>
+  <data name="enableTwitterCheckbox.Text" xml:space="preserve">
+    <value>Увімкнути відправку діяльностей в Twitter</value>
+  </data>
+  <data name="hotKeyToSwitchLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>166, 36</value>
+  </data>
+  <data name="hotKeyToSwitchLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 16</value>
+  </data>
+  <data name="editSwitchKey.Location" type="System.Drawing.Point, System.Drawing">
+    <value>221, 32</value>
+  </data>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>158, 13</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Початок наступної діяльності:</value>
+  </data>
+  <data name="hotKeyToActivateLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>163, 10</value>
+  </data>
+  <data name="hotKeyToActivateLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 16</value>
+  </data>
+  <data name="editActivateKey.Location" type="System.Drawing.Point, System.Drawing">
+    <value>221, 6</value>
+  </data>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>144, 13</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Активація головного вікна:</value>
+  </data>
+  <data name="tabHotKeys.Text" xml:space="preserve">
+    <value>Гарячі клавіші</value>
+  </data>
+  <data name="opensMainWindow.Size" type="System.Drawing.Size, System.Drawing">
+    <value>148, 17</value>
+  </data>
+  <data name="opensMainWindow.Text" xml:space="preserve">
+    <value>відкриває головне вікно</value>
+  </data>
+  <data name="showsRecentActivities.Size" type="System.Drawing.Size, System.Drawing">
+    <value>160, 17</value>
+  </data>
+  <data name="showsRecentActivities.Text" xml:space="preserve">
+    <value>показує останні діяльності</value>
+  </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>191, 47</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Клацання лівою кнопкою в трею:</value>
+  </data>
+  <data name="activitiesNumberInTray.Location" type="System.Drawing.Point, System.Drawing">
+    <value>278, 8</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>264, 13</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Кількість діяльностей, що відображаються в трею:</value>
+  </data>
+  <data name="tabTray.Text" xml:space="preserve">
+    <value>Трей</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>350, 285</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -302,134 +482,7 @@
         AAA=
 </value>
   </data>
-  <data name="&gt;&gt;buttonOK.Name" xml:space="preserve">
-    <value>buttonOK</value>
-  </data>
-  <data name="labelPIN.Text" xml:space="preserve">
-    <value>PIN:</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>LifeIdea.LazyCure.UI.Dialog, LazyCure.UI, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="labelPIN.Size" type="System.Drawing.Size, System.Drawing">
-    <value>28, 13</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="labelPIN.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="textBoxPIN.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 20</value>
-  </data>
-  <data name="&gt;&gt;textBox1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="buttonCancel.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;textBoxPIN.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="textBoxPIN.Location" type="System.Drawing.Point, System.Drawing">
-    <value>104, 94</value>
-  </data>
-  <data name="&gt;&gt;buttonCancel.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="textBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>263, 76</value>
-  </data>
-  <data name="&gt;&gt;labelPIN.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;textBox1.Name" xml:space="preserve">
-    <value>textBox1</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>284, 149</value>
-  </data>
-  <data name="&gt;&gt;buttonOK.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonCancel.Name" xml:space="preserve">
-    <value>buttonCancel</value>
-  </data>
-  <data name="&gt;&gt;labelPIN.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelPIN.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="textBox1.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;labelPIN.Name" xml:space="preserve">
-    <value>labelPIN</value>
-  </data>
-  <data name="buttonOK.Text" xml:space="preserve">
-    <value>OK</value>
-  </data>
-  <data name="&gt;&gt;textBoxPIN.Name" xml:space="preserve">
-    <value>textBoxPIN</value>
-  </data>
-  <data name="&gt;&gt;textBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Authorize</value>
+    <value>Налаштування</value>
   </data>
-  <data name="textBox1.Text" xml:space="preserve">
-    <value>In order to be able post updates to twitter, you have to authorize LazyCure application on twitter.com. Please, do this by following the just open link in a browser, press Allow and copy PIN from the site, then enter it in the box below and press OK.</value>
-  </data>
-  <data name="&gt;&gt;buttonOK.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="buttonOK.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="textBoxPIN.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="buttonOK.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="buttonCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>139, 120</value>
-  </data>
-  <data name="&gt;&gt;textBox1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="labelPIN.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="textBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;buttonCancel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="textBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 12</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>OathAuthorize</value>
-  </data>
-  <data name="&gt;&gt;textBoxPIN.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="buttonOK.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="labelPIN.Location" type="System.Drawing.Point, System.Drawing">
-    <value>70, 97</value>
-  </data>
-  <data name="&gt;&gt;buttonCancel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>uk</value>
-  </metadata>
 </root>

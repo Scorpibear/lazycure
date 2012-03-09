@@ -152,11 +152,11 @@
   <data name="&gt;&gt;closeButton.Parent" xml:space="preserve">
     <value>splitContainer.Panel2</value>
   </data>
+  <data name="splitContainer.Panel2.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="$this.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
-  </data>
-  <data name="&gt;&gt;tasksContextMenu.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="splitContainer.Panel1.ToolTip" xml:space="preserve">
     <value />
@@ -171,8 +171,8 @@
   <data name="addTaskButton.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;renameButton.Name" xml:space="preserve">
-    <value>renameButton</value>
+  <data name="&gt;&gt;splitContainer.Panel2.Parent" xml:space="preserve">
+    <value>splitContainer</value>
   </data>
   <data name="closeButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>41, 20</value>
@@ -184,9 +184,6 @@
     <value>Add task</value>
   </data>
   <data name="&gt;&gt;renameButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;closeButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="renameButton.Location" type="System.Drawing.Point, System.Drawing">
@@ -204,9 +201,6 @@
   <data name="&gt;&gt;deleteButton.Name" xml:space="preserve">
     <value>deleteButton</value>
   </data>
-  <data name="addSubtaskButton.ToolTip" xml:space="preserve">
-    <value>Add subtask (Insert)</value>
-  </data>
   <data name="&gt;&gt;tasksContextMenu.Name" xml:space="preserve">
     <value>tasksContextMenu</value>
   </data>
@@ -219,8 +213,8 @@
   <data name="treeView.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;splitContainer.Panel2.Parent" xml:space="preserve">
-    <value>splitContainer</value>
+  <data name="splitContainer.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
   </data>
   <data name="miDelete.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 22</value>
@@ -240,8 +234,8 @@
   <data name="splitContainer.Size" type="System.Drawing.Size, System.Drawing">
     <value>296, 109</value>
   </data>
-  <data name="splitContainer.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+  <data name="&gt;&gt;closeButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;treeView.Type" xml:space="preserve">
     <value>System.Windows.Forms.TreeView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -261,8 +255,8 @@
   <data name="&gt;&gt;addSubtaskButton.Parent" xml:space="preserve">
     <value>splitContainer.Panel2</value>
   </data>
-  <data name="deleteButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>74, 22</value>
+  <data name="addSubtaskButton.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
   <data name="&gt;&gt;addSubtaskButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -303,23 +297,56 @@
   <data name="&gt;&gt;miRename.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="deleteButton.ToolTip" xml:space="preserve">
-    <value>Delete task (Delete)</value>
-  </data>
-  <data name="addSubtaskButton.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
   <data name="addTaskButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 0</value>
+  </data>
+  <data name="&gt;&gt;renameButton.Name" xml:space="preserve">
+    <value>renameButton</value>
   </data>
   <data name="addSubtaskButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 22</value>
   </data>
-  <data name="tasksContextMenu.ToolTip" xml:space="preserve">
+  <data name="isWorkingCheckBox.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="closeButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>102, 89</value>
+  </data>
+  <data name="treeView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 109</value>
+  </data>
+  <data name="&gt;&gt;closeButton.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;treeView.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;toolTip.Name" xml:space="preserve">
+    <value>toolTip</value>
+  </data>
+  <data name="&gt;&gt;miRename.Name" xml:space="preserve">
+    <value>miRename</value>
+  </data>
+  <data name="miDelete.ShortcutKeyDisplayString" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="tasksContextMenu.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;addTaskButton.Parent" xml:space="preserve">
+    <value>splitContainer.Panel2</value>
+  </data>
+  <data name="&gt;&gt;addTaskButton.Name" xml:space="preserve">
+    <value>addTaskButton</value>
+  </data>
+  <data name="treeView.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>TaskManager</value>
+  </data>
+  <data name="treeView.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -487,39 +514,6 @@
         AAA=
 </value>
   </data>
-  <data name="treeView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 109</value>
-  </data>
-  <data name="&gt;&gt;closeButton.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;miAdd.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;treeView.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;toolTip.Name" xml:space="preserve">
-    <value>toolTip</value>
-  </data>
-  <data name="&gt;&gt;miRename.Name" xml:space="preserve">
-    <value>miRename</value>
-  </data>
-  <data name="miDelete.ShortcutKeyDisplayString" xml:space="preserve">
-    <value>Delete</value>
-  </data>
-  <data name="&gt;&gt;treeView.Name" xml:space="preserve">
-    <value>treeView</value>
-  </data>
-  <data name="&gt;&gt;addTaskButton.Parent" xml:space="preserve">
-    <value>splitContainer.Panel2</value>
-  </data>
-  <data name="treeView.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="treeView.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="isWorkingCheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -553,8 +547,8 @@
   <data name="&gt;&gt;splitContainer.Panel2.Name" xml:space="preserve">
     <value>splitContainer.Panel2</value>
   </data>
-  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
-    <value>Manual</value>
+  <data name="&gt;&gt;tasksContextMenu.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="renameButton.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -565,14 +559,14 @@
   <data name="deleteButton.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;addTaskButton.Name" xml:space="preserve">
-    <value>addTaskButton</value>
+  <data name="deleteButton.ToolTip" xml:space="preserve">
+    <value>Delete task (Delete)</value>
   </data>
   <data name="&gt;&gt;renameButton.Parent" xml:space="preserve">
     <value>splitContainer.Panel2</value>
   </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>TaskManager</value>
+  <data name="&gt;&gt;miAdd.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="splitContainer.ToolTip" xml:space="preserve">
     <value />
@@ -583,8 +577,8 @@
   <data name="isWorkingCheckBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>66, 17</value>
   </data>
-  <data name="&gt;&gt;splitContainer.Name" xml:space="preserve">
-    <value>splitContainer</value>
+  <data name="&gt;&gt;treeView.Name" xml:space="preserve">
+    <value>treeView</value>
   </data>
   <data name="&gt;&gt;splitContainer.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -604,8 +598,11 @@
   <data name="&gt;&gt;deleteButton.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="isWorkingCheckBox.ToolTip" xml:space="preserve">
-    <value />
+  <data name="&gt;&gt;splitContainer.Name" xml:space="preserve">
+    <value>splitContainer</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>Manual</value>
   </data>
   <data name="&gt;&gt;addTaskButton.ZOrder" xml:space="preserve">
     <value>5</value>
@@ -625,6 +622,9 @@
   <data name="&gt;&gt;splitContainer.Panel1.Name" xml:space="preserve">
     <value>splitContainer.Panel1</value>
   </data>
+  <data name="deleteButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>74, 22</value>
+  </data>
   <data name="&gt;&gt;splitContainer.Panel2.Type" xml:space="preserve">
     <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -634,11 +634,11 @@
   <data name="isWorkingCheckBox.Text" xml:space="preserve">
     <value>Working</value>
   </data>
-  <data name="splitContainer.Panel2.ToolTip" xml:space="preserve">
-    <value />
+  <data name="addSubtaskButton.ToolTip" xml:space="preserve">
+    <value>Add subtask (Insert)</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>LifeIdea.LazyCure.UI.View, LazyCure.UI, Version=3.8.1.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LifeIdea.LazyCure.UI.View, LazyCure.UI, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -650,6 +650,6 @@
     <value>102, 17</value>
   </metadata>
   <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>ru</value>
+    <value>uk</value>
   </metadata>
 </root>

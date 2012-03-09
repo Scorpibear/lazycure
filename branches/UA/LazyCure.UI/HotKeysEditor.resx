@@ -117,8 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="&gt;&gt;keysBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="altCheckBox.Text" xml:space="preserve">
+    <value>Alt</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="cancelButton.Size" type="System.Drawing.Size, System.Drawing">
@@ -148,17 +148,14 @@
   <data name="&gt;&gt;cancelButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="altCheckBox.Text" xml:space="preserve">
-    <value>Alt</value>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>HotKeysEditor</value>
   </data>
   <data name="&gt;&gt;keysLabel.Name" xml:space="preserve">
     <value>keysLabel</value>
   </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
-  </data>
-  <data name="keysLabel.Text" xml:space="preserve">
-    <value>Ctrl+F12</value>
+  <data name="&gt;&gt;shiftCheckBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="ctrlCheckBox.AutoSize" type="System.Boolean, mscorlib">
@@ -179,8 +176,8 @@
   <data name="&gt;&gt;ctrlCheckBox.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;shiftCheckBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;ctrlCheckBox.Name" xml:space="preserve">
+    <value>ctrlCheckBox</value>
   </data>
   <data name="&gt;&gt;shiftCheckBox.Name" xml:space="preserve">
     <value>shiftCheckBox</value>
@@ -193,9 +190,6 @@
   </data>
   <data name="ctrlCheckBox.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
-  </data>
-  <data name="&gt;&gt;ctrlCheckBox.Name" xml:space="preserve">
-    <value>ctrlCheckBox</value>
   </data>
   <data name="cancelButton.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -224,6 +218,9 @@
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="keysLabel.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
     <value>No</value>
+  </data>
+  <data name="keysLabel.Text" xml:space="preserve">
+    <value>Ctrl+F12</value>
   </data>
   <data name="&gt;&gt;okButton.Name" xml:space="preserve">
     <value>okButton</value>
@@ -273,8 +270,8 @@
   <data name="keysBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>103, 35</value>
   </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>HotKeysEditor</value>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
   </data>
   <data name="altCheckBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>59, 12</value>
@@ -284,6 +281,9 @@
   </data>
   <data name="shiftCheckBox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="&gt;&gt;keysBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;ctrlCheckBox.ZOrder" xml:space="preserve">
     <value>6</value>
@@ -319,6 +319,6 @@
     <value>True</value>
   </metadata>
   <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>ru</value>
+    <value>uk</value>
   </metadata>
 </root>
