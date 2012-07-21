@@ -32,8 +32,6 @@ namespace LifeIdea.LazyCure.UI
             this.saveAfterDone = new System.Windows.Forms.CheckBox();
             this.maxActivitiesInHistory = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
-            this.activitiesNumberInTray = new System.Windows.Forms.NumericUpDown();
-            this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.reminderTime = new System.Windows.Forms.MaskedTextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -45,13 +43,11 @@ namespace LifeIdea.LazyCure.UI
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabGeneral = new System.Windows.Forms.TabPage();
             this.languageGroupBox = new System.Windows.Forms.GroupBox();
+            this.languageOptionUkrainian = new System.Windows.Forms.RadioButton();
             this.languageOptionEnglish = new System.Windows.Forms.RadioButton();
             this.languageOptionRussian = new System.Windows.Forms.RadioButton();
             this.splitByComma = new System.Windows.Forms.CheckBox();
             this.switchTimeLogAtMidnight = new System.Windows.Forms.CheckBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.opensMainWindow = new System.Windows.Forms.RadioButton();
-            this.showsRecentActivities = new System.Windows.Forms.RadioButton();
             this.switchOnLogOff = new System.Windows.Forms.CheckBox();
             this.tabTwitter = new System.Windows.Forms.TabPage();
             this.twitterAuthorizationGroup = new System.Windows.Forms.GroupBox();
@@ -69,16 +65,23 @@ namespace LifeIdea.LazyCure.UI
             this.hotKeyToActivateLabel = new System.Windows.Forms.Label();
             this.editActivateKey = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
+            this.tabTray = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.opensMainWindow = new System.Windows.Forms.RadioButton();
+            this.showsRecentActivities = new System.Windows.Forms.RadioButton();
+            this.activitiesNumberInTray = new System.Windows.Forms.NumericUpDown();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.maxActivitiesInHistory)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.activitiesNumberInTray)).BeginInit();
             this.tabControl.SuspendLayout();
             this.tabGeneral.SuspendLayout();
             this.languageGroupBox.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.tabTwitter.SuspendLayout();
             this.twitterAuthorizationGroup.SuspendLayout();
             this.whatAddtj.SuspendLayout();
             this.tabHotKeys.SuspendLayout();
+            this.tabTray.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.activitiesNumberInTray)).BeginInit();
             this.SuspendLayout();
             // 
             // saveAfterDone
@@ -96,16 +99,6 @@ namespace LifeIdea.LazyCure.UI
             // 
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            // 
-            // activitiesNumberInTray
-            // 
-            resources.ApplyResources(this.activitiesNumberInTray, "activitiesNumberInTray");
-            this.activitiesNumberInTray.Name = "activitiesNumberInTray";
-            // 
-            // label5
-            // 
-            resources.ApplyResources(this.label5, "label5");
-            this.label5.Name = "label5";
             // 
             // label4
             // 
@@ -162,6 +155,7 @@ namespace LifeIdea.LazyCure.UI
             this.tabControl.Controls.Add(this.tabGeneral);
             this.tabControl.Controls.Add(this.tabTwitter);
             this.tabControl.Controls.Add(this.tabHotKeys);
+            this.tabControl.Controls.Add(this.tabTray);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
             // 
@@ -171,11 +165,8 @@ namespace LifeIdea.LazyCure.UI
             this.tabGeneral.Controls.Add(this.languageGroupBox);
             this.tabGeneral.Controls.Add(this.splitByComma);
             this.tabGeneral.Controls.Add(this.switchTimeLogAtMidnight);
-            this.tabGeneral.Controls.Add(this.groupBox1);
             this.tabGeneral.Controls.Add(this.switchOnLogOff);
-            this.tabGeneral.Controls.Add(this.activitiesNumberInTray);
             this.tabGeneral.Controls.Add(this.saveAfterDone);
-            this.tabGeneral.Controls.Add(this.label5);
             this.tabGeneral.Controls.Add(this.label1);
             this.tabGeneral.Controls.Add(this.label4);
             this.tabGeneral.Controls.Add(this.maxActivitiesInHistory);
@@ -190,10 +181,17 @@ namespace LifeIdea.LazyCure.UI
             // languageGroupBox
             // 
             resources.ApplyResources(this.languageGroupBox, "languageGroupBox");
+            this.languageGroupBox.Controls.Add(this.languageOptionUkrainian);
             this.languageGroupBox.Controls.Add(this.languageOptionEnglish);
             this.languageGroupBox.Controls.Add(this.languageOptionRussian);
             this.languageGroupBox.Name = "languageGroupBox";
             this.languageGroupBox.TabStop = false;
+            // 
+            // languageOptionUkrainian
+            // 
+            resources.ApplyResources(this.languageOptionUkrainian, "languageOptionUkrainian");
+            this.languageOptionUkrainian.Name = "languageOptionUkrainian";
+            this.languageOptionUkrainian.UseVisualStyleBackColor = true;
             // 
             // languageOptionEnglish
             // 
@@ -220,28 +218,6 @@ namespace LifeIdea.LazyCure.UI
             resources.ApplyResources(this.switchTimeLogAtMidnight, "switchTimeLogAtMidnight");
             this.switchTimeLogAtMidnight.Name = "switchTimeLogAtMidnight";
             this.switchTimeLogAtMidnight.UseVisualStyleBackColor = true;
-            // 
-            // groupBox1
-            // 
-            resources.ApplyResources(this.groupBox1, "groupBox1");
-            this.groupBox1.Controls.Add(this.opensMainWindow);
-            this.groupBox1.Controls.Add(this.showsRecentActivities);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.TabStop = false;
-            // 
-            // opensMainWindow
-            // 
-            resources.ApplyResources(this.opensMainWindow, "opensMainWindow");
-            this.opensMainWindow.Checked = true;
-            this.opensMainWindow.Name = "opensMainWindow";
-            this.opensMainWindow.TabStop = true;
-            this.opensMainWindow.UseVisualStyleBackColor = true;
-            // 
-            // showsRecentActivities
-            // 
-            resources.ApplyResources(this.showsRecentActivities, "showsRecentActivities");
-            this.showsRecentActivities.Name = "showsRecentActivities";
-            this.showsRecentActivities.UseVisualStyleBackColor = true;
             // 
             // switchOnLogOff
             // 
@@ -359,6 +335,47 @@ namespace LifeIdea.LazyCure.UI
             resources.ApplyResources(this.label6, "label6");
             this.label6.Name = "label6";
             // 
+            // tabTray
+            // 
+            resources.ApplyResources(this.tabTray, "tabTray");
+            this.tabTray.Controls.Add(this.groupBox1);
+            this.tabTray.Controls.Add(this.activitiesNumberInTray);
+            this.tabTray.Controls.Add(this.label5);
+            this.tabTray.Name = "tabTray";
+            this.tabTray.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Controls.Add(this.opensMainWindow);
+            this.groupBox1.Controls.Add(this.showsRecentActivities);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.TabStop = false;
+            // 
+            // opensMainWindow
+            // 
+            resources.ApplyResources(this.opensMainWindow, "opensMainWindow");
+            this.opensMainWindow.Checked = true;
+            this.opensMainWindow.Name = "opensMainWindow";
+            this.opensMainWindow.TabStop = true;
+            this.opensMainWindow.UseVisualStyleBackColor = true;
+            // 
+            // showsRecentActivities
+            // 
+            resources.ApplyResources(this.showsRecentActivities, "showsRecentActivities");
+            this.showsRecentActivities.Name = "showsRecentActivities";
+            this.showsRecentActivities.UseVisualStyleBackColor = true;
+            // 
+            // activitiesNumberInTray
+            // 
+            resources.ApplyResources(this.activitiesNumberInTray, "activitiesNumberInTray");
+            this.activitiesNumberInTray.Name = "activitiesNumberInTray";
+            // 
+            // label5
+            // 
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
+            // 
             // Options
             // 
             resources.ApplyResources(this, "$this");
@@ -374,14 +391,11 @@ namespace LifeIdea.LazyCure.UI
             this.ShowInTaskbar = false;
             this.TopMost = true;
             ((System.ComponentModel.ISupportInitialize)(this.maxActivitiesInHistory)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.activitiesNumberInTray)).EndInit();
             this.tabControl.ResumeLayout(false);
             this.tabGeneral.ResumeLayout(false);
             this.tabGeneral.PerformLayout();
             this.languageGroupBox.ResumeLayout(false);
             this.languageGroupBox.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.tabTwitter.ResumeLayout(false);
             this.tabTwitter.PerformLayout();
             this.twitterAuthorizationGroup.ResumeLayout(false);
@@ -389,6 +403,11 @@ namespace LifeIdea.LazyCure.UI
             this.whatAddtj.PerformLayout();
             this.tabHotKeys.ResumeLayout(false);
             this.tabHotKeys.PerformLayout();
+            this.tabTray.ResumeLayout(false);
+            this.tabTray.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.activitiesNumberInTray)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -406,17 +425,12 @@ namespace LifeIdea.LazyCure.UI
         private System.Windows.Forms.MaskedTextBox reminderTime;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.NumericUpDown activitiesNumberInTray;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage tabTwitter;
         private System.Windows.Forms.TabPage tabGeneral;
         private System.Windows.Forms.CheckBox enableTwitterCheckbox;
         private System.Windows.Forms.LinkLabel twitterLink;
         private System.Windows.Forms.CheckBox switchOnLogOff;
-        private System.Windows.Forms.RadioButton showsRecentActivities;
-        private System.Windows.Forms.RadioButton opensMainWindow;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.CheckBox switchTimeLogAtMidnight;
         private System.Windows.Forms.CheckBox splitByComma;
         private System.Windows.Forms.TabPage tabHotKeys;
@@ -435,6 +449,13 @@ namespace LifeIdea.LazyCure.UI
         private System.Windows.Forms.RadioButton languageOptionRussian;
         private System.Windows.Forms.GroupBox twitterAuthorizationGroup;
         private System.Windows.Forms.Button authorizeButton;
+        private System.Windows.Forms.RadioButton languageOptionUkrainian;
+        private System.Windows.Forms.TabPage tabTray;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton opensMainWindow;
+        private System.Windows.Forms.RadioButton showsRecentActivities;
+        private System.Windows.Forms.NumericUpDown activitiesNumberInTray;
+        private System.Windows.Forms.Label label5;
 
     }
 }

@@ -52,7 +52,6 @@ namespace LifeIdea.LazyCure.UI
             this.miTimeLog = new System.Windows.Forms.ToolStripMenuItem();
             this.miSummary = new System.Windows.Forms.ToolStripMenuItem();
             this.miTasks = new System.Windows.Forms.ToolStripMenuItem();
-            this.miContextShow = new System.Windows.Forms.ToolStripMenuItem();
             this.miOptions = new System.Windows.Forms.ToolStripMenuItem();
             this.miHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.miHowToUse = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,6 +62,7 @@ namespace LifeIdea.LazyCure.UI
             this.miDonate = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.miAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.miContextShow = new System.Windows.Forms.ToolStripMenuItem();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -83,21 +83,37 @@ namespace LifeIdea.LazyCure.UI
             // 
             // toolStripContainer1
             // 
+            resources.ApplyResources(this.toolStripContainer1, "toolStripContainer1");
             // 
             // toolStripContainer1.BottomToolStripPanel
             // 
+            resources.ApplyResources(this.toolStripContainer1.BottomToolStripPanel, "toolStripContainer1.BottomToolStripPanel");
             this.toolStripContainer1.BottomToolStripPanel.Controls.Add(this.statusBar);
+            this.toolTip.SetToolTip(this.toolStripContainer1.BottomToolStripPanel, resources.GetString("toolStripContainer1.BottomToolStripPanel.ToolTip"));
             // 
             // toolStripContainer1.ContentPanel
             // 
-            this.toolStripContainer1.ContentPanel.Controls.Add(this.nowYou);
             resources.ApplyResources(this.toolStripContainer1.ContentPanel, "toolStripContainer1.ContentPanel");
-            resources.ApplyResources(this.toolStripContainer1, "toolStripContainer1");
+            this.toolStripContainer1.ContentPanel.Controls.Add(this.nowYou);
+            this.toolTip.SetToolTip(this.toolStripContainer1.ContentPanel, resources.GetString("toolStripContainer1.ContentPanel.ToolTip"));
+            // 
+            // toolStripContainer1.LeftToolStripPanel
+            // 
+            resources.ApplyResources(this.toolStripContainer1.LeftToolStripPanel, "toolStripContainer1.LeftToolStripPanel");
+            this.toolTip.SetToolTip(this.toolStripContainer1.LeftToolStripPanel, resources.GetString("toolStripContainer1.LeftToolStripPanel.ToolTip"));
             this.toolStripContainer1.Name = "toolStripContainer1";
+            // 
+            // toolStripContainer1.RightToolStripPanel
+            // 
+            resources.ApplyResources(this.toolStripContainer1.RightToolStripPanel, "toolStripContainer1.RightToolStripPanel");
+            this.toolTip.SetToolTip(this.toolStripContainer1.RightToolStripPanel, resources.GetString("toolStripContainer1.RightToolStripPanel.ToolTip"));
+            this.toolTip.SetToolTip(this.toolStripContainer1, resources.GetString("toolStripContainer1.ToolTip"));
             // 
             // toolStripContainer1.TopToolStripPanel
             // 
+            resources.ApplyResources(this.toolStripContainer1.TopToolStripPanel, "toolStripContainer1.TopToolStripPanel");
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.menu);
+            this.toolTip.SetToolTip(this.toolStripContainer1.TopToolStripPanel, resources.GetString("toolStripContainer1.TopToolStripPanel.ToolTip"));
             // 
             // statusBar
             // 
@@ -109,48 +125,51 @@ namespace LifeIdea.LazyCure.UI
             this.statusBar.Name = "statusBar";
             this.statusBar.ShowItemToolTips = true;
             this.statusBar.SizingGrip = false;
+            this.toolTip.SetToolTip(this.statusBar, resources.GetString("statusBar.ToolTip"));
             // 
             // activityStartTime
             // 
-            this.activityStartTime.Name = "activityStartTime";
             resources.ApplyResources(this.activityStartTime, "activityStartTime");
+            this.activityStartTime.Name = "activityStartTime";
             this.activityStartTime.Spring = true;
             // 
             // activityDuration
             // 
-            this.activityDuration.Name = "activityDuration";
             resources.ApplyResources(this.activityDuration, "activityDuration");
+            this.activityDuration.Name = "activityDuration";
             this.activityDuration.Spring = true;
             // 
             // currentTime
             // 
-            this.currentTime.Name = "currentTime";
             resources.ApplyResources(this.currentTime, "currentTime");
+            this.currentTime.Name = "currentTime";
             this.currentTime.Spring = true;
             // 
             // nowYou
             // 
+            resources.ApplyResources(this.nowYou, "nowYou");
             this.nowYou.Controls.Add(this.postToTwitter);
             this.nowYou.Controls.Add(this.currentActivity);
             this.nowYou.Controls.Add(this.switchButton);
-            resources.ApplyResources(this.nowYou, "nowYou");
             this.nowYou.Name = "nowYou";
             this.nowYou.TabStop = false;
+            this.toolTip.SetToolTip(this.nowYou, resources.GetString("nowYou.ToolTip"));
             // 
             // postToTwitter
             // 
             resources.ApplyResources(this.postToTwitter, "postToTwitter");
             this.postToTwitter.Name = "postToTwitter";
+            this.toolTip.SetToolTip(this.postToTwitter, resources.GetString("postToTwitter.ToolTip"));
             this.postToTwitter.UseVisualStyleBackColor = true;
             // 
             // currentActivity
             // 
+            resources.ApplyResources(this.currentActivity, "currentActivity");
             this.currentActivity.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.currentActivity.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.currentActivity.BackColor = System.Drawing.SystemColors.Window;
             this.currentActivity.ForeColor = System.Drawing.SystemColors.ControlText;
             this.currentActivity.FormattingEnabled = true;
-            resources.ApplyResources(this.currentActivity, "currentActivity");
             this.currentActivity.Name = "currentActivity";
             this.toolTip.SetToolTip(this.currentActivity, resources.GetString("currentActivity.ToolTip"));
             this.currentActivity.KeyDown += new System.Windows.Forms.KeyEventHandler(this.currentActivity_KeyDown);
@@ -172,9 +191,11 @@ namespace LifeIdea.LazyCure.UI
             this.miOptions,
             this.miHelp});
             this.menu.Name = "menu";
+            this.toolTip.SetToolTip(this.menu, resources.GetString("menu.ToolTip"));
             // 
             // miFile
             // 
+            resources.ApplyResources(this.miFile, "miFile");
             this.miFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.miOpen,
             this.miSave,
@@ -182,98 +203,93 @@ namespace LifeIdea.LazyCure.UI
             this.toolStripSeparator1,
             this.miExit});
             this.miFile.Name = "miFile";
-            resources.ApplyResources(this.miFile, "miFile");
             // 
             // miOpen
             // 
-            this.miOpen.Name = "miOpen";
             resources.ApplyResources(this.miOpen, "miOpen");
+            this.miOpen.Name = "miOpen";
             this.miOpen.Click += new System.EventHandler(this.miOpen_Click);
             // 
             // miSave
             // 
-            this.miSave.Name = "miSave";
             resources.ApplyResources(this.miSave, "miSave");
+            this.miSave.Name = "miSave";
             this.miSave.Click += new System.EventHandler(this.miSave_Click);
             // 
             // miSaveAs
             // 
-            this.miSaveAs.Name = "miSaveAs";
             resources.ApplyResources(this.miSaveAs, "miSaveAs");
+            this.miSaveAs.Name = "miSaveAs";
             this.miSaveAs.Click += new System.EventHandler(this.miSaveAs_Click);
             // 
             // toolStripSeparator1
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
             resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
             // 
             // miExit
             // 
-            this.miExit.Name = "miExit";
             resources.ApplyResources(this.miExit, "miExit");
+            this.miExit.Name = "miExit";
             this.miExit.Click += new System.EventHandler(this.miExit_Click);
             // 
             // miShow
             // 
+            resources.ApplyResources(this.miShow, "miShow");
             this.miShow.DropDown = this.showMenu;
             this.miShow.Name = "miShow";
-            resources.ApplyResources(this.miShow, "miShow");
             // 
             // showMenu
             // 
+            resources.ApplyResources(this.showMenu, "showMenu");
             this.showMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.miActivityDetails,
             this.miTimeLog,
             this.miSummary,
             this.miTasks});
             this.showMenu.Name = "contextMenu";
-            this.showMenu.OwnerItem = this.miShow;
-            resources.ApplyResources(this.showMenu, "showMenu");
+            this.showMenu.OwnerItem = this.miContextShow;
+            this.toolTip.SetToolTip(this.showMenu, resources.GetString("showMenu.ToolTip"));
             // 
             // miActivityDetails
             // 
+            resources.ApplyResources(this.miActivityDetails, "miActivityDetails");
             this.miActivityDetails.Checked = true;
             this.miActivityDetails.CheckOnClick = true;
             this.miActivityDetails.CheckState = System.Windows.Forms.CheckState.Checked;
             this.miActivityDetails.Name = "miActivityDetails";
-            resources.ApplyResources(this.miActivityDetails, "miActivityDetails");
             this.miActivityDetails.Click += new System.EventHandler(this.miActivityDetails_Click);
             // 
             // miTimeLog
             // 
+            resources.ApplyResources(this.miTimeLog, "miTimeLog");
             this.miTimeLog.CheckOnClick = true;
             this.miTimeLog.Name = "miTimeLog";
-            resources.ApplyResources(this.miTimeLog, "miTimeLog");
             this.miTimeLog.Click += new System.EventHandler(this.miTimeLog_Click);
             // 
             // miSummary
             // 
+            resources.ApplyResources(this.miSummary, "miSummary");
             this.miSummary.CheckOnClick = true;
             this.miSummary.Name = "miSummary";
-            resources.ApplyResources(this.miSummary, "miSummary");
             this.miSummary.Click += new System.EventHandler(this.miSummary_Click);
             // 
             // miTasks
             // 
+            resources.ApplyResources(this.miTasks, "miTasks");
             this.miTasks.CheckOnClick = true;
             this.miTasks.Name = "miTasks";
-            resources.ApplyResources(this.miTasks, "miTasks");
             this.miTasks.Click += new System.EventHandler(this.miTasks_Click);
-            // 
-            // miContextShow
-            // 
-            this.miContextShow.DropDown = this.showMenu;
-            this.miContextShow.Name = "miContextShow";
-            resources.ApplyResources(this.miContextShow, "miContextShow");
             // 
             // miOptions
             // 
-            this.miOptions.Name = "miOptions";
             resources.ApplyResources(this.miOptions, "miOptions");
+            this.miOptions.Name = "miOptions";
             this.miOptions.Click += new System.EventHandler(this.miOptions_Click);
             // 
             // miHelp
             // 
+            resources.ApplyResources(this.miHelp, "miHelp");
             this.miHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.miHowToUse,
             this.toolStripSeparator3,
@@ -284,57 +300,62 @@ namespace LifeIdea.LazyCure.UI
             this.toolStripSeparator2,
             this.miAbout});
             this.miHelp.Name = "miHelp";
-            resources.ApplyResources(this.miHelp, "miHelp");
             // 
             // miHowToUse
             // 
-            this.miHowToUse.Name = "miHowToUse";
             resources.ApplyResources(this.miHowToUse, "miHowToUse");
+            this.miHowToUse.Name = "miHowToUse";
             this.miHowToUse.Tag = "LazyCure.html";
             this.miHowToUse.Click += new System.EventHandler(this.miHowToUse_Click);
             // 
             // toolStripSeparator3
             // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
             resources.ApplyResources(this.toolStripSeparator3, "toolStripSeparator3");
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
             // 
             // miOnline
             // 
-            this.miOnline.Name = "miOnline";
             resources.ApplyResources(this.miOnline, "miOnline");
+            this.miOnline.Name = "miOnline";
             this.miOnline.Tag = "http://lazycure.com/";
             this.miOnline.Click += new System.EventHandler(this.Link_Click);
             // 
             // miSubscribe
             // 
-            this.miSubscribe.Name = "miSubscribe";
             resources.ApplyResources(this.miSubscribe, "miSubscribe");
+            this.miSubscribe.Name = "miSubscribe";
             this.miSubscribe.Tag = "http://lazycure.com/feed/";
             this.miSubscribe.Click += new System.EventHandler(this.Link_Click);
             // 
             // miSubmit
             // 
-            this.miSubmit.Name = "miSubmit";
             resources.ApplyResources(this.miSubmit, "miSubmit");
+            this.miSubmit.Name = "miSubmit";
             this.miSubmit.Tag = "http://lazycure.com/submit/";
             this.miSubmit.Click += new System.EventHandler(this.Link_Click);
             // 
             // miDonate
             // 
-            this.miDonate.Name = "miDonate";
             resources.ApplyResources(this.miDonate, "miDonate");
+            this.miDonate.Name = "miDonate";
             this.miDonate.Click += new System.EventHandler(this.miDonate_Click);
             // 
             // toolStripSeparator2
             // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
             resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
             // 
             // miAbout
             // 
-            this.miAbout.Name = "miAbout";
             resources.ApplyResources(this.miAbout, "miAbout");
+            this.miAbout.Name = "miAbout";
             this.miAbout.Click += new System.EventHandler(this.miAbout_Click);
+            // 
+            // miContextShow
+            // 
+            resources.ApplyResources(this.miContextShow, "miContextShow");
+            this.miContextShow.DropDown = this.showMenu;
+            this.miContextShow.Name = "miContextShow";
             // 
             // timer
             // 
@@ -343,35 +364,36 @@ namespace LifeIdea.LazyCure.UI
             // 
             // contextMenu
             // 
+            resources.ApplyResources(this.contextMenu, "contextMenu");
             this.contextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.miContextActivate,
             this.miContextShow,
             this.miSeparator,
             this.miContextExit});
             this.contextMenu.Name = "contextMenu";
-            resources.ApplyResources(this.contextMenu, "contextMenu");
+            this.toolTip.SetToolTip(this.contextMenu, resources.GetString("contextMenu.ToolTip"));
             // 
             // miContextActivate
             // 
-            this.miContextActivate.Name = "miContextActivate";
             resources.ApplyResources(this.miContextActivate, "miContextActivate");
+            this.miContextActivate.Name = "miContextActivate";
             this.miContextActivate.Click += new System.EventHandler(this.miContextActivate_Click);
             // 
             // miSeparator
             // 
-            this.miSeparator.Name = "miSeparator";
             resources.ApplyResources(this.miSeparator, "miSeparator");
+            this.miSeparator.Name = "miSeparator";
             // 
             // miContextExit
             // 
-            this.miContextExit.Name = "miContextExit";
             resources.ApplyResources(this.miContextExit, "miContextExit");
+            this.miContextExit.Name = "miContextExit";
             this.miContextExit.Click += new System.EventHandler(this.miExit_Click);
             // 
             // notifyIcon
             // 
-            this.notifyIcon.ContextMenuStrip = this.contextMenu;
             resources.ApplyResources(this.notifyIcon, "notifyIcon");
+            this.notifyIcon.ContextMenuStrip = this.contextMenu;
             this.notifyIcon.DoubleClick += new System.EventHandler(this.notifyIcon_DoubleClick);
             this.notifyIcon.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseClick);
             this.notifyIcon.MouseMove += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseMove);
@@ -387,6 +409,7 @@ namespace LifeIdea.LazyCure.UI
             this.MaximizeBox = false;
             this.Name = "Main";
             this.ShowInTaskbar = false;
+            this.toolTip.SetToolTip(this, resources.GetString("$this.ToolTip"));
             this.TopMost = true;
             this.Activated += new System.EventHandler(this.Main_Activated);
             this.Deactivate += new System.EventHandler(this.Main_Deactivate);
