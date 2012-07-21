@@ -118,133 +118,133 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About" xml:space="preserve">
-    <value>О {0}</value>
+    <value>Про {0}</value>
   </data>
   <data name="Activity" xml:space="preserve">
-    <value>Активность</value>
+    <value>Діяльність</value>
   </data>
   <data name="AskToFixAndExcuse" xml:space="preserve">
-    <value>Пожалуйста, устраните ошибку и перезапустите LazyCure. Извините за небольшие неудобства.</value>
+    <value>Будь ласка, усуньте помилку і перезавантажте LazyCure. Вибачте за невеликі незручності.</value>
   </data>
   <data name="AssemblyDescription" xml:space="preserve">
-    <value>Удобный инструмент хронометража, анализа потраченного времени, подсчёта и улучшения личной эффективности.
+    <value>Зручний інструмент хронометражу, аналізу витраченого часу, підрахунку та поліпшення особистої ефективності.
 
-Первая версия LazyCure была создана Мише Субочем (Scorpibear) в ноябре 2003-го. С того времени много людей было вовлечено в усовершенствование этой программы. Особая благодарность:
+Перша версія LazyCure була створена Михайлом Субочем (Scorpibear) в листопаді 2003-го. З того часу багато людей було залучено до вдосконалення цієї програми. Особлива подяка:
 
-Андрею Кулабухову, за огромный список предложений по улучшению и расширению функциональности LazyCure,
+Андрію Кулабухову, за величезний список пропозицій щодо поліпшення і розширення функціональності LazyCure,
 
-Андрею Савастюку, за поддержку и желание использовать LazyCure для повышения личной эффективности,
+Андрію Савастюку, за підтримку і бажання використовувати LazyCure для підвищення особистої ефективності,
 
-Алёне Ермохиной, за беспристрастный взгляд на LazyCure и дополнительные идеи её улучшения,
+Олені Єрмохиній, за неупереджений погляд на LazyCure і додаткові ідеї її поліпшення,
 
-Андрею Раманчуку, за идею сделать LazyCure проектом с открытым исходным кодом,
+Андрію Раманчуку, за ідею зробити LazyCure проектом з відкритим вихідним кодом,
 
-Сергею Серко, за то что поделился опытом подсчёта личной эффективности,
+Сергію Сірко, за те що поділився досвідом підрахунку особистої ефективності,
 
-Сергею Гвоздюкевичу, за обнаружение критических дефектов,
+Сергію Гвоздюкевичу, за виявлення критичних дефектів,
 
-Игорю Колосовскому, за его энтузиазм и разработку улучшенного интерфейса,
+Ігорю Колосовському, за його ентузіазм та розробку поліпшеного інтерфейсу,
 
-Сергею Дятлову, за свежие идеи и поддержку,
+Сергію Дятлову, за свіжі ідеї і підтримку,
 
-Андрею Преткелю, за идеи по удобному использованию и поддержку,
+Андрію Преткелю, за ідеї по зручному використанню і підтримку,
 
-Алёне Бацекиной, за её приверженность к идее повышения личной эффективности,
+Олені Бацекиній, за її прихильність до ідеї підвищення особистої ефективності,
 
-Дмитрию Кучко и Ирине Русецкой, за помощь в повышении качества LazyCure,
+Дмитру Кучко та Ірині Русецькій, за допомогу в підвищенні якості LazyCure,
 
-Глебу Рэйсу, за то что поделился опытом ведения хронометража, за идеи по улучшению и поддержку,
+Глібу Рейс, за те що поділився досвідом ведення хронометражу, за ідеї щодо поліпшення і підтримку,
 
-Александру Журавкину, за его терпение к дефектам LazyCure во время получения дополнительного опыта по автоматизации тестирования на 12-м этаже Х29,
+Олександру Журавкіну, за його терпіння до дефектів LazyCure під час отримання додаткового досвіду з автоматизації тестування на 12-му поверсі Х29,
 
-Анатолию Гуменному за создание украинской локализации,
+Анатолію Гуменному за створення української локалізації,
 
-Читателям LifeIdea.org, за дополнительные идеи и вдохновение создать русскую версию,
+Читачам LifeIdea.org, за додаткові ідеї і натхнення створити локалiзовану версію,
 
-и большое спасибо Тебе, за повышение личной эффективности с помощью LazyCure прямо сейчас!</value>
+і велике спасибі Тобі, за підвищення особистої ефективності за допомогою LazyCure прямо зараз!</value>
   </data>
   <data name="CouldNotSaveTimeLogDuringExitMessage" xml:space="preserve">
-    <value>Лог времени не может быть сохранён. Выйти из LazyCure с потерями данных?</value>
+    <value>Лог часу не може бути збережений. Вийти з LazyCure з втратами даних?</value>
   </data>
   <data name="CurrentActivityIsLasting" xml:space="preserve">
-    <value>текущая активность продолжается</value>
+    <value>поточна активність триває</value>
   </data>
   <data name="DefaultActivity" xml:space="preserve">
-    <value>(укажи что ты сейчас делаешь)</value>
+    <value>(вкажи що ти зараз робиш)</value>
   </data>
   <data name="DeleteTaskConfirmationMessage" xml:space="preserve">
-    <value>Вы действительно хотите удалить задачу '{0}'?</value>
+    <value>Ви дійсно хочете видалити завдання '{0}'?</value>
   </data>
   <data name="DonateLink" xml:space="preserve">
     <value>http://lifeidea.org/thanks</value>
   </data>
   <data name="DoYouWantToLogCurrentActivityBeforeClosure" xml:space="preserve">
-    <value>Хотите указать и сохранить последнюю активность прежде чем выйти из LazyCure?</value>
+    <value>Хочете вказати і зберегти останню діяльність перш ніж вийти з LazyCure?</value>
   </data>
   <data name="FromAndFor" xml:space="preserve">
-    <value>c {0} в течение {1}</value>
+    <value>від {0} на протязі {1}</value>
   </data>
   <data name="GeneratedActivity" xml:space="preserve">
-    <value>дело №</value>
+    <value>справа №</value>
   </data>
   <data name="HelpFileWasNotFound" xml:space="preserve">
-    <value>Инструкция по эксплуатации LazyCure не найдена. Пожалуйста, проверьте наличие  всех файлов присутствующих в исходной инсталяции LazyCure.</value>
+    <value>Інструкція з експлуатації LazyCure не знайдена. Будь ласка, перевірте наявність всіх файлів присутніх у вихідній інсталяції LazyCure.</value>
   </data>
   <data name="HowToUse" xml:space="preserve">
-    <value>Инструкция по эксплуатации</value>
+    <value>Інструкція з експлуатації</value>
   </data>
   <data name="IncorrectSettings" xml:space="preserve">
-    <value>Некорректные настройки</value>
+    <value>Некоректні налаштування</value>
   </data>
   <data name="IncorrectValueInColumn" xml:space="preserve">
-    <value>Некорректное значение в колонке '{0}'</value>
+    <value>Некоректне значення у колонці '{0}'</value>
   </data>
   <data name="InvalidReminderTime" xml:space="preserve">
-    <value>Время напоминания '{0}' в некорректном формате. Пожалуйста, исправьте и нажмите 'OK'</value>
+    <value>Час нагадування '{0}' в некоректному форматі. Будь ласка, виправте і натисніть 'OK'</value>
   </data>
   <data name="InvalidTimeValue" xml:space="preserve">
-    <value>Некорректный формат времени</value>
+    <value>Некоректний формат часу</value>
   </data>
   <data name="InvalidTimeWarning" xml:space="preserve">
-    <value>Было указано некорректное значение времени. Укажите, пожалуйста, корректное время в диапазоне 0:00:00 -  23:59:59</value>
+    <value>Було вказано некоректне значення часу. Вкажіть, будь ласка, коректний час в діапазоні 0:00:00 -  23:59:59</value>
   </data>
   <data name="LanguageChange" xml:space="preserve">
-    <value>Смена языка</value>
+    <value>Зміна мови</value>
   </data>
   <data name="LazyCureError" xml:space="preserve">
-    <value>Ошибка LazyCure</value>
+    <value>Помилка LazyCure</value>
   </data>
   <data name="LazyCureIsShuttingDown" xml:space="preserve">
-    <value>Выход из LazyCure</value>
+    <value>Вихід з LazyCure</value>
   </data>
   <data name="NewTask" xml:space="preserve">
-    <value>Новая задача...</value>
+    <value>Нове завдання...</value>
   </data>
   <data name="PleaseEnterNotEmptyActivityName" xml:space="preserve">
-    <value>Пожалуйста, введите название активности.</value>
+    <value>Будь ласка, введіть назву діяльності.</value>
   </data>
   <data name="Rest" xml:space="preserve">
-    <value>Отдых</value>
+    <value>Відпочинок</value>
   </data>
   <data name="SavingError" xml:space="preserve">
-    <value>Ошибка сохранения</value>
+    <value>Помилка збереження</value>
   </data>
   <data name="SettingsReadError" xml:space="preserve">
-    <value>Ошибка чтения настроек приложения</value>
+    <value>Помилка читання налаштувань програми</value>
   </data>
   <data name="TimeLogCouldNotBeLoaded" xml:space="preserve">
-    <value>Не получается загрузить лог времени</value>
+    <value>Не виходить завантажити лог часу</value>
   </data>
   <data name="TimeLogError" xml:space="preserve">
-    <value>Ошибка лога времени</value>
+    <value>Помилка логу часу</value>
   </data>
   <data name="TimeLogHasNotBeenSaved" xml:space="preserve">
-    <value>Лог времени не сохранился</value>
+    <value>Лог часу не зберігся</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Версия {0}</value>
+    <value>Версія {0}</value>
   </data>
   <data name="Work" xml:space="preserve">
-    <value>Работа</value>
+    <value>Робота</value>
   </data>
 </root>

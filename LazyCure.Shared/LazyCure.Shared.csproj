@@ -99,6 +99,7 @@
     <EmbeddedResource Include="Constants\Constants.ru.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Constants\Constants.uk.resx" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

@@ -79,18 +79,30 @@ namespace LifeIdea.LazyCure.UI
                 hotKeyLabel.Text = keysEditor.Keys;
         }
 
-        string russianLanguageCode = "ru";
-        string englishLanguageCode = "en";
+        const string russianLanguageCode = "ru";
+        const string englishLanguageCode = "en";
+        const string ukrainianLanguageCode = "uk";
         
         private string LanguageOption
         {
             get
             {
-                return (languageOptionRussian.Checked) ? russianLanguageCode : englishLanguageCode;
+                return
+                    (languageOptionRussian.Checked) ? russianLanguageCode : (
+                    (languageOptionUkrainian.Checked) ? ukrainianLanguageCode : (
+                    englishLanguageCode));
             }
             set
             {
-                languageOptionRussian.Checked = (value == russianLanguageCode);
+                switch (value)
+                {
+                    case russianLanguageCode:
+                        languageOptionRussian.Checked = true; break;
+                    case ukrainianLanguageCode:
+                        languageOptionUkrainian.Checked = true; break;
+                    default:
+                        languageOptionEnglish.Checked = true; break;
+                }
             }
         }
 
@@ -179,7 +191,8 @@ namespace LifeIdea.LazyCure.UI
         {
             MessageBox.Show(this,
                 "Language settings will be applied after LazyCure restart.\r\n"+
-                "язык интерфейса будет изменЄн при следующей загрузке LazyCure.", Constants.LanguageChange,MessageBoxButtons.OK,MessageBoxIcon.Information);
+                "язык интерфейса будет изменЄн при следующей загрузке LazyCure.\r\n"+
+                "ћову ≥нтерфейсу буде зм≥нено при наступному завантаженн≥ LazyCure.", Constants.LanguageChange, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void selectTimeLogsFolder_Click(object sender, EventArgs e)

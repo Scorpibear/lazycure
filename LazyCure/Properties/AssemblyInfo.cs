@@ -19,11 +19,13 @@ using System.Runtime.InteropServices;
    "Dzmitry Kuchko and Iryna Rusetskaya, for helping with LazyCure quality increasing, \r\n\r\n" +
     "Gleb Reys, for sharing personal experience in time logging, providing ideas for improvement and support, \r\n\r\n" +
     "Aliaksandr Zhuraukin, for his patience to LazyCure bugs during raising experience in test automation, \r\n\r\n" +
+    "Anatoly Humenniy, for Ukrainian localization, \r\n\r\n" +
+    "LifeIdea.org readers, for inspiration and additional ideas, \r\n\r\n" +
     "and a lot of thanks to You, who improves your personal efficiency with LazyCure now!")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("LifeIdea.org")]
 [assembly: AssemblyProduct("LazyCure")]
-[assembly: AssemblyCopyright("LifeIdea.org © 2006-2011")]
+[assembly: AssemblyCopyright("LifeIdea.org © 2006-2012")]
 [assembly: AssemblyTrademark("LazyCure")]
 [assembly: AssemblyCulture("")]
 
@@ -42,5 +44,5 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("4.0.0.0")]
-[assembly: AssemblyFileVersion("4.0.0.0")]
+[assembly: AssemblyVersion("4.0.1.0")]
+[assembly: AssemblyFileVersion("4.0.1.0")]
