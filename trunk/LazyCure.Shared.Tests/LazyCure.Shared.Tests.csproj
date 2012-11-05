@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Structures\TokenPairTest.cs" />
     <Compile Include="Tools\FormatTest.cs" />
+    <Compile Include="Tools\LinkBuilderTest.cs" />
     <Compile Include="Tools\LogTest.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

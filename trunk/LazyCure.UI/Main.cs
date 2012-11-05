@@ -321,10 +321,7 @@ namespace LifeIdea.LazyCure.UI
 
         private void miHowToUse_Click(object sender, EventArgs e)
         {
-            string link = "LazyCure.html";
-            if(System.Threading.Thread.CurrentThread.CurrentUICulture.Name != "en")
-                link = Path.Combine(System.Threading.Thread.CurrentThread.CurrentUICulture.Name, "LazyCure.html");
-            link = Path.Combine(Directory.GetCurrentDirectory(), link);
+            string link = LinkBuilder.GetHowToUseLink();
             if (File.Exists(link))
                 Process.Start(link);
             else
