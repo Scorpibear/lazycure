@@ -130,6 +130,8 @@ namespace LifeIdea.LazyCure.Core.Time
                         e.Row["Duration"] = (DateTime)e.Row["End"] - (DateTime)e.ProposedValue;
                     else if (HasValues(e.ProposedValue, e.Row["Duration"]))
                         e.Row["End"] = (DateTime) e.ProposedValue + (TimeSpan) e.Row["Duration"];
+                    if (HasValues(e.Row["Activity"], e.ProposedValue))
+                        ReviewEndTime((DateTime)e.ProposedValue);
                     break;
                 case "Duration":
                     if (HasValues(e.Row["Start"], e.ProposedValue))
@@ -149,8 +151,30 @@ namespace LifeIdea.LazyCure.Core.Time
                     else if (HasValues(e.Row["Duration"], e.ProposedValue))
                         e.Row["Start"] = (DateTime) e.ProposedValue - (TimeSpan) e.Row["Duration"];
                     break;
+                case "Activity":
+                    if (HasValues(e.Row["Start"], e.ProposedValue))
+                        ReviewEndTime((DateTime)e.Row["Start"]);
+                    break;
             }
             data.ColumnChanging += data_ColumnChanging;
+        }
+
+        /// <summary>
+        /// Review end time of all rows comparing with new specified start time and correct it
+        /// </summary>
+        /// <param name="newStartTime">new start time of recently added activity</param>
+        private void ReviewEndTime(DateTime newStartTime)
+        {
+            foreach (DataRow row in data.Rows)
+            {
+                DateTime startTime = (DateTime)row["Start"];
+                if(startTime < newStartTime){
+                    if((row["End"]==DBNull.Value) || ((DateTime)row["End"]>newStartTime)){
+                        row["Duration"] = newStartTime - startTime;
+                        row["End"] = newStartTime;
+                    }
+                }
+            }
         }
 
         private static bool HasValues(object a, object b)

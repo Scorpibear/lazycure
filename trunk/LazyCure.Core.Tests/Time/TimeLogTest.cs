@@ -150,5 +150,45 @@ namespace LifeIdea.LazyCure.Core.Time
             TimeLog timeLog2 = new TimeLog(DateTime.Parse("2008-02-19"));
             Assert.AreEqual(timeLog2, timeLog1);
         }
+        [Test]
+        public void AutoEndTimeSpecificationWhenNextStartTimeSpecified()
+        {
+            DataRow row = timeLog.Data.NewRow();
+            row["Start"] = DateTime.Parse("4:50");
+            row["Activity"] = "wake up";
+            timeLog.Data.Rows.Add(row);
+            DataRow row2 = timeLog.Data.NewRow();
+            row2["Start"] = DateTime.Parse("5:00");
+            row2["Activity"] = "watch TED.com";
+            timeLog.Data.Rows.Add(row2);
+            Assert.AreEqual(DateTime.Parse("5:00"), row["End"]);
+        }
+        [Test]
+        public void AutoEndTimeSpecificationWhenActivityAndThenNextStartTimeSpecified()
+        {
+            DataRow row = timeLog.Data.NewRow();
+            row["Start"] = DateTime.Parse("4:50");
+            row["Activity"] = "wake up";
+            timeLog.Data.Rows.Add(row);
+            DataRow row2 = timeLog.Data.NewRow();
+            row2["Activity"] = "watch TED.com";
+            row2["Start"] = DateTime.Parse("5:00");
+            timeLog.Data.Rows.Add(row2);
+            Assert.AreEqual(DateTime.Parse("5:00"), row["End"]);
+        }
+        [Test]
+        public void EndTimeIsCorrected()
+        {
+            DataRow row = timeLog.Data.NewRow();
+            row["Start"] = DateTime.Parse("4:50");
+            row["Activity"] = "wake up";
+            row["End"] = DateTime.Parse("5:03");
+            timeLog.Data.Rows.Add(row);
+            DataRow row2 = timeLog.Data.NewRow();
+            row2["Start"] = DateTime.Parse("5:00");
+            row2["Activity"] = "watch TED.com";
+            timeLog.Data.Rows.Add(row2);
+            Assert.AreEqual(DateTime.Parse("5:00"), row["End"]);
+        }
     }
 }
