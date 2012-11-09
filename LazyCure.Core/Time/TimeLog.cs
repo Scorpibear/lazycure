@@ -131,7 +131,7 @@ namespace LifeIdea.LazyCure.Core.Time
                     else if (HasValues(e.ProposedValue, e.Row["Duration"]))
                         e.Row["End"] = (DateTime) e.ProposedValue + (TimeSpan) e.Row["Duration"];
                     if (HasValues(e.Row["Activity"], e.ProposedValue))
-                        ReviewEndTime((DateTime)e.ProposedValue);
+                        ReviewEndTime(e.Row, (DateTime)e.ProposedValue);
                     break;
                 case "Duration":
                     if (HasValues(e.Row["Start"], e.ProposedValue))
@@ -153,7 +153,7 @@ namespace LifeIdea.LazyCure.Core.Time
                     break;
                 case "Activity":
                     if (HasValues(e.Row["Start"], e.ProposedValue))
-                        ReviewEndTime((DateTime)e.Row["Start"]);
+                        ReviewEndTime(e.Row, (DateTime)e.Row["Start"]);
                     break;
             }
             data.ColumnChanging += data_ColumnChanging;
@@ -162,18 +162,37 @@ namespace LifeIdea.LazyCure.Core.Time
         /// <summary>
         /// Review end time of all rows comparing with new specified start time and correct it
         /// </summary>
+        /// <param name="newRow">new row that is being added</param>
         /// <param name="newStartTime">new start time of recently added activity</param>
-        private void ReviewEndTime(DateTime newStartTime)
+        private void ReviewEndTime(DataRow newRow, DateTime newStartTime)
         {
-            foreach (DataRow row in data.Rows)
+            DataRow next = null;
+            DateTime nextStartTime = DateTime.MaxValue;
+            for(int i=0;i<data.Rows.Count;i++)
             {
+                DataRow row = data.Rows[i];
+                if (row == newRow)
+                    continue;
                 DateTime startTime = (DateTime)row["Start"];
+                //correct end time of activity which goes just before that
                 if(startTime < newStartTime){
                     if((row["End"]==DBNull.Value) || ((DateTime)row["End"]>newStartTime)){
                         row["Duration"] = newStartTime - startTime;
                         row["End"] = newStartTime;
                     }
                 }
+                //finding the next row
+                if ((startTime > newStartTime) && (startTime < nextStartTime))
+                {
+                    next = row;
+                    nextStartTime = (DateTime)next["Start"];
+                }
+            }
+            //autofill duration and end if the next activity after it has been found
+            if (next != null)
+            {
+                newRow["Duration"] = nextStartTime - newStartTime;
+                newRow["End"] = nextStartTime;
             }
         }
 

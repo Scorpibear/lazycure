@@ -190,5 +190,33 @@ namespace LifeIdea.LazyCure.Core.Time
             timeLog.Data.Rows.Add(row2);
             Assert.AreEqual(DateTime.Parse("5:00"), row["End"]);
         }
+        [Test]
+        public void AutoFillEndByTheNearestStart()
+        {
+            DataRow row2 = timeLog.Data.NewRow();
+            row2["Start"] = DateTime.Parse("4:58");
+            row2["Activity"] = "watch TED.com";
+            row2["Duration"] = TimeSpan.Parse("0:20");
+            timeLog.Data.Rows.Add(row2);
+            DataRow row = timeLog.Data.NewRow();
+            row["Start"] = DateTime.Parse("4:50");
+            row["Activity"] = "wake up";
+            timeLog.Data.Rows.Add(row);
+            Assert.AreEqual(DateTime.Parse("4:58"), row["End"]);
+        }
+        [Test]
+        public void AutoFillDurationByTheNearestStart()
+        {
+            DataRow row2 = timeLog.Data.NewRow();
+            row2["Start"] = DateTime.Parse("4:58");
+            row2["Activity"] = "watch TED.com";
+            row2["Duration"] = TimeSpan.Parse("0:20");
+            timeLog.Data.Rows.Add(row2);
+            DataRow row = timeLog.Data.NewRow();
+            row["Start"] = DateTime.Parse("4:50");
+            row["Activity"] = "wake up";
+            timeLog.Data.Rows.Add(row);
+            Assert.AreEqual(TimeSpan.Parse("0:08"), row["Duration"]);
+        }
     }
 }
