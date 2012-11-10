@@ -18,6 +18,7 @@ namespace LifeIdea.LazyCure.Core.Localization
             previousWriter = Log.Writer;
             Log.Writer = Console.Error;
             languageSwitcher = new LanguageSwitcher();
+            Log.LastError = "";
         }
         [TearDown]
         public void TearDown()
@@ -37,6 +38,12 @@ namespace LifeIdea.LazyCure.Core.Localization
             Thread.CurrentThread.CurrentCulture = new CultureInfo("fr");
             languageSwitcher.ChangeLanguage("ru");
             Assert.AreEqual("ru", languageSwitcher.LastApplied);
+        }
+        [Test]
+        public void ChangeLanguageDoesNotRaiseExceptionInfoInLogForEmptyString()
+        {
+            languageSwitcher.ChangeLanguage("");
+            Assert.AreEqual("", Log.LastError);
         }
     }
 }

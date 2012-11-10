@@ -11,7 +11,8 @@ namespace LifeIdea.LazyCure.Properties
         [Test]
         public void DefaultLanguage()
         {
-            IsNull(null, Settings.Default.Language);
+            AreEqual("", Settings.Default.Language);
+            AreSame("", Settings.Default.Language);
         }
         [Test]
         public void TimeLogsFolderDefaultSetting()
