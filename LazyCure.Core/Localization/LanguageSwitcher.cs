@@ -28,16 +28,16 @@ namespace LifeIdea.LazyCure.Core.Localization
         /// <param name="languageCode">language code, such as 'en', 'ru', etc.</param>
         public void ChangeLanguage(string languageCode)
         {
-            if ((languageCode != null) && (Thread.CurrentThread.CurrentUICulture.Name != languageCode))
+            if ((languageCode != null) && (languageCode != "") && (Thread.CurrentThread.CurrentUICulture.Name != languageCode))
             {
                 CultureInfo cultureInfo = null;
                 try
                 {
                     cultureInfo = new CultureInfo(languageCode);
                 }
-                catch(Exception ex)
+                catch(Exception)
                 {
-                    Log.Exception(ex);
+                    Log.Error(String.Format("Incorrect language code '{0}'.", languageCode));
                 }
                 if (cultureInfo != null)
                 {
