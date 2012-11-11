@@ -1,3 +1,9 @@
+LazyCure 4.1
+* New: Support of Ukrainian language
+* New: Duration and end calcuation by manual entry of activities list with start time and activity name only
+* New: Autocorrection of end time and duration when new activity with earlier start time entered
+* Fixed: bug with not finding LazyCure.html if the language was not switched
+
 LazyCure 4.0
 * New: Support of Russian language
 * New: Possibility to switch between English/Russian
