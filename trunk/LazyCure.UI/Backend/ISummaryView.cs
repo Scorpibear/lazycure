@@ -1,8 +1,6 @@
-namespace LifeIdea.LazyCure.UI
+namespace LifeIdea.LazyCure.UI.Backend
 {
-    interface ISummaryView
+    interface ISummaryView: IView
     {
-        void Show();
-        bool Visible { get; set; }
     }
 }

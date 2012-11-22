@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using LifeIdea.LazyCure.Core.Activities;
 using LifeIdea.LazyCure.Core.IO;
 using LifeIdea.LazyCure.Core.Localization;
@@ -7,8 +8,10 @@ using LifeIdea.LazyCure.Core.Plugins;
 using LifeIdea.LazyCure.Core.Reports;
 using LifeIdea.LazyCure.Core.Tasks;
 using LifeIdea.LazyCure.Core.Time;
+using LifeIdea.LazyCure.Core.Time.TimeLogs;
 using LifeIdea.LazyCure.Shared.Interfaces;
 using LifeIdea.LazyCure.Shared.Structures;
+using LifeIdea.LazyCure.Shared.Tools;
 
 namespace LifeIdea.LazyCure.Core
 {
@@ -28,6 +31,9 @@ namespace LifeIdea.LazyCure.Core
         private ITimeManager timeManager;
         private ITasksSummary tasksSummary;
         private IWorkingTimeManager workingTime;
+        private HistoryDataProvider historyDataProvider;
+        private Time.TimeLogs.TimeLogsManager timeLogsManager;
+        private IExternalPoster externalPoster = new Twitter();
 
         #endregion Fields
 
@@ -94,13 +100,28 @@ namespace LifeIdea.LazyCure.Core
 
         public string TimeLogsFolder { get { return FileManager.TimeLogsFolder; } set { FileManager.TimeLogsFolder = value; } }
 
-        public IExternalPoster ExternalPoster = new Twitter();
+        public IExternalPoster ExternalPoster { get { return externalPoster; } set { externalPoster = value; } }
 
         public IWorkingTimeManager WorkingTime
         {
             get { return workingTime; }
             set { workingTime = value; }
         }
+
+        public TimeLogsManager TimeLogsManager
+        {
+            set
+            {
+                this.timeLogsManager = value;
+                this.historyDataProvider.TimeLogsManager = this.timeLogsManager;
+            }
+            get
+            {
+                return this.timeLogsManager;
+            }
+        }
+
+        public HistoryDataProvider HistoryDataProvider { get { return this.historyDataProvider; } }
 
         #endregion Properties
 
@@ -116,6 +137,8 @@ namespace LifeIdea.LazyCure.Core
             history = new ActivitiesHistory();
             workingTime = new WorkingTime(TimeManager.TimeLog, TaskCollection);
             efficiencyCalculator = new EfficiencyCalculator(workingTime);
+            historyDataProvider = new HistoryDataProvider();
+            TimeLogsManager = new TimeLogsManager(this.fileManager);
             ApplySettings(settings);
         }
 
@@ -230,14 +253,14 @@ namespace LifeIdea.LazyCure.Core
             FinishActivity(finishedActivityName, nextActivityName, false);
         }
 
-        public string TimeLogDate { get { return TimeManager.TimeLog.Date.ToString("yyyy-MM-dd"); } }
+        public string TimeLogDate { get { return Format.Date(TimeManager.TimeLog.Date); } }
 
         public bool LoadTimeLog(string filename)
         {
             ITimeLog loadedTimeLog = fileManager.GetTimeLog(filename);
             if (loadedTimeLog != null)
             {
-                UpdateTimeLogReferencies(loadedTimeLog);
+                ActivateTimeLog(loadedTimeLog);
                 return true;
             }
             else
@@ -251,7 +274,7 @@ namespace LifeIdea.LazyCure.Core
             return TokensPair.Empty;
         }
 
-        public void UpdateTimeLogReferencies(ITimeLog timeLog)
+        public void ActivateTimeLog(ITimeLog timeLog)
         {
             TimeManager.TimeLog = timeLog;
             activitiesSummary.TimeLog = TimeManager.TimeLog;
@@ -293,6 +316,41 @@ namespace LifeIdea.LazyCure.Core
         }
 
         #endregion
+
+        //need to remove ITimeLogsManager from driver
+        #region ITimeLogsManager Members
+
+        public List<IActivity> GetActivities(DateTime day)
+        {
+            if (timeLogsManager != null)
+                return timeLogsManager.GetActivities(day);
+            return null;
+        }
+
+        
+        public List<DateTime> AvailableDays
+        {
+            get { return null; }
+        }
+
+        #endregion ITimeLogsManager Members
+
+        #region IHistoryDataProvider Members
+
+        public DataTable SpentOnDiffDaysDataTable
+        {
+            get
+            {
+                return historyDataProvider.DataTable;
+            }
+        }
+
+        public void UpdateDataTableForActivity(string activityName)
+        {
+            historyDataProvider.UpdateDataTableForActivity(activityName);
+        }
+
+        #endregion IHistoryDataProvider Members
 
         #region Private Members
 

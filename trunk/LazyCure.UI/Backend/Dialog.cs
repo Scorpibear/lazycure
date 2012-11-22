@@ -1,7 +1,7 @@
 using System;
 using System.Windows.Forms;
 
-namespace LifeIdea.LazyCure.UI
+namespace LifeIdea.LazyCure.UI.Backend
 {
     public class Dialog : Form
     {

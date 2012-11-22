@@ -12,6 +12,7 @@ namespace LifeIdea.LazyCure.Shared.Tools
     {
         public const string LongTimePattern = "H:mm:ss";
         public const string ShortTimePattern = "H:mm";
+        public const string DatePattern = "yyyy-MM-dd";
 
         /// <summary>
         /// Apply time patterns to provided culture info
@@ -74,6 +75,11 @@ namespace LifeIdea.LazyCure.Shared.Tools
         public static string MaskedText(TimeSpan timeSpan)
         {
             return timeSpan.Hours.ToString()+timeSpan.Minutes.ToString("00");
+        }
+
+        public static string Date(DateTime date)
+        {
+            return date.ToString(Format.DatePattern);
         }
     }
 }

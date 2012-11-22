@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using LifeIdea.LazyCure.Shared.Interfaces;
+using LifeIdea.LazyCure.Core.Time.TimeLogs;
 
 namespace LifeIdea.LazyCure.Core.Time
 {

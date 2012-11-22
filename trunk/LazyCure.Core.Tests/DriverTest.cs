@@ -11,6 +11,7 @@ using LifeIdea.LazyCure.Core.Plugins;
 using LifeIdea.LazyCure.Core.Reports;
 using LifeIdea.LazyCure.Core.Tasks;
 using LifeIdea.LazyCure.Core.Time;
+using LifeIdea.LazyCure.Core.Time.TimeLogs;
 using LifeIdea.LazyCure.Shared.Tools;
 using LifeIdea.LazyCure.Shared.Interfaces;
 using LifeIdea.LazyCure.Shared.Structures;
@@ -492,6 +493,24 @@ namespace LifeIdea.LazyCure.Core
 
             Assert.AreEqual(test,data);
             VerifyAllExpectationsHaveBeenMet();
+        }
+        [Test]
+        public void SpentOnActivityOnDiffDaysDataReturnsValidDataTable()
+        {
+            object data = driver.SpentOnDiffDaysDataTable;
+            Assert.AreEqual(typeof(DataTable), data.GetType());
+        }
+        [Test]
+        public void TimeManagerPassedToSpentOnDiffDaysDataTable()
+        {
+            var timeLogsManager = new TimeLogsManager(null);
+            driver.TimeLogsManager = timeLogsManager;
+            Assert.AreSame(timeLogsManager, driver.HistoryDataProvider.TimeLogsManager);
+        }
+        [Test]
+        public void DriverConstructorSetsTimeLogsManagerToHistoryDataProvider()
+        {
+            Assert.IsNotNull(driver.HistoryDataProvider.TimeLogsManager);
         }
     }
 }

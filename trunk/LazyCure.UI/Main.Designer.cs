@@ -52,7 +52,10 @@ namespace LifeIdea.LazyCure.UI
             this.miTimeLog = new System.Windows.Forms.ToolStripMenuItem();
             this.miSummary = new System.Windows.Forms.ToolStripMenuItem();
             this.miTasks = new System.Windows.Forms.ToolStripMenuItem();
+            this.miContextShow = new System.Windows.Forms.ToolStripMenuItem();
             this.miOptions = new System.Windows.Forms.ToolStripMenuItem();
+            this.miReport = new System.Windows.Forms.ToolStripMenuItem();
+            this.miSpentOnActivityInDifferentDays = new System.Windows.Forms.ToolStripMenuItem();
             this.miHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.miHowToUse = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
@@ -62,7 +65,6 @@ namespace LifeIdea.LazyCure.UI
             this.miDonate = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.miAbout = new System.Windows.Forms.ToolStripMenuItem();
-            this.miContextShow = new System.Windows.Forms.ToolStripMenuItem();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -189,6 +191,7 @@ namespace LifeIdea.LazyCure.UI
             this.miFile,
             this.miShow,
             this.miOptions,
+            this.miReport,
             this.miHelp});
             this.menu.Name = "menu";
             this.toolTip.SetToolTip(this.menu, resources.GetString("menu.ToolTip"));
@@ -248,7 +251,6 @@ namespace LifeIdea.LazyCure.UI
             this.miSummary,
             this.miTasks});
             this.showMenu.Name = "contextMenu";
-            this.showMenu.OwnerItem = this.miContextShow;
             this.toolTip.SetToolTip(this.showMenu, resources.GetString("showMenu.ToolTip"));
             // 
             // miActivityDetails
@@ -281,11 +283,31 @@ namespace LifeIdea.LazyCure.UI
             this.miTasks.Name = "miTasks";
             this.miTasks.Click += new System.EventHandler(this.miTasks_Click);
             // 
+            // miContextShow
+            // 
+            resources.ApplyResources(this.miContextShow, "miContextShow");
+            this.miContextShow.DropDown = this.showMenu;
+            this.miContextShow.Name = "miContextShow";
+            // 
             // miOptions
             // 
             resources.ApplyResources(this.miOptions, "miOptions");
             this.miOptions.Name = "miOptions";
             this.miOptions.Click += new System.EventHandler(this.miOptions_Click);
+            // 
+            // miReport
+            // 
+            resources.ApplyResources(this.miReport, "miReport");
+            this.miReport.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.miSpentOnActivityInDifferentDays});
+            this.miReport.Name = "miReport";
+            // 
+            // miSpentOnActivityInDifferentDays
+            // 
+            resources.ApplyResources(this.miSpentOnActivityInDifferentDays, "miSpentOnActivityInDifferentDays");
+            this.miSpentOnActivityInDifferentDays.CheckOnClick = true;
+            this.miSpentOnActivityInDifferentDays.Name = "miSpentOnActivityInDifferentDays";
+            this.miSpentOnActivityInDifferentDays.Click += new System.EventHandler(this.miSpentOnActivityInDifferentDays_Click);
             // 
             // miHelp
             // 
@@ -350,12 +372,6 @@ namespace LifeIdea.LazyCure.UI
             resources.ApplyResources(this.miAbout, "miAbout");
             this.miAbout.Name = "miAbout";
             this.miAbout.Click += new System.EventHandler(this.miAbout_Click);
-            // 
-            // miContextShow
-            // 
-            resources.ApplyResources(this.miContextShow, "miContextShow");
-            this.miContextShow.DropDown = this.showMenu;
-            this.miContextShow.Name = "miContextShow";
             // 
             // timer
             // 
@@ -476,5 +492,7 @@ namespace LifeIdea.LazyCure.UI
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.CheckBox postToTwitter;
         private System.Windows.Forms.ToolStripMenuItem miDonate;
+        private System.Windows.Forms.ToolStripMenuItem miReport;
+        private System.Windows.Forms.ToolStripMenuItem miSpentOnActivityInDifferentDays;
     }
 }

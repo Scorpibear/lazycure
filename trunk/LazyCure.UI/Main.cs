@@ -75,6 +75,7 @@ namespace LifeIdea.LazyCure.UI
             miTimeLog.Checked = Dialogs.TimeLog.Visible;
             miSummary.Checked = Dialogs.Summary.Visible;
             miTasks.Checked = Dialogs.TaskManager.Visible;
+            miSpentOnActivityInDifferentDays.Checked = Dialogs.SpentOnDiffDays.Visible;
         }
 
         #region Private Methods
@@ -434,5 +435,10 @@ namespace LifeIdea.LazyCure.UI
         }
 
         #endregion Event Handlers
+
+        private void miSpentOnActivityInDifferentDays_Click(object sender, EventArgs e)
+        {
+            Dialogs.SpentOnDiffDays.Visible = miSpentOnActivityInDifferentDays.Checked;
+        }
     }
 }

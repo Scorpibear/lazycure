@@ -5,8 +5,9 @@ using System.Text.RegularExpressions;
 using System.Xml;
 using LifeIdea.LazyCure.Core.Activities;
 using LifeIdea.LazyCure.Shared.Interfaces;
+using LifeIdea.LazyCure.Shared.Tools;
 
-namespace LifeIdea.LazyCure.Core.Time
+namespace LifeIdea.LazyCure.Core.Time.TimeLogs
 {
     /// <summary>
     /// Serialize and Deserialize TimeLog
@@ -24,7 +25,7 @@ namespace LifeIdea.LazyCure.Core.Time
             string version = Regex.Match(fullname, @"Version=(\d\.\d)").Groups[1].Value;
             versionAttribute.Value = version;
 
-            data.Attributes.Append(xml.CreateAttribute("Date")).Value = timeLog.Date.ToString("yyyy-MM-dd");
+            data.Attributes.Append(xml.CreateAttribute("Date")).Value = Format.Date(timeLog.Date);
 
             foreach (IActivity activity in timeLog.Activities)
                 data.InnerXml += ActivitySerializer.SerializeToString(activity);
