@@ -63,14 +63,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reports\ActivitiesSummaryTest.cs" />
     <Compile Include="Reports\EfficiencyCalculatorTest.cs" />
+    <Compile Include="Reports\HistoryDataProviderTest.cs" />
     <Compile Include="Reports\TasksSummaryTest.cs" />
     <Compile Include="Reports\WorkingTimeTest.cs" />
     <Compile Include="Tasks\TaskCollectionSerializerTest.cs" />
     <Compile Include="Tasks\TaskCollectionTest.cs" />
     <Compile Include="Tasks\TaskSerializerTest.cs" />
     <Compile Include="Tasks\TaskTest.cs" />
-    <Compile Include="Time\TimeLogSerializerTest.cs" />
-    <Compile Include="Time\TimeLogTest.cs" />
+    <Compile Include="Time\TimeLogs\TimeLogSerializerTest.cs" />
+    <Compile Include="Time\TimeLogs\TimeLogsManagerTest.cs" />
+    <Compile Include="Time\TimeLogs\TimeLogTest.cs" />
     <Compile Include="Time\TimeManagerTest.cs" />
     <Compile Include="UtilitiesTest.cs" />
   </ItemGroup>

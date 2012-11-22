@@ -2,13 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
+using System.Reflection;
 using System.Xml;
-using LifeIdea.LazyCure.Shared.Interfaces;
 using NMock2;
 using NUnit.Framework;
-using System.Reflection;
+using LifeIdea.LazyCure.Shared.Interfaces;
 
-namespace LifeIdea.LazyCure.Core.Time
+namespace LifeIdea.LazyCure.Core.Time.TimeLogs
 {
     [TestFixture]
     public class TimeLogSerializerTest: Mockery

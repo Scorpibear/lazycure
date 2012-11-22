@@ -4,7 +4,7 @@ using LifeIdea.LazyCure.Shared.Structures;
 
 namespace LifeIdea.LazyCure.Shared.Interfaces
 {
-    public interface ILazyCureDriver
+    public interface ILazyCureDriver: IHistoryDataProvider
     {
         object ActivitiesSummaryData { get; }
 
@@ -15,8 +15,6 @@ namespace LifeIdea.LazyCure.Shared.Interfaces
         IActivity CurrentActivity { get; }
 
         double Efficiency { get; }
-
-        string[] HistoryActivities { get; }
 
         string[] LatestActivities { get; }
 

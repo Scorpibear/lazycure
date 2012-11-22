@@ -1,7 +1,8 @@
 using System;
+using System.Collections.Generic;
 using LifeIdea.LazyCure.Core.Activities;
 using LifeIdea.LazyCure.Core.Tasks;
-using LifeIdea.LazyCure.Core.Time;
+using LifeIdea.LazyCure.Core.Time.TimeLogs;
 
 namespace LifeIdea.LazyCure.Core.IO
 {
@@ -24,5 +25,9 @@ namespace LifeIdea.LazyCure.Core.IO
         bool SaveTimeLog(ITimeLog timeLog, string filename);
 
         string TimeLogsFolder { get; set;}
+
+        ITimeLog GetTimeLog(DateTime day);
+
+        List<DateTime> AllTimeLogDates { get; }
     }
 }

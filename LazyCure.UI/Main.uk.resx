@@ -259,9 +259,6 @@
   <data name="miTasks.Text" xml:space="preserve">
     <value>Менеджер &amp;завдань</value>
   </data>
-  <data name="miContextShow.Text" xml:space="preserve">
-    <value>Показати</value>
-  </data>
   <data name="showMenu.Size" type="System.Drawing.Size, System.Drawing">
     <value>178, 92</value>
   </data>
@@ -337,11 +334,29 @@
   <data name="toolStripContainer1.TopToolStripPanel.ToolTip" xml:space="preserve">
     <value />
   </data>
+  <data name="miContextShow.Size" type="System.Drawing.Size, System.Drawing">
+    <value>188, 22</value>
+  </data>
+  <data name="miContextShow.Text" xml:space="preserve">
+    <value>Показати</value>
+  </data>
+  <data name="miContextActivate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>188, 22</value>
+  </data>
   <data name="miContextActivate.Text" xml:space="preserve">
     <value>Активувати</value>
   </data>
+  <data name="miSeparator.Size" type="System.Drawing.Size, System.Drawing">
+    <value>185, 6</value>
+  </data>
+  <data name="miContextExit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>188, 22</value>
+  </data>
   <data name="miContextExit.Text" xml:space="preserve">
     <value>Вийти</value>
+  </data>
+  <data name="contextMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>189, 76</value>
   </data>
   <data name="contextMenu.ToolTip" xml:space="preserve">
     <value />

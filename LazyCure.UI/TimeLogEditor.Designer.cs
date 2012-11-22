@@ -35,12 +35,12 @@ namespace LifeIdea.LazyCure.UI
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.timeLogView = new System.Windows.Forms.DataGridView();
-            this.contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Start = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Activity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Duration = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.End = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.timeLogView)).BeginInit();
             this.contextMenu.SuspendLayout();
             this.SuspendLayout();
@@ -62,19 +62,6 @@ namespace LifeIdea.LazyCure.UI
             this.timeLogView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.timeLogView_DataError);
             this.timeLogView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.timeLogView_KeyDown);
             this.timeLogView.KeyUp += new System.Windows.Forms.KeyEventHandler(this.timeLogView_KeyUp);
-            // 
-            // contextMenu
-            // 
-            resources.ApplyResources(this.contextMenu, "contextMenu");
-            this.contextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.copyToolStripMenuItem});
-            this.contextMenu.Name = "contextMenu";
-            // 
-            // copyToolStripMenuItem
-            // 
-            resources.ApplyResources(this.copyToolStripMenuItem, "copyToolStripMenuItem");
-            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
             // 
             // Start
             // 
@@ -112,6 +99,19 @@ namespace LifeIdea.LazyCure.UI
             resources.ApplyResources(this.End, "End");
             this.End.Name = "End";
             this.End.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // contextMenu
+            // 
+            resources.ApplyResources(this.contextMenu, "contextMenu");
+            this.contextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyToolStripMenuItem});
+            this.contextMenu.Name = "contextMenu";
+            // 
+            // copyToolStripMenuItem
+            // 
+            resources.ApplyResources(this.copyToolStripMenuItem, "copyToolStripMenuItem");
+            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
+            this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
             // 
             // TimeLogEditor
             // 

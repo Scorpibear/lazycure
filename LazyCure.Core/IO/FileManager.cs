@@ -1,9 +1,11 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using System.Text.RegularExpressions;
 using LifeIdea.LazyCure.Core.Activities;
 using LifeIdea.LazyCure.Core.Tasks;
-using LifeIdea.LazyCure.Core.Time;
+using LifeIdea.LazyCure.Core.Time.TimeLogs;
 using LifeIdea.LazyCure.Shared.Interfaces;
 using LifeIdea.LazyCure.Shared.Tools;
 
@@ -153,7 +155,7 @@ namespace LifeIdea.LazyCure.Core.IO
 
         public string GetTimeLogFileName(DateTime date)
         {
-            string filename = date.ToString("yyyy-MM-dd") + ".timelog";
+            string filename = Format.Date(date) + ".timelog";
             if (timeLogsFolder != null)
                 return Path.Combine(timeLogsFolder, filename);
             else
@@ -164,7 +166,38 @@ namespace LifeIdea.LazyCure.Core.IO
         {
             string path = Assembly.GetCallingAssembly().Location;
             FileInfo fileInfo = new FileInfo(path);
-            return fileInfo.DirectoryName + Path.DirectorySeparatorChar + shortFileName;
+            return Path.Combine(fileInfo.DirectoryName, shortFileName);
+        }
+
+
+        public ITimeLog GetTimeLog(DateTime day)
+        {
+            return this.GetTimeLog(GetTimeLogFileName(day));
+        }
+
+
+        public List<DateTime> AllTimeLogDates
+        {
+            get
+            {
+                var days = new List<DateTime>();
+                if (this.TimeLogsFolder != null)
+                {
+                    foreach (string filename in Directory.EnumerateFiles(this.TimeLogsFolder))
+                    {
+                        FileInfo fileInfo = new FileInfo(filename);
+                        string[] fileparts = fileInfo.Name.Split('.');
+                        if (fileparts.Length == 2)
+                        {
+                            string dateFromTimeLogName = fileparts[0];
+                            DateTime day;
+                            if (DateTime.TryParse(dateFromTimeLogName, out day))
+                                days.Add(day);
+                        }
+                    }
+                }
+                return days;
+            }
         }
     }
 }

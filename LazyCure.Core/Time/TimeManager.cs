@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using LifeIdea.LazyCure.Core.Activities;
 using LifeIdea.LazyCure.Shared.Interfaces;
+using LifeIdea.LazyCure.Core.Time.TimeLogs;
 
 namespace LifeIdea.LazyCure.Core.Time
 {
@@ -169,7 +170,7 @@ namespace LifeIdea.LazyCure.Core.Time
                 TimeLogsManager.Save();
             TimeLog = new TimeLog(endDate);
             if (TimeLogsManager != null)
-                TimeLogsManager.UpdateTimeLogReferencies(TimeLog);
+                TimeLogsManager.ActivateTimeLog(TimeLog);
             currentActivity.Start = endDate;
             currentActivity.Duration = newDayActivityDuration;
         }

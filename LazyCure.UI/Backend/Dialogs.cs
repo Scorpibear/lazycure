@@ -1,9 +1,9 @@
 using System.Windows.Forms;
 using LifeIdea.LazyCure.Shared.Interfaces;
 
-namespace LifeIdea.LazyCure.UI
+namespace LifeIdea.LazyCure.UI.Backend
 {
-    static class Dialogs
+    public static class Dialogs
     {
         private static OathAuthorize oath = null;
         private static OpenFileDialog open = null;
@@ -13,6 +13,7 @@ namespace LifeIdea.LazyCure.UI
         private static AboutBox about = null;
         private static Options options = null;
         private static TaskManager taskManager = null;
+        private static ISpentOnDiffDaysView spentOnDiffDays = null;
 
         internal static ILazyCureDriver LazyCureDriver = null;
         internal static IMainForm MainForm = null;
@@ -96,6 +97,16 @@ namespace LifeIdea.LazyCure.UI
                 if (taskManager == null)
                     taskManager = new TaskManager(LazyCureDriver, MainForm);
                 return taskManager;
+            }
+        }
+
+        public static ISpentOnDiffDaysView SpentOnDiffDays
+        {
+            get
+            {
+                if (spentOnDiffDays == null)
+                    spentOnDiffDays = new SpentInDiffDaysView(LazyCureDriver as IHistoryDataProvider, MainForm);
+                return spentOnDiffDays;
             }
         }
 

@@ -3,7 +3,7 @@ using System.IO;
 using NMock2;
 using NUnit.Framework;
 using LifeIdea.LazyCure.Core.Tasks;
-using LifeIdea.LazyCure.Core.Time;
+using LifeIdea.LazyCure.Core.Time.TimeLogs;
 using LifeIdea.LazyCure.Shared.Interfaces;
 using LifeIdea.LazyCure.Shared.Tools;
 
@@ -181,6 +181,22 @@ namespace LifeIdea.LazyCure.Core.IO
             File.WriteAllText("GetTimeLog.SaveFileName", content);
             ITimeLog timeLog = fileManager.GetTimeLog("GetTimeLog.SaveFileName");
             Assert.AreEqual("GetTimeLog.SaveFileName", timeLog.FileName);
+        }
+        [Test]
+        public void AllTimeLogDatesLooksAtDisk()
+        {
+            this.filename = fileManager.GetTimeLogFileName(DateTime.Parse("2000-01-23"));
+            string folder = Path.Combine(Environment.GetEnvironmentVariable("TMP"), "LC");
+            this.filename = Path.Combine(folder, this.filename);
+            if (Directory.Exists(folder))
+                Directory.Delete(folder, true);
+            Directory.CreateDirectory(folder);
+            File.CreateText(filename).Close(); //will be deleted in TearDown
+
+            fileManager.TimeLogsFolder = folder;
+            var list = fileManager.AllTimeLogDates;
+            Assert.AreEqual(1, list.Count, this.filename);
+            Assert.AreEqual(DateTime.Parse("2000-01-23"), list[0]);
         }
     }
 }

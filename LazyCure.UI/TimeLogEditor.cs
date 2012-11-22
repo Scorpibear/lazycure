@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using LifeIdea.LazyCure.Shared.Constants;
 using LifeIdea.LazyCure.Shared.Interfaces;
+using LifeIdea.LazyCure.UI.Backend;
 
 namespace LifeIdea.LazyCure.UI
 {
-    internal partial class TimeLogEditor : View, ITimeLogView
+    internal partial class TimeLogEditor : Backend.View, ITimeLogView
     {
         private readonly ILazyCureDriver lazyCure;
         private List<int> timeColumnsIndeces = new List<int>();

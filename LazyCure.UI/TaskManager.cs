@@ -7,7 +7,7 @@ using LifeIdea.LazyCure.UI.Backend;
 
 namespace LifeIdea.LazyCure.UI
 {
-    partial class TaskManager : View
+    partial class TaskManager : Backend.View
     {
         readonly string NewTaskName = Constants.NewTask;
 

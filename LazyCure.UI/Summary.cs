@@ -4,10 +4,11 @@ using System.Windows.Forms;
 using LifeIdea.LazyCure.Shared.Constants;
 using LifeIdea.LazyCure.Shared.Interfaces;
 using LifeIdea.LazyCure.Shared.Tools;
+using LifeIdea.LazyCure.UI.Backend;
 
 namespace LifeIdea.LazyCure.UI
 {
-    partial class Summary : View,ISummaryView
+    partial class Summary : Backend.View,ISummaryView
     {
         private readonly ILazyCureDriver lazyCure;
         private readonly Timer timer = new Timer();

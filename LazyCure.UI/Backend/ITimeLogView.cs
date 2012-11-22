@@ -1,12 +1,8 @@
-namespace LifeIdea.LazyCure.UI
+namespace LifeIdea.LazyCure.UI.Backend
 {
-    interface ITimeLogView
+    interface ITimeLogView: IView
     {
-        bool Visible { get; set; }
-
         void CancelEdit();
-
-        void Show();
 
         void Update();
     }

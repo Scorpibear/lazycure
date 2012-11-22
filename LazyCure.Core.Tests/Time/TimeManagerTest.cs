@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using NMock2;
 using NUnit.Framework;
 using LifeIdea.LazyCure.Core.Activities;
+using LifeIdea.LazyCure.Core.Time.TimeLogs;
 using LifeIdea.LazyCure.Shared.Interfaces;
 using Is = NMock2.Is;
 
@@ -287,7 +288,7 @@ namespace LifeIdea.LazyCure.Core.Time
         public void AtMidnightReferenciesUpdated()
         {
             timeManager.TimeLogsManager = NewMock<ITimeLogsManager>();
-            Expect.Once.On(timeManager.TimeLogsManager).Method("UpdateTimeLogReferencies");
+            Expect.Once.On(timeManager.TimeLogsManager).Method("ActivateTimeLog");
             Stub.On(timeManager.TimeLogsManager).Method("Save").Will(Return.Value(false));
             timeManager.PerformMidnightCorrection(DateTime.Now);
             VerifyAllExpectationsHaveBeenMet();

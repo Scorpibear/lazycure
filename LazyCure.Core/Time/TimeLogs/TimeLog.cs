@@ -4,7 +4,7 @@ using System.Data;
 using LifeIdea.LazyCure.Core.Activities;
 using LifeIdea.LazyCure.Shared.Interfaces;
 
-namespace LifeIdea.LazyCure.Core.Time
+namespace LifeIdea.LazyCure.Core.Time.TimeLogs
 {
     /// <summary>
     /// Represent time log for one day
