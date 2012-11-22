@@ -76,7 +76,6 @@
     <Compile Include="Reports\IEfficiencyCalculator.cs" />
     <Compile Include="Reports\ITasksSummary.cs" />
     <Compile Include="Reports\IWorkingTimeManager.cs" />
-    <Compile Include="Reports\SpentSummarizer.cs" />
     <Compile Include="Reports\TasksSummary.cs" />
     <Compile Include="Reports\WorkingTime.cs" />
     <Compile Include="Reports\HistoryDataProvider.cs" />
