@@ -1,0 +1,1208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="miSubscribe.Text" xml:space="preserve">
+    <value>&amp;Subscribe to LazyCure news</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="toolStripContainer1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="&gt;&gt;statusBar.Type" xml:space="preserve">
+    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>232, 6</value>
+  </data>
+  <data name="miOpen.Size" type="System.Drawing.Size, System.Drawing">
+    <value>155, 22</value>
+  </data>
+  <data name="miOnline.Size" type="System.Drawing.Size, System.Drawing">
+    <value>235, 22</value>
+  </data>
+  <data name="&gt;&gt;miFile.Name" xml:space="preserve">
+    <value>miFile</value>
+  </data>
+  <data name="toolStripContainer1.RightToolStripPanel.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="miActivityDetails.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="&gt;&gt;statusBar.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;nowYou.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;miSave.Name" xml:space="preserve">
+    <value>miSave</value>
+  </data>
+  <data name="activityStartTime.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 17</value>
+  </data>
+  <data name="postToTwitter.Text" xml:space="preserve">
+    <value>post to Twitter</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolTip.Name" xml:space="preserve">
+    <value>toolTip</value>
+  </data>
+  <data name="&gt;&gt;miContextExit.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;miContextExit.Name" xml:space="preserve">
+    <value>miContextExit</value>
+  </data>
+  <data name="&gt;&gt;miActivityDetails.Name" xml:space="preserve">
+    <value>miActivityDetails</value>
+  </data>
+  <data name="currentActivity.ToolTip" xml:space="preserve">
+    <value>Enter an activity that you are doing right now</value>
+  </data>
+  <data name="&gt;&gt;miTimeLog.Name" xml:space="preserve">
+    <value>miTimeLog</value>
+  </data>
+  <data name="miContextShow.Size" type="System.Drawing.Size, System.Drawing">
+    <value>169, 22</value>
+  </data>
+  <data name="statusBar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="activityDuration.ToolTipText" xml:space="preserve">
+    <value>Activity duration</value>
+  </data>
+  <data name="miSpentOnActivityInDifferentDays.Size" type="System.Drawing.Size, System.Drawing">
+    <value>250, 22</value>
+  </data>
+  <data name="statusBar.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;switchButton.Name" xml:space="preserve">
+    <value>switchButton</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="miHelp.Text" xml:space="preserve">
+    <value>&amp;Help</value>
+  </data>
+  <data name="&gt;&gt;miSubscribe.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;miOnline.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>294, 112</value>
+  </data>
+  <data name="switchButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>215, 11</value>
+  </data>
+  <data name="&gt;&gt;activityDuration.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;miReport.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="miOpen.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+O</value>
+  </data>
+  <data name="miOpen.Text" xml:space="preserve">
+    <value>&amp;Open...</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer1.BottomToolStripPanel.Parent" xml:space="preserve">
+    <value>toolStripContainer1</value>
+  </data>
+  <data name="&gt;&gt;miTimeLog.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Main</value>
+  </data>
+  <data name="&gt;&gt;miSeparator.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="toolStripContainer1.LeftToolStripPanel.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="postToTwitter.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="miContextActivate.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+F12</value>
+  </data>
+  <data name="&gt;&gt;postToTwitter.Parent" xml:space="preserve">
+    <value>nowYou</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer1.Name" xml:space="preserve">
+    <value>toolStripContainer1</value>
+  </data>
+  <data name="&gt;&gt;postToTwitter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="toolStripContainer1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="&gt;&gt;miSaveAs.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer1.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="toolStripContainer1.ContentPanel.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="postToTwitter.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>232, 6</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAMDAAAAEAIACoJQAAFgAAACgAAAAwAAAAYAAAAAEAIAAAAAAAgCUAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABjV1cGY1dXBmJWVgYAAAAWAAAAFgAAABYAAAA6AAAAOgAA
+        ADoAAABLAAAASwAAAEsAAABQAAAAUAAAAFAAAABPAAAATwAAAE8AAAA/AAAAPwAAAD8AAAAjAAAAIwAA
+        ACMyLCwIMiwsCDIsLAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABjV1cGY1dXBmJWVgYAAAAWAAAAFgAA
+        ABYAAAA6AAAAOgAAADoAAABLAAAASwAAAEsAAABQAAAAUAAAAFAAAABPAAAATwAAAE8AAAA/AAAAPwAA
+        AD8AAAAjAAAAIwAAACMyLCwIMiwsCDIsLAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABjV1cGY1dXBmJW
+        VgYAAAAWAAAAFgAAABYAAAA6AAAAOgAAADoAAABLAAAASwAAAEsAAABQAAAAUAAAAFAAAABPAAAATwAA
+        AE8AAAA/AAAAPwAAAD8AAAAjAAAAIwAAACMyLCwIMiwsCDIsLAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB8bW0EfG1tBHts
+        bAQPDw8xDw8PMQ8PDzJTV1+LU1dfi1JXX4w1TYrLNU2KyzRMiswgPo7YID6O2CA+jtgePI3aHjyN2h47
+        jdobN4TWGzeE1ho2g9YMG0OzDBtDswsaQrMAAAWAAAAFgAAABIAAAAA6AAAAOgAAADoyLCwPMiwsDzIs
+        LA99bW0BfW1tAX1tbQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAB8bW0EfG1tBHtsbAQPDw8xDw8PMQ8PDzJUWGCLVFhgi1NYYIw2TovMNk6LzDVNi8whP4/YIT+P2CE/
+        j9gfPY7aHz2O2h88jtocOIXWHDiF1hs3hNYMHESzDBxEswwbQ7MAAQaAAAEGgAAABYAAAAA6AAAAOgAA
+        ADoyLCwPMiwsDzIsLA99bW0BfW1tAX1tbQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAB8bW0EfG1tBHtsbAQPDw8xDw8PMQ8PDzJUWGCLVFhgi1NYYIw2TovLNk6LyzVN
+        i8whP4/YIT+P2CE/j9gfPY7aHz2O2h88jtocOIXWHDiF1hs3hNYNHESzDRxEswwbQ7MAAQaAAAEGgAAA
+        BYAAAAA6AAAAOgAAADoyLCwPMiwsDzIsLA99bW0BfW1tAX1tbQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAABkWFgFZFhYBWRYWAUuLi9BLi4vQS4uL0KtuNjjrbjY46y42ORWedz/Vnnc/1Z5
+        3P9LdN3/S3Td/0t03f92leP/dpXj/3aV4/+Yser/mLHq/5ix6v+Urur/lK7q/5Ot6v9zlOT/c5Tk/3KT
+        4/9EZLPwRGSz8ENjsvAMEySnDBMkpwsSI6cAAQJaAAECWgABAloyLCwQMiwsEDIsLBAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABkWFgFZFhYBWRYWAUuLi9BLi4vQS4uL0KuudnjrrnZ4625
+        2eRWet3/Vnrd/1Z63f9Mdd7/THXe/0x13v93luT/d5bk/3eW5P+Zsuv/mbLr/5my6/+Vr+v/la/r/5Su
+        6/9zleX/c5Xl/3OU5P9FZbTwRWW08ERks/ANFCWnDRQlpwwTJKcAAQJaAAECWgABAloyLCwQMiwsEDIs
+        LBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABkWFgFZFhYBWRYWAUuLi9BLi4vQS4u
+        L0KuudnjrrnZ46252eRWet3/Vnrd/1Z63f9Mdd7/THXe/0x13v93luT/d5bk/3eW5P+Zsuv/mbLr/5my
+        6/+Vr+v/la/r/5Su6/90leX/dJXl/3OU5P9FZbTwRWW08ERks/ANFCWnDRQlpwwTJKcAAQJaAAECWgAB
+        AloyLCwQMiwsEDIsLBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAqKywnKissJyor
+        LCi+wcm/vsHJv77BycBmiOP/Zojj/2aI4/9bg+H/W4Ph/1uD4f/Ax+P/wMfj/8DH4//o3dT/6N3U/+jd
+        1P/u4c7/7uDO/+7gzv/XyNn/18jZ/9fI2f/m5Oj/5uTo/+Xj6P++zvD/vs7w/73N7/9YdrbuWHW27ld1
+        te4PFiiqDxYoqg4VJ6oAAAA+AAAAPgAAAD4yLCwKMiwsCjIsLAoAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAqKywnKissJyorLCi/wsq/v8LKv7/CysBmiOP/Zojj/2aI4/9cg+H/XIPh/1yD4f/ByOP/wcjj/8HI
+        4//p3tT/6d7U/+ne1P/v4s7/7+HO/+/hzv/Yydn/2MnZ/9jJ2f/n5ej/5+Xo/+bk6P+/z/H/v8/x/77O
+        8P9Zd7fuWXa37lh2tu4QFymqEBcpqg8WKKoAAAA+AAAAPgAAAD4yLCwKMiwsCjIsLAoAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAqKywnKissJyorLCi/wsq/v8LKv7/CysBmiOP/Zojj/2aI4/9cg+H/XIPh/1yD
+        4f/ByOP/wcjj/8HI4//p3tT/6d7U/+ne1P/v4s7/7+HO/+/hzv/Yydn/2MnZ/9jJ2f/n5ej/5+Xo/+bk
+        6P+/z/H/v8/x/77O8P9Zd7fuWXa37lh2tu4QFymqEBcpqg8WKKoAAAA+AAAAPgAAAD4yLCwKMiwsCjIs
+        LAoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACkqbGCpKmxgqSpsYOove3+qL3t/qi97f9vlOb/b5Tm/2+U
+        5v+6wt7/usLe/7rC3v/y3MD/8tzA//LcwP/z3bz/8928//LdvP+8xMv/vMTL/7vDy/+ajNH/mozR/5qM
+        0f/03Lv/9Ny7//Tcu//05tL/9ObS//Pm0v/V3vH/1N7x/9Td8P9yjcPyco3D8nGMwvIFBw2LBQcNiwQG
+        DIsAAAAsAAAALAAAACyvm5sBr5ubAa+bmwEAAAAAAAAAAAAAAAClqrKCpaqygqWqsoOove7+qL3u/qi9
+        7v9vlOb/b5Tm/2+U5v+7w97/u8Pe/7vD3v/z3cD/893A//PdwP/z3bz/8928//LdvP+8xMv/vMTL/7vD
+        y/+ajNH/mozR/5qM0f/03Lv/9Ny7//Tcu//159L/9efS//Tn0v/W3/L/1d/y/9Xe8f9zjsTyc47E8nKN
+        w/IGCA6LBggOiwUHDYsAAAAsAAAALAAAACyvm5sBr5ubAa+bmwEAAAAAAAAAAAAAAAClqrKCpaqygqWq
+        soOove7+qL3u/qi97v9vlOb/b5Tm/2+U5v+7w97/u8Pe/7vD3v/z3cD/893A//PdwP/z3bz/8928//Ld
+        vP+8xMv/vMTL/7vDy/+ajNH/mozR/5qM0f/03Lv/9Ny7//Tcu//159L/9efS//Tn0v/W3/L/1d/y/9Xe
+        8f9zjsTyc47E8nKNw/IGCA6LBggOiwUHDYsAAAAsAAAALAAAACyvm5sBr5ubAa+bmwEAAAAAAAAAAAAA
+        AADK1unTytbp08rW6dOLquv/i6rr/4uq6/+etef/nrXn/5615//h1s//4dbP/+HWz//14cP/9eHD//Xh
+        w//14cP/9eHD//Xhw//Mzsz/zM7M/8zOzP/Bv87/wb/O/8G/zv/z4ML/8+DC//Pgwv/04MH/9ODB//Pg
+        wf/z7N//8+zf//Ls3//B0vH/wdLx/8DR8P8zQmHEM0JhxDJBYMQAAABUAAAAVAAAAFRLQkIGS0JCBktC
+        QgYAAAAAAAAAAAAAAADL1+rTy9fq08vX6tOLquv/i6rr/4uq6/+ftuf/n7bn/5+25//i18//4tfP/+LX
+        z//14cP/9eHD//Xhw//14cP/9eHD//Xhw//Mzsz/zM7M/8zOzP/CwM7/wsDO/8LAzv/z4ML/8+DC//Pg
+        wv/04MH/9ODB//Tgwf/07N//9Ozf//Ps3//C0/L/wtPy/8HS8f80Q2LENENixDNCYcQAAABUAAAAVAAA
+        AFRLQkIGS0JCBktCQgYAAAAAAAAAAAAAAADL1+rTy9fq08vX6tOLquv/i6rr/4uq6/+ftuf/n7bn/5+2
+        5//i18//4tfP/+LXz//14cP/9eHD//Xhw//14cP/9eHD//Xhw//Mzsz/zM7M/8zOzP/CwM7/wsDO/8LA
+        zv/z4ML/8+DC//Pgwv/04MH/9ODB//Tgwf/07N//9Ozf//Ps3//C0/L/wtPy/8HS8f80Q2LENENixDNC
+        YcQAAABUAAAAVAAAAFRLQkIGS0JCBktCQgYAAAAAAAAAAAAAAADC1fb/wtX2/8LV9v+Ytu7/mLbu/5i2
+        7v/Ay+b/wMvm/8DL5v/j087/49PO/+PTzv/25s3/9ubN//bmzf/25s3/9ubN//bmzf/g28//4NvP/+Db
+        z//GzNT/xszU/8bM1P/25cr/9uXK//blyv/25Mr/9uTK//bkyv/25s3/9ubN//bmzf/z7+z/8+/s//Lu
+        6/94j7rteI+67XeOue0OEhyJDhIbiQ4SHIlLQkIUS0JCFEtCQhQAAAAAAAAAAAAAAADC1fb/wtX2/8LV
+        9v+Ytu7/mLbu/5i27v/By+b/wcvm/8HL5v/j087/49PO/+PTzv/25s3/9ubN//bmzf/25s3/9ubN//bm
+        zf/g28//4NvP/+Dbz//GzdT/xs3U/8bN1P/25cr/9uXK//blyv/25Mr/9uTK//bkyv/25s3/9ubN//bm
+        zf/08Oz/9PDs//Pv6/95kLvteZC77XiPuu0PEx2JDxMciQ8THYlLQkIUS0JCFEtCQhQAAAAAAAAAAAAA
+        AADC1fb/wtX2/8LV9v+Ytu7/mLbu/5i27v/By+b/wcvm/8HL5v/j087/49PO/+PTzv/25s3/9ubN//bm
+        zf/25s3/9ubN//bmzf/g28//4NvP/+Dbz//GzdT/xs3U/8bN1P/25cr/9uXK//blyv/25Mr/9uTK//bk
+        yv/25s3/9ubN//bmzf/08Oz/9PDs//Pv6/95kLvteZC77XiPuu0PEx2JDxMciQ8THYlLQkIUS0JCFEtC
+        QhQAAAAAAAAAAAAAAAC1zPT/tcz0/7XM9P+jvvD/o77w/6O+8P/O0ub/ztLm/87S5v+1o9X/taPV/7Wj
+        1f/36tT/9+rU//fq1P/36tT/9+rU//fq1P/z5tP/8+bT//Pl0/+gveD/oL3g/6C94P/y5tL/8ubS//Lm
+        0v/36NL/9+jS//fo0v/26NH/9ujR//bo0f/37eH/9+3h//bs4f+put75qbre+ai53fkhKjupISo7qSEq
+        O6lLQkIeS0JCHktCQh4AAAAAAAAAAAAAAAC1zPT/tcz0/7XM9P+jvvD/o77w/6O+8P/O0ub/ztLm/87S
+        5v+1o9X/taPV/7Wj1f/36tT/9+rU//fq1P/36tT/9+rU//fq1P/05tP/9ObT//Pl0/+gveD/oL3g/6C9
+        4P/y5tL/8ubS//Lm0v/36NL/9+jS//fo0v/26NH/9ujR//bo0f/37eH/9+3h//bs4f+qu9/5qrvf+am6
+        3vkiKzypIis8qSIrPKlLQkIeS0JCHktCQh4AAAAAAAAAAAAAAAC1zPT/tcz0/7XM9P+jvvD/o77w/6O+
+        8P/O0ub/ztLm/87S5v+1o9X/taPV/7Wj1f/36tT/9+rU//fq1P/36tT/9+rU//fq1P/05tP/9ObT//Pl
+        0/+gveD/oL3g/6C94P/y5tL/8ubS//Lm0v/36NL/9+jS//fo0v/26NH/9ujR//bo0f/37eH/9+3h//bs
+        4f+qu9/5qrvf+am63vkiKzypIis8qSIrPKlLQkIeS0JCHktCQh4AAAAAAAAAAAAAAACsxfL/rMXy/6zF
+        8v+txvL/rcby/63G8v/Y3Oj/2Nzo/9jc5//x49X/8ePV//Hj1f/57t3/+e7d//nu3f/47dv/+O3b//js
+        2v/WsKL/1rCi/9Wvov+GgaT/hoGk/4aBpP+8mZf/vJmX/7yZl//z4tH/8+LR//Pi0f/t4dr/7eHa/+3h
+        2v/i1d7/4tXe/+HV3v/F0ez/xdHs/8TP6/8tN0y1LTdMtS03TLVLQkIgS0JCIEtCQiAAAAAAAAAAAAAA
+        AACsxfL/rMXy/6zF8v+txvL/rcby/63G8v/Y3Oj/2Nzo/9jc5//y5NX/8uTV//Lk1f/57t3/+e7d//nu
+        3f/47dv/+O3b//js2v/VsKL/1bCi/9Wvov+GgaT/hoGk/4aBpP+8mZf/vJmX/7yZl//z4tH/8+LR//Pi
+        0f/t4dr/7eHa/+3h2v/i1d7/4tXe/+HV3v/G0ez/xtHs/8XQ6/8uOE21LjhNtS44TLVLQkIgS0JCIEtC
+        QiAAAAAAAAAAAAAAAACsxfL/rMXy/6zF8v+txvL/rcby/63G8v/Y3Oj/2Nzo/9jc5//y5NX/8uTV//Lk
+        1f/57t3/+e7d//nu3f/47dv/+O3b//js2v/WsKL/1rCi/9Wvov+GgaT/hoGk/4aBpP+8mZf/vJmX/7yZ
+        l//z4tH/8+LR//Pi0f/t4dr/7eHa/+3h2v/i1d7/4tXe/+HV3v/G0ez/xtHs/8XQ6/8uOE21LjhNtS44
+        TLVLQkIgS0JCIEtCQiAAAAAAAAAAAAAAAACeu+//nrvv/5677/+qxPL/qsTy/6rE8v/Y3u3/2N7t/9je
+        7f/z6eD/8+ng//Pp4P/68uT/+vLk//ry5P/o0cX/6NHF/+fQxP+xa2H/sWth/7FrYf/buK7/27iu/9q3
+        rf/FkIT/xZCE/8WQhP/PoJT/z6CU/8+glP/s4eH/7OHh/+zg4f/RxOH/0cTh/9HE4f/FzOb/xczm/8TL
+        5f8wOU61MDlOtTA5TbVLQkIgS0JCIEtCQiAAAAAAAAAAAAAAAACeu+//nrvv/5677/+qxPL/qsTy/6rE
+        8v/Y3u3/2N7t/9je7f/z6eD/8+ng//Pp4P/68uT/+vLk//ry5P/o0cX/6NHF/+fQxP+xa2H/sWth/7Fr
+        Yf/cua7/3Lmu/9u4rf/FkIT/xZCE/8WQhP/PoJT/z6CU/8+glP/s4eH/7OHh/+zg4f/RxOH/0cTh/9HE
+        4f/FzOb/xczm/8TL5f8wOU61MDlOtTA5TbVLQkIgS0JCIEtCQiAAAAAAAAAAAAAAAACeu+//nrvv/567
+        7/+qxPL/qsTy/6rE8v/Y3u3/2N7t/9je7f/z6eD/8+ng//Pp4P/68uT/+vLk//ry5P/o0cX/6NHF/+fQ
+        xP+xa2H/sWth/7FrYf/cua7/3Lmu/9u4rf/FkIT/xZCE/8WQhP/PoJT/z6CU/8+glP/s4eH/7OHh/+zg
+        4f/RxOH/0cTh/9HE4f/FzOb/xczm/8TL5f8wOU61MDlOtTA5TbVLQkIgS0JCIEtCQiAAAAAAAAAAAAAA
+        AACMq+jPjKvoz4yr6NCbue//m7nv/5u57//Q3fP/0N3z/9Dd8//s5uT/7Obk/+zm5P/47+f/+O/n//ju
+        5v/Dj4b/w4+G/8OPhv/dwLf/3cC3/93At//79Or/+/Tq//v06v/26uH/9urh//Xp4P/Il47/yJeO/8iX
+        jv/dvbP/3b2z/929s//z5t3/8+bd//Ll3f+1wOH/tcDh/7S/4P8rN0yuKzdMris3S65LQkIdS0JCHUtC
+        Qh0AAAAAAAAAAAAAAACMq+jPjKvoz4yr6M+bue//m7nv/5u57//Q3fP/0N3z/9Dd8//s5uT/7Obk/+zm
+        5P/47+f/+O/n//ju5v/Dj4b/w4+G/8OPhv/ewbj/3sG4/97BuP/79ev/+/Xr//v16//26+L/9uvi//Xq
+        4f/Il47/yJeO/8iXjv/dvbP/3b2z/929s//z5t3/8+bd//Ll3f+1wOH/tcDh/7S/4P8rN0yuKzdMris3
+        S65LQkIdS0JCHUtCQh0AAAAAAAAAAAAAAACMq+jOjKvozoyr6M+bue//m7nv/5u57//Q3fP/0N3z/9Dd
+        8//s5uT/7Obk/+zm5P/47+f/+O/n//ju5v/Dj4b/w4+G/8OPhv/ewbj/3sG4/97BuP/79ev/+/Xr//v1
+        6//26+L/9uvi//Xq4f/Il47/yJeO/8iXjv/dvbP/3b2z/929s//z5t3/8+bd//Ll3f+1wOH/tcDh/7S/
+        4P8rN0yuKzdMris3S65LQkIdS0JCHUtCQh0AAAAAAAAAAAAAAAB+oOSBfqDkgX6g5IGFp+v/hafr/4Wn
+        6//C1fb/wtX2/8LV9v/e3+n/3t/p/97f6f/48Oz/+PDs//jw7P/y5OD/8uTg//Lk4P/7+PX/+/j1//v4
+        9f/9+vT//fr0//369P/8+fP//Pnz//z58//47uj/+O7o//jt5//burP/27qz/9u6s//m0s3/5tLN/+XR
+        zf+Sq+D+kqvg/pGq3/4jLkaWIy5GliMuRpZLQkISS0JCEktCQhIAAAAAAAAAAAAAAAB+oOSAfqDkgH6g
+        5ICFp+v/hafr/4Wn6//C1fb/wtX2/8LV9v/e3+n/3t/p/97f6f/48Oz/+PDs//jw7P/y5eH/8uXh//Ll
+        4f/8+fX//Pn1//z59f/9+vT//fr0//369P/8+fP//Pnz//z58//47+n/+O/p//ju6P/burP/27qz/9u6
+        s//m0s3/5tLN/+XRzf+Sq+D9kqvg/ZGq3/0jLkaVIy5GlSMuRpVLQkISS0JCEktCQhIAAAAAAAAAAAAA
+        AAB+oOSAfqDkgH6g5ICFp+v/hafr/4Wn6//C1fb/wtX2/8LV9v/e3+n/3t/p/97f6f/48Oz/+PDs//jw
+        7P/y5eH/8uXh//Ll4f/8+fX//Pn1//z59f/9+vT//fr0//369P/8+fP//Pnz//z58//47+n/+O/p//ju
+        6P/burP/27qz/9u6s//m0s3/5tLN/+XRzf+Sq+D9kqvg/ZGq3/0jLkaVIy5GlSMuRpVLQkISS0JCEktC
+        QhIAAAAAAAAAAAAAAAC5ts8mubbPJrm2zyZwleTNcJXkzXCV5M6SsO3/krDt/5Kw7f/G2fX/xtn1/8bZ
+        9f/e1dr/3tXa/97V2v/z7On/8+zp//Ps6f/+/v3//v79//7+/f/r6Pr/6+j6/+rn+v/BufT/wbn0/8G5
+        9P/8+/n//Pv5//v7+P/q3Nn/6tzZ/+nb2f+8utH/vLrR/7u50f9de7veXXu73lx6ut4OFCJRDhQiUQ4U
+        IlFLQkIES0JCBEtCQgQAAAAAAAAAAAAAAAC6ts8lurbPJbq2zyVwleTMcJXkzHCV5M2SsO3/krDt/5Kw
+        7f/G2fX/xtn1/8bZ9f/e1dr/3tXa/97V2v/z7On/8+zp//Ps6f/+/v3//v79//7+/f/r6Pr/6+j6/+rn
+        +v/BufT/wbn0/8G59P/8+/n//Pv5//v7+P/q3Nn/6tzZ/+nb2f+8utH/vLrR/7u50f9de7vdXXu73Vx6
+        ut0OFCJQDhQiUA4UIlBLQkIES0JCBEtCQgQAAAAAAAAAAAAAAAC6ts8lurbPJbq2zyVwleTMcJXkzHCV
+        5M2SsO3/krDt/5Kw7f/G2fX/xtn1/8bZ9f/e1dr/3tXa/97V2v/z7On/8+zp//Ps6f/+/v3//v79//7+
+        /f/r6Pr/6+j6/+rn+v/BufT/wbn0/8G59P/8+/n//Pv5//v7+P/q3Nn/6tzZ/+nb2f+8utH/vLrR/7u5
+        0f9de7vdXXu73Vx6ut0OFCJQDhQiUA4UIlBLQkIES0JCBEtCQgQAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAB/l9pRf5faUX+X2lJpkOT8aZDk/GmQ5P2Zte3/mbXt/5m17f/J2PL/ydjy/8nY8v/X2OT/19jk/9fY
+        5P/j08//49PP/+PTz//r3Nr/69za/+rb2v/AqtH/wKrR/8Cq0f/exsP/3sbD/93Gw/+4ts//uLbP/7e2
+        z/+EouP/hKLj/4Oh4f8rP22HKz9thyo+bIcBAgQYAQIEGAECBBitmZkBrZmZAa2ZmQEAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAB/l9pQf5faUH+X2lFpkOT7aZDk+2mQ5PyZte3/mbXt/5m17f/J2PL/ydjy/8nY
+        8v/X2OT/19jk/9fY5P/j08//49PP/+PTz//r3Nr/69za/+rb2v/AqtH/wKrR/8Cq0f/exsP/3sbD/93G
+        w/+4ts//uLbP/7e2z/+EouP/hKLj/4Oh4v8rP22GKz9thio+bIYBAgQYAQIEGAECBBiumpoBrpqaAa6a
+        mgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB/l9pQf5faUH+X2lFpkOT7aZDk+2mQ5PyZte3/mbXt/5m1
+        7f/J2PL/ydjy/8nY8v/X2OT/19jk/9fY5P/j08//49PP/+PTz//r3Nr/69za/+rb2v/AqtH/wKrR/8Cq
+        0f/exsP/3sbD/93Gw/+4ts//uLbP/7e2z/+EouP/hKLj/4Oh4v8rP22GKz9thio+bIYBAgQYAQIEGAEC
+        BBiumpoBrpqaAa6amgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABzjddVc43XVXON
+        11ZVft/bVX7f21V+39yCo+r/gqPq/4Kj6v+kvvH/pL7x/6S+8f+2zPP/tszz/7bM8/+1xej/tcXo/7XF
+        6P+quuH/qrrh/6q64f+Xs+3/l7Pt/5ay7f9rkNvrapDb62qP2us1TYaINU2GiDRMhYgZFhYQGRYWEBkW
+        FhCtmZkCrZmZAq2ZmQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AABzjddUc43XVHON11VVft/aVX7f2lV+39uCo+r/gqPq/4Kj6v+kvvH/pL7x/6S+8f+2zPP/tszz/7bM
+        8/+1xej/tcXo/7XF6P+quuH/qrrh/6q64f+Xs+3/l7Pt/5ay7f9qkNvqapDb6mqP2uo1TYaHNU2GhzNM
+        hYcZFhYPGRYWDxkWFg+umpoCrpqaAq6amgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAABzjddUc43XVHON11VVft/aVX7f2lV+39uCo+r/gqPq/4Kj6v+kvvH/pL7x/6S+
+        8f+2zPP/tszz/7bM8/+1xej/tcXo/7XF6P+quuH/qrrh/6q64f+Xs+3/l7Pt/5ay7f9rkNvqapDb6mqP
+        2uo1TYaHNU2GhzRMhYcZFhYPGRYWDxkWFg+umpoCrpqaAq6amgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACurc4zrq3OM62tzjRJc9uqSXPbqklz
+        26xXf9/xV3/f8Vd/3/Ntk+b/bZPm/22T5v90mOf/dJjn/3SY5/9rj+Dpa4/g6WqP4OlXesqqV3rKqlZ5
+        yaoZJUBJGSVASRklQElnYWkQZ2FpEGdhaRCtm5sBrZubAa2bmwEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACurc4yrq3OMq2t
+        zjNJc9uqSXPbqklz26tXf9/xV3/f8Vd/3/Jtk+b/bZPm/22T5v90mOf/dJjn/3SY5/9rj+Dpa4/g6WqP
+        4OlXesqqV3rKqlZ5yaoZJUBIGSVASBklQEhoYWkQaGFpEGhhaRCum5sBrpubAa6bmwEAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AACurc4yrq3OMq2tzjNJc9uqSXPbqklz26tXf9/xV3/f8Vd/3/Jtk+b/bZPm/22T5v90mOf/dJjn/3SY
+        5/9rj+Dpa4/g6WqP4OlXesqqV3rKqlZ5yaoZJUBIGSVASBklQEhoYWkQaGFpEGhhaRCum5sBrpubAa6b
+        mwEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD8AAAAf/8AAPwAAAB//wAA/AAAAH//
+        AADgAAAAAf8AAOAAAAAB/wAA4AAAAAH/AAAAAAAAAf8AAAAAAAAB/wAAAAAAAAH/AAAAAAAAAD8AAAAA
+        AAAAPwAAAAAAAAA/AAAAAAAAAAcAAAAAAAAABwAAAAAAAAAHAAAAAAAAAAcAAAAAAAAABwAAAAAAAAAH
+        AAAAAAAAAAcAAAAAAAAABwAAAAAAAAAHAAAAAAAAAAcAAAAAAAAABwAAAAAAAAAHAAAAAAAAAAcAAAAA
+        AAAABwAAAAAAAAAHAAAAAAAAAAcAAAAAAAAABwAAAAAAAAAHAAAAAAAAAAcAAAAAAAAABwAAAAAAAAAH
+        AAAAAAAAAAcAAAAAAAAABwAAAAAAAAAHAAAAAAAAAAcAAAAAAAAABwAAAAAAAAAHAADgAAAAAAcAAOAA
+        AAAABwAA4AAAAAAHAAD8AAAAAD8AAPwAAAAAPwAA/AAAAAA/AAD/gAAAAf8AAP+AAAAB/wAA/4AAAAH/
+        AAA=
+</value>
+  </data>
+  <data name="&gt;&gt;nowYou.Parent" xml:space="preserve">
+    <value>toolStripContainer1.ContentPanel</value>
+  </data>
+  <data name="miSummary.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="statusBar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>294, 22</value>
+  </data>
+  <data name="miAbout.Size" type="System.Drawing.Size, System.Drawing">
+    <value>235, 22</value>
+  </data>
+  <data name="&gt;&gt;currentActivity.Name" xml:space="preserve">
+    <value>currentActivity</value>
+  </data>
+  <data name="switchButton.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;miContextActivate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="activityStartTime.ToolTipText" xml:space="preserve">
+    <value>Activity start time</value>
+  </data>
+  <data name="&gt;&gt;contextMenu.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="switchButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Popup</value>
+  </data>
+  <data name="&gt;&gt;postToTwitter.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;miExit.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;miSubmit.Name" xml:space="preserve">
+    <value>miSubmit</value>
+  </data>
+  <data name="menu.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="&gt;&gt;miSummary.Name" xml:space="preserve">
+    <value>miSummary</value>
+  </data>
+  <data name="&gt;&gt;miSubmit.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;currentTime.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="currentTime.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 17</value>
+  </data>
+  <data name="showMenu.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;toolStripContainer1.LeftToolStripPanel.Parent" xml:space="preserve">
+    <value>toolStripContainer1</value>
+  </data>
+  <data name="miHowToUse.Size" type="System.Drawing.Size, System.Drawing">
+    <value>235, 22</value>
+  </data>
+  <data name="currentTime.ToolTipText" xml:space="preserve">
+    <value>Current time</value>
+  </data>
+  <data name="menu.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="postToTwitter.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;menu.Name" xml:space="preserve">
+    <value>menu</value>
+  </data>
+  <data name="miDonate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>235, 22</value>
+  </data>
+  <data name="&gt;&gt;currentActivity.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="nowYou.Size" type="System.Drawing.Size, System.Drawing">
+    <value>290, 60</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer1.BottomToolStripPanel.Name" xml:space="preserve">
+    <value>toolStripContainer1.BottomToolStripPanel</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;notifyIcon.Name" xml:space="preserve">
+    <value>notifyIcon</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer1.BottomToolStripPanel.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;miSpentOnActivityInDifferentDays.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="statusBar.Text" xml:space="preserve">
+    <value>Status Bar</value>
+  </data>
+  <data name="miFile.Text" xml:space="preserve">
+    <value>&amp;File</value>
+  </data>
+  <data name="&gt;&gt;miHowToUse.Name" xml:space="preserve">
+    <value>miHowToUse</value>
+  </data>
+  <data name="miSpentOnActivityInDifferentDays.Text" xml:space="preserve">
+    <value>&amp;Spent on activity in different days</value>
+  </data>
+  <data name="contextMenu.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="currentTime.Text" xml:space="preserve">
+    <value>00:00:00</value>
+  </data>
+  <data name="miSeparator.Size" type="System.Drawing.Size, System.Drawing">
+    <value>166, 6</value>
+  </data>
+  <data name="&gt;&gt;miOpen.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="switchButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 46</value>
+  </data>
+  <data name="miSave.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+S</value>
+  </data>
+  <data name="menu.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>Main</value>
+  </data>
+  <data name="miSubscribe.Size" type="System.Drawing.Size, System.Drawing">
+    <value>235, 22</value>
+  </data>
+  <data name="notifyIcon.Visible" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator2.Name" xml:space="preserve">
+    <value>toolStripSeparator2</value>
+  </data>
+  <data name="&gt;&gt;miOptions.Name" xml:space="preserve">
+    <value>miOptions</value>
+  </data>
+  <data name="&gt;&gt;miContextShow.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer1.LeftToolStripPanel.Name" xml:space="preserve">
+    <value>toolStripContainer1.LeftToolStripPanel</value>
+  </data>
+  <data name="&gt;&gt;switchButton.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer1.ContentPanel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;miContextActivate.Name" xml:space="preserve">
+    <value>miContextActivate</value>
+  </data>
+  <data name="miContextShow.Text" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>300, 107</value>
+  </data>
+  <data name="activityStartTime.Text" xml:space="preserve">
+    <value>00:00:00</value>
+  </data>
+  <data name="miOptions.Text" xml:space="preserve">
+    <value>&amp;Options</value>
+  </data>
+  <data name="toolStripContainer1.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="miContextExit.Text" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="&gt;&gt;miTasks.Name" xml:space="preserve">
+    <value>miTasks</value>
+  </data>
+  <data name="&gt;&gt;miAbout.Name" xml:space="preserve">
+    <value>miAbout</value>
+  </data>
+  <data name="&gt;&gt;miAbout.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator3.Name" xml:space="preserve">
+    <value>toolStripSeparator3</value>
+  </data>
+  <data name="&gt;&gt;notifyIcon.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NotifyIcon, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="toolStripContainer1.TopToolStripPanel.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;toolStripSeparator1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer1.RightToolStripPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;miSpentOnActivityInDifferentDays.Name" xml:space="preserve">
+    <value>miSpentOnActivityInDifferentDays</value>
+  </data>
+  <data name="&gt;&gt;miSave.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;currentTime.Name" xml:space="preserve">
+    <value>currentTime</value>
+  </data>
+  <data name="miTimeLog.Text" xml:space="preserve">
+    <value>Time &amp;Log</value>
+  </data>
+  <data name="&gt;&gt;miHowToUse.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;nowYou.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;miOptions.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer1.ContentPanel.Name" xml:space="preserve">
+    <value>toolStripContainer1.ContentPanel</value>
+  </data>
+  <data name="&gt;&gt;activityStartTime.Name" xml:space="preserve">
+    <value>activityStartTime</value>
+  </data>
+  <data name="&gt;&gt;miDonate.Name" xml:space="preserve">
+    <value>miDonate</value>
+  </data>
+  <data name="&gt;&gt;miTasks.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;activityStartTime.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="miTasks.Text" xml:space="preserve">
+    <value>&amp;Task Manager</value>
+  </data>
+  <data name="&gt;&gt;miOpen.Name" xml:space="preserve">
+    <value>miOpen</value>
+  </data>
+  <data name="&gt;&gt;miSummary.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;miShow.Name" xml:space="preserve">
+    <value>miShow</value>
+  </data>
+  <data name="menu.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="miContextActivate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>169, 22</value>
+  </data>
+  <data name="&gt;&gt;miShow.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="miSave.Size" type="System.Drawing.Size, System.Drawing">
+    <value>155, 22</value>
+  </data>
+  <data name="&gt;&gt;switchButton.Parent" xml:space="preserve">
+    <value>nowYou</value>
+  </data>
+  <data name="toolStripContainer1.ContentPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>294, 66</value>
+  </data>
+  <data name="&gt;&gt;menu.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="miSubmit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>235, 22</value>
+  </data>
+  <data name="miOptions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>61, 20</value>
+  </data>
+  <data name="&gt;&gt;currentActivity.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolTip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="miShow.Text" xml:space="preserve">
+    <value>&amp;Show</value>
+  </data>
+  <data name="miSaveAs.Text" xml:space="preserve">
+    <value>Save &amp;As...</value>
+  </data>
+  <data name="showMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>153, 92</value>
+  </data>
+  <data name="currentActivity.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 19</value>
+  </data>
+  <data name="activityDuration.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 17</value>
+  </data>
+  <data name="&gt;&gt;miHelp.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="miContextActivate.Text" xml:space="preserve">
+    <value>Activate</value>
+  </data>
+  <data name="miReport.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 20</value>
+  </data>
+  <data name="miHelp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 20</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer1.BottomToolStripPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;showMenu.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="postToTwitter.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="nowYou.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;postToTwitter.Name" xml:space="preserve">
+    <value>postToTwitter</value>
+  </data>
+  <data name="menu.Text" xml:space="preserve">
+    <value>menuStrip1</value>
+  </data>
+  <data name="switchButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14pt</value>
+  </data>
+  <data name="menu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>294, 24</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer1.TopToolStripPanel.Name" xml:space="preserve">
+    <value>toolStripContainer1.TopToolStripPanel</value>
+  </data>
+  <data name="&gt;&gt;miActivityDetails.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 6</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>LifeIdea.LazyCure.UI.MainBase, LazyCure.UI, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;miOnline.Name" xml:space="preserve">
+    <value>miOnline</value>
+  </data>
+  <data name="notifyIcon.Text" xml:space="preserve">
+    <value>LazyCure</value>
+  </data>
+  <data name="&gt;&gt;miSaveAs.Name" xml:space="preserve">
+    <value>miSaveAs</value>
+  </data>
+  <data name="notifyIcon.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAMDAAAAEAIACoJQAAFgAAACgAAAAwAAAAYAAAAAEAIAAAAAAAgCUAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABjV1cGY1dXBmJWVgYAAAAWAAAAFgAAABYAAAA6AAAAOgAA
+        ADoAAABLAAAASwAAAEsAAABQAAAAUAAAAFAAAABPAAAATwAAAE8AAAA/AAAAPwAAAD8AAAAjAAAAIwAA
+        ACMyLCwIMiwsCDIsLAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABjV1cGY1dXBmJWVgYAAAAWAAAAFgAA
+        ABYAAAA6AAAAOgAAADoAAABLAAAASwAAAEsAAABQAAAAUAAAAFAAAABPAAAATwAAAE8AAAA/AAAAPwAA
+        AD8AAAAjAAAAIwAAACMyLCwIMiwsCDIsLAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABjV1cGY1dXBmJW
+        VgYAAAAWAAAAFgAAABYAAAA6AAAAOgAAADoAAABLAAAASwAAAEsAAABQAAAAUAAAAFAAAABPAAAATwAA
+        AE8AAAA/AAAAPwAAAD8AAAAjAAAAIwAAACMyLCwIMiwsCDIsLAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB8bW0EfG1tBHts
+        bAQPDw8xDw8PMQ8PDzJTV1+LU1dfi1JXX4w1TYrLNU2KyzRMiswgPo7YID6O2CA+jtgePI3aHjyN2h47
+        jdobN4TWGzeE1ho2g9YMG0OzDBtDswsaQrMAAAWAAAAFgAAABIAAAAA6AAAAOgAAADoyLCwPMiwsDzIs
+        LA99bW0BfW1tAX1tbQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAB8bW0EfG1tBHtsbAQPDw8xDw8PMQ8PDzJUWGCLVFhgi1NYYIw2TovMNk6LzDVNi8whP4/YIT+P2CE/
+        j9gfPY7aHz2O2h88jtocOIXWHDiF1hs3hNYMHESzDBxEswwbQ7MAAQaAAAEGgAAABYAAAAA6AAAAOgAA
+        ADoyLCwPMiwsDzIsLA99bW0BfW1tAX1tbQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAB8bW0EfG1tBHtsbAQPDw8xDw8PMQ8PDzJUWGCLVFhgi1NYYIw2TovLNk6LyzVN
+        i8whP4/YIT+P2CE/j9gfPY7aHz2O2h88jtocOIXWHDiF1hs3hNYNHESzDRxEswwbQ7MAAQaAAAEGgAAA
+        BYAAAAA6AAAAOgAAADoyLCwPMiwsDzIsLA99bW0BfW1tAX1tbQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAABkWFgFZFhYBWRYWAUuLi9BLi4vQS4uL0KtuNjjrbjY46y42ORWedz/Vnnc/1Z5
+        3P9LdN3/S3Td/0t03f92leP/dpXj/3aV4/+Yser/mLHq/5ix6v+Urur/lK7q/5Ot6v9zlOT/c5Tk/3KT
+        4/9EZLPwRGSz8ENjsvAMEySnDBMkpwsSI6cAAQJaAAECWgABAloyLCwQMiwsEDIsLBAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABkWFgFZFhYBWRYWAUuLi9BLi4vQS4uL0KuudnjrrnZ4625
+        2eRWet3/Vnrd/1Z63f9Mdd7/THXe/0x13v93luT/d5bk/3eW5P+Zsuv/mbLr/5my6/+Vr+v/la/r/5Su
+        6/9zleX/c5Xl/3OU5P9FZbTwRWW08ERks/ANFCWnDRQlpwwTJKcAAQJaAAECWgABAloyLCwQMiwsEDIs
+        LBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABkWFgFZFhYBWRYWAUuLi9BLi4vQS4u
+        L0KuudnjrrnZ46252eRWet3/Vnrd/1Z63f9Mdd7/THXe/0x13v93luT/d5bk/3eW5P+Zsuv/mbLr/5my
+        6/+Vr+v/la/r/5Su6/90leX/dJXl/3OU5P9FZbTwRWW08ERks/ANFCWnDRQlpwwTJKcAAQJaAAECWgAB
+        AloyLCwQMiwsEDIsLBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAqKywnKissJyor
+        LCi+wcm/vsHJv77BycBmiOP/Zojj/2aI4/9bg+H/W4Ph/1uD4f/Ax+P/wMfj/8DH4//o3dT/6N3U/+jd
+        1P/u4c7/7uDO/+7gzv/XyNn/18jZ/9fI2f/m5Oj/5uTo/+Xj6P++zvD/vs7w/73N7/9YdrbuWHW27ld1
+        te4PFiiqDxYoqg4VJ6oAAAA+AAAAPgAAAD4yLCwKMiwsCjIsLAoAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAqKywnKissJyorLCi/wsq/v8LKv7/CysBmiOP/Zojj/2aI4/9cg+H/XIPh/1yD4f/ByOP/wcjj/8HI
+        4//p3tT/6d7U/+ne1P/v4s7/7+HO/+/hzv/Yydn/2MnZ/9jJ2f/n5ej/5+Xo/+bk6P+/z/H/v8/x/77O
+        8P9Zd7fuWXa37lh2tu4QFymqEBcpqg8WKKoAAAA+AAAAPgAAAD4yLCwKMiwsCjIsLAoAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAqKywnKissJyorLCi/wsq/v8LKv7/CysBmiOP/Zojj/2aI4/9cg+H/XIPh/1yD
+        4f/ByOP/wcjj/8HI4//p3tT/6d7U/+ne1P/v4s7/7+HO/+/hzv/Yydn/2MnZ/9jJ2f/n5ej/5+Xo/+bk
+        6P+/z/H/v8/x/77O8P9Zd7fuWXa37lh2tu4QFymqEBcpqg8WKKoAAAA+AAAAPgAAAD4yLCwKMiwsCjIs
+        LAoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACkqbGCpKmxgqSpsYOove3+qL3t/qi97f9vlOb/b5Tm/2+U
+        5v+6wt7/usLe/7rC3v/y3MD/8tzA//LcwP/z3bz/8928//LdvP+8xMv/vMTL/7vDy/+ajNH/mozR/5qM
+        0f/03Lv/9Ny7//Tcu//05tL/9ObS//Pm0v/V3vH/1N7x/9Td8P9yjcPyco3D8nGMwvIFBw2LBQcNiwQG
+        DIsAAAAsAAAALAAAACyvm5sBr5ubAa+bmwEAAAAAAAAAAAAAAAClqrKCpaqygqWqsoOove7+qL3u/qi9
+        7v9vlOb/b5Tm/2+U5v+7w97/u8Pe/7vD3v/z3cD/893A//PdwP/z3bz/8928//LdvP+8xMv/vMTL/7vD
+        y/+ajNH/mozR/5qM0f/03Lv/9Ny7//Tcu//159L/9efS//Tn0v/W3/L/1d/y/9Xe8f9zjsTyc47E8nKN
+        w/IGCA6LBggOiwUHDYsAAAAsAAAALAAAACyvm5sBr5ubAa+bmwEAAAAAAAAAAAAAAAClqrKCpaqygqWq
+        soOove7+qL3u/qi97v9vlOb/b5Tm/2+U5v+7w97/u8Pe/7vD3v/z3cD/893A//PdwP/z3bz/8928//Ld
+        vP+8xMv/vMTL/7vDy/+ajNH/mozR/5qM0f/03Lv/9Ny7//Tcu//159L/9efS//Tn0v/W3/L/1d/y/9Xe
+        8f9zjsTyc47E8nKNw/IGCA6LBggOiwUHDYsAAAAsAAAALAAAACyvm5sBr5ubAa+bmwEAAAAAAAAAAAAA
+        AADK1unTytbp08rW6dOLquv/i6rr/4uq6/+etef/nrXn/5615//h1s//4dbP/+HWz//14cP/9eHD//Xh
+        w//14cP/9eHD//Xhw//Mzsz/zM7M/8zOzP/Bv87/wb/O/8G/zv/z4ML/8+DC//Pgwv/04MH/9ODB//Pg
+        wf/z7N//8+zf//Ls3//B0vH/wdLx/8DR8P8zQmHEM0JhxDJBYMQAAABUAAAAVAAAAFRLQkIGS0JCBktC
+        QgYAAAAAAAAAAAAAAADL1+rTy9fq08vX6tOLquv/i6rr/4uq6/+ftuf/n7bn/5+25//i18//4tfP/+LX
+        z//14cP/9eHD//Xhw//14cP/9eHD//Xhw//Mzsz/zM7M/8zOzP/CwM7/wsDO/8LAzv/z4ML/8+DC//Pg
+        wv/04MH/9ODB//Tgwf/07N//9Ozf//Ps3//C0/L/wtPy/8HS8f80Q2LENENixDNCYcQAAABUAAAAVAAA
+        AFRLQkIGS0JCBktCQgYAAAAAAAAAAAAAAADL1+rTy9fq08vX6tOLquv/i6rr/4uq6/+ftuf/n7bn/5+2
+        5//i18//4tfP/+LXz//14cP/9eHD//Xhw//14cP/9eHD//Xhw//Mzsz/zM7M/8zOzP/CwM7/wsDO/8LA
+        zv/z4ML/8+DC//Pgwv/04MH/9ODB//Tgwf/07N//9Ozf//Ps3//C0/L/wtPy/8HS8f80Q2LENENixDNC
+        YcQAAABUAAAAVAAAAFRLQkIGS0JCBktCQgYAAAAAAAAAAAAAAADC1fb/wtX2/8LV9v+Ytu7/mLbu/5i2
+        7v/Ay+b/wMvm/8DL5v/j087/49PO/+PTzv/25s3/9ubN//bmzf/25s3/9ubN//bmzf/g28//4NvP/+Db
+        z//GzNT/xszU/8bM1P/25cr/9uXK//blyv/25Mr/9uTK//bkyv/25s3/9ubN//bmzf/z7+z/8+/s//Lu
+        6/94j7rteI+67XeOue0OEhyJDhIbiQ4SHIlLQkIUS0JCFEtCQhQAAAAAAAAAAAAAAADC1fb/wtX2/8LV
+        9v+Ytu7/mLbu/5i27v/By+b/wcvm/8HL5v/j087/49PO/+PTzv/25s3/9ubN//bmzf/25s3/9ubN//bm
+        zf/g28//4NvP/+Dbz//GzdT/xs3U/8bN1P/25cr/9uXK//blyv/25Mr/9uTK//bkyv/25s3/9ubN//bm
+        zf/08Oz/9PDs//Pv6/95kLvteZC77XiPuu0PEx2JDxMciQ8THYlLQkIUS0JCFEtCQhQAAAAAAAAAAAAA
+        AADC1fb/wtX2/8LV9v+Ytu7/mLbu/5i27v/By+b/wcvm/8HL5v/j087/49PO/+PTzv/25s3/9ubN//bm
+        zf/25s3/9ubN//bmzf/g28//4NvP/+Dbz//GzdT/xs3U/8bN1P/25cr/9uXK//blyv/25Mr/9uTK//bk
+        yv/25s3/9ubN//bmzf/08Oz/9PDs//Pv6/95kLvteZC77XiPuu0PEx2JDxMciQ8THYlLQkIUS0JCFEtC
+        QhQAAAAAAAAAAAAAAAC1zPT/tcz0/7XM9P+jvvD/o77w/6O+8P/O0ub/ztLm/87S5v+1o9X/taPV/7Wj
+        1f/36tT/9+rU//fq1P/36tT/9+rU//fq1P/z5tP/8+bT//Pl0/+gveD/oL3g/6C94P/y5tL/8ubS//Lm
+        0v/36NL/9+jS//fo0v/26NH/9ujR//bo0f/37eH/9+3h//bs4f+put75qbre+ai53fkhKjupISo7qSEq
+        O6lLQkIeS0JCHktCQh4AAAAAAAAAAAAAAAC1zPT/tcz0/7XM9P+jvvD/o77w/6O+8P/O0ub/ztLm/87S
+        5v+1o9X/taPV/7Wj1f/36tT/9+rU//fq1P/36tT/9+rU//fq1P/05tP/9ObT//Pl0/+gveD/oL3g/6C9
+        4P/y5tL/8ubS//Lm0v/36NL/9+jS//fo0v/26NH/9ujR//bo0f/37eH/9+3h//bs4f+qu9/5qrvf+am6
+        3vkiKzypIis8qSIrPKlLQkIeS0JCHktCQh4AAAAAAAAAAAAAAAC1zPT/tcz0/7XM9P+jvvD/o77w/6O+
+        8P/O0ub/ztLm/87S5v+1o9X/taPV/7Wj1f/36tT/9+rU//fq1P/36tT/9+rU//fq1P/05tP/9ObT//Pl
+        0/+gveD/oL3g/6C94P/y5tL/8ubS//Lm0v/36NL/9+jS//fo0v/26NH/9ujR//bo0f/37eH/9+3h//bs
+        4f+qu9/5qrvf+am63vkiKzypIis8qSIrPKlLQkIeS0JCHktCQh4AAAAAAAAAAAAAAACsxfL/rMXy/6zF
+        8v+txvL/rcby/63G8v/Y3Oj/2Nzo/9jc5//x49X/8ePV//Hj1f/57t3/+e7d//nu3f/47dv/+O3b//js
+        2v/WsKL/1rCi/9Wvov+GgaT/hoGk/4aBpP+8mZf/vJmX/7yZl//z4tH/8+LR//Pi0f/t4dr/7eHa/+3h
+        2v/i1d7/4tXe/+HV3v/F0ez/xdHs/8TP6/8tN0y1LTdMtS03TLVLQkIgS0JCIEtCQiAAAAAAAAAAAAAA
+        AACsxfL/rMXy/6zF8v+txvL/rcby/63G8v/Y3Oj/2Nzo/9jc5//y5NX/8uTV//Lk1f/57t3/+e7d//nu
+        3f/47dv/+O3b//js2v/VsKL/1bCi/9Wvov+GgaT/hoGk/4aBpP+8mZf/vJmX/7yZl//z4tH/8+LR//Pi
+        0f/t4dr/7eHa/+3h2v/i1d7/4tXe/+HV3v/G0ez/xtHs/8XQ6/8uOE21LjhNtS44TLVLQkIgS0JCIEtC
+        QiAAAAAAAAAAAAAAAACsxfL/rMXy/6zF8v+txvL/rcby/63G8v/Y3Oj/2Nzo/9jc5//y5NX/8uTV//Lk
+        1f/57t3/+e7d//nu3f/47dv/+O3b//js2v/WsKL/1rCi/9Wvov+GgaT/hoGk/4aBpP+8mZf/vJmX/7yZ
+        l//z4tH/8+LR//Pi0f/t4dr/7eHa/+3h2v/i1d7/4tXe/+HV3v/G0ez/xtHs/8XQ6/8uOE21LjhNtS44
+        TLVLQkIgS0JCIEtCQiAAAAAAAAAAAAAAAACeu+//nrvv/5677/+qxPL/qsTy/6rE8v/Y3u3/2N7t/9je
+        7f/z6eD/8+ng//Pp4P/68uT/+vLk//ry5P/o0cX/6NHF/+fQxP+xa2H/sWth/7FrYf/buK7/27iu/9q3
+        rf/FkIT/xZCE/8WQhP/PoJT/z6CU/8+glP/s4eH/7OHh/+zg4f/RxOH/0cTh/9HE4f/FzOb/xczm/8TL
+        5f8wOU61MDlOtTA5TbVLQkIgS0JCIEtCQiAAAAAAAAAAAAAAAACeu+//nrvv/5677/+qxPL/qsTy/6rE
+        8v/Y3u3/2N7t/9je7f/z6eD/8+ng//Pp4P/68uT/+vLk//ry5P/o0cX/6NHF/+fQxP+xa2H/sWth/7Fr
+        Yf/cua7/3Lmu/9u4rf/FkIT/xZCE/8WQhP/PoJT/z6CU/8+glP/s4eH/7OHh/+zg4f/RxOH/0cTh/9HE
+        4f/FzOb/xczm/8TL5f8wOU61MDlOtTA5TbVLQkIgS0JCIEtCQiAAAAAAAAAAAAAAAACeu+//nrvv/567
+        7/+qxPL/qsTy/6rE8v/Y3u3/2N7t/9je7f/z6eD/8+ng//Pp4P/68uT/+vLk//ry5P/o0cX/6NHF/+fQ
+        xP+xa2H/sWth/7FrYf/cua7/3Lmu/9u4rf/FkIT/xZCE/8WQhP/PoJT/z6CU/8+glP/s4eH/7OHh/+zg
+        4f/RxOH/0cTh/9HE4f/FzOb/xczm/8TL5f8wOU61MDlOtTA5TbVLQkIgS0JCIEtCQiAAAAAAAAAAAAAA
+        AACMq+jPjKvoz4yr6NCbue//m7nv/5u57//Q3fP/0N3z/9Dd8//s5uT/7Obk/+zm5P/47+f/+O/n//ju
+        5v/Dj4b/w4+G/8OPhv/dwLf/3cC3/93At//79Or/+/Tq//v06v/26uH/9urh//Xp4P/Il47/yJeO/8iX
+        jv/dvbP/3b2z/929s//z5t3/8+bd//Ll3f+1wOH/tcDh/7S/4P8rN0yuKzdMris3S65LQkIdS0JCHUtC
+        Qh0AAAAAAAAAAAAAAACMq+jPjKvoz4yr6M+bue//m7nv/5u57//Q3fP/0N3z/9Dd8//s5uT/7Obk/+zm
+        5P/47+f/+O/n//ju5v/Dj4b/w4+G/8OPhv/ewbj/3sG4/97BuP/79ev/+/Xr//v16//26+L/9uvi//Xq
+        4f/Il47/yJeO/8iXjv/dvbP/3b2z/929s//z5t3/8+bd//Ll3f+1wOH/tcDh/7S/4P8rN0yuKzdMris3
+        S65LQkIdS0JCHUtCQh0AAAAAAAAAAAAAAACMq+jOjKvozoyr6M+bue//m7nv/5u57//Q3fP/0N3z/9Dd
+        8//s5uT/7Obk/+zm5P/47+f/+O/n//ju5v/Dj4b/w4+G/8OPhv/ewbj/3sG4/97BuP/79ev/+/Xr//v1
+        6//26+L/9uvi//Xq4f/Il47/yJeO/8iXjv/dvbP/3b2z/929s//z5t3/8+bd//Ll3f+1wOH/tcDh/7S/
+        4P8rN0yuKzdMris3S65LQkIdS0JCHUtCQh0AAAAAAAAAAAAAAAB+oOSBfqDkgX6g5IGFp+v/hafr/4Wn
+        6//C1fb/wtX2/8LV9v/e3+n/3t/p/97f6f/48Oz/+PDs//jw7P/y5OD/8uTg//Lk4P/7+PX/+/j1//v4
+        9f/9+vT//fr0//369P/8+fP//Pnz//z58//47uj/+O7o//jt5//burP/27qz/9u6s//m0s3/5tLN/+XR
+        zf+Sq+D+kqvg/pGq3/4jLkaWIy5GliMuRpZLQkISS0JCEktCQhIAAAAAAAAAAAAAAAB+oOSAfqDkgH6g
+        5ICFp+v/hafr/4Wn6//C1fb/wtX2/8LV9v/e3+n/3t/p/97f6f/48Oz/+PDs//jw7P/y5eH/8uXh//Ll
+        4f/8+fX//Pn1//z59f/9+vT//fr0//369P/8+fP//Pnz//z58//47+n/+O/p//ju6P/burP/27qz/9u6
+        s//m0s3/5tLN/+XRzf+Sq+D9kqvg/ZGq3/0jLkaVIy5GlSMuRpVLQkISS0JCEktCQhIAAAAAAAAAAAAA
+        AAB+oOSAfqDkgH6g5ICFp+v/hafr/4Wn6//C1fb/wtX2/8LV9v/e3+n/3t/p/97f6f/48Oz/+PDs//jw
+        7P/y5eH/8uXh//Ll4f/8+fX//Pn1//z59f/9+vT//fr0//369P/8+fP//Pnz//z58//47+n/+O/p//ju
+        6P/burP/27qz/9u6s//m0s3/5tLN/+XRzf+Sq+D9kqvg/ZGq3/0jLkaVIy5GlSMuRpVLQkISS0JCEktC
+        QhIAAAAAAAAAAAAAAAC5ts8mubbPJrm2zyZwleTNcJXkzXCV5M6SsO3/krDt/5Kw7f/G2fX/xtn1/8bZ
+        9f/e1dr/3tXa/97V2v/z7On/8+zp//Ps6f/+/v3//v79//7+/f/r6Pr/6+j6/+rn+v/BufT/wbn0/8G5
+        9P/8+/n//Pv5//v7+P/q3Nn/6tzZ/+nb2f+8utH/vLrR/7u50f9de7veXXu73lx6ut4OFCJRDhQiUQ4U
+        IlFLQkIES0JCBEtCQgQAAAAAAAAAAAAAAAC6ts8lurbPJbq2zyVwleTMcJXkzHCV5M2SsO3/krDt/5Kw
+        7f/G2fX/xtn1/8bZ9f/e1dr/3tXa/97V2v/z7On/8+zp//Ps6f/+/v3//v79//7+/f/r6Pr/6+j6/+rn
+        +v/BufT/wbn0/8G59P/8+/n//Pv5//v7+P/q3Nn/6tzZ/+nb2f+8utH/vLrR/7u50f9de7vdXXu73Vx6
+        ut0OFCJQDhQiUA4UIlBLQkIES0JCBEtCQgQAAAAAAAAAAAAAAAC6ts8lurbPJbq2zyVwleTMcJXkzHCV
+        5M2SsO3/krDt/5Kw7f/G2fX/xtn1/8bZ9f/e1dr/3tXa/97V2v/z7On/8+zp//Ps6f/+/v3//v79//7+
+        /f/r6Pr/6+j6/+rn+v/BufT/wbn0/8G59P/8+/n//Pv5//v7+P/q3Nn/6tzZ/+nb2f+8utH/vLrR/7u5
+        0f9de7vdXXu73Vx6ut0OFCJQDhQiUA4UIlBLQkIES0JCBEtCQgQAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAB/l9pRf5faUX+X2lJpkOT8aZDk/GmQ5P2Zte3/mbXt/5m17f/J2PL/ydjy/8nY8v/X2OT/19jk/9fY
+        5P/j08//49PP/+PTz//r3Nr/69za/+rb2v/AqtH/wKrR/8Cq0f/exsP/3sbD/93Gw/+4ts//uLbP/7e2
+        z/+EouP/hKLj/4Oh4f8rP22HKz9thyo+bIcBAgQYAQIEGAECBBitmZkBrZmZAa2ZmQEAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAB/l9pQf5faUH+X2lFpkOT7aZDk+2mQ5PyZte3/mbXt/5m17f/J2PL/ydjy/8nY
+        8v/X2OT/19jk/9fY5P/j08//49PP/+PTz//r3Nr/69za/+rb2v/AqtH/wKrR/8Cq0f/exsP/3sbD/93G
+        w/+4ts//uLbP/7e2z/+EouP/hKLj/4Oh4v8rP22GKz9thio+bIYBAgQYAQIEGAECBBiumpoBrpqaAa6a
+        mgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB/l9pQf5faUH+X2lFpkOT7aZDk+2mQ5PyZte3/mbXt/5m1
+        7f/J2PL/ydjy/8nY8v/X2OT/19jk/9fY5P/j08//49PP/+PTz//r3Nr/69za/+rb2v/AqtH/wKrR/8Cq
+        0f/exsP/3sbD/93Gw/+4ts//uLbP/7e2z/+EouP/hKLj/4Oh4v8rP22GKz9thio+bIYBAgQYAQIEGAEC
+        BBiumpoBrpqaAa6amgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABzjddVc43XVXON
+        11ZVft/bVX7f21V+39yCo+r/gqPq/4Kj6v+kvvH/pL7x/6S+8f+2zPP/tszz/7bM8/+1xej/tcXo/7XF
+        6P+quuH/qrrh/6q64f+Xs+3/l7Pt/5ay7f9rkNvrapDb62qP2us1TYaINU2GiDRMhYgZFhYQGRYWEBkW
+        FhCtmZkCrZmZAq2ZmQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AABzjddUc43XVHON11VVft/aVX7f2lV+39uCo+r/gqPq/4Kj6v+kvvH/pL7x/6S+8f+2zPP/tszz/7bM
+        8/+1xej/tcXo/7XF6P+quuH/qrrh/6q64f+Xs+3/l7Pt/5ay7f9qkNvqapDb6mqP2uo1TYaHNU2GhzNM
+        hYcZFhYPGRYWDxkWFg+umpoCrpqaAq6amgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAABzjddUc43XVHON11VVft/aVX7f2lV+39uCo+r/gqPq/4Kj6v+kvvH/pL7x/6S+
+        8f+2zPP/tszz/7bM8/+1xej/tcXo/7XF6P+quuH/qrrh/6q64f+Xs+3/l7Pt/5ay7f9rkNvqapDb6mqP
+        2uo1TYaHNU2GhzRMhYcZFhYPGRYWDxkWFg+umpoCrpqaAq6amgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACurc4zrq3OM62tzjRJc9uqSXPbqklz
+        26xXf9/xV3/f8Vd/3/Ntk+b/bZPm/22T5v90mOf/dJjn/3SY5/9rj+Dpa4/g6WqP4OlXesqqV3rKqlZ5
+        yaoZJUBJGSVASRklQElnYWkQZ2FpEGdhaRCtm5sBrZubAa2bmwEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACurc4yrq3OMq2t
+        zjNJc9uqSXPbqklz26tXf9/xV3/f8Vd/3/Jtk+b/bZPm/22T5v90mOf/dJjn/3SY5/9rj+Dpa4/g6WqP
+        4OlXesqqV3rKqlZ5yaoZJUBIGSVASBklQEhoYWkQaGFpEGhhaRCum5sBrpubAa6bmwEAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AACurc4yrq3OMq2tzjNJc9uqSXPbqklz26tXf9/xV3/f8Vd/3/Jtk+b/bZPm/22T5v90mOf/dJjn/3SY
+        5/9rj+Dpa4/g6WqP4OlXesqqV3rKqlZ5yaoZJUBIGSVASBklQEhoYWkQaGFpEGhhaRCum5sBrpubAa6b
+        mwEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD8AAAAf/8AAPwAAAB//wAA/AAAAH//
+        AADgAAAAAf8AAOAAAAAB/wAA4AAAAAH/AAAAAAAAAf8AAAAAAAAB/wAAAAAAAAH/AAAAAAAAAD8AAAAA
+        AAAAPwAAAAAAAAA/AAAAAAAAAAcAAAAAAAAABwAAAAAAAAAHAAAAAAAAAAcAAAAAAAAABwAAAAAAAAAH
+        AAAAAAAAAAcAAAAAAAAABwAAAAAAAAAHAAAAAAAAAAcAAAAAAAAABwAAAAAAAAAHAAAAAAAAAAcAAAAA
+        AAAABwAAAAAAAAAHAAAAAAAAAAcAAAAAAAAABwAAAAAAAAAHAAAAAAAAAAcAAAAAAAAABwAAAAAAAAAH
+        AAAAAAAAAAcAAAAAAAAABwAAAAAAAAAHAAAAAAAAAAcAAAAAAAAABwAAAAAAAAAHAADgAAAAAAcAAOAA
+        AAAABwAA4AAAAAAHAAD8AAAAAD8AAPwAAAAAPwAA/AAAAAA/AAD/gAAAAf8AAP+AAAAB/wAA/4AAAAH/
+        AAA=
+</value>
+  </data>
+  <data name="&gt;&gt;showMenu.Name" xml:space="preserve">
+    <value>showMenu</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer1.RightToolStripPanel.Name" xml:space="preserve">
+    <value>toolStripContainer1.RightToolStripPanel</value>
+  </data>
+  <data name="&gt;&gt;miSubscribe.Name" xml:space="preserve">
+    <value>miSubscribe</value>
+  </data>
+  <data name="$this.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;toolStripContainer1.LeftToolStripPanel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="currentActivity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>203, 21</value>
+  </data>
+  <data name="nowYou.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="toolStripContainer1.Text" xml:space="preserve">
+    <value>toolStripContainer1</value>
+  </data>
+  <data name="miExit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>155, 22</value>
+  </data>
+  <data name="miContextExit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>169, 22</value>
+  </data>
+  <data name="miAbout.Text" xml:space="preserve">
+    <value>&amp;About LazyCure</value>
+  </data>
+  <data name="&gt;&gt;miExit.Name" xml:space="preserve">
+    <value>miExit</value>
+  </data>
+  <data name="statusBar.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;miHelp.Name" xml:space="preserve">
+    <value>miHelp</value>
+  </data>
+  <data name="miActivityDetails.Text" xml:space="preserve">
+    <value>&amp;Activity Details</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer1.RightToolStripPanel.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer1.LeftToolStripPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="miFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 20</value>
+  </data>
+  <data name="toolStripContainer1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;switchButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menu.Parent" xml:space="preserve">
+    <value>toolStripContainer1.TopToolStripPanel</value>
+  </data>
+  <data name="statusBar.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="postToTwitter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>116, 40</value>
+  </data>
+  <data name="miReport.Text" xml:space="preserve">
+    <value>&amp;Report</value>
+  </data>
+  <data name="miDonate.Text" xml:space="preserve">
+    <value>Support by &amp;donation</value>
+  </data>
+  <data name="activityStartTime.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="$this.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="currentActivity.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer1.TopToolStripPanel.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer1.TopToolStripPanel.Parent" xml:space="preserve">
+    <value>toolStripContainer1</value>
+  </data>
+  <data name="contextMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>170, 76</value>
+  </data>
+  <data name="switchButton.Text" xml:space="preserve">
+    <value>Done!</value>
+  </data>
+  <data name="currentTime.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="&gt;&gt;contextMenu.Name" xml:space="preserve">
+    <value>contextMenu</value>
+  </data>
+  <data name="&gt;&gt;miDonate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="miHowToUse.Text" xml:space="preserve">
+    <value>&amp;How to use</value>
+  </data>
+  <data name="miSaveAs.Size" type="System.Drawing.Size, System.Drawing">
+    <value>155, 22</value>
+  </data>
+  <data name="nowYou.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="&gt;&gt;statusBar.Name" xml:space="preserve">
+    <value>statusBar</value>
+  </data>
+  <data name="miOnline.Text" xml:space="preserve">
+    <value>LazyCure &amp;Online</value>
+  </data>
+  <data name="&gt;&gt;statusBar.Parent" xml:space="preserve">
+    <value>toolStripContainer1.BottomToolStripPanel</value>
+  </data>
+  <data name="&gt;&gt;activityDuration.Name" xml:space="preserve">
+    <value>activityDuration</value>
+  </data>
+  <data name="&gt;&gt;timer.Name" xml:space="preserve">
+    <value>timer</value>
+  </data>
+  <data name="&gt;&gt;miReport.Name" xml:space="preserve">
+    <value>miReport</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer1.ContentPanel.Parent" xml:space="preserve">
+    <value>toolStripContainer1</value>
+  </data>
+  <data name="&gt;&gt;menu.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;miFile.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="postToTwitter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 17</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer1.TopToolStripPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;miContextShow.Name" xml:space="preserve">
+    <value>miContextShow</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator1.Name" xml:space="preserve">
+    <value>toolStripSeparator1</value>
+  </data>
+  <data name="miExit.Text" xml:space="preserve">
+    <value>E&amp;xit</value>
+  </data>
+  <data name="toolStripContainer1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>294, 112</value>
+  </data>
+  <data name="miSubmit.Text" xml:space="preserve">
+    <value>Submit a &amp;bug / feature request</value>
+  </data>
+  <data name="activityDuration.Text" xml:space="preserve">
+    <value>00:00:00</value>
+  </data>
+  <data name="miSummary.Text" xml:space="preserve">
+    <value>&amp;Summary</value>
+  </data>
+  <data name="nowYou.Text" xml:space="preserve">
+    <value>Now I ...</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer1.ContentPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripContentPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;currentActivity.Parent" xml:space="preserve">
+    <value>nowYou</value>
+  </data>
+  <data name="miTimeLog.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="toolStripContainer1.BottomToolStripPanel.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="miShow.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 20</value>
+  </data>
+  <data name="miSave.Text" xml:space="preserve">
+    <value>&amp;Save</value>
+  </data>
+  <data name="miTasks.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 22</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer1.RightToolStripPanel.Parent" xml:space="preserve">
+    <value>toolStripContainer1</value>
+  </data>
+  <data name="&gt;&gt;timer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="switchButton.ToolTip" xml:space="preserve">
+    <value>Press the button, when you have finished the current activity and are starting another one</value>
+  </data>
+  <data name="&gt;&gt;nowYou.Name" xml:space="preserve">
+    <value>nowYou</value>
+  </data>
+  <data name="&gt;&gt;miSeparator.Name" xml:space="preserve">
+    <value>miSeparator</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="notifyIcon.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>442, 15</value>
+  </metadata>
+  <metadata name="contextMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>543, 15</value>
+  </metadata>
+  <metadata name="timer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>9, 18</value>
+  </metadata>
+  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>253, 15</value>
+  </metadata>
+  <metadata name="statusBar.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>146, 16</value>
+  </metadata>
+  <metadata name="showMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>338, 15</value>
+  </metadata>
+  <metadata name="menu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>73, 16</value>
+  </metadata>
+</root>
