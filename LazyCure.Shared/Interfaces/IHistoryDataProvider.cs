@@ -2,12 +2,26 @@
 
 namespace LifeIdea.LazyCure.Shared.Interfaces
 {
-    public interface IHistoryDataProvider
+    public interface IHistoryDataProvider: IDataProvider
     {
+        IActivitiesHistory ActivitiesHistory { get; }
+
+        void ApplySettings(ISettings settings);
+
+        DataTable Data { get; }
+
         string[] HistoryActivities { get; }
 
-        DataTable SpentOnDiffDaysDataTable { get; }
+        string[] LatestActivities { get; }
+
+        string[] Tasks { get; }
+
+        ITimeLogsManager TimeLogsManager { get; set; }
+
+        string UniqueActivityName { get; }
 
         void UpdateDataTableForActivity(string activityName);
+
+        void UpdateDataTableForTask(string taskName);
     }
 }
