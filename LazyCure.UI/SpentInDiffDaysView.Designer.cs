@@ -30,12 +30,15 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SpentInDiffDaysView));
             this.closeButton = new System.Windows.Forms.Button();
-            this.activityLabel = new System.Windows.Forms.Label();
             this.daySpentDataGrid = new System.Windows.Forms.DataGridView();
             this.day = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.spent = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.activityComboBox = new System.Windows.Forms.ComboBox();
+            this.activityOrTaskValueComboBox = new System.Windows.Forms.ComboBox();
+            this.totalSpentOnGroup = new System.Windows.Forms.GroupBox();
+            this.taskRadioButton = new System.Windows.Forms.RadioButton();
+            this.activityRadioButton = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.daySpentDataGrid)).BeginInit();
+            this.totalSpentOnGroup.SuspendLayout();
             this.SuspendLayout();
             // 
             // closeButton
@@ -45,11 +48,6 @@
             this.closeButton.Name = "closeButton";
             this.closeButton.UseVisualStyleBackColor = true;
             this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
-            // 
-            // activityLabel
-            // 
-            resources.ApplyResources(this.activityLabel, "activityLabel");
-            this.activityLabel.Name = "activityLabel";
             // 
             // daySpentDataGrid
             // 
@@ -82,39 +80,65 @@
             this.spent.Name = "spent";
             this.spent.ReadOnly = true;
             // 
-            // activityComboBox
+            // activityOrTaskValueComboBox
             // 
-            resources.ApplyResources(this.activityComboBox, "activityComboBox");
-            this.activityComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.activityComboBox.FormattingEnabled = true;
-            this.activityComboBox.Name = "activityComboBox";
-            this.activityComboBox.SelectedValueChanged += new System.EventHandler(this.activityComboBox_SelectedValueChanged);
+            resources.ApplyResources(this.activityOrTaskValueComboBox, "activityOrTaskValueComboBox");
+            this.activityOrTaskValueComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.activityOrTaskValueComboBox.FormattingEnabled = true;
+            this.activityOrTaskValueComboBox.Name = "activityOrTaskValueComboBox";
+            this.activityOrTaskValueComboBox.SelectedValueChanged += new System.EventHandler(this.activityComboBox_SelectedValueChanged);
+            // 
+            // totalSpentOnGroup
+            // 
+            resources.ApplyResources(this.totalSpentOnGroup, "totalSpentOnGroup");
+            this.totalSpentOnGroup.Controls.Add(this.taskRadioButton);
+            this.totalSpentOnGroup.Controls.Add(this.activityRadioButton);
+            this.totalSpentOnGroup.Controls.Add(this.activityOrTaskValueComboBox);
+            this.totalSpentOnGroup.Name = "totalSpentOnGroup";
+            this.totalSpentOnGroup.TabStop = false;
+            // 
+            // taskRadioButton
+            // 
+            resources.ApplyResources(this.taskRadioButton, "taskRadioButton");
+            this.taskRadioButton.Name = "taskRadioButton";
+            this.taskRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // activityRadioButton
+            // 
+            resources.ApplyResources(this.activityRadioButton, "activityRadioButton");
+            this.activityRadioButton.Checked = true;
+            this.activityRadioButton.Name = "activityRadioButton";
+            this.activityRadioButton.TabStop = true;
+            this.activityRadioButton.UseVisualStyleBackColor = true;
+            this.activityRadioButton.CheckedChanged += new System.EventHandler(this.activityRadioButton_CheckedChanged);
             // 
             // SpentInDiffDaysView
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.totalSpentOnGroup);
             this.Controls.Add(this.closeButton);
-            this.Controls.Add(this.activityLabel);
             this.Controls.Add(this.daySpentDataGrid);
-            this.Controls.Add(this.activityComboBox);
             this.Name = "SpentInDiffDaysView";
             this.ShowInTaskbar = false;
             this.TopMost = true;
             this.VisibleChanged += new System.EventHandler(this.SpentOnDiffDays_VisibleChanged);
             ((System.ComponentModel.ISupportInitialize)(this.daySpentDataGrid)).EndInit();
+            this.totalSpentOnGroup.ResumeLayout(false);
+            this.totalSpentOnGroup.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.ComboBox activityComboBox;
+        private System.Windows.Forms.ComboBox activityOrTaskValueComboBox;
         private System.Windows.Forms.DataGridView daySpentDataGrid;
-        private System.Windows.Forms.Label activityLabel;
         private System.Windows.Forms.Button closeButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn day;
         private System.Windows.Forms.DataGridViewTextBoxColumn spent;
+        private System.Windows.Forms.GroupBox totalSpentOnGroup;
+        private System.Windows.Forms.RadioButton taskRadioButton;
+        private System.Windows.Forms.RadioButton activityRadioButton;
     }
 }

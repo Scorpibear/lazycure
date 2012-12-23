@@ -4,7 +4,7 @@ using LifeIdea.LazyCure.Shared.Structures;
 
 namespace LifeIdea.LazyCure.Shared.Interfaces
 {
-    public interface ILazyCureDriver: IHistoryDataProvider
+    public interface ILazyCureDriver
     {
         object ActivitiesSummaryData { get; }
 
@@ -15,8 +15,6 @@ namespace LifeIdea.LazyCure.Shared.Interfaces
         IActivity CurrentActivity { get; }
 
         double Efficiency { get; }
-
-        string[] LatestActivities { get; }
 
         TimeSpan PossibleWorkInterruptionDuration { get; set; }
 
@@ -42,7 +40,7 @@ namespace LifeIdea.LazyCure.Shared.Interfaces
 
         void FinishActivity(string finishedActivity, string nextActivity, bool postToExternals);
 
-        string GetUniqueActivityName();
+        IHistoryDataProvider HistoryDataProvider { get; }
 
         bool LoadTimeLog(string filename);
 

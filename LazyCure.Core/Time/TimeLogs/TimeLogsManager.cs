@@ -42,7 +42,6 @@ namespace LifeIdea.LazyCure.Core.Time.TimeLogs
             return fileManager.SaveTimeLog(ActiveTimeLog);
         }
 
-
         public List<DateTime> AvailableDays
         {
             get {

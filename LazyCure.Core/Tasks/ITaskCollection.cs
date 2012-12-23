@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using LifeIdea.LazyCure.Shared.Interfaces;
 
 namespace LifeIdea.LazyCure.Core.Tasks
 {
@@ -9,6 +10,8 @@ namespace LifeIdea.LazyCure.Core.Tasks
         void Add(Task task);
 
         bool Contains(string taskName);
+
+        string[] GetAllTasksNames();
 
         Task GetTask(string name);
 

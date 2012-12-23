@@ -1,4 +1,4 @@
-namespace LifeIdea.LazyCure.Core.Tasks
+namespace LifeIdea.LazyCure.Shared.Interfaces
 {
     public interface ITaskActivityLinker
     {
