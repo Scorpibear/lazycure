@@ -33,5 +33,12 @@ namespace LifeIdea.LazyCure.Core.Reports
 
             Assert.AreEqual(0, efficiencyCalculator.Efficiency);
         }
+        [Test]
+        public void EfficiencyDoesNotThrowExceptionIfWorkingTimeManagerIsNull()
+        {
+            var efficiencyCalculator = new EfficiencyCalculator(null);
+            Assert.AreEqual(0, efficiencyCalculator.Efficiency);
+            Assert.Pass();
+        }
     }
 }

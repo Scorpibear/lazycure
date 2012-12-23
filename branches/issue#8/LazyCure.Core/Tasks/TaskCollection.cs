@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using LifeIdea.LazyCure.Shared.Constants;
 using LifeIdea.LazyCure.Shared.Interfaces;
 using LifeIdea.LazyCure.Shared.Tools;
+using System.Collections.Specialized;
 
 namespace LifeIdea.LazyCure.Core.Tasks
 {
@@ -71,6 +72,21 @@ namespace LifeIdea.LazyCure.Core.Tasks
             }
         }
 
+        public string[] GetAllTasksNames()
+        {
+            var list = new List<string>();
+            foreach (Task task in this)
+                AddTaskWithSubtasksToList(list, task);
+            return list.ToArray();
+        }
+
+        private static void AddTaskWithSubtasksToList(List<string> list, Task task)
+        {
+            list.Add(task.Name);
+            foreach (Task subTask in task.Nodes)
+                AddTaskWithSubtasksToList(list, subTask);
+        }
+
         public Task GetTask(string taskName)
         {
             foreach (Task task in this)
@@ -121,6 +137,11 @@ namespace LifeIdea.LazyCure.Core.Tasks
                 previousTask.RelatedActivities.Remove(activityName);
             task.RelatedActivities.Add(activityName);
             return true;
+        }
+
+        public Task AddSubtask(Task parentTask)
+        {
+            return this.AddSubtask(parentTask as TreeNode) as Task;
         }
 
         #region ITaskViewDataSource Members

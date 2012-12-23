@@ -1,6 +1,6 @@
 namespace LifeIdea.LazyCure.UI.Backend
 {
-    interface ITimeLogView: IView
+    public interface ITimeLogView: IView
     {
         void CancelEdit();
 

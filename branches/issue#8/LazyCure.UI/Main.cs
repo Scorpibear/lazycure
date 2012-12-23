@@ -84,7 +84,7 @@ namespace LifeIdea.LazyCure.UI
         {
             string finishedActivity =
                 (this.currentActivity.Text == DefaultActivity) ?
-                lazyCure.GetUniqueActivityName() : this.currentActivity.Text;
+                lazyCure.HistoryDataProvider.UniqueActivityName : this.currentActivity.Text;
             return finishedActivity;
         }
 
@@ -166,9 +166,10 @@ namespace LifeIdea.LazyCure.UI
         {
             foreach (ToolStripMenuItem item in activitiesMenuItems.Values)
                 contextMenu.Items.Remove(item);
-            if (lazyCure.LatestActivities.Length > 0)
+            var latestActivities = lazyCure.HistoryDataProvider.LatestActivities;
+            if (latestActivities.Length > 0)
             {
-                foreach (string activity in lazyCure.LatestActivities)
+                foreach (string activity in latestActivities)
                 {
                     ToolStripMenuItem menuItem;
                     if (activitiesMenuItems.ContainsKey(activity))
@@ -189,7 +190,7 @@ namespace LifeIdea.LazyCure.UI
         {
             currentActivity.Text = nextActivity;
             currentActivity.Items.Clear();
-            currentActivity.Items.AddRange(lazyCure.HistoryActivities);
+            currentActivity.Items.AddRange(lazyCure.HistoryDataProvider.HistoryActivities);
         }
 
         private void UpdateTime()

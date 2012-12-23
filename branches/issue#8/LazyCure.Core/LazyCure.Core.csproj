@@ -59,7 +59,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Activities\IActivitiesHistory.cs" />
     <Compile Include="Localization\ILanguageSwitcher.cs" />
     <Compile Include="Localization\LanguageSwitcher.cs" />
     <Compile Include="Plugins\IExternalPoster.cs" />
@@ -70,23 +69,22 @@
     <Compile Include="Activities\ActivitySerializer.cs" />
     <Compile Include="IO\FileManager.cs" />
     <Compile Include="IO\IFileManager.cs" />
+    <Compile Include="Reports\ActivityTimeSummarizer.cs" />
     <Compile Include="Reports\EfficiencyCalculator.cs" />
     <Compile Include="Reports\IActivitiesSummary.cs" />
-    <Compile Include="Reports\IDataProvider.cs" />
     <Compile Include="Reports\IEfficiencyCalculator.cs" />
-    <Compile Include="Reports\ITasksSummary.cs" />
     <Compile Include="Reports\IWorkingTimeManager.cs" />
     <Compile Include="Reports\TasksSummary.cs" />
+    <Compile Include="Reports\TaskTimeSummarizer.cs" />
+    <Compile Include="Reports\TimeSummarizer.cs" />
     <Compile Include="Reports\WorkingTime.cs" />
     <Compile Include="Reports\HistoryDataProvider.cs" />
     <Compile Include="Tasks\ITaskCollection.cs" />
-    <Compile Include="Tasks\ITaskActivityLinker.cs" />
+    <Compile Include="Tasks\ITasksSummary.cs" />
     <Compile Include="Tasks\TaskCollectionSerializer.cs" />
     <Compile Include="Tasks\TaskSerializer.cs" />
-    <Compile Include="Time\TimeLogs\ITimeLog.cs" />
     <Compile Include="Activities\RunningActivity.cs" />
     <Compile Include="Driver.cs" />
-    <Compile Include="Time\TimeLogs\ITimeLogsManager.cs" />
     <Compile Include="Time\ITimeManager.cs" />
     <Compile Include="Time\ITimeSystem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

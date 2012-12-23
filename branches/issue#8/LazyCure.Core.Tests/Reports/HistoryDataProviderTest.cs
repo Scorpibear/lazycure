@@ -7,6 +7,7 @@ using LifeIdea.LazyCure.Core.Activities;
 using LifeIdea.LazyCure.Shared.Interfaces;
 using System.Collections.Generic;
 using LifeIdea.LazyCure.Core.Time;
+using LifeIdea.LazyCure.Core.Tasks;
 
 namespace LifeIdea.LazyCure.Core.Reports
 {
@@ -16,7 +17,13 @@ namespace LifeIdea.LazyCure.Core.Reports
         [SetUp]
         public void SetUp()
         {
-            provider = new HistoryDataProvider();
+            provider = new HistoryDataProvider(null);
+        }
+        [Test]
+        public void DataReturnsValidDataTable()
+        {
+            object data = provider.Data;
+            Assert.AreEqual(typeof(DataTable), data.GetType());
         }
         [Test]
         public void TodaysActivityIsReturned()
@@ -30,7 +37,7 @@ namespace LifeIdea.LazyCure.Core.Reports
             Stub.On(provider.TimeLogsManager).GetProperty("AvailableDays").Will(Return.Value(new List<DateTime>((new DateTime[] { DateTime.Now }))));
 
             provider.UpdateDataTableForActivity(uniqueActivity);
-            DataTable table = provider.DataTable;
+            DataTable table = provider.Data;
             
             Assert.AreEqual(1, table.Rows.Count);
             DataRow row = table.Rows[0];
@@ -49,6 +56,28 @@ namespace LifeIdea.LazyCure.Core.Reports
             VerifyAllExpectationsHaveBeenMet();
         }
         [Test]
+        public void UpdateDataTableForTask()
+        {
+            provider.TaskCollection = NewMock<ITaskCollection>();
+            Task task = new Task("task1");
+            task.RelatedActivities.Add("activity1");
+            provider.TimeLogsManager = NewMock<ITimeLogsManager>();
+            Stub.On(provider.TimeLogsManager).Method("GetActivities").Will(Return.Value(new List<IActivity>(
+                new IActivity[] {
+                    new Activity("activity1", DateTime.Now, TimeSpan.Parse("0:30"))
+                })));
+            Stub.On(provider.TimeLogsManager).GetProperty("AvailableDays").Will(Return.Value(new List<DateTime>((new DateTime[] { DateTime.Now }))));
+            Stub.On(provider.TaskCollection).Method("GetTask").With("task1").Will(Return.Value(task));
+
+            provider.UpdateDataTableForTask("task1");
+            DataTable table = provider.Data;
+            
+            Assert.AreEqual(1, table.Rows.Count);
+            DataRow row = table.Rows[0];
+            Assert.AreEqual(DateTime.Now.ToString("yyyy-MM-dd"), row["Day"]);
+            Assert.AreEqual("0:30", row["Spent"]);
+        }
+        [Test]
         public void TableIsEmptiedWhenActivityIsChanged()
         {
             string uniqueActivity = "todays" + DateTime.Now;
@@ -61,24 +90,54 @@ namespace LifeIdea.LazyCure.Core.Reports
 
             provider.UpdateDataTableForActivity(uniqueActivity);
             provider.UpdateDataTableForActivity("unexistent one");
-            Assert.AreEqual(0, provider.DataTable.Rows.Count);
-        }
-        [Test]
-        public void SummarizeSpentForActivityInTimeLog()
-        {
-            var activities = new List<IActivity>(
-                new IActivity[] {
-                    new Activity("activity1", DateTime.Now, TimeSpan.Parse("0:10")),
-                    new Activity("activity1", DateTime.Now, TimeSpan.Parse("0:15"))
-                });
-            TimeSpan spent = provider.SummarizeSpentForActivity(activities, "activity1");
-            Assert.AreEqual(TimeSpan.Parse("0:25"), spent);
+            Assert.AreEqual(0, provider.Data.Rows.Count);
         }
         [Test]
         public void NoRowsIfSpentIsZero()
         {
             provider.UpdateDataTableForActivity("No data");
-            Assert.AreEqual(0, provider.DataTable.Rows.Count);
+            Assert.AreEqual(0, provider.Data.Rows.Count);
+        }
+        [Test]
+        public void LatestActivitiesCallsHistory()
+        {
+            provider.ActivitiesHistory = NewMock<IActivitiesHistory>();
+            Expect.Once.On(provider.ActivitiesHistory).GetProperty("LatestActivities").
+                Will(Return.Value(new string[] { "test" }));
+            Assert.AreEqual(new string[] { "test" }, provider.LatestActivities);
+        }
+        [Test]
+        public void HistoryActivitiesCallsHistory()
+        {
+            provider.ActivitiesHistory = NewMock<IActivitiesHistory>();
+            Expect.Once.On(provider.ActivitiesHistory).GetProperty("Activities").
+                Will(Return.Value(new string[] { "test" }));
+            Assert.AreEqual(new string[] { "test" }, provider.HistoryActivities);
+        }
+        [Test]
+        public void TasksDoesNotThrowsException()
+        {
+            provider.TaskCollection = NewMock<ITaskCollection>();
+            string[] test = new string[] { };
+            Expect.Once.On(provider.TaskCollection).Method("GetAllTasksNames").Will(Return.Value(test));
+            Assert.AreSame(test, provider.Tasks);
+        }
+        [Test]
+        public void ConstructorInitializesActivitiesHistory()
+        {
+            Assert.IsNotNull(provider.ActivitiesHistory);
+        }
+        [Test]
+        public void ApplySettings()
+        {
+            ISettings settings = NewMock<ISettings>();
+            Stub.On(settings).GetProperty("MaxActivitiesInHistory").Will(Return.Value(13));
+            Stub.On(settings).GetProperty("ActivitiesNumberInTray").Will(Return.Value(5));
+            
+            provider.ApplySettings(settings);
+
+            Assert.AreEqual(5, provider.ActivitiesHistory.LatestSize);
+            Assert.AreEqual(13, provider.ActivitiesHistory.Size);
         }
     }
 }

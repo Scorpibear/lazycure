@@ -7,7 +7,7 @@ using System.Threading;
 
 namespace LifeIdea.LazyCure.UI
 {
-    partial class AboutBox : Form
+    public partial class AboutBox : Form
     {
         public AboutBox()
         {

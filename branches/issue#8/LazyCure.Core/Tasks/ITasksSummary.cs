@@ -1,6 +1,6 @@
-using LifeIdea.LazyCure.Core.Tasks;
+using LifeIdea.LazyCure.Shared.Interfaces;
 
-namespace LifeIdea.LazyCure.Core.Reports
+namespace LifeIdea.LazyCure.Core.Tasks
 {
     public interface ITasksSummary:IDataProvider
     {
