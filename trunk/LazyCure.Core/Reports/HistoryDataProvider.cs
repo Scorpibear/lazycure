@@ -1,19 +1,76 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using LifeIdea.LazyCure.Core.Activities;
 using LifeIdea.LazyCure.Core.Time.TimeLogs;
 using LifeIdea.LazyCure.Shared.Interfaces;
 using LifeIdea.LazyCure.Shared.Tools;
+using LifeIdea.LazyCure.Core.Tasks;
 
 namespace LifeIdea.LazyCure.Core.Reports
 {
-    public class HistoryDataProvider
+    public class HistoryDataProvider: IHistoryDataProvider
     {
+        #region Fields
+        
         DataTable table;
 
-        public HistoryDataProvider()
+        #endregion Fields
+
+        #region Properties
+
+        public IActivitiesHistory ActivitiesHistory { get; set; }
+
+        public DataTable Data
+        {
+            get
+            {
+                return table;
+            }
+        }
+
+        public string[] HistoryActivities
+        {
+            get { return ActivitiesHistory.Activities; }
+        }
+
+        public string[] LatestActivities
+        {
+            get { return ActivitiesHistory.LatestActivities; }
+        }
+
+        public ITaskCollection TaskCollection { get; set; }
+
+        /// <summary>
+        /// Returns list of task names as string[] array. If no tasks, empty array is returned
+        /// </summary>
+        public string[] Tasks
+        {
+            get
+            {
+                if (this.TaskCollection != null)
+                    return TaskCollection.GetAllTasksNames();
+                return new string[] { };
+            }
+        }
+
+        public ITimeLogsManager TimeLogsManager { get; set; }
+
+        public string UniqueActivityName
+        {
+            get
+            {
+                return ActivitiesHistory.UniqueName;
+            }
+        }
+
+        #endregion Properties
+
+        public HistoryDataProvider(ITaskCollection taskCollection)
         {
             table = CreateTable();
+            ActivitiesHistory = new ActivitiesHistory();
+            TaskCollection = taskCollection;
         }
 
         private DataTable CreateTable()
@@ -24,71 +81,35 @@ namespace LifeIdea.LazyCure.Core.Reports
             return table;
         }
 
-        public DataTable DataTable
-        {
-            get
-            {
-                return table;
-            }
-        }
-
         public void UpdateDataTableForActivity(string activityName)
         {
+            UpdateDataTable(new ActivityTimeSummarizer(activityName, table, TimeLogsManager));
+        }
+
+        public void UpdateDataTableForTask(string taskName)
+        {
+            UpdateDataTable(new TaskTimeSummarizer(taskName, table, TimeLogsManager, TaskCollection));
+        }
+
+        public void UpdateDataTable(TimeSummarizer timeSummarizer)
+        {
             ResetRows();
-            //DateTime day = DateTime.Now;
-            if(TimeLogsManager!=null)
+            if (TimeLogsManager != null)
             {
                 foreach (DateTime day in TimeLogsManager.AvailableDays)
-                    AddSpentForActivity(activityName, day);
+                    timeSummarizer.AddSpentForDay(day);
             }
-        }
-
-        private void AddSpentForActivity(string activityName, DateTime day)
-        {
-            TimeSpan spent = this.GetSpentOnActivity(day, activityName);
-            if (spent != TimeSpan.Zero)
-                AddRow(day, spent);
-        }
-
-        private void AddRow(DateTime day, TimeSpan spent)
-        {
-            string dayString = Format.Date(day);
-            string spentString = Format.ShortDuration(spent);
-            AddRow(dayString, spentString);
-        }
-
-        private void AddRow(string day, string spent)
-        {
-            DataRow row = table.NewRow();
-            row["Day"] = day;
-            row["Spent"] = spent;
-            table.Rows.Add(row);
         }
 
         private void ResetRows()
         {
             this.table.Clear();
         }
-        private TimeSpan GetSpentOnActivity(DateTime day, string activityName)
+        
+        public void ApplySettings(ISettings settings)
         {
-            if (TimeLogsManager != null)
-            {
-                List<IActivity> activities = TimeLogsManager.GetActivities(day);
-                return this.SummarizeSpentForActivity(activities, activityName);
-            }
-            return TimeSpan.Zero;
+            this.ActivitiesHistory.LatestSize = settings.ActivitiesNumberInTray;
+            this.ActivitiesHistory.Size = settings.MaxActivitiesInHistory;
         }
-
-        public TimeSpan SummarizeSpentForActivity(List<IActivity> activities, string activityName)
-        {
-            TimeSpan totallySpent = TimeSpan.Zero;
-            foreach (IActivity activity in activities)
-            {
-                if (activity.Name == activityName)
-                    totallySpent += activity.Duration;
-            }
-            return totallySpent;
-        }
-        public ITimeLogsManager TimeLogsManager { get; set; }
     }
 }

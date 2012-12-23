@@ -49,10 +49,10 @@ namespace LifeIdea.LazyCure.Core
         {
             ISettings settings = NewMock<ISettings>();
             driver.ExternalPoster = NewMock<IExternalPoster>();
+            driver.HistoryDataProvider = NewMock<IHistoryDataProvider>();
+            Expect.Once.On(driver.HistoryDataProvider).Method("ApplySettings").With(settings);
             Stub.On(settings).GetProperty("TimeLogsFolder").Will(Return.Value(@"c:\test"));
             Stub.On(settings).GetProperty("SaveAfterDone").Will(Return.Value(false));
-            Stub.On(settings).GetProperty("MaxActivitiesInHistory").Will(Return.Value(13));
-            Stub.On(settings).GetProperty("ActivitiesNumberInTray").Will(Return.Value(5));
             Stub.On(settings).GetProperty("ReminderTime").Will(Return.Value(TimeSpan.Parse("0:59:48")));
             Stub.On(settings).GetProperty("UseTweetingActivity").Will(Return.Value(true));
             Stub.On(settings).GetProperty("TweetingActivity").Will(Return.Value("tweeting activity"));
@@ -67,8 +67,6 @@ namespace LifeIdea.LazyCure.Core
 
             Assert.AreEqual(@"c:\test", driver.TimeLogsFolder);
             Assert.IsFalse(driver.SaveAfterDone);
-            Assert.AreEqual(5, driver.History.LatestSize);
-            Assert.AreEqual(13, driver.History.Size);
             Assert.AreEqual(TimeSpan.Parse("0:59:48"), driver.TimeManager.MaxDuration);
             Assert.AreEqual("tweeting activity", driver.TimeManager.TweetingActivity);
             VerifyAllExpectationsHaveBeenMet();
@@ -114,7 +112,7 @@ namespace LifeIdea.LazyCure.Core
         public void HistoryActivityIsTrimmed()
         {
             driver.FinishActivity(" act ", "new one");
-            Assert.Contains("act", driver.HistoryActivities);
+            Assert.Contains("act", driver.HistoryDataProvider.HistoryActivities);
         }
         [Test]
         public void SwitchTimeLogAtMidnightSettingIsApplied()
@@ -183,7 +181,7 @@ namespace LifeIdea.LazyCure.Core
         {
             driver.FinishActivity("before", "next");
             driver.RenameActivity("before", "after");
-            Assert.AreEqual("after", driver.HistoryActivities[0]);
+            Assert.AreEqual("after", driver.HistoryDataProvider.HistoryActivities[0]);
         }
         [Test]
         public void GetPossibleWorkInterruptionDuration()
@@ -326,38 +324,22 @@ namespace LifeIdea.LazyCure.Core
         public void LatestActivities()
         {
             driver.FinishActivity("latest", "second");
-            Assert.Contains("latest", driver.LatestActivities);
+            Assert.Contains("latest", driver.HistoryDataProvider.LatestActivities);
         }
         [Test]
         public void HistoryActivities()
         {
             driver.FinishActivity("latest", "second");
-            Assert.Contains("latest", driver.HistoryActivities);
+            Assert.Contains("latest", driver.HistoryDataProvider.HistoryActivities);
         }
         [Test]
         public void BothActivitiesAfterSplitAppearInHistory()
         {
             driver.TimeManager.SplitByComma = true;
             driver.FinishActivity("first, second", "third");
-            string[] historyActivities = driver.HistoryActivities;
+            string[] historyActivities = driver.HistoryDataProvider.HistoryActivities;
             Assert.Contains("first", historyActivities);
             Assert.Contains("second", historyActivities);
-        }
-        [Test]
-        public void LatestActivitiesCallsHistory()
-        {
-            driver.History = NewMock<IActivitiesHistory>();
-            Expect.Once.On(driver.History).GetProperty("LatestActivities").
-                Will(Return.Value(new string[] { "test" }));
-            Assert.AreEqual(new string[] { "test" }, driver.LatestActivities);
-        }
-        [Test]
-        public void HistoryActivitiesCallsHistory()
-        {
-            driver.History = NewMock<IActivitiesHistory>();
-            Expect.Once.On(driver.History).GetProperty("Activities").
-                Will(Return.Value(new string[] { "test" }));
-            Assert.AreEqual(new string[]{"test"},driver.HistoryActivities);
         }
         [Test]
         public void LatestActivitiesAreReloaded()
@@ -366,7 +348,7 @@ namespace LifeIdea.LazyCure.Core
             driver.Save();
             driver = new Driver(null);
             driver.Load();
-            Assert.Contains("saved", driver.LatestActivities);
+            Assert.Contains("saved", driver.HistoryDataProvider.LatestActivities);
         }
         [Test]
         public void SaveAfterDone()
@@ -400,7 +382,7 @@ namespace LifeIdea.LazyCure.Core
             driver.FileManager = NewMock<IFileManager>();
             Expect.AtLeastOnce.On(driver.FileManager).Method("SaveTasks").With(driver.TaskCollection).Will(Return.Value(true));
             Expect.AtLeastOnce.On(driver.FileManager).Method("SaveTimeLog").Will(Return.Value(true));
-            Expect.AtLeastOnce.On(driver.FileManager).Method("SaveHistory").With(driver.History);
+            Expect.AtLeastOnce.On(driver.FileManager).Method("SaveHistory").With(driver.HistoryDataProvider.ActivitiesHistory);
 
             bool isSaved = driver.Save();
             
@@ -413,7 +395,7 @@ namespace LifeIdea.LazyCure.Core
             driver.FileManager = NewMock<IFileManager>();
             Expect.AtLeastOnce.On(driver.FileManager).Method("GetTasks").Will(Return.Value(null));
             Expect.AtLeastOnce.On(driver.FileManager).Method("GetTimeLog").Will(Return.Value(null));
-            Expect.AtLeastOnce.On(driver.FileManager).Method("LoadHistory").With(driver.History);
+            Expect.AtLeastOnce.On(driver.FileManager).Method("LoadHistory").With(driver.HistoryDataProvider.ActivitiesHistory);
             Stub.On(driver.FileManager).Method("GetTimeLogFileName").Will(Return.Value(@"c:\temp\test.txt"));
 
             bool isLoaded = driver.Load();
@@ -495,22 +477,31 @@ namespace LifeIdea.LazyCure.Core
             VerifyAllExpectationsHaveBeenMet();
         }
         [Test]
-        public void SpentOnActivityOnDiffDaysDataReturnsValidDataTable()
-        {
-            object data = driver.SpentOnDiffDaysDataTable;
-            Assert.AreEqual(typeof(DataTable), data.GetType());
-        }
-        [Test]
-        public void TimeManagerPassedToSpentOnDiffDaysDataTable()
+        public void TimeManagerPassedToHistoryDataProvider()
         {
             var timeLogsManager = new TimeLogsManager(null);
+            driver.HistoryDataProvider = NewMock<IHistoryDataProvider>();
+            Expect.Once.On(driver.HistoryDataProvider).SetProperty("TimeLogsManager").To(timeLogsManager);
+            
             driver.TimeLogsManager = timeLogsManager;
-            Assert.AreSame(timeLogsManager, driver.HistoryDataProvider.TimeLogsManager);
+
+            VerifyAllExpectationsHaveBeenMet();
         }
         [Test]
         public void DriverConstructorSetsTimeLogsManagerToHistoryDataProvider()
         {
             Assert.IsNotNull(driver.HistoryDataProvider.TimeLogsManager);
+        }
+        [Test]
+        public void TaskCollectionIsSetToHistoryDataProvider()
+        {
+            Assert.AreSame(driver.TaskCollection, (driver.HistoryDataProvider as HistoryDataProvider).TaskCollection);
+        }
+        [Test]
+        public void ChangedTaskCollectionIsChangedInHistoryDataProvider()
+        {
+            driver.TaskCollection = NewMock<ITaskCollection>();
+            Assert.AreSame(driver.TaskCollection, (driver.HistoryDataProvider as HistoryDataProvider).TaskCollection);
         }
     }
 }

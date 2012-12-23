@@ -1,6 +1,6 @@
 namespace LifeIdea.LazyCure.UI
 {
-    partial class TaskManager
+    public partial class TaskManager
     {
         /// <summary>
         /// Required designer variable.

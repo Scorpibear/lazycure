@@ -2,6 +2,7 @@ using System;
 using System.Data;
 using LifeIdea.LazyCure.Core.Tasks;
 using LifeIdea.LazyCure.Core.Time.TimeLogs;
+using LifeIdea.LazyCure.Shared.Interfaces;
 
 namespace LifeIdea.LazyCure.Core.Reports
 {

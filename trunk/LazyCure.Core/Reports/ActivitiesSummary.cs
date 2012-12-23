@@ -9,7 +9,7 @@ using LifeIdea.LazyCure.Shared.Tools;
 namespace LifeIdea.LazyCure.Core.Reports
 {
     /// <summary>
-    /// Represent activities summary data
+    /// Represent activities summary data for current day
     /// </summary>
     public class ActivitiesSummary: IActivitiesSummary
     {

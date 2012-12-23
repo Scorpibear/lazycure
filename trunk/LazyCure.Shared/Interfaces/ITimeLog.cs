@@ -1,9 +1,7 @@
 using System;
 using System.Collections.Generic;
-using LifeIdea.LazyCure.Core.Reports;
-using LifeIdea.LazyCure.Shared.Interfaces;
 
-namespace LifeIdea.LazyCure.Core.Time.TimeLogs
+namespace LifeIdea.LazyCure.Shared.Interfaces
 {
     public interface ITimeLog: IDataProvider
     {

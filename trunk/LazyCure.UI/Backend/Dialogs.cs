@@ -15,11 +15,11 @@ namespace LifeIdea.LazyCure.UI.Backend
         private static TaskManager taskManager = null;
         private static ISpentOnDiffDaysView spentOnDiffDays = null;
 
-        internal static ILazyCureDriver LazyCureDriver = null;
+        public static ILazyCureDriver LazyCureDriver = null;
         internal static IMainForm MainForm = null;
         internal static ISettings Settings;
 
-        internal static OathAuthorize Oath
+        public static OathAuthorize Oath
         {
             get
             {
@@ -32,7 +32,7 @@ namespace LifeIdea.LazyCure.UI.Backend
 
         }
 
-        internal static OpenFileDialog Open
+        public static OpenFileDialog Open
         {
             get
             {
@@ -45,7 +45,7 @@ namespace LifeIdea.LazyCure.UI.Backend
             }
         }
 
-        internal static SaveFileDialog Save
+        public static SaveFileDialog Save
         {
             get
             {
@@ -58,7 +58,7 @@ namespace LifeIdea.LazyCure.UI.Backend
             }
         }
 
-        internal static ITimeLogView TimeLog
+        public static ITimeLogView TimeLog
         {
             get
             {
@@ -68,7 +68,7 @@ namespace LifeIdea.LazyCure.UI.Backend
             }
         }
 
-        internal static ISummaryView Summary
+        public static ISummaryView Summary
         {
             get
             {
@@ -80,7 +80,7 @@ namespace LifeIdea.LazyCure.UI.Backend
             }
         }
 
-        internal static AboutBox About
+        public static AboutBox About
         {
             get
             {
@@ -90,7 +90,7 @@ namespace LifeIdea.LazyCure.UI.Backend
             }
         }
 
-        internal static TaskManager TaskManager
+        public static TaskManager TaskManager
         {
             get
             {
@@ -105,7 +105,10 @@ namespace LifeIdea.LazyCure.UI.Backend
             get
             {
                 if (spentOnDiffDays == null)
-                    spentOnDiffDays = new SpentInDiffDaysView(LazyCureDriver as IHistoryDataProvider, MainForm);
+                {
+                    IHistoryDataProvider dataProvider = (LazyCureDriver != null) ? LazyCureDriver.HistoryDataProvider : null;
+                    spentOnDiffDays = new SpentInDiffDaysView(dataProvider, MainForm);
+                }
                 return spentOnDiffDays;
             }
         }
@@ -120,7 +123,7 @@ namespace LifeIdea.LazyCure.UI.Backend
             }
         }
 
-        internal static void CancelEditTimeLog()
+        public static void CancelEditTimeLog()
         {
             if (timeLog != null)
                 timeLog.CancelEdit();
@@ -133,6 +136,20 @@ namespace LifeIdea.LazyCure.UI.Backend
                 fileDialog.InitialDirectory = LazyCureDriver.TimeLogsFolder;
             }
             fileDialog.Filter = "Time Logs (*.timelog)|*.timelog|XML (*.xml)|*.xml|All Files (*.*)|*.*";
+        }
+
+        /// <summary>
+        /// Reset all dialogs by closing it, so when next time each of the dialog will be executed, it will be reopened from scratch
+        /// </summary>
+        public static void Reset()
+        {
+            var forms = new object[] { spentOnDiffDays, oath };
+            foreach (Form form in forms)
+            {
+                if (form != null)
+                    form.Close();
+            }
+            spentOnDiffDays = null;
         }
     }
 }
