@@ -258,9 +258,8 @@ namespace LifeIdea.LazyCure.Core.Tasks
         public void SubTaskHasTheSameWorkingProperty()
         {
             Task parent = new Task("parent",false);
-            TreeNode newNode = tasks.AddSubtask(parent);
-            Task task = newNode as Task;
-            Assert.IsFalse(task.IsWorking);
+            Task newTask = tasks.AddSubtask(parent);
+            Assert.IsFalse(newTask.IsWorking);
         }
         [Test]
         public void AddSiblingSetIsWorkingFromParent()
@@ -271,6 +270,21 @@ namespace LifeIdea.LazyCure.Core.Tasks
             TreeNode newNode = tasks.AddTaskAfter(previous);
             Task task = newNode as Task;
             Assert.IsFalse(task.IsWorking);
+        }
+        [Test]
+        public void GetAllTasksNames()
+        {
+            tasks.Add(new Task("newone"));
+            Assert.AreEqual(new string[]{"newone"}, tasks.GetAllTasksNames());
+        }
+        [Test]
+        public void GetAllSubTaskNames()
+        {
+            Task parent = new Task("parent");
+            tasks.Add(parent);
+            Task subtask = tasks.AddSubtask(parent);
+            subtask.Name = "subtask";
+            Assert.AreEqual(new string[] { "parent", "subtask" }, tasks.GetAllTasksNames());
         }
     }
 }

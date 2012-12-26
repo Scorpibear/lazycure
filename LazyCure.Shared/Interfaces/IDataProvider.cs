@@ -1,6 +1,6 @@
 using System.Data;
 
-namespace LifeIdea.LazyCure.Core.Reports
+namespace LifeIdea.LazyCure.Shared.Interfaces
 {
     public interface IDataProvider
     {

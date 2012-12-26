@@ -139,12 +139,6 @@
   <data name="statusBar.Size" type="System.Drawing.Size, System.Drawing">
     <value>303, 22</value>
   </data>
-  <data name="statusBar.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="toolStripContainer1.BottomToolStripPanel.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="postToTwitter.Location" type="System.Drawing.Point, System.Drawing">
     <value>95, 41</value>
   </data>
@@ -153,9 +147,6 @@
   </data>
   <data name="postToTwitter.Text" xml:space="preserve">
     <value>запостити в Twitter</value>
-  </data>
-  <data name="postToTwitter.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="currentActivity.Size" type="System.Drawing.Size, System.Drawing">
     <value>215, 21</value>
@@ -181,26 +172,11 @@
   <data name="nowYou.Text" xml:space="preserve">
     <value>Зараз я ...</value>
   </data>
-  <data name="nowYou.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="toolStripContainer1.ContentPanel.Size" type="System.Drawing.Size, System.Drawing">
     <value>303, 66</value>
   </data>
-  <data name="toolStripContainer1.ContentPanel.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="toolStripContainer1.LeftToolStripPanel.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="toolStripContainer1.RightToolStripPanel.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="toolStripContainer1.Size" type="System.Drawing.Size, System.Drawing">
     <value>303, 112</value>
-  </data>
-  <data name="toolStripContainer1.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="miOpen.Size" type="System.Drawing.Size, System.Drawing">
     <value>174, 22</value>
@@ -259,11 +235,14 @@
   <data name="miTasks.Text" xml:space="preserve">
     <value>Менеджер &amp;завдань</value>
   </data>
+  <data name="miContextShow.Size" type="System.Drawing.Size, System.Drawing">
+    <value>188, 22</value>
+  </data>
+  <data name="miContextShow.Text" xml:space="preserve">
+    <value>Показати</value>
+  </data>
   <data name="showMenu.Size" type="System.Drawing.Size, System.Drawing">
     <value>178, 92</value>
-  </data>
-  <data name="showMenu.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="miShow.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 20</value>
@@ -276,6 +255,18 @@
   </data>
   <data name="miOptions.Text" xml:space="preserve">
     <value>&amp;Налаштування</value>
+  </data>
+  <data name="miSpentOnActivityInDifferentDays.Size" type="System.Drawing.Size, System.Drawing">
+    <value>265, 22</value>
+  </data>
+  <data name="miSpentOnActivityInDifferentDays.Text" xml:space="preserve">
+    <value>&amp;Витрачено на активність в різні дні</value>
+  </data>
+  <data name="miReport.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 20</value>
+  </data>
+  <data name="miReport.Text" xml:space="preserve">
+    <value>&amp;Звiт</value>
   </data>
   <data name="miHowToUse.Size" type="System.Drawing.Size, System.Drawing">
     <value>440, 22</value>
@@ -328,18 +319,6 @@
   <data name="menu.Size" type="System.Drawing.Size, System.Drawing">
     <value>303, 24</value>
   </data>
-  <data name="menu.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="toolStripContainer1.TopToolStripPanel.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="miContextShow.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 22</value>
-  </data>
-  <data name="miContextShow.Text" xml:space="preserve">
-    <value>Показати</value>
-  </data>
   <data name="miContextActivate.Size" type="System.Drawing.Size, System.Drawing">
     <value>188, 22</value>
   </data>
@@ -357,9 +336,6 @@
   </data>
   <data name="contextMenu.Size" type="System.Drawing.Size, System.Drawing">
     <value>189, 76</value>
-  </data>
-  <data name="contextMenu.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="notifyIcon.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -695,8 +671,5 @@
         AAAABwAA4AAAAAAHAAD8AAAAAD8AAPwAAAAAPwAA/AAAAAA/AAD/gAAAAf8AAP+AAAAB/wAA/4AAAAH/
         AAA=
 </value>
-  </data>
-  <data name="$this.ToolTip" xml:space="preserve">
-    <value />
   </data>
 </root>

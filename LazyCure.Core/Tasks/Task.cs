@@ -1,12 +1,13 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
+using LifeIdea.LazyCure.Shared.Interfaces;
 
 namespace LifeIdea.LazyCure.Core.Tasks
 {
     /// <summary>
     /// Store information about task
     /// </summary>
-    public class Task : TreeNode
+    public class Task : TreeNode, ITask
     {
         public readonly List<string> RelatedActivities = new List<string>();
         public bool IsWorking = true;
