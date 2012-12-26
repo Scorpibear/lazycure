@@ -7,7 +7,7 @@ using LifeIdea.LazyCure.UI.Backend;
 
 namespace LifeIdea.LazyCure.UI
 {
-    internal partial class TimeLogEditor : Backend.View, ITimeLogView
+    public partial class TimeLogEditor : Backend.View, ITimeLogView
     {
         private readonly ILazyCureDriver lazyCure;
         private List<int> timeColumnsIndeces = new List<int>();
@@ -30,8 +30,11 @@ namespace LifeIdea.LazyCure.UI
 
         public new void Update()
         {
-            timeLogView.DataSource = lazyCure.TimeLogData;
-            base.Update();
+            if (lazyCure != null)
+            {
+                timeLogView.DataSource = lazyCure.TimeLogData;
+                base.Update();
+            }
         }
 
         private void copyToolStripMenuItem_Click(object sender, EventArgs e)

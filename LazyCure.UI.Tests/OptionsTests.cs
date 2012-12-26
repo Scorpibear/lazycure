@@ -1,7 +1,9 @@
 using System;
+using System.Windows.Forms;
 using NUnit.Framework;
 using NMock2;
 using LifeIdea.LazyCure.Shared.Interfaces;
+using LifeIdea.LazyCure.UI.Backend;
 
 namespace LifeIdea.LazyCure.UI
 {
@@ -64,7 +66,18 @@ namespace LifeIdea.LazyCure.UI
             VerifyAllExpectationsHaveBeenMet();
         }
 
-        
+        [Test]
+        public void UpdateLanguageResetsDialogs()
+        {
+            var options = new Options();
+            Dialogs.LazyCureDriver = null;
+            options.UpdateLanguage("en");
+            var createdDialog = Dialogs.TimeLog;
+
+            options.UpdateLanguage("ru");
+
+            Assert.AreEqual("Лог времени", (Dialogs.TimeLog as Form).Text);
+        }
 
     }
 }

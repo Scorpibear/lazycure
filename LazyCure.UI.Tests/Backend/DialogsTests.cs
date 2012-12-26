@@ -39,5 +39,13 @@ namespace LifeIdea.LazyCure.UI.Backend
             Dialogs.Reset();
             Assert.True(form.IsDisposed);
         }
+        [Test]
+        public void ResetDialogDisposeTimeLogEditor()
+        {
+            Form form = (Form)Dialogs.TimeLog;
+            Assert.False(form.IsDisposed);
+            Dialogs.Reset();
+            Assert.True(form.IsDisposed);
+        }
     }
 }
