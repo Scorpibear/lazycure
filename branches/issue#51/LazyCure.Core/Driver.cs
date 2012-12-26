@@ -18,20 +18,19 @@ namespace LifeIdea.LazyCure.Core
     /// <summary>
     /// Initialize required for LazyCure work objects. Provide data to UI forms.
     /// </summary>
-    public class Driver : ILazyCureDriver, ITimeLogsManager
+    public class Driver : ILazyCureDriver
     {
         #region Fields
 
         private readonly ActivitiesSummary activitiesSummary;
         private IEfficiencyCalculator efficiencyCalculator;
         private IFileManager fileManager = new FileManager();
-        private IActivitiesHistory history;
         private ILanguageSwitcher languageSwitcher;
-        private ITaskCollection taskCollection = Tasks.TaskCollection.Default;
+        private ITaskCollection taskCollection;
         private ITimeManager timeManager;
         private ITasksSummary tasksSummary;
         private IWorkingTimeManager workingTime;
-        private HistoryDataProvider historyDataProvider;
+        //private IHistoryDataProvider historyDataProvider;
         private Time.TimeLogs.TimeLogsManager timeLogsManager;
         private IExternalPoster externalPoster = new Twitter();
 
@@ -53,12 +52,6 @@ namespace LifeIdea.LazyCure.Core
 
         public static string FirstActivityName = "starting LazyCure";
 
-        public IActivitiesHistory History
-        {
-            get { return history; }
-            set { history = value; }
-        }
-
         public ILanguageSwitcher LanguageSwitcher
         {
             get { return languageSwitcher; }
@@ -78,6 +71,8 @@ namespace LifeIdea.LazyCure.Core
                     TasksSummary.TaskCollection = taskCollection;
                 if (WorkingTime != null)
                     WorkingTime.TaskCollection = taskCollection;
+                if ((HistoryDataProvider as HistoryDataProvider) != null)
+                    (HistoryDataProvider as HistoryDataProvider).TaskCollection = taskCollection;
             }
         }
 
@@ -113,7 +108,8 @@ namespace LifeIdea.LazyCure.Core
             set
             {
                 this.timeLogsManager = value;
-                this.historyDataProvider.TimeLogsManager = this.timeLogsManager;
+                if(HistoryDataProvider != null)
+                    HistoryDataProvider.TimeLogsManager = this.timeLogsManager;
             }
             get
             {
@@ -121,24 +117,30 @@ namespace LifeIdea.LazyCure.Core
             }
         }
 
-        public HistoryDataProvider HistoryDataProvider { get { return this.historyDataProvider; } }
+        public IHistoryDataProvider HistoryDataProvider { get; set; }
 
         #endregion Properties
 
         #region Constructors
 
+        /// <summary>
+        /// Initialize all subsystems
+        /// </summary>
+        /// <param name="timeSystem"></param>
+        /// <param name="settings"></param>
         public Driver(ITimeSystem timeSystem, ISettings settings)
         {
-
+            //when reordering, be carefull, in order to pass only initialized objects
             languageSwitcher = new LanguageSwitcher(settings);
-            timeManager = new TimeManager(timeSystem, this);
+            //probably all of them should be properties, not fields, in order to automatically update referencies
+            TaskCollection = LifeIdea.LazyCure.Core.Tasks.TaskCollection.Default;
+            HistoryDataProvider = new HistoryDataProvider(TaskCollection);
+            TimeLogsManager = new TimeLogsManager(this.fileManager);
+            timeManager = new TimeManager(timeSystem, TimeLogsManager);
             activitiesSummary = new ActivitiesSummary(TimeManager.TimeLog, TaskCollection);
             tasksSummary = new TasksSummary(activitiesSummary.Data, TaskCollection);
-            history = new ActivitiesHistory();
             workingTime = new WorkingTime(TimeManager.TimeLog, TaskCollection);
             efficiencyCalculator = new EfficiencyCalculator(workingTime);
-            historyDataProvider = new HistoryDataProvider();
-            TimeLogsManager = new TimeLogsManager(this.fileManager);
             ApplySettings(settings);
         }
 
@@ -198,8 +200,8 @@ namespace LifeIdea.LazyCure.Core
             {
                 TimeLogsFolder = settings.TimeLogsFolder;
                 SaveAfterDone = settings.SaveAfterDone;
-                History.LatestSize = settings.ActivitiesNumberInTray;
-                History.Size = settings.MaxActivitiesInHistory;
+                if (HistoryDataProvider != null)
+                    HistoryDataProvider.ApplySettings(settings);
                 TimeManager.MaxDuration = settings.ReminderTime;
                 TimeManager.SplitByComma = settings.SplitByComma;
                 TimeManager.SwitchAtMidnight = settings.SwitchTimeLogAtMidnight;
@@ -214,15 +216,10 @@ namespace LifeIdea.LazyCure.Core
             ExternalPoster.ShowAuthorizationPage();
         }
 
-        public string GetUniqueActivityName()
-        {
-            return History.UniqueName;
-        }
-
         public void RenameActivity(string before, string after)
         {
             TimeManager.TimeLog.RenameActivities(before, after);
-            History.RenameActivity(before, after);
+            HistoryDataProvider.ActivitiesHistory.RenameActivity(before, after);
         }
 
         public void PostToTwitter(string activity)
@@ -243,7 +240,7 @@ namespace LifeIdea.LazyCure.Core
                 this.PostToTwitter(tweet);
             }
             List<IActivity> finishedActivities = TimeManager.FinishActivity(finishedActivityName, nextActivityName);
-            History.AddActivities(finishedActivities);
+            HistoryDataProvider.ActivitiesHistory.AddActivities(finishedActivities);
             if (SaveAfterDone)
                 fileManager.SaveTimeLog(TimeManager.TimeLog);
         }
@@ -288,19 +285,9 @@ namespace LifeIdea.LazyCure.Core
             return LoadTimeLog(filename);
         }
 
-        public string[] HistoryActivities
-        {
-            get { return History.Activities; }
-        }
-
-        public string[] LatestActivities
-        {
-            get { return History.LatestActivities; }
-        }
-
         public bool Save()
         {
-            fileManager.SaveHistory(History);
+            fileManager.SaveHistory(HistoryDataProvider.ActivitiesHistory);
             fileManager.SaveTasks(TaskCollection);
             return fileManager.SaveTimeLog(TimeManager.TimeLog);
         }
@@ -337,19 +324,6 @@ namespace LifeIdea.LazyCure.Core
 
         #region IHistoryDataProvider Members
 
-        public DataTable SpentOnDiffDaysDataTable
-        {
-            get
-            {
-                return historyDataProvider.DataTable;
-            }
-        }
-
-        public void UpdateDataTableForActivity(string activityName)
-        {
-            historyDataProvider.UpdateDataTableForActivity(activityName);
-        }
-
         #endregion IHistoryDataProvider Members
 
         #region Private Members
@@ -359,7 +333,7 @@ namespace LifeIdea.LazyCure.Core
             ITaskCollection loadedTasks = fileManager.GetTasks();
             if (loadedTasks != null)
                 TaskCollection = loadedTasks;
-            fileManager.LoadHistory(History);
+            fileManager.LoadHistory(HistoryDataProvider.ActivitiesHistory);
             LoadTimeLog(TimeManager.TimeSystem.Now);
             return true;
         }

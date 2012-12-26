@@ -20,11 +20,14 @@ namespace LifeIdea.LazyCure.Core.Reports
         {
             get
             {
-                double timeOnWork = workingTime.TimeOnWork.Ticks;
-                if (timeOnWork != 0)
-                    return workingTime.WorkingTasksTime.Ticks / timeOnWork;
-                else
-                    return 0.0;
+                double efficiency = 0.0;
+                if (workingTime != null)
+                {
+                    double timeOnWork = workingTime.TimeOnWork.Ticks;
+                    if (timeOnWork != 0)
+                        efficiency = workingTime.WorkingTasksTime.Ticks / timeOnWork;
+                }
+                return efficiency;
             }
         }
     }

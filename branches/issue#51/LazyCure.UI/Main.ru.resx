@@ -250,6 +250,18 @@
   <data name="miOptions.Text" xml:space="preserve">
     <value>&amp;Настройки</value>
   </data>
+  <data name="miSpentOnActivityInDifferentDays.Size" type="System.Drawing.Size, System.Drawing">
+    <value>290, 22</value>
+  </data>
+  <data name="miSpentOnActivityInDifferentDays.Text" xml:space="preserve">
+    <value>&amp;Потрачено на активность в разные дни</value>
+  </data>
+  <data name="miReport.Size" type="System.Drawing.Size, System.Drawing">
+    <value>51, 20</value>
+  </data>
+  <data name="miReport.Text" xml:space="preserve">
+    <value>&amp;Отчёт</value>
+  </data>
   <data name="miHowToUse.Size" type="System.Drawing.Size, System.Drawing">
     <value>335, 22</value>
   </data>

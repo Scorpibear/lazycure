@@ -119,7 +119,7 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="closeButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>244, 239</value>
+    <value>244, 301</value>
   </data>
   <data name="closeButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>61, 20</value>
@@ -127,17 +127,26 @@
   <data name="closeButton.Text" xml:space="preserve">
     <value>&amp;Закрыть</value>
   </data>
-  <data name="activityLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 13</value>
-  </data>
-  <data name="activityLabel.Text" xml:space="preserve">
-    <value>Активность:</value>
-  </data>
   <data name="day.HeaderText" xml:space="preserve">
     <value>Дата</value>
   </data>
   <data name="spent.HeaderText" xml:space="preserve">
     <value>Потрачено</value>
+  </data>
+  <data name="taskRadioButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 17</value>
+  </data>
+  <data name="taskRadioButton.Text" xml:space="preserve">
+    <value>задачу</value>
+  </data>
+  <data name="activityRadioButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>83, 17</value>
+  </data>
+  <data name="activityRadioButton.Text" xml:space="preserve">
+    <value>активность</value>
+  </data>
+  <data name="totalSpentOnGroup.Text" xml:space="preserve">
+    <value>Потрачено на</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

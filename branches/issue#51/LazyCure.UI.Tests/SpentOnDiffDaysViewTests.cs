@@ -14,7 +14,7 @@ namespace LifeIdea.LazyCure.UI
         public void SetUp()
         {
             provider = NewMock<IHistoryDataProvider>();
-            Stub.On(provider).GetProperty("SpentOnDiffDaysDataTable").Will(Return.Value(null));
+            Stub.On(provider).GetProperty("Data").Will(Return.Value(null));
             form = new SpentInDiffDaysView(provider, null);
         }
 
@@ -23,7 +23,7 @@ namespace LifeIdea.LazyCure.UI
         {
             Stub.On(provider).GetProperty("HistoryActivities").Will(Return.Value(new string[] { "test-it" }));
             
-            form.LoadActivitiesList();
+            form.LoadActivitiesOrTasksList();
 
             Assert.AreEqual(1, form.ComboBoxItems.Count);
             Assert.AreEqual("test-it", form.ComboBoxItems[0]);
@@ -33,9 +33,9 @@ namespace LifeIdea.LazyCure.UI
         {
             Stub.On(provider).GetProperty("HistoryActivities").Will(Return.Value(new string[] { "latest", "first" }));
             
-            form.LoadActivitiesList();
+            form.LoadActivitiesOrTasksList();
 
-            Assert.AreEqual("latest", form.SelectedActivity);
+            Assert.AreEqual("latest", form.SelectedValue);
         }
     }
 }

@@ -1,6 +1,6 @@
 namespace LifeIdea.LazyCure.UI
 {
-    partial class AboutBox
+    public partial class AboutBox
     {
         /// <summary>
         /// Required designer variable.

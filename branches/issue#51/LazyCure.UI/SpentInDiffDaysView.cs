@@ -11,9 +11,9 @@ namespace LifeIdea.LazyCure.UI
     {
         private IHistoryDataProvider historyDataProvider;
 
-        public ComboBox.ObjectCollection ComboBoxItems { get { return this.activityComboBox.Items; } }
+        public ComboBox.ObjectCollection ComboBoxItems { get { return this.activityOrTaskValueComboBox.Items; } }
 
-        public string SelectedActivity { get { return this.activityComboBox.SelectedItem as string; } }
+        public string SelectedValue { get { return this.activityOrTaskValueComboBox.SelectedItem as string; } }
 
         public SpentInDiffDaysView(IHistoryDataProvider historyDataProvider, IMainForm mainForm)
         {
@@ -21,31 +21,40 @@ namespace LifeIdea.LazyCure.UI
             this.mainForm = mainForm;
             InitializeComponent();
             if(historyDataProvider!=null)
-                this.daySpentDataGrid.DataSource = this.historyDataProvider.SpentOnDiffDaysDataTable;
+                this.daySpentDataGrid.DataSource = this.historyDataProvider.Data;
         }
 
-        public void LoadActivitiesList()
+        public void LoadActivitiesOrTasksList()
         {
-            this.activityComboBox.Items.Clear();
+            this.activityOrTaskValueComboBox.Items.Clear();
             if (historyDataProvider != null)
-                FillActivityComboBox();
+                FillActivityOrTaskComboBox();
         }
 
-        private void FillActivityComboBox()
+        private void FillActivityOrTaskComboBox()
         {
-            string[] activities = historyDataProvider.HistoryActivities;
-            if (activities != null)
+            string[] entities = null;
+            switch (ActiveEntityType)
             {
-                foreach (string activity in activities)
-                    this.activityComboBox.Items.Add(activity);
-                this.activityComboBox.SelectedIndex = 0;
+                case EntityType.Activity:
+                    entities = historyDataProvider.HistoryActivities;
+                    break;
+                case EntityType.Task:
+                    entities = historyDataProvider.Tasks;
+                    break;
+            }
+            if (entities != null)
+            {
+                foreach (string entity in entities)
+                    this.activityOrTaskValueComboBox.Items.Add(entity);
+                this.activityOrTaskValueComboBox.SelectedIndex = 0;
             }
         }
 
         private void SpentOnDiffDays_VisibleChanged(object sender, System.EventArgs e)
         {
             if (this.Visible)
-                LoadActivitiesList();
+                LoadActivitiesOrTasksList();
         }
 
         private void closeButton_Click(object sender, System.EventArgs e)
@@ -58,15 +67,28 @@ namespace LifeIdea.LazyCure.UI
             LoadData();
         }
 
-        string activityName;
+        string entityValue;
+
+        public enum EntityType {Activity,Task}
+
+        public EntityType ActiveEntityType {get{return (this.activityRadioButton.Checked) ? EntityType.Activity : EntityType.Task;}}
 
         private void LoadData()
         {
             this.daySpentDataGrid.Hide();
-            activityName = this.SelectedActivity;
+            var entityType = ActiveEntityType;
+            entityValue = this.SelectedValue;
             //update in separate thread in order to not hangup UI
             new Thread(new ThreadStart(new Action(() => {
-                this.historyDataProvider.UpdateDataTableForActivity(activityName);
+                switch (entityType)
+                {
+                    case EntityType.Activity:
+                        this.historyDataProvider.UpdateDataTableForActivity(entityValue);
+                        break;
+                    case EntityType.Task:
+                        this.historyDataProvider.UpdateDataTableForTask(entityValue);
+                        break;
+                }
                 //need to do via Invoke to avoid multithreading issues
                 this.Invoke(new Action(() =>
                 {
@@ -77,13 +99,18 @@ namespace LifeIdea.LazyCure.UI
 
         private void daySpentDataGrid_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
-            Log.Error("issue for activity '{0}' in (row,column)({1},{2})", SelectedActivity, e.RowIndex, e.ColumnIndex);
+            Log.Error("issue for entity '{0}' in (row,column)({1},{2})", SelectedValue, e.RowIndex, e.ColumnIndex);
             Log.Exception(e.Exception);
         }
 
         private void daySpentDataGrid_BindingContextChanged(object sender, EventArgs e)
         {
             
+        }
+
+        private void activityRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            LoadActivitiesOrTasksList();
         }
     }
 }
