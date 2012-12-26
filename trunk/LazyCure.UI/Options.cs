@@ -1,6 +1,5 @@
 using System;
 using System.Globalization;
-using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using LifeIdea.LazyCure.Shared.Constants;
@@ -132,10 +131,12 @@ namespace LifeIdea.LazyCure.UI
             this.reminderTime.Text = Format.MaskedText(newTime);
         }
 
-        private void UpdateLanguage(string language)
+        public void UpdateLanguage(string language)
         {
-            settings.Language = language;
+            if(settings!=null)
+                settings.Language = language;
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(language);
+            Dialogs.Reset();
         }
 
         private void UpdateTwitterControlsEnabledProperty()
@@ -147,6 +148,11 @@ namespace LifeIdea.LazyCure.UI
         #endregion
 
         #region Options controls event handlers
+
+        private void authorizeButton_Click(object sender, EventArgs e)
+        {
+            Dialogs.Oath.ShowDialog(this);
+        }
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
@@ -215,10 +221,5 @@ namespace LifeIdea.LazyCure.UI
         }
 
         #endregion Options controls event handlers
-
-        private void authorizeButton_Click(object sender, EventArgs e)
-        {
-            Dialogs.Oath.ShowDialog(this);
-        }
     }
 }
