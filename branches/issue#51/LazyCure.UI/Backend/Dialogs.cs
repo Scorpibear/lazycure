@@ -19,6 +19,14 @@ namespace LifeIdea.LazyCure.UI.Backend
         internal static IMainForm MainForm = null;
         internal static ISettings Settings;
 
+        private static object[] AllDialogs
+        {
+            get
+            {
+                return new object[] { oath, open, save, timeLog, summary, about, options, taskManager, spentOnDiffDays };
+            }
+        }
+
         public static OathAuthorize Oath
         {
             get
@@ -143,12 +151,20 @@ namespace LifeIdea.LazyCure.UI.Backend
         /// </summary>
         public static void Reset()
         {
-            var forms = new object[] { spentOnDiffDays, oath };
+            var forms = AllDialogs;
             foreach (Form form in forms)
             {
                 if (form != null)
                     form.Close();
             }
+            oath = null;
+            open = null;
+            save = null;
+            timeLog = null;
+            summary = null;
+            about = null;
+            options = null;
+            taskManager = null;
             spentOnDiffDays = null;
         }
     }
