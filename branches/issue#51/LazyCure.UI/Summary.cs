@@ -8,24 +8,29 @@ using LifeIdea.LazyCure.UI.Backend;
 
 namespace LifeIdea.LazyCure.UI
 {
-    partial class Summary : Backend.View,ISummaryView
+    public partial class Summary : Backend.View,ISummaryView
     {
         private readonly ILazyCureDriver lazyCure;
         private readonly Timer timer = new Timer();
 
         public Summary(ILazyCureDriver lazyCure, IMainForm mainForm)
         {
-            this.lazyCure = lazyCure;
             InitializeComponent();
-            activitiesSummary.DataSource = lazyCure.ActivitiesSummaryData;
-            tasksSummary.DataSource = lazyCure.TasksSummaryData;
-            workingTimeIntervalsGrid.DataSource = lazyCure.WorkingTimeIntervalsData;
-            maxRestDurationTextBox.Text = Format.MaskedText(lazyCure.PossibleWorkInterruptionDuration);
+            if (lazyCure != null)
+            {
+                this.lazyCure = lazyCure;
+                activitiesSummary.DataSource = lazyCure.ActivitiesSummaryData;
+                tasksSummary.DataSource = lazyCure.TasksSummaryData;
+                workingTimeIntervalsGrid.DataSource = lazyCure.WorkingTimeIntervalsData;
+                maxRestDurationTextBox.Text = Format.MaskedText(lazyCure.PossibleWorkInterruptionDuration);
+            }
             this.mainForm = mainForm;
             timer.Interval = 300;
             timer.Start();
             timer.Tick += UpdateStatistics;
             UpdateSelectedRowsTime();
+            LoadDateDropDownsValues();
+            UpdateActiveDateDropDownsValue();
         }
 
         #region Private Methods
@@ -60,6 +65,47 @@ namespace LifeIdea.LazyCure.UI
         {
             return (e.ColumnIndex == activitiesSummary.Columns[taskColumnForActivitySummary.Name].Index)
                    && (e.RowIndex > -1);
+        }
+
+        private void LoadDateDropDownsValues()
+        {
+            if (lazyCure != null && lazyCure.HistoryDataProvider != null && lazyCure.HistoryDataProvider.TimeLogsManager != null)
+            {
+                var availableDays = lazyCure.HistoryDataProvider.TimeLogsManager.AvailableDays;
+                foreach (DateTime day in availableDays)
+                {
+                    string formattedDate = Format.Date(day);
+                    this.fromDateDropDown.DropDownItems.Add(formattedDate);
+                    this.toDateDropDown.DropDownItems.Add(formattedDate);
+                }
+            }
+        }
+
+        private void UpdateActiveDateDropDownsValue()
+        {
+            DateTime from = DateTime.Now, to = DateTime.Now;
+            string selectedPeriod = this.GetCheckedDayButtonsText();
+            switch (selectedPeriod)
+            {
+                case "Yesterday":
+                    from = to = from.AddDays(-1);
+                    break;
+                case "This Week":
+                    from = DateTime.Now.AddDays(1 - (int)DateTime.Now.DayOfWeek);
+                    to = from.AddDays(6);
+                    break;
+                case "Prev Week":
+                    from = DateTime.Now.AddDays(1 - (int)DateTime.Now.DayOfWeek - 7);
+                    to = from.AddDays(6);
+                    break;
+                case "Last Month":
+                    from = to.AddDays(-30);
+                    break;
+                default: // will show Today
+                    break;
+            }
+            this.fromDateDropDown.Text = Format.Date(from);
+            this.toDateDropDown.Text = Format.Date(to);
         }
 
         private void UpdateSelectedRowsTime()
@@ -163,5 +209,57 @@ namespace LifeIdea.LazyCure.UI
         }
 
         #endregion Event Handlers
+
+        private ToolStripButton[] allDayButtons { get { return new ToolStripButton[] { lastMonthButton, prevWeekButton, thisWeekButton, yesterdayButton, todayButton }; } }
+
+        bool doNotEnterTwice = false;
+
+        private void dayButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (doNotEnterTwice)
+                return;
+            doNotEnterTwice = true;
+            ToolStripButton currentButton = sender as ToolStripButton;
+            if (currentButton.Checked)
+            {
+                foreach (ToolStripButton button in allDayButtons)
+                    if (button != currentButton)
+                        button.Checked = false;
+            }
+            else
+                currentButton.Checked = true;
+            UpdateActiveDateDropDownsValue();
+            doNotEnterTwice = false;
+        }
+
+        public void ClickDayButton(string text)
+        {
+            foreach(ToolStripButton button in allDayButtons)
+                if (button.Text == text)
+                    button.Checked = !button.Checked;
+        }
+
+        public string GetCheckedDayButtonsText()
+        {
+            string checkedButtonsText = "";
+            foreach(ToolStripButton button in allDayButtons)
+                checkedButtonsText += GetTextIfButtonIsChecked(button);
+            return checkedButtonsText;
+        }
+
+        private string GetTextIfButtonIsChecked(ToolStripButton button)
+        {
+            return (button.Checked) ? button.Text : string.Empty;
+        }
+
+        public string GetFromDate()
+        {
+            return this.fromDateDropDown.Text;
+        }
+
+        public string GetToDate()
+        {
+            return this.toDateDropDown.Text;
+        }
     }
 }
