@@ -465,29 +465,6 @@ namespace LifeIdea.LazyCure.Core
             VerifyAllExpectationsHaveBeenMet();
         }
         [Test]
-        public void TasksSummaryData()
-        {
-            driver.TasksSummary = NewMock<ITasksSummary>();
-            DataTable test = new DataTable("test");
-            Expect.Once.On(driver.TasksSummary).GetProperty("Data").Will(Return.Value(test));
-
-            object data = driver.TasksSummaryData;
-
-            Assert.AreEqual(test,data);
-            VerifyAllExpectationsHaveBeenMet();
-        }
-        [Test]
-        public void TimeManagerPassedToHistoryDataProvider()
-        {
-            var timeLogsManager = new TimeLogsManager(null);
-            driver.HistoryDataProvider = NewMock<IHistoryDataProvider>();
-            Expect.Once.On(driver.HistoryDataProvider).SetProperty("TimeLogsManager").To(timeLogsManager);
-            
-            driver.TimeLogsManager = timeLogsManager;
-
-            VerifyAllExpectationsHaveBeenMet();
-        }
-        [Test]
         public void DriverConstructorSetsTimeLogsManagerToHistoryDataProvider()
         {
             Assert.IsNotNull(driver.HistoryDataProvider.TimeLogsManager);

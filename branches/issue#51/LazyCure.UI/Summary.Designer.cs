@@ -445,6 +445,7 @@ namespace LifeIdea.LazyCure.UI
             this.fromDateDropDown.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             resources.ApplyResources(this.fromDateDropDown, "fromDateDropDown");
             this.fromDateDropDown.Name = "fromDateDropDown";
+            this.fromDateDropDown.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.dateDropDown_DropDownItemClicked);
             // 
             // dashLabel
             // 
@@ -456,6 +457,7 @@ namespace LifeIdea.LazyCure.UI
             this.toDateDropDown.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             resources.ApplyResources(this.toDateDropDown, "toDateDropDown");
             this.toDateDropDown.Name = "toDateDropDown";
+            this.toDateDropDown.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.dateDropDown_DropDownItemClicked);
             // 
             // Summary
             // 
