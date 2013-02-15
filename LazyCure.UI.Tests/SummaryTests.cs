@@ -16,6 +16,11 @@ namespace LifeIdea.LazyCure.UI
         {
             this.summary = new Summary(null, null);
         }
+        [TearDown]
+        public void TearDown()
+        {
+            this.summary = null;
+        }
         [Test]
         public void IfOneDayButtonCheckedOthersUnchecked()
         {
@@ -98,18 +103,41 @@ namespace LifeIdea.LazyCure.UI
         public void FromDatePopupUsingLazyCureProviderOfAvailableDates()
         {
             ILazyCureDriver lcdriver = NewMock<ILazyCureDriver>();
-            Stub.On(lcdriver).GetProperty("ActivitiesSummaryData").Will(Return.Value(null));
-            Stub.On(lcdriver).GetProperty("TasksSummaryData").Will(Return.Value(null));
             Stub.On(lcdriver).GetProperty("WorkingTimeIntervalsData").Will(Return.Value(null));
             Stub.On(lcdriver).GetProperty("PossibleWorkInterruptionDuration").Will(Return.Value(TimeSpan.Zero));
             Stub.On(lcdriver).SetProperty("PossibleWorkInterruptionDuration");
             IHistoryDataProvider dataProvider = NewMock<IHistoryDataProvider>();
             Stub.On(lcdriver).GetProperty("HistoryDataProvider").Will(Return.Value(dataProvider));
             ITimeLogsManager timeLogsManager = NewMock<ITimeLogsManager>();
+            Stub.On(dataProvider).GetProperty("ActivitiesSummaryData").Will(Return.Value(null));
+            Stub.On(dataProvider).GetProperty("TasksSummaryData").Will(Return.Value(null));
             Stub.On(dataProvider).GetProperty("TimeLogsManager").Will(Return.Value(timeLogsManager));
             Expect.Once.On(timeLogsManager).GetProperty("AvailableDays").Will(Return.Value(new List<DateTime>(new DateTime[]{DateTime.Parse("2000-12-31")})));
             
             summary = new Summary(lcdriver, null);
+
+            VerifyAllExpectationsHaveBeenMet();
+        }
+        [Test, Ignore("Not implemented yet")]
+        public void ActivitiesForMonthAreRequested()
+        {
+            ILazyCureDriver lcdriver = NewMock<ILazyCureDriver>();
+            DateTime from, to;
+            to = DateTime.Parse(Format.Date(DateTime.Now));
+            from = to.AddDays(-30);
+            Expect.Once.On(lcdriver).GetProperty("ActivitiesSummaryData").Will(Return.Value(null));
+            Stub.On(lcdriver).GetProperty("TasksSummaryData").Will(Return.Value(null));
+            Stub.On(lcdriver).GetProperty("WorkingTimeIntervalsData").Will(Return.Value(null));
+            Stub.On(lcdriver).GetProperty("PossibleWorkInterruptionDuration").Will(Return.Value(TimeSpan.Zero));
+            Stub.On(lcdriver).SetProperty("PossibleWorkInterruptionDuration");
+            IHistoryDataProvider dataProvider = NewMock<IHistoryDataProvider>();
+            Stub.On(lcdriver).GetProperty("HistoryDataProvider").Will(Return.Value(dataProvider));
+
+            Expect.Once.On(dataProvider).Method("SetSummaryPeriod").With(from, to);
+            Expect.Once.On(lcdriver).GetProperty("ActivitiesSummaryData").Will(Return.Value(null));
+            summary = new Summary(lcdriver, null);
+
+            summary.ClickDayButton("Last Month");
 
             VerifyAllExpectationsHaveBeenMet();
         }

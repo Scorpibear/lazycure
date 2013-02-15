@@ -22,13 +22,11 @@ namespace LifeIdea.LazyCure.Core
     {
         #region Fields
 
-        private readonly ActivitiesSummary activitiesSummary;
         private IEfficiencyCalculator efficiencyCalculator;
         private IFileManager fileManager = new FileManager();
         private ILanguageSwitcher languageSwitcher;
         private ITaskCollection taskCollection;
         private ITimeManager timeManager;
-        private ITasksSummary tasksSummary;
         private IWorkingTimeManager workingTime;
         //private IHistoryDataProvider historyDataProvider;
         private Time.TimeLogs.TimeLogsManager timeLogsManager;
@@ -65,10 +63,6 @@ namespace LifeIdea.LazyCure.Core
             set
             {
                 taskCollection = value;
-                if (activitiesSummary != null)
-                    activitiesSummary.Linker = taskCollection;
-                if (TasksSummary != null)
-                    TasksSummary.TaskCollection = taskCollection;
                 if (WorkingTime != null)
                     WorkingTime.TaskCollection = taskCollection;
                 if ((HistoryDataProvider as HistoryDataProvider) != null)
@@ -79,12 +73,6 @@ namespace LifeIdea.LazyCure.Core
         public ITaskViewDataSource TaskViewDataSource
         {
             get { return taskCollection as ITaskViewDataSource; }
-        }
-
-        public ITasksSummary TasksSummary
-        {
-            get { return tasksSummary; }
-            set{ tasksSummary = value;}
         }
 
         public ITimeManager TimeManager
@@ -131,16 +119,15 @@ namespace LifeIdea.LazyCure.Core
         public Driver(ITimeSystem timeSystem, ISettings settings)
         {
             //when reordering, be carefull, in order to pass only initialized objects
-            languageSwitcher = new LanguageSwitcher(settings);
+            this.languageSwitcher = new LanguageSwitcher(settings);
             //probably all of them should be properties, not fields, in order to automatically update referencies
             TaskCollection = LifeIdea.LazyCure.Core.Tasks.TaskCollection.Default;
-            HistoryDataProvider = new HistoryDataProvider(TaskCollection);
-            TimeLogsManager = new TimeLogsManager(this.fileManager);
-            timeManager = new TimeManager(timeSystem, TimeLogsManager);
-            activitiesSummary = new ActivitiesSummary(TimeManager.TimeLog, TaskCollection);
-            tasksSummary = new TasksSummary(activitiesSummary.Data, TaskCollection);
-            workingTime = new WorkingTime(TimeManager.TimeLog, TaskCollection);
-            efficiencyCalculator = new EfficiencyCalculator(workingTime);
+            this.timeLogsManager = new TimeLogsManager(this.fileManager);
+            HistoryDataProvider = new HistoryDataProvider(timeLogsManager, TaskCollection);
+            this.timeManager = new TimeManager(timeSystem, TimeLogsManager);
+            HistoryDataProvider.CreateSummaries(TimeManager.TimeLog);
+            this.workingTime = new WorkingTime(TimeManager.TimeLog, TaskCollection);
+            this.efficiencyCalculator = new EfficiencyCalculator(workingTime);
             ApplySettings(settings);
         }
 
@@ -149,10 +136,6 @@ namespace LifeIdea.LazyCure.Core
         #endregion Constructors
 
         #region ILazyCureDriver Members
-
-        public object ActivitiesSummaryData { get { return activitiesSummary.Data; } }
-
-        public TimeSpan AllActivitiesTime { get { return activitiesSummary.AllActivitiesTime; } }
 
         public bool CalculateAutomaticallyWorkingIntervals
         {
@@ -167,11 +150,6 @@ namespace LifeIdea.LazyCure.Core
         {
             get { return WorkingTime.PossibleWorkInterruption; }
             set { workingTime.PossibleWorkInterruption = value;}
-        }
-
-        public object TasksSummaryData
-        {
-            get { return TasksSummary.Data; }
         }
 
         public bool TimeToUpdateTimeLog
@@ -274,8 +252,7 @@ namespace LifeIdea.LazyCure.Core
         public void ActivateTimeLog(ITimeLog timeLog)
         {
             TimeManager.TimeLog = timeLog;
-            activitiesSummary.TimeLog = TimeManager.TimeLog;
-            activitiesSummary.Update();
+            HistoryDataProvider.UpdateTimeLog(TimeManager.TimeLog);
             workingTime.TimeLog = TimeManager.TimeLog;
         }
 
