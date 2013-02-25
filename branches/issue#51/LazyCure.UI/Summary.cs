@@ -26,11 +26,6 @@ namespace LifeIdea.LazyCure.UI
             if (lazyCure != null)
             {
                 this.lazyCure = lazyCure;
-                if (lazyCure.HistoryDataProvider != null)
-                {
-                    activitiesSummary.DataSource = lazyCure.HistoryDataProvider.ActivitiesSummaryData;
-                    tasksSummary.DataSource = lazyCure.HistoryDataProvider.TasksSummaryData;
-                }
                 workingTimeIntervalsGrid.DataSource = lazyCure.WorkingTimeIntervalsData;
                 maxRestDurationTextBox.Text = Format.MaskedText(lazyCure.PossibleWorkInterruptionDuration);
             }
@@ -111,7 +106,34 @@ namespace LifeIdea.LazyCure.UI
             }
             return timeInSelectedRows;
         }
-
+        
+        private Tuple<string, string> GetFromAndToDatesText(string selectedPeriod)
+        {
+            DateTime from = DateTime.Now, to = DateTime.Now;
+            switch (selectedPeriod)
+            {
+                case "Yesterday":
+                    from = to = from.AddDays(-1);
+                    break;
+                case "This Week":
+                    from = DateTime.Now.AddDays(1 - (int)DateTime.Now.DayOfWeek);
+                    to = from.AddDays(6);
+                    break;
+                case "Prev Week":
+                    from = DateTime.Now.AddDays(1 - (int)DateTime.Now.DayOfWeek - 7);
+                    to = from.AddDays(6);
+                    break;
+                case "Last Month":
+                    from = to.AddDays(-30);
+                    break;
+                default: // will show Today
+                    break;
+            }
+            string fromText = Format.Date(from);
+            string toText = Format.Date(to);
+            return Tuple.Create(fromText, toText);
+        }
+        
         private string GetTextIfButtonIsChecked(ToolStripButton button)
         {
             return (button.Checked) ? button.Text : string.Empty;
@@ -141,35 +163,18 @@ namespace LifeIdea.LazyCure.UI
         {
             string selectedPeriod = this.GetCheckedDayButtonsText();
             var dates = GetFromAndToDatesText(selectedPeriod);
+            
+            //turn off handler in order to call it once
+            this.fromDateDropDown.TextChanged -= dateDropDown_TextChanged;
+            this.toDateDropDown.TextChanged -= dateDropDown_TextChanged;
+
             this.fromDateDropDown.Text = dates.Item1;
             this.toDateDropDown.Text = dates.Item2;
-        }
 
-        private Tuple<string, string> GetFromAndToDatesText(string selectedPeriod)
-        {
-            DateTime from = DateTime.Now, to = DateTime.Now;
-            switch (selectedPeriod)
-            {
-                case "Yesterday":
-                    from = to = from.AddDays(-1);
-                    break;
-                case "This Week":
-                    from = DateTime.Now.AddDays(1 - (int)DateTime.Now.DayOfWeek);
-                    to = from.AddDays(6);
-                    break;
-                case "Prev Week":
-                    from = DateTime.Now.AddDays(1 - (int)DateTime.Now.DayOfWeek - 7);
-                    to = from.AddDays(6);
-                    break;
-                case "Last Month":
-                    from = to.AddDays(-30);
-                    break;
-                default: // will show Today
-                    break;
-            }
-            string fromText = Format.Date(from);
-            string toText = Format.Date(to);
-            return Tuple.Create(fromText, toText);
+            //turn on handler back and call it once manually
+            this.fromDateDropDown.TextChanged += dateDropDown_TextChanged;
+            this.toDateDropDown.TextChanged += dateDropDown_TextChanged;
+            dateDropDown_TextChanged(this, EventArgs.Empty);
         }
 
         private void UpdateSelectedRowsTime()
@@ -190,6 +195,15 @@ namespace LifeIdea.LazyCure.UI
                     break;
             }
             selectedRowsTime.Text = Format.ShortDuration(timeInSelectedRows);
+        }
+
+        private void UpdateSummaryDataSources(IHistoryDataProvider dataProvider)
+        {
+            if (dataProvider != null)
+            {
+                activitiesSummary.DataSource = dataProvider.ActivitiesSummaryData;
+                tasksSummary.DataSource = dataProvider.TasksSummaryData;
+            }
         }
 
         private void UpdateWorkingActivitiesTime()
@@ -262,6 +276,21 @@ namespace LifeIdea.LazyCure.UI
         }
 
         bool isDayButtonsCheckedChangedHandlerBlocked = false;
+
+        private void dateDropDown_TextChanged(object sender, EventArgs e)
+        {
+            if (sender == this.fromDateDropDown && (DateTime.Parse(this.toDateDropDown.Text) < DateTime.Parse(this.fromDateDropDown.Text)))
+                this.toDateDropDown.Text = this.fromDateDropDown.Text;
+            if (sender == this.toDateDropDown && (DateTime.Parse(this.fromDateDropDown.Text) > DateTime.Parse(this.toDateDropDown.Text)))
+                this.fromDateDropDown.Text = this.toDateDropDown.Text;
+            if (lazyCure != null && lazyCure.HistoryDataProvider != null)
+            {
+                DateTime from = DateTime.Parse(this.fromDateDropDown.Text);
+                DateTime to = DateTime.Parse(this.toDateDropDown.Text);
+                lazyCure.HistoryDataProvider.SetSummaryPeriod(from, to);
+                UpdateSummaryDataSources(lazyCure.HistoryDataProvider);
+            }
+        }
 
         private void dayButton_CheckedChanged(object sender, EventArgs e)
         {

@@ -151,5 +151,20 @@ namespace LifeIdea.LazyCure.Core.Reports
             Assert.AreEqual(test, data);
             VerifyAllExpectationsHaveBeenMet();
         }
+        [Test]
+        public void SetSummaryPeriodUpdateTimeLogsInActivitiesSummary()
+        {
+            DateTime from = DateTime.Parse("2013-01-01");
+            DateTime to = DateTime.Parse("2013-01-02");
+            List<ITimeLog> timeLogs = new List<ITimeLog>();
+            provider.TimeLogsManager = NewMock<ITimeLogsManager>();
+            provider.ActivitiesSummary = NewMock<IActivitiesSummary>();
+            Stub.On(provider.TimeLogsManager).Method("GetTimeLogs").With(from, to).Will(Return.Value(timeLogs));
+            Expect.Once.On(provider.ActivitiesSummary).SetProperty("TimeLogs").To(timeLogs);
+
+            provider.SetSummaryPeriod(from, to);
+
+            VerifyAllExpectationsHaveBeenMet();
+        }
     }
 }

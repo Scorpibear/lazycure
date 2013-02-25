@@ -17,6 +17,8 @@ namespace LifeIdea.LazyCure.Shared.Interfaces
 
         List<IActivity> GetActivities(DateTime day);
 
+        List<ITimeLog> GetTimeLogs(DateTime from, DateTime to);
+
         bool Save();
     }
 }
