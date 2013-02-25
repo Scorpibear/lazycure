@@ -9,11 +9,14 @@ using LifeIdea.LazyCure.Core.Tasks;
 
 namespace LifeIdea.LazyCure.Core.Reports
 {
+    /// <summary>
+    /// Provide History Data
+    /// </summary>
     public class HistoryDataProvider: IHistoryDataProvider
     {
         #region Fields
 
-        private ActivitiesSummary activitiesSummary;
+        private IActivitiesSummary activitiesSummary;
         private DataTable table;
         private ITaskCollection taskCollection;
         private ITasksSummary tasksSummary;
@@ -24,7 +27,7 @@ namespace LifeIdea.LazyCure.Core.Reports
 
         public IActivitiesHistory ActivitiesHistory { get; set; }
 
-        public ActivitiesSummary ActivitiesSummary {get{return activitiesSummary;}}
+        public IActivitiesSummary ActivitiesSummary { get { return activitiesSummary; } set { activitiesSummary = value; } }
 
         public DataTable ActivitiesSummaryData { get { if (activitiesSummary != null) return activitiesSummary.Data; else return null; } }
 
@@ -129,6 +132,7 @@ namespace LifeIdea.LazyCure.Core.Reports
 
         public void SetSummaryPeriod(DateTime from, DateTime to)
         {
+            activitiesSummary.TimeLogs = TimeLogsManager.GetTimeLogs(from, to);
         }
 
         public void UpdateDataTableForActivity(string activityName)

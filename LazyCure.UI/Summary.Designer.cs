@@ -95,37 +95,51 @@ namespace LifeIdea.LazyCure.UI
             // 
             // toolStripContainer1
             // 
+            resources.ApplyResources(this.toolStripContainer1, "toolStripContainer1");
+            // 
+            // toolStripContainer1.BottomToolStripPanel
+            // 
+            resources.ApplyResources(this.toolStripContainer1.BottomToolStripPanel, "toolStripContainer1.BottomToolStripPanel");
             // 
             // toolStripContainer1.ContentPanel
             // 
+            resources.ApplyResources(this.toolStripContainer1.ContentPanel, "toolStripContainer1.ContentPanel");
             this.toolStripContainer1.ContentPanel.Controls.Add(this.tabControl);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.statisticsGroup);
-            resources.ApplyResources(this.toolStripContainer1.ContentPanel, "toolStripContainer1.ContentPanel");
-            resources.ApplyResources(this.toolStripContainer1, "toolStripContainer1");
+            // 
+            // toolStripContainer1.LeftToolStripPanel
+            // 
+            resources.ApplyResources(this.toolStripContainer1.LeftToolStripPanel, "toolStripContainer1.LeftToolStripPanel");
             this.toolStripContainer1.Name = "toolStripContainer1";
+            // 
+            // toolStripContainer1.RightToolStripPanel
+            // 
+            resources.ApplyResources(this.toolStripContainer1.RightToolStripPanel, "toolStripContainer1.RightToolStripPanel");
             // 
             // toolStripContainer1.TopToolStripPanel
             // 
+            resources.ApplyResources(this.toolStripContainer1.TopToolStripPanel, "toolStripContainer1.TopToolStripPanel");
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.topPanel);
             // 
             // tabControl
             // 
+            resources.ApplyResources(this.tabControl, "tabControl");
             this.tabControl.Controls.Add(this.activities);
             this.tabControl.Controls.Add(this.tasks);
             this.tabControl.Controls.Add(this.efficiency);
-            resources.ApplyResources(this.tabControl, "tabControl");
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
             // 
             // activities
             // 
-            this.activities.Controls.Add(this.activitiesSummary);
             resources.ApplyResources(this.activities, "activities");
+            this.activities.Controls.Add(this.activitiesSummary);
             this.activities.Name = "activities";
             this.activities.UseVisualStyleBackColor = true;
             // 
             // activitiesSummary
             // 
+            resources.ApplyResources(this.activitiesSummary, "activitiesSummary");
             this.activitiesSummary.AllowUserToAddRows = false;
             this.activitiesSummary.AllowUserToDeleteRows = false;
             this.activitiesSummary.AllowUserToOrderColumns = true;
@@ -135,7 +149,6 @@ namespace LifeIdea.LazyCure.UI
             this.spentColumnForActivitySummary,
             this.taskColumnForActivitySummary});
             this.activitiesSummary.ContextMenuStrip = this.contextMenu;
-            resources.ApplyResources(this.activitiesSummary, "activitiesSummary");
             this.activitiesSummary.Name = "activitiesSummary";
             this.activitiesSummary.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.activitiesSummary_CellDoubleClick);
             this.activitiesSummary.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.activitiesSummary_CellEndEdit);
@@ -169,26 +182,27 @@ namespace LifeIdea.LazyCure.UI
             // 
             // contextMenu
             // 
+            resources.ApplyResources(this.contextMenu, "contextMenu");
             this.contextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.copyToolStripMenuItem});
             this.contextMenu.Name = "contextMenu";
-            resources.ApplyResources(this.contextMenu, "contextMenu");
             // 
             // copyToolStripMenuItem
             // 
-            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
             resources.ApplyResources(this.copyToolStripMenuItem, "copyToolStripMenuItem");
+            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
             this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
             // 
             // tasks
             // 
-            this.tasks.Controls.Add(this.tasksSummary);
             resources.ApplyResources(this.tasks, "tasks");
+            this.tasks.Controls.Add(this.tasksSummary);
             this.tasks.Name = "tasks";
             this.tasks.UseVisualStyleBackColor = true;
             // 
             // tasksSummary
             // 
+            resources.ApplyResources(this.tasksSummary, "tasksSummary");
             this.tasksSummary.AllowUserToAddRows = false;
             this.tasksSummary.AllowUserToDeleteRows = false;
             this.tasksSummary.AllowUserToOrderColumns = true;
@@ -197,7 +211,6 @@ namespace LifeIdea.LazyCure.UI
             this.taskColumnForTasksSummary,
             this.spentColumnForTasksSummary});
             this.tasksSummary.ContextMenuStrip = this.contextMenu;
-            resources.ApplyResources(this.tasksSummary, "tasksSummary");
             this.tasksSummary.Name = "tasksSummary";
             this.tasksSummary.ReadOnly = true;
             // 
@@ -219,24 +232,24 @@ namespace LifeIdea.LazyCure.UI
             // 
             // efficiency
             // 
+            resources.ApplyResources(this.efficiency, "efficiency");
             this.efficiency.Controls.Add(this.intervalsDefinitionGroupBox);
             this.efficiency.Controls.Add(this.timeOnWorkTextBox);
             this.efficiency.Controls.Add(this.label5);
             this.efficiency.Controls.Add(this.efficiencyTextBox);
             this.efficiency.Controls.Add(this.label4);
-            resources.ApplyResources(this.efficiency, "efficiency");
             this.efficiency.Name = "efficiency";
             this.efficiency.UseVisualStyleBackColor = true;
             // 
             // intervalsDefinitionGroupBox
             // 
+            resources.ApplyResources(this.intervalsDefinitionGroupBox, "intervalsDefinitionGroupBox");
             this.intervalsDefinitionGroupBox.Controls.Add(this.showTimeLogButton);
             this.intervalsDefinitionGroupBox.Controls.Add(this.workingTimeIntervalsGrid);
             this.intervalsDefinitionGroupBox.Controls.Add(this.maxRestDurationTextBox);
             this.intervalsDefinitionGroupBox.Controls.Add(this.label7);
             this.intervalsDefinitionGroupBox.Controls.Add(this.manuallyRadioButton);
             this.intervalsDefinitionGroupBox.Controls.Add(this.automaticallyRadioButton);
-            resources.ApplyResources(this.intervalsDefinitionGroupBox, "intervalsDefinitionGroupBox");
             this.intervalsDefinitionGroupBox.Name = "intervalsDefinitionGroupBox";
             this.intervalsDefinitionGroupBox.TabStop = false;
             // 
@@ -249,11 +262,11 @@ namespace LifeIdea.LazyCure.UI
             // 
             // workingTimeIntervalsGrid
             // 
+            resources.ApplyResources(this.workingTimeIntervalsGrid, "workingTimeIntervalsGrid");
             this.workingTimeIntervalsGrid.ColumnHeadersVisible = false;
             this.workingTimeIntervalsGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Start,
             this.End});
-            resources.ApplyResources(this.workingTimeIntervalsGrid, "workingTimeIntervalsGrid");
             this.workingTimeIntervalsGrid.Name = "workingTimeIntervalsGrid";
             this.workingTimeIntervalsGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.workingTimeIntervalsGrid_CellClick);
             this.workingTimeIntervalsGrid.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.workingTimeIntervalsGrid_DataError);
@@ -326,6 +339,7 @@ namespace LifeIdea.LazyCure.UI
             // 
             // statisticsGroup
             // 
+            resources.ApplyResources(this.statisticsGroup, "statisticsGroup");
             this.statisticsGroup.Controls.Add(this.closeButton);
             this.statisticsGroup.Controls.Add(this.selectedRowsTime);
             this.statisticsGroup.Controls.Add(this.label3);
@@ -333,14 +347,13 @@ namespace LifeIdea.LazyCure.UI
             this.statisticsGroup.Controls.Add(this.label2);
             this.statisticsGroup.Controls.Add(this.allActivitiesTime);
             this.statisticsGroup.Controls.Add(this.label1);
-            resources.ApplyResources(this.statisticsGroup, "statisticsGroup");
             this.statisticsGroup.Name = "statisticsGroup";
             this.statisticsGroup.TabStop = false;
             // 
             // closeButton
             // 
-            this.closeButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             resources.ApplyResources(this.closeButton, "closeButton");
+            this.closeButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.closeButton.Name = "closeButton";
             this.closeButton.UseVisualStyleBackColor = true;
             this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
@@ -395,69 +408,71 @@ namespace LifeIdea.LazyCure.UI
             // 
             // lastMonthButton
             // 
+            resources.ApplyResources(this.lastMonthButton, "lastMonthButton");
             this.lastMonthButton.CheckOnClick = true;
             this.lastMonthButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            resources.ApplyResources(this.lastMonthButton, "lastMonthButton");
             this.lastMonthButton.Name = "lastMonthButton";
             this.lastMonthButton.CheckedChanged += new System.EventHandler(this.dayButton_CheckedChanged);
             // 
             // prevWeekButton
             // 
+            resources.ApplyResources(this.prevWeekButton, "prevWeekButton");
             this.prevWeekButton.CheckOnClick = true;
             this.prevWeekButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            resources.ApplyResources(this.prevWeekButton, "prevWeekButton");
             this.prevWeekButton.Name = "prevWeekButton";
             this.prevWeekButton.CheckedChanged += new System.EventHandler(this.dayButton_CheckedChanged);
             // 
             // thisWeekButton
             // 
+            resources.ApplyResources(this.thisWeekButton, "thisWeekButton");
             this.thisWeekButton.CheckOnClick = true;
             this.thisWeekButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            resources.ApplyResources(this.thisWeekButton, "thisWeekButton");
             this.thisWeekButton.Name = "thisWeekButton";
             this.thisWeekButton.CheckedChanged += new System.EventHandler(this.dayButton_CheckedChanged);
             // 
             // yesterdayButton
             // 
+            resources.ApplyResources(this.yesterdayButton, "yesterdayButton");
             this.yesterdayButton.CheckOnClick = true;
             this.yesterdayButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            resources.ApplyResources(this.yesterdayButton, "yesterdayButton");
             this.yesterdayButton.Name = "yesterdayButton";
             this.yesterdayButton.CheckedChanged += new System.EventHandler(this.dayButton_CheckedChanged);
             // 
             // todayButton
             // 
+            resources.ApplyResources(this.todayButton, "todayButton");
             this.todayButton.Checked = true;
             this.todayButton.CheckOnClick = true;
             this.todayButton.CheckState = System.Windows.Forms.CheckState.Checked;
             this.todayButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            resources.ApplyResources(this.todayButton, "todayButton");
             this.todayButton.Name = "todayButton";
             this.todayButton.CheckedChanged += new System.EventHandler(this.dayButton_CheckedChanged);
             // 
             // toolStripSeparator1
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
             resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
             // 
             // fromDateDropDown
             // 
-            this.fromDateDropDown.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             resources.ApplyResources(this.fromDateDropDown, "fromDateDropDown");
+            this.fromDateDropDown.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.fromDateDropDown.Name = "fromDateDropDown";
             this.fromDateDropDown.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.dateDropDown_DropDownItemClicked);
+            this.fromDateDropDown.TextChanged += new System.EventHandler(this.dateDropDown_TextChanged);
             // 
             // dashLabel
             // 
-            this.dashLabel.Name = "dashLabel";
             resources.ApplyResources(this.dashLabel, "dashLabel");
+            this.dashLabel.Name = "dashLabel";
             // 
             // toDateDropDown
             // 
-            this.toDateDropDown.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             resources.ApplyResources(this.toDateDropDown, "toDateDropDown");
+            this.toDateDropDown.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.toDateDropDown.Name = "toDateDropDown";
             this.toDateDropDown.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.dateDropDown_DropDownItemClicked);
+            this.toDateDropDown.TextChanged += new System.EventHandler(this.dateDropDown_TextChanged);
             // 
             // Summary
             // 

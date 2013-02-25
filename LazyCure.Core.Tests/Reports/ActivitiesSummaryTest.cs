@@ -145,5 +145,60 @@ namespace LifeIdea.LazyCure.Core.Reports
 
             Assert.AreEqual(TimeSpan.Zero, activitiesSummary.AllActivitiesTime);
         }
+        [Test]
+        public void SetTimeLogsIsUsedForDataCalculationWithOneTimeLog()
+        {
+            List<ITimeLog> timeLogs = new List<ITimeLog>();
+            ITimeLog timeLog = NewMock<ITimeLog>();
+            List<IActivity> activities = new List<IActivity>();
+            IActivity activity = NewMock<IActivity>();
+            Stub.On(activity).GetProperty("Name").Will(Return.Value("test"));
+            Stub.On(activity).GetProperty("Duration").Will(Return.Value(TimeSpan.Zero));
+            activities.Add(activity);
+            Stub.On(timeLog).GetProperty("Activities").Will(Return.Value(activities));
+            timeLogs.Add(timeLog);
+
+            activitiesSummary.TimeLogs = timeLogs;
+
+            Assert.AreEqual(1, activitiesSummary.Data.Rows.Count);
+        }
+        [Test]
+        public void SetTimeLogsIsUsedForDataCalculationWithTwoTimeLogs()
+        {
+            List<ITimeLog> timeLogs = new List<ITimeLog>();
+            ITimeLog timeLog = NewMock<ITimeLog>();
+            List<IActivity> activities = new List<IActivity>();
+            IActivity activity = NewMock<IActivity>();
+            Stub.On(activity).GetProperty("Name").Will(Return.Value("test"));
+            Stub.On(activity).GetProperty("Duration").Will(Return.Value(TimeSpan.Zero));
+            activities.Add(activity);
+            Stub.On(timeLog).GetProperty("Activities").Will(Return.Value(activities));
+            timeLogs.Add(timeLog);
+
+            ITimeLog timeLog2 = NewMock<ITimeLog>();
+            activities = new List<IActivity>();
+            activity = NewMock<IActivity>();
+            Stub.On(activity).GetProperty("Name").Will(Return.Value("test2"));
+            Stub.On(activity).GetProperty("Duration").Will(Return.Value(TimeSpan.Zero));
+            activities.Add(activity);
+            Stub.On(timeLog2).GetProperty("Activities").Will(Return.Value(activities));
+            timeLogs.Add(timeLog2);
+
+            activitiesSummary.TimeLogs = timeLogs;
+
+            Assert.AreEqual(2, activitiesSummary.Data.Rows.Count);
+        }
+        [Test]
+        public void TimeLogReturnsLatestTimeLog()
+        {
+            ITimeLog timeLog = NewMock<ITimeLog>();
+            List<ITimeLog> timeLogs = new List<ITimeLog>();
+            Stub.On(timeLog).GetProperty("Activities").Will(Return.Value(new List<IActivity>()));
+            timeLogs.Add(timeLog);
+            timeLogs.Add(timeLog);
+            activitiesSummary.TimeLogs = timeLogs; 
+
+            Assert.AreSame(timeLog, activitiesSummary.TimeLog);
+        }
     }
 }

@@ -17,6 +17,29 @@ namespace LifeIdea.LazyCure.Core.Time.TimeLogs
             this.fileManager = fileManager;
         }
 
+        public void ActivateTimeLog(ITimeLog timeLog)
+        {
+            ActiveTimeLog = timeLog;
+        }
+
+        public ITimeLog ActiveTimeLog { get; set; }
+        
+        public List<DateTime> AvailableDays
+        {
+            get
+            {
+                List<DateTime> days;
+                if (fileManager != null)
+                {
+                    days = fileManager.AllTimeLogDates;
+                    days.Reverse();
+                }
+                else
+                    days = new List<DateTime>();
+                return days;
+            }
+        }
+        
         public List<IActivity> GetActivities(DateTime day)
         {
             if (fileManager != null)
@@ -29,31 +52,24 @@ namespace LifeIdea.LazyCure.Core.Time.TimeLogs
             }
             return null;
         }
-
-        public void ActivateTimeLog(ITimeLog timeLog)
+        
+        public List<ITimeLog> GetTimeLogs(DateTime from, DateTime to)
         {
-            ActiveTimeLog = timeLog;
+            var timeLogs = new List<ITimeLog>();
+            var listOfDays = this.AvailableDays;
+            listOfDays = listOfDays.FindAll(
+                delegate(DateTime day){
+                    return from <= day && day <= to;
+                }
+            );
+            foreach (DateTime day in listOfDays)
+                timeLogs.Add(fileManager.GetTimeLog(day));
+            return timeLogs;
         }
-
-        public ITimeLog ActiveTimeLog { get; set; }
-
+        
         public bool Save()
         {
             return fileManager.SaveTimeLog(ActiveTimeLog);
-        }
-
-        public List<DateTime> AvailableDays
-        {
-            get {
-                List<DateTime> days;
-                if (fileManager != null)
-                {
-                    days = fileManager.AllTimeLogDates;
-                    days.Reverse();
-                } else
-                    days = new List<DateTime>();
-                return days;
-            }
         }
     }
 }
