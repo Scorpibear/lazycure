@@ -198,5 +198,17 @@ namespace LifeIdea.LazyCure.Core.IO
             Assert.AreEqual(1, list.Count, this.filename);
             Assert.AreEqual(DateTime.Parse("2000-01-23"), list[0]);
         }
+        [Test]
+        public void GetTimeLogFileNameForNull()
+        {
+            ITimeLog timelog = null;
+            Assert.IsNull(fileManager.GetTimeLogFileName(timelog));
+        }
+        [Test]
+        public void SaveTimeLogWithNull()
+        {
+            ITimeLog timelog = null;
+            Assert.IsFalse(fileManager.SaveTimeLog(timelog));
+        }
     }
 }

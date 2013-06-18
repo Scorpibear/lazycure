@@ -24,23 +24,23 @@ namespace LifeIdea.LazyCure.UI
         [Test]
         public void IfOneDayButtonCheckedOthersUnchecked()
         {
-            summary.ClickDayButton("Last Month");
-            summary.ClickDayButton("Prev Week");
+            summary.ClickDayButton(Summary.Period.LastMonth);
+            summary.ClickDayButton(Summary.Period.PrevWeek);
 
-            Assert.AreEqual("Prev Week", summary.GetCheckedDayButtonsText());
+            Assert.AreEqual(Summary.Period.PrevWeek, summary.GetCheckedDayButtonPeriod());
         }
         [Test]
         public void TodayIsCheckedByDefault()
         {
-            Assert.AreEqual("Today", summary.GetCheckedDayButtonsText());
+            Assert.AreEqual(Summary.Period.Today, summary.GetCheckedDayButtonPeriod());
         }
         [Test]
         public void DoubleCheckKeepsChecked()
         {
-            summary.ClickDayButton("This Week");
-            summary.ClickDayButton("This Week");
+            summary.ClickDayButton(Summary.Period.ThisWeek);
+            summary.ClickDayButton(Summary.Period.ThisWeek);
 
-            Assert.AreEqual("This Week", summary.GetCheckedDayButtonsText());
+            Assert.AreEqual(Summary.Period.ThisWeek, summary.GetCheckedDayButtonPeriod());
         }
         [Test]
         public void CurrentDateIsDisplayedInFrom()
@@ -55,7 +55,7 @@ namespace LifeIdea.LazyCure.UI
         [Test]
         public void YesterdayIsDisplayedInFromAndTo()
         {
-            summary.ClickDayButton("Yesterday");
+            summary.ClickDayButton(Summary.Period.Yesterday);
 
             Assert.AreEqual(DateTime.Now.AddDays(-1).ToString("yyyy-MM-dd"), summary.GetToDate(), "to");
             Assert.AreEqual(DateTime.Now.AddDays(-1).ToString("yyyy-MM-dd"), summary.GetFromDate(), "from");
@@ -63,7 +63,7 @@ namespace LifeIdea.LazyCure.UI
         [Test]
         public void ThisWeekDropDownsUpdated()
         {
-            summary.ClickDayButton("This Week");
+            summary.ClickDayButton(Summary.Period.ThisWeek);
 
             DateTime monday, sunday;
 
@@ -74,9 +74,19 @@ namespace LifeIdea.LazyCure.UI
             Assert.AreEqual(Format.Date(sunday), summary.GetToDate(), "to");
         }
         [Test]
+        public void DayButtonsWorkWithLocalization()
+        {
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("ru");
+            Summary summary = new Summary(null, null);
+
+            summary.ClickDayButton(Summary.Period.LastMonth);
+            
+            Assert.AreEqual(Format.Date(DateTime.Now.AddDays(-30)), summary.GetFromDate());
+        }
+        [Test]
         public void PrevWeekDropDownsUpdated()
         {
-            summary.ClickDayButton("Prev Week");
+            summary.ClickDayButton(Summary.Period.PrevWeek);
 
             DateTime monday, sunday;
 
@@ -89,7 +99,7 @@ namespace LifeIdea.LazyCure.UI
         [Test]
         public void LastMonthDropDownsUpdated()
         {
-            summary.ClickDayButton("Last Month");
+            summary.ClickDayButton(Summary.Period.LastMonth);
 
             DateTime from, to;
 
@@ -139,7 +149,7 @@ namespace LifeIdea.LazyCure.UI
             Expect.Once.On(dataProvider).Method("SetSummaryPeriod").With(from, to);
             Expect.Once.On(dataProvider).GetProperty("ActivitiesSummaryData").Will(Return.Value(null));
 
-            summary.ClickDayButton("Last Month");
+            summary.ClickDayButton(Summary.Period.LastMonth);
 
             VerifyAllExpectationsHaveBeenMet();
         }

@@ -71,6 +71,7 @@
     <Compile Include="Tasks\TaskCollectionTest.cs" />
     <Compile Include="Tasks\TaskSerializerTest.cs" />
     <Compile Include="Tasks\TaskTest.cs" />
+    <Compile Include="Time\MidnightSwitcherTest.cs" />
     <Compile Include="Time\TimeLogs\TimeLogSerializerTest.cs" />
     <Compile Include="Time\TimeLogs\TimeLogsManagerTest.cs" />
     <Compile Include="Time\TimeLogs\TimeLogTest.cs" />

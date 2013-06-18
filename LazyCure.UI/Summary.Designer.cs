@@ -30,8 +30,8 @@ namespace LifeIdea.LazyCure.UI
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Summary));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.activities = new System.Windows.Forms.TabPage();
@@ -274,18 +274,18 @@ namespace LifeIdea.LazyCure.UI
             // Start
             // 
             this.Start.DataPropertyName = "Start";
-            dataGridViewCellStyle1.Format = "t";
-            dataGridViewCellStyle1.NullValue = null;
-            this.Start.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Format = "t";
+            dataGridViewCellStyle3.NullValue = null;
+            this.Start.DefaultCellStyle = dataGridViewCellStyle3;
             resources.ApplyResources(this.Start, "Start");
             this.Start.Name = "Start";
             // 
             // End
             // 
             this.End.DataPropertyName = "End";
-            dataGridViewCellStyle2.Format = "t";
-            dataGridViewCellStyle2.NullValue = null;
-            this.End.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Format = "t";
+            dataGridViewCellStyle4.NullValue = null;
+            this.End.DefaultCellStyle = dataGridViewCellStyle4;
             resources.ApplyResources(this.End, "End");
             this.End.Name = "End";
             // 

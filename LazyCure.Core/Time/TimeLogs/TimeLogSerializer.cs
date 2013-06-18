@@ -48,7 +48,7 @@ namespace LifeIdea.LazyCure.Core.Time.TimeLogs
                 if (dateAttribute != null)
                     date = DateTime.Parse(dateAttribute.Value);
                 else
-                    date = DateTime.Now.Date;
+                    date = DateTime.Today;
                 timeLog = new TimeLog(date);
 
                 foreach (XmlNode node in data.ChildNodes)

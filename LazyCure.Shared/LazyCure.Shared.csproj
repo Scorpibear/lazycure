@@ -64,6 +64,7 @@
     <Compile Include="Interfaces\ITask.cs" />
     <Compile Include="Interfaces\ITaskActivityLinker.cs" />
     <Compile Include="Interfaces\ITimeLog.cs" />
+    <Compile Include="Interfaces\ITimeLogsFileManager.cs" />
     <Compile Include="Interfaces\ITimeLogsManager.cs" />
     <Compile Include="Structures\TokensPair.cs" />
     <Compile Include="Tools\Format.cs" />

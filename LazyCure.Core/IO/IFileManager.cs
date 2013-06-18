@@ -7,7 +7,7 @@ using LifeIdea.LazyCure.Shared.Interfaces;
 
 namespace LifeIdea.LazyCure.Core.IO
 {
-    public interface IFileManager
+    public interface IFileManager: ITimeLogsFileManager
     {
         ITaskCollection GetTasks();
 
@@ -21,14 +21,8 @@ namespace LifeIdea.LazyCure.Core.IO
         
         bool SaveTasks(ITaskCollection taskCollection);
 
-        bool SaveTimeLog(ITimeLog timeLog);
-
         bool SaveTimeLog(ITimeLog timeLog, string filename);
 
         string TimeLogsFolder { get; set;}
-
-        ITimeLog GetTimeLog(DateTime day);
-
-        List<DateTime> AllTimeLogDates { get; }
     }
 }
