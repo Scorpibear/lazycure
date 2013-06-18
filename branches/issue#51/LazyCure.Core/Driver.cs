@@ -29,7 +29,7 @@ namespace LifeIdea.LazyCure.Core
         private ITimeManager timeManager;
         private IWorkingTimeManager workingTime;
         //private IHistoryDataProvider historyDataProvider;
-        private Time.TimeLogs.TimeLogsManager timeLogsManager;
+        private ITimeLogsManager timeLogsManager;
         private IExternalPoster externalPoster = new Twitter();
 
         #endregion Fields
@@ -45,7 +45,12 @@ namespace LifeIdea.LazyCure.Core
         public IFileManager FileManager
         {
             get { return fileManager; }
-            set { fileManager = value; }
+            set
+            {
+                fileManager = value;
+                if (timeLogsManager != null)
+                    timeLogsManager.FileManager = fileManager;
+            }
         }
 
         public static string FirstActivityName = "starting LazyCure";
@@ -91,7 +96,7 @@ namespace LifeIdea.LazyCure.Core
             set { workingTime = value; }
         }
 
-        public TimeLogsManager TimeLogsManager
+        public ITimeLogsManager TimeLogsManager
         {
             set
             {
@@ -219,8 +224,8 @@ namespace LifeIdea.LazyCure.Core
             }
             List<IActivity> finishedActivities = TimeManager.FinishActivity(finishedActivityName, nextActivityName);
             HistoryDataProvider.ActivitiesHistory.AddActivities(finishedActivities);
-            if (SaveAfterDone)
-                fileManager.SaveTimeLog(TimeManager.TimeLog);
+            if (SaveAfterDone && timeLogsManager != null)
+                timeLogsManager.SaveActiveTimeLog();
         }
 
         public void FinishActivity(string finishedActivityName, string nextActivityName)
@@ -251,15 +256,24 @@ namespace LifeIdea.LazyCure.Core
 
         public void ActivateTimeLog(ITimeLog timeLog)
         {
-            TimeManager.TimeLog = timeLog;
-            HistoryDataProvider.UpdateTimeLog(TimeManager.TimeLog);
-            workingTime.TimeLog = TimeManager.TimeLog;
+            //TimeManager.TimeLog = timeLog;
+            DateTime date = timeLog.Date;
+            ActivateTimeLog(date);
+        }
+
+        private void ActivateTimeLog(DateTime date)
+        {
+            ITimeLog activeTimeLog = TimeLogsManager.ActivateTimeLog(date);
+            HistoryDataProvider.UpdateTimeLog(activeTimeLog);
+            workingTime.TimeLog = activeTimeLog;
         }
 
         public bool LoadTimeLog(DateTime date)
         {
-            string filename = fileManager.GetTimeLogFileName(date);
-            return LoadTimeLog(filename);
+            ITimeLog timeLog = null;
+            if (timeLogsManager != null)
+                timeLog = timeLogsManager.ActivateTimeLog(date);
+            return (timeLog != null);
         }
 
         public bool Save()

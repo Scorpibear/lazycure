@@ -14,12 +14,14 @@ namespace LifeIdea.LazyCure.Core.Time
         private const string FIRST_ACTIVITY = "Activity1";
         private RunningActivity currentActivity;
         private TimeSpan maxDuration = TimeSpan.Parse("1:00");
+        private IMidnightCorrector midnightCorrector;
         private RunningActivity previousActivity;
         private bool splitByComma;
         private bool switchAtMidnight;
         private ITimeLog timeLog;
         private ITimeLogsManager timeLogsManager;
         private string tweetingActivity;
+        
 
         #region Properties
 
@@ -39,6 +41,11 @@ namespace LifeIdea.LazyCure.Core.Time
             get { return currentActivity.Duration >= maxDuration; }
         }
 
+        public IMidnightCorrector MidnightCorrector
+        {
+            set { midnightCorrector = value; }
+        }
+
         public IActivity PreviousActivity
         {
             get { return previousActivity; }
@@ -50,8 +57,13 @@ namespace LifeIdea.LazyCure.Core.Time
 
         public ITimeLog TimeLog
         {
-            get { return timeLog; }
-            set { timeLog = value; }
+            get
+            {
+                
+                if (timeLogsManager != null)
+                    return timeLogsManager.ActiveTimeLog;
+                return timeLog;
+            }
         }
 
         public ITimeLogsManager TimeLogsManager
@@ -73,23 +85,18 @@ namespace LifeIdea.LazyCure.Core.Time
 
         #endregion Properties
 
-        public TimeManager(ITimeSystem timeSystem)
+        public TimeManager(ITimeSystem timeSystem, ITimeLogsManager timeLogsManager)
         {
             currentActivity = new RunningActivity(FIRST_ACTIVITY, timeSystem);
+            midnightCorrector = new MidnightSwitcher();
+            if (timeLogsManager != null)
+            {
+                TimeLogsManager = timeLogsManager;
+                timeLogsManager.ActivateTimeLog(currentActivity.Start.Date);
+            }
         }
 
-        public TimeManager(ITimeSystem timeSystem, ITimeLogsManager timeLogsManager, ITimeLog timeLog)
-            : this(timeSystem)
-        {
-            TimeLogsManager = timeLogsManager;
-            TimeLog = timeLog;
-        }
-
-        public TimeManager(ITimeSystem timeSystem, ITimeLogsManager timeLogsManager):this(timeSystem)
-        {
-            TimeLogsManager = timeLogsManager;
-            TimeLog = new TimeLog(currentActivity.Start.Date);
-        }
+        public TimeManager(ITimeSystem timeSystem) : this(timeSystem, null) { }
 
         /// <summary>
         /// Finish activity and start the next
@@ -152,27 +159,10 @@ namespace LifeIdea.LazyCure.Core.Time
                 TimeLog.AddActivity(currentActivity);
         }
 
-        private void CheckForMidnight()
+        public void CheckForMidnight()
         {
-            DateTime endTime = currentActivity.Start + currentActivity.Duration;
-            DateTime endDate = endTime.Date;
-            if ((currentActivity.Start.Date < endDate) && switchAtMidnight)
-                PerformMidnightCorrection(endDate);
-        }
-
-        public void PerformMidnightCorrection(DateTime endDate)
-        {
-            TimeSpan oldDayActivityDuration = endDate - currentActivity.Start;
-            TimeSpan newDayActivityDuration = currentActivity.Duration - oldDayActivityDuration;
-            currentActivity.Duration = oldDayActivityDuration;
-            AddToTimeLog();
-            if (TimeLogsManager != null)
-                TimeLogsManager.Save();
-            TimeLog = new TimeLog(endDate);
-            if (TimeLogsManager != null)
-                TimeLogsManager.ActivateTimeLog(TimeLog);
-            currentActivity.Start = endDate;
-            currentActivity.Duration = newDayActivityDuration;
+            if (switchAtMidnight && midnightCorrector!=null)
+                midnightCorrector.PerformMidnightCorrection(currentActivity, timeLogsManager);
         }
     }
 }

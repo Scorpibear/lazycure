@@ -85,9 +85,11 @@
     <Compile Include="Tasks\TaskSerializer.cs" />
     <Compile Include="Activities\RunningActivity.cs" />
     <Compile Include="Driver.cs" />
+    <Compile Include="Time\IMidnightCorrector.cs" />
     <Compile Include="Time\ITimeManager.cs" />
     <Compile Include="Time\ITimeSystem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Time\MidnightSwitcher.cs" />
     <Compile Include="Time\NaturalTimeSystem.cs" />
     <Compile Include="Tasks\Task.cs" />
     <Compile Include="Tasks\TaskCollection.cs" />

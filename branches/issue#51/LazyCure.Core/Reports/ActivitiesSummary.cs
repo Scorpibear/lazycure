@@ -33,11 +33,40 @@ namespace LifeIdea.LazyCure.Core.Reports
             }
             set
             {
-                timeLogs = new List<ITimeLog>();
-                timeLogs.Add(value);
-                value.Data.RowDeleted += TimeLogData_RowChanged;
-                value.Data.RowChanged += TimeLogData_RowChanged;
+                var newTimeLogs = new List<ITimeLog>();
+                if (value != null)
+                    newTimeLogs.Add(value);
+                TimeLogs = newTimeLogs;
             }
+        }
+
+        private void AddHandlersToTimeLogs()
+        {
+            if (timeLogs != null)
+            {
+                foreach (ITimeLog timelog in timeLogs)
+                {
+                    timelog.Data.RowDeleted += TimeLogData_RowChanged;
+                    timelog.Data.RowChanged += TimeLogData_RowChanged;
+                }
+            }
+        }
+
+        private void RemoveHandlersToTimeLogs()
+        {
+            if (timeLogs != null)
+            {
+                foreach (ITimeLog timelog in timeLogs)
+                {
+                    timelog.Data.RowDeleted -= TimeLogData_RowChanged;
+                    timelog.Data.RowChanged -= TimeLogData_RowChanged;
+                }
+            }
+        }
+
+        void Data_TableNewRow(object sender, DataTableNewRowEventArgs e)
+        {
+            TimeLogData_RowChanged(sender, null);
         }
 
         public List<ITimeLog> TimeLogs
@@ -45,7 +74,9 @@ namespace LifeIdea.LazyCure.Core.Reports
             get { return timeLogs; }
             set
             {
+                RemoveHandlersToTimeLogs();
                 timeLogs = value;
+                AddHandlersToTimeLogs();
                 this.Update();
             }
         }
@@ -86,8 +117,11 @@ namespace LifeIdea.LazyCure.Core.Reports
             }
             if (!existentRowUpdated)
             {
-                string relatedTask = Linker.GetRelatedTaskName(activity.Name);
-                Data.Rows.Add(activity.Name, activity.Duration, relatedTask);
+                if (Linker != null)
+                {
+                    string relatedTask = Linker.GetRelatedTaskName(activity.Name);
+                    Data.Rows.Add(activity.Name, activity.Duration, relatedTask);
+                }
             }
 
             allActivitiesTime += activity.Duration;

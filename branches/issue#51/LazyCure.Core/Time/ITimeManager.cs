@@ -19,7 +19,7 @@ namespace LifeIdea.LazyCure.Core.Time
 
         bool SwitchAtMidnight { set; }
 
-        ITimeLog TimeLog { get; set; }
+        ITimeLog TimeLog { get; }
 
         ITimeSystem TimeSystem { get;}
 

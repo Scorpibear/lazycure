@@ -279,10 +279,10 @@
 </value>
   </data>
   <data name="lastMonthButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 22</value>
+    <value>52, 22</value>
   </data>
   <data name="lastMonthButton.Text" xml:space="preserve">
-    <value>Пр. месяц</value>
+    <value>30 дней</value>
   </data>
   <data name="lastMonthButton.ToolTipText" xml:space="preserve">
     <value>Последние 30 дней</value>
@@ -303,13 +303,13 @@
 </value>
   </data>
   <data name="prevWeekButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 22</value>
+    <value>126, 22</value>
   </data>
   <data name="prevWeekButton.Text" xml:space="preserve">
-    <value>Пр. неделя</value>
+    <value>Предыдущая Неделя</value>
   </data>
   <data name="prevWeekButton.ToolTipText" xml:space="preserve">
-    <value>Прошлая неделя с понедельника по воскресение</value>
+    <value>Предыдущая неделя с понедельника по воскресение</value>
   </data>
   <data name="thisWeekButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -408,7 +408,7 @@
 </value>
   </data>
   <data name="topPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>475, 25</value>
+    <value>515, 25</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

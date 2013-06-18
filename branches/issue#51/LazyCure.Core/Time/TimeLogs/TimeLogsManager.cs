@@ -10,20 +10,30 @@ namespace LifeIdea.LazyCure.Core.Time.TimeLogs
     /// </summary>
     public class TimeLogsManager: ITimeLogsManager
     {
-        private IFileManager fileManager;
+        private ITimeLogsFileManager fileManager;
 
-        public TimeLogsManager(IFileManager fileManager)
+        public TimeLogsManager(ITimeLogsFileManager fileManager)
         {
             this.fileManager = fileManager;
         }
 
-        public void ActivateTimeLog(ITimeLog timeLog)
+        public ITimeLog ActivateTimeLog(DateTime dateTime)
         {
-            ActiveTimeLog = timeLog;
+            if (fileManager != null)
+            {
+                SaveActiveTimeLog();
+                var timeLog = fileManager.GetTimeLog(dateTime);
+                if (timeLog == null)
+                    timeLog = new TimeLog(dateTime);
+                ActiveTimeLog = timeLog;
+            }
+            return ActiveTimeLog;
         }
 
         public ITimeLog ActiveTimeLog { get; set; }
-        
+
+        public ITimeLogsFileManager FileManager { get { return this.fileManager; } set { this.fileManager = value; } }
+
         public List<DateTime> AvailableDays
         {
             get
@@ -36,6 +46,8 @@ namespace LifeIdea.LazyCure.Core.Time.TimeLogs
                 }
                 else
                     days = new List<DateTime>();
+                if (ActiveTimeLog != null && !days.Contains(ActiveDay))
+                    days.Add(ActiveDay);
                 return days;
             }
         }
@@ -44,7 +56,7 @@ namespace LifeIdea.LazyCure.Core.Time.TimeLogs
         {
             if (fileManager != null)
             {
-                ITimeLog timeLog = fileManager.GetTimeLog(day);
+                ITimeLog timeLog = GetTimeLog(day);
                 if (timeLog != null)
                 {
                     return timeLog.Activities;
@@ -63,13 +75,38 @@ namespace LifeIdea.LazyCure.Core.Time.TimeLogs
                 }
             );
             foreach (DateTime day in listOfDays)
-                timeLogs.Add(fileManager.GetTimeLog(day));
+            {
+                ITimeLog timeLog = GetTimeLog(day);
+                timeLogs.Add(timeLog);
+            }
             return timeLogs;
         }
-        
-        public bool Save()
+
+        private ITimeLog GetTimeLog(DateTime day)
         {
-            return fileManager.SaveTimeLog(ActiveTimeLog);
+            ITimeLog timeLog;
+            if (day == ActiveDay)
+                timeLog = ActiveTimeLog;
+            else
+                timeLog = fileManager.GetTimeLog(day);
+            return timeLog;
+        }
+
+        public DateTime ActiveDay
+        {
+            get
+            {
+                if(ActiveTimeLog!=null)
+                    return ActiveTimeLog.Date;
+                return DateTime.MinValue;
+            }
+        }
+
+        public bool SaveActiveTimeLog()
+        {
+            if(fileManager!=null)
+                return fileManager.SaveTimeLog(ActiveTimeLog);
+            return false;
         }
     }
 }

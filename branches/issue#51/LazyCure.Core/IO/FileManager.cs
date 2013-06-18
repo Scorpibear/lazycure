@@ -147,6 +147,8 @@ namespace LifeIdea.LazyCure.Core.IO
 
         public string GetTimeLogFileName(ITimeLog timeLog)
         {
+            if (timeLog == null)
+                return null;
             if (timeLog.FileName != null)
                 return timeLog.FileName;
             else
