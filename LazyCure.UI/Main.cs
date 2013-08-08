@@ -362,6 +362,11 @@ namespace LifeIdea.LazyCure.UI
             }
         }
 
+        private void miSpentOnActivityInDifferentDays_Click(object sender, EventArgs e)
+        {
+            Dialogs.SpentOnDiffDays.Visible = miSpentOnActivityInDifferentDays.Checked;
+        }
+
         private void miSummary_Click(object sender, EventArgs e)
         {
             Dialogs.Summary.Visible = miSummary.Checked;
@@ -436,10 +441,5 @@ namespace LifeIdea.LazyCure.UI
         }
 
         #endregion Event Handlers
-
-        private void miSpentOnActivityInDifferentDays_Click(object sender, EventArgs e)
-        {
-            Dialogs.SpentOnDiffDays.Visible = miSpentOnActivityInDifferentDays.Checked;
-        }
     }
 }

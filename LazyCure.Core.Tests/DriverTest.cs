@@ -172,6 +172,7 @@ namespace LifeIdea.LazyCure.Core
         [Test]
         public void RenameActivitiesInTimeLog()
         {
+            driver.TimeManager.TimeLog.Data.Clear();
             driver.FinishActivity("before", "next");
             driver.RenameActivity("before", "after");
             Assert.AreEqual("after", driver.TimeManager.TimeLog.Activities[0].Name);
@@ -235,30 +236,6 @@ namespace LifeIdea.LazyCure.Core
             Assert.AreEqual(date.ToString("yyyy-MM-dd"), driver.TimeLogDate, "current day changed");
         }
         [Test]
-        public void LoadSpecifiedTimeLog()
-        {
-            string sContent = "<?xml version=\"1.0\" standalone=\"yes\"?><LazyCureData><Records>" +
-                              "<Activity>changed</Activity><Begin>14:35:02</Begin><Duration>0:00:07</Duration>" +
-                              "</Records></LazyCureData>";
-                        
-            FileInfo fileInfo = new FileInfo(filename);
-            fileInfo.Directory.Create();
-            StreamWriter writer = fileInfo.CreateText();
-            writer.Write(sContent);
-            writer.Close();
-            driver.FinishActivity("should be removed after load","second");
-            if (driver.LoadTimeLog(fileInfo.FullName))
-            {
-                DataRow row = (driver.TimeLogData as DataTable).Rows[0];
-                Assert.AreEqual("changed", row["Activity"], "activity name match");
-                Assert.AreEqual(DateTime.Parse("14:35:02"), row["Start"], "start match");
-                Assert.AreEqual(TimeSpan.Parse("0:00:07"), row["Duration"], "duration match");
-                Assert.AreEqual(strDate, driver.TimeLogDate, "current day changed");
-            }
-            else
-                Assert.Fail(logStringBuilder.ToString());
-        }
-        [Test]
         public void LoadTwoActivites()
         {
             string sContent = "<?xml version=\"1.0\" standalone=\"yes\"?><LazyCureData>"+
@@ -286,11 +263,6 @@ namespace LifeIdea.LazyCure.Core
             Assert.AreEqual("clean", row2["Activity"], "activity name match");
             Assert.AreEqual(DateTime.Parse("5:00:00"), row2["Start"], "start match");
             Assert.AreEqual(TimeSpan.Parse("0:07:00"), row2["Duration"], "duration match");
-        }
-        [Test]
-        public void LoadUnexistingLog()
-        {
-            Assert.IsFalse(driver.LoadTimeLog(DateTime.Parse("2012-03-16")));
         }
         [Test]
         public void LoadBrokenXml()
@@ -364,6 +336,13 @@ namespace LifeIdea.LazyCure.Core
             VerifyAllExpectationsHaveBeenMet();
         }
         [Test]
+        public void FileManagerUpdatesReferenceInTimeLogsManager()
+        {
+            var fileManager = new FileManager();
+            driver.FileManager = fileManager;
+            Assert.AreSame(fileManager, driver.TimeLogsManager.FileManager);
+        }
+        [Test]
         public void TimeLogIsNotSavedIfSaveAfterDoneFalse()
         {
             driver.FileManager = NewMock<IFileManager>();
@@ -392,11 +371,13 @@ namespace LifeIdea.LazyCure.Core
         [Test]
         public void Load()
         {
-            driver.FileManager = NewMock<IFileManager>();
-            Expect.AtLeastOnce.On(driver.FileManager).Method("GetTasks").Will(Return.Value(null));
-            Expect.AtLeastOnce.On(driver.FileManager).Method("GetTimeLog").Will(Return.Value(null));
-            Expect.AtLeastOnce.On(driver.FileManager).Method("LoadHistory").With(driver.HistoryDataProvider.ActivitiesHistory);
-            Stub.On(driver.FileManager).Method("GetTimeLogFileName").Will(Return.Value(@"c:\temp\test.txt"));
+            var fileManager = NewMock<IFileManager>();
+            driver.FileManager = fileManager;
+            var timeLogsManager = NewMock<ITimeLogsManager>();
+            driver.TimeLogsManager = timeLogsManager;
+            Expect.AtLeastOnce.On(fileManager).Method("GetTasks").Will(Return.Value(null));
+            Expect.AtLeastOnce.On(fileManager).Method("LoadHistory").With(driver.HistoryDataProvider.ActivitiesHistory);
+            Expect.AtLeastOnce.On(timeLogsManager).Method("ActivateTimeLog").WithAnyArguments();
 
             bool isLoaded = driver.Load();
 
@@ -426,14 +407,16 @@ namespace LifeIdea.LazyCure.Core
         [Test]
         public void TweetingIsPosted()
         {
+            driver.TimeLogsManager.ActiveTimeLog.Data.Clear();
             driver.TimeManager.TweetingActivity = "tweeting";
             driver.FinishActivity("twitter message", "(empty)", true);
-            IActivity lastActivity = driver.TimeManager.TimeLog.Activities[0];
+            IActivity lastActivity = driver.TimeLogsManager.ActiveTimeLog.Activities[0];
             Assert.AreEqual("tweeting", lastActivity.Name);
         }
         [Test]
         public void TheSameIsPosted()
         {
+            driver.TimeManager.TimeLog.Data.Clear();
             driver.TimeManager.TweetingActivity = null;
             driver.FinishActivity("twitter message", "(empty)", true);
             IActivity lastActivity = driver.TimeManager.TimeLog.Activities[0];
@@ -462,29 +445,6 @@ namespace LifeIdea.LazyCure.Core
             driver.TaskCollection = NewMock<ITaskCollection>();
             Expect.Once.On(driver.TaskCollection).Method("UpdateIsWorkingProperty").With("updated task", true);
             driver.UpdateIsWorkingTaskProperty("updated task",true);
-            VerifyAllExpectationsHaveBeenMet();
-        }
-        [Test]
-        public void TasksSummaryData()
-        {
-            driver.TasksSummary = NewMock<ITasksSummary>();
-            DataTable test = new DataTable("test");
-            Expect.Once.On(driver.TasksSummary).GetProperty("Data").Will(Return.Value(test));
-
-            object data = driver.TasksSummaryData;
-
-            Assert.AreEqual(test,data);
-            VerifyAllExpectationsHaveBeenMet();
-        }
-        [Test]
-        public void TimeManagerPassedToHistoryDataProvider()
-        {
-            var timeLogsManager = new TimeLogsManager(null);
-            driver.HistoryDataProvider = NewMock<IHistoryDataProvider>();
-            Expect.Once.On(driver.HistoryDataProvider).SetProperty("TimeLogsManager").To(timeLogsManager);
-            
-            driver.TimeLogsManager = timeLogsManager;
-
             VerifyAllExpectationsHaveBeenMet();
         }
         [Test]

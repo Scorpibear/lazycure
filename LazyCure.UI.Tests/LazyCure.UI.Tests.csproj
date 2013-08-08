@@ -63,6 +63,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SpentOnDiffDaysViewTests.cs" />
+    <Compile Include="SummaryTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
