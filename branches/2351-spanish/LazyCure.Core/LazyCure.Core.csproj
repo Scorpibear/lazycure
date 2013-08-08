@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{055BDC4B-9AD3-471A-B3E3-19CBFC45C9C8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LifeIdea.LazyCure.Core</RootNamespace>
+    <AssemblyName>LazyCure.Core</AssemblyName>
+    <StartupObject>
+    </StartupObject>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Localization\ILanguageSwitcher.cs" />
+    <Compile Include="Localization\LanguageSwitcher.cs" />
+    <Compile Include="Plugins\IExternalPoster.cs" />
+    <Compile Include="Reports\ActivitiesSummary.cs" />
+    <Compile Include="Activities\Activity.cs" />
+    <Compile Include="Activities\ActivityBase.cs" />
+    <Compile Include="Activities\ActivitiesHistory.cs" />
+    <Compile Include="Activities\ActivitySerializer.cs" />
+    <Compile Include="IO\FileManager.cs" />
+    <Compile Include="IO\IFileManager.cs" />
+    <Compile Include="Reports\ActivityTimeSummarizer.cs" />
+    <Compile Include="Reports\EfficiencyCalculator.cs" />
+    <Compile Include="Reports\IActivitiesSummary.cs" />
+    <Compile Include="Reports\IEfficiencyCalculator.cs" />
+    <Compile Include="Reports\IWorkingTimeManager.cs" />
+    <Compile Include="Reports\TasksSummary.cs" />
+    <Compile Include="Reports\TaskTimeSummarizer.cs" />
+    <Compile Include="Reports\TimeSummarizer.cs" />
+    <Compile Include="Reports\WorkingTime.cs" />
+    <Compile Include="Reports\HistoryDataProvider.cs" />
+    <Compile Include="Tasks\ITaskCollection.cs" />
+    <Compile Include="Tasks\ITasksSummary.cs" />
+    <Compile Include="Tasks\TaskCollectionSerializer.cs" />
+    <Compile Include="Tasks\TaskSerializer.cs" />
+    <Compile Include="Activities\RunningActivity.cs" />
+    <Compile Include="Driver.cs" />
+    <Compile Include="Time\IMidnightCorrector.cs" />
+    <Compile Include="Time\ITimeManager.cs" />
+    <Compile Include="Time\ITimeSystem.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Time\MidnightSwitcher.cs" />
+    <Compile Include="Time\NaturalTimeSystem.cs" />
+    <Compile Include="Tasks\Task.cs" />
+    <Compile Include="Tasks\TaskCollection.cs" />
+    <Compile Include="Time\TimeLogs\TimeLog.cs" />
+    <Compile Include="Time\TimeLogs\TimeLogSerializer.cs" />
+    <Compile Include="Time\TimeLogs\TimeLogsManager.cs" />
+    <Compile Include="Time\TimeManager.cs" />
+    <Compile Include="Plugins\Twitter.cs" />
+    <Compile Include="Utilities.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LazyCure.Shared\LazyCure.Shared.csproj">
+      <Project>{61117267-380A-4D4B-8228-29F4CB193E44}</Project>
+      <Name>LazyCure.Shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="Plugins\Twitterizer\Twitterizer2\Twitterizer2.csproj">
+      <Project>{2FDC3492-6B9E-4771-9755-7892C9CB1E96}</Project>
+      <Name>Twitterizer2</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
