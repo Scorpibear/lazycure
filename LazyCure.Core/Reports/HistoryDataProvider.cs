@@ -133,6 +133,7 @@ namespace LifeIdea.LazyCure.Core.Reports
         public void SetSummaryPeriod(DateTime from, DateTime to)
         {
             activitiesSummary.TimeLogs = TimeLogsManager.GetTimeLogs(from, to);
+            ((TasksSummary)tasksSummary).Calculate();
         }
 
         public void UpdateDataTableForActivity(string activityName)
