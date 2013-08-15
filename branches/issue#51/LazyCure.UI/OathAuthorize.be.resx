@@ -117,136 +117,33 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="&gt;&gt;textBoxPIN.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="buttonOK.Location" type="System.Drawing.Point, System.Drawing">
-    <value>58, 120</value>
-  </data>
-  <data name="buttonCancel.Text" xml:space="preserve">
-    <value>Cancel</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
-  </data>
-  <data name="buttonCancel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="textBox1.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="labelPIN.Text" xml:space="preserve">
-    <value>PIN:</value>
-  </data>
-  <data name="&gt;&gt;textBox1.Name" xml:space="preserve">
-    <value>textBox1</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Authorize</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>LifeIdea.LazyCure.UI.Backend.Dialog, LazyCure.UI, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="labelPIN.Size" type="System.Drawing.Size, System.Drawing">
-    <value>28, 13</value>
-  </data>
-  <data name="labelPIN.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="textBoxPIN.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 20</value>
-  </data>
-  <data name="&gt;&gt;textBox1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="buttonCancel.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;textBoxPIN.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="textBoxPIN.Location" type="System.Drawing.Point, System.Drawing">
-    <value>104, 94</value>
-  </data>
-  <data name="buttonOK.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;buttonCancel.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="textBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>263, 76</value>
-  </data>
-  <data name="&gt;&gt;labelPIN.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>284, 149</value>
-  </data>
-  <data name="&gt;&gt;buttonOK.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonCancel.Name" xml:space="preserve">
-    <value>buttonCancel</value>
-  </data>
-  <data name="&gt;&gt;labelPIN.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelPIN.Name" xml:space="preserve">
-    <value>labelPIN</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>OathAuthorize</value>
-  </data>
-  <data name="&gt;&gt;textBoxPIN.Name" xml:space="preserve">
-    <value>textBoxPIN</value>
-  </data>
-  <data name="&gt;&gt;buttonOK.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;textBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="buttonCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>139, 120</value>
-  </data>
-  <data name="textBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 12</value>
+    <value>57, 155</value>
   </data>
   <data name="buttonOK.Text" xml:space="preserve">
-    <value>OK</value>
+    <value>&amp;Прыняць</value>
   </data>
-  <data name="&gt;&gt;textBox1.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="buttonCancel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>138, 155</value>
   </data>
-  <data name="&gt;&gt;buttonOK.ZOrder" xml:space="preserve">
-    <value>4</value>
+  <data name="buttonCancel.Text" xml:space="preserve">
+    <value>&amp;Скасаваць</value>
   </data>
-  <data name="&gt;&gt;labelPIN.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;buttonOK.Name" xml:space="preserve">
-    <value>buttonOK</value>
-  </data>
-  <data name="textBoxPIN.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;buttonCancel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="labelPIN.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="textBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>263, 111</value>
   </data>
   <data name="textBox1.Text" xml:space="preserve">
-    <value>In order to be able post updates to twitter, you have to authorize LazyCure application on twitter.com. Please, do this by following the just open link in a browser, press Allow and copy PIN from the site, then enter it in the box below and press OK.</value>
+    <value>Каб мець магчымасць дзяліцца з сябрамі толькі што завершанымі справамі праз twitter, вам неабходна аўтарызаваць LazyCure на twitter.com. Калі ласка, перайдзіце на толькі што адчыненую старонку ў браўзэру, націсніце Дазволіць (Allow) і скапіруйце PIN са старонкі ў поле ніжэй, пасля гэтага націсніце "Прыняць".</value>
   </data>
-  <data name="textBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+  <data name="labelPIN.Location" type="System.Drawing.Point, System.Drawing">
+    <value>69, 132</value>
   </data>
-  <data name="&gt;&gt;buttonCancel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="textBoxPIN.Location" type="System.Drawing.Point, System.Drawing">
+    <value>103, 129</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>284, 184</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -414,19 +311,7 @@
         AAA=
 </value>
   </data>
-  <data name="&gt;&gt;textBoxPIN.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Звязак з Twitter</value>
   </data>
-  <data name="buttonOK.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="labelPIN.Location" type="System.Drawing.Point, System.Drawing">
-    <value>70, 97</value>
-  </data>
-  <data name="buttonOK.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
 </root>
