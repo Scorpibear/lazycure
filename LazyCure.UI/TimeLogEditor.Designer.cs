@@ -29,9 +29,9 @@ namespace LifeIdea.LazyCure.UI
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TimeLogEditor));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TimeLogEditor));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.timeLogView = new System.Windows.Forms.DataGridView();
@@ -47,7 +47,6 @@ namespace LifeIdea.LazyCure.UI
             // 
             // timeLogView
             // 
-            resources.ApplyResources(this.timeLogView, "timeLogView");
             this.timeLogView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.timeLogView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Start,
@@ -55,6 +54,7 @@ namespace LifeIdea.LazyCure.UI
             this.Duration,
             this.End});
             this.timeLogView.ContextMenuStrip = this.contextMenu;
+            resources.ApplyResources(this.timeLogView, "timeLogView");
             this.timeLogView.Name = "timeLogView";
             dataGridViewCellStyle4.NullValue = null;
             this.timeLogView.RowsDefaultCellStyle = dataGridViewCellStyle4;
@@ -102,15 +102,15 @@ namespace LifeIdea.LazyCure.UI
             // 
             // contextMenu
             // 
-            resources.ApplyResources(this.contextMenu, "contextMenu");
             this.contextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.copyToolStripMenuItem});
             this.contextMenu.Name = "contextMenu";
+            resources.ApplyResources(this.contextMenu, "contextMenu");
             // 
             // copyToolStripMenuItem
             // 
-            resources.ApplyResources(this.copyToolStripMenuItem, "copyToolStripMenuItem");
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
+            resources.ApplyResources(this.copyToolStripMenuItem, "copyToolStripMenuItem");
             this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
             // 
             // TimeLogEditor

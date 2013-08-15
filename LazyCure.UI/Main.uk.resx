@@ -235,6 +235,18 @@
   <data name="miTasks.Text" xml:space="preserve">
     <value>Менеджер &amp;завдань</value>
   </data>
+  <data name="miSpentOnActivityInDifferentDays.Size" type="System.Drawing.Size, System.Drawing">
+    <value>265, 22</value>
+  </data>
+  <data name="miSpentOnActivityInDifferentDays.Text" xml:space="preserve">
+    <value>&amp;Витрачено на активність в різні дні</value>
+  </data>
+  <data name="miReport.Size" type="System.Drawing.Size, System.Drawing">
+    <value>177, 22</value>
+  </data>
+  <data name="miReport.Text" xml:space="preserve">
+    <value>&amp;Звiт</value>
+  </data>
   <data name="miContextShow.Size" type="System.Drawing.Size, System.Drawing">
     <value>188, 22</value>
   </data>
@@ -242,7 +254,7 @@
     <value>Показати</value>
   </data>
   <data name="showMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>178, 92</value>
+    <value>178, 114</value>
   </data>
   <data name="miShow.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 20</value>
@@ -255,18 +267,6 @@
   </data>
   <data name="miOptions.Text" xml:space="preserve">
     <value>&amp;Налаштування</value>
-  </data>
-  <data name="miSpentOnActivityInDifferentDays.Size" type="System.Drawing.Size, System.Drawing">
-    <value>265, 22</value>
-  </data>
-  <data name="miSpentOnActivityInDifferentDays.Text" xml:space="preserve">
-    <value>&amp;Витрачено на активність в різні дні</value>
-  </data>
-  <data name="miReport.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 20</value>
-  </data>
-  <data name="miReport.Text" xml:space="preserve">
-    <value>&amp;Звiт</value>
   </data>
   <data name="miHowToUse.Size" type="System.Drawing.Size, System.Drawing">
     <value>440, 22</value>
