@@ -14,13 +14,18 @@ namespace LifeIdea.LazyCure.Core.Time
     {
         private TimeManager timeManager;
         private readonly DateTime startTime = DateTime.Parse("2125-06-30 05:00:00");
+        private ITimeLogsManager timeLogsManager = null;
+        private ITimeLog timeLog;
 
         [SetUp]
         public void SetUp()
         {
             ITimeSystem mockTime = NewMock<ITimeSystem>();
             Stub.On(mockTime).GetProperty("Now").Will(Return.Value(startTime));
-            timeManager = new TimeManager(mockTime);
+            timeLogsManager = NewMock<ITimeLogsManager>();
+            timeLog = NewMock<ITimeLog>();
+            Stub.On(timeLogsManager).Method("ActivateTimeLog").Will(Return.Value(timeLog));
+            timeManager = new TimeManager(mockTime, timeLogsManager);
         }
         [Test]
         public void CurrentActivityDuration()
@@ -41,6 +46,7 @@ namespace LifeIdea.LazyCure.Core.Time
         [Test]
         public void CurrentActivityDiffersFromFinished()
         {
+            timeManager.TimeLogsManager = null;
             timeManager.FinishActivity("prev", "second");
             Assert.AreNotSame(timeManager.PreviousActivity, timeManager.CurrentActivity, "current and previous different");
         }
@@ -81,6 +87,7 @@ namespace LifeIdea.LazyCure.Core.Time
         [Test]
         public void FinishActivity()
         {
+            timeManager.TimeLogsManager = null;
             string finishedActivity = "prev";
             string currentActivity = "second";
             timeManager.FinishActivity(finishedActivity, currentActivity);
@@ -101,6 +108,7 @@ namespace LifeIdea.LazyCure.Core.Time
         [Test]
         public void FinishActivityReturnsListOfActivities()
         {
+            timeManager.TimeLogsManager = null;
             timeManager.SplitByComma = true;
             List<IActivity> activities = timeManager.FinishActivity("one, two", "not used");
             Assert.AreEqual("one", activities[0].Name);
@@ -110,8 +118,8 @@ namespace LifeIdea.LazyCure.Core.Time
         [Test]
         public void SplitByComma()
         {
-            timeManager.TimeLog = NewMock<ITimeLog>();
-            Expect.Exactly(2).On(timeManager.TimeLog).Method("AddActivity");
+            Stub.On(timeLogsManager).GetProperty("ActiveTimeLog").Will(Return.Value(timeLog));
+            Expect.Exactly(2).On(timeLog).Method("AddActivity");
             timeManager.SplitByComma = true;
             timeManager.FinishActivity("first,second", "second");
             VerifyAllExpectationsHaveBeenMet();
@@ -119,25 +127,29 @@ namespace LifeIdea.LazyCure.Core.Time
         [Test]
         public void Split3ByComma()
         {
-            timeManager.TimeLog = NewMock<ITimeLog>();
-            Expect.Exactly(3).On(timeManager.TimeLog).Method("AddActivity");
+            Stub.On(timeLogsManager).GetProperty("ActiveTimeLog").Will(Return.Value(timeLog));
+            Expect.Exactly(3).On(timeLog).Method("AddActivity");
             timeManager.SplitByComma = true;
             timeManager.FinishActivity("first,second,third", "next");
             VerifyAllExpectationsHaveBeenMet();
         }
         [Test]
-        public void SwitchToSetDifferentNamesInTimeLog()
+        public void SplitByCommaAddActivitiesWithDifferentNamesToTimeLog()
         {
             timeManager.SplitByComma = true;
-            timeManager.TimeLog = new TimeLog(DateTime.Now);
+            Expect.Once.On(timeLog).Method("AddActivity").With(new Activity("first", startTime, TimeSpan.Zero));
+            Expect.Once.On(timeLog).Method("AddActivity").With(new Activity("second", startTime, TimeSpan.Zero));
+            Stub.On(timeLogsManager).GetProperty("ActiveTimeLog").Will(Return.Value(timeLog));
+
             timeManager.FinishActivity("first, second", "next");
-            Assert.AreEqual("second", timeManager.TimeLog.Activities[1].Name);
+
+            VerifyAllExpectationsHaveBeenMet();
         }
         [Test]
         public void DontSplitByComma()
         {
-            timeManager.TimeLog = NewMock<ITimeLog>();
-            Expect.Exactly(1).On(timeManager.TimeLog).Method("AddActivity");
+            Stub.On(timeLogsManager).GetProperty("ActiveTimeLog").Will(Return.Value(timeLog));
+            Expect.Exactly(1).On(timeLog).Method("AddActivity");
             timeManager.SplitByComma = false;
             timeManager.FinishActivity("first,second", "next");
             VerifyAllExpectationsHaveBeenMet();
@@ -152,14 +164,14 @@ namespace LifeIdea.LazyCure.Core.Time
                 Expect.Once.On(mockTime).GetProperty("Now").Will(Return.Value(DateTime.Parse("2008-08-08 0:00:15")));
             }
             ITimeLog timeLog = NewMock<ITimeLog>();
+            Stub.On(timeLogsManager).GetProperty("ActiveTimeLog").Will(Return.Value(timeLog));
             using (Ordered)
             {
                 Expect.Once.On(timeLog).Method("AddActivity").With(new Activity("first", DateTime.Parse("2008-08-07 23:59:55"), TimeSpan.Parse("0:00:05")));
                 Expect.Once.On(timeLog).Method("AddActivity").With(new Activity("first", DateTime.Parse("2008-08-08 0:00:00"), TimeSpan.Parse("0:00:05")));
                 Expect.Once.On(timeLog).Method("AddActivity").With(new Activity("second", DateTime.Parse("2008-08-08 0:00:05"), TimeSpan.Parse("0:00:10")));
             }
-            timeManager = new TimeManager(mockTime);
-            timeManager.TimeLog = timeLog;
+            timeManager = new TimeManager(mockTime, timeLogsManager);
             timeManager.SwitchAtMidnight = true;
             timeManager.SplitByComma = true;
             timeManager.FinishActivity("first,second", "next");
@@ -168,6 +180,7 @@ namespace LifeIdea.LazyCure.Core.Time
         [Test]
         public void SwitchTo()
         {
+            timeManager.TimeLogsManager = null;
             string nextActivityName = "test second task";
             timeManager.SwitchTo(nextActivityName);
             Assert.AreEqual(nextActivityName, timeManager.CurrentActivity.Name);
@@ -175,6 +188,7 @@ namespace LifeIdea.LazyCure.Core.Time
         [Test]
         public void SwitchToStartsNewActivity()
         {
+            timeManager.TimeLogsManager = null;
             IActivity activity1 = timeManager.CurrentActivity;
             timeManager.SwitchTo("second");
             Assert.AreNotSame(activity1, timeManager.CurrentActivity);
@@ -184,51 +198,11 @@ namespace LifeIdea.LazyCure.Core.Time
         {
             ITimeSystem mockSystem = NewMock<ITimeSystem>();
             Expect.Exactly(2).On(mockSystem).GetProperty("Now").Will(Return.Value(startTime));
-            timeManager = new TimeManager(mockSystem);
-
             ITimeLog mockTimeLog = NewMock<ITimeLog>();
+            Stub.On(timeLogsManager).GetProperty("ActiveTimeLog").Will(Return.Value(mockTimeLog));
+            timeManager = new TimeManager(mockSystem, timeLogsManager);
             Expect.Once.On(mockTimeLog).Method("AddActivity").With(timeManager.CurrentActivity);
-            timeManager.TimeLog = mockTimeLog;
 
-            timeManager.FinishActivity("first", "second");
-
-            VerifyAllExpectationsHaveBeenMet();
-        }
-        [Test]
-        public void TimeLogIsSwitchedAtMidnight()
-        {
-            ITimeSystem mockTime = NewMock<ITimeSystem>();
-            using (Ordered)
-            {
-                Expect.Once.On(mockTime).GetProperty("Now").Will(Return.Value(DateTime.Parse("2008-08-07 23:59:55")));
-                Expect.Once.On(mockTime).GetProperty("Now").Will(Return.Value(DateTime.Parse("2008-08-08 0:00:06")));
-            }
-            ITimeLogsManager timeLogsManager = NewMock<ITimeLogsManager>();
-            Expect.Once.On(timeLogsManager).Method("Save").Will(Return.Value(true));
-            Expect.Once.On(timeLogsManager).Method(Is.Anything);
-            ITimeLog timeLog1 = new TimeLog(DateTime.Now);
-            timeManager = new TimeManager(mockTime, timeLogsManager, timeLog1);
-            timeManager.SwitchAtMidnight = true;
-            timeManager.FinishActivity("first", "second");
-            Assert.AreEqual(DateTime.Parse("2008-08-08"),timeManager.TimeLog.Date);
-            Assert.AreNotEqual(timeLog1, timeManager.TimeLog);
-        }
-        [Test]
-        public void AfterMidnightActivityIsCut()
-        {
-            ITimeSystem mockTime = NewMock<ITimeSystem>();
-            using (Ordered)
-            {
-                Expect.Once.On(mockTime).GetProperty("Now").Will(Return.Value(DateTime.Parse("2008-08-07 23:59:55")));
-                Expect.Once.On(mockTime).GetProperty("Now").Will(Return.Value(DateTime.Parse("2008-08-08 0:00:06")));
-            }
-            ITimeLogsManager timeLogsManager = NewMock<ITimeLogsManager>();
-            ITimeLog timeLog1 = NewMock<ITimeLog>();
-            Expect.Once.On(timeLog1).Method("AddActivity").With(new Activities.Activity("first", DateTime.Parse("2008-08-07 23:59:55"), TimeSpan.Parse("0:00:05")));
-            Stub.On(timeLogsManager).Method("Save").Will(Return.Value(true));
-            Stub.On(timeLogsManager).Method(Is.Anything);
-            timeManager = new TimeManager(mockTime, timeLogsManager, timeLog1);
-            timeManager.SwitchAtMidnight = true;
             timeManager.FinishActivity("first", "second");
 
             VerifyAllExpectationsHaveBeenMet();
@@ -245,31 +219,28 @@ namespace LifeIdea.LazyCure.Core.Time
             ITimeLogsManager timeLogsManager = NewMock<ITimeLogsManager>();
             ITimeLog timeLog1 = NewMock<ITimeLog>();
             Expect.Once.On(timeLog1).Method("AddActivity").With(new Activities.Activity("first", DateTime.Parse("2008-08-07 23:59:55"), TimeSpan.Parse("0:00:11")));
-            Expect.Never.On(timeLogsManager).Method("Save").Will(Return.Value(true));
-            Stub.On(timeLogsManager).Method(Is.Anything);
-            timeManager = new TimeManager(mockTime, timeLogsManager, timeLog1);
+            Expect.Once.On(timeLogsManager).Method("ActivateTimeLog").With(DateTime.Parse("2008-08-07"));
+            Stub.On(timeLogsManager).GetProperty("ActiveTimeLog").Will(Return.Value(timeLog1));
+            timeManager = new TimeManager(mockTime, timeLogsManager);
+            var midnightCorrector = NewMock<IMidnightCorrector>();
+            timeManager.MidnightCorrector = midnightCorrector;
+            Expect.Never.On(midnightCorrector).Method("PerformMidnightCorrection");
             timeManager.SwitchAtMidnight = false;
             timeManager.FinishActivity("first", "second");
 
             VerifyAllExpectationsHaveBeenMet();
         }
         [Test]
-        public void AfterMidnightNewLogContainsOneRecord()
+        public void CheckForMidnightCallsPerformMidnightCorrection()
         {
-            ITimeSystem mockTime = NewMock<ITimeSystem>();
-            using (Ordered)
-            {
-                Expect.Once.On(mockTime).GetProperty("Now").Will(Return.Value(DateTime.Parse("2008-08-07 23:59:55")));
-                Expect.Once.On(mockTime).GetProperty("Now").Will(Return.Value(DateTime.Parse("2008-08-08 0:00:06")));
-            }
-            ITimeLogsManager timeLogsManager = NewMock<ITimeLogsManager>();
-            Stub.On(timeLogsManager).Method("Save").Will(Return.Value(true));
-            Stub.On(timeLogsManager).Method(Is.Anything);
-            timeManager = new TimeManager(mockTime, timeLogsManager,new TimeLog(DateTime.Now));
+            IMidnightCorrector midnightCorrector = NewMock<IMidnightCorrector>();
+            Expect.Once.On(midnightCorrector).Method("PerformMidnightCorrection");
+            timeManager.MidnightCorrector = midnightCorrector;
             timeManager.SwitchAtMidnight = true;
-            timeManager.FinishActivity("first", "second");
-            Assert.AreEqual(1, timeManager.TimeLog.Activities.Count, "1 activity");
-            Assert.AreEqual(new Activity("first",DateTime.Parse("2008-08-08 0:00:00"),TimeSpan.Parse("0:00:06")), timeManager.TimeLog.Activities[0]);
+
+            timeManager.CheckForMidnight();
+
+            VerifyAllExpectationsHaveBeenMet();
         }
         [Test]
         public void SwitchAtMidnightWithoutTimeLogsManager()
@@ -281,17 +252,20 @@ namespace LifeIdea.LazyCure.Core.Time
                 Expect.Once.On(mockTime).GetProperty("Now").Will(Return.Value(DateTime.Parse("2008-08-08 0:00:06")));
             }
             timeManager = new TimeManager(mockTime);
-            timeManager.TimeLog = new TimeLog(DateTime.Now);
+
             timeManager.SwitchTo("second");
         }
         [Test]
-        public void AtMidnightReferenciesUpdated()
+        public void TimeLogGetUsesTimeLogsManager()
         {
-            timeManager.TimeLogsManager = NewMock<ITimeLogsManager>();
-            Expect.Once.On(timeManager.TimeLogsManager).Method("ActivateTimeLog");
-            Stub.On(timeManager.TimeLogsManager).Method("Save").Will(Return.Value(false));
-            timeManager.PerformMidnightCorrection(DateTime.Now);
-            VerifyAllExpectationsHaveBeenMet();
+            var timeLogsManager = NewMock<ITimeLogsManager>();
+            timeManager.TimeLogsManager = timeLogsManager;
+            TimeLog originalTimeLog = new TimeLog(DateTime.Today);
+            Expect.Once.On(timeLogsManager).GetProperty("ActiveTimeLog").Will(Return.Value(originalTimeLog));
+
+            ITimeLog returnedTimeLog = timeManager.TimeLog;
+
+            Assert.AreSame(originalTimeLog, returnedTimeLog);
         }
     }
 }

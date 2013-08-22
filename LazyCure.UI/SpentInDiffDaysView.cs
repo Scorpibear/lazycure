@@ -47,7 +47,10 @@ namespace LifeIdea.LazyCure.UI
             {
                 foreach (string entity in entities)
                     this.activityOrTaskValueComboBox.Items.Add(entity);
-                this.activityOrTaskValueComboBox.SelectedIndex = 0;
+                if (this.activityOrTaskValueComboBox.Items.Count > 0)
+                    this.activityOrTaskValueComboBox.SelectedIndex = 0;
+                else
+                    this.activityOrTaskValueComboBox.SelectedText = string.Empty;
             }
         }
 

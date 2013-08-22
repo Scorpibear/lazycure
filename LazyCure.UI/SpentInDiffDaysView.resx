@@ -130,8 +130,8 @@
   <data name="&gt;&gt;activityRadioButton.Parent" xml:space="preserve">
     <value>totalSpentOnGroup</value>
   </data>
-  <data name="&gt;&gt;closeButton.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="taskRadioButton.Text" xml:space="preserve">
+    <value>task</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
@@ -140,11 +140,8 @@
   <data name="&gt;&gt;daySpentDataGrid.Name" xml:space="preserve">
     <value>daySpentDataGrid</value>
   </data>
-  <data name="&gt;&gt;totalSpentOnGroup.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;taskRadioButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;spent.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;daySpentDataGrid.Parent" xml:space="preserve">
     <value>$this</value>
@@ -153,11 +150,11 @@
   <data name="daySpentDataGrid.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
     <value>Vertical</value>
   </data>
-  <data name="&gt;&gt;closeButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="activityRadioButton.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
-  <data name="taskRadioButton.Text" xml:space="preserve">
-    <value>task</value>
+  <data name="&gt;&gt;activityOrTaskValueComboBox.Parent" xml:space="preserve">
+    <value>totalSpentOnGroup</value>
   </data>
   <data name="activityRadioButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 19</value>
@@ -168,11 +165,11 @@
   <data name="activityRadioButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>58, 17</value>
   </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>317, 333</value>
+  <data name="totalSpentOnGroup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 4</value>
   </data>
-  <data name="&gt;&gt;daySpentDataGrid.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="daySpentDataGrid.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 87</value>
   </data>
   <data name="&gt;&gt;taskRadioButton.Name" xml:space="preserve">
     <value>taskRadioButton</value>
@@ -180,32 +177,29 @@
   <data name="&gt;&gt;totalSpentOnGroup.Name" xml:space="preserve">
     <value>totalSpentOnGroup</value>
   </data>
-  <data name="totalSpentOnGroup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>306, 63</value>
+  <data name="totalSpentOnGroup.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="&gt;&gt;daySpentDataGrid.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="activityRadioButton.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="totalSpentOnGroup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>306, 63</value>
   </data>
-  <data name="activityRadioButton.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="&gt;&gt;daySpentDataGrid.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
-  <data name="activityRadioButton.Text" xml:space="preserve">
-    <value>activity</value>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>SpentInDiffDaysView</value>
   </data>
   <data name="&gt;&gt;activityRadioButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="daySpentDataGrid.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 87</value>
-  </data>
   <data name="daySpentDataGrid.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="taskRadioButton.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>317, 333</value>
   </data>
   <data name="activityOrTaskValueComboBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>200, 21</value>
@@ -222,23 +216,20 @@
   <data name="&gt;&gt;taskRadioButton.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;taskRadioButton.Parent" xml:space="preserve">
-    <value>totalSpentOnGroup</value>
+  <data name="taskRadioButton.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
   <data name="&gt;&gt;day.Name" xml:space="preserve">
     <value>day</value>
   </data>
-  <data name="&gt;&gt;totalSpentOnGroup.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="&gt;&gt;closeButton.Name" xml:space="preserve">
     <value>closeButton</value>
   </data>
-  <data name="&gt;&gt;activityOrTaskValueComboBox.Parent" xml:space="preserve">
-    <value>totalSpentOnGroup</value>
+  <data name="&gt;&gt;taskRadioButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="totalSpentOnGroup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 4</value>
+  <data name="&gt;&gt;totalSpentOnGroup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="totalSpentOnGroup.Text" xml:space="preserve">
     <value>Total spent on</value>
@@ -246,20 +237,23 @@
   <data name="closeButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;activityRadioButton.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;taskRadioButton.Parent" xml:space="preserve">
+    <value>totalSpentOnGroup</value>
   </data>
   <data name="&gt;&gt;day.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="closeButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 20</value>
+  <data name="&gt;&gt;totalSpentOnGroup.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="taskRadioButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>45, 17</value>
   </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>SpentInDiffDaysView</value>
+  <data name="&gt;&gt;closeButton.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;spent.Name" xml:space="preserve">
+    <value>spent</value>
   </data>
   <data name="closeButton.Text" xml:space="preserve">
     <value>&amp;Close</value>
@@ -267,20 +261,23 @@
   <data name="activityOrTaskValueComboBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>100, 26</value>
   </data>
-  <data name="&gt;&gt;spent.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="spent.HeaderText" xml:space="preserve">
     <value>Spent</value>
   </data>
-  <data name="totalSpentOnGroup.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="closeButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 20</value>
   </data>
   <data name="&gt;&gt;activityOrTaskValueComboBox.Name" xml:space="preserve">
     <value>activityOrTaskValueComboBox</value>
   </data>
+  <data name="&gt;&gt;activityRadioButton.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="activityOrTaskValueComboBox.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
+  </data>
+  <data name="&gt;&gt;closeButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;activityRadioButton.Name" xml:space="preserve">
     <value>activityRadioButton</value>
@@ -291,8 +288,8 @@
   <data name="closeButton.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;activityOrTaskValueComboBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="activityRadioButton.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="daySpentDataGrid.Size" type="System.Drawing.Size, System.Drawing">
     <value>293, 208</value>
@@ -463,14 +460,17 @@
         AAA=
 </value>
   </data>
+  <data name="taskRadioButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 40</value>
+  </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Spent in different days</value>
   </data>
-  <data name="&gt;&gt;spent.Name" xml:space="preserve">
-    <value>spent</value>
+  <data name="&gt;&gt;activityOrTaskValueComboBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="taskRadioButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 40</value>
+  <data name="activityRadioButton.Text" xml:space="preserve">
+    <value>activity</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

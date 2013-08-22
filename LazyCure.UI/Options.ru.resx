@@ -181,6 +181,18 @@
   <data name="languageGroupBox.Text" xml:space="preserve">
     <value>Язык:</value>
   </data>
+  <data name="languageOptionBelarusian.Size" type="System.Drawing.Size, System.Drawing">
+    <value>91, 17</value>
+  </data>
+  <data name="languageOptionBelarusian.Text" xml:space="preserve">
+    <value>Белорусский</value>
+  </data>
+  <data name="languageOptionSpanish.Size" type="System.Drawing.Size, System.Drawing">
+    <value>81, 17</value>
+  </data>
+  <data name="languageOptionSpanish.Text" xml:space="preserve">
+    <value>Испанский</value>
+  </data>
   <data name="languageOptionUkrainian.Size" type="System.Drawing.Size, System.Drawing">
     <value>87, 17</value>
   </data>

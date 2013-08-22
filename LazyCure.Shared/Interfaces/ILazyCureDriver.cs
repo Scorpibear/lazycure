@@ -6,10 +6,6 @@ namespace LifeIdea.LazyCure.Shared.Interfaces
 {
     public interface ILazyCureDriver
     {
-        object ActivitiesSummaryData { get; }
-
-        TimeSpan AllActivitiesTime { get; }
-
         bool CalculateAutomaticallyWorkingIntervals { set; }
 
         IActivity CurrentActivity { get; }
@@ -19,8 +15,6 @@ namespace LifeIdea.LazyCure.Shared.Interfaces
         TimeSpan PossibleWorkInterruptionDuration { get; set; }
 
         ITaskViewDataSource TaskViewDataSource { get;}
-
-        object TasksSummaryData { get; }
 
         object TimeLogData { get; }
 

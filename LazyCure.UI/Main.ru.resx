@@ -126,12 +126,6 @@
   <data name="currentTime.ToolTipText" xml:space="preserve">
     <value>Текущее время</value>
   </data>
-  <data name="statusBar.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="toolStripContainer1.BottomToolStripPanel.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="postToTwitter.Location" type="System.Drawing.Point, System.Drawing">
     <value>87, 40</value>
@@ -141,9 +135,6 @@
   </data>
   <data name="postToTwitter.Text" xml:space="preserve">
     <value>запостить в Twitter</value>
-  </data>
-  <data name="postToTwitter.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="currentActivity.ToolTip" xml:space="preserve">
     <value>Введи краткое описание того, что ты сейчас делаешь</value>
@@ -159,21 +150,6 @@
   </data>
   <data name="nowYou.Text" xml:space="preserve">
     <value>Сейчас я ...</value>
-  </data>
-  <data name="nowYou.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="toolStripContainer1.ContentPanel.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="toolStripContainer1.LeftToolStripPanel.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="toolStripContainer1.RightToolStripPanel.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="toolStripContainer1.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="miOpen.Size" type="System.Drawing.Size, System.Drawing">
     <value>173, 22</value>
@@ -232,11 +208,20 @@
   <data name="miTasks.Text" xml:space="preserve">
     <value>&amp;Задачи</value>
   </data>
-  <data name="showMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 92</value>
+  <data name="miSpentOnActivityInDifferentDays.Size" type="System.Drawing.Size, System.Drawing">
+    <value>290, 22</value>
   </data>
-  <data name="showMenu.ToolTip" xml:space="preserve">
-    <value />
+  <data name="miSpentOnActivityInDifferentDays.Text" xml:space="preserve">
+    <value>&amp;Потрачено на активность в разные дни</value>
+  </data>
+  <data name="miReport.Size" type="System.Drawing.Size, System.Drawing">
+    <value>174, 22</value>
+  </data>
+  <data name="miReport.Text" xml:space="preserve">
+    <value>&amp;Отчёт</value>
+  </data>
+  <data name="showMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 114</value>
   </data>
   <data name="miShow.Size" type="System.Drawing.Size, System.Drawing">
     <value>69, 20</value>
@@ -249,18 +234,6 @@
   </data>
   <data name="miOptions.Text" xml:space="preserve">
     <value>&amp;Настройки</value>
-  </data>
-  <data name="miSpentOnActivityInDifferentDays.Size" type="System.Drawing.Size, System.Drawing">
-    <value>290, 22</value>
-  </data>
-  <data name="miSpentOnActivityInDifferentDays.Text" xml:space="preserve">
-    <value>&amp;Потрачено на активность в разные дни</value>
-  </data>
-  <data name="miReport.Size" type="System.Drawing.Size, System.Drawing">
-    <value>51, 20</value>
-  </data>
-  <data name="miReport.Text" xml:space="preserve">
-    <value>&amp;Отчёт</value>
   </data>
   <data name="miHowToUse.Size" type="System.Drawing.Size, System.Drawing">
     <value>335, 22</value>
@@ -310,23 +283,17 @@
   <data name="miHelp.Text" xml:space="preserve">
     <value>П&amp;омощь</value>
   </data>
-  <data name="menu.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="toolStripContainer1.TopToolStripPanel.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="miContextShow.Size" type="System.Drawing.Size, System.Drawing">
     <value>202, 22</value>
   </data>
   <data name="miContextShow.Text" xml:space="preserve">
-    <value>Показать</value>
+    <value>&amp;Показать</value>
   </data>
   <data name="miContextActivate.Size" type="System.Drawing.Size, System.Drawing">
     <value>202, 22</value>
   </data>
   <data name="miContextActivate.Text" xml:space="preserve">
-    <value>Активировать</value>
+    <value>&amp;Активировать</value>
   </data>
   <data name="miSeparator.Size" type="System.Drawing.Size, System.Drawing">
     <value>199, 6</value>
@@ -335,13 +302,10 @@
     <value>202, 22</value>
   </data>
   <data name="miContextExit.Text" xml:space="preserve">
-    <value>Выйти</value>
+    <value>&amp;Выйти</value>
   </data>
   <data name="contextMenu.Size" type="System.Drawing.Size, System.Drawing">
     <value>203, 76</value>
-  </data>
-  <data name="contextMenu.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="notifyIcon.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -674,8 +638,5 @@
         AAAABwAA4AAAAAAHAAD8AAAAAD8AAPwAAAAAPwAA/AAAAAA/AAD/gAAAAf8AAP+AAAAB/wAA/4AAAAH/
         AAA=
 </value>
-  </data>
-  <data name="$this.ToolTip" xml:space="preserve">
-    <value />
   </data>
 </root>

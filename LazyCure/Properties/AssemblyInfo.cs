@@ -24,8 +24,8 @@ using System.Runtime.InteropServices;
     "and a lot of thanks to You, who improves your personal efficiency with LazyCure now!")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("LifeIdea.org")]
-[assembly: AssemblyProduct("LazyCure")]
-[assembly: AssemblyCopyright("LifeIdea.org © 2006-2012")]
+[assembly: AssemblyProduct("LazyCure 4.2DP3")]
+[assembly: AssemblyCopyright("LifeIdea.org © 2006-2013")]
 [assembly: AssemblyTrademark("LazyCure")]
 [assembly: AssemblyCulture("")]
 
@@ -44,5 +44,5 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("4.1.0.0")]
-[assembly: AssemblyFileVersion("4.1.0.0")]
+[assembly: AssemblyVersion("4.2.0.0")]
+[assembly: AssemblyFileVersion("4.2.0.0")]

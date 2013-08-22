@@ -64,6 +64,8 @@
     <Compile Include="Interfaces\ITask.cs" />
     <Compile Include="Interfaces\ITaskActivityLinker.cs" />
     <Compile Include="Interfaces\ITimeLog.cs" />
+    <Compile Include="Interfaces\ITimeLogsFolderSettingSource.cs" />
+    <Compile Include="Interfaces\ITimeLogsFileManager.cs" />
     <Compile Include="Interfaces\ITimeLogsManager.cs" />
     <Compile Include="Structures\TokensPair.cs" />
     <Compile Include="Tools\Format.cs" />
@@ -108,6 +110,9 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Constants\Constants.uk.resx" />
+    <EmbeddedResource Include="Constants\Constants.es.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

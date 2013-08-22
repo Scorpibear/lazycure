@@ -16,12 +16,18 @@ namespace LifeIdea.LazyCure.Core.IO
     /// </summary>
     public class FileManager:IFileManager
     {
-        public string HistoryFileName;
-        public string TasksFileName;
-        public string timeLogsFolder = null;
+        private string timeLogsFolder = null;
 
-        public FileManager()
+        public string HistoryFileName { get; set; }
+
+        public string TasksFileName { get; set; }
+
+        public FileManager() : this(null) { }
+
+        public FileManager(ITimeLogsFolderSettingSource timeLogsFolderSettingSource)
         {
+            if(timeLogsFolderSettingSource!=null)
+                this.timeLogsFolder = timeLogsFolderSettingSource.TimeLogsFolder;
             TasksFileName = GetFullFileName("tasks.xml");
             HistoryFileName = GetFullFileName("history.txt");
         }
@@ -147,6 +153,8 @@ namespace LifeIdea.LazyCure.Core.IO
 
         public string GetTimeLogFileName(ITimeLog timeLog)
         {
+            if (timeLog == null)
+                return null;
             if (timeLog.FileName != null)
                 return timeLog.FileName;
             else

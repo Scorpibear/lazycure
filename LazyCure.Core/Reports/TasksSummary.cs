@@ -15,6 +15,11 @@ namespace LifeIdea.LazyCure.Core.Reports
         {
             set
             {
+                if (sourceTable != null)
+                {
+                    sourceTable.RowChanged -= sourceTable_RowChanged;
+                    sourceTable.RowDeleted -= sourceTable_RowChanged;
+                }
                 sourceTable = value;
                 sourceTable.RowChanged += sourceTable_RowChanged;
                 sourceTable.RowDeleted += sourceTable_RowChanged;

@@ -37,10 +37,20 @@ namespace LifeIdea.LazyCure.Core.IO
             }
         }
         [Test]
+        public void FileManagerUseTimeLogsFolderSetting()
+        {
+            ITimeLogsFolderSettingSource settings = NewMock<ITimeLogsFolderSettingSource>();
+            Stub.On(settings).GetProperty("TimeLogsFolder").Will(Return.Value(@"c:\myworkingfolder"));
+
+            FileManager fileManagerWithSettings = new FileManager(settings);
+
+            Assert.AreEqual(@"c:\myworkingfolder", fileManagerWithSettings.TimeLogsFolder);
+        }
+        [Test]
         public void GetTimeLogFileName()
         {
-            fileManager.timeLogsFolder = "test";
-            Assert.AreEqual(@"test\2109-12-31.timelog", fileManager.GetTimeLogFileName(DateTime.Parse("2109-12-31")));
+            fileManager.TimeLogsFolder = @"c:\test";
+            Assert.AreEqual(@"c:\test\2109-12-31.timelog", fileManager.GetTimeLogFileName(DateTime.Parse("2109-12-31")));
         }
         [Test]
         public void GetTimeLogFileNameWithNullFolder()
@@ -197,6 +207,18 @@ namespace LifeIdea.LazyCure.Core.IO
             var list = fileManager.AllTimeLogDates;
             Assert.AreEqual(1, list.Count, this.filename);
             Assert.AreEqual(DateTime.Parse("2000-01-23"), list[0]);
+        }
+        [Test]
+        public void GetTimeLogFileNameForNull()
+        {
+            ITimeLog timelog = null;
+            Assert.IsNull(fileManager.GetTimeLogFileName(timelog));
+        }
+        [Test]
+        public void SaveTimeLogWithNull()
+        {
+            ITimeLog timelog = null;
+            Assert.IsFalse(fileManager.SaveTimeLog(timelog));
         }
     }
 }

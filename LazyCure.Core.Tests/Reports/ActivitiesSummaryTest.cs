@@ -19,13 +19,16 @@ namespace LifeIdea.LazyCure.Core.Reports
         private readonly TimeSpan sevenSec = TimeSpan.Parse("0:07:00");
         private readonly TimeSpan threeSec = TimeSpan.Parse("0:03:00");
         private readonly TimeSpan tenSec = TimeSpan.Parse("0:10:00");
+        private List<IActivity> activities;
 
         [SetUp]
         public void SetUp()
         {
+            activities = new List<IActivity>();
             timeLog = NewMock<ITimeLog>();
             linker = NewMock<ITaskActivityLinker>();
             Stub.On(timeLog).GetProperty("Data").Will(Return.Value(new DataTable()));
+            Stub.On(timeLog).GetProperty("Activities").Will(Return.Value(activities));
             Stub.On(linker).Method("GetRelatedTaskName");
             activitiesSummary = new ActivitiesSummary(timeLog, linker);
         }
@@ -34,6 +37,16 @@ namespace LifeIdea.LazyCure.Core.Reports
         {
             this.VerifyAllExpectationsHaveBeenMet();
         }
+
+        private ITimeLog StubTimeLogWith(params IActivity[] activities)
+        {
+            ITimeLog timeLog = NewMock<ITimeLog>();
+            Stub.On(timeLog).GetProperty("Activities").Will(
+                Return.Value(new List<IActivity>(activities)));
+            Stub.On(timeLog).GetProperty("Data").Will(Return.Value(new DataTable()));
+            return timeLog;
+        }
+
         [Test]
         public void DataColumnsTypes()
         {
@@ -44,9 +57,8 @@ namespace LifeIdea.LazyCure.Core.Reports
         [Test]
         public void SimpleRecord()
         {
-            Stub.On(timeLog).GetProperty("Activities").Will(Return.Value(new List<IActivity>(
-                                                                             new IActivity[] { new Activity("first", DateTime.Now, sevenSec) })));
-
+            activitiesSummary.TimeLog = StubTimeLogWith(new Activity("first", DateTime.Now, sevenSec));
+            
             activitiesSummary.Update();
 
             DataRow firstRow = activitiesSummary.Data.Rows[0];
@@ -56,9 +68,7 @@ namespace LifeIdea.LazyCure.Core.Reports
         [Test]
         public void TwoDifferentActivities()
         {
-            Stub.On(timeLog).GetProperty("Activities").Will(Return.Value(new List<IActivity>(new Activity[]{
-                                                                                                               new Activity("first", DateTime.Now, sevenSec),
-                                                                                                               new Activity("second", DateTime.Now, threeSec)})));
+            activitiesSummary.TimeLog = StubTimeLogWith(new Activity("first", DateTime.Now, sevenSec), new Activity("second", DateTime.Now, threeSec));
 
             activitiesSummary.Update();
 
@@ -73,11 +83,9 @@ namespace LifeIdea.LazyCure.Core.Reports
         [Test]
         public void TwoEqualActivities()
         {
-            Stub.On(timeLog).GetProperty("Activities").Will(
-                Return.Value(new List<IActivity>(new IActivity[]{
-                    new Activity("first", DateTime.Now, sevenSec),
-                    new Activity("first", DateTime.Now, threeSec)})));
-
+            activitiesSummary.TimeLog = StubTimeLogWith(
+                new Activity("first", DateTime.Now, sevenSec),
+                new Activity("first", DateTime.Now, threeSec));
             activitiesSummary.Update();
 
             Assert.AreEqual(1, activitiesSummary.Data.Rows.Count, "rows count");
@@ -86,10 +94,9 @@ namespace LifeIdea.LazyCure.Core.Reports
         [Test]
         public void AllActivitiesTime()
         {
-            Stub.On(timeLog).GetProperty("Activities").Will(
-                Return.Value(new List<IActivity>(new IActivity[]{
+            activitiesSummary.TimeLog = StubTimeLogWith(
                     new Activity("first", DateTime.Now, sevenSec),
-                    new Activity("second", DateTime.Now, threeSec)})));
+                    new Activity("second", DateTime.Now, threeSec));
 
             activitiesSummary.Update();
 
@@ -98,10 +105,7 @@ namespace LifeIdea.LazyCure.Core.Reports
         [Test]
         public void GetRelatedTask()
         {
-            Stub.On(timeLog).GetProperty("Activities").Will(
-                Return.Value(new List<IActivity>(
-                new IActivity[] { new Activity("first", DateTime.Now, sevenSec) })));
-
+            ITimeLog timeLog = StubTimeLogWith(new Activity("first", DateTime.Now, sevenSec));
             linker = NewMock<ITaskActivityLinker>();
             Expect.AtLeastOnce.On(linker).Method("GetRelatedTaskName").With("first").Will(Return.Value("related task"));
             
@@ -114,9 +118,7 @@ namespace LifeIdea.LazyCure.Core.Reports
         [Test]
         public void LinkActivityAndTask()
         {
-            Stub.On(timeLog).GetProperty("Activities").Will(Return.Value(new List<IActivity>(
-                                                                             new IActivity[] { new Activity("activity1", DateTime.Now, sevenSec) })));
-
+            activitiesSummary.TimeLog = StubTimeLogWith(new Activity("activity1", DateTime.Now, sevenSec));
             Expect.Once.On(linker).Method("LinkActivityAndTask").With("activity1","task1").Will(Return.Value(true));
 
             activitiesSummary.Update();
@@ -126,7 +128,7 @@ namespace LifeIdea.LazyCure.Core.Reports
         [Test]
         public void TimeSpentOnAllActivitiesIsUpdatedWhenTimeLogsIsChanged()
         {
-            timeLog = new TimeLog(DateTime.Now.Date);
+            var timeLog = new TimeLog(DateTime.Now.Date);
             activitiesSummary.TimeLog = timeLog;
             timeLog.AddActivity(new Activity("test",DateTime.Parse("5:00:00"),TimeSpan.Parse("0:10:00")));
 
@@ -137,13 +139,59 @@ namespace LifeIdea.LazyCure.Core.Reports
         [Test]
         public void SummaryIsUpdatedWhenTimeLogEntryDeleted()
         {
-            timeLog = new TimeLog(DateTime.Now.Date);
+            var timeLog = new TimeLog(DateTime.Now.Date);
             activitiesSummary.TimeLog = timeLog;
             timeLog.AddActivity(new Activity("test", DateTime.Parse("5:00:00"), TimeSpan.Parse("0:10:00")));
 
             timeLog.Data.Rows[0].Delete();
 
             Assert.AreEqual(TimeSpan.Zero, activitiesSummary.AllActivitiesTime);
+        }
+        [Test]
+        public void SetTimeLogsIsUsedForDataCalculationWithOneTimeLog()
+        {
+            List<ITimeLog> timeLogs = new List<ITimeLog>();
+            IActivity activity = NewMock<IActivity>();
+            Stub.On(activity).GetProperty("Name").Will(Return.Value("test"));
+            Stub.On(activity).GetProperty("Duration").Will(Return.Value(TimeSpan.Zero));
+            ITimeLog timeLog = StubTimeLogWith(activity);
+            timeLogs.Add(timeLog);
+
+            activitiesSummary.TimeLogs = timeLogs;
+
+            Assert.AreEqual(1, activitiesSummary.Data.Rows.Count);
+        }
+        [Test]
+        public void SetTimeLogsIsUsedForDataCalculationWithTwoTimeLogs()
+        {
+            List<ITimeLog> timeLogs = new List<ITimeLog>();
+            IActivity activity = NewMock<IActivity>();
+            Stub.On(activity).GetProperty("Name").Will(Return.Value("test"));
+            Stub.On(activity).GetProperty("Duration").Will(Return.Value(TimeSpan.Zero));
+            ITimeLog timeLog = StubTimeLogWith(activity);
+            timeLogs.Add(timeLog);
+
+            activity = NewMock<IActivity>();
+            Stub.On(activity).GetProperty("Name").Will(Return.Value("test2"));
+            Stub.On(activity).GetProperty("Duration").Will(Return.Value(TimeSpan.Zero));
+            ITimeLog timeLog2 = StubTimeLogWith(activity);
+            timeLogs.Add(timeLog2);
+
+            activitiesSummary.TimeLogs = timeLogs;
+
+            Assert.AreEqual(2, activitiesSummary.Data.Rows.Count);
+        }
+        [Test]
+        public void TimeLogReturnsLatestTimeLog()
+        {
+            List<ITimeLog> timeLogs = new List<ITimeLog>();
+            ITimeLog firstTimeLog = StubTimeLogWith();
+            ITimeLog lastTimeLog = StubTimeLogWith();
+            timeLogs.Add(firstTimeLog);
+            timeLogs.Add(lastTimeLog);
+            activitiesSummary.TimeLogs = timeLogs; 
+
+            Assert.AreSame(lastTimeLog, activitiesSummary.TimeLog);
         }
     }
 }

@@ -17,7 +17,7 @@ namespace LifeIdea.LazyCure.Core.Reports
         [SetUp]
         public void SetUp()
         {
-            provider = new HistoryDataProvider(null);
+            provider = new HistoryDataProvider(null, null);
         }
         [Test]
         public void DataReturnsValidDataTable()
@@ -138,6 +138,33 @@ namespace LifeIdea.LazyCure.Core.Reports
 
             Assert.AreEqual(5, provider.ActivitiesHistory.LatestSize);
             Assert.AreEqual(13, provider.ActivitiesHistory.Size);
+        }
+        [Test]
+        public void TasksSummaryData()
+        {
+            provider.TasksSummary = NewMock<ITasksSummary>();
+            DataTable test = new DataTable("test");
+            Expect.Once.On(provider.TasksSummary).GetProperty("Data").Will(Return.Value(test));
+
+            object data = provider.TasksSummaryData;
+
+            Assert.AreEqual(test, data);
+            VerifyAllExpectationsHaveBeenMet();
+        }
+        [Test]
+        public void SetSummaryPeriodUpdateTimeLogsInActivitiesSummary()
+        {
+            DateTime from = DateTime.Parse("2013-01-01");
+            DateTime to = DateTime.Parse("2013-01-02");
+            List<ITimeLog> timeLogs = new List<ITimeLog>();
+            provider.TimeLogsManager = NewMock<ITimeLogsManager>();
+            provider.ActivitiesSummary = NewMock<IActivitiesSummary>();
+            Stub.On(provider.TimeLogsManager).Method("GetTimeLogs").With(from, to).Will(Return.Value(timeLogs));
+            Expect.Once.On(provider.ActivitiesSummary).SetProperty("TimeLogs").To(timeLogs);
+
+            provider.SetSummaryPeriod(from, to);
+
+            VerifyAllExpectationsHaveBeenMet();
         }
     }
 }
