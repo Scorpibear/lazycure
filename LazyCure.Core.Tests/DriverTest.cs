@@ -51,7 +51,6 @@ namespace LifeIdea.LazyCure.Core
             driver.ExternalPoster = NewMock<IExternalPoster>();
             driver.HistoryDataProvider = NewMock<IHistoryDataProvider>();
             Expect.Once.On(driver.HistoryDataProvider).Method("ApplySettings").With(settings);
-            Stub.On(settings).GetProperty("TimeLogsFolder").Will(Return.Value(@"c:\test"));
             Stub.On(settings).GetProperty("SaveAfterDone").Will(Return.Value(false));
             Stub.On(settings).GetProperty("ReminderTime").Will(Return.Value(TimeSpan.Parse("0:59:48")));
             Stub.On(settings).GetProperty("UseTweetingActivity").Will(Return.Value(true));
@@ -65,7 +64,6 @@ namespace LifeIdea.LazyCure.Core
 
             driver.ApplySettings(settings);
 
-            Assert.AreEqual(@"c:\test", driver.TimeLogsFolder);
             Assert.IsFalse(driver.SaveAfterDone);
             Assert.AreEqual(TimeSpan.Parse("0:59:48"), driver.TimeManager.MaxDuration);
             Assert.AreEqual("tweeting activity", driver.TimeManager.TweetingActivity);

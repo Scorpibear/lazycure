@@ -219,4 +219,7 @@
   <data name="DefaultLocale" xml:space="preserve">
     <value>en</value>
   </data>
+  <data name="Tweeting" xml:space="preserve">
+    <value>tweeting</value>
+  </data>
 </root>

@@ -220,12 +220,6 @@
   <data name="miReport.Text" xml:space="preserve">
     <value>&amp;Отчёт</value>
   </data>
-  <data name="miContextShow.Size" type="System.Drawing.Size, System.Drawing">
-    <value>202, 22</value>
-  </data>
-  <data name="miContextShow.Text" xml:space="preserve">
-    <value>Показать</value>
-  </data>
   <data name="showMenu.Size" type="System.Drawing.Size, System.Drawing">
     <value>175, 114</value>
   </data>
@@ -289,11 +283,17 @@
   <data name="miHelp.Text" xml:space="preserve">
     <value>П&amp;омощь</value>
   </data>
+  <data name="miContextShow.Size" type="System.Drawing.Size, System.Drawing">
+    <value>202, 22</value>
+  </data>
+  <data name="miContextShow.Text" xml:space="preserve">
+    <value>&amp;Показать</value>
+  </data>
   <data name="miContextActivate.Size" type="System.Drawing.Size, System.Drawing">
     <value>202, 22</value>
   </data>
   <data name="miContextActivate.Text" xml:space="preserve">
-    <value>Активировать</value>
+    <value>&amp;Активировать</value>
   </data>
   <data name="miSeparator.Size" type="System.Drawing.Size, System.Drawing">
     <value>199, 6</value>
@@ -302,7 +302,7 @@
     <value>202, 22</value>
   </data>
   <data name="miContextExit.Text" xml:space="preserve">
-    <value>Выйти</value>
+    <value>&amp;Выйти</value>
   </data>
   <data name="contextMenu.Size" type="System.Drawing.Size, System.Drawing">
     <value>203, 76</value>

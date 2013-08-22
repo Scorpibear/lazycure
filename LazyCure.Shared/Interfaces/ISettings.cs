@@ -8,7 +8,7 @@ namespace LifeIdea.LazyCure.Shared.Interfaces
         public const bool ShowsMainWindow = false;
     }
 
-    public interface ISettings: ILanguageSettingsProvider
+    public interface ISettings: ILanguageSettingsProvider, ITimeLogsFolderSettingSource
     {
         int ActivitiesNumberInTray { get; set; }
 

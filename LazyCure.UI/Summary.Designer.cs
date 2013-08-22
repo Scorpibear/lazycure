@@ -539,11 +539,6 @@ namespace LifeIdea.LazyCure.UI
         private System.Windows.Forms.Button closeButton;
         private System.Windows.Forms.ContextMenuStrip contextMenu;
         private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
-        private System.Windows.Forms.DataGridViewTextBoxColumn activityColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn spentColumnForActivitySummary;
-        private System.Windows.Forms.DataGridViewTextBoxColumn taskColumnForActivitySummary;
-        private System.Windows.Forms.DataGridViewTextBoxColumn taskColumnForTasksSummary;
-        private System.Windows.Forms.DataGridViewTextBoxColumn spentColumnForTasksSummary;
         private System.Windows.Forms.ToolStrip topPanel;
         private System.Windows.Forms.ToolStripButton lastMonthButton;
         private System.Windows.Forms.ToolStripButton prevWeekButton;
@@ -555,5 +550,10 @@ namespace LifeIdea.LazyCure.UI
         private System.Windows.Forms.ToolStripLabel dashLabel;
         private System.Windows.Forms.ToolStripDropDownButton toDateDropDown;
         private System.Windows.Forms.ToolStripContainer toolStripContainer1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn activityColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn spentColumnForActivitySummary;
+        private System.Windows.Forms.DataGridViewTextBoxColumn taskColumnForActivitySummary;
+        private System.Windows.Forms.DataGridViewTextBoxColumn taskColumnForTasksSummary;
+        private System.Windows.Forms.DataGridViewTextBoxColumn spentColumnForTasksSummary;
     }
 }

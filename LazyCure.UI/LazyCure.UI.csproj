@@ -143,20 +143,29 @@
       <SubType>Designer</SubType>
       <DependentUpon>AboutBox.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="HotKeysEditor.be.resx">
+      <DependentUpon>HotKeysEditor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HotKeysEditor.es.resx">
       <DependentUpon>HotKeysEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.be.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Main.en.resx">
-      <DependentUpon>Main.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Main.es.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="OathAuthorize.be.resx">
+      <DependentUpon>OathAuthorize.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Options.es.resx">
       <DependentUpon>Options.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SpentInDiffDaysView.be.resx">
+      <DependentUpon>SpentInDiffDaysView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SpentInDiffDaysView.es.resx">
+      <DependentUpon>SpentInDiffDaysView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SpentInDiffDaysView.resx">
       <DependentUpon>SpentInDiffDaysView.cs</DependentUpon>
@@ -226,6 +235,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Summary.uk.resx">
       <DependentUpon>Summary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TaskManager.es.resx">
+      <DependentUpon>TaskManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TaskManager.resx">
       <SubType>Designer</SubType>

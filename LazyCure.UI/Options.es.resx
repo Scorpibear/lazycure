@@ -184,23 +184,14 @@
   <data name="cancel.Text" xml:space="preserve">
     <value>Cancelar</value>
   </data>
-  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>383, 256</value>
-  </data>
-  <data name="tabGeneral.Size" type="System.Drawing.Size, System.Drawing">
-    <value>375, 230</value>
-  </data>
-  <data name="languageGroupBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 155</value>
-  </data>
-  <data name="languageGroupBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>358, 71</value>
-  </data>
-  <data name="languageGroupBox.Text" xml:space="preserve">
-    <value>Idioma:</value>
-  </data>
   <data name="languageOptionBelarusian.Location" type="System.Drawing.Point, System.Drawing">
     <value>189, 28</value>
+  </data>
+  <data name="languageOptionBelarusian.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 17</value>
+  </data>
+  <data name="languageOptionBelarusian.Text" xml:space="preserve">
+    <value>Bielorruso</value>
   </data>
   <data name="languageOptionSpanish.Location" type="System.Drawing.Point, System.Drawing">
     <value>189, 13</value>
@@ -226,6 +217,15 @@
   <data name="languageOptionRussian.Text" xml:space="preserve">
     <value>Ruso</value>
   </data>
+  <data name="languageGroupBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 155</value>
+  </data>
+  <data name="languageGroupBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>371, 71</value>
+  </data>
+  <data name="languageGroupBox.Text" xml:space="preserve">
+    <value>Idioma:</value>
+  </data>
   <data name="splitByComma.Size" type="System.Drawing.Size, System.Drawing">
     <value>187, 17</value>
   </data>
@@ -233,10 +233,10 @@
     <value>Separar actividades con comas (,)</value>
   </data>
   <data name="switchTimeLogAtMidnight.Size" type="System.Drawing.Size, System.Drawing">
-    <value>370, 17</value>
+    <value>376, 17</value>
   </data>
   <data name="switchTimeLogAtMidnight.Text" xml:space="preserve">
-    <value>A medianoce cerrar el registro de tiempo activo y abrir el del día siguiente</value>
+    <value>A medianoche cerrar el registro de tiempo activo y abrir el del día siguiente</value>
   </data>
   <data name="switchOnLogOff.Size" type="System.Drawing.Size, System.Drawing">
     <value>185, 17</value>
@@ -244,14 +244,8 @@
   <data name="switchOnLogOff.Text" xml:space="preserve">
     <value>Cambiar la actividad actual al salir</value>
   </data>
-  <data name="tabTwitter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>375, 230</value>
-  </data>
-  <data name="twitterAuthorizationGroup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>359, 109</value>
-  </data>
-  <data name="twitterAuthorizationGroup.Text" xml:space="preserve">
-    <value>Autorización de Twitter</value>
+  <data name="tabGeneral.Size" type="System.Drawing.Size, System.Drawing">
+    <value>383, 230</value>
   </data>
   <data name="authorizeButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>347, 84</value>
@@ -259,11 +253,11 @@
   <data name="authorizeButton.Text" xml:space="preserve">
     <value>Autorizar</value>
   </data>
-  <data name="whatAddtj.Size" type="System.Drawing.Size, System.Drawing">
-    <value>353, 70</value>
+  <data name="twitterAuthorizationGroup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>359, 109</value>
   </data>
-  <data name="whatAddtj.Text" xml:space="preserve">
-    <value>Qué añadir al registro de tiempo cuando se hagan envíos a Twitter:</value>
+  <data name="twitterAuthorizationGroup.Text" xml:space="preserve">
+    <value>Autorización de Twitter</value>
   </data>
   <data name="twitterActivityField.Location" type="System.Drawing.Point, System.Drawing">
     <value>154, 41</value>
@@ -286,17 +280,20 @@
   <data name="twitterActivityTheSameRadioButton.Text" xml:space="preserve">
     <value>Lo mismo que se ha enviado</value>
   </data>
+  <data name="whatAddtj.Size" type="System.Drawing.Size, System.Drawing">
+    <value>353, 70</value>
+  </data>
+  <data name="whatAddtj.Text" xml:space="preserve">
+    <value>Qué añadir al registro de tiempo cuando se hagan envíos a Twitter:</value>
+  </data>
   <data name="enableTwitterCheckbox.Size" type="System.Drawing.Size, System.Drawing">
     <value>188, 17</value>
   </data>
   <data name="enableTwitterCheckbox.Text" xml:space="preserve">
     <value>Permitir función de envío a Twitter</value>
   </data>
-  <data name="tabHotKeys.Size" type="System.Drawing.Size, System.Drawing">
-    <value>375, 230</value>
-  </data>
-  <data name="tabHotKeys.Text" xml:space="preserve">
-    <value>Atajos de teclado</value>
+  <data name="tabTwitter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>383, 230</value>
   </data>
   <data name="hotKeyToSwitchLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>236, 36</value>
@@ -322,20 +319,11 @@
   <data name="label6.Text" xml:space="preserve">
     <value>Combinación de teclas para activar:</value>
   </data>
-  <data name="tabTray.Size" type="System.Drawing.Size, System.Drawing">
-    <value>375, 230</value>
+  <data name="tabHotKeys.Size" type="System.Drawing.Size, System.Drawing">
+    <value>383, 230</value>
   </data>
-  <data name="tabTray.Text" xml:space="preserve">
-    <value>Área de notificaciones</value>
-  </data>
-  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 32</value>
-  </data>
-  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>356, 51</value>
-  </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>Click izquierdo en icono del área de notificaciones:</value>
+  <data name="tabHotKeys.Text" xml:space="preserve">
+    <value>Atajos de teclado</value>
   </data>
   <data name="opensMainWindow.Size" type="System.Drawing.Size, System.Drawing">
     <value>141, 17</value>
@@ -349,6 +337,15 @@
   <data name="showsRecentActivities.Text" xml:space="preserve">
     <value>muestra las actividades recientes</value>
   </data>
+  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 32</value>
+  </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>356, 51</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Click izquierdo en icono del área de notificaciones:</value>
+  </data>
   <data name="activitiesNumberInTray.Location" type="System.Drawing.Point, System.Drawing">
     <value>331, 6</value>
   </data>
@@ -358,8 +355,17 @@
   <data name="label5.Text" xml:space="preserve">
     <value>Número de actividades mostrado en el área de notificaciones:</value>
   </data>
+  <data name="tabTray.Size" type="System.Drawing.Size, System.Drawing">
+    <value>383, 230</value>
+  </data>
+  <data name="tabTray.Text" xml:space="preserve">
+    <value>Área de notificaciones</value>
+  </data>
+  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>391, 256</value>
+  </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>383, 288</value>
+    <value>391, 288</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -526,5 +532,8 @@
         AAAABwAA4AAAAAAHAAD8AAAAAD8AAPwAAAAAPwAA/AAAAAA/AAD/gAAAAf8AAP+AAAAB/wAA/4AAAAH/
         AAA=
 </value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Opciones</value>
   </data>
 </root>

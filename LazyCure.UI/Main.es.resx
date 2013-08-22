@@ -117,21 +117,39 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="nowYou.Text" xml:space="preserve">
-    <value>Ahora...</value>
+  <data name="activityStartTime.ToolTipText" xml:space="preserve">
+    <value>Tiempo de inicio de la actividad</value>
+  </data>
+  <data name="activityDuration.ToolTipText" xml:space="preserve">
+    <value>Duración de la actividad</value>
+  </data>
+  <data name="currentTime.ToolTipText" xml:space="preserve">
+    <value>Tiempo actual</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="postToTwitter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>96, 40</value>
+  </data>
+  <data name="postToTwitter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>113, 17</value>
+  </data>
+  <data name="postToTwitter.Text" xml:space="preserve">
+    <value>publicar en Twitter</value>
+  </data>
+  <data name="currentActivity.ToolTip" xml:space="preserve">
+    <value>Introduce la actividad que estés realizando ahora mismo</value>
+  </data>
   <data name="switchButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 11pt</value>
   </data>
   <data name="switchButton.Text" xml:space="preserve">
     <value>¡Hecho!</value>
   </data>
-  <data name="miFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 20</value>
+  <data name="switchButton.ToolTip" xml:space="preserve">
+    <value>Presiona el botón cuando hayas completado la actividad actual e inicies otra diferente</value>
   </data>
-  <data name="miFile.Text" xml:space="preserve">
-    <value>&amp;Archivo</value>
+  <data name="nowYou.Text" xml:space="preserve">
+    <value>Ahora...</value>
   </data>
   <data name="miOpen.Size" type="System.Drawing.Size, System.Drawing">
     <value>159, 22</value>
@@ -160,6 +178,12 @@
   <data name="miExit.Text" xml:space="preserve">
     <value>&amp;Salir</value>
   </data>
+  <data name="miFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 20</value>
+  </data>
+  <data name="miFile.Text" xml:space="preserve">
+    <value>&amp;Archivo</value>
+  </data>
   <data name="miActivityDetails.Size" type="System.Drawing.Size, System.Drawing">
     <value>194, 22</value>
   </data>
@@ -184,8 +208,23 @@
   <data name="miTasks.Text" xml:space="preserve">
     <value>&amp;Gestor de tareas</value>
   </data>
+  <data name="miSpentOnActivityInDifferentDays.Size" type="System.Drawing.Size, System.Drawing">
+    <value>343, 22</value>
+  </data>
+  <data name="miSpentOnActivityInDifferentDays.Text" xml:space="preserve">
+    <value>&amp;Gastado en la actividad a lo largo de diferentes días</value>
+  </data>
   <data name="miReport.Size" type="System.Drawing.Size, System.Drawing">
     <value>194, 22</value>
+  </data>
+  <data name="miReport.Text" xml:space="preserve">
+    <value>&amp;Informe</value>
+  </data>
+  <data name="miContextShow.Size" type="System.Drawing.Size, System.Drawing">
+    <value>163, 22</value>
+  </data>
+  <data name="miContextShow.Text" xml:space="preserve">
+    <value>&amp;Mostrar</value>
   </data>
   <data name="showMenu.Size" type="System.Drawing.Size, System.Drawing">
     <value>195, 114</value>
@@ -202,17 +241,11 @@
   <data name="miOptions.Text" xml:space="preserve">
     <value>&amp;Opciones</value>
   </data>
-  <data name="miHelp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 20</value>
-  </data>
-  <data name="miHelp.Text" xml:space="preserve">
-    <value>A&amp;yuda</value>
-  </data>
   <data name="miHowToUse.Size" type="System.Drawing.Size, System.Drawing">
     <value>283, 22</value>
   </data>
   <data name="miHowToUse.Text" xml:space="preserve">
-    <value>&amp;Cómo usarlo</value>
+    <value>&amp;Cómo usar el programa</value>
   </data>
   <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
     <value>280, 6</value>
@@ -249,6 +282,30 @@
   </data>
   <data name="miAbout.Text" xml:space="preserve">
     <value>&amp;Sobre LazyCure</value>
+  </data>
+  <data name="miHelp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 20</value>
+  </data>
+  <data name="miHelp.Text" xml:space="preserve">
+    <value>A&amp;yuda</value>
+  </data>
+  <data name="miContextActivate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>163, 22</value>
+  </data>
+  <data name="miContextActivate.Text" xml:space="preserve">
+    <value>&amp;Activar</value>
+  </data>
+  <data name="miSeparator.Size" type="System.Drawing.Size, System.Drawing">
+    <value>160, 6</value>
+  </data>
+  <data name="miContextExit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>163, 22</value>
+  </data>
+  <data name="miContextExit.Text" xml:space="preserve">
+    <value>&amp;Salir</value>
+  </data>
+  <data name="contextMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>164, 76</value>
   </data>
   <data name="notifyIcon.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
