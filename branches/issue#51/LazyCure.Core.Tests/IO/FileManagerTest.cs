@@ -37,10 +37,20 @@ namespace LifeIdea.LazyCure.Core.IO
             }
         }
         [Test]
+        public void FileManagerUseTimeLogsFolderSetting()
+        {
+            ITimeLogsFolderSettingSource settings = NewMock<ITimeLogsFolderSettingSource>();
+            Stub.On(settings).GetProperty("TimeLogsFolder").Will(Return.Value(@"c:\myworkingfolder"));
+
+            FileManager fileManagerWithSettings = new FileManager(settings);
+
+            Assert.AreEqual(@"c:\myworkingfolder", fileManagerWithSettings.TimeLogsFolder);
+        }
+        [Test]
         public void GetTimeLogFileName()
         {
-            fileManager.timeLogsFolder = "test";
-            Assert.AreEqual(@"test\2109-12-31.timelog", fileManager.GetTimeLogFileName(DateTime.Parse("2109-12-31")));
+            fileManager.TimeLogsFolder = @"c:\test";
+            Assert.AreEqual(@"c:\test\2109-12-31.timelog", fileManager.GetTimeLogFileName(DateTime.Parse("2109-12-31")));
         }
         [Test]
         public void GetTimeLogFileNameWithNullFolder()

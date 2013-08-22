@@ -92,7 +92,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="be\LazyCure.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Empty.ico" />
+    <Content Include="es\LazyCure.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="LazyCure.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

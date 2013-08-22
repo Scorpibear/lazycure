@@ -179,7 +179,7 @@ A los lectores de LifeIdea.org, por su inspiración e ideas
     <value>http://lazycure.com/donate-to-lazycure</value>
   </data>
   <data name="DoYouWantToLogCurrentActivityBeforeClosure" xml:space="preserve">
-    <value>Do you want to log current activity before LazyCure will be closed?</value>
+    <value>¿Quieres registrar la actividad actual antes de que se cierre LazyCure?</value>
   </data>
   <data name="FromAndFor" xml:space="preserve">
     <value>desde {0} durante {1}</value>
@@ -206,7 +206,7 @@ A los lectores de LifeIdea.org, por su inspiración e ideas
     <value>Valor de tiempo incorrecto</value>
   </data>
   <data name="InvalidTimeWarning" xml:space="preserve">
-    <value>Se especificó un valor incorrecto para el tiempo. Por favor, corrígelo y pulsa 'Aceptar'</value>
+    <value>Se especificó un valor de tiempo incorrecto. Por favor, especifica uno válido entre 0:00 y 23:59.</value>
   </data>
   <data name="LanguageChange" xml:space="preserve">
     <value>Cambio de idioma</value>
@@ -246,5 +246,8 @@ A los lectores de LifeIdea.org, por su inspiración e ideas
   </data>
   <data name="Work" xml:space="preserve">
     <value>Trabajo</value>
+  </data>
+  <data name="Tweeting" xml:space="preserve">
+    <value>tuitear</value>
   </data>
 </root>

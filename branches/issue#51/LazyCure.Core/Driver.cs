@@ -23,7 +23,7 @@ namespace LifeIdea.LazyCure.Core
         #region Fields
 
         private IEfficiencyCalculator efficiencyCalculator;
-        private IFileManager fileManager = new FileManager();
+        private IFileManager fileManager;// = new FileManager();
         private ILanguageSwitcher languageSwitcher;
         private ITaskCollection taskCollection;
         private ITimeManager timeManager;
@@ -124,6 +124,7 @@ namespace LifeIdea.LazyCure.Core
         public Driver(ITimeSystem timeSystem, ISettings settings)
         {
             //when reordering, be carefull, in order to pass only initialized objects
+            this.fileManager = new FileManager(settings);
             this.languageSwitcher = new LanguageSwitcher(settings);
             //probably all of them should be properties, not fields, in order to automatically update referencies
             TaskCollection = LifeIdea.LazyCure.Core.Tasks.TaskCollection.Default;
@@ -181,17 +182,27 @@ namespace LifeIdea.LazyCure.Core
         {
             if (settings != null)
             {
-                TimeLogsFolder = settings.TimeLogsFolder;
                 SaveAfterDone = settings.SaveAfterDone;
                 if (HistoryDataProvider != null)
                     HistoryDataProvider.ApplySettings(settings);
                 TimeManager.MaxDuration = settings.ReminderTime;
                 TimeManager.SplitByComma = settings.SplitByComma;
                 TimeManager.SwitchAtMidnight = settings.SwitchTimeLogAtMidnight;
-                TimeManager.TweetingActivity = (settings.UseTweetingActivity) ? settings.TweetingActivity :
-                                                                                null;
+                ApplyTweetingActivity(settings);
                 ExternalPoster.AccessTokens = new TokensPair(settings.TwitterAccessToken, settings.TwitterAccessTokenSecret);
             }
+        }
+
+        private void ApplyTweetingActivity(ISettings settings)
+        {
+            // this hardcode could be replaced for getting the english version from constants, but don't know the simple way to do that
+            const string tweetingInEn = "tweeting";
+            if (settings.TweetingActivity == string.Empty || settings.TweetingActivity == tweetingInEn)
+            {
+                settings.TweetingActivity = LazyCure.Shared.Constants.Constants.Tweeting;
+                settings.Save();
+            }
+            TimeManager.TweetingActivity = (settings.UseTweetingActivity) ? settings.TweetingActivity : null;
         }
 
         public void AuthorizeInExternalPoster()

@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="nowYou.Text" xml:space="preserve">
-    <value>Зараз я ...</value>
-  </data>
   <data name="activityStartTime.ToolTipText" xml:space="preserve">
     <value>Час пачатку актыўнасці</value>
   </data>
@@ -148,11 +145,8 @@
   <data name="switchButton.Text" xml:space="preserve">
     <value>Гатова!</value>
   </data>
-  <data name="miFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 20</value>
-  </data>
-  <data name="miFile.Text" xml:space="preserve">
-    <value>&amp;Файл</value>
+  <data name="nowYou.Text" xml:space="preserve">
+    <value>Зараз я ...</value>
   </data>
   <data name="miOpen.Size" type="System.Drawing.Size, System.Drawing">
     <value>179, 22</value>
@@ -181,14 +175,11 @@
   <data name="miExit.Text" xml:space="preserve">
     <value>&amp;Выйсцi</value>
   </data>
-  <data name="showMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>211, 114</value>
+  <data name="miFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 20</value>
   </data>
-  <data name="miShow.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 20</value>
-  </data>
-  <data name="miShow.Text" xml:space="preserve">
-    <value>&amp;Паказаць</value>
+  <data name="miFile.Text" xml:space="preserve">
+    <value>&amp;Файл</value>
   </data>
   <data name="miActivityDetails.Size" type="System.Drawing.Size, System.Drawing">
     <value>210, 22</value>
@@ -214,29 +205,32 @@
   <data name="miTasks.Text" xml:space="preserve">
     <value>&amp;Задачы</value>
   </data>
-  <data name="miReport.Size" type="System.Drawing.Size, System.Drawing">
-    <value>210, 22</value>
-  </data>
-  <data name="miReport.Text" xml:space="preserve">
-    <value>Сп&amp;раваздача</value>
-  </data>
   <data name="miSpentOnActivityInDifferentDays.Size" type="System.Drawing.Size, System.Drawing">
     <value>301, 22</value>
   </data>
   <data name="miSpentOnActivityInDifferentDays.Text" xml:space="preserve">
     <value>&amp;Зрасходавана на актыўнасці ў розныя дні</value>
   </data>
+  <data name="miReport.Size" type="System.Drawing.Size, System.Drawing">
+    <value>210, 22</value>
+  </data>
+  <data name="miReport.Text" xml:space="preserve">
+    <value>Сп&amp;раваздача</value>
+  </data>
+  <data name="showMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>211, 114</value>
+  </data>
+  <data name="miShow.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 20</value>
+  </data>
+  <data name="miShow.Text" xml:space="preserve">
+    <value>&amp;Паказаць</value>
+  </data>
   <data name="miOptions.Size" type="System.Drawing.Size, System.Drawing">
     <value>62, 20</value>
   </data>
   <data name="miOptions.Text" xml:space="preserve">
     <value>&amp;Налады</value>
-  </data>
-  <data name="miHelp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 20</value>
-  </data>
-  <data name="miHelp.Text" xml:space="preserve">
-    <value>&amp;Дапамога</value>
   </data>
   <data name="miHowToUse.Size" type="System.Drawing.Size, System.Drawing">
     <value>333, 22</value>
@@ -279,6 +273,36 @@
   </data>
   <data name="miAbout.Text" xml:space="preserve">
     <value>&amp;Аб LazyCure</value>
+  </data>
+  <data name="miHelp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 20</value>
+  </data>
+  <data name="miHelp.Text" xml:space="preserve">
+    <value>&amp;Дапамога</value>
+  </data>
+  <data name="miContextShow.Size" type="System.Drawing.Size, System.Drawing">
+    <value>191, 22</value>
+  </data>
+  <data name="miContextShow.Text" xml:space="preserve">
+    <value>&amp;Паказаць</value>
+  </data>
+  <data name="miContextActivate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>191, 22</value>
+  </data>
+  <data name="miContextActivate.Text" xml:space="preserve">
+    <value>&amp;Актываваць</value>
+  </data>
+  <data name="miSeparator.Size" type="System.Drawing.Size, System.Drawing">
+    <value>188, 6</value>
+  </data>
+  <data name="miContextExit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>191, 22</value>
+  </data>
+  <data name="miContextExit.Text" xml:space="preserve">
+    <value>&amp;Выйсцi</value>
+  </data>
+  <data name="contextMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 76</value>
   </data>
   <data name="notifyIcon.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

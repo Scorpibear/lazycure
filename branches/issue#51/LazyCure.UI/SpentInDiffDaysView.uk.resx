@@ -124,10 +124,6 @@
   <data name="closeButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>58, 20</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="closeButton.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
   <data name="closeButton.Text" xml:space="preserve">
     <value>&amp;Закрити</value>
   </data>
@@ -137,17 +133,8 @@
   <data name="spent.HeaderText" xml:space="preserve">
     <value>Витрачено</value>
   </data>
-  <data name="daySpentDataGrid.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="activityOrTaskValueComboBox.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
   <data name="taskRadioButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>73, 17</value>
-  </data>
-  <data name="taskRadioButton.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
   </data>
   <data name="taskRadioButton.Text" xml:space="preserve">
     <value>завдання</value>
@@ -155,14 +142,8 @@
   <data name="activityRadioButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>76, 17</value>
   </data>
-  <data name="activityRadioButton.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
   <data name="activityRadioButton.Text" xml:space="preserve">
     <value>діяльність</value>
-  </data>
-  <data name="totalSpentOnGroup.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
   </data>
   <data name="totalSpentOnGroup.Text" xml:space="preserve">
     <value>Всього витрачено на</value>

@@ -18,7 +18,6 @@ namespace LifeIdea.LazyCure.Core.Time
         private RunningActivity previousActivity;
         private bool splitByComma;
         private bool switchAtMidnight;
-        private ITimeLog timeLog;
         private ITimeLogsManager timeLogsManager;
         private string tweetingActivity;
         
@@ -62,7 +61,7 @@ namespace LifeIdea.LazyCure.Core.Time
                 
                 if (timeLogsManager != null)
                     return timeLogsManager.ActiveTimeLog;
-                return timeLog;
+                return null;
             }
         }
 

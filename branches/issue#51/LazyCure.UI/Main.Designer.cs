@@ -251,6 +251,7 @@ namespace LifeIdea.LazyCure.UI
             this.miTasks,
             this.miReport});
             this.showMenu.Name = "contextMenu";
+            this.showMenu.OwnerItem = this.miContextShow;
             this.toolTip.SetToolTip(this.showMenu, resources.GetString("showMenu.ToolTip"));
             // 
             // miActivityDetails
