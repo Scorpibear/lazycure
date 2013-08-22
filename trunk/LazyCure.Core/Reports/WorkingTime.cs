@@ -59,7 +59,7 @@ namespace LifeIdea.LazyCure.Core.Reports
             set
             {
                 timeLog = value;
-                if (timeLog.Data != null)
+                if (timeLog!=null && timeLog.Data != null)
                 {
                     timeLog.Data.RowDeleted += TimeLogData_RowChanged;
                     timeLog.Data.RowChanged += TimeLogData_RowChanged;
@@ -121,18 +121,21 @@ namespace LifeIdea.LazyCure.Core.Reports
                 table.Rows.Clear();
                 DateTime start = DateTime.MinValue;
                 DateTime end = start;
-                foreach (IActivity activity in timeLog.Activities)
+                if (timeLog != null)
                 {
-                    if (IsWorking(activity))
+                    foreach (IActivity activity in timeLog.Activities)
                     {
-                        if (start == DateTime.MinValue)
-                            start = activity.Start;
-                        end = activity.Start + activity.Duration;
-                    }
-                    else
-                    {
-                        if (activity.Duration > PossibleWorkInterruption)
-                            AddInterval(ref start, end);
+                        if (IsWorking(activity))
+                        {
+                            if (start == DateTime.MinValue)
+                                start = activity.Start;
+                            end = activity.Start + activity.Duration;
+                        }
+                        else
+                        {
+                            if (activity.Duration > PossibleWorkInterruption)
+                                AddInterval(ref start, end);
+                        }
                     }
                 }
                 AddInterval(ref start, end);

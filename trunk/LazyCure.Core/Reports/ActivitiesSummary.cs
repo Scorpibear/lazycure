@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Data;
 using LifeIdea.LazyCure.Core.IO;
 using LifeIdea.LazyCure.Core.Tasks;
@@ -13,23 +14,70 @@ namespace LifeIdea.LazyCure.Core.Reports
     /// </summary>
     public class ActivitiesSummary: IActivitiesSummary
     {
-        private ITimeLog timeLog;
+        private List<ITimeLog> timeLogs;
         private TimeSpan allActivitiesTime=new TimeSpan();
 
-        public DataTable Data;
+        public DataTable Data { get; set; }
 
-        public ITaskActivityLinker Linker;
+        public ITaskActivityLinker Linker { get; set; }
 
         public TimeSpan AllActivitiesTime{get{ return allActivitiesTime;}}
 
         public ITimeLog TimeLog
         {
-            get{ return timeLog;}
+            get
+            {
+                if (timeLogs != null && timeLogs.Count > 0)
+                    return timeLogs[timeLogs.Count-1];
+                return null;
+            }
             set
             {
-                timeLog = value;
-                timeLog.Data.RowDeleted += TimeLogData_RowChanged;
-                timeLog.Data.RowChanged += TimeLogData_RowChanged;
+                var newTimeLogs = new List<ITimeLog>();
+                if (value != null)
+                    newTimeLogs.Add(value);
+                TimeLogs = newTimeLogs;
+            }
+        }
+
+        private void AddHandlersToTimeLogs()
+        {
+            if (timeLogs != null)
+            {
+                foreach (ITimeLog timelog in timeLogs)
+                {
+                    timelog.Data.RowDeleted += TimeLogData_RowChanged;
+                    timelog.Data.RowChanged += TimeLogData_RowChanged;
+                }
+            }
+        }
+
+        private void RemoveHandlersToTimeLogs()
+        {
+            if (timeLogs != null)
+            {
+                foreach (ITimeLog timelog in timeLogs)
+                {
+                    timelog.Data.RowDeleted -= TimeLogData_RowChanged;
+                    timelog.Data.RowChanged -= TimeLogData_RowChanged;
+                }
+            }
+        }
+
+        void Data_TableNewRow(object sender, DataTableNewRowEventArgs e)
+        {
+            TimeLogData_RowChanged(sender, null);
+        }
+
+        public List<ITimeLog> TimeLogs
+        {
+            get { return timeLogs; }
+            set
+            {
+                RemoveHandlersToTimeLogs();
+                timeLogs = value;
+                AddHandlersToTimeLogs();
+                this.Update();
             }
         }
         
@@ -48,28 +96,35 @@ namespace LifeIdea.LazyCure.Core.Reports
         {
             Data.Clear();
             allActivitiesTime = new TimeSpan(0);
-            foreach (IActivity activity in timeLog.Activities)
+            foreach (ITimeLog timeLog in TimeLogs)
+                foreach (IActivity activity in timeLog.Activities)
+                    AddActivityToSummaryData(activity);
+        }
+
+        private void AddActivityToSummaryData(IActivity activity)
+        {
+            bool existentRowUpdated = false;
+            for (int iRowIndex = 0; iRowIndex < Data.Rows.Count; iRowIndex++)
             {
-                bool existentRowUpdated = false;
-                for (int iRowIndex = 0; iRowIndex < Data.Rows.Count; iRowIndex++)
+                if (((string)Data.Rows[iRowIndex]["Activity"] == activity.Name) &&
+                    (Data.Rows[iRowIndex]["Spent"] != DBNull.Value))
                 {
-                    if (((string)Data.Rows[iRowIndex]["Activity"] == activity.Name) &&
-                        (Data.Rows[iRowIndex]["Spent"] != DBNull.Value))
-                    {
-                        TimeSpan currentDuration = (TimeSpan)Data.Rows[iRowIndex]["Spent"];
-                        Data.Rows[iRowIndex]["Spent"] = currentDuration + activity.Duration;
-                        existentRowUpdated = true;
-                        break;
-                    }
+                    TimeSpan currentDuration = (TimeSpan)Data.Rows[iRowIndex]["Spent"];
+                    Data.Rows[iRowIndex]["Spent"] = currentDuration + activity.Duration;
+                    existentRowUpdated = true;
+                    break;
                 }
-                if (!existentRowUpdated)
+            }
+            if (!existentRowUpdated)
+            {
+                if (Linker != null)
                 {
                     string relatedTask = Linker.GetRelatedTaskName(activity.Name);
                     Data.Rows.Add(activity.Name, activity.Duration, relatedTask);
                 }
-
-                allActivitiesTime+= activity.Duration;
             }
+
+            allActivitiesTime += activity.Duration;
         }
 
         private void TimeLogData_RowChanged(object sender, DataRowChangeEventArgs e)

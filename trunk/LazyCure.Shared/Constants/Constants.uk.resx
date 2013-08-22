@@ -247,4 +247,7 @@
   <data name="Work" xml:space="preserve">
     <value>Робота</value>
   </data>
+  <data name="Tweeting" xml:space="preserve">
+    <value>спілкування в твіттері</value>
+  </data>
 </root>

@@ -114,8 +114,10 @@
             // 
             // SpentInDiffDaysView
             // 
+            this.AcceptButton = this.closeButton;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.closeButton;
             this.Controls.Add(this.totalSpentOnGroup);
             this.Controls.Add(this.closeButton);
             this.Controls.Add(this.daySpentDataGrid);
@@ -135,10 +137,10 @@
         private System.Windows.Forms.ComboBox activityOrTaskValueComboBox;
         private System.Windows.Forms.DataGridView daySpentDataGrid;
         private System.Windows.Forms.Button closeButton;
-        private System.Windows.Forms.DataGridViewTextBoxColumn day;
-        private System.Windows.Forms.DataGridViewTextBoxColumn spent;
         private System.Windows.Forms.GroupBox totalSpentOnGroup;
         private System.Windows.Forms.RadioButton taskRadioButton;
         private System.Windows.Forms.RadioButton activityRadioButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn day;
+        private System.Windows.Forms.DataGridViewTextBoxColumn spent;
     }
 }

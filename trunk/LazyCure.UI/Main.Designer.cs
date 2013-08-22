@@ -52,9 +52,9 @@ namespace LifeIdea.LazyCure.UI
             this.miTimeLog = new System.Windows.Forms.ToolStripMenuItem();
             this.miSummary = new System.Windows.Forms.ToolStripMenuItem();
             this.miTasks = new System.Windows.Forms.ToolStripMenuItem();
-            this.miOptions = new System.Windows.Forms.ToolStripMenuItem();
             this.miReport = new System.Windows.Forms.ToolStripMenuItem();
             this.miSpentOnActivityInDifferentDays = new System.Windows.Forms.ToolStripMenuItem();
+            this.miOptions = new System.Windows.Forms.ToolStripMenuItem();
             this.miHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.miHowToUse = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
@@ -191,7 +191,6 @@ namespace LifeIdea.LazyCure.UI
             this.miFile,
             this.miShow,
             this.miOptions,
-            this.miReport,
             this.miHelp});
             this.menu.Name = "menu";
             this.toolTip.SetToolTip(this.menu, resources.GetString("menu.ToolTip"));
@@ -249,7 +248,8 @@ namespace LifeIdea.LazyCure.UI
             this.miActivityDetails,
             this.miTimeLog,
             this.miSummary,
-            this.miTasks});
+            this.miTasks,
+            this.miReport});
             this.showMenu.Name = "contextMenu";
             this.showMenu.OwnerItem = this.miContextShow;
             this.toolTip.SetToolTip(this.showMenu, resources.GetString("showMenu.ToolTip"));
@@ -284,12 +284,6 @@ namespace LifeIdea.LazyCure.UI
             this.miTasks.Name = "miTasks";
             this.miTasks.Click += new System.EventHandler(this.miTasks_Click);
             // 
-            // miOptions
-            // 
-            resources.ApplyResources(this.miOptions, "miOptions");
-            this.miOptions.Name = "miOptions";
-            this.miOptions.Click += new System.EventHandler(this.miOptions_Click);
-            // 
             // miReport
             // 
             resources.ApplyResources(this.miReport, "miReport");
@@ -303,6 +297,12 @@ namespace LifeIdea.LazyCure.UI
             this.miSpentOnActivityInDifferentDays.CheckOnClick = true;
             this.miSpentOnActivityInDifferentDays.Name = "miSpentOnActivityInDifferentDays";
             this.miSpentOnActivityInDifferentDays.Click += new System.EventHandler(this.miSpentOnActivityInDifferentDays_Click);
+            // 
+            // miOptions
+            // 
+            resources.ApplyResources(this.miOptions, "miOptions");
+            this.miOptions.Name = "miOptions";
+            this.miOptions.Click += new System.EventHandler(this.miOptions_Click);
             // 
             // miHelp
             // 
@@ -322,7 +322,7 @@ namespace LifeIdea.LazyCure.UI
             // 
             resources.ApplyResources(this.miHowToUse, "miHowToUse");
             this.miHowToUse.Name = "miHowToUse";
-            this.miHowToUse.Tag = "LazyCure.html";
+            this.miHowToUse.Tag = "";
             this.miHowToUse.Click += new System.EventHandler(this.miHowToUse_Click);
             // 
             // toolStripSeparator3

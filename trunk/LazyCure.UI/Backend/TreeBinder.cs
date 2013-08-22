@@ -1,8 +1,7 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows.Forms;
 using LifeIdea.LazyCure.Shared.Interfaces;
+using LifeIdea.LazyCure.Shared.Tools;
 
 namespace LifeIdea.LazyCure.UI.Backend
 {
@@ -22,7 +21,16 @@ namespace LifeIdea.LazyCure.UI.Backend
         public void BindNodes(TreeView treeView)
         {
             foreach (TreeNode node in source)
-                treeView.Nodes.Add(node);
+            {
+                try
+                {
+                    treeView.Nodes.Add(node);
+                }
+                catch (Exception ex)
+                {
+                    Log.Exception(ex);
+                }
+            }
             this.viewNodes = treeView.Nodes;
         }
 

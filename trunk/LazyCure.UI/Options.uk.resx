@@ -175,6 +175,27 @@
   <data name="cancel.Text" xml:space="preserve">
     <value>Відміна</value>
   </data>
+  <data name="tabGeneral.Text" xml:space="preserve">
+    <value>Загальні</value>
+  </data>
+  <data name="languageGroupBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 148</value>
+  </data>
+  <data name="languageGroupBox.Text" xml:space="preserve">
+    <value>Мова інтерфейсу:</value>
+  </data>
+  <data name="languageOptionBelarusian.Size" type="System.Drawing.Size, System.Drawing">
+    <value>81, 17</value>
+  </data>
+  <data name="languageOptionBelarusian.Text" xml:space="preserve">
+    <value>Білоруська</value>
+  </data>
+  <data name="languageOptionSpanish.Size" type="System.Drawing.Size, System.Drawing">
+    <value>76, 17</value>
+  </data>
+  <data name="languageOptionSpanish.Text" xml:space="preserve">
+    <value>Іспанська</value>
+  </data>
   <data name="languageOptionUkrainian.Size" type="System.Drawing.Size, System.Drawing">
     <value>84, 17</value>
   </data>
@@ -192,12 +213,6 @@
   </data>
   <data name="languageOptionRussian.Text" xml:space="preserve">
     <value>Російська</value>
-  </data>
-  <data name="languageGroupBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 148</value>
-  </data>
-  <data name="languageGroupBox.Text" xml:space="preserve">
-    <value>Мова інтерфейсу:</value>
   </data>
   <data name="splitByComma.Size" type="System.Drawing.Size, System.Drawing">
     <value>314, 17</value>
@@ -217,8 +232,8 @@
   <data name="switchOnLogOff.Text" xml:space="preserve">
     <value>Перемикати поточну діяльність при завершенні сеансу</value>
   </data>
-  <data name="tabGeneral.Text" xml:space="preserve">
-    <value>Загальні</value>
+  <data name="twitterAuthorizationGroup.Text" xml:space="preserve">
+    <value>Авторизація в Twitter</value>
   </data>
   <data name="authorizeButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 27.75pt, style=Bold</value>
@@ -226,8 +241,8 @@
   <data name="authorizeButton.Text" xml:space="preserve">
     <value>Авторизувати</value>
   </data>
-  <data name="twitterAuthorizationGroup.Text" xml:space="preserve">
-    <value>Авторизація в Twitter</value>
+  <data name="whatAddtj.Text" xml:space="preserve">
+    <value>Що додавати в лог часу при постуванні в Twitter:</value>
   </data>
   <data name="twitterActivitySpecificRadioButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>130, 17</value>
@@ -241,14 +256,14 @@
   <data name="twitterActivityTheSameRadioButton.Text" xml:space="preserve">
     <value>те ж саме, що постується</value>
   </data>
-  <data name="whatAddtj.Text" xml:space="preserve">
-    <value>Що додавати в лог часу при постуванні в Twitter:</value>
-  </data>
   <data name="enableTwitterCheckbox.Size" type="System.Drawing.Size, System.Drawing">
     <value>238, 17</value>
   </data>
   <data name="enableTwitterCheckbox.Text" xml:space="preserve">
     <value>Увімкнути відправку діяльностей в Twitter</value>
+  </data>
+  <data name="tabHotKeys.Text" xml:space="preserve">
+    <value>Гарячі клавіші</value>
   </data>
   <data name="hotKeyToSwitchLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>166, 36</value>
@@ -280,8 +295,14 @@
   <data name="label6.Text" xml:space="preserve">
     <value>Активація головного вікна:</value>
   </data>
-  <data name="tabHotKeys.Text" xml:space="preserve">
-    <value>Гарячі клавіші</value>
+  <data name="tabTray.Text" xml:space="preserve">
+    <value>Трей</value>
+  </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>191, 47</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Клацання лівою кнопкою в трею:</value>
   </data>
   <data name="opensMainWindow.Size" type="System.Drawing.Size, System.Drawing">
     <value>148, 17</value>
@@ -295,12 +316,6 @@
   <data name="showsRecentActivities.Text" xml:space="preserve">
     <value>показує останні діяльності</value>
   </data>
-  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>191, 47</value>
-  </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>Клацання лівою кнопкою в трею:</value>
-  </data>
   <data name="activitiesNumberInTray.Location" type="System.Drawing.Point, System.Drawing">
     <value>278, 8</value>
   </data>
@@ -309,9 +324,6 @@
   </data>
   <data name="label5.Text" xml:space="preserve">
     <value>Кількість діяльностей, що відображаються в трею:</value>
-  </data>
-  <data name="tabTray.Text" xml:space="preserve">
-    <value>Трей</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>350, 285</value>

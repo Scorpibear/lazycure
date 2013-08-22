@@ -1,4 +1,4 @@
-using System;
+п»їusing System;
 using System.Globalization;
 using System.Threading;
 using System.Windows.Forms;
@@ -82,6 +82,8 @@ namespace LifeIdea.LazyCure.UI
         const string russianLanguageCode = "ru";
         const string englishLanguageCode = "en";
         const string ukrainianLanguageCode = "uk";
+        const string spanishLanguageCode = "es";
+        const string belarusianLanguageCode = "be";
         
         private string LanguageOption
         {
@@ -90,7 +92,9 @@ namespace LifeIdea.LazyCure.UI
                 return
                     (languageOptionRussian.Checked) ? russianLanguageCode : (
                     (languageOptionUkrainian.Checked) ? ukrainianLanguageCode : (
-                    englishLanguageCode));
+                    (languageOptionSpanish.Checked) ? spanishLanguageCode : (
+                    (languageOptionBelarusian.Checked) ? belarusianLanguageCode : (
+                    englishLanguageCode))));
             }
             set
             {
@@ -100,6 +104,10 @@ namespace LifeIdea.LazyCure.UI
                         languageOptionRussian.Checked = true; break;
                     case ukrainianLanguageCode:
                         languageOptionUkrainian.Checked = true; break;
+                    case spanishLanguageCode:
+                        languageOptionSpanish.Checked = true; break;
+                    case belarusianLanguageCode:
+                        languageOptionBelarusian.Checked = true; break;
                     default:
                         languageOptionEnglish.Checked = true; break;
                 }
@@ -197,9 +205,12 @@ namespace LifeIdea.LazyCure.UI
         private void NotifyAboutLanguageApplyAfterRestart()
         {
             MessageBox.Show(this,
-                "Language settings will be applied after LazyCure restart.\r\n"+
-                "Язык интерфейса будет изменён при следующей загрузке LazyCure.\r\n"+
-                "Мову інтерфейсу буде змінено при наступному завантаженні LazyCure.", Constants.LanguageChange, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                "Language settings will be applied after LazyCure restart.\r\n"+ //en
+                "РЇР·С‹Рє РёРЅС‚РµСЂС„РµР№СЃР° Р±СѓРґРµС‚ РёР·РјРµРЅС‘РЅ РїСЂРё СЃР»РµРґСѓСЋС‰РµР№ Р·Р°РіСЂСѓР·РєРµ LazyCure.\r\n"+ //ru
+                "РњРѕРІСѓ С–РЅС‚РµСЂС„РµР№СЃСѓ Р±СѓРґРµ Р·РјС–РЅРµРЅРѕ РїСЂРё РЅР°СЃС‚СѓРїРЅРѕРјСѓ Р·Р°РІР°РЅС‚Р°Р¶РµРЅРЅС– LazyCure.\r\n"+ //uk
+                "La configuraciГіn de idioma se aplicarГЎ tras reiniciar LazyCure.\r\n" + //es
+                "РњРѕРІР° iРЅС‚РµСЂС„РµР№СЃР° Р±СѓРґР·Рµ Р·РјРµРЅСЏРЅР° РїСЂС‹ РЅР°СЃС‚СѓРїРЅР°Р№ Р·Р°РіСЂСѓР·С†С‹ LazyCure." //be
+                , Constants.LanguageChange, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void selectTimeLogsFolder_Click(object sender, EventArgs e)

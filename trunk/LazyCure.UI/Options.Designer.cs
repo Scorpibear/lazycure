@@ -43,6 +43,8 @@ namespace LifeIdea.LazyCure.UI
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabGeneral = new System.Windows.Forms.TabPage();
             this.languageGroupBox = new System.Windows.Forms.GroupBox();
+            this.languageOptionBelarusian = new System.Windows.Forms.RadioButton();
+            this.languageOptionSpanish = new System.Windows.Forms.RadioButton();
             this.languageOptionUkrainian = new System.Windows.Forms.RadioButton();
             this.languageOptionEnglish = new System.Windows.Forms.RadioButton();
             this.languageOptionRussian = new System.Windows.Forms.RadioButton();
@@ -181,11 +183,25 @@ namespace LifeIdea.LazyCure.UI
             // languageGroupBox
             // 
             resources.ApplyResources(this.languageGroupBox, "languageGroupBox");
+            this.languageGroupBox.Controls.Add(this.languageOptionBelarusian);
+            this.languageGroupBox.Controls.Add(this.languageOptionSpanish);
             this.languageGroupBox.Controls.Add(this.languageOptionUkrainian);
             this.languageGroupBox.Controls.Add(this.languageOptionEnglish);
             this.languageGroupBox.Controls.Add(this.languageOptionRussian);
             this.languageGroupBox.Name = "languageGroupBox";
             this.languageGroupBox.TabStop = false;
+            // 
+            // languageOptionBelarusian
+            // 
+            resources.ApplyResources(this.languageOptionBelarusian, "languageOptionBelarusian");
+            this.languageOptionBelarusian.Name = "languageOptionBelarusian";
+            this.languageOptionBelarusian.UseVisualStyleBackColor = true;
+            // 
+            // languageOptionSpanish
+            // 
+            resources.ApplyResources(this.languageOptionSpanish, "languageOptionSpanish");
+            this.languageOptionSpanish.Name = "languageOptionSpanish";
+            this.languageOptionSpanish.UseVisualStyleBackColor = true;
             // 
             // languageOptionUkrainian
             // 
@@ -456,6 +472,8 @@ namespace LifeIdea.LazyCure.UI
         private System.Windows.Forms.RadioButton showsRecentActivities;
         private System.Windows.Forms.NumericUpDown activitiesNumberInTray;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.RadioButton languageOptionBelarusian;
+        private System.Windows.Forms.RadioButton languageOptionSpanish;
 
     }
 }

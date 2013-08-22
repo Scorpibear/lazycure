@@ -1,0 +1,253 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="About" xml:space="preserve">
+    <value>Acerca de {0}</value>
+  </data>
+  <data name="Activity" xml:space="preserve">
+    <value>Actividad</value>
+  </data>
+  <data name="AskToFixAndExcuse" xml:space="preserve">
+    <value>Por favor, corrige el error y reinicia LazyCure. Perdón por las molestias.</value>
+  </data>
+  <data name="AssemblyDescription" xml:space="preserve">
+    <value>Herramienta para realizar de forma sencilla registros de tiempo, análisis de tiempo, cálculo y mejora de la eficiencia personal.
+
+La primera versión de LazyCure se lanzó en noviembre de 2003 por Mikhail Subach (aka Scorpibear). Desde entonces, una gran cantidad de personas participaron en el desarrollo de LazyCure, directa e indirectamente. Agradecimientos especiales a:
+
+Andrei Kulabukhau, por su enorme lista de peticiones de nuevas funcionalidades e ideas de mejora,
+
+Andrei Savastsiuk, por su apoyo y el deseo de utilizar LazyCure para aumentar la eficiencia personal,
+
+Alena Yermokhina, por su objetividad frente a LazyCure y sus nuevas ideas para mejorar,
+
+Andrei Ramanchuk, por su idea de hacer de LazyCure un proyecto de código abierto,
+
+Siarhei Serko, por compartir su experiencia en el cálculo de la eficiencia personal,
+
+Sergey Gvozdyukevich, por descubrir fallos críticos,
+
+Ihar Kalasouski, por su entusiasmo y mejora del diseño de la interfaz,
+
+Siarhei Dziatlau, por sus ideas poco convencionales y su apoyo,
+
+Andrei Pretkel, por sus ideas de mejora de usabilidad y su apoyo,
+
+Alena Batsekina, por su compromiso con la idea de registrar el tiempo,
+
+Dzmitry Kuchko e Iryna Rusetskaya, por ayudar a mejorar la calidad de LazyCure,
+
+Gleb Reys, por compartir su experiencia personal en el registro de tiempo, su aporte de ideas para mejorar y su apoyo,
+
+Aliaksandr Zhuraukin, por su paciencia con los errores de LazyCure durante el tiempo en automatización de pruebas,
+
+Anatoly Humenniy, por la traducción para Ucrania,
+
+A los lectores de LifeIdea.org, por su inspiración e ideas
+
+¡y muchas gracias a ti, por mejorar tu eficiencia personal con LazyCure!</value>
+  </data>
+  <data name="CouldNotSaveTimeLogDuringExitMessage" xml:space="preserve">
+    <value>No se pudo guardar el registro de tiempo. ¿Salir de LazyCure de todas formas?</value>
+  </data>
+  <data name="CurrentActivityIsLasting" xml:space="preserve">
+    <value>la actividad actual está realizándose</value>
+  </data>
+  <data name="DefaultActivity" xml:space="preserve">
+    <value>(especifica lo que estás haciendo)</value>
+  </data>
+  <data name="DeleteTaskConfirmationMessage" xml:space="preserve">
+    <value>¿Seguro que quieres borrar la tarea seleccionada '{0}'?</value>
+  </data>
+  <data name="DonateLink" xml:space="preserve">
+    <value>http://lazycure.com/donate-to-lazycure</value>
+  </data>
+  <data name="DoYouWantToLogCurrentActivityBeforeClosure" xml:space="preserve">
+    <value>¿Quieres registrar la actividad actual antes de que se cierre LazyCure?</value>
+  </data>
+  <data name="FromAndFor" xml:space="preserve">
+    <value>desde {0} durante {1}</value>
+  </data>
+  <data name="GeneratedActivity" xml:space="preserve">
+    <value>actividad</value>
+  </data>
+  <data name="HelpFileWasNotFound" xml:space="preserve">
+    <value>No se encontró el archivo de ayuda. Por favor, comprueba que los archivos originales de la instalación de LazyCure están presentes.</value>
+  </data>
+  <data name="HowToUse" xml:space="preserve">
+    <value>Cómo usar</value>
+  </data>
+  <data name="IncorrectSettings" xml:space="preserve">
+    <value>Configuración incorrecta</value>
+  </data>
+  <data name="IncorrectValueInColumn" xml:space="preserve">
+    <value>El valor en la columna '{0}' no es correcto</value>
+  </data>
+  <data name="InvalidReminderTime" xml:space="preserve">
+    <value>{0} 'no es una hora válida para el recordatorio. Por favor, corrígela y pulsa 'Aceptar'</value>
+  </data>
+  <data name="InvalidTimeValue" xml:space="preserve">
+    <value>Valor de tiempo incorrecto</value>
+  </data>
+  <data name="InvalidTimeWarning" xml:space="preserve">
+    <value>Se especificó un valor de tiempo incorrecto. Por favor, especifica uno válido entre 0:00 y 23:59.</value>
+  </data>
+  <data name="LanguageChange" xml:space="preserve">
+    <value>Cambio de idioma</value>
+  </data>
+  <data name="LazyCureError" xml:space="preserve">
+    <value>Error en LazyCure</value>
+  </data>
+  <data name="LazyCureIsShuttingDown" xml:space="preserve">
+    <value>LazyCure está cerrándose</value>
+  </data>
+  <data name="NewTask" xml:space="preserve">
+    <value>Nueva tarea...</value>
+  </data>
+  <data name="PleaseEnterNotEmptyActivityName" xml:space="preserve">
+    <value>Por favor, no dejes en blanco el nombre de la actividad.</value>
+  </data>
+  <data name="Rest" xml:space="preserve">
+    <value>Descanso</value>
+  </data>
+  <data name="SavingError" xml:space="preserve">
+    <value>Error de guardado</value>
+  </data>
+  <data name="SettingsReadError" xml:space="preserve">
+    <value>Error al leer los ajustes de la aplicación</value>
+  </data>
+  <data name="TimeLogCouldNotBeLoaded" xml:space="preserve">
+    <value>El registro de tiempo no se pudo cargar</value>
+  </data>
+  <data name="TimeLogError" xml:space="preserve">
+    <value>Error en el registro de tiempo</value>
+  </data>
+  <data name="TimeLogHasNotBeenSaved" xml:space="preserve">
+    <value>El registro de tiempo no ha sido guardado</value>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>Versión {0}</value>
+  </data>
+  <data name="Work" xml:space="preserve">
+    <value>Trabajo</value>
+  </data>
+  <data name="Tweeting" xml:space="preserve">
+    <value>tuitear</value>
+  </data>
+</root>

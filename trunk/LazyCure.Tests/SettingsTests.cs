@@ -11,8 +11,8 @@ namespace LifeIdea.LazyCure.Properties
         [Test]
         public void DefaultLanguage()
         {
-            AreEqual("", Settings.Default.Language);
-            AreSame("", Settings.Default.Language);
+            AreEqual(string.Empty, Settings.Default.Language);
+            AreSame(string.Empty, Settings.Default.Language);
         }
         [Test]
         public void TimeLogsFolderDefaultSetting()
@@ -52,7 +52,7 @@ namespace LifeIdea.LazyCure.Properties
         [Test]
         public void TweetingActivityDefault()
         {
-            AreEqual("tweeting", Settings.Default.TweetingActivity);
+            AreEqual(string.Empty, Settings.Default.TweetingActivity);
         }
         [Test]
         public void TweetingActivityIsTheSameAsTweetByDefault()

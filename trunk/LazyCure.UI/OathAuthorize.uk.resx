@@ -121,11 +121,14 @@
   <data name="buttonOK.Location" type="System.Drawing.Point, System.Drawing">
     <value>63, 158</value>
   </data>
+  <data name="buttonOK.Text" xml:space="preserve">
+    <value>&amp;OK</value>
+  </data>
   <data name="buttonCancel.Location" type="System.Drawing.Point, System.Drawing">
     <value>144, 158</value>
   </data>
   <data name="buttonCancel.Text" xml:space="preserve">
-    <value>Відміна</value>
+    <value>&amp;Відміна</value>
   </data>
   <data name="textBox1.Size" type="System.Drawing.Size, System.Drawing">
     <value>263, 114</value>
