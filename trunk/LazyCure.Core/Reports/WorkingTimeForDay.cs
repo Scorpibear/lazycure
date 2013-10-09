@@ -3,6 +3,7 @@ using System.Data;
 using LifeIdea.LazyCure.Core.Tasks;
 using LifeIdea.LazyCure.Core.Time.TimeLogs;
 using LifeIdea.LazyCure.Shared.Interfaces;
+using System.Collections.Generic;
 
 namespace LifeIdea.LazyCure.Core.Reports
 {
@@ -10,22 +11,21 @@ namespace LifeIdea.LazyCure.Core.Reports
     /// Calculate efficiency,
     ///  calculates time on work,
     ///  calculates working tasks time,
-    ///  calculates working time intervals,
-    ///  define is activity is working
+    ///  calculates working time intervals
     /// </summary>
-    public class WorkingTime : IWorkingTimeManager
+    public class WorkingTimeForDay : IWorkingTimeManager
     {
         private bool calculateAutomatically = true;
         private DataTable table = null;
         private ITimeLog timeLog;
-        private ITaskCollection taskCollection;
+        private IWorkDefiner workDefiner;
         private TimeSpan possibleWorkInterruption = TimeSpan.Parse("0:25");
         private TimeSpan previousWorkingTasksTime;
 
-        public WorkingTime(ITimeLog timeLog, ITaskCollection taskCollection)
+        public WorkingTimeForDay(ITimeLog timeLog, IWorkDefiner workDefiner)
         {
             TimeLog = timeLog;
-            TaskCollection = taskCollection;
+            this.workDefiner = workDefiner;
             CreateTable();
             FillTable();
         }
@@ -49,9 +49,9 @@ namespace LifeIdea.LazyCure.Core.Reports
             }
         }
 
-        public ITaskCollection TaskCollection
+        public IWorkDefiner WorkDefiner
         {
-            set { taskCollection = value; }
+            set { workDefiner = value; }
         }
 
         public ITimeLog TimeLog
@@ -86,8 +86,10 @@ namespace LifeIdea.LazyCure.Core.Reports
             get
             {
                 TimeSpan result = TimeSpan.Zero;
-                foreach (IActivity activity in timeLog.Activities)
+                var enumerator = GetActivityEnumerator();
+                while(enumerator.MoveNext())
                 {
+                    IActivity activity = enumerator.Current;
                     if (IsWorking(activity))
                         result += activity.Duration;
                 }
@@ -103,7 +105,7 @@ namespace LifeIdea.LazyCure.Core.Reports
 
         public bool IsWorking(IActivity activity)
         {
-            return taskCollection.IsWorkingActivity(activity.Name);
+            return workDefiner.IsWorkingActivity(activity.Name);
         }
 
         private void CreateTable()
@@ -123,8 +125,10 @@ namespace LifeIdea.LazyCure.Core.Reports
                 DateTime end = start;
                 if (timeLog != null)
                 {
-                    foreach (IActivity activity in timeLog.Activities)
+                    var enumerator = GetActivityEnumerator();
+                    while (enumerator.MoveNext())
                     {
+                        IActivity activity = enumerator.Current;
                         if (IsWorking(activity))
                         {
                             if (start == DateTime.MinValue)
@@ -135,11 +139,16 @@ namespace LifeIdea.LazyCure.Core.Reports
                         {
                             if (activity.Duration > PossibleWorkInterruption)
                                 AddInterval(ref start, end);
-                        }
+                        }    
                     }
                 }
                 AddInterval(ref start, end);
             }
+        }
+
+        private List<IActivity>.Enumerator GetActivityEnumerator()
+        {
+            return timeLog.Activities.GetEnumerator();
         }
 
         private void UpdateTable(TimeSpan newWorkingTasksTime)

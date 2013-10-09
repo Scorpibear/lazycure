@@ -167,7 +167,7 @@ A los lectores de LifeIdea.org, por su inspiración e ideas
     <value>No se pudo guardar el registro de tiempo. ¿Salir de LazyCure de todas formas?</value>
   </data>
   <data name="CurrentActivityIsLasting" xml:space="preserve">
-    <value>la actividad actual está realizándose</value>
+    <value>la actividad actual se realiza</value>
   </data>
   <data name="DefaultActivity" xml:space="preserve">
     <value>(especifica lo que estás haciendo)</value>

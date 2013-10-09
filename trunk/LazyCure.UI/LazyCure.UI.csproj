@@ -139,6 +139,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AboutBox.es.resx">
+      <DependentUpon>AboutBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AboutBox.resx">
       <SubType>Designer</SubType>
       <DependentUpon>AboutBox.cs</DependentUpon>
@@ -156,6 +159,9 @@
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OathAuthorize.be.resx">
+      <DependentUpon>OathAuthorize.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OathAuthorize.es.resx">
       <DependentUpon>OathAuthorize.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Options.es.resx">

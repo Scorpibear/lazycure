@@ -134,7 +134,7 @@ namespace LifeIdea.LazyCure.UI
         {
             ILazyCureDriver lcdriver = NewMock<ILazyCureDriver>();
             DateTime from, to;
-            to = DateTime.Parse(Format.Date(DateTime.Now));
+            to = DateTime.Today;
             from = to.AddDays(-30);
             Stub.On(lcdriver).GetProperty("WorkingTimeIntervalsData").Will(Return.Value(null));
             Stub.On(lcdriver).GetProperty("PossibleWorkInterruptionDuration").Will(Return.Value(TimeSpan.Zero));

@@ -16,6 +16,10 @@ namespace LifeIdea.LazyCure.Core.IO
     /// </summary>
     public class FileManager:IFileManager
     {
+        private const string tasksFileName = "tasks.xml";
+        private const string historyFileName = "history.txt";
+        private const string timeLogExtention = ".timelog";
+
         private string timeLogsFolder = null;
 
         public string HistoryFileName { get; set; }
@@ -28,8 +32,8 @@ namespace LifeIdea.LazyCure.Core.IO
         {
             if(timeLogsFolderSettingSource!=null)
                 this.timeLogsFolder = timeLogsFolderSettingSource.TimeLogsFolder;
-            TasksFileName = GetFullFileName("tasks.xml");
-            HistoryFileName = GetFullFileName("history.txt");
+            TasksFileName = GetFullFileName(tasksFileName);
+            HistoryFileName = GetFullFileName(historyFileName);
         }
 
         #region IFileManager Members
@@ -163,7 +167,7 @@ namespace LifeIdea.LazyCure.Core.IO
 
         public string GetTimeLogFileName(DateTime date)
         {
-            string filename = Format.Date(date) + ".timelog";
+            string filename = Format.Date(date) + timeLogExtention;
             if (timeLogsFolder != null)
                 return Path.Combine(timeLogsFolder, filename);
             else

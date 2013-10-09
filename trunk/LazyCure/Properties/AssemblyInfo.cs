@@ -24,7 +24,7 @@ using System.Runtime.InteropServices;
     "and a lot of thanks to You, who improves your personal efficiency with LazyCure now!")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("LifeIdea.org")]
-[assembly: AssemblyProduct("LazyCure 4.2DP3")]
+[assembly: AssemblyProduct("LazyCure 4.2DP4")]
 [assembly: AssemblyCopyright("LifeIdea.org © 2006-2013")]
 [assembly: AssemblyTrademark("LazyCure")]
 [assembly: AssemblyCulture("")]

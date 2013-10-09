@@ -69,7 +69,7 @@ namespace LifeIdea.LazyCure.Core
             {
                 taskCollection = value;
                 if (WorkingTime != null)
-                    WorkingTime.TaskCollection = taskCollection;
+                    WorkingTime.WorkDefiner = taskCollection;
                 if ((HistoryDataProvider as HistoryDataProvider) != null)
                     (HistoryDataProvider as HistoryDataProvider).TaskCollection = taskCollection;
             }
@@ -132,7 +132,7 @@ namespace LifeIdea.LazyCure.Core
             HistoryDataProvider = new HistoryDataProvider(timeLogsManager, TaskCollection);
             this.timeManager = new TimeManager(timeSystem, TimeLogsManager);
             HistoryDataProvider.CreateSummaries(TimeManager.TimeLog);
-            this.workingTime = new WorkingTime(TimeManager.TimeLog, TaskCollection);
+            this.workingTime = new WorkingTimeForDay(TimeManager.TimeLog, TaskCollection);
             this.efficiencyCalculator = new EfficiencyCalculator(workingTime);
             ApplySettings(settings);
         }

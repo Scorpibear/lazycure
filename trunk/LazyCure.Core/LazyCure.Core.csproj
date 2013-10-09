@@ -77,10 +77,11 @@
     <Compile Include="Reports\TasksSummary.cs" />
     <Compile Include="Reports\TaskTimeSummarizer.cs" />
     <Compile Include="Reports\TimeSummarizer.cs" />
-    <Compile Include="Reports\WorkingTime.cs" />
+    <Compile Include="Reports\WorkingTimeForDay.cs" />
     <Compile Include="Reports\HistoryDataProvider.cs" />
     <Compile Include="Tasks\ITaskCollection.cs" />
     <Compile Include="Tasks\ITasksSummary.cs" />
+    <Compile Include="Tasks\IWorkDefiner.cs" />
     <Compile Include="Tasks\TaskCollectionSerializer.cs" />
     <Compile Include="Tasks\TaskSerializer.cs" />
     <Compile Include="Activities\RunningActivity.cs" />
