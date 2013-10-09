@@ -12,7 +12,7 @@ namespace LifeIdea.LazyCure.Core.Reports
         
         TimeSpan PossibleWorkInterruption { get; set; }
 
-        ITaskCollection TaskCollection { set; }
+        IWorkDefiner WorkDefiner { set; }
 
         ITimeLog TimeLog { set; }
 

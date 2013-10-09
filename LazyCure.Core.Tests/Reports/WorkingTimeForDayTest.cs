@@ -13,10 +13,10 @@ using System.IO;
 namespace LifeIdea.LazyCure.Core.Reports
 {
     [TestFixture]
-    public class WorkingTimeTest: Mockery
+    public class WorkingTimeForDayTest: Mockery
     {
-        private WorkingTime workingTime;
-        private ITaskCollection taskCollection;
+        private WorkingTimeForDay workingTime;
+        private IWorkDefiner workDefiner;
         [SetUp]
         public void SetUp()
         {
@@ -27,10 +27,15 @@ namespace LifeIdea.LazyCure.Core.Reports
                     new Activity("rest", DateTime.Parse("14:30"), TimeSpan.Parse("3:30"))
                 })));
             Stub.On(timeLog).GetProperty("Data").Will(Return.Value(new DataTable()));
-            taskCollection = TaskCollection.Default;
-            taskCollection.LinkActivityAndTask("work", "Work");
-            taskCollection.LinkActivityAndTask("rest", "Rest");
-            workingTime = new WorkingTime(timeLog, taskCollection);
+            workDefiner = NewMock<IWorkDefiner>();
+            Stub.On(workDefiner).Method("IsWorkingActivity").With("work").Will(Return.Value(true));
+            Stub.On(workDefiner).Method("IsWorkingActivity").With("work1").Will(Return.Value(true));
+            Stub.On(workDefiner).Method("IsWorkingActivity").With("work2").Will(Return.Value(true));
+            Stub.On(workDefiner).Method("IsWorkingActivity").With("rest").Will(Return.Value(false));
+            Stub.On(workDefiner).Method("IsWorkingActivity").With("dinner").Will(Return.Value(false));
+            Stub.On(workDefiner).Method("IsWorkingActivity").With(string.Empty).Will(Return.Value(false));
+            Stub.On(workDefiner).Method("IsWorkingActivity").With(null).Will(Return.Value(false));
+            workingTime = new WorkingTimeForDay(timeLog, workDefiner);
         }
         [Test]
         public void DataColumns()
@@ -55,11 +60,7 @@ namespace LifeIdea.LazyCure.Core.Reports
                     new Activity("work2", DateTime.Parse("11:00"), TimeSpan.Parse("0:30"))
                 })));
             Stub.On(timeLog).GetProperty("Data").Will(Return.Value(new DataTable()));
-            taskCollection = TaskCollection.Default;
-            taskCollection.LinkActivityAndTask("work1", "Work");
-            taskCollection.LinkActivityAndTask("dinner", "Rest");
-            taskCollection.LinkActivityAndTask("work2", "Work");
-            workingTime = new WorkingTime(timeLog, taskCollection);
+            workingTime = new WorkingTimeForDay(timeLog, workDefiner);
             DataTable table = workingTime.Intervals;
             Assert.AreEqual(DateTime.Parse("9:00"), table.Rows[0]["Start"]);
             Assert.AreEqual(DateTime.Parse("10:00"), table.Rows[0]["End"]);
@@ -70,7 +71,7 @@ namespace LifeIdea.LazyCure.Core.Reports
         public void WorkingIntervalsUpdatedWhenTimeLogIsChanged()
         {
             ITimeLog timeLog = new TimeLog(DateTime.Now.Date);
-            workingTime = new WorkingTime(timeLog, taskCollection);
+            workingTime = new WorkingTimeForDay(timeLog, workDefiner);
             timeLog.AddActivity(new Activity("work", DateTime.Parse("10:30"), TimeSpan.Parse("10:55")));
             DataTable table = workingTime.Intervals;
 
@@ -81,7 +82,7 @@ namespace LifeIdea.LazyCure.Core.Reports
         public void CalculatingAutomaticallyFalse()
         {
             ITimeLog timeLog = new TimeLog(DateTime.Now.Date);
-            workingTime = new WorkingTime(timeLog, taskCollection);
+            workingTime = new WorkingTimeForDay(timeLog, workDefiner);
             timeLog.AddActivity(new Activity("work", DateTime.Parse("9:30"), TimeSpan.Parse("0:25")));
             workingTime.CalculateAutomatically = false;
             timeLog.AddActivity(new Activity("work", DateTime.Parse("9:55"), TimeSpan.Parse("0:05")));
@@ -93,7 +94,7 @@ namespace LifeIdea.LazyCure.Core.Reports
         public void CalculatingAutomaticallyTrue()
         {
             ITimeLog timeLog = new TimeLog(DateTime.Now.Date);
-            workingTime = new WorkingTime(timeLog, taskCollection);
+            workingTime = new WorkingTimeForDay(timeLog, workDefiner);
             timeLog.AddActivity(new Activity("work", DateTime.Parse("9:30"), TimeSpan.Parse("0:25")));
             workingTime.CalculateAutomatically = false;
             timeLog.AddActivity(new Activity("work", DateTime.Parse("9:55"), TimeSpan.Parse("0:05")));
@@ -108,16 +109,13 @@ namespace LifeIdea.LazyCure.Core.Reports
             ITimeLog timeLog = NewMock<ITimeLog>();
             Stub.On(timeLog).GetProperty("Activities").Will(Return.Value(new List<IActivity>(
                 new IActivity[] {
-                    new Activity("work1", DateTime.Parse("9:00"), TimeSpan.Parse("1:00")),
-                    new Activity("dinner", DateTime.Parse("10:00"), TimeSpan.Parse("0:15")),
-                    new Activity("work1", DateTime.Parse("10:15"), TimeSpan.Parse("0:30"))
+                    new Activity("work", DateTime.Parse("9:00"), TimeSpan.Parse("1:00")),
+                    new Activity("rest", DateTime.Parse("10:00"), TimeSpan.Parse("0:15")),
+                    new Activity("work", DateTime.Parse("10:15"), TimeSpan.Parse("0:30"))
                 })));
             Stub.On(timeLog).GetProperty("Data").Will(Return.Value(new DataTable()));
-            taskCollection = TaskCollection.Default;
-            taskCollection.LinkActivityAndTask("work1", "Work");
-            taskCollection.LinkActivityAndTask("dinner", "Rest");
             
-            workingTime = new WorkingTime(timeLog, taskCollection);
+            workingTime = new WorkingTimeForDay(timeLog, workDefiner);
             workingTime.PossibleWorkInterruption = TimeSpan.Parse("0:15");
             
             Assert.AreEqual(TimeSpan.Parse("1:45"),workingTime.TimeOnWork);
@@ -128,16 +126,13 @@ namespace LifeIdea.LazyCure.Core.Reports
             ITimeLog timeLog = NewMock<ITimeLog>();
             Stub.On(timeLog).GetProperty("Activities").Will(Return.Value(new List<IActivity>(
                 new IActivity[] {
-                    new Activity("work1", DateTime.Parse("9:00"), TimeSpan.Parse("1:00")),
-                    new Activity("dinner", DateTime.Parse("10:00"), TimeSpan.Parse("0:15")),
-                    new Activity("work1", DateTime.Parse("10:15"), TimeSpan.Parse("0:30"))
+                    new Activity("work", DateTime.Parse("9:00"), TimeSpan.Parse("1:00")),
+                    new Activity("rest", DateTime.Parse("10:00"), TimeSpan.Parse("0:15")),
+                    new Activity("work", DateTime.Parse("10:15"), TimeSpan.Parse("0:30"))
                 })));
             Stub.On(timeLog).GetProperty("Data").Will(Return.Value(new DataTable()));
-            taskCollection = TaskCollection.Default;
-            taskCollection.LinkActivityAndTask("work1", "Work");
-            taskCollection.LinkActivityAndTask("dinner", "Rest");
 
-            workingTime = new WorkingTime(timeLog, taskCollection);
+            workingTime = new WorkingTimeForDay(timeLog, workDefiner);
             workingTime.PossibleWorkInterruption = TimeSpan.Parse("0:14");
 
             Assert.AreEqual(TimeSpan.Parse("1:30"), workingTime.TimeOnWork);
@@ -151,7 +146,7 @@ namespace LifeIdea.LazyCure.Core.Reports
                     new Activity("work", DateTime.Parse("0:00"), TimeSpan.Parse("0:01"))
                 })));
             Stub.On(timeLog).GetProperty("Data").Will(Return.Value(new DataTable()));
-            workingTime = new WorkingTime(timeLog, taskCollection);
+            workingTime = new WorkingTimeForDay(timeLog, workDefiner);
             Assert.AreEqual(TimeSpan.Parse("0:01"), workingTime.WorkingTasksTime);
         }
         [Test]
@@ -164,7 +159,7 @@ namespace LifeIdea.LazyCure.Core.Reports
                     new Activity("rest", DateTime.Parse("0:00"), TimeSpan.Parse("0:01"))
                 })));
             Stub.On(timeLog).GetProperty("Data").Will(Return.Value(new DataTable()));
-            workingTime = new WorkingTime(timeLog, taskCollection);
+            workingTime = new WorkingTimeForDay(timeLog, workDefiner);
             Assert.AreEqual(TimeSpan.Parse("0:04"), workingTime.WorkingTasksTime);
         }
         [Test]
@@ -177,7 +172,7 @@ namespace LifeIdea.LazyCure.Core.Reports
                     new Activity("rest", DateTime.Parse("0:00"), TimeSpan.Parse("0:01"))
                 })));
             Stub.On(timeLog).GetProperty("Data").Will(Return.Value(new DataTable()));
-            workingTime = new WorkingTime(timeLog, taskCollection);
+            workingTime = new WorkingTimeForDay(timeLog, workDefiner);
             Assert.AreEqual(TimeSpan.Parse("0:00"), workingTime.WorkingTasksTime);
         }
         [Test]
@@ -190,7 +185,7 @@ namespace LifeIdea.LazyCure.Core.Reports
                     new Activity("rest", DateTime.Parse("10:00"), TimeSpan.Parse("0:15"))
                 })));
             Stub.On(timeLog).GetProperty("Data").Will(Return.Value(new DataTable()));
-            workingTime = new WorkingTime(timeLog, taskCollection);
+            workingTime = new WorkingTimeForDay(timeLog, workDefiner);
 
             Assert.AreEqual(DateTime.Parse("10:00"), workingTime.Intervals.Rows[0]["End"]);
         }
@@ -204,7 +199,7 @@ namespace LifeIdea.LazyCure.Core.Reports
                     new Activity("work", DateTime.Parse("9:15"), TimeSpan.Parse("10:15"))
                 })));
             Stub.On(timeLog).GetProperty("Data").Will(Return.Value(new DataTable()));
-            workingTime = new WorkingTime(timeLog, taskCollection);
+            workingTime = new WorkingTimeForDay(timeLog, workDefiner);
 
             Assert.AreEqual(DateTime.Parse("9:15"), workingTime.Intervals.Rows[0]["Start"]);
         }
@@ -219,7 +214,7 @@ namespace LifeIdea.LazyCure.Core.Reports
             List<IActivity> activities = new List<IActivity>();
             activities.Add(new Activity("test",DateTime.Now,TimeSpan.FromMinutes(1)));
             Stub.On(timeLog).GetProperty("Activities").Will(Return.Value(activities));
-            workingTime = new WorkingTime(timeLog, taskCollection);
+            workingTime = new WorkingTimeForDay(timeLog, taskCollection);
             Expect.AtLeastOnce.On(taskCollection).Method("IsWorkingActivity").With("test").
                 Will(Return.Value(true));
             TimeSpan workingTasksTime = workingTime.WorkingTasksTime;

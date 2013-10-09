@@ -66,7 +66,7 @@
     <Compile Include="Reports\EfficiencyCalculatorTest.cs" />
     <Compile Include="Reports\HistoryDataProviderTest.cs" />
     <Compile Include="Reports\TasksSummaryTest.cs" />
-    <Compile Include="Reports\WorkingTimeTest.cs" />
+    <Compile Include="Reports\WorkingTimeForDayTest.cs" />
     <Compile Include="Tasks\TaskCollectionSerializerTest.cs" />
     <Compile Include="Tasks\TaskCollectionTest.cs" />
     <Compile Include="Tasks\TaskSerializerTest.cs" />

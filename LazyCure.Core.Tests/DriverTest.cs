@@ -281,7 +281,7 @@ namespace LifeIdea.LazyCure.Core
         {
             TaskCollection updatedTasks = new TaskCollection();
             driver.WorkingTime = NewMock<IWorkingTimeManager>();
-            Expect.Once.On(driver.WorkingTime).SetProperty("TaskCollection").To(updatedTasks);
+            Expect.Once.On(driver.WorkingTime).SetProperty("WorkDefiner").To(updatedTasks);
 
             driver.TaskCollection = updatedTasks;
         }

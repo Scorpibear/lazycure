@@ -20,11 +20,8 @@ namespace LifeIdea.LazyCure.UI
             Custom
         }
 
-
-
         #region Fields
 
-        //private ToolStripButton[] allDayButtons { get { return new ToolStripButton[] { lastMonthButton, prevWeekButton, thisWeekButton, yesterdayButton, todayButton }; } }
         private Dictionary<Period, ToolStripButton> periodButtonMap;
         private Dictionary<ToolStripButton, Period> buttonPeriodMap;
         private readonly ILazyCureDriver lazyCure;

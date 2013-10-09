@@ -3,7 +3,7 @@ using LifeIdea.LazyCure.Shared.Interfaces;
 
 namespace LifeIdea.LazyCure.Core.Tasks
 {
-    public interface ITaskCollection:IEnumerable<Task>,ITaskActivityLinker
+    public interface ITaskCollection:IEnumerable<Task>,ITaskActivityLinker,IWorkDefiner
     {
         int Count{ get;}
 
@@ -16,8 +16,6 @@ namespace LifeIdea.LazyCure.Core.Tasks
         Task GetTask(string name);
 
         bool IsWorking(string taskName);
-
-        bool IsWorkingActivity(string activity);
 
         void UpdateIsWorkingProperty(string taskName, bool working);
     }
