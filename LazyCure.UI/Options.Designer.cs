@@ -95,7 +95,17 @@ namespace LifeIdea.LazyCure.UI
             // maxActivitiesInHistory
             // 
             resources.ApplyResources(this.maxActivitiesInHistory, "maxActivitiesInHistory");
+            this.maxActivitiesInHistory.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
             this.maxActivitiesInHistory.Name = "maxActivitiesInHistory";
+            this.maxActivitiesInHistory.Value = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
             // 
             // label1
             // 
