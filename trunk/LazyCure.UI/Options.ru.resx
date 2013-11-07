@@ -169,18 +169,6 @@
   <data name="cancel.Text" xml:space="preserve">
     <value>Отмена</value>
   </data>
-  <data name="tabGeneral.Text" xml:space="preserve">
-    <value>Основные</value>
-  </data>
-  <data name="languageGroupBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 150</value>
-  </data>
-  <data name="languageGroupBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>322, 69</value>
-  </data>
-  <data name="languageGroupBox.Text" xml:space="preserve">
-    <value>Язык:</value>
-  </data>
   <data name="languageOptionBelarusian.Size" type="System.Drawing.Size, System.Drawing">
     <value>91, 17</value>
   </data>
@@ -211,6 +199,15 @@
   <data name="languageOptionRussian.Text" xml:space="preserve">
     <value>Русский</value>
   </data>
+  <data name="languageGroupBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 150</value>
+  </data>
+  <data name="languageGroupBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>322, 69</value>
+  </data>
+  <data name="languageGroupBox.Text" xml:space="preserve">
+    <value>Язык:</value>
+  </data>
   <data name="splitByComma.Size" type="System.Drawing.Size, System.Drawing">
     <value>337, 17</value>
   </data>
@@ -229,8 +226,8 @@
   <data name="switchOnLogOff.Text" xml:space="preserve">
     <value>Переключать текущую активность при завершении сеанса</value>
   </data>
-  <data name="twitterAuthorizationGroup.Text" xml:space="preserve">
-    <value>Авторизация в Twitter</value>
+  <data name="tabGeneral.Text" xml:space="preserve">
+    <value>Основные</value>
   </data>
   <data name="authorizeButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 28pt</value>
@@ -238,8 +235,8 @@
   <data name="authorizeButton.Text" xml:space="preserve">
     <value>Авторизировать</value>
   </data>
-  <data name="whatAddtj.Text" xml:space="preserve">
-    <value>Что добавлять в лог времени при постинге в Twitter:</value>
+  <data name="twitterAuthorizationGroup.Text" xml:space="preserve">
+    <value>Авторизация в Twitter</value>
   </data>
   <data name="twitterActivityField.Location" type="System.Drawing.Point, System.Drawing">
     <value>143, 41</value>
@@ -259,6 +256,9 @@
   <data name="twitterActivityTheSameRadioButton.Text" xml:space="preserve">
     <value>то же, что и постится</value>
   </data>
+  <data name="whatAddtj.Text" xml:space="preserve">
+    <value>Что добавлять в лог времени при постинге в Twitter:</value>
+  </data>
   <data name="twitterLink.Location" type="System.Drawing.Point, System.Drawing">
     <value>248, 7</value>
   </data>
@@ -267,9 +267,6 @@
   </data>
   <data name="enableTwitterCheckbox.Text" xml:space="preserve">
     <value>Включить возможность постинга в Twitter</value>
-  </data>
-  <data name="tabHotKeys.Text" xml:space="preserve">
-    <value>Горячие клавиши</value>
   </data>
   <data name="hotKeyToSwitchLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>207, 34</value>
@@ -295,14 +292,8 @@
   <data name="label6.Text" xml:space="preserve">
     <value>Активация главного окна:</value>
   </data>
-  <data name="tabTray.Text" xml:space="preserve">
-    <value>Трэй</value>
-  </data>
-  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 47</value>
-  </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>Клик левой кнопкой на трэе:</value>
+  <data name="tabHotKeys.Text" xml:space="preserve">
+    <value>Горячие клавиши</value>
   </data>
   <data name="opensMainWindow.Size" type="System.Drawing.Size, System.Drawing">
     <value>150, 17</value>
@@ -316,6 +307,12 @@
   <data name="showsRecentActivities.Text" xml:space="preserve">
     <value>показывает последние активности</value>
   </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 47</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Клик левой кнопкой на трэе:</value>
+  </data>
   <data name="activitiesNumberInTray.Location" type="System.Drawing.Point, System.Drawing">
     <value>265, 8</value>
   </data>
@@ -324,6 +321,9 @@
   </data>
   <data name="label5.Text" xml:space="preserve">
     <value>Количество показываемых активностей в трэе:</value>
+  </data>
+  <data name="tabTray.Text" xml:space="preserve">
+    <value>Трэй</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
