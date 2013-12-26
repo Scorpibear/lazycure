@@ -110,6 +110,11 @@ namespace LifeIdea.LazyCure.Core.Time
             return SwitchTo(nextActivityName);
         }
 
+        public List<IActivity>.Enumerator GetActivityEnumerator()
+        {
+            return this.TimeLog.Activities.GetEnumerator();
+        }
+
         /// <summary>
         /// Switch to the next activity and returns list of finished activities
         /// </summary>

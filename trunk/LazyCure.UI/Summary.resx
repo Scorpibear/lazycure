@@ -124,8 +124,8 @@
   <data name="&gt;&gt;toolStripContainer1.BottomToolStripPanel.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="toolStripContainer1.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+  <data name="&gt;&gt;taskColumnForActivitySummary.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
     <value>4</value>
@@ -133,14 +133,11 @@
   <data name="&gt;&gt;maxRestDurationTextBox.Type" xml:space="preserve">
     <value>System.Windows.Forms.MaskedTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="activities.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
   <data name="label7.Text" xml:space="preserve">
     <value>Possible work interruption duration (h:mm):</value>
   </data>
-  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;spentColumnForActivitySummary.Name" xml:space="preserve">
+    <value>spentColumnForActivitySummary</value>
   </data>
   <data name="&gt;&gt;automaticallyRadioButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -155,14 +152,17 @@
   <data name="&gt;&gt;timeOnWorkTextBox.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;activitiesSummary.Parent" xml:space="preserve">
-    <value>activities</value>
+  <data name="&gt;&gt;selectedRowsTime.Parent" xml:space="preserve">
+    <value>statisticsGroup</value>
   </data>
   <data name="label4.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="closeButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 20</value>
+  <data name="tasksSummary.Size" type="System.Drawing.Size, System.Drawing">
+    <value>555, 240</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer1.RightToolStripPanel.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="showTimeLogButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>94, 23</value>
@@ -173,7 +173,7 @@
   <data name="prevWeekButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
+        YQUAAAAJcEhZcwAADsEAAA7BAbiRa+0AAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
         YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
         0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
         bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
@@ -188,8 +188,8 @@
   <data name="&gt;&gt;maxRestDurationTextBox.Name" xml:space="preserve">
     <value>maxRestDurationTextBox</value>
   </data>
-  <data name="&gt;&gt;efficiencyTextBox.Name" xml:space="preserve">
-    <value>efficiencyTextBox</value>
+  <data name="&gt;&gt;dashLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;topPanel.Name" xml:space="preserve">
     <value>topPanel</value>
@@ -206,7 +206,7 @@
   <data name="fromDateDropDown.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
+        YQUAAAAJcEhZcwAADsEAAA7BAbiRa+0AAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
         YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
         0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
         bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
@@ -220,6 +220,9 @@
   </data>
   <data name="&gt;&gt;spentColumnForActivitySummary.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer1.RightToolStripPanel.Name" xml:space="preserve">
+    <value>toolStripContainer1.RightToolStripPanel</value>
   </data>
   <data name="taskColumnForActivitySummary.HeaderText" xml:space="preserve">
     <value>Task</value>
@@ -236,14 +239,14 @@
   <data name="efficiency.Text" xml:space="preserve">
     <value>Efficiency</value>
   </data>
-  <data name="&gt;&gt;efficiencyTextBox.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;prevWeekButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;activities.Name" xml:space="preserve">
     <value>activities</value>
   </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 16</value>
+  <data name="activitiesSummary.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="&gt;&gt;selectedRowsTime.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -254,7 +257,7 @@
   <data name="toDateDropDown.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
+        YQUAAAAJcEhZcwAADsEAAA7BAbiRa+0AAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
         YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
         0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
         bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
@@ -300,7 +303,7 @@
   <data name="yesterdayButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
+        YQUAAAAJcEhZcwAADsEAAA7BAbiRa+0AAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
         YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
         0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
         bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
@@ -369,17 +372,17 @@
   <data name="closeButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>522, 32</value>
   </data>
-  <data name="activitiesSummary.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="&gt;&gt;taskColumnForActivitySummary.Name" xml:space="preserve">
+    <value>taskColumnForActivitySummary</value>
   </data>
   <data name="yesterdayButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
-  <data name="&gt;&gt;dashLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;label7.Parent" xml:space="preserve">
     <value>intervalsDefinitionGroupBox</value>
+  </data>
+  <data name="closeButton.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -393,8 +396,8 @@
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>128, 13</value>
   </data>
-  <data name="&gt;&gt;toolStripContainer1.LeftToolStripPanel.Name" xml:space="preserve">
-    <value>toolStripContainer1.LeftToolStripPanel</value>
+  <data name="&gt;&gt;copyToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="toolStripContainer1.Size" type="System.Drawing.Size, System.Drawing">
     <value>569, 351</value>
@@ -414,13 +417,16 @@
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
   </data>
+  <data name="&gt;&gt;activitiesSummary.Parent" xml:space="preserve">
+    <value>activities</value>
+  </data>
   <data name="selectedRowsTime.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
   <data name="todayButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
+        YQUAAAAJcEhZcwAADsEAAA7BAbiRa+0AAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
         YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
         0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
         bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
@@ -438,7 +444,7 @@
   <data name="lastMonthButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
+        YQUAAAAJcEhZcwAADsEAAA7BAbiRa+0AAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
         YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
         0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
         bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
@@ -465,6 +471,9 @@
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 35</value>
   </data>
+  <data name="toolStripContainer1.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
   <data name="&gt;&gt;tasksSummary.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
@@ -480,11 +489,269 @@
   <data name="Start.HeaderText" xml:space="preserve">
     <value>Start</value>
   </data>
-  <data name="&gt;&gt;lastMonthButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;workingActivitiesTime.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>377, 13</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>LifeIdea.LazyCure.UI.Backend.View, LazyCure.UI, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;closeButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="efficiencyTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer1.TopToolStripPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;prevWeekButton.Name" xml:space="preserve">
+    <value>prevWeekButton</value>
+  </data>
+  <data name="thisWeekButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsEAAA7BAbiRa+0AAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
+        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
+        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
+        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
+        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
+        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
+        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
+        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
+        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
+        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="allActivitiesTime.Text" xml:space="preserve">
+    <value>12:34</value>
+  </data>
+  <data name="&gt;&gt;efficiencyTextBox.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;timeOnWorkTextBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="intervalsDefinitionGroupBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 48</value>
+  </data>
+  <data name="&gt;&gt;dashLabel.Name" xml:space="preserve">
+    <value>dashLabel</value>
+  </data>
+  <data name="efficiencyTextBox.Text" xml:space="preserve">
+    <value>85%</value>
+  </data>
+  <data name="activities.Text" xml:space="preserve">
+    <value>Activities</value>
+  </data>
+  <data name="lastMonthButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>51, 22</value>
+  </data>
+  <data name="&gt;&gt;tasksSummary.Parent" xml:space="preserve">
+    <value>tasks</value>
+  </data>
+  <data name="thisWeekButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 22</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer1.RightToolStripPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="efficiency.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Working time usage efficiency ( [Working activities] / [Time on work]  * 100% ):</value>
+  </data>
+  <data name="selectedRowsTime.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer1.ContentPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripContentPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="fromDateDropDown.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="&gt;&gt;efficiency.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer1.BottomToolStripPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="tasksSummary.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;workingActivitiesTime.Name" xml:space="preserve">
+    <value>workingActivitiesTime</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 13</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="statisticsGroup.Text" xml:space="preserve">
+    <value>Statistics</value>
+  </data>
+  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>23, 41</value>
+  </data>
+  <data name="efficiencyTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>401, 3</value>
+  </data>
+  <data name="efficiency.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="workingActivitiesTime.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;toDateDropDown.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="automaticallyRadioButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 20</value>
+  </data>
+  <data name="tasksSummary.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="activitiesSummary.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="&gt;&gt;activitiesSummary.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;maxRestDurationTextBox.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;todayButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="statisticsGroup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>569, 54</value>
+  </data>
+  <data name="label7.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;yesterdayButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="workingActivitiesTime.Location" type="System.Drawing.Point, System.Drawing">
+    <value>140, 32</value>
+  </data>
+  <data name="&gt;&gt;label7.Name" xml:space="preserve">
+    <value>label7</value>
+  </data>
+  <data name="&gt;&gt;tasksSummary.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="thisWeekButton.ToolTipText" xml:space="preserve">
+    <value>This Week from Monday to Sunday</value>
+  </data>
+  <data name="&gt;&gt;workingTimeIntervalsGrid.Parent" xml:space="preserve">
+    <value>intervalsDefinitionGroupBox</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>All activities (h:mm):</value>
+  </data>
+  <data name="allActivitiesTime.Size" type="System.Drawing.Size, System.Drawing">
+    <value>34, 20</value>
+  </data>
+  <data name="workingTimeIntervalsGrid.RowHeadersWidth" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="&gt;&gt;activities.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;allActivitiesTime.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;taskColumnForTasksSummary.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;intervalsDefinitionGroupBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="automaticallyRadioButton.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="topPanel.Text" xml:space="preserve">
+    <value>toolStrip1</value>
+  </data>
+  <data name="label7.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="thisWeekButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="&gt;&gt;fromDateDropDown.Name" xml:space="preserve">
+    <value>fromDateDropDown</value>
+  </data>
+  <data name="&gt;&gt;timeOnWorkTextBox.Parent" xml:space="preserve">
+    <value>efficiency</value>
+  </data>
+  <data name="manuallyRadioButton.Text" xml:space="preserve">
+    <value>manually</value>
+  </data>
+  <data name="dashLabel.Text" xml:space="preserve">
+    <value>-</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>146, 13</value>
+  </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 25</value>
+  </data>
+  <data name="topPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 0</value>
+  </data>
+  <data name="timeOnWorkTextBox.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="activitiesSummary.Size" type="System.Drawing.Size, System.Drawing">
+    <value>555, 240</value>
+  </data>
+  <data name="&gt;&gt;selectedRowsTime.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="efficiencyTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>148, 62</value>
+  </data>
+  <data name="&gt;&gt;workingActivitiesTime.Parent" xml:space="preserve">
+    <value>statisticsGroup</value>
+  </data>
+  <data name="closeButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 20</value>
+  </data>
+  <data name="&gt;&gt;manuallyRadioButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -652,257 +919,8 @@
         AAA=
 </value>
   </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>LifeIdea.LazyCure.UI.Backend.View, LazyCure.UI, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;closeButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="efficiencyTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;toolStripContainer1.TopToolStripPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;prevWeekButton.Name" xml:space="preserve">
-    <value>prevWeekButton</value>
-  </data>
-  <data name="&gt;&gt;label5.Name" xml:space="preserve">
-    <value>label5</value>
-  </data>
-  <data name="allActivitiesTime.Text" xml:space="preserve">
-    <value>12:34</value>
-  </data>
-  <data name="&gt;&gt;timeOnWorkTextBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="intervalsDefinitionGroupBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 48</value>
-  </data>
-  <data name="&gt;&gt;dashLabel.Name" xml:space="preserve">
-    <value>dashLabel</value>
-  </data>
-  <data name="efficiencyTextBox.Text" xml:space="preserve">
-    <value>85%</value>
-  </data>
-  <data name="activities.Text" xml:space="preserve">
-    <value>Activities</value>
-  </data>
-  <data name="lastMonthButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>51, 22</value>
-  </data>
-  <data name="&gt;&gt;tasksSummary.Parent" xml:space="preserve">
-    <value>tasks</value>
-  </data>
-  <data name="thisWeekButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 22</value>
-  </data>
-  <data name="&gt;&gt;toolStripContainer1.RightToolStripPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="efficiency.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>Working time usage efficiency ( [Working activities] / [Time on work]  * 100% ):</value>
-  </data>
-  <data name="selectedRowsTime.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="&gt;&gt;toolStripContainer1.ContentPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripContentPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="fromDateDropDown.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="&gt;&gt;efficiency.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;toolStripContainer1.BottomToolStripPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="tasksSummary.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;workingActivitiesTime.Name" xml:space="preserve">
-    <value>workingActivitiesTime</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 13</value>
-  </data>
-  <data name="&gt;&gt;label5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="statisticsGroup.Text" xml:space="preserve">
-    <value>Statistics</value>
-  </data>
-  <data name="&gt;&gt;selectedRowsTime.Parent" xml:space="preserve">
-    <value>statisticsGroup</value>
-  </data>
-  <data name="efficiencyTextBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>401, 3</value>
-  </data>
-  <data name="efficiency.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="workingActivitiesTime.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;toDateDropDown.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="automaticallyRadioButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 20</value>
-  </data>
-  <data name="tasksSummary.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="&gt;&gt;activitiesSummary.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;maxRestDurationTextBox.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;selectedRowsTime.Name" xml:space="preserve">
-    <value>selectedRowsTime</value>
-  </data>
-  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
-    <value>statisticsGroup</value>
-  </data>
-  <data name="statisticsGroup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>569, 54</value>
-  </data>
-  <data name="label7.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;yesterdayButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="workingActivitiesTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>140, 32</value>
-  </data>
-  <data name="&gt;&gt;label7.Name" xml:space="preserve">
-    <value>label7</value>
-  </data>
-  <data name="&gt;&gt;tasksSummary.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;spentColumnForActivitySummary.Name" xml:space="preserve">
-    <value>spentColumnForActivitySummary</value>
-  </data>
-  <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="thisWeekButton.ToolTipText" xml:space="preserve">
-    <value>This Week from Monday to Sunday</value>
-  </data>
-  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>All activities (h:mm):</value>
-  </data>
-  <data name="allActivitiesTime.Size" type="System.Drawing.Size, System.Drawing">
-    <value>34, 20</value>
-  </data>
-  <data name="&gt;&gt;todayButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="workingTimeIntervalsGrid.RowHeadersWidth" type="System.Int32, mscorlib">
-    <value>30</value>
-  </data>
-  <data name="&gt;&gt;activities.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;allActivitiesTime.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;toolStripContainer1.ContentPanel.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;intervalsDefinitionGroupBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="automaticallyRadioButton.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="topPanel.Text" xml:space="preserve">
-    <value>toolStrip1</value>
-  </data>
-  <data name="label7.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="thisWeekButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="statisticsGroup.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;timeOnWorkTextBox.Parent" xml:space="preserve">
-    <value>efficiency</value>
-  </data>
-  <data name="&gt;&gt;taskColumnForActivitySummary.Name" xml:space="preserve">
-    <value>taskColumnForActivitySummary</value>
-  </data>
-  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="manuallyRadioButton.Text" xml:space="preserve">
-    <value>manually</value>
-  </data>
-  <data name="dashLabel.Text" xml:space="preserve">
-    <value>-</value>
-  </data>
-  <data name="&gt;&gt;toolStripContainer1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;activityColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>146, 13</value>
-  </data>
-  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 25</value>
-  </data>
-  <data name="manuallyRadioButton.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="timeOnWorkTextBox.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;label2.Name" xml:space="preserve">
-    <value>label2</value>
-  </data>
-  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 25</value>
-  </data>
-  <data name="activitiesSummary.Size" type="System.Drawing.Size, System.Drawing">
-    <value>555, 240</value>
-  </data>
-  <data name="&gt;&gt;selectedRowsTime.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="efficiencyTextBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>148, 62</value>
-  </data>
-  <data name="&gt;&gt;workingActivitiesTime.Parent" xml:space="preserve">
-    <value>statisticsGroup</value>
-  </data>
-  <data name="&gt;&gt;manuallyRadioButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Working activities (h:mm):</value>
-  </data>
   <data name="&gt;&gt;Start.Name" xml:space="preserve">
     <value>Start</value>
-  </data>
-  <data name="&gt;&gt;taskColumnForTasksSummary.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="tasks.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -916,8 +934,8 @@
   <data name="intervalsDefinitionGroupBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>269, 205</value>
   </data>
-  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;tasksSummary.Name" xml:space="preserve">
+    <value>tasksSummary</value>
   </data>
   <data name="spentColumnForTasksSummary.HeaderText" xml:space="preserve">
     <value>Spent</value>
@@ -925,8 +943,8 @@
   <data name="&gt;&gt;showTimeLogButton.Name" xml:space="preserve">
     <value>showTimeLogButton</value>
   </data>
-  <data name="&gt;&gt;efficiency.Name" xml:space="preserve">
-    <value>efficiency</value>
+  <data name="&gt;&gt;activityColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;showTimeLogButton.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -942,6 +960,9 @@
   </data>
   <data name="&gt;&gt;showTimeLogButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabControl.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="&gt;&gt;toolStripContainer1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -961,14 +982,14 @@
   <data name="&gt;&gt;topPanel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="activities.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 16</value>
   </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
+  <data name="statisticsGroup.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
-  <data name="&gt;&gt;prevWeekButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="showTimeLogButton.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
   </data>
   <data name="&gt;&gt;label2.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -976,14 +997,14 @@
   <data name="&gt;&gt;showTimeLogButton.Parent" xml:space="preserve">
     <value>intervalsDefinitionGroupBox</value>
   </data>
-  <data name="efficiency.Size" type="System.Drawing.Size, System.Drawing">
-    <value>561, 246</value>
-  </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
     <value>108, 13</value>
   </data>
   <data name="&gt;&gt;manuallyRadioButton.ZOrder" xml:space="preserve">
     <value>4</value>
+  </data>
+  <data name="&gt;&gt;activities.Parent" xml:space="preserve">
+    <value>tabControl</value>
   </data>
   <data name="yesterdayButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>62, 22</value>
@@ -1012,9 +1033,6 @@
   <data name="&gt;&gt;tabControl.Name" xml:space="preserve">
     <value>tabControl</value>
   </data>
-  <data name="&gt;&gt;copyToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="tasks.Text" xml:space="preserve">
     <value>Tasks</value>
   </data>
@@ -1024,14 +1042,14 @@
   <data name="&gt;&gt;End.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>statisticsGroup</value>
+  </data>
   <data name="manuallyRadioButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 57</value>
   </data>
   <data name="selectedRowsTime.Text" xml:space="preserve">
     <value>12:34</value>
-  </data>
-  <data name="&gt;&gt;toolStripContainer1.BottomToolStripPanel.Name" xml:space="preserve">
-    <value>toolStripContainer1.BottomToolStripPanel</value>
   </data>
   <data name="fromDateDropDown.Text" xml:space="preserve">
     <value>2013-01-11</value>
@@ -1041,9 +1059,6 @@
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
     <value>180, 16</value>
-  </data>
-  <data name="&gt;&gt;toolStripContainer1.RightToolStripPanel.ZOrder" xml:space="preserve">
-    <value>2</value>
   </data>
   <data name="End.HeaderText" xml:space="preserve">
     <value>End</value>
@@ -1056,9 +1071,6 @@
   </data>
   <data name="workingActivitiesTime.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Right</value>
-  </data>
-  <data name="&gt;&gt;workingTimeIntervalsGrid.Parent" xml:space="preserve">
-    <value>intervalsDefinitionGroupBox</value>
   </data>
   <data name="efficiency.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
@@ -1102,20 +1114,20 @@
   <data name="label5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 6</value>
+  <data name="&gt;&gt;toolStripContainer1.BottomToolStripPanel.Parent" xml:space="preserve">
+    <value>toolStripContainer1</value>
   </data>
-  <data name="&gt;&gt;tabControl.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="efficiency.Size" type="System.Drawing.Size, System.Drawing">
+    <value>561, 246</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
     <value>205, 13</value>
   </data>
+  <data name="manuallyRadioButton.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="&gt;&gt;toolStripContainer1.LeftToolStripPanel.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tasksSummary.Name" xml:space="preserve">
-    <value>tasksSummary</value>
   </data>
   <data name="&gt;&gt;manuallyRadioButton.Parent" xml:space="preserve">
     <value>intervalsDefinitionGroupBox</value>
@@ -1126,14 +1138,17 @@
   <data name="manuallyRadioButton.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
+  <data name="&gt;&gt;efficiency.Name" xml:space="preserve">
+    <value>efficiency</value>
+  </data>
   <data name="showTimeLogButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>168, 81</value>
   </data>
   <data name="&gt;&gt;Start.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;taskColumnForActivitySummary.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="&gt;&gt;automaticallyRadioButton.ZOrder" xml:space="preserve">
     <value>5</value>
@@ -1147,44 +1162,26 @@
   <data name="manuallyRadioButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>66, 17</value>
   </data>
-  <data name="&gt;&gt;fromDateDropDown.Name" xml:space="preserve">
-    <value>fromDateDropDown</value>
-  </data>
   <data name="&gt;&gt;closeButton.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Working activities (h:mm):</value>
   </data>
   <data name="&gt;&gt;tabControl.Parent" xml:space="preserve">
     <value>toolStripContainer1.ContentPanel</value>
   </data>
-  <data name="&gt;&gt;toolStripContainer1.BottomToolStripPanel.Parent" xml:space="preserve">
-    <value>toolStripContainer1</value>
-  </data>
-  <data name="thisWeekButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
-        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
-        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
-        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
-        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
-        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
-        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
-        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
-        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
-        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="&gt;&gt;tasks.Name" xml:space="preserve">
-    <value>tasks</value>
-  </data>
-  <data name="spentColumnForActivitySummary.Width" type="System.Int32, mscorlib">
-    <value>50</value>
+  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="&gt;&gt;toolStripContainer1.TopToolStripPanel.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
   <data name="showTimeLogButton.Text" xml:space="preserve">
     <value>Show Time Log</value>
+  </data>
+  <data name="yesterdayButton.Text" xml:space="preserve">
+    <value>Yesterday</value>
   </data>
   <data name="topPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>None</value>
@@ -1201,14 +1198,14 @@
   <data name="&gt;&gt;efficiency.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="toDateDropDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>78, 22</value>
+  <data name="&gt;&gt;toolStripContainer1.BottomToolStripPanel.Name" xml:space="preserve">
+    <value>toolStripContainer1.BottomToolStripPanel</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>Time in selected rows (h:mm):</value>
   </data>
-  <data name="&gt;&gt;toolStripContainer1.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="toDateDropDown.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
   </data>
   <data name="intervalsDefinitionGroupBox.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -1237,8 +1234,8 @@
   <data name="&gt;&gt;toolStripContainer1.TopToolStripPanel.Parent" xml:space="preserve">
     <value>toolStripContainer1</value>
   </data>
-  <data name="activitiesSummary.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="&gt;&gt;lastMonthButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;efficiencyTextBox.Parent" xml:space="preserve">
     <value>efficiency</value>
@@ -1273,6 +1270,9 @@
   <data name="contextMenu.Size" type="System.Drawing.Size, System.Drawing">
     <value>145, 26</value>
   </data>
+  <data name="End.MinimumWidth" type="System.Int32, mscorlib">
+    <value>35</value>
+  </data>
   <data name="&gt;&gt;automaticallyRadioButton.Name" xml:space="preserve">
     <value>automaticallyRadioButton</value>
   </data>
@@ -1282,17 +1282,11 @@
   <data name="&gt;&gt;End.Name" xml:space="preserve">
     <value>End</value>
   </data>
-  <data name="topPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 0</value>
-  </data>
   <data name="&gt;&gt;label1.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="toolStripContainer1.ContentPanel.Size" type="System.Drawing.Size, System.Drawing">
     <value>569, 326</value>
-  </data>
-  <data name="workingTimeIntervalsGrid.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
-    <value>Vertical</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>569, 351</value>
@@ -1309,26 +1303,26 @@
   <data name="maxRestDurationTextBox.Mask" xml:space="preserve">
     <value>0:00</value>
   </data>
-  <data name="&gt;&gt;activityColumn.Name" xml:space="preserve">
-    <value>activityColumn</value>
-  </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Summary</value>
   </data>
   <data name="intervalsDefinitionGroupBox.Text" xml:space="preserve">
     <value>Time on work definition</value>
   </data>
-  <data name="dashLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>12, 22</value>
+  <data name="activities.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
   </data>
-  <data name="&gt;&gt;intervalsDefinitionGroupBox.Name" xml:space="preserve">
-    <value>intervalsDefinitionGroupBox</value>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
   </data>
   <data name="timeOnWorkTextBox.Text" xml:space="preserve">
     <value>8:00</value>
   </data>
-  <data name="&gt;&gt;workingActivitiesTime.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="dashLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 22</value>
+  </data>
+  <data name="spentColumnForActivitySummary.Width" type="System.Int32, mscorlib">
+    <value>50</value>
   </data>
   <data name="automaticallyRadioButton.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1342,20 +1336,23 @@
   <data name="&gt;&gt;label3.Name" xml:space="preserve">
     <value>label3</value>
   </data>
-  <data name="closeButton.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="&gt;&gt;efficiencyTextBox.Name" xml:space="preserve">
+    <value>efficiencyTextBox</value>
   </data>
   <data name="&gt;&gt;fromDateDropDown.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="tasksSummary.Size" type="System.Drawing.Size, System.Drawing">
-    <value>555, 240</value>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 6</value>
   </data>
-  <data name="End.MinimumWidth" type="System.Int32, mscorlib">
-    <value>35</value>
+  <data name="activities.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
-  <data name="&gt;&gt;toolStripContainer1.RightToolStripPanel.Name" xml:space="preserve">
-    <value>toolStripContainer1.RightToolStripPanel</value>
+  <data name="&gt;&gt;toolStripContainer1.ContentPanel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="workingTimeIntervalsGrid.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Vertical</value>
   </data>
   <data name="toolStripContainer1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -1366,8 +1363,8 @@
   <data name="maxRestDurationTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>31, 20</value>
   </data>
-  <data name="yesterdayButton.Text" xml:space="preserve">
-    <value>Yesterday</value>
+  <data name="&gt;&gt;activityColumn.Name" xml:space="preserve">
+    <value>activityColumn</value>
   </data>
   <data name="&gt;&gt;statisticsGroup.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1384,8 +1381,11 @@
   <data name="lastMonthButton.Text" xml:space="preserve">
     <value>30 Days</value>
   </data>
-  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 41</value>
+  <data name="&gt;&gt;selectedRowsTime.Name" xml:space="preserve">
+    <value>selectedRowsTime</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer1.LeftToolStripPanel.Name" xml:space="preserve">
+    <value>toolStripContainer1.LeftToolStripPanel</value>
   </data>
   <data name="&gt;&gt;taskColumnForTasksSummary.Name" xml:space="preserve">
     <value>taskColumnForTasksSummary</value>
@@ -1393,8 +1393,8 @@
   <data name="&gt;&gt;tasks.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;tasks.Name" xml:space="preserve">
+    <value>tasks</value>
   </data>
   <data name="todayButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
@@ -1405,8 +1405,8 @@
   <data name="tasks.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="showTimeLogButton.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
+  <data name="&gt;&gt;toolStripContainer1.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="&gt;&gt;thisWeekButton.Name" xml:space="preserve">
     <value>thisWeekButton</value>
@@ -1417,11 +1417,11 @@
   <data name="allActivitiesTime.Location" type="System.Drawing.Point, System.Drawing">
     <value>140, 13</value>
   </data>
-  <data name="&gt;&gt;activities.Parent" xml:space="preserve">
-    <value>tabControl</value>
+  <data name="toDateDropDown.Size" type="System.Drawing.Size, System.Drawing">
+    <value>78, 22</value>
   </data>
-  <data name="toDateDropDown.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
+  <data name="&gt;&gt;intervalsDefinitionGroupBox.Name" xml:space="preserve">
+    <value>intervalsDefinitionGroupBox</value>
   </data>
   <metadata name="End.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -1446,9 +1446,6 @@
   </metadata>
   <metadata name="taskColumnForActivitySummary.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </metadata>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>es</value>
   </metadata>
   <metadata name="contextMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
