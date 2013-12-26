@@ -62,6 +62,7 @@ namespace LifeIdea.LazyCure.Core.Time.TimeLogs
             var timeLogsManager = new TimeLogsManager(fileManager);
             Expect.Once.On(fileManager).Method("SaveTimeLog").Will(Return.Value(true));
 
+            timeLogsManager.ActiveTimeLog = NewMock<ITimeLog>();
             timeLogsManager.ActivateTimeLog(DateTime.Now);
 
             VerifyAllExpectationsHaveBeenMet();
@@ -121,6 +122,18 @@ namespace LifeIdea.LazyCure.Core.Time.TimeLogs
             TimeLogsManager timeLogsManager = new TimeLogsManager(fileManager);
             timeLogsManager.ActiveTimeLog = activeTimeLog;
             timeLogsManager.SaveActiveTimeLog();
+            VerifyAllExpectationsHaveBeenMet();
+        }
+        [Test]
+        public void SaveActiveTimeLogDoesNotUserFileManagerIfActiveTimeLogIsNull()
+        {
+            var fileManager = NewMock<ITimeLogsFileManager>();
+            Expect.Never.On(fileManager);
+            TimeLogsManager timeLogsManager = new TimeLogsManager(fileManager);
+            timeLogsManager.ActiveTimeLog = null;
+
+            timeLogsManager.SaveActiveTimeLog();
+
             VerifyAllExpectationsHaveBeenMet();
         }
         [Test]

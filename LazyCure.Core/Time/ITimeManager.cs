@@ -5,7 +5,7 @@ using LifeIdea.LazyCure.Core.Time.TimeLogs;
 
 namespace LifeIdea.LazyCure.Core.Time
 {
-    public interface ITimeManager
+    public interface ITimeManager : IActivitiesEnumeratorProvider
     {
         IActivity CurrentActivity { get; }
 

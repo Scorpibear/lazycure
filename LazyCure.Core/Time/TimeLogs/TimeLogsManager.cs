@@ -104,7 +104,7 @@ namespace LifeIdea.LazyCure.Core.Time.TimeLogs
 
         public bool SaveActiveTimeLog()
         {
-            if(fileManager!=null)
+            if (fileManager != null && ActiveTimeLog != null)
                 return fileManager.SaveTimeLog(ActiveTimeLog);
             return false;
         }
