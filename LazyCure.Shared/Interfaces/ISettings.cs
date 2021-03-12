@@ -34,16 +34,6 @@ namespace LifeIdea.LazyCure.Shared.Interfaces
 
         bool SwitchTimeLogAtMidnight { get; set; }
 
-        string TimeLogsFolder { get; set; }
-
-        string TweetingActivity { get; set; }
-
-        string TwitterAccessToken { get; set; }
-
-        string TwitterAccessTokenSecret { get; set; }
-
-        bool TwitterEnabled { get; set; }
-
-        bool UseTweetingActivity { get; set; }
+        string TimeLogsFolder { get;  set; }
     }
 }

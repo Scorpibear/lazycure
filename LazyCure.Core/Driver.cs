@@ -188,19 +188,6 @@ namespace LifeIdea.LazyCure.Core
             }
         }
 
-        private void ApplyTweetingActivity(ISettings settings)
-        {
-            // this hardcode could be replaced for getting the english version from constants, but don't know the simple way to do that
-            const string tweetingInEn = "tweeting";
-            if (settings.TweetingActivity == string.Empty || settings.TweetingActivity == tweetingInEn)
-            {
-                settings.TweetingActivity = LazyCure.Shared.Constants.Constants.Tweeting;
-                settings.Save();
-            }
-            TimeManager.TweetingActivity = (settings.UseTweetingActivity) ? settings.TweetingActivity : null;
-        }
-
-
         public void RenameActivity(string before, string after)
         {
             TimeManager.TimeLog.RenameActivities(before, after);

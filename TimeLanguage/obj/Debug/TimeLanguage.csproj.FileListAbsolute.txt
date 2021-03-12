@@ -1,0 +1,15 @@
+D:\Projects\LazyCure\src\TimeLanguage\bin\Debug\tl.exe.config
+D:\Projects\LazyCure\src\TimeLanguage\bin\Debug\tl.exe
+D:\Projects\LazyCure\src\TimeLanguage\bin\Debug\tl.pdb
+D:\Projects\LazyCure\src\TimeLanguage\bin\Debug\LazyCure.Core.dll
+D:\Projects\LazyCure\src\TimeLanguage\bin\Debug\LazyCure.Shared.dll
+D:\Projects\LazyCure\src\TimeLanguage\bin\Debug\LazyCure.Core.pdb
+D:\Projects\LazyCure\src\TimeLanguage\bin\Debug\LazyCure.Shared.pdb
+D:\Projects\LazyCure\src\TimeLanguage\bin\Debug\es\LazyCure.Shared.resources.dll
+D:\Projects\LazyCure\src\TimeLanguage\bin\Debug\ru\LazyCure.Shared.resources.dll
+D:\Projects\LazyCure\src\TimeLanguage\bin\Debug\uk\LazyCure.Shared.resources.dll
+D:\Projects\LazyCure\src\TimeLanguage\obj\Debug\TimeLanguage.csprojAssemblyReference.cache
+D:\Projects\LazyCure\src\TimeLanguage\obj\Debug\TimeLanguage.csproj.CoreCompileInputs.cache
+D:\Projects\LazyCure\src\TimeLanguage\obj\Debug\TimeLanguage.csproj.CopyComplete
+D:\Projects\LazyCure\src\TimeLanguage\obj\Debug\tl.exe
+D:\Projects\LazyCure\src\TimeLanguage\obj\Debug\tl.pdb
