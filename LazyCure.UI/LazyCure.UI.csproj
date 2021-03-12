@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>LifeIdea.LazyCure.UI</RootNamespace>
     <AssemblyName>LazyCure.UI</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>2.0</OldToolsVersion>
@@ -40,6 +40,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -48,6 +49,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -97,12 +99,6 @@
     </Compile>
     <Compile Include="MainBase.cs">
       <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="OathAuthorize.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="OathAuthorize.Designer.cs">
-      <DependentUpon>OathAuthorize.cs</DependentUpon>
     </Compile>
     <Compile Include="Options.cs">
       <SubType>Form</SubType>
@@ -158,12 +154,6 @@
     <EmbeddedResource Include="Main.es.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OathAuthorize.be.resx">
-      <DependentUpon>OathAuthorize.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="OathAuthorize.es.resx">
-      <DependentUpon>OathAuthorize.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Options.be.resx">
       <DependentUpon>Options.cs</DependentUpon>
     </EmbeddedResource>
@@ -202,16 +192,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainBase.resx">
       <DependentUpon>MainBase.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="OathAuthorize.resx">
-      <DependentUpon>OathAuthorize.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="OathAuthorize.ru.resx">
-      <DependentUpon>OathAuthorize.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="OathAuthorize.uk.resx">
-      <DependentUpon>OathAuthorize.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Options.resx">
       <SubType>Designer</SubType>

@@ -1,0 +1,17 @@
+D:\Projects\LazyCure\src\LazyCure.Shared\bin\Debug\LazyCure.Shared.dll
+D:\Projects\LazyCure\src\LazyCure.Shared\bin\Debug\LazyCure.Shared.pdb
+D:\Projects\LazyCure\src\LazyCure.Shared\bin\Debug\ru\LazyCure.Shared.resources.dll
+D:\Projects\LazyCure\src\LazyCure.Shared\bin\Debug\uk\LazyCure.Shared.resources.dll
+D:\Projects\LazyCure\src\LazyCure.Shared\bin\Debug\es\LazyCure.Shared.resources.dll
+D:\Projects\LazyCure\src\LazyCure.Shared\obj\Debug\LazyCure.Shared.csprojAssemblyReference.cache
+D:\Projects\LazyCure\src\LazyCure.Shared\obj\Debug\LifeIdea.LazyCure.Shared.Constants.Constants.resources
+D:\Projects\LazyCure\src\LazyCure.Shared\obj\Debug\LifeIdea.LazyCure.Shared.Constants.Constants.ru.resources
+D:\Projects\LazyCure\src\LazyCure.Shared\obj\Debug\LifeIdea.LazyCure.Shared.Constants.Constants.uk.resources
+D:\Projects\LazyCure\src\LazyCure.Shared\obj\Debug\LifeIdea.LazyCure.Shared.Constants.Constants.es.resources
+D:\Projects\LazyCure\src\LazyCure.Shared\obj\Debug\LazyCure.Shared.csproj.GenerateResource.cache
+D:\Projects\LazyCure\src\LazyCure.Shared\obj\Debug\LazyCure.Shared.csproj.CoreCompileInputs.cache
+D:\Projects\LazyCure\src\LazyCure.Shared\obj\Debug\ru\LazyCure.Shared.resources.dll
+D:\Projects\LazyCure\src\LazyCure.Shared\obj\Debug\uk\LazyCure.Shared.resources.dll
+D:\Projects\LazyCure\src\LazyCure.Shared\obj\Debug\es\LazyCure.Shared.resources.dll
+D:\Projects\LazyCure\src\LazyCure.Shared\obj\Debug\LazyCure.Shared.dll
+D:\Projects\LazyCure\src\LazyCure.Shared\obj\Debug\LazyCure.Shared.pdb

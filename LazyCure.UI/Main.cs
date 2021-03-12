@@ -135,13 +135,12 @@ namespace LifeIdea.LazyCure.UI
         private void SwitchActivity(string finishedActivity)
         {
             Dialogs.CancelEditTimeLog();
-            lazyCure.FinishActivity(finishedActivity, nextActivity, NeedPostToExternals);
+            lazyCure.FinishActivity(finishedActivity, nextActivity);
             UpdateCurrentActivity();
             UpdateContextMenuActivities();
             UpdateActivityStartTime();
             currentActivity.SelectAll();
             SetCaption();
-            ResetPostToExternalsCheckbox();
         }
 
         private void SetCaption()

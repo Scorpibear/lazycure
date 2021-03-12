@@ -30,7 +30,6 @@ namespace LifeIdea.LazyCure.Core
         private IWorkingTimeManager workingTime;
         //private IHistoryDataProvider historyDataProvider;
         private ITimeLogsManager timeLogsManager;
-        private IExternalPoster externalPoster = new Twitter();
 
         #endregion Fields
 
@@ -87,8 +86,6 @@ namespace LifeIdea.LazyCure.Core
         }
 
         public string TimeLogsFolder { get { return FileManager.TimeLogsFolder; } set { FileManager.TimeLogsFolder = value; } }
-
-        public IExternalPoster ExternalPoster { get { return externalPoster; } set { externalPoster = value; } }
 
         public IWorkingTimeManager WorkingTime
         {
@@ -188,8 +185,6 @@ namespace LifeIdea.LazyCure.Core
                 TimeManager.MaxDuration = settings.ReminderTime;
                 TimeManager.SplitByComma = settings.SplitByComma;
                 TimeManager.SwitchAtMidnight = settings.SwitchTimeLogAtMidnight;
-                ApplyTweetingActivity(settings);
-                ExternalPoster.AccessTokens = new TokensPair(settings.TwitterAccessToken, settings.TwitterAccessTokenSecret);
             }
         }
 
@@ -205,10 +200,6 @@ namespace LifeIdea.LazyCure.Core
             TimeManager.TweetingActivity = (settings.UseTweetingActivity) ? settings.TweetingActivity : null;
         }
 
-        public void AuthorizeInExternalPoster()
-        {
-            ExternalPoster.ShowAuthorizationPage();
-        }
 
         public void RenameActivity(string before, string after)
         {
@@ -216,32 +207,14 @@ namespace LifeIdea.LazyCure.Core
             HistoryDataProvider.ActivitiesHistory.RenameActivity(before, after);
         }
 
-        public void PostToTwitter(string activity)
-        {
-            ExternalPoster.PostAsync(activity);
-        }
-
         public object TimeLogData { get { return TimeManager.TimeLog.Data; } }
 
-        public void FinishActivity(string finishedActivityName, string nextActivityName, bool postToExternals)
+        public void FinishActivity(string finishedActivityName, string nextActivityName)
         {
-            if (postToExternals)
-            {
-                string tweet = finishedActivityName;
-                string tweetingActivity = TimeManager.TweetingActivity;
-                if(tweetingActivity!=null)
-                    finishedActivityName = tweetingActivity;
-                this.PostToTwitter(tweet);
-            }
             List<IActivity> finishedActivities = TimeManager.FinishActivity(finishedActivityName, nextActivityName);
             HistoryDataProvider.ActivitiesHistory.AddActivities(finishedActivities);
             if (SaveAfterDone && timeLogsManager != null)
                 timeLogsManager.SaveActiveTimeLog();
-        }
-
-        public void FinishActivity(string finishedActivityName, string nextActivityName)
-        {
-            FinishActivity(finishedActivityName, nextActivityName, false);
         }
 
         public string TimeLogDate { get { return Format.Date(TimeManager.TimeLog.Date); } }
@@ -256,13 +229,6 @@ namespace LifeIdea.LazyCure.Core
             }
             else
                 return false;
-        }
-
-        public TokensPair SetExternalPosterAuthorizationPin(string pin)
-        {
-            if (ExternalPoster != null)
-                return ExternalPoster.SetPin(pin);
-            return TokensPair.Empty;
         }
 
         public void ActivateTimeLog(ITimeLog timeLog)

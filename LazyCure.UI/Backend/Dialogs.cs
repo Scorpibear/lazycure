@@ -5,7 +5,6 @@ namespace LifeIdea.LazyCure.UI.Backend
 {
     public static class Dialogs
     {
-        private static OathAuthorize oath = null;
         private static OpenFileDialog open = null;
         private static SaveFileDialog save = null;
         private static ITimeLogView timeLog = null;
@@ -23,21 +22,8 @@ namespace LifeIdea.LazyCure.UI.Backend
         {
             get
             {
-                return new object[] { oath, open, save, timeLog, summary, about, options, taskManager, spentOnDiffDays };
+                return new object[] { open, save, timeLog, summary, about, options, taskManager, spentOnDiffDays };
             }
-        }
-
-        public static OathAuthorize Oath
-        {
-            get
-            {
-                if (oath == null)
-                {
-                    oath = new OathAuthorize(LazyCureDriver);
-                }
-                return oath;
-            }
-
         }
 
         public static OpenFileDialog Open
@@ -157,7 +143,6 @@ namespace LifeIdea.LazyCure.UI.Backend
                 if (form != null)
                     form.Close();
             }
-            oath = null;
             open = null;
             save = null;
             timeLog = null;

@@ -1,0 +1,12 @@
+D:\Projects\LazyCure\src\LazyCure.Core\obj\Debug\LazyCure.Core.csprojAssemblyReference.cache
+D:\Projects\LazyCure\src\LazyCure.Core\obj\Debug\LazyCure.Core.csproj.CoreCompileInputs.cache
+D:\Projects\LazyCure\src\LazyCure.Core\bin\Debug\LazyCure.Core.dll
+D:\Projects\LazyCure\src\LazyCure.Core\bin\Debug\LazyCure.Core.pdb
+D:\Projects\LazyCure\src\LazyCure.Core\bin\Debug\LazyCure.Shared.dll
+D:\Projects\LazyCure\src\LazyCure.Core\bin\Debug\LazyCure.Shared.pdb
+D:\Projects\LazyCure\src\LazyCure.Core\bin\Debug\es\LazyCure.Shared.resources.dll
+D:\Projects\LazyCure\src\LazyCure.Core\bin\Debug\ru\LazyCure.Shared.resources.dll
+D:\Projects\LazyCure\src\LazyCure.Core\bin\Debug\uk\LazyCure.Shared.resources.dll
+D:\Projects\LazyCure\src\LazyCure.Core\obj\Debug\LazyCure.Core.csproj.CopyComplete
+D:\Projects\LazyCure\src\LazyCure.Core\obj\Debug\LazyCure.Core.dll
+D:\Projects\LazyCure\src\LazyCure.Core\obj\Debug\LazyCure.Core.pdb
