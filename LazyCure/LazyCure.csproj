@@ -12,7 +12,7 @@
     <AssemblyName>LazyCure</AssemblyName>
     <StartupObject>LifeIdea.LazyCure.Program</StartupObject>
     <ApplicationIcon>LazyCure.ico</ApplicationIcon>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>2.0</OldToolsVersion>
@@ -104,7 +104,7 @@
     <Content Include="LazyCure.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="LazyCure.ico" />
+    <None Include="LazyCure.ico" />
     <Content Include="ru\LazyCure.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
