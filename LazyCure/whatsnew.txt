@@ -1,3 +1,11 @@
+LazyCure 4.2
+* New: Summary for time period
+* New: Spanish localization
+* Improved: Updated icon to support 512x512 resolution
+* Improved: Support of 4.7 .NET framework
+* Improved: extended history of activities
+* Removed: post to twitter option
+
 LazyCure 4.1
 * New: Support of Ukrainian language
 * New: Duration and end calcuation by manual entry of activities list with start time and activity name only
