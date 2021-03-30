@@ -49,7 +49,6 @@ namespace LifeIdea.LazyCure.UI
             collapsedSize = new Size(Size.Width, Size.Height - statusBar.Height);
             SetLocation(settings.MainWindowLocation);
             SystemEvents.SessionSwitch += SystemEvents_SessionSwitch;
-            postToTwitter.Visible = Dialogs.Settings.TwitterEnabled;
             leftClickTimer = new Timer();
             leftClickTimer.Tick += new EventHandler(notifyIcon_LeftClick);
             leftClickTimer.Interval = 300; // should be changed on max double click interval
@@ -135,13 +134,12 @@ namespace LifeIdea.LazyCure.UI
         private void SwitchActivity(string finishedActivity)
         {
             Dialogs.CancelEditTimeLog();
-            lazyCure.FinishActivity(finishedActivity, nextActivity, NeedPostToExternals);
+            lazyCure.FinishActivity(finishedActivity, nextActivity);
             UpdateCurrentActivity();
             UpdateContextMenuActivities();
             UpdateActivityStartTime();
             currentActivity.SelectAll();
             SetCaption();
-            ResetPostToExternalsCheckbox();
         }
 
         private void SetCaption()

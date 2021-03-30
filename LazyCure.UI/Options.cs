@@ -17,8 +17,6 @@ namespace LifeIdea.LazyCure.UI
         public Options()
         {
             InitializeComponent();
-            twitterLink.Links.Add(0, twitterLink.Text.Length, "http://twitter.com/");
-            UpdateTwitterControlsEnabledProperty();
         }
 
         public Options(ISettings settings):this()
@@ -49,26 +47,11 @@ namespace LifeIdea.LazyCure.UI
             settings.SwitchOnLogOff = switchOnLogOff.Checked;
             settings.SwitchTimeLogAtMidnight = switchTimeLogAtMidnight.Checked;
             settings.TimeLogsFolder = timeLogFolder.Text;
-
-            // Twitter settings
-            settings.TweetingActivity = twitterActivityField.Text;
-            var pair = Dialogs.Oath.TokensPair;
-            settings.TwitterAccessToken = pair.Token;
-            settings.TwitterAccessTokenSecret = pair.TokenSecret;
-            settings.TwitterEnabled = enableTwitterCheckbox.Checked;
-            settings.UseTweetingActivity = twitterActivitySpecificRadioButton.Checked;
         }
 
         #endregion Public methods
 
         #region Private methods
-
-        private void ChangeTwitterControlsEnabled(bool enabled)
-        {
-            Control[] twitterControls = new Control[] { twitterAuthorizationGroup, whatAddtj};
-            foreach (Control control in twitterControls)
-                control.Enabled = enabled;
-        }
 
         private void EditHotKeyLabel(Label hotKeyLabel)
         {
@@ -128,9 +111,6 @@ namespace LifeIdea.LazyCure.UI
             switchOnLogOff.Checked = settings.SwitchOnLogOff;
             switchTimeLogAtMidnight.Checked = settings.SwitchTimeLogAtMidnight;
             timeLogFolder.Text = settings.TimeLogsFolder;
-            enableTwitterCheckbox.Checked = settings.TwitterEnabled;
-            twitterActivityField.Text = settings.TweetingActivity;
-            twitterActivityTheSameRadioButton.Checked = !(twitterActivitySpecificRadioButton.Checked = settings.UseTweetingActivity);
         }
 
         private void SetReminderTime(TimeSpan newTime)
@@ -147,20 +127,9 @@ namespace LifeIdea.LazyCure.UI
             Dialogs.Reset();
         }
 
-        private void UpdateTwitterControlsEnabledProperty()
-        {
-            bool twitterEnabled = enableTwitterCheckbox.Checked;
-            ChangeTwitterControlsEnabled(twitterEnabled);
-        }
-        
         #endregion
 
         #region Options controls event handlers
-
-        private void authorizeButton_Click(object sender, EventArgs e)
-        {
-            Dialogs.Oath.ShowDialog(this);
-        }
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
@@ -177,11 +146,6 @@ namespace LifeIdea.LazyCure.UI
             EditHotKeyLabel(hotKeyToSwitchLabel);
         }
 
-        private void enableTwitterCheckbox_CheckedChanged(object sender, EventArgs e)
-        {
-            UpdateTwitterControlsEnabledProperty();
-        }
-
         private void ok_Click(object sender, EventArgs e)
         {
             TimeSpan parsedReminderTime;
@@ -192,7 +156,6 @@ namespace LifeIdea.LazyCure.UI
                 CultureInfo currentUICulture = Thread.CurrentThread.CurrentUICulture;
                 settings.Save();
                 Dialogs.LazyCureDriver.ApplySettings(settings);
-                Dialogs.MainForm.PostToTwitterEnabled = enableTwitterCheckbox.Checked;
                 Dialogs.MainForm.RegisterHotKeys();
                 Hide();
                 if (!previousUICulture.Equals(currentUICulture))

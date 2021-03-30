@@ -15,8 +15,6 @@ namespace LifeIdea.LazyCure.Shared.Interfaces
 
         void CreateSummaries(ITimeLog timeLog);
 
-        DataTable Data { get; }
-
         string[] HistoryActivities { get; }
 
         string[] LatestActivities { get; }

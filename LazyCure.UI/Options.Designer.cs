@@ -51,15 +51,6 @@ namespace LifeIdea.LazyCure.UI
             this.splitByComma = new System.Windows.Forms.CheckBox();
             this.switchTimeLogAtMidnight = new System.Windows.Forms.CheckBox();
             this.switchOnLogOff = new System.Windows.Forms.CheckBox();
-            this.tabTwitter = new System.Windows.Forms.TabPage();
-            this.twitterAuthorizationGroup = new System.Windows.Forms.GroupBox();
-            this.authorizeButton = new System.Windows.Forms.Button();
-            this.whatAddtj = new System.Windows.Forms.GroupBox();
-            this.twitterActivityField = new System.Windows.Forms.TextBox();
-            this.twitterActivitySpecificRadioButton = new System.Windows.Forms.RadioButton();
-            this.twitterActivityTheSameRadioButton = new System.Windows.Forms.RadioButton();
-            this.twitterLink = new System.Windows.Forms.LinkLabel();
-            this.enableTwitterCheckbox = new System.Windows.Forms.CheckBox();
             this.tabHotKeys = new System.Windows.Forms.TabPage();
             this.hotKeyToSwitchLabel = new System.Windows.Forms.Label();
             this.editSwitchKey = new System.Windows.Forms.Button();
@@ -77,9 +68,6 @@ namespace LifeIdea.LazyCure.UI
             this.tabControl.SuspendLayout();
             this.tabGeneral.SuspendLayout();
             this.languageGroupBox.SuspendLayout();
-            this.tabTwitter.SuspendLayout();
-            this.twitterAuthorizationGroup.SuspendLayout();
-            this.whatAddtj.SuspendLayout();
             this.tabHotKeys.SuspendLayout();
             this.tabTray.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -165,7 +153,6 @@ namespace LifeIdea.LazyCure.UI
             // 
             resources.ApplyResources(this.tabControl, "tabControl");
             this.tabControl.Controls.Add(this.tabGeneral);
-            this.tabControl.Controls.Add(this.tabTwitter);
             this.tabControl.Controls.Add(this.tabHotKeys);
             this.tabControl.Controls.Add(this.tabTray);
             this.tabControl.Name = "tabControl";
@@ -250,70 +237,6 @@ namespace LifeIdea.LazyCure.UI
             resources.ApplyResources(this.switchOnLogOff, "switchOnLogOff");
             this.switchOnLogOff.Name = "switchOnLogOff";
             this.switchOnLogOff.UseVisualStyleBackColor = true;
-            // 
-            // tabTwitter
-            // 
-            resources.ApplyResources(this.tabTwitter, "tabTwitter");
-            this.tabTwitter.Controls.Add(this.twitterAuthorizationGroup);
-            this.tabTwitter.Controls.Add(this.whatAddtj);
-            this.tabTwitter.Controls.Add(this.twitterLink);
-            this.tabTwitter.Controls.Add(this.enableTwitterCheckbox);
-            this.tabTwitter.Name = "tabTwitter";
-            this.tabTwitter.UseVisualStyleBackColor = true;
-            // 
-            // twitterAuthorizationGroup
-            // 
-            resources.ApplyResources(this.twitterAuthorizationGroup, "twitterAuthorizationGroup");
-            this.twitterAuthorizationGroup.Controls.Add(this.authorizeButton);
-            this.twitterAuthorizationGroup.Name = "twitterAuthorizationGroup";
-            this.twitterAuthorizationGroup.TabStop = false;
-            // 
-            // authorizeButton
-            // 
-            resources.ApplyResources(this.authorizeButton, "authorizeButton");
-            this.authorizeButton.Name = "authorizeButton";
-            this.authorizeButton.UseVisualStyleBackColor = true;
-            this.authorizeButton.Click += new System.EventHandler(this.authorizeButton_Click);
-            // 
-            // whatAddtj
-            // 
-            resources.ApplyResources(this.whatAddtj, "whatAddtj");
-            this.whatAddtj.Controls.Add(this.twitterActivityField);
-            this.whatAddtj.Controls.Add(this.twitterActivitySpecificRadioButton);
-            this.whatAddtj.Controls.Add(this.twitterActivityTheSameRadioButton);
-            this.whatAddtj.Name = "whatAddtj";
-            this.whatAddtj.TabStop = false;
-            // 
-            // twitterActivityField
-            // 
-            resources.ApplyResources(this.twitterActivityField, "twitterActivityField");
-            this.twitterActivityField.Name = "twitterActivityField";
-            // 
-            // twitterActivitySpecificRadioButton
-            // 
-            resources.ApplyResources(this.twitterActivitySpecificRadioButton, "twitterActivitySpecificRadioButton");
-            this.twitterActivitySpecificRadioButton.Name = "twitterActivitySpecificRadioButton";
-            this.twitterActivitySpecificRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // twitterActivityTheSameRadioButton
-            // 
-            resources.ApplyResources(this.twitterActivityTheSameRadioButton, "twitterActivityTheSameRadioButton");
-            this.twitterActivityTheSameRadioButton.Name = "twitterActivityTheSameRadioButton";
-            this.twitterActivityTheSameRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // twitterLink
-            // 
-            resources.ApplyResources(this.twitterLink, "twitterLink");
-            this.twitterLink.Name = "twitterLink";
-            this.twitterLink.TabStop = true;
-            this.twitterLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.twitterLink_LinkClicked);
-            // 
-            // enableTwitterCheckbox
-            // 
-            resources.ApplyResources(this.enableTwitterCheckbox, "enableTwitterCheckbox");
-            this.enableTwitterCheckbox.Name = "enableTwitterCheckbox";
-            this.enableTwitterCheckbox.UseVisualStyleBackColor = true;
-            this.enableTwitterCheckbox.CheckedChanged += new System.EventHandler(this.enableTwitterCheckbox_CheckedChanged);
             // 
             // tabHotKeys
             // 
@@ -422,11 +345,6 @@ namespace LifeIdea.LazyCure.UI
             this.tabGeneral.PerformLayout();
             this.languageGroupBox.ResumeLayout(false);
             this.languageGroupBox.PerformLayout();
-            this.tabTwitter.ResumeLayout(false);
-            this.tabTwitter.PerformLayout();
-            this.twitterAuthorizationGroup.ResumeLayout(false);
-            this.whatAddtj.ResumeLayout(false);
-            this.whatAddtj.PerformLayout();
             this.tabHotKeys.ResumeLayout(false);
             this.tabHotKeys.PerformLayout();
             this.tabTray.ResumeLayout(false);
@@ -452,10 +370,7 @@ namespace LifeIdea.LazyCure.UI
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TabControl tabControl;
-        private System.Windows.Forms.TabPage tabTwitter;
         private System.Windows.Forms.TabPage tabGeneral;
-        private System.Windows.Forms.CheckBox enableTwitterCheckbox;
-        private System.Windows.Forms.LinkLabel twitterLink;
         private System.Windows.Forms.CheckBox switchOnLogOff;
         private System.Windows.Forms.CheckBox switchTimeLogAtMidnight;
         private System.Windows.Forms.CheckBox splitByComma;
@@ -466,15 +381,9 @@ namespace LifeIdea.LazyCure.UI
         private System.Windows.Forms.Label hotKeyToActivateLabel;
         private System.Windows.Forms.Button editActivateKey;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.GroupBox whatAddtj;
-        private System.Windows.Forms.RadioButton twitterActivitySpecificRadioButton;
-        private System.Windows.Forms.RadioButton twitterActivityTheSameRadioButton;
-        private System.Windows.Forms.TextBox twitterActivityField;
         private System.Windows.Forms.GroupBox languageGroupBox;
         private System.Windows.Forms.RadioButton languageOptionEnglish;
         private System.Windows.Forms.RadioButton languageOptionRussian;
-        private System.Windows.Forms.GroupBox twitterAuthorizationGroup;
-        private System.Windows.Forms.Button authorizeButton;
         private System.Windows.Forms.RadioButton languageOptionUkrainian;
         private System.Windows.Forms.TabPage tabTray;
         private System.Windows.Forms.GroupBox groupBox1;

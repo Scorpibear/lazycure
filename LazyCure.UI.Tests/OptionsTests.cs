@@ -27,9 +27,6 @@ namespace LifeIdea.LazyCure.UI
             Expect.Once.On(settings).GetProperty("SwitchOnLogOff").Will(Return.Value(false));
             Expect.Once.On(settings).GetProperty("SwitchTimeLogAtMidnight").Will(Return.Value(false));
             Expect.Once.On(settings).GetProperty("TimeLogsFolder");
-            Expect.Once.On(settings).GetProperty("TweetingActivity");
-            Expect.Once.On(settings).GetProperty("UseTweetingActivity").Will(Return.Value(true));
-            Expect.Once.On(settings).GetProperty("TwitterEnabled").Will(Return.Value(false));
 
             Options options = new Options(settings);
             VerifyAllExpectationsHaveBeenMet();
@@ -54,11 +51,6 @@ namespace LifeIdea.LazyCure.UI
             Expect.Once.On(settings).SetProperty("SwitchOnLogOff");
             Expect.Once.On(settings).SetProperty("SwitchTimeLogAtMidnight");
             Expect.Once.On(settings).SetProperty("TimeLogsFolder");
-            Expect.Once.On(settings).SetProperty("TweetingActivity");
-            Expect.Once.On(settings).SetProperty("TwitterAccessToken");
-            Expect.Once.On(settings).SetProperty("TwitterAccessTokenSecret");
-            Expect.Once.On(settings).SetProperty("TwitterEnabled");
-            Expect.Once.On(settings).SetProperty("UseTweetingActivity");
             
             // When
             options.UpdateSettings(TimeSpan.Zero);

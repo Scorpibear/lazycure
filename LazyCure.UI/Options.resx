@@ -127,14 +127,18 @@
   <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="hotKeyToSwitchLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 16</value>
+  </data>
   <data name="&gt;&gt;twitterActivitySpecificRadioButton.Parent" xml:space="preserve">
     <value>whatAddtj</value>
   </data>
   <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="twitterActivitySpecificRadioButton.Text" xml:space="preserve">
-    <value>activity with the name: </value>
+  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
     <value>Hot key to switch:</value>
@@ -158,6 +162,9 @@
   <data name="twitterLink.Text" xml:space="preserve">
     <value>http://twitter.com/</value>
   </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>350, 289</value>
+  </data>
   <data name="label4.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
   </data>
@@ -167,7 +174,6 @@
   <data name="&gt;&gt;twitterLink.Parent" xml:space="preserve">
     <value>tabTwitter</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="switchTimeLogAtMidnight.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 42</value>
   </data>
@@ -213,6 +219,9 @@
   <data name="languageOptionEnglish.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 13</value>
   </data>
+  <data name="tabGeneral.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
   <data name="splitByComma.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
@@ -234,8 +243,8 @@
   <data name="editSwitchKey.Text" xml:space="preserve">
     <value>...</value>
   </data>
-  <data name="&gt;&gt;ok.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;editSwitchKey.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;whatAddtj.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -243,8 +252,11 @@
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
     <value>220, 47</value>
   </data>
-  <data name="activitiesNumberInTray.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
+  <data name="&gt;&gt;hotKeyToSwitchLabel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 125</value>
   </data>
   <data name="&gt;&gt;saveAfterDone.ZOrder" xml:space="preserve">
     <value>4</value>
@@ -276,9 +288,6 @@
   <data name="tabGeneral.Text" xml:space="preserve">
     <value>General</value>
   </data>
-  <data name="&gt;&gt;reminderTime.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
   <data name="&gt;&gt;label5.Parent" xml:space="preserve">
     <value>tabTray</value>
   </data>
@@ -293,6 +302,9 @@
   </data>
   <data name="&gt;&gt;showsRecentActivities.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="&gt;&gt;languageOptionUkrainian.Type" xml:space="preserve">
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -340,7 +352,7 @@
     <value>OK</value>
   </data>
   <data name="&gt;&gt;tabTray.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;label7.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -369,8 +381,8 @@
   <data name="languageOptionUkrainian.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="languageOptionRussian.Text" xml:space="preserve">
-    <value>Russian</value>
+  <data name="&gt;&gt;cancel.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>105, 13</value>
@@ -387,17 +399,14 @@
   <data name="twitterAuthorizationGroup.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;timeLogFolder.Name" xml:space="preserve">
-    <value>timeLogFolder</value>
-  </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <data name="&gt;&gt;label6.Name" xml:space="preserve">
+    <value>label6</value>
+  </data>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
-  </data>
-  <data name="languageOptionSpanish.Text" xml:space="preserve">
-    <value>Spanish</value>
   </data>
   <data name="enableTwitterCheckbox.Size" type="System.Drawing.Size, System.Drawing">
     <value>165, 17</value>
@@ -432,9 +441,6 @@
   <data name="&gt;&gt;editActivateKey.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="&gt;&gt;tabHotKeys.Name" xml:space="preserve">
-    <value>tabHotKeys</value>
-  </data>
   <data name="twitterLink.Location" type="System.Drawing.Point, System.Drawing">
     <value>240, 7</value>
   </data>
@@ -468,6 +474,12 @@
   <data name="tabTray.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
   </data>
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
+  </data>
+  <data name="&gt;&gt;hotKeyToActivateLabel.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <data name="languageOptionSpanish.Location" type="System.Drawing.Point, System.Drawing">
     <value>177, 13</value>
   </data>
@@ -495,6 +507,9 @@
   <data name="&gt;&gt;enableTwitterCheckbox.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;reminderTime.Name" xml:space="preserve">
+    <value>reminderTime</value>
+  </data>
   <data name="tabTwitter.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
@@ -510,11 +525,14 @@
   <data name="twitterLink.Size" type="System.Drawing.Size, System.Drawing">
     <value>94, 13</value>
   </data>
-  <data name="&gt;&gt;hotKeyToActivateLabel.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;timeLogFolder.Name" xml:space="preserve">
+    <value>timeLogFolder</value>
   </data>
-  <data name="timeLogFolder.Location" type="System.Drawing.Point, System.Drawing">
-    <value>117, 100</value>
+  <data name="activitiesNumberInTray.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="switchOnLogOff.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>LifeIdea.LazyCure.UI.Backend.Dialog, LazyCure.UI, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null</value>
@@ -577,13 +595,13 @@
     <value>271, 254</value>
   </data>
   <data name="&gt;&gt;tabHotKeys.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="whatAddtj.Size" type="System.Drawing.Size, System.Drawing">
     <value>328, 70</value>
   </data>
-  <data name="&gt;&gt;switchTimeLogAtMidnight.Parent" xml:space="preserve">
-    <value>tabGeneral</value>
+  <data name="twitterActivitySpecificRadioButton.Text" xml:space="preserve">
+    <value>activity with the name: </value>
   </data>
   <data name="languageOptionEnglish.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -600,8 +618,8 @@
   <data name="languageOptionEnglish.Size" type="System.Drawing.Size, System.Drawing">
     <value>59, 17</value>
   </data>
-  <data name="splitByComma.Size" type="System.Drawing.Size, System.Drawing">
-    <value>153, 17</value>
+  <data name="opensMainWindow.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="tabGeneral.Size" type="System.Drawing.Size, System.Drawing">
     <value>342, 222</value>
@@ -627,6 +645,9 @@
   <data name="&gt;&gt;label7.Name" xml:space="preserve">
     <value>label7</value>
   </data>
+  <data name="timeLogFolder.Location" type="System.Drawing.Point, System.Drawing">
+    <value>117, 100</value>
+  </data>
   <data name="hotKeyToSwitchLabel.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
     <value>No</value>
   </data>
@@ -642,8 +663,11 @@
   <data name="&gt;&gt;whatAddtj.Parent" xml:space="preserve">
     <value>tabTwitter</value>
   </data>
-  <data name="&gt;&gt;cancel.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="splitByComma.Size" type="System.Drawing.Size, System.Drawing">
+    <value>153, 17</value>
+  </data>
+  <data name="showsRecentActivities.Text" xml:space="preserve">
+    <value>shows recent activities</value>
   </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 13</value>
@@ -696,9 +720,6 @@
   <data name="&gt;&gt;twitterActivitySpecificRadioButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="twitterActivityTheSameRadioButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 19</value>
-  </data>
   <data name="&gt;&gt;languageOptionSpanish.Name" xml:space="preserve">
     <value>languageOptionSpanish</value>
   </data>
@@ -726,9 +747,6 @@
   <data name="twitterAuthorizationGroup.Size" type="System.Drawing.Size, System.Drawing">
     <value>326, 109</value>
   </data>
-  <data name="switchOnLogOff.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="&gt;&gt;opensMainWindow.Parent" xml:space="preserve">
     <value>groupBox1</value>
   </data>
@@ -743,6 +761,9 @@
   </data>
   <data name="twitterAuthorizationGroup.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 29</value>
+  </data>
+  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
+    <value>tabHotKeys</value>
   </data>
   <data name="&gt;&gt;selectTimeLogsFolder.Name" xml:space="preserve">
     <value>selectTimeLogsFolder</value>
@@ -916,8 +937,8 @@
         AAA=
 </value>
   </data>
-  <data name="&gt;&gt;editSwitchKey.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="enableTwitterCheckbox.Text" xml:space="preserve">
+    <value>Enable post to Twitter feature</value>
   </data>
   <data name="showsRecentActivities.Size" type="System.Drawing.Size, System.Drawing">
     <value>132, 17</value>
@@ -946,6 +967,9 @@
   <data name="maxActivitiesInHistory.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 20</value>
   </data>
+  <data name="&gt;&gt;opensMainWindow.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="hotKeyToActivateLabel.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
@@ -958,8 +982,8 @@
   <data name="editActivateKey.Size" type="System.Drawing.Size, System.Drawing">
     <value>25, 23</value>
   </data>
-  <data name="maxActivitiesInHistory.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+  <data name="&gt;&gt;activitiesNumberInTray.Name" xml:space="preserve">
+    <value>activitiesNumberInTray</value>
   </data>
   <data name="&gt;&gt;timeLogFolder.Parent" xml:space="preserve">
     <value>tabGeneral</value>
@@ -970,11 +994,8 @@
   <data name="&gt;&gt;switchTimeLogAtMidnight.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="tabGeneral.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="whatAddtj.Text" xml:space="preserve">
-    <value>What add to time log when posting to Twitter:</value>
+  <data name="languageOptionRussian.Text" xml:space="preserve">
+    <value>Russian</value>
   </data>
   <data name="&gt;&gt;authorizeButton.Parent" xml:space="preserve">
     <value>twitterAuthorizationGroup</value>
@@ -984,9 +1005,6 @@
   </data>
   <data name="tabHotKeys.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
-  </data>
-  <data name="tabHotKeys.Size" type="System.Drawing.Size, System.Drawing">
-    <value>342, 222</value>
   </data>
   <data name="&gt;&gt;tabGeneral.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -1012,23 +1030,20 @@
   <data name="&gt;&gt;label2.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;editActivateKey.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
     <value>174, 13</value>
   </data>
   <data name="&gt;&gt;twitterActivitySpecificRadioButton.Name" xml:space="preserve">
     <value>twitterActivitySpecificRadioButton</value>
   </data>
-  <data name="tabTwitter.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
   <data name="label5.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8pt</value>
   </data>
   <data name="tabControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
+  </data>
+  <data name="languageOptionEnglish.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="&gt;&gt;twitterLink.Name" xml:space="preserve">
     <value>twitterLink</value>
@@ -1063,9 +1078,6 @@
   <data name="&gt;&gt;hotKeyToActivateLabel.Parent" xml:space="preserve">
     <value>tabHotKeys</value>
   </data>
-  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 125</value>
-  </data>
   <data name="switchOnLogOff.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
@@ -1084,12 +1096,6 @@
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>Options</value>
   </data>
-  <data name="splitByComma.Text" xml:space="preserve">
-    <value>Split activities by comma (,)</value>
-  </data>
-  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 8pt</value>
-  </data>
   <data name="groupBox1.Text" xml:space="preserve">
     <value>Left click on tray:</value>
   </data>
@@ -1105,8 +1111,8 @@
   <data name="authorizeButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>314, 84</value>
   </data>
-  <data name="enableTwitterCheckbox.Text" xml:space="preserve">
-    <value>Enable post to Twitter feature</value>
+  <data name="&gt;&gt;opensMainWindow.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="switchTimeLogAtMidnight.Size" type="System.Drawing.Size, System.Drawing">
     <value>301, 17</value>
@@ -1150,20 +1156,14 @@
   <data name="label6.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="&gt;&gt;opensMainWindow.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;reminderTime.ZOrder" xml:space="preserve">
+    <value>8</value>
   </data>
   <data name="&gt;&gt;languageOptionBelarusian.Parent" xml:space="preserve">
     <value>languageGroupBox</value>
   </data>
-  <data name="&gt;&gt;activitiesNumberInTray.Name" xml:space="preserve">
-    <value>activitiesNumberInTray</value>
-  </data>
   <data name="showsRecentActivities.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>10</value>
   </data>
   <data name="&gt;&gt;showsRecentActivities.Type" xml:space="preserve">
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1204,9 +1204,6 @@
   <data name="&gt;&gt;languageOptionUkrainian.Name" xml:space="preserve">
     <value>languageOptionUkrainian</value>
   </data>
-  <data name="&gt;&gt;twitterActivityField.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="twitterActivitySpecificRadioButton.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
@@ -1219,8 +1216,8 @@
   <data name="&gt;&gt;label5.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="tabGeneral.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
   </data>
   <data name="&gt;&gt;switchTimeLogAtMidnight.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -1240,6 +1237,9 @@
   <data name="hotKeyToActivateLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>114, 10</value>
   </data>
+  <data name="hotKeyToSwitchLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopRight</value>
+  </data>
   <data name="&gt;&gt;languageOptionUkrainian.Parent" xml:space="preserve">
     <value>languageGroupBox</value>
   </data>
@@ -1255,6 +1255,9 @@
   <data name="&gt;&gt;switchOnLogOff.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="hotKeyToSwitchLabel.Text" xml:space="preserve">
+    <value>Ctrl+F12</value>
+  </data>
   <data name="twitterLink.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1264,17 +1267,17 @@
   <data name="tabTray.Text" xml:space="preserve">
     <value>Tray</value>
   </data>
-  <data name="tabGeneral.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
+  <data name="tabHotKeys.Size" type="System.Drawing.Size, System.Drawing">
+    <value>342, 222</value>
   </data>
   <data name="&gt;&gt;label4.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="hotKeyToSwitchLabel.Text" xml:space="preserve">
-    <value>Ctrl+F12</value>
+  <data name="&gt;&gt;switchTimeLogAtMidnight.Parent" xml:space="preserve">
+    <value>tabGeneral</value>
   </data>
-  <data name="&gt;&gt;hotKeyToSwitchLabel.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;tabHotKeys.Name" xml:space="preserve">
+    <value>tabHotKeys</value>
   </data>
   <data name="&gt;&gt;tabControl.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1288,8 +1291,8 @@
   <data name="switchTimeLogAtMidnight.Text" xml:space="preserve">
     <value>At midnight close active time log and open on the next day</value>
   </data>
-  <data name="showsRecentActivities.Text" xml:space="preserve">
-    <value>shows recent activities</value>
+  <data name="languageOptionSpanish.Text" xml:space="preserve">
+    <value>Spanish</value>
   </data>
   <data name="&gt;&gt;twitterAuthorizationGroup.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -1300,11 +1303,8 @@
   <data name="switchOnLogOff.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 24</value>
   </data>
-  <data name="&gt;&gt;opensMainWindow.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="reminderTime.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
+  <data name="&gt;&gt;ok.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="opensMainWindow.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 13</value>
@@ -1312,8 +1312,8 @@
   <data name="&gt;&gt;label1.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="hotKeyToSwitchLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 16</value>
+  <data name="&gt;&gt;editActivateKey.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="tabTwitter.Text" xml:space="preserve">
     <value>Twitter</value>
@@ -1321,11 +1321,11 @@
   <data name="&gt;&gt;languageOptionEnglish.Type" xml:space="preserve">
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="opensMainWindow.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="&gt;&gt;twitterActivityField.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>350, 289</value>
+  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8pt</value>
   </data>
   <data name="&gt;&gt;splitByComma.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1396,6 +1396,9 @@
   <data name="&gt;&gt;tabTray.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="whatAddtj.Text" xml:space="preserve">
+    <value>What add to time log when posting to Twitter:</value>
+  </data>
   <data name="twitterActivityField.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
@@ -1408,8 +1411,8 @@
   <data name="twitterLink.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="languageOptionEnglish.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="tabTwitter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
   </data>
   <data name="whatAddtj.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -1426,11 +1429,11 @@
   <data name="&gt;&gt;languageOptionBelarusian.Type" xml:space="preserve">
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="hotKeyToSwitchLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopRight</value>
+  <data name="splitByComma.Text" xml:space="preserve">
+    <value>Split activities by comma (,)</value>
   </data>
   <data name="editSwitchKey.Size" type="System.Drawing.Size, System.Drawing">
     <value>25, 23</value>
@@ -1447,23 +1450,23 @@
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
-  <data name="&gt;&gt;reminderTime.Name" xml:space="preserve">
-    <value>reminderTime</value>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>10</value>
   </data>
   <data name="&gt;&gt;enableTwitterCheckbox.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="maxActivitiesInHistory.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
   <data name="tabTray.Size" type="System.Drawing.Size, System.Drawing">
     <value>342, 222</value>
   </data>
-  <data name="&gt;&gt;label3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="reminderTime.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
   </data>
-  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
-    <value>tabHotKeys</value>
-  </data>
-  <data name="&gt;&gt;label6.Name" xml:space="preserve">
-    <value>label6</value>
+  <data name="twitterActivityTheSameRadioButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 19</value>
   </data>
   <data name="languageOptionBelarusian.Size" type="System.Drawing.Size, System.Drawing">
     <value>74, 17</value>
@@ -1484,6 +1487,6 @@
     <value>True</value>
   </metadata>
   <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>be</value>
+    <value>en</value>
   </metadata>
 </root>

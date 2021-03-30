@@ -32,14 +32,6 @@ namespace LifeIdea.LazyCure.UI.Backend
             Assert.True(form.IsDisposed);
         }
         [Test]
-        public void ResetDialogsDisposeOath()
-        {
-            Form form = (Form)Dialogs.Oath;
-            Assert.False(form.IsDisposed);
-            Dialogs.Reset();
-            Assert.True(form.IsDisposed);
-        }
-        [Test]
         public void ResetDialogDisposeTimeLogEditor()
         {
             Form form = (Form)Dialogs.TimeLog;

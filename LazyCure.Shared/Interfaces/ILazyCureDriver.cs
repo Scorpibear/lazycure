@@ -32,7 +32,7 @@ namespace LifeIdea.LazyCure.Shared.Interfaces
 
         void ApplySettings(ISettings settings);
 
-        void FinishActivity(string finishedActivity, string nextActivity, bool postToExternals);
+        void FinishActivity(string finishedActivity, string nextActivity);
 
         IHistoryDataProvider HistoryDataProvider { get; }
 
@@ -40,14 +40,8 @@ namespace LifeIdea.LazyCure.Shared.Interfaces
 
         void RenameActivity(string before, string after);
 
-        void PostToTwitter(string activity);
-
         bool Save();
 
         bool SaveTimeLog(string filename);
-
-        void AuthorizeInExternalPoster();
-
-        TokensPair SetExternalPosterAuthorizationPin(string p);
     }
 }

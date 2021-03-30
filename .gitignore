@@ -1,0 +1,10 @@
+**/bin/**
+**/obj/**
+.vs
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+.vs/LazyCureSolution/v16/.suo
