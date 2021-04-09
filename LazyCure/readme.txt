@@ -1,11 +1,11 @@
-LazyCure 4.1
+LazyCure 4.2
 
 Prerequsites:
-.NET Framework 4.0 (usually goes with Windows Updates, could be downloaded from http://www.microsoft.com/download/en/details.aspx?id=17851 page)
+.NET Framework 4.7+ (usually goes with Windows Updates, could be downloaded from http://www.microsoft.com/download/en/details.aspx?id=17851 page)
 
 Installation Notes:
-- Run LazyCure4.1setup.exe (for Windows only)
-	or unpack content of LazyCure4.1.zip to local folder (e.g. to c:\Program Files\LazyCure) and run LazyCure.exe.
+- Run LazyCure4.2setup.exe (for Windows only)
+	or unpack content of LazyCure4.2.zip to local folder (e.g. to c:\Program Files\LazyCure) and run LazyCure.exe.
 
 Known issues:
 - Does not work under mono 2.10 due to it's limited support of 4.0 version of Windows.Forms, that's why no possibility to use under Linux/MacOS.
@@ -15,16 +15,14 @@ Upgrade Notes:
 
 Troubleshooting:
 If LazyCure does not start, please, verify that:
-1. .NET Framework 4.0 or Mono 2.10+ is installed and working correctly.
+1. .NET Framework 4.7+ or Mono 2.10+ is installed and working correctly.
 2. In LazyCure folder there are all required files:
 	- LazyCure.exe,
 	- LazyCure.Core.dll,
 	- LazyCure.Shared.dll,
 	- LazyCure.UI.dll,
 	- LazyCure.exe.config
-	- Twitterizer2.dll
-	- Newtonsoft.Json.dll
-	- ru/ and uk/ folders with:
+	- ru/ be/ es/ uk/ folders with:
 		- LazyCure.html
 		- LazyCure.Shared.resources.dll
 		- LazyCure.UI.resources.dll
